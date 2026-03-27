@@ -87,10 +87,10 @@ export default function ContactPage() {
         </motion.section>
 
         {/* Contact info + form + map */}
-        <section className="py-10 lg:py-14 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/60 to-white py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             {/* Two columns: contact info (left) + form (right) */}
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
               {/* Left: contact info with map pattern background */}
               <motion.div
                 className="relative rounded-2xl border border-gray-200 bg-gray-50 p-8 shadow-sm lg:p-10"

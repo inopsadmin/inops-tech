@@ -33,7 +33,7 @@ function logoAltFromSrc(src: string) {
 
 function LogoCard({ src }: { src: string }) {
   return (
-    <div className="group relative flex h-20 min-w-[140px] flex-shrink-0 items-center justify-center rounded-2xl border border-gray-100 bg-white/90 px-6 py-4 shadow-sm shadow-gray-900/5 backdrop-blur transition hover:-translate-y-0.5 hover:border-gray-200 hover:bg-white hover:shadow-md hover:shadow-gray-900/10 sm:min-w-[170px]">
+    <div className="group relative flex h-20 min-w-[140px] flex-shrink-0 items-center justify-center px-6 py-4 transition hover:-translate-y-0.5 sm:min-w-[170px]">
       <Image
         src={src}
         alt={logoAltFromSrc(src)}
@@ -60,18 +60,18 @@ export default function BrandsSlider() {
           <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl border border-gray-200/70 bg-white/70 py-10 shadow-depth backdrop-blur">
+        <div className="relative mt-10 overflow-hidden rounded-3xl border border-blue-100/80 bg-gradient-to-b from-white to-blue-50/40 py-8 shadow-depth backdrop-blur">
           {/* Edge fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white via-white/80 to-transparent" aria-hidden />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white via-white/80 to-transparent" aria-hidden />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/90 to-transparent" aria-hidden />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent" aria-hidden />
 
           <div className="relative flex">
-            <div className="flex animate-marquee gap-6 px-6 motion-reduce:animate-none">
+            <div className="flex animate-marquee gap-0 px-2 motion-reduce:animate-none">
               {clientLogos.map((src, i) => (
                 <LogoCard key={`a-${i}`} src={src} />
               ))}
             </div>
-            <div className="flex animate-marquee gap-6 px-6 motion-reduce:animate-none" aria-hidden>
+            <div className="flex animate-marquee gap-0 px-2 motion-reduce:animate-none" aria-hidden>
               {clientLogos.map((src, i) => (
                 <LogoCard key={`b-${i}`} src={src} />
               ))}

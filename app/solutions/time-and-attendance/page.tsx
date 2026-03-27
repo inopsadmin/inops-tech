@@ -147,7 +147,7 @@ export default function TimeAndAttendancePage() {
         {/* Main content – title, intro, benefits diagram, description */}
         <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-start">
               {/* Left: title + circular benefits infographic */}
               <motion.div
                 className="flex flex-col items-center lg:items-start"
@@ -258,7 +258,7 @@ export default function TimeAndAttendancePage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
+            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -313,7 +313,7 @@ export default function TimeAndAttendancePage() {
         {/* Product visualization – device + software on monitor */}
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               <motion.div
                 className="relative"
                 initial={{ opacity: 0, x: -24 }}
@@ -321,7 +321,7 @@ export default function TimeAndAttendancePage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] max-w-md mx-auto rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-xl">
+                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-xl">
                   <Image
                     src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85"
                     alt="Time and attendance biometric device"
@@ -343,7 +343,7 @@ export default function TimeAndAttendancePage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative aspect-[4/3] max-w-md mx-auto rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-xl">
+                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-xl">
                   <Image
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=85"
                     alt="Attendance software dashboard on monitor"
@@ -385,7 +385,7 @@ export default function TimeAndAttendancePage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
@@ -408,7 +408,7 @@ export default function TimeAndAttendancePage() {
         {/* Empowering Smarter Workplaces + mobile app */}
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

@@ -115,7 +115,7 @@ export default function TurnstilesPage() {
         {/* Main content – tripod turnstile image left, text right */}
         <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               <motion.div
                 className="relative order-2 lg:order-1"
                 initial={{ opacity: 0, x: -40 }}
@@ -123,7 +123,7 @@ export default function TurnstilesPage() {
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] max-w-xl mx-auto lg:max-w-none rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-gray-50">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-xl">
                   <Image
                     src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=85"
                     alt="Stainless steel tripod turnstile with barrier arms"
@@ -258,7 +258,7 @@ function WhyChooseUsSection() {
           Why Choose Us
         </motion.h2>
         <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
           {/* Left: network/tree graphic with icon circles */}
           <motion.div
             className="relative flex justify-center items-center min-h-[280px] lg:min-h-[360px]"
@@ -267,7 +267,7 @@ function WhyChooseUsSection() {
             viewport={viewport}
             transition={{ duration: 0.6, ease: smoothEase }}
           >
-            <svg viewBox="0 0 320 320" className="w-full max-w-md h-auto" aria-hidden>
+            <svg viewBox="0 0 320 320" className="h-auto w-full max-w-[min(100%,22rem)] lg:max-w-full" aria-hidden>
               {/* Connecting lines - tree/network style */}
               <g stroke="rgb(6 182 212)" strokeWidth="1.5" fill="none" opacity="0.6">
                 <path d="M160 280 L160 220 L100 160 L80 100" />

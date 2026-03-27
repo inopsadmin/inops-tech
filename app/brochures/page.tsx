@@ -110,9 +110,9 @@ export default function BrochuresPage() {
         </section>
 
         {/* Brochures grid */}
-        <section className="py-10 lg:py-14 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="border-t border-gray-100/80 bg-white py-8 lg:py-11">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
               {brochures.map((brochure, i) => (
                 <motion.article
                   key={brochure.title}

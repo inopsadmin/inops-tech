@@ -50,10 +50,11 @@ export default function FeaturesSlider() {
   const slide = slides[current];
 
   return (
-    <section className="py-10 lg:py-14 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="rounded-2xl border border-gray-200 bg-white shadow-lg overflow-hidden">
-          <div className="flex flex-col md:flex-row items-stretch">
+    <section className="relative isolate py-10 lg:py-14 bg-gradient-to-b from-blue-50 via-sky-50/80 to-blue-100/40">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-10%,rgba(59,130,246,0.12),transparent_55%)]" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+        <div className="overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm">
+          <div className="flex flex-col items-stretch md:flex-row md:min-h-[min(28rem,75vh)]">
             <motion.div
               className="flex-1 p-8 lg:p-12"
               initial={{ opacity: 0, x: -50 }}
@@ -72,10 +73,10 @@ export default function FeaturesSlider() {
               </motion.h2>
 
               <motion.ul
+                key={current}
                 className="mt-6 space-y-4"
                 initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
+                animate="visible"
                 variants={{
                   hidden: {},
                   visible: {
@@ -85,7 +86,7 @@ export default function FeaturesSlider() {
               >
                 {slide.features.map((text, i) => (
                   <motion.li
-                    key={i}
+                    key={`${current}-${i}`}
                     className="flex gap-3"
                     variants={{
                       hidden: { opacity: 0, x: -16 },
@@ -105,25 +106,26 @@ export default function FeaturesSlider() {
             </motion.div>
 
             <motion.div
-              className="w-full md:w-[40%] lg:w-[38%] flex-shrink-0 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-200 p-5 md:p-6 flex items-stretch"
+              className="relative w-full flex-shrink-0 overflow-hidden border-t border-blue-100/80 bg-blue-100/20 md:w-[46%] lg:w-[44%] md:border-t-0 md:border-l"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
               transition={{ duration: 0.7, ease: smoothEase, delay: 0.15 }}
             >
-              <div className="relative w-full h-full min-h-[220px] rounded-xl overflow-hidden shadow-md border border-gray-200">
-                <div className="absolute top-0 left-0 right-0 h-7 bg-gray-100 border-b border-gray-200 flex items-center px-3 gap-2 z-10">
-                  <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
-                  <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
-                  <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
-                </div>
-
-                <Image src={slide.imageUrl} alt="Dashboard Preview" fill className="object-cover pt-7" sizes="(max-width: 768px) 100vw, 40vw" />
+              <div className="relative aspect-[5/4] w-full min-h-[17rem] md:absolute md:inset-0 md:aspect-auto md:min-h-0">
+                <Image
+                  src={slide.imageUrl}
+                  alt="Dashboard Preview"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 46vw"
+                  priority={current === 0}
+                />
               </div>
             </motion.div>
           </div>
 
-          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-100 bg-gray-50">
+          <div className="flex items-center justify-between border-t border-blue-100/80 bg-blue-50/50 px-6 py-4">
             <div className="flex gap-2">
               {slides.map((_, index) => (
                 <button

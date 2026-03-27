@@ -149,7 +149,7 @@ export default function FixedAssetManagementPage() {
         {/* Content – asset register diagram left, text right */}
         <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               {/* Left – circular diagram: ASSET REGISTER center + segments */}
               <motion.div
                 className="flex justify-center lg:justify-start"
@@ -158,7 +158,7 @@ export default function FixedAssetManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <div className="relative w-full max-w-md aspect-square">
+                <div className="relative w-full aspect-square">
                   <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
                     {/* 5 segments as pie slices (72° each), starting from top */}
                     {assetSegments.map((seg, i) => {
@@ -280,7 +280,7 @@ export default function FixedAssetManagementPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-cyan-500" aria-hidden />
-            <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
+            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -391,7 +391,7 @@ export default function FixedAssetManagementPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-cyan-500" />
-            <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
@@ -414,7 +414,7 @@ export default function FixedAssetManagementPage() {
         {/* Empowering Smarter Workplaces + phone mockup */}
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

@@ -135,12 +135,12 @@ export default function AboutPage() {
         </motion.section>
 
         {/* About InOps: intro + 4 images + differentiators */}
-        <section className="py-10 lg:py-14 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+        <section className="border-t border-gray-100/80 py-8 lg:py-12 bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               {/* Left: featured image + 4 images grid */}
               <motion.div
-                className="flex flex-col gap-6 max-w-lg mx-auto lg:max-w-none lg:mx-0"
+                className="flex w-full flex-col gap-4 lg:gap-5"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
@@ -163,7 +163,7 @@ export default function AboutPage() {
                   />
                 </motion.div>
                 {/* 4 images in 2x2 grid */}
-                <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                   {aboutImages.map((img, i) => (
                     <motion.div
                       key={img.alt}
@@ -239,8 +239,8 @@ export default function AboutPage() {
         </section>
 
         {/* Our workspace / culture - image strip */}
-        <section className="py-10 lg:py-14 bg-gray-50">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/90 to-gray-50 py-8 lg:py-11">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
               initial={{ opacity: 0, y: 20 }}
@@ -259,7 +259,7 @@ export default function AboutPage() {
             >
               We believe in collaboration, innovation, and a culture that puts people and technology first.
             </motion.p>
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5">
               {aboutSectionImages.map((img, i) => (
                 <motion.div
                   key={img.alt}
@@ -283,8 +283,8 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Us: tech tree visual + Expertise card */}
-        <section className="border-t border-gray-200 bg-white py-10 lg:py-14">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="border-t border-gray-100/80 bg-white py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
               initial={{ opacity: 0, y: 20 }}
@@ -302,7 +302,7 @@ export default function AboutPage() {
               transition={{ duration: 0.4, ease: smoothEase }}
             />
 
-            <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               {/* Left: tech icons grid (tree-like visual) */}
               <motion.div
                 className="relative flex flex-wrap justify-center gap-6 sm:gap-8"

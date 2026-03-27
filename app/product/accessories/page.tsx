@@ -133,7 +133,7 @@ export default function AccessoriesPage() {
               Accessories
             </motion.h2>
             <div className="mt-2 h-0.5 w-16 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:gap-10">
               {accessories.map((product, i) => (
                 <motion.article
                   key={product.name}
@@ -144,7 +144,7 @@ export default function AccessoriesPage() {
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.1 }}
                 >
                   <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">{product.name}</h3>
-                  <div className="mt-4 relative aspect-square max-w-sm rounded-xl overflow-hidden border border-gray-600/80 bg-gray-100">
+                  <div className="mt-4 relative aspect-square w-full rounded-xl overflow-hidden border border-gray-600/80 bg-gray-100">
                     <Image
                       src={product.imageUrl}
                       alt={product.imageAlt}
@@ -170,7 +170,7 @@ export default function AccessoriesPage() {
         {/* FP Sensor & RF Cards */}
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:gap-10">
               {fpSensorAndRfCards.map((product, i) => (
                 <motion.article
                   key={product.title}
@@ -181,7 +181,7 @@ export default function AccessoriesPage() {
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.1 }}
                 >
                   <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">{product.title}</h3>
-                  <div className="mt-4 relative aspect-[4/3] w-full max-w-md mx-auto rounded-xl overflow-hidden border border-gray-600/80 bg-gray-100">
+                  <div className="mt-4 relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-gray-600/80 bg-gray-100">
                     <Image
                       src={product.imageUrl}
                       alt={product.imageAlt}
@@ -201,7 +201,7 @@ export default function AccessoriesPage() {
         {/* Electro-Magnetic Locks – SL-600 & DL-600 */}
         <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:gap-10">
               {electroMagneticLocks.map((product, i) => (
                 <motion.article
                   key={product.model}
@@ -212,7 +212,7 @@ export default function AccessoriesPage() {
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.1 }}
                 >
                   <p className="text-lg font-bold text-blue-600">{product.model}</p>
-                  <div className="mt-4 relative aspect-[4/3] w-full max-w-md mx-auto rounded-xl overflow-hidden border border-gray-600/80 bg-gray-100">
+                  <div className="mt-4 relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-gray-600/80 bg-gray-100">
                     <Image
                       src={product.imageUrl}
                       alt={product.imageAlt}

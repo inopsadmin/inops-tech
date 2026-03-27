@@ -12,13 +12,17 @@ const industries = [
 
 function IndustryCard({ name, imageUrl }: { name: string; imageUrl: string }) {
   return (
-    <div className="industry-card group w-[280px] flex-shrink-0 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg hover:border-blue-100 sm:w-[320px]">
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-        <Image src={imageUrl} alt={name} fill className="object-cover transition duration-300 group-hover:scale-105" sizes="320px" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <h3 className="text-lg font-heading text-white drop-shadow-md">{name}</h3>
-        </div>
+    <div className="industry-card group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden transition-transform duration-300">
+      <Image
+        src={imageUrl}
+        alt={name}
+        fill
+        className="object-cover object-center transition duration-500 group-hover:scale-105"
+        sizes="320px"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-4">
+        <h3 className="text-lg font-heading text-white drop-shadow-md">{name}</h3>
       </div>
     </div>
   );
@@ -38,7 +42,7 @@ export default function IndustriesSlider() {
           </p>
         </div>
         <div className="hover-pause relative mt-8 overflow-hidden">
-          <div className="flex w-max gap-6 md:gap-8 animate-marquee-slow" style={{ willChange: "transform" }}>
+          <div className="flex w-max gap-0 animate-marquee-slow" style={{ willChange: "transform" }}>
             {[...industries, ...industries].map((ind, i) => (
               <IndustryCard key={`${ind.name}-${i}`} name={ind.name} imageUrl={ind.imageUrl} />
             ))}

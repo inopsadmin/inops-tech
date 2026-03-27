@@ -189,7 +189,7 @@ export default function PayrollSolutionsPage() {
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-6xl px-6 lg:px-12">
             <motion.div
-              className="relative flex flex-col items-center gap-8 lg:flex-row lg:justify-center lg:gap-10 xl:gap-14 lg:items-stretch"
+              className="relative flex flex-col items-stretch gap-5 sm:items-center lg:flex-row lg:justify-between lg:gap-6 xl:gap-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -217,7 +217,7 @@ export default function PayrollSolutionsPage() {
                 </div>
               </div>
               {/* Right pills – 5 */}
-              <div className="flex flex-col justify-center gap-3 w-full max-w-[280px]">
+              <div className="flex w-full flex-col justify-center gap-2.5 sm:max-w-[min(100%,280px)] lg:flex-1">
                 {payrollHighlights.slice(5, 10).map((text, i) => (
                   <div
                     key={i}
@@ -234,7 +234,7 @@ export default function PayrollSolutionsPage() {
         {/* Main content – infographic left, text right */}
         <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               {/* Left – circular infographic: six must-have features */}
               <motion.div
                 className="flex justify-center lg:justify-start"
@@ -243,7 +243,7 @@ export default function PayrollSolutionsPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <div className="relative w-full max-w-md aspect-square">
+                <div className="relative w-full aspect-square">
                   <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
                     {/* 6 segments as pie slices (60° each), starting from top */}
                     {payrollFeatures.map((seg, i) => {
@@ -393,7 +393,7 @@ export default function PayrollSolutionsPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
+            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -430,7 +430,7 @@ export default function PayrollSolutionsPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
@@ -453,7 +453,7 @@ export default function PayrollSolutionsPage() {
         {/* Empowering Smarter Workplaces + phone mockup */}
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

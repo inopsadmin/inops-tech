@@ -164,7 +164,7 @@ export default function BiometricAccessControlPage() {
         {/* Main content - two columns: device image left, text + CTAs right */}
         <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               {/* Left: biometric device image */}
               <motion.div
                 className="relative order-2 lg:order-1"
@@ -173,7 +173,7 @@ export default function BiometricAccessControlPage() {
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] max-w-xl mx-auto lg:max-w-none rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-gray-100">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl">
                   <Image
                     src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
                     alt="Biometric access control device with face recognition and keypad"
@@ -246,7 +246,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.4, ease: smoothEase }}
             />
-            <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
+            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
               {/* Left column */}
               <div className="space-y-10">
                 {featuresLeft.map((item, i) => (
@@ -342,10 +342,10 @@ export default function BiometricAccessControlPage() {
         </section>
 
         {/* Biometric device features – image with callout labels */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-5xl px-6 lg:px-12">
+        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/80 to-gray-50 py-8 lg:py-11">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.div
-              className="relative mx-auto max-w-2xl"
+              className="relative w-full max-w-4xl lg:max-w-5xl mx-auto"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -369,7 +369,7 @@ export default function BiometricAccessControlPage() {
                     <svg className="h-5 w-5 flex-shrink-0 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span className="bg-gray-100 px-3 py-2 rounded-lg border border-gray-200 border border-gray-200 text-gray-700">{label}</span>
+                    <span className="rounded-lg border border-gray-200 bg-gray-100 px-3 py-2 text-gray-700">{label}</span>
                   </div>
                 ))}
               </div>
@@ -390,7 +390,7 @@ export default function BiometricAccessControlPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
@@ -430,7 +430,7 @@ export default function BiometricAccessControlPage() {
         {/* Empowering Workplaces & Mobile App */}
         <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

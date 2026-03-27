@@ -176,7 +176,7 @@ export default function Home() {
                   <AnimatedCardItem
                     key={card.title}
                     direction={directions[index % 4]}
-                    className="group h-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md hover:border-blue-100"
+                    className="group h-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
                   >
                     <div className="relative h-full min-h-[220px] w-full">
                       <Image
@@ -195,7 +195,7 @@ export default function Home() {
                 <AnimatedCardItem
                   key={card.title}
                   direction={directions[index % 4]}
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-sm transition hover:bg-white hover:shadow-md hover:border-blue-100"
+                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-sm transition-all duration-300 hover:bg-white hover:border-blue-500 hover:shadow-[0_0_0_3px_rgba(59,130,246,0.35),0_4px_24px_-4px_rgba(59,130,246,0.25)]"
                 >
                   <div className="flex flex-1 flex-col gap-3">
                     <motion.div
