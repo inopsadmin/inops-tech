@@ -12,7 +12,7 @@ const industries = [
 
 function IndustryCard({ name, imageUrl }: { name: string; imageUrl: string }) {
   return (
-    <div className="industry-card group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden transition-transform duration-300">
+    <div className="industry-card group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-xl">
       <Image
         src={imageUrl}
         alt={name}
@@ -30,7 +30,7 @@ function IndustryCard({ name, imageUrl }: { name: string; imageUrl: string }) {
 
 export default function IndustriesSlider() {
   return (
-    <section className="relative py-10 lg:py-14 bg-white">
+    <section className="relative overflow-x-hidden py-8 lg:py-10 bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         <div className="text-center">
           <span className="section-badge">Industries</span>
@@ -41,12 +41,12 @@ export default function IndustriesSlider() {
             Trusted across manufacturing, logistics, construction, and more
           </p>
         </div>
-        <div className="hover-pause relative mt-8 overflow-hidden">
-          <div className="flex w-max gap-0 animate-marquee-slow" style={{ willChange: "transform" }}>
-            {[...industries, ...industries].map((ind, i) => (
-              <IndustryCard key={`${ind.name}-${i}`} name={ind.name} imageUrl={ind.imageUrl} />
-            ))}
-          </div>
+      </div>
+      <div className="hover-pause relative mt-8 w-screen max-w-[100vw] -translate-x-1/2 left-1/2 overflow-hidden">
+        <div className="flex w-max gap-0 animate-marquee-slow" style={{ willChange: "transform" }}>
+          {[...industries, ...industries].map((ind, i) => (
+            <IndustryCard key={`${ind.name}-${i}`} name={ind.name} imageUrl={ind.imageUrl} />
+          ))}
         </div>
       </div>
     </section>

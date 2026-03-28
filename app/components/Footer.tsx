@@ -52,7 +52,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-sm text-slate-400 underline-offset-4 transition-colors hover:text-white hover:underline"
+      className="text-sm text-slate-400 underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline"
     >
       {children}
     </Link>
@@ -117,7 +117,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-400 transition hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300 active:scale-95"
                   aria-label={s.label}
                 >
                   <SocialIcon icon={s.icon} />

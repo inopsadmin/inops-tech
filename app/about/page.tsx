@@ -181,7 +181,7 @@ export default function AboutPage() {
         </motion.section>
 
         {/* About InOps: intro + 4 images + differentiators */}
-        <section className="border-t border-gray-100/80 py-8 lg:py-12 bg-white">
+        <section className="border-t border-gray-100/80 py-6 lg:py-10 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-5 xl:gap-6 lg:items-start">
               {/* Left: height matches text column on lg (ResizeObserver); full half width */}
@@ -207,19 +207,20 @@ export default function AboutPage() {
                 >
                   <motion.div
                     className={
-                      "relative col-span-2 min-h-0 overflow-hidden rounded-xl border border-gray-200/90 shadow-lg sm:rounded-2xl sm:shadow-xl max-lg:aspect-video " +
+                      "group relative col-span-2 min-h-0 overflow-hidden rounded-xl border border-gray-200/90 shadow-lg sm:rounded-2xl sm:shadow-xl max-lg:aspect-video " +
                       (galleryHeightPx != null ? "lg:aspect-auto lg:h-full" : "lg:aspect-[16/9]")
                     }
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
                     transition={{ duration: 0.6, ease: smoothEase }}
+                    whileHover={{ y: -2, transition: { duration: 0.22, ease: smoothEase } }}
                   >
                     <Image
                       src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85"
                       alt="InOps team and digital workspace"
                       fill
-                      className="object-cover object-center"
+                      className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </motion.div>
@@ -227,19 +228,20 @@ export default function AboutPage() {
                     <motion.div
                       key={img.alt}
                       className={
-                        "relative min-h-0 overflow-hidden rounded-lg border border-gray-200/90 shadow-md sm:rounded-xl sm:shadow-lg max-lg:aspect-[4/3] " +
+                        "group relative min-h-0 overflow-hidden rounded-lg border border-gray-200/90 shadow-md sm:rounded-xl sm:shadow-lg max-lg:aspect-[4/3] " +
                         (galleryHeightPx != null ? "lg:aspect-auto lg:h-full" : "lg:aspect-[4/3]")
                       }
                       initial={{ opacity: 0, scale: 0.96 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={viewport}
                       transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 * i }}
+                      whileHover={{ y: -2, transition: { duration: 0.22, ease: smoothEase } }}
                     >
                       <Image
                         src={img.src}
                         alt={img.alt}
                         fill
-                        className="object-cover object-center"
+                        className="object-cover object-center transition duration-500 ease-out group-hover:scale-105"
                         sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     </motion.div>
@@ -276,15 +278,16 @@ export default function AboutPage() {
                 </motion.p>
 
                 {/* Key differentiators */}
-                <div className="mt-10 space-y-8">
+                <div className="mt-8 space-y-6">
                   {differentiators.map((item, i) => (
                     <motion.div
                       key={item.title}
-                      className="flex gap-4"
+                      className="flex gap-4 rounded-xl py-1 transition-colors duration-200 hover:bg-slate-50/80"
                       initial={{ opacity: 0, x: 24 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 * i }}
+                      whileHover={{ x: 4, transition: { duration: 0.2, ease: smoothEase } }}
                     >
                       <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 text-sm font-bold">
                         ✓
@@ -302,52 +305,57 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Our workspace / culture - image strip */}
-        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/90 to-gray-50 py-8 lg:py-11">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Our workspace & culture
-            </motion.h2>
-            <motion.p
-              className="mt-3 text-center text-gray-600 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-            >
-              We believe in collaboration, innovation, and a culture that puts people and technology first.
-            </motion.p>
-            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5">
-              {aboutSectionImages.map((img, i) => (
-                <motion.div
-                  key={img.alt}
-                  className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-gray-200"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 * i }}
+        {/* Our workspace / culture — full-bleed marquee like Industries We Serve, gapless tiles */}
+        <section className="relative overflow-x-hidden border-t border-gray-100/80 bg-gradient-to-b from-slate-50/90 to-gray-50 py-8 lg:py-10">
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="text-center">
+              <span className="section-badge">Culture</span>
+              <motion.h2
+                className="mt-4 text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                Our workspace & culture
+              </motion.h2>
+              <motion.p
+                className="mx-auto mt-3 max-w-xl text-gray-600"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+              >
+                We believe in collaboration, innovation, and a culture that puts people and technology first.
+              </motion.p>
+            </div>
+          </div>
+          <div className="hover-pause relative mt-8 w-screen max-w-[100vw] left-1/2 -translate-x-1/2 overflow-hidden">
+            <div className="flex w-max gap-0 animate-marquee-slow" style={{ willChange: "transform" }}>
+              {[...aboutSectionImages, ...aboutSectionImages, ...aboutSectionImages].map((img, i) => (
+                <div
+                  key={`${img.alt}-${i}`}
+                  className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden"
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover transition-transform duration-300 hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-center transition duration-500 group-hover:scale-105"
+                    sizes="320px"
                   />
-                </motion.div>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent" />
+                  <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-sm font-heading text-white drop-shadow-md">{img.alt}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Why Choose Us: tech tree visual + Expertise card */}
-        <section className="border-t border-gray-100/80 bg-white py-8 lg:py-12">
+        <section className="border-t border-gray-100/80 bg-white py-6 lg:py-10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -366,7 +374,7 @@ export default function AboutPage() {
               transition={{ duration: 0.4, ease: smoothEase }}
             />
 
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               {/* Left: tech icons grid (tree-like visual) */}
               <motion.div
                 className="relative flex flex-wrap justify-center gap-6 sm:gap-8"
@@ -434,7 +442,7 @@ export default function AboutPage() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => setExpertiseIndex((prev) => (prev === 0 ? expertiseSlides.length - 1 : prev - 1))}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:border-gray-300"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:border-gray-300 active:scale-95"
                       aria-label="Previous"
                     >
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -443,7 +451,7 @@ export default function AboutPage() {
                     </button>
                     <button
                       onClick={() => setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:border-gray-300"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:border-gray-300 active:scale-95"
                       aria-label="Next"
                     >
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -133,9 +133,9 @@ export default function VisitorManagementPage() {
           <div className="absolute inset-0 bg-gray-900/70" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.12),transparent)]" />
           {/* Reception-style badge */}
-          <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 rounded-2xl border border-cyan-400/50 bg-gray-800/90 px-8 py-3 backdrop-blur-sm shadow-lg">
+          {/* <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 rounded-2xl border border-cyan-400/50 bg-gray-800/90 px-8 py-3 backdrop-blur-sm shadow-lg">
             <span className="text-lg font-semibold tracking-widest text-white">RECEPTION</span>
-          </div>
+          </div> */}
           <div className="relative z-10 text-center px-6">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
@@ -162,19 +162,19 @@ export default function VisitorManagementPage() {
         </motion.section>
 
         {/* Content – flow diagram left, text right */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center lg:gap-8 xl:gap-10">
               {/* Left – visitor flow diagram: person at kiosk + connected nodes */}
               <motion.div
-                className="flex justify-center lg:justify-start"
+                className="flex justify-center pl-4 sm:pl-6 lg:col-span-4 lg:justify-start lg:pl-8 xl:pl-10"
                 initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <div className="relative w-full aspect-square">
-                  <svg viewBox="0 0 380 380" className="w-full h-full" aria-hidden>
+                <div className="relative mx-auto aspect-square w-full max-w-[14rem] sm:max-w-[16rem] lg:mx-0 lg:max-w-[15rem] xl:max-w-[24rem]">
+                  <svg viewBox="0 0 380 380" className="h-full w-full" aria-hidden>
                     {/* Connecting lines from center (190,190) to each node */}
                     {[
                       { cx: 190, cy: 60 },
@@ -241,18 +241,18 @@ export default function VisitorManagementPage() {
                 </div>
               </motion.div>
 
-              {/* Right – heading + paragraph */}
+              {/* Right – heading + paragraph (wider column) */}
               <motion.div
-                className="lg:pl-4"
+                className="min-w-0 lg:col-span-8 lg:pl-2 xl:pl-6"
                 initial={{ opacity: 0, x: 24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
                   Visitor Management
                 </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
+                <p className="mt-6 w-full max-w-none text-lg leading-relaxed text-gray-600 sm:text-xl lg:text-xl lg:leading-relaxed">
                   Welcome to the future of visitor management with InOps Company&apos;s innovative Visitor Management System. Designed to revolutionize how organizations handle visitor tracking and security, our system offers a comprehensive suite of features tailored to meet the unique needs of modern businesses. Let&apos;s explore the eight key features and their corresponding benefits:
                 </p>
               </motion.div>
@@ -261,7 +261,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -273,7 +273,7 @@ export default function VisitorManagementPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-cyan-500" aria-hidden />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -323,39 +323,39 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Two flow circles – Scheduled visits & Walk-up visits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-6xl px-6 lg:px-12">
+        <section className="border-t border-gray-200 bg-gray-50 py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
-              className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10"
+              className="grid grid-cols-1 justify-items-center gap-12 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-10 xl:gap-x-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.6, ease: smoothEase }}
             >
-              {/* Scheduled visits */}
-              <div className="flex flex-col items-center">
-                <div className="relative w-64 h-64 rounded-full bg-blue-700 flex items-center justify-center border-2 border-cyan-400/40 shadow-xl">
-                  <span className="text-white font-bold text-center text-lg px-4">Scheduled visits</span>
+              {/* Scheduled visits – circle left, steps right, centered in column */}
+              <div className="flex w-full max-w-xl flex-col items-center justify-center gap-8 sm:max-w-2xl sm:flex-row sm:items-center sm:gap-8 md:gap-10 lg:max-w-none lg:w-full lg:justify-center">
+                <div className="relative flex h-60 w-60 shrink-0 items-center justify-center rounded-full border-2 border-cyan-400/40 bg-blue-700 shadow-xl sm:h-64 sm:w-64 md:h-72 md:w-72">
+                  <span className="px-5 text-center text-lg font-bold leading-tight text-white md:text-xl">Scheduled visits</span>
                 </div>
-                <ul className="mt-6 space-y-2 w-full max-w-xs text-sm text-gray-600">
+                <ul className="w-full min-w-0 max-w-sm space-y-2.5 text-left text-base leading-snug text-gray-600 sm:max-w-xs md:max-w-sm">
                   {scheduledSteps.map((step, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
-                      {step}
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-400" aria-hidden />
+                      <span>{step}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              {/* Walk-up visits */}
-              <div className="flex flex-col items-center">
-                <div className="relative w-64 h-64 rounded-full bg-cyan-600 flex items-center justify-center border-2 border-cyan-400/40 shadow-xl">
-                  <span className="text-white font-bold text-center text-lg px-4">Walk-up visits</span>
+              {/* Walk-up visits – circle left, steps right, centered in column */}
+              <div className="flex w-full max-w-xl flex-col items-center justify-center gap-8 sm:max-w-2xl sm:flex-row sm:items-center sm:gap-8 md:gap-10 lg:max-w-none lg:w-full lg:justify-center">
+                <div className="relative flex h-60 w-60 shrink-0 items-center justify-center rounded-full border-2 border-cyan-400/40 bg-cyan-600 shadow-xl sm:h-64 sm:w-64 md:h-72 md:w-72">
+                  <span className="px-5 text-center text-lg font-bold leading-tight text-white md:text-xl">Walk-up visits</span>
                 </div>
-                <ul className="mt-6 space-y-2 w-full max-w-xs text-sm text-gray-600">
+                <ul className="w-full min-w-0 max-w-sm space-y-2.5 text-left text-base leading-snug text-gray-600 sm:max-w-xs md:max-w-sm">
                   {walkUpSteps.map((step, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
-                      {step}
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-400" aria-hidden />
+                      <span>{step}</span>
                     </li>
                   ))}
                 </ul>
@@ -365,7 +365,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -377,15 +377,16 @@ export default function VisitorManagementPage() {
               Powerful Services for <span className="underline decoration-orange-400 decoration-2 underline-offset-2">Your Business</span>
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-cyan-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 backdrop-blur-sm"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
                     <ServiceIcon icon={service.icon} />
@@ -398,9 +399,9 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

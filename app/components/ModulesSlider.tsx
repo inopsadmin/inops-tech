@@ -61,7 +61,7 @@ function ModuleCard({
   imageUrl: string;
 }) {
   return (
-    <div className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden transition-transform duration-300">
+    <div className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden shadow-md shadow-slate-900/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/20">
       <Image
         src={imageUrl}
         alt={title}
@@ -106,7 +106,7 @@ export default function ModulesSlider() {
   }, []);
 
   return (
-    <section id="solutions" className="relative py-10 lg:py-14">
+    <section id="solutions" className="relative py-8 lg:py-10">
       <div className="relative mx-auto max-w-full lg:px-12">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
           {/* Left: text block */}
@@ -134,7 +134,7 @@ export default function ModulesSlider() {
               <button
                 type="button"
                 onClick={() => scroll("left")}
-                className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-md transition hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600"
+                className="absolute left-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-md transition hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600 sm:left-2"
                 aria-label="Previous"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,7 +142,7 @@ export default function ModulesSlider() {
                 </svg>
               </button>
 
-              <div ref={scrollRef} className="flex gap-0 overflow-x-auto scroll-smooth py-4 px-14 scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+              <div ref={scrollRef} className="flex gap-0 overflow-x-auto scroll-smooth py-2 pl-1 pr-1 sm:pl-2 sm:pr-2 scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                 {modules.map((mod, i) => (
                   <ModuleCard
                     key={`${mod.title}-${i}`}
@@ -156,7 +156,7 @@ export default function ModulesSlider() {
               <button
                 type="button"
                 onClick={() => scroll("right")}
-                className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-md transition hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600"
+                className="absolute right-1 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 shadow-md transition hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600 sm:right-2"
                 aria-label="Next"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

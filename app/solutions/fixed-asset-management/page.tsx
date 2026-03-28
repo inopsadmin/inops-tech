@@ -147,9 +147,9 @@ export default function FixedAssetManagementPage() {
         </motion.section>
 
         {/* Content – asset register diagram left, text right */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               {/* Left – circular diagram: ASSET REGISTER center + segments */}
               <motion.div
                 className="flex justify-center lg:justify-start"
@@ -158,8 +158,8 @@ export default function FixedAssetManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <div className="relative w-full aspect-square">
-                  <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
+                <div className="relative mx-auto aspect-square w-full max-w-[17.5rem] sm:max-w-xs lg:mx-0 lg:max-w-[37rem]">
+                  <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden>
                     {/* 5 segments as pie slices (72° each), starting from top */}
                     {assetSegments.map((seg, i) => {
                       const startAngle = (i * 72 - 90) * (Math.PI / 180);
@@ -230,18 +230,6 @@ export default function FixedAssetManagementPage() {
                       REGISTER
                     </text>
                   </svg>
-                  {/* Labels list for small screens */}
-                  <div className="mt-4 flex flex-wrap justify-center gap-2 lg:mt-6">
-                    {assetSegments.map((seg, i) => (
-                      <span
-                        key={i}
-                        className="inline-flex items-center rounded-lg px-2.5 py-1.5 text-xs font-medium text-white"
-                        style={{ backgroundColor: seg.color }}
-                      >
-                        {seg.label}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
 
@@ -262,13 +250,34 @@ export default function FixedAssetManagementPage() {
                 <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
                   Our comprehensive FAM system is designed to make asset tracking and maintenance smooth, reliable, and efficient. Explore the eight key features and their corresponding benefits:
                 </p>
+                <ul
+                  className="mt-8 flex flex-wrap gap-2 sm:mt-9 sm:gap-3"
+                  aria-label="Fixed asset management focus areas"
+                >
+                  {assetSegments.map((seg, i) => (
+                    <motion.li
+                      key={seg.label}
+                      initial={{ opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={viewport}
+                      transition={{ duration: 0.35, ease: smoothEase, delay: i * 0.05 }}
+                    >
+                      <span
+                        className="inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-black/5"
+                        style={{ backgroundColor: seg.color }}
+                      >
+                        {seg.label}
+                      </span>
+                    </motion.li>
+                  ))}
+                </ul>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -280,7 +289,7 @@ export default function FixedAssetManagementPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-cyan-500" aria-hidden />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -304,82 +313,82 @@ export default function FixedAssetManagementPage() {
           </div>
         </section>
 
-        {/* Fixed Asset Management solution – intro title + paragraph */}
-        <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Fixed Asset Management solution
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-24 rounded-full bg-cyan-500" aria-hidden />
-            <motion.p
-              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 }}
-            >
-              With InOps Company&apos;s Fixed Asset Management solution, organizations can effectively manage their assets throughout their lifecycle, from acquisition to disposal. By leveraging our system&apos;s advanced features and corresponding benefits, businesses can improve operational efficiency, reduce costs, and ensure compliance with regulatory requirements. Experience the power of streamlined asset management with InOps Company today.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Laptop – Asset Distribution dashboard mockup */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-5xl px-6 lg:px-12">
-            <motion.div
-              className="rounded-b-2xl border border-gray-600/80 bg-slate-800 shadow-2xl overflow-hidden"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
-            >
-              <div className="flex items-center gap-2 border-b border-gray-600/80 bg-slate-700/80 px-4 py-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                <span className="ml-2 text-sm font-medium text-slate-300">Asset Distribution</span>
-              </div>
-              <div className="flex min-h-[320px]">
-                <aside className="w-44 flex-shrink-0 border-r border-gray-600/80 bg-slate-800/80 p-3 text-xs text-slate-400 space-y-1">
-                  {["Dashboard", "Assets", "Maintenance", "Transactions", "Reports", "New Profile", "Settings", "Change Password", "Change Theme", "Sign Out"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 py-1">{item}</div>
-                  ))}
-                </aside>
-                <div className="flex-1 p-4">
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-                    {[["71", "Total"], ["2", "Pending"], ["5", "Active"], ["12", "Reports"]].map(([num, label], i) => (
-                      <div key={i} className="rounded-lg border border-gray-600/80 bg-slate-700/50 p-3 text-center">
-                        <span className="text-lg font-bold text-white">{num}</span>
-                        <span className="block text-xs text-slate-400">{label}</span>
-                      </div>
-                    ))}
+        {/* FAM solution copy + Asset Distribution dashboard – one row from lg */}
+        <section className="border-t border-gray-200 bg-gradient-to-b from-white via-slate-50/30 to-slate-50 py-10 lg:py-14">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+              <motion.div
+                className="order-1 w-full min-w-0 lg:col-span-7"
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase }}
+              >
+                <div className="overflow-hidden rounded-2xl border border-slate-600/80 bg-slate-800 shadow-2xl shadow-slate-900/25 ring-1 ring-slate-900/10">
+                  <div className="flex items-center gap-2 border-b border-gray-600/80 bg-slate-700/90 px-4 py-2.5">
+                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                    <span className="ml-2 text-sm font-medium text-slate-200">Asset Distribution</span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {["Asset Count Location Wise", "Asset Value Location Wise", "Asset Count Category Wise", "Asset Value Category Wise"].map((title, i) => (
-                      <div key={i} className="rounded-lg border border-gray-600/80 bg-slate-700/30 p-3">
-                        <p className="text-xs font-medium text-slate-300 mb-2">{title}</p>
-                        <div className="flex items-end gap-1 h-20">
-                          {[40, 65, 35, 80, 55].map((h, j) => (
-                            <div key={j} className="flex-1 rounded-t bg-orange-500" style={{ height: `${h}%` }} aria-hidden />
-                          ))}
+                  <div className="flex min-h-[280px] sm:min-h-[300px] lg:min-h-[320px]">
+                    <aside className="hidden w-40 flex-shrink-0 border-r border-gray-600/80 bg-slate-800/90 p-3 text-xs leading-relaxed text-slate-400 sm:block sm:w-44">
+                      {["Dashboard", "Assets", "Maintenance", "Transactions", "Reports", "New Profile", "Settings", "Change Password", "Change Theme", "Sign Out"].map((item, i) => (
+                        <div key={i} className="flex items-center gap-2 py-1">
+                          {item}
                         </div>
+                      ))}
+                    </aside>
+                    <div className="min-w-0 flex-1 p-3 sm:p-4">
+                      <div className="mb-3 grid grid-cols-2 gap-2 sm:mb-4 sm:grid-cols-4 sm:gap-2">
+                        {[["71", "Total"], ["2", "Pending"], ["5", "Active"], ["12", "Reports"]].map(([num, label], i) => (
+                          <div key={i} className="rounded-lg border border-gray-600/80 bg-slate-700/50 p-2.5 text-center sm:p-3">
+                            <span className="text-base font-bold text-white sm:text-lg">{num}</span>
+                            <span className="mt-0.5 block text-[10px] text-slate-400 sm:text-xs">{label}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                        {["Asset Count Location Wise", "Asset Value Location Wise", "Asset Count Category Wise", "Asset Value Category Wise"].map((title, i) => (
+                          <div key={i} className="rounded-lg border border-gray-600/80 bg-slate-700/30 p-2.5 sm:p-3">
+                            <p className="mb-2 text-[11px] font-medium text-slate-300 sm:text-xs">{title}</p>
+                            <div className="flex h-16 items-end gap-1 sm:h-20">
+                              {[40, 65, 35, 80, 55].map((h, j) => (
+                                <div key={j} className="flex-1 rounded-t bg-orange-500" style={{ height: `${h}%` }} aria-hidden />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+
+              <motion.div
+                className="order-2 text-center lg:col-span-5 lg:pl-2 lg:text-left xl:pl-4"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                  Fixed Asset Management solution
+                </h2>
+                <div
+                  className="mx-auto mt-3 h-1 w-14 origin-center rounded-full bg-cyan-500 lg:mx-0 lg:origin-left"
+                  aria-hidden
+                />
+                <p className="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg">
+                  With InOps Company&apos;s Fixed Asset Management solution, organizations can effectively manage their assets throughout their lifecycle, from acquisition to disposal. By leveraging our system&apos;s advanced features and corresponding benefits, businesses can improve operational efficiency, reduce costs, and ensure compliance with regulatory requirements. Experience the power of streamlined asset management with InOps Company today.
+                </p>
+              </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -391,15 +400,16 @@ export default function FixedAssetManagementPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-cyan-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-cyan-100"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-cyan-200/80 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
                     <ServiceIcon icon={service.icon} />
@@ -412,9 +422,9 @@ export default function FixedAssetManagementPage() {
         </section>
 
         {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

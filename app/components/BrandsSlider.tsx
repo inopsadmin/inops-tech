@@ -33,7 +33,7 @@ function logoAltFromSrc(src: string) {
 
 function LogoCard({ src }: { src: string }) {
   return (
-    <div className="group relative flex h-20 min-w-[140px] flex-shrink-0 items-center justify-center px-6 py-4 transition hover:-translate-y-0.5 sm:min-w-[170px]">
+    <div className="group relative flex h-20 min-w-[120px] flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:min-w-[150px] sm:px-4">
       <Image
         src={src}
         alt={logoAltFromSrc(src)}
@@ -49,7 +49,7 @@ function LogoCard({ src }: { src: string }) {
 
 export default function BrandsSlider() {
   return (
-    <section className="relative overflow-x-hidden border-y border-gray-100 bg-gradient-to-b from-white via-gray-50 to-white py-8 sm:py-10 lg:py-12 noise-overlay">
+    <section className="relative overflow-x-hidden border-y border-gray-100 bg-gradient-to-b from-white via-gray-50 to-white py-6 sm:py-8 lg:py-10 noise-overlay">
       <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
       <div className="mx-auto max-w-7xl px-4 lg:px-12">
         <div className="mx-auto max-w-3xl text-center">
@@ -60,18 +60,18 @@ export default function BrandsSlider() {
           <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl border border-blue-100/80 bg-gradient-to-b from-white to-blue-50/40 py-8 shadow-depth backdrop-blur">
+        <div className="relative mt-8 overflow-hidden rounded-3xl border border-blue-100/80 bg-gradient-to-b from-white to-blue-50/40 py-6 shadow-depth backdrop-blur">
           {/* Edge fades */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/90 to-transparent" aria-hidden />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/90 to-transparent" aria-hidden />
 
           <div className="relative flex">
-            <div className="flex animate-marquee gap-0 px-2 motion-reduce:animate-none">
+            <div className="flex animate-marquee gap-0 motion-reduce:animate-none">
               {clientLogos.map((src, i) => (
                 <LogoCard key={`a-${i}`} src={src} />
               ))}
             </div>
-            <div className="flex animate-marquee gap-0 px-2 motion-reduce:animate-none" aria-hidden>
+            <div className="flex animate-marquee gap-0 motion-reduce:animate-none" aria-hidden>
               {clientLogos.map((src, i) => (
                 <LogoCard key={`b-${i}`} src={src} />
               ))}

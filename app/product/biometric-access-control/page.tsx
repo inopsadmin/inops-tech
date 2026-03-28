@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
-const viewport = { once: true, amount: 0.2 };
+const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
 const featuresLeft = [
   {
@@ -106,12 +106,7 @@ export default function BiometricAccessControlPage() {
     <>
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero section - dark blue-grey with illustrations */}
-        <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+        <section className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-gray-900" />
           <div
             className="absolute inset-0 opacity-20"
@@ -139,17 +134,17 @@ export default function BiometricAccessControlPage() {
           <div className="relative z-10 text-center px-6">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+              transition={{ duration: 0.45, ease: smoothEase }}
             >
               Biometric Access Control
             </motion.h1>
             <motion.nav
               className="mt-4 text-sm text-white/90"
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
+              transition={{ duration: 0.4, ease: smoothEase }}
               aria-label="Breadcrumb"
             >
               <Link href="/" className="hover:text-white transition-colors">
@@ -159,21 +154,21 @@ export default function BiometricAccessControlPage() {
               <span className="text-blue-300 font-medium">Biometric Access Control</span>
             </motion.nav>
           </div>
-        </motion.section>
+        </section>
 
         {/* Main content - two columns: device image left, text + CTAs right */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14 lg:items-center">
               {/* Left: biometric device image */}
               <motion.div
-                className="relative order-2 lg:order-1"
+                className="relative order-2 lg:order-1 lg:col-span-6"
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl lg:aspect-[5/4]">
                   <Image
                     src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
                     alt="Biometric access control device with face recognition and keypad"
@@ -187,36 +182,36 @@ export default function BiometricAccessControlPage() {
 
               {/* Right: heading, description, CTAs */}
               <motion.div
-                className="order-1 lg:order-2 lg:pl-4"
+                className="order-1 lg:order-2 lg:col-span-6 lg:pl-2 xl:pl-6"
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
               >
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl xl:text-[3rem] xl:leading-[1.1]">
                   Biometric Access Control
                 </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Inops offers a comprehensive range of biometric access control products, including Face Reader, Fingerprint Reader, and Card Reader solutions, designed to provide robust security and streamlined access management for various environments. Here are the features and benefits of each:
+                <p className="mt-6 max-w-none text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-xl xl:text-[1.35rem] xl:leading-relaxed sm:mt-8">
+                  InOps offers a comprehensive range of biometric access control products, including Face Reader, Fingerprint Reader, and Card Reader solutions, designed to provide robust security and streamlined access management for various environments. Here are the features and benefits of each:
                 </p>
-                <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+                <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-4 lg:gap-x-10">
                   <Link
                     href="#"
-                    className="inline-flex items-center font-semibold text-blue-500 hover:text-blue-300 transition-colors uppercase tracking-wide text-sm"
+                    className="inline-flex min-h-11 items-center font-semibold text-blue-600 transition-colors hover:text-blue-500 sm:min-h-12 text-base sm:text-lg uppercase tracking-wide"
                   >
                     Download Brochure
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 font-semibold text-blue-500 hover:text-blue-300 transition-colors"
+                    className="inline-flex min-h-11 items-center gap-2 font-semibold text-blue-600 transition-colors hover:text-blue-500 sm:min-h-12 text-base sm:text-lg"
                   >
                     Get Started
                   </Link>
                   <Link
                     href="#"
-                    className="inline-flex items-center gap-2 font-semibold text-blue-500 hover:text-blue-300 transition-colors"
+                    className="inline-flex min-h-11 items-center gap-2.5 font-semibold text-blue-600 transition-colors hover:text-blue-500 sm:min-h-12 text-base sm:text-lg"
                   >
-                    <svg className="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <svg className="h-6 w-6 flex-shrink-0 sm:h-7 sm:w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
                       <path d="M8 5v14l11-7z" />
                     </svg>
                     Watch Video
@@ -228,7 +223,7 @@ export default function BiometricAccessControlPage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -246,9 +241,9 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.4, ease: smoothEase }}
             />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {/* Left column */}
-              <div className="space-y-10">
+              <div className="space-y-6">
                 {featuresLeft.map((item, i) => (
                   <motion.div
                     key={item.title}
@@ -279,7 +274,7 @@ export default function BiometricAccessControlPage() {
                 ))}
               </div>
               {/* Right column */}
-              <div className="space-y-10">
+              <div className="space-y-6">
                 {featuresRight.map((item, i) => (
                   <motion.div
                     key={item.title}
@@ -313,11 +308,11 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        {/* Introduction – full paragraph */}
+        {/* Introduction – full paragraph (full content width) */}
         <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
-              className="text-2xl font-bold text-blue-500 sm:text-3xl"
+              className="text-center text-2xl font-bold text-blue-500 sm:text-3xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -330,55 +325,64 @@ export default function BiometricAccessControlPage() {
               aria-hidden
             />
             <motion.p
-              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
+              className="mt-6 w-full max-w-none text-left text-gray-600 leading-relaxed text-base sm:text-lg"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
             >
-              Inops Company&apos;s biometric access control products, including Face Reader, Fingerprint Reader, and Card Reader solutions, offer a combination of advanced technology, convenience, and security features to meet the diverse access management needs of modern organizations. Whether it&apos;s facial recognition for high-security environments, fingerprint scanning for precise authentication, or card readers for convenience and scalability, our products provide reliable access control solutions tailored to the unique requirements of each organization.
+              InOps Company&apos;s biometric access control products, including Face Reader, Fingerprint Reader, and Card Reader solutions, offer a combination of advanced technology, convenience, and security features to meet the diverse access management needs of modern organizations. Whether it&apos;s facial recognition for high-security environments, fingerprint scanning for precise authentication, or card readers for convenience and scalability, our products provide reliable access control solutions tailored to the unique requirements of each organization.
             </motion.p>
           </div>
         </section>
 
-        {/* Biometric device features – image with callout labels */}
-        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/80 to-gray-50 py-8 lg:py-11">
+        {/* Biometric device features – image + callouts (scaled to match hero proportions) */}
+        <section className=" py-8 lg:py-10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.div
-              className="relative w-full max-w-4xl lg:max-w-5xl mx-auto"
+              className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-14"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.6, ease: smoothEase }}
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-gray-100">
-                <Image
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
-                  alt="Biometric device with face recognition and fingerprint"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 672px"
-                />
+              {/* On lg+, image fills column height to match Key capabilities block */}
+              <div className="w-full min-h-0 lg:col-span-6 lg:h-full">
+                <div className="relative aspect-[4/3] w-full min-h-[14rem] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-xl lg:aspect-auto lg:h-full lg:min-h-[18rem] lg:shadow-2xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
+                    alt="Biometric device with face recognition and fingerprint"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </div>
-              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-                {deviceCallouts.map((label) => (
-                  <div
-                    key={label}
-                    className="flex items-center gap-2 text-sm font-medium text-blue-500"
-                  >
-                    <svg className="h-5 w-5 flex-shrink-0 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="rounded-lg border border-gray-200 bg-gray-100 px-3 py-2 text-gray-700">{label}</span>
-                  </div>
-                ))}
+              <div className="lg:col-span-6 lg:pl-2 xl:pl-6">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 sm:text-base lg:mb-6 lg:text-lg">
+                  Key capabilities
+                </p>
+                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-5">
+                  {deviceCallouts.map((label) => (
+                    <li key={label}>
+                      <div className="flex h-full min-h-[4.5rem] items-center gap-3 rounded-2xl border border-gray-200/90 bg-white px-4 py-4 text-left shadow-md shadow-slate-900/[0.04] sm:min-h-[5rem] sm:gap-4 sm:px-5 sm:py-4 lg:min-h-[5.5rem] lg:gap-5 lg:px-6 lg:py-5">
+                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-blue-500 text-white shadow-md shadow-blue-500/25 sm:h-11 sm:w-11 lg:h-14 lg:w-14">
+                          <svg className="h-5 w-5 lg:h-6 lg:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+                            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                        <span className="text-sm font-semibold leading-snug text-gray-900 sm:text-base lg:text-lg">{label}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
           </div>
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-blue-500 sm:text-3xl"
@@ -390,15 +394,16 @@ export default function BiometricAccessControlPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 backdrop-blur-sm"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/20 text-blue-500">
                     {service.icon === "document" && (
@@ -428,9 +433,9 @@ export default function BiometricAccessControlPage() {
         </section>
 
         {/* Empowering Workplaces & Mobile App */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

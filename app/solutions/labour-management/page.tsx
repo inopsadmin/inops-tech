@@ -122,19 +122,6 @@ function ServiceIcon({ icon }: { icon: string }) {
   );
 }
 
-const timesheetRows = [
-  { job: "TEST 1", date: "2019-11-02", hours: "06:00", start: "21:30:00", finish: "00:30:00" },
-  { job: "TEST 2", date: "2019-11-02", hours: "08:00", start: "09:00:00", finish: "17:00:00" },
-  { job: "TEST 3", date: "2019-11-03", hours: "04:00", start: "14:00:00", finish: "18:00:00" },
-];
-
-const toknEntries = [
-  { weeklyDate: "28/11/2019", dailyDate: "28/11/2019", job: "MHL0983", hours: "05:00", start: "11:00", finish: "16:00" },
-  { weeklyDate: "28/11/2019", dailyDate: "27/11/2019", job: "MHL0983", hours: "06:00", start: "09:00", finish: "15:00" },
-  { weeklyDate: "28/11/2019", dailyDate: "26/11/2019", job: "MHL0984", hours: "04:00", start: "10:00", finish: "14:00" },
-  { weeklyDate: "28/11/2019", dailyDate: "25/11/2019", job: "MHL0983", hours: "08:00", start: "08:00", finish: "16:00" },
-];
-
 export default function LabourManagementPage() {
   return (
     <>
@@ -186,7 +173,7 @@ export default function LabourManagementPage() {
 
         {/* Intro – title, underline, paragraph */}
         <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
+          <div className="mx-auto w-full max-w-7xl px-6 lg:px-12 text-center">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
               initial={{ opacity: 0, y: 16 }}
@@ -198,7 +185,7 @@ export default function LabourManagementPage() {
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-24 rounded-full bg-blue-500" aria-hidden />
             <motion.p
-              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
+              className="mx-auto mt-6 w-full max-w-none text-gray-600 leading-relaxed text-base sm:text-lg"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -210,9 +197,9 @@ export default function LabourManagementPage() {
         </section>
 
         {/* Main content – arrow insight boxes left, intro text right */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               {/* Left – vertical stack of arrow-shaped insight boxes */}
               <motion.div
                 className="flex flex-col gap-4"
@@ -266,7 +253,7 @@ export default function LabourManagementPage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -278,7 +265,7 @@ export default function LabourManagementPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -302,91 +289,30 @@ export default function LabourManagementPage() {
           </div>
         </section>
 
-        {/* Application screenshots – Timesheet+ Manager (desktop) + TOKN User (mobile) */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-6xl px-6 lg:px-12">
+        {/* Timesheet+ Manager (desktop) + TOKN User (mobile) – product mockup (full width)
+        <section className="w-full py-6 lg:py-10 bg-gray-100 border-t border-gray-200">
+          <div className="w-full max-w-none px-0">
             <motion.div
-              className="relative flex flex-col items-center gap-8 lg:flex-row lg:justify-center lg:items-start"
+              className="flex w-full justify-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.6, ease: smoothEase }}
             >
-              {/* Desktop – Timesheet+ Manager */}
-              <div className="w-full max-w-2xl rounded-xl border border-gray-200 bg-gray-100 shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 border-b border-gray-200 bg-gray-200/80 px-4 py-2">
-                  <div className="flex gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                  </div>
-                  <span className="text-gray-500 text-xs ml-2">MY TOKN · MADER GROUP · DEVELOPMENT · TIMESHEET+ MAN</span>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-gray-700 font-semibold text-lg mb-3">Submitted Timesheets</h3>
-                  <div className="overflow-x-auto rounded border border-gray-200">
-                    <table className="w-full min-w-[500px] text-xs">
-                      <thead>
-                        <tr className="border-b border-gray-200 bg-gray-200/80">
-                          <th className="px-3 py-2 text-left font-medium text-gray-600">Job No.</th>
-                          <th className="px-3 py-2 text-left font-medium text-gray-600">Date</th>
-                          <th className="px-3 py-2 text-left font-medium text-gray-600">Hours</th>
-                          <th className="px-3 py-2 text-left font-medium text-gray-600">Start Time</th>
-                          <th className="px-3 py-2 text-left font-medium text-gray-600">Finish Time</th>
-                          <th className="px-3 py-2 text-left font-medium text-gray-600">Select</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-gray-500">
-                        {timesheetRows.map((row, i) => (
-                          <tr key={i} className="border-b border-gray-200">
-                            <td className="px-3 py-2">{row.job}</td>
-                            <td className="px-3 py-2">{row.date}</td>
-                            <td className="px-3 py-2">{row.hours}</td>
-                            <td className="px-3 py-2">{row.start}</td>
-                            <td className="px-3 py-2">{row.finish}</td>
-                            <td className="px-3 py-2"><input type="checkbox" className="rounded" readOnly /></td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              {/* Mobile – TOKN User (overlapping) */}
-              <div className="relative w-[280px] flex-shrink-0 lg:-ml-8 lg:mt-12">
-                <div className="rounded-[2rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-5 w-28 -translate-x-1/2 rounded-b-xl bg-gray-100" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.25rem] bg-gray-100 border border-gray-200">
-                    <div className="bg-blue-500/90 px-4 py-3 border-b border-gray-200">
-                      <span className="font-semibold text-white text-sm">TOKN User</span>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-blue-300 font-medium text-center">W/E Date - 28/11/2019</div>
-                    <div className="px-2 pb-2 space-y-1 max-h-[240px] overflow-y-auto">
-                      {toknEntries.map((row, i) => (
-                        <div key={i} className="rounded-lg bg-gray-200/80 p-2 text-xs">
-                          <div className="text-gray-500">Weekly Date: {row.weeklyDate} · Daily: {row.dailyDate}</div>
-                          <div className="mt-1 flex justify-between text-gray-700">
-                            <span>Job {row.job}</span>
-                            <span>Hours {row.hours}</span>
-                          </div>
-                          <div className="text-gray-500">Start {row.start} · Finish {row.finish}</div>
-                          <div className="mt-1 text-blue-400 flex items-center gap-1">Sent <span aria-hidden>ℹ</span></div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-2 border-t border-gray-200 flex gap-2">
-                      <button type="button" className="flex-1 rounded-lg bg-blue-500 py-2 text-xs font-medium text-white">New Daily</button>
-                      <button type="button" className="flex-1 rounded-lg bg-blue-500 py-2 text-xs font-medium text-white">New Weekly</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Image
+                src="/images/labour-timesheet-mockup.png"
+                alt="Submitted Timesheets manager on desktop and TOKN User mobile app with weekly timesheet entries, New Daily and New Weekly actions"
+                width={1327}
+                height={434}
+                className="h-auto w-full max-w-none rounded-none shadow-none sm:shadow-2xl"
+                sizes="100vw"
+              />
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -398,15 +324,16 @@ export default function LabourManagementPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-gray-100/80 p-6 backdrop-blur-sm"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-gray-100/80 p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
                     <ServiceIcon icon={service.icon} />
@@ -419,9 +346,9 @@ export default function LabourManagementPage() {
         </section>
 
         {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

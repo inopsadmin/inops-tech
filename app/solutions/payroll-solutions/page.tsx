@@ -160,11 +160,11 @@ export default function PayrollSolutionsPage() {
           </div>
         </motion.section>
 
-        {/* Intro – title, underline, paragraph */}
-        <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
+        {/* Intro – title, underline, paragraph (full content width) */}
+        <section className="border-t border-gray-200 bg-white pb-5 pt-4 sm:pb-6 sm:pt-5 lg:pb-7 lg:pt-5">
+          <div className="mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-10">
             <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -172,9 +172,9 @@ export default function PayrollSolutionsPage() {
             >
               Payroll Solutions
             </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-24 rounded-full bg-blue-500" aria-hidden />
+            <div className="mx-auto mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-blue-600 to-violet-500 sm:w-24" aria-hidden />
             <motion.p
-              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
+              className="mx-auto mt-5 w-full max-w-none text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-2xl lg:leading-relaxed lg:mt-6"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -186,7 +186,7 @@ export default function PayrollSolutionsPage() {
         </section>
 
         {/* Highlights of our payroll services – central oval + pills */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-6xl px-6 lg:px-12">
             <motion.div
               className="relative flex flex-col items-stretch gap-5 sm:items-center lg:flex-row lg:justify-between lg:gap-6 xl:gap-8"
@@ -232,12 +232,12 @@ export default function PayrollSolutionsPage() {
         </section>
 
         {/* Main content – infographic left, text right */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-stretch">
               {/* Left – circular infographic: six must-have features */}
               <motion.div
-                className="flex justify-center lg:justify-start"
+                className="flex justify-center lg:h-full lg:items-center lg:justify-start"
                 initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
@@ -358,30 +358,32 @@ export default function PayrollSolutionsPage() {
                 </div>
               </motion.div>
 
-              {/* Right – heading + paragraphs */}
+              {/* Right – heading + paragraphs (column height matches infographic; content vertically centered) */}
               <motion.div
-                className="lg:pl-4"
+                className="flex flex-col justify-center gap-6 lg:h-full lg:min-h-0 lg:gap-8 lg:pl-4 xl:gap-10"
                 initial={{ opacity: 0, x: 24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
+                <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-[3.25rem]">
                   Payroll Solutions
                 </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Welcome to InOps Company&apos;s payroll solutions, where we revolutionize the way organizations manage their payroll processes.
-                </p>
-                <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Our comprehensive payroll system is designed to simplify payroll administration, enhance accuracy, and ensure compliance with regulations. Explore the eight key features and their corresponding benefits:
-                </p>
+                <div className="space-y-4 lg:space-y-6 xl:space-y-8">
+                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg lg:text-xl lg:leading-loose xl:text-2xl xl:leading-relaxed">
+                    Welcome to InOps Company&apos;s payroll solutions, where we revolutionize the way organizations manage their payroll processes.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg lg:text-xl lg:leading-loose xl:text-2xl xl:leading-relaxed">
+                    Our comprehensive payroll system is designed to simplify payroll administration, enhance accuracy, and ensure compliance with regulations. Explore the six key features and their corresponding benefits:
+                  </p>
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -393,7 +395,7 @@ export default function PayrollSolutionsPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -418,7 +420,7 @@ export default function PayrollSolutionsPage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -430,15 +432,16 @@ export default function PayrollSolutionsPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 backdrop-blur-sm"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
                     <ServiceIcon icon={service.icon} />
@@ -451,9 +454,9 @@ export default function PayrollSolutionsPage() {
         </section>
 
         {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

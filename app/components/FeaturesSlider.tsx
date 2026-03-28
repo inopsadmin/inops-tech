@@ -50,10 +50,10 @@ export default function FeaturesSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative isolate py-10 lg:py-14 bg-gradient-to-b from-blue-50 via-sky-50/80 to-blue-100/40">
+    <section className="relative isolate py-8 lg:py-10 bg-gradient-to-b from-blue-50 via-sky-50/80 to-blue-100/40">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-10%,rgba(59,130,246,0.12),transparent_55%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm">
+        <div className="overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/80 hover:shadow-xl hover:shadow-blue-900/10">
           <div className="flex flex-col items-stretch md:flex-row md:min-h-[min(28rem,75vh)]">
             <motion.div
               className="flex-1 p-8 lg:p-12"
@@ -106,7 +106,7 @@ export default function FeaturesSlider() {
             </motion.div>
 
             <motion.div
-              className="relative w-full flex-shrink-0 overflow-hidden border-t border-blue-100/80 bg-blue-100/20 md:w-[46%] lg:w-[44%] md:border-t-0 md:border-l"
+              className="group relative w-full flex-shrink-0 overflow-hidden border-t border-blue-100/80 bg-blue-100/20 md:w-[46%] lg:w-[44%] md:border-t-0 md:border-l"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
@@ -117,7 +117,7 @@ export default function FeaturesSlider() {
                   src={slide.imageUrl}
                   alt="Dashboard Preview"
                   fill
-                  className="object-cover"
+                  className="object-cover transition duration-500 ease-out group-hover:scale-[1.02]"
                   sizes="(max-width: 768px) 100vw, 46vw"
                   priority={current === 0}
                 />
@@ -143,13 +143,13 @@ export default function FeaturesSlider() {
             <div className="flex gap-3">
               <button
                 onClick={goPrev}
-                className="h-9 w-9 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 transition shadow-sm"
+                className="h-9 w-9 rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 active:scale-95"
               >
                 ‹
               </button>
               <button
                 onClick={goNext}
-                className="h-9 w-9 rounded-full border border-gray-200 bg-white text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 transition shadow-sm"
+                className="h-9 w-9 rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 active:scale-95"
               >
                 ›
               </button>

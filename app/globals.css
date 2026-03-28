@@ -463,3 +463,17 @@ button, a, [role="button"] {
     max-width: min(110rem, calc(100vw - (2 * var(--page-gutter))));
   }
 }
+
+/* Static surfaces (no Framer `y` on the same node) — lift + shadow */
+.card-hover-lift {
+  transition:
+    transform 0.25s cubic-bezier(0.33, 1, 0.68, 1),
+    box-shadow 0.25s cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -14px rgb(15 23 42 / 0.14);
+  }
+}

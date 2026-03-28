@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
+/** Pair with `whileHover` on cards (y-lift) so hover doesn’t inherit stagger delays */
+export const hoverTransition = { duration: 0.22, ease: smoothEase } as const;
+
 export function FadeUp({
   children,
   className,
@@ -54,9 +57,12 @@ export function StaggerContainer({
 export function StaggerItem({
   children,
   className,
+  interactive,
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Subtle lift on hover (for cards in grids) */
+  interactive?: boolean;
 }) {
   return (
     <motion.div
@@ -66,6 +72,7 @@ export function StaggerItem({
         whileInView: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.55, ease: smoothEase }}
+      whileHover={interactive ? { y: -4, transition: hoverTransition } : undefined}
     >
       {children}
     </motion.div>

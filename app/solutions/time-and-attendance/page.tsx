@@ -145,9 +145,9 @@ export default function TimeAndAttendancePage() {
         </motion.section>
 
         {/* Main content – title, intro, benefits diagram, description */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-start">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-start">
               {/* Left: title + circular benefits infographic */}
               <motion.div
                 className="flex flex-col items-center lg:items-start"
@@ -156,14 +156,14 @@ export default function TimeAndAttendancePage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <h2 className="text-2xl font-bold text-white sm:text-3xl">
+                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
                   Time & Attendance
                 </h2>
                 <p className="mt-4 text-gray-600 leading-relaxed text-base lg:max-w-md">
                   Inopes Company introduces an innovative Time & Attendance Biometric Device, revolutionizing how businesses manage their workforce.
                 </p>
                 {/* Circular benefits infographic */}
-                <div className="mt-10 relative w-full max-w-sm aspect-square mx-auto lg:mx-0">
+                <div className="mt-6 relative w-full max-w-sm aspect-square mx-auto lg:mx-0">
                   <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
                     {/* Connecting lines from center to nodes */}
                     {benefits.map((_, i) => {
@@ -246,10 +246,10 @@ export default function TimeAndAttendancePage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="border-t border-blue-100/80 bg-gradient-to-b from-slate-50 via-blue-50/35 to-slate-50 py-6 lg:py-10">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
-              className="text-center text-2xl font-bold text-white sm:text-3xl"
+              className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -257,26 +257,26 @@ export default function TimeAndAttendancePage() {
             >
               Features & Benefits
             </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mx-auto mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600" aria-hidden />
+            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-2 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-2">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
-                  className="flex gap-4"
+                  className="flex gap-3 py-1 sm:gap-3.5"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
                 >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white`}>
+                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white shadow-sm`}>
                     <CheckIcon className="h-5 w-5 text-white" />
                   </span>
-                  <div className="space-y-3">
-                    <h3 className="font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  <div className="min-w-0 space-y-2">
+                    <h3 className="font-bold text-slate-900">{item.title}</h3>
+                    <p className="text-sm leading-snug text-slate-600">{item.description}</p>
                     <div>
-                      <p className="font-semibold text-blue-300 text-sm">{item.sub.title}</p>
-                      <p className="mt-1 text-gray-500 text-sm leading-relaxed">{item.sub.text}</p>
+                      <p className="text-sm font-semibold text-blue-700">{item.sub.title}</p>
+                      <p className="mt-0.5 text-sm leading-snug text-slate-600">{item.sub.text}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -289,7 +289,7 @@ export default function TimeAndAttendancePage() {
         <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
             <motion.h2
-              className="text-2xl font-bold text-white sm:text-3xl"
+              className="text-2xl font-bold text-slate-900 sm:text-3xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -311,9 +311,9 @@ export default function TimeAndAttendancePage() {
         </section>
 
         {/* Product visualization – device + software on monitor */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="relative"
                 initial={{ opacity: 0, x: -24 }}
@@ -330,8 +330,8 @@ export default function TimeAndAttendancePage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/90 px-4 py-3 font-mono text-white">
-                    <p className="text-2xl font-bold">08:30</p>
+                  <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/90 px-4 py-3 font-mono">
+                    <p className="text-2xl font-bold text-gray-900">08:30</p>
                     <p className="text-xs text-gray-600">Thursday 23 November</p>
                   </div>
                 </div>
@@ -373,10 +373,10 @@ export default function TimeAndAttendancePage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
-              className="text-2xl font-bold text-white sm:text-3xl"
+              className="text-2xl font-bold text-slate-900 sm:text-3xl"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -385,15 +385,16 @@ export default function TimeAndAttendancePage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 backdrop-blur-sm"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
                     <ServiceIcon icon={service.icon} />
@@ -406,11 +407,11 @@ export default function TimeAndAttendancePage() {
         </section>
 
         {/* Empowering Smarter Workplaces + mobile app */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
-                className="lg:pr-8"
+                className="lg:pr-4"
                 initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}

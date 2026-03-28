@@ -87,17 +87,18 @@ export default function ContactPage() {
         </motion.section>
 
         {/* Contact info + form + map */}
-        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/60 to-white py-8 lg:py-12">
+        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/60 to-white py-6 lg:py-10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             {/* Two columns: contact info (left) + form (right) */}
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
               {/* Left: contact info with map pattern background */}
               <motion.div
-                className="relative rounded-2xl border border-gray-200 bg-gray-50 p-8 shadow-sm lg:p-10"
+                className="relative rounded-2xl border border-gray-200 bg-gray-50 p-8 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-gray-300 hover:shadow-md lg:p-10"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.75, ease: smoothEase }}
+                whileHover={{ y: -3, transition: { duration: 0.22, ease: smoothEase } }}
               >
                 <div
                   className="absolute inset-0 rounded-2xl opacity-[0.03]"
@@ -109,13 +110,14 @@ export default function ContactPage() {
                   {contactInfo.map((item, i) => (
                     <motion.div
                       key={item.label}
-                      className="flex gap-4"
+                      className="group flex gap-4"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 * i }}
+                      whileHover={{ x: 4, transition: { duration: 0.2, ease: smoothEase } }}
                     >
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white shadow-md shadow-blue-500/25 transition-transform duration-300 group-hover:scale-105">
                         {item.icon}
                       </div>
                       <div>
@@ -129,11 +131,12 @@ export default function ContactPage() {
 
               {/* Right: contact form */}
               <motion.div
-                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm lg:p-10"
+                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/60 hover:shadow-lg lg:p-10"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.75, ease: smoothEase, delay: 0.1 }}
+                whileHover={{ y: -3, transition: { duration: 0.22, ease: smoothEase } }}
               >
                 <motion.h2
                   className="text-xl font-bold text-gray-900 sm:text-2xl"
@@ -159,11 +162,12 @@ export default function ContactPage() {
 
             {/* Embedded map */}
             <motion.div
-              className="mt-12 overflow-hidden rounded-2xl border border-gray-200 shadow-sm"
+              className="mt-12 overflow-hidden rounded-2xl border border-gray-200 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-gray-300 hover:shadow-md"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.7, ease: smoothEase }}
+              whileHover={{ y: -2, transition: { duration: 0.22, ease: smoothEase } }}
             >
               <iframe
                 title="InOps Solutions location - Koramangala, Bengaluru"

@@ -155,9 +155,9 @@ export default function CanteenManagementPage() {
         </motion.section>
 
         {/* Content – infographic left, text right */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               {/* Left – semi-circular / pie-style infographic */}
               <motion.div
                 className="flex justify-center lg:justify-start"
@@ -166,8 +166,8 @@ export default function CanteenManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase }}
               >
-                <div className="relative w-full aspect-square">
-                  <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
+                <div className="relative mx-auto aspect-square w-full max-w-[17.5rem] sm:max-w-xs lg:mx-0 lg:max-w-[37rem]">
+                  <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden>
                     {/* 5 segments as pie slices (72° each) */}
                     {infographicSegments.map((seg, i) => {
                       const startAngle = (i * 72 - 90) * (Math.PI / 180);
@@ -212,19 +212,6 @@ export default function CanteenManagementPage() {
                       <path d="M175 155 l8 43 M225 155 l-8 43" />
                     </g>
                   </svg>
-                  {/* Labels list below or beside for readability on small screens */}
-                  <div className="mt-4 flex flex-wrap justify-center gap-2 lg:mt-6">
-                    {infographicSegments.map((seg, i) => (
-                      <span
-                        key={i}
-                        className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-xs font-medium text-white"
-                        style={{ backgroundColor: seg.color }}
-                      >
-                        <span>{i + 1}.</span>
-                        <span className="max-w-[140px] truncate sm:max-w-none">{seg.label}</span>
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
 
@@ -245,13 +232,28 @@ export default function CanteenManagementPage() {
                 <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
                   Our system is designed to streamline canteen operations, enhance efficiency, and elevate the dining experience for employees. Explore the eight key features and their corresponding benefits:
                 </p>
+                <ul
+                  className="mt-5 flex flex-wrap justify-center gap-2 sm:gap-2.5 lg:mt-6 lg:justify-start"
+                  aria-label="Key canteen challenges addressed"
+                >
+                  {infographicSegments.map((seg, i) => (
+                    <li key={seg.label}>
+                      <span
+                        className="inline-flex max-w-full items-center rounded-full px-3 py-2 text-left text-xs font-semibold leading-snug text-white shadow-sm sm:px-4 sm:text-sm"
+                        style={{ backgroundColor: seg.color }}
+                      >
+                        {i + 1}. {seg.label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -263,7 +265,7 @@ export default function CanteenManagementPage() {
               Features & Benefits
             </motion.h2>
             <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
                   key={item.title}
@@ -279,7 +281,7 @@ export default function CanteenManagementPage() {
                   <div className="space-y-2">
                     <h3 className="font-bold text-gray-900">{item.title}</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    <p className="font-semibold text-blue-300 text-sm">{item.benefit}</p>
+                    <p className="text-sm font-semibold text-blue-700">{item.benefit}</p>
                   </div>
                 </motion.div>
               ))}
@@ -287,42 +289,44 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Canteen Management System – title, paragraph, laptop mockup */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        {/* Canteen Management System – intro + full-width Meal Consumption mockup */}
+        <section className="border-t border-gray-200 bg-gradient-to-b from-white to-slate-50/50 py-5 lg:py-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
-              className="text-center max-w-4xl mx-auto"
+              className="w-full text-center"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                 Canteen Management System
               </h2>
-              <div className="mx-auto mt-2 h-0.5 w-24 rounded-full bg-blue-500" aria-hidden />
-              <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
+              <div
+                className="mx-auto mt-2 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 sm:w-20"
+                aria-hidden
+              />
+              <p className="mx-auto mt-4 w-full max-w-none text-gray-600 leading-relaxed text-base sm:text-lg">
                 At InOps Solution, we believe that a well-managed canteen is essential for fostering a healthy and productive work environment. With our Canteen Management System&apos;s advanced features and corresponding benefits, organizations can transform their dining facilities into efficient, employee-friendly spaces that promote well-being and satisfaction. Join us in revolutionizing workplace dining experiences with InOps Company today.
               </p>
             </motion.div>
             <motion.div
-              className="mt-12 flex justify-center"
-              initial={{ opacity: 0, y: 24 }}
+              className="mt-6 w-full lg:mt-7"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+              transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
             >
-              {/* Laptop mockup – Meal Consumption screen */}
-              <div className="w-full max-w-4xl rounded-b-2xl border border-gray-200 bg-gray-100 shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 border-b border-gray-200 bg-gray-200/80 px-4 py-2">
+              <div className="overflow-hidden rounded-xl border border-gray-200/90 bg-gray-100/90 shadow-lg shadow-gray-900/10 ring-1 ring-black/[0.04]">
+                <div className="flex items-center gap-2 border-b border-gray-200 bg-gradient-to-b from-gray-100 to-gray-200/90 px-3 py-2.5 sm:px-4">
                   <div className="flex gap-1.5">
                     <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
                     <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                   </div>
-                  <span className="flex-1 text-center text-sm font-medium text-gray-600">Meal Consumption</span>
+                  <span className="flex-1 text-center text-sm font-semibold text-gray-700">Meal Consumption</span>
                 </div>
-                <div className="p-4 space-y-3">
+                <div className="space-y-3 bg-white p-3 sm:p-4">
                   <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
                     <input type="text" placeholder="Meal Request ID" className="rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-700 placeholder-gray-500" readOnly />
                     <div className="flex gap-1 col-span-2">
@@ -343,8 +347,8 @@ export default function CanteenManagementPage() {
                     <button type="button" className="rounded bg-rose-500 px-3 py-1.5 text-xs font-medium text-white">Search</button>
                     <button type="button" className="rounded bg-amber-500 px-3 py-1.5 text-xs font-medium text-white">Clear</button>
                   </div>
-                  <div className="overflow-x-auto rounded border border-gray-200">
-                    <table className="w-full min-w-[600px] text-xs">
+                  <div className="-mx-1 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50/50 sm:mx-0">
+                    <table className="w-full min-w-[640px] text-xs sm:text-[13px]">
                       <thead>
                         <tr className="border-b border-gray-200 bg-gray-200/80">
                           <th className="px-2 py-2 text-left font-medium text-gray-600">Select</th>
@@ -381,7 +385,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-8 lg:py-12 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -393,15 +397,16 @@ export default function CanteenManagementPage() {
               Powerful Services for Your Business
             </motion.h2>
             <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-gray-100/80 p-6 backdrop-blur-sm"
+                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-gray-100/80 p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
+                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
                 >
                   <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
                     <ServiceIcon icon={service.icon} />
@@ -414,9 +419,9 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-8 lg:py-12 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
                 className="lg:pr-8"
                 initial={{ opacity: 0, x: -24 }}

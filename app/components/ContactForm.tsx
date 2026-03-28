@@ -1,5 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
+
+const smoothEase = [0.33, 1, 0.68, 1] as const;
+
 export default function ContactForm() {
   return (
     <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
@@ -10,7 +14,7 @@ export default function ContactForm() {
             type="text"
             name="name"
             placeholder="Your Name"
-            className="w-full rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
+            className="w-full rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-900 placeholder:text-gray-400 transition-[border-color,box-shadow] duration-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
           />
           <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-blue-500">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -24,7 +28,7 @@ export default function ContactForm() {
             type="email"
             name="email"
             placeholder="Email Address"
-            className="w-full rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
+            className="w-full rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-900 placeholder:text-gray-400 transition-[border-color,box-shadow] duration-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
           />
           <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-blue-500">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -36,7 +40,7 @@ export default function ContactForm() {
           <span className="sr-only">Subject</span>
           <select
             name="subject"
-            className="w-full appearance-none rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-700 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
+            className="w-full appearance-none rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-700 placeholder:text-gray-400 transition-[border-color,box-shadow] duration-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
           >
             <option value="" >Select Subject</option>
             <option value="general">General Inquiry</option>
@@ -56,7 +60,7 @@ export default function ContactForm() {
             type="tel"
             name="phone"
             placeholder="Phone Number"
-            className="w-full rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
+            className="w-full rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 text-gray-900 placeholder:text-gray-400 transition-[border-color,box-shadow] duration-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
           />
           <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-blue-500">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -71,7 +75,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           placeholder="Your Message"
-          className="w-full resize-y rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 pt-4 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
+          className="w-full resize-y rounded-lg border border-gray-200 bg-white py-3.5 pl-4 pr-11 pt-4 text-gray-900 placeholder:text-gray-400 transition-[border-color,box-shadow] duration-200 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/30"
         />
         <span className="pointer-events-none absolute right-3 top-4 text-blue-500">
           <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -80,12 +84,14 @@ export default function ContactForm() {
         </span>
       </label>
       <div>
-        <button
+        <motion.button
           type="submit"
-          className="w-full cursor-pointer rounded-lg bg-blue-500 py-4 text-base font-semibold text-white transition hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="w-full cursor-pointer rounded-lg bg-blue-500 py-4 text-base font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          whileHover={{ scale: 1.01, transition: { duration: 0.2, ease: smoothEase } }}
+          whileTap={{ scale: 0.98 }}
         >
           Send Message
-        </button>
+        </motion.button>
       </div>
     </form>
   );
