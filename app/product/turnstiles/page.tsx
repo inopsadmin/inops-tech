@@ -276,8 +276,8 @@ function WhyChooseUsSection() {
   const slides = whyChooseSlides;
 
   return (
-    <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+    <section className="py-4 lg:py-6 bg-white border-t border-gray-200">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.h2
           className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
           initial={{ opacity: 0, y: 16 }}
@@ -287,11 +287,11 @@ function WhyChooseUsSection() {
         >
           Why Choose Us
         </motion.h2>
-        <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
+        <div className="mx-auto mt-1.5 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:items-center lg:gap-5 xl:gap-6">
           {/* Left: network/tree graphic with icon circles */}
           <motion.div
-            className="relative flex min-h-[240px] items-center justify-center lg:min-h-[280px]"
+            className="relative flex min-h-[200px] items-center justify-center lg:col-span-5 lg:min-h-[220px]"
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewport}
@@ -299,7 +299,7 @@ function WhyChooseUsSection() {
           >
             <svg
               viewBox="0 0 320 320"
-              className="mx-auto h-auto w-full max-w-[min(100%,14rem)] sm:max-w-[15rem] lg:max-w-[16rem] xl:max-w-[25rem]"
+              className="mx-auto h-auto w-full max-w-[min(100%,13rem)] sm:max-w-[14rem] lg:max-w-[15rem] xl:max-w-[17rem] pb-10"
               aria-hidden
             >
               {/* Connecting lines - tree/network style */}
@@ -334,51 +334,61 @@ function WhyChooseUsSection() {
           </motion.div>
           {/* Right: Results-Driven + paragraph + pagination + prev/next */}
           <motion.div
-            className="lg:pl-4"
+            className="lg:col-span-7 lg:pl-1 xl:pl-3"
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewport}
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={slideIndex}
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.3, ease: smoothEase }}
-              >
-                <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">{slides[slideIndex].title}</h3>
-                <p className="mt-4 text-gray-600 leading-relaxed">{slides[slideIndex].text}</p>
-              </motion.div>
-            </AnimatePresence>
-            <div className="mt-8 flex items-center gap-4">
+            <div className="min-h-[9.5rem] sm:min-h-[10rem] lg:min-h-[11rem]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={slideIndex}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                  transition={{ duration: 0.3, ease: smoothEase }}
+                >
+                  <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                    {slides[slideIndex].title}
+                  </h3>
+                  <p className="mt-3 max-w-none text-base leading-relaxed text-gray-600 sm:mt-4 sm:text-lg lg:text-xl lg:leading-relaxed">
+                    {slides[slideIndex].text}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            <div className="mt-5 flex items-center gap-3 sm:mt-6 sm:gap-4">
               <div className="flex gap-2">
                 {slides.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setSlideIndex(i)}
-                    className={`h-2 w-2 rounded-full transition-colors ${
-                      i === slideIndex ? "bg-violet-500 scale-110" : "bg-gray-300 hover:bg-gray-400"
+                    className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                      i === slideIndex ? "scale-110 bg-blue-500" : "bg-gray-300 hover:bg-gray-400"
                     }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
               </div>
-              <div className="flex gap-1">
+              <div className="flex gap-1.5">
                 <button
                   onClick={() => setSlideIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 active:scale-95"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 active:scale-95"
                   aria-label="Previous"
                 >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
                 </button>
                 <button
                   onClick={() => setSlideIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1))}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 active:scale-95"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 active:scale-95"
                   aria-label="Next"
                 >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </button>
               </div>
             </div>

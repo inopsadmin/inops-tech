@@ -355,8 +355,8 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Us: tech tree visual + Expertise card */}
-        <section className="border-t border-gray-100/80 bg-white py-6 lg:py-10">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <section className="border-t border-gray-100/80 bg-white py-4 lg:py-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
               initial={{ opacity: 0, y: 20 }}
@@ -367,17 +367,17 @@ export default function AboutPage() {
               Why Choose Us
             </motion.h2>
             <motion.div
-              className="mt-2 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"
+              className="mx-auto mt-1.5 h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={viewport}
               transition={{ duration: 0.4, ease: smoothEase }}
             />
 
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:items-center lg:gap-5 xl:gap-6">
               {/* Left: tech icons grid (tree-like visual) */}
               <motion.div
-                className="relative flex flex-wrap justify-center gap-6 sm:gap-8"
+                className="relative flex flex-wrap justify-center gap-4 sm:gap-6 lg:col-span-5"
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
@@ -402,17 +402,17 @@ export default function AboutPage() {
 
               {/* Right: Expertise card with slider */}
               <motion.div
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-8 shadow-sm lg:p-10"
+                className="rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm sm:p-7 lg:col-span-7 lg:p-8"
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <h3 className="text-xl font-bold text-gray-900">Expertise</h3>
-                <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">Expertise</h3>
+                <p className="mt-2 text-base leading-relaxed text-gray-600 sm:text-lg">
                   Our team brings diverse expertise across technology, compliance, and operations to deliver solutions that work for you.
                 </p>
-                <div className="mt-6 min-h-[120px]">
+                <div className="mt-5 min-h-[9.5rem] sm:min-h-[10rem] lg:min-h-[11rem]">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={expertiseIndex}
@@ -421,28 +421,32 @@ export default function AboutPage() {
                       exit={{ opacity: 0, x: -12 }}
                       transition={{ duration: 0.3, ease: smoothEase }}
                     >
-                      <h4 className="font-semibold text-gray-900">{expertiseSlides[expertiseIndex].title}</h4>
-                      <p className="mt-2 text-gray-600 text-sm leading-relaxed">{expertiseSlides[expertiseIndex].text}</p>
+                      <h4 className="text-lg font-bold tracking-tight text-gray-900 sm:text-xl lg:text-2xl">
+                        {expertiseSlides[expertiseIndex].title}
+                      </h4>
+                      <p className="mt-3 text-base leading-relaxed text-gray-600 sm:text-lg lg:text-xl lg:leading-relaxed">
+                        {expertiseSlides[expertiseIndex].text}
+                      </p>
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <div className="mt-6 flex items-center justify-between">
+                <div className="mt-5 flex items-center justify-between sm:mt-6">
                   <div className="flex gap-2">
                     {expertiseSlides.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setExpertiseIndex(i)}
-                        className={`h-2 w-2 rounded-full transition-colors ${
-                          i === expertiseIndex ? "bg-blue-600" : "bg-gray-300 hover:bg-gray-400"
+                        className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                          i === expertiseIndex ? "scale-110 bg-blue-600" : "bg-gray-300 hover:bg-gray-400"
                         }`}
                         aria-label={`Go to slide ${i + 1}`}
                       />
                     ))}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1.5">
                     <button
                       onClick={() => setExpertiseIndex((prev) => (prev === 0 ? expertiseSlides.length - 1 : prev - 1))}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:border-gray-300 active:scale-95"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-gray-300 hover:bg-gray-100 active:scale-95"
                       aria-label="Previous"
                     >
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -451,7 +455,7 @@ export default function AboutPage() {
                     </button>
                     <button
                       onClick={() => setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:bg-gray-100 hover:border-gray-300 active:scale-95"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-gray-300 hover:bg-gray-100 active:scale-95"
                       aria-label="Next"
                     >
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
