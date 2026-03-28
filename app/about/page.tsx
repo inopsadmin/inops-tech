@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -80,6 +80,52 @@ const techIcons = [
 
 export default function AboutPage() {
   const [expertiseIndex, setExpertiseIndex] = useState(0);
+  const textColumnRef = useRef<HTMLDivElement>(null);
+  const [galleryHeightPx, setGalleryHeightPx] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    const el = textColumnRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+
+    const readTextHeight = () => {
+      const h = el.offsetHeight;
+      return h > 0 ? Math.round(h) : null;
+    };
+
+    const syncHeight = () => {
+      if (!mq.matches) {
+        setGalleryHeightPx(undefined);
+        return;
+      }
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const h = readTextHeight();
+          if (h != null) setGalleryHeightPx(h);
+        });
+      });
+    };
+
+    const ro = new ResizeObserver(syncHeight);
+    ro.observe(el);
+    mq.addEventListener("change", syncHeight);
+    window.addEventListener("resize", syncHeight);
+
+    let cancelled = false;
+    document.fonts?.ready?.then(() => {
+      if (!cancelled) syncHeight();
+    });
+
+    syncHeight();
+
+    return () => {
+      cancelled = true;
+      ro.disconnect();
+      mq.removeEventListener("change", syncHeight);
+      window.removeEventListener("resize", syncHeight);
+    };
+  }, []);
 
   return (
     <>
@@ -137,47 +183,63 @@ export default function AboutPage() {
         {/* About InOps: intro + 4 images + differentiators */}
         <section className="border-t border-gray-100/80 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
-              {/* Left: featured image + 4 images grid */}
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-5 xl:gap-6 lg:items-start">
+              {/* Left: height matches text column on lg (ResizeObserver); full half width */}
               <motion.div
-                className="flex w-full flex-col gap-4 lg:gap-5"
+                className="w-full min-h-0 overflow-hidden lg:min-h-0"
+                style={
+                  galleryHeightPx != null
+                    ? { height: galleryHeightPx, maxHeight: galleryHeightPx }
+                    : undefined
+                }
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.75, ease: smoothEase }}
               >
-                {/* Large featured image - left side */}
-                <motion.div
-                  className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.6, ease: smoothEase }}
+                <div
+                  className={
+                    "grid min-h-0 w-full grid-cols-2 gap-2 sm:gap-2.5 lg:gap-2.5 " +
+                    (galleryHeightPx != null
+                      ? "h-full lg:[grid-template-rows:minmax(0,1.55fr)_minmax(0,1fr)_minmax(0,1fr)]"
+                      : "")
+                  }
                 >
-                  <Image
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85"
-                    alt="InOps team and digital workspace"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </motion.div>
-                {/* 4 images in 2x2 grid */}
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+                  <motion.div
+                    className={
+                      "relative col-span-2 min-h-0 overflow-hidden rounded-xl border border-gray-200/90 shadow-lg sm:rounded-2xl sm:shadow-xl max-lg:aspect-video " +
+                      (galleryHeightPx != null ? "lg:aspect-auto lg:h-full" : "lg:aspect-[16/9]")
+                    }
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.6, ease: smoothEase }}
+                  >
+                    <Image
+                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85"
+                      alt="InOps team and digital workspace"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </motion.div>
                   {aboutImages.map((img, i) => (
                     <motion.div
                       key={img.alt}
-                      className="relative aspect-square rounded-2xl overflow-hidden shadow-lg"
-                      initial={{ opacity: 0, scale: 0.9 }}
+                      className={
+                        "relative min-h-0 overflow-hidden rounded-lg border border-gray-200/90 shadow-md sm:rounded-xl sm:shadow-lg max-lg:aspect-[4/3] " +
+                        (galleryHeightPx != null ? "lg:aspect-auto lg:h-full" : "lg:aspect-[4/3]")
+                      }
+                      initial={{ opacity: 0, scale: 0.96 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={viewport}
-                      transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 * i }}
+                      transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 * i }}
                     >
                       <Image
                         src={img.src}
                         alt={img.alt}
                         fill
-                        className="object-cover"
+                        className="object-cover object-center"
                         sizes="(max-width: 1024px) 50vw, 25vw"
                       />
                     </motion.div>
@@ -185,16 +247,17 @@ export default function AboutPage() {
                 </div>
               </motion.div>
 
-              {/* Right: heading + paragraph */}
+              {/* Right: heading + paragraph — ref on native div so height sync always runs */}
               <motion.div
-                className="lg:pl-4"
+                className="min-h-0"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.75, ease: smoothEase, delay: 0.1 }}
               >
+                <div ref={textColumnRef} className="min-h-0">
                 <motion.h2
-                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-5xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
@@ -232,6 +295,7 @@ export default function AboutPage() {
                       </div>
                     </motion.div>
                   ))}
+                </div>
                 </div>
               </motion.div>
             </div>
