@@ -4,6 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+/** Hero background — `public/images/visitor.jpg` */
+const visitorHeroBg = "/images/visitor.jpg";
+
+/** Scheduled vs walk-up process infographic — `public/images/Visitor-Management-Process.png` */
+const visitorProcessImage = "/images/Visitor-Management-Process.png";
+
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
@@ -58,25 +64,6 @@ const featuresAndBenefits = [
   },
 ];
 
-const scheduledSteps = [
-  "Pre-register visitors",
-  "Visitors to fill up questionnaires",
-  "Visitors to scan the QR code",
-  "Visitor check-in & badge printing",
-  "Host notifications",
-  "Meeting",
-  "Real-time records",
-];
-
-const walkUpSteps = [
-  "Visitors to scan the QR code",
-  "Visitors to fill up info",
-  "Host notifications & approval",
-  "Visitor check-in & badge printing",
-  "Meeting",
-  "Real-time records",
-];
-
 const powerfulServices = [
   { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
   { title: "Biometric Attendance System", icon: "id", color: "bg-sky-400" },
@@ -112,31 +99,28 @@ export default function VisitorManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – dark with reception-style backdrop */}
+        {/* Hero — visitor.jpg + overlays (CSS background for reliable load) */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0 bg-gray-900" />
-          <div className="absolute inset-0 opacity-20">
-            <Image
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=60"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gray-900/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.12),transparent)]" />
-          {/* Reception-style badge */}
-          {/* <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 rounded-2xl border border-cyan-400/50 bg-gray-800/90 px-8 py-3 backdrop-blur-sm shadow-lg">
-            <span className="text-lg font-semibold tracking-widest text-white">RECEPTION</span>
-          </div> */}
-          <div className="relative z-10 text-center px-6">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${visitorHeroBg}")` }}
+            aria-hidden
+          />
+          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 24 }}
@@ -297,70 +281,47 @@ export default function VisitorManagementPage() {
           </div>
         </section>
 
-        {/* Visitor Management System – intro title + paragraph */}
-        <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Visitor Management System
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-24 rounded-full bg-cyan-500" aria-hidden />
-            <motion.p
-              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 }}
-            >
-              InOps Company&apos;s Visitor Management System is a holistic solution for tracking and securing every visit. From streamlined check-in to real-time monitoring, we deliver efficiency and peace of mind. Experience the future of visitor management today.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Two flow circles – Scheduled visits & Walk-up visits */}
-        <section className="border-t border-gray-200 bg-gray-50 py-8 lg:py-12">
+        {/* Visitor Management System — intro + process infographic (row: text left, graphic right) */}
+        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.div
-              className="grid grid-cols-1 justify-items-center gap-12 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-10 xl:gap-x-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
-            >
-              {/* Scheduled visits – circle left, steps right, centered in column */}
-              <div className="flex w-full max-w-xl flex-col items-center justify-center gap-8 sm:max-w-2xl sm:flex-row sm:items-center sm:gap-8 md:gap-10 lg:max-w-none lg:w-full lg:justify-center">
-                <div className="relative flex h-60 w-60 shrink-0 items-center justify-center rounded-full border-2 border-cyan-400/40 bg-blue-700 shadow-xl sm:h-64 sm:w-64 md:h-72 md:w-72">
-                  <span className="px-5 text-center text-lg font-bold leading-tight text-white md:text-xl">Scheduled visits</span>
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+              <motion.div
+                className="text-center lg:max-w-xl lg:text-left xl:max-w-none"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                  Visitor Management System
+                </h2>
+                <div
+                  className="mt-2 h-0.5 w-24 rounded-full bg-cyan-500 lg:mx-0"
+                  aria-hidden
+                />
+                <p className="mx-auto mt-6 text-gray-600 leading-relaxed text-base sm:text-lg lg:mx-0 lg:max-w-none">
+                  InOps Company&apos;s Visitor Management System is a holistic solution for tracking and securing every visit. From streamlined check-in to real-time monitoring, we deliver efficiency and peace of mind. Experience the future of visitor management today.
+                </p>
+              </motion.div>
+              <motion.div
+                className="min-w-0"
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <div className="overflow-hidden">
+                  <Image
+                    src={visitorProcessImage}
+                    alt="Visitor management process: scheduled visits and walk-up visits with step-by-step flows"
+                    width={1230}
+                    height={650}
+                    className="h-auto w-full"
+                    sizes="(max-width: 1023px) 100vw, (max-width: 1280px) 50vw, 640px"
+                  />
                 </div>
-                <ul className="w-full min-w-0 max-w-sm space-y-2.5 text-left text-base leading-snug text-gray-600 sm:max-w-xs md:max-w-sm">
-                  {scheduledSteps.map((step, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-400" aria-hidden />
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {/* Walk-up visits – circle left, steps right, centered in column */}
-              <div className="flex w-full max-w-xl flex-col items-center justify-center gap-8 sm:max-w-2xl sm:flex-row sm:items-center sm:gap-8 md:gap-10 lg:max-w-none lg:w-full lg:justify-center">
-                <div className="relative flex h-60 w-60 shrink-0 items-center justify-center rounded-full border-2 border-cyan-400/40 bg-cyan-600 shadow-xl sm:h-64 sm:w-64 md:h-72 md:w-72">
-                  <span className="px-5 text-center text-lg font-bold leading-tight text-white md:text-xl">Walk-up visits</span>
-                </div>
-                <ul className="w-full min-w-0 max-w-sm space-y-2.5 text-left text-base leading-snug text-gray-600 sm:max-w-xs md:max-w-sm">
-                  {walkUpSteps.map((step, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-cyan-400" aria-hidden />
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -429,7 +390,7 @@ export default function VisitorManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-50 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-50 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-50" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-gray-50 border border-gray-200">
                     <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200 flex items-center justify-between">

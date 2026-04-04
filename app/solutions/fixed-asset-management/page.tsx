@@ -4,6 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+/** Hero background — `public/images/masshin.jpg` */
+const fixedAssetHeroBg = "/images/masshin.jpg";
+
+/** Left graphic beside “Fixed Asset Management solution” — `public/images/fam2 (1).png` */
+const fixedAssetSolutionShowcaseImage = "/images/fam2%20(1).png";
+
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
@@ -101,27 +107,28 @@ export default function FixedAssetManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – dark industrial (factory/warehouse) backdrop */}
+        {/* Hero — masshin.jpg + overlays (CSS background for reliable load) */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0 bg-gray-900" />
-          <div className="absolute inset-0 opacity-30">
-            <Image
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=60"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gray-900/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.15),transparent)]" />
-          <div className="relative z-10 text-center px-6">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${fixedAssetHeroBg}")` }}
+            aria-hidden
+          />
+          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 24 }}
@@ -313,7 +320,7 @@ export default function FixedAssetManagementPage() {
           </div>
         </section>
 
-        {/* FAM solution copy + Asset Distribution dashboard – one row from lg */}
+        {/* FAM solution copy + product graphic — one row from lg */}
         <section className="border-t border-gray-200 bg-gradient-to-b from-white via-slate-50/30 to-slate-50 py-10 lg:py-14">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
@@ -324,44 +331,15 @@ export default function FixedAssetManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
-                <div className="overflow-hidden rounded-2xl border border-slate-600/80 bg-slate-800 shadow-2xl shadow-slate-900/25 ring-1 ring-slate-900/10">
-                  <div className="flex items-center gap-2 border-b border-gray-600/80 bg-slate-700/90 px-4 py-2.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                    <span className="ml-2 text-sm font-medium text-slate-200">Asset Distribution</span>
-                  </div>
-                  <div className="flex min-h-[280px] sm:min-h-[300px] lg:min-h-[320px]">
-                    <aside className="hidden w-40 flex-shrink-0 border-r border-gray-600/80 bg-slate-800/90 p-3 text-xs leading-relaxed text-slate-400 sm:block sm:w-44">
-                      {["Dashboard", "Assets", "Maintenance", "Transactions", "Reports", "New Profile", "Settings", "Change Password", "Change Theme", "Sign Out"].map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 py-1">
-                          {item}
-                        </div>
-                      ))}
-                    </aside>
-                    <div className="min-w-0 flex-1 p-3 sm:p-4">
-                      <div className="mb-3 grid grid-cols-2 gap-2 sm:mb-4 sm:grid-cols-4 sm:gap-2">
-                        {[["71", "Total"], ["2", "Pending"], ["5", "Active"], ["12", "Reports"]].map(([num, label], i) => (
-                          <div key={i} className="rounded-lg border border-gray-600/80 bg-slate-700/50 p-2.5 text-center sm:p-3">
-                            <span className="text-base font-bold text-white sm:text-lg">{num}</span>
-                            <span className="mt-0.5 block text-[10px] text-slate-400 sm:text-xs">{label}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-                        {["Asset Count Location Wise", "Asset Value Location Wise", "Asset Count Category Wise", "Asset Value Category Wise"].map((title, i) => (
-                          <div key={i} className="rounded-lg border border-gray-600/80 bg-slate-700/30 p-2.5 sm:p-3">
-                            <p className="mb-2 text-[11px] font-medium text-slate-300 sm:text-xs">{title}</p>
-                            <div className="flex h-16 items-end gap-1 sm:h-20">
-                              {[40, 65, 35, 80, 55].map((h, j) => (
-                                <div key={j} className="flex-1 rounded-t bg-orange-500" style={{ height: `${h}%` }} aria-hidden />
-                              ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                <div className="overflow-hidden">
+                  <Image
+                    src={fixedAssetSolutionShowcaseImage}
+                    alt="Fixed Asset Management solution: asset register and operational overview"
+                    width={829}
+                    height={478}
+                    className="h-auto w-full"
+                    sizes="(max-width: 1023px) 100vw, 58vw"
+                  />
                 </div>
               </motion.div>
 
@@ -452,7 +430,7 @@ export default function FixedAssetManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-800 bg-slate-800 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-800 bg-slate-800 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-slate-800" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-slate-800 border border-gray-600/80">
                     <div className="bg-slate-700/80 px-4 py-3 border-b border-gray-600/80 flex items-center justify-between">

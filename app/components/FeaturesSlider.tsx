@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { featuresSliderImages } from "@/app/lib/serviceImagery";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -10,6 +11,8 @@ const viewport = { once: true, amount: 0.2 };
 const slides = [
   {
     title: "Transform Contract Labour Management With Smart Automation",
+    summary:
+      "One place for contractor onboarding, documents, and statutory tasks—so your team spends less time chasing paperwork and fewer compliance steps are missed.",
     features: [
       "Automated Alerts & Escalations — timely email notifications for compliance.",
       "Self-Service Contractor Portal — onboard, verify, and manage workers independently.",
@@ -19,11 +22,12 @@ const slides = [
       "PF & ESIC Compliance — auto-tracks contributions and statutory submissions.",
       "Secure Cloud-Based Storage — encrypted, high-availability workforce records.",
     ],
-    imageUrl:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=85",
+    imageUrl: featuresSliderImages.clms,
   },
   {
     title: "Real-Time Visibility & Control Across Your Workforce",
+    summary:
+      "Managers see who is on site, how hours add up, and whether rules are being followed—without waiting for end-of-month reports.",
     features: [
       "Live dashboards for attendance and deployment.",
       "Biometric & geo-tagged check-in/out.",
@@ -50,7 +54,7 @@ export default function FeaturesSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative isolate py-8 lg:py-10 bg-gradient-to-b from-blue-50 via-sky-50/80 to-blue-100/40">
+    <section className="relative isolate border-y border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50 py-10 lg:py-12">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-10%,rgba(59,130,246,0.12),transparent_55%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         <div className="overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/80 hover:shadow-xl hover:shadow-blue-900/10">
@@ -72,9 +76,19 @@ export default function FeaturesSlider() {
                 {slide.title}
               </motion.h2>
 
+              <motion.p
+                key={`summary-${current}`}
+                className="mt-4 text-sm leading-relaxed text-gray-600 lg:text-base"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
+              >
+                {slide.summary}
+              </motion.p>
+
               <motion.ul
                 key={current}
-                className="mt-6 space-y-4"
+                className="mt-5 space-y-4"
                 initial="hidden"
                 animate="visible"
                 variants={{
@@ -106,7 +120,7 @@ export default function FeaturesSlider() {
             </motion.div>
 
             <motion.div
-              className="group relative w-full flex-shrink-0 overflow-hidden border-t border-blue-100/80 bg-blue-100/20 md:w-[46%] lg:w-[44%] md:border-t-0 md:border-l"
+              className="group relative w-full flex-shrink-0 overflow-hidden border-t border-slate-200/80 bg-slate-50/80 md:w-[46%] lg:w-[44%] md:border-t-0 md:border-l md:border-slate-200/80"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
@@ -125,7 +139,7 @@ export default function FeaturesSlider() {
             </motion.div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-blue-100/80 bg-blue-50/50 px-6 py-4">
+          <div className="flex items-center justify-between border-t border-slate-200/80 bg-slate-50/90 px-6 py-4">
             <div className="flex gap-2">
               {slides.map((_, index) => (
                 <button

@@ -8,6 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
+/** Hero background — `public/images/Turnstiles2.jpg` */
+const turnstilesHeroBg = "/images/Turnstiles2.jpg";
+
 const productSpecs = [
   { label: "Power Requirements", value: "AC110V/220V, 50/60Hz" },
   { label: "Dimension(mm)", value: "L=520, W=310, H=1010" },
@@ -69,26 +72,29 @@ export default function TurnstilesPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – turnstiles background with blue overlay */}
+        {/* Hero — Turnstiles2.jpg + overlays */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gray-900/70" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.15),transparent)]" />
-          </div>
-          <div className="relative z-10 text-center px-6">
+          {/* CSS background: reliable for public/ heroes (Next Image + fill can fail in some layouts) */}
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${turnstilesHeroBg}")` }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden />
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 24 }}
@@ -124,12 +130,12 @@ export default function TurnstilesPage() {
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] w-full max-w-[16rem] overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-xl sm:max-w-xs lg:max-w-[30rem]">
+                <div className="relative aspect-[4/3] w-full max-w-[16rem] overflow-hidden sm:max-w-xs lg:max-w-[30rem]">
                   <Image
-                    src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=85"
+                    src="/images/7.png"
                     alt="Stainless steel tripod turnstile with barrier arms"
                     fill
-                    className="object-cover object-center"
+                    className=" object-center"
                     sizes="(max-width: 640px) 16rem, (max-width: 1024px) 20rem, 24rem"
                     priority
                   />

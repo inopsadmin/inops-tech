@@ -1,9 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
+
+/** Hero background — `public/images/contact-header.jpg` */
+const contactHeroBg = "/images/contact-header.jpg";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -43,25 +45,28 @@ export default function ContactPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero banner */}
+        {/* Hero — contact-header.jpg + overlays (CSS background for reliable load) */}
         <motion.section
-          className="relative min-h-[280px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80"
-              alt="Contact support"
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gray-900/70" />
-          </div>
-          <div className="relative z-10 text-center px-6">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${contactHeroBg}")` }}
+            aria-hidden
+          />
+          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(56,189,248,0.12),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
               initial={{ opacity: 0, y: 24 }}
@@ -154,7 +159,7 @@ export default function ContactPage() {
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.28 }}
                 >
-                  Fill out the form below and we&apos;ll get back to you soon.
+                  Whether you need Reliable Access Control Systems, attendance, or payroll support—fill out the form below and we&apos;ll get back to you soon.
                 </motion.p>
                 <ContactForm />
               </motion.div>

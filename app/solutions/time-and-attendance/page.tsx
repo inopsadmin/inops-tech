@@ -3,6 +3,35 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionModulePanel from "@/app/components/SolutionModulePanel";
+
+/** Same asset as `public/WhatsApp Image 2026-04-02 at 11.52.33 AM.jpeg` (clean path for URLs) */
+const timeAttendanceProductImage = "/images/inops-time-attendance-product.jpeg";
+
+const authAccessGalleryImages = [
+  {
+    src: "/images/biometric-attendance-system.jpg",
+    alt: "Wall-mounted biometric attendance terminal with keypad and display",
+    width: 900,
+    height: 600,
+  },
+  {
+    src: "/images/434829.png",
+    alt: "Industrial access control and gate hardware",
+    width: 900,
+    height: 600,
+  },
+  {
+    src: "/images/Face-Recognition-Temperature-Terminal-RFID-IC-Card-Reader-Flap-Turnstile-Gate-Access-Control-Face-Recognition-Camera.avif",
+    alt: "Face recognition terminal with flap turnstile gate and RFID access",
+    width: 900,
+    height: 600,
+  },
+] as const;
+
+/** Hero background — industrial / workforce (Unsplash, high-res) */
+const timeAttendanceHeroBg =
+  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2400&q=85";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -102,24 +131,34 @@ export default function TimeAndAttendancePage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – dark blue-grey with clock illustration */}
+        {/* Hero — online background photo + overlay for title / breadcrumb */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0 bg-gray-900" />
+          <div className="absolute inset-0">
+            <Image
+              src={timeAttendanceHeroBg}
+              alt=""
+              fill
+              unoptimized
+              className="object-cover object-center"
+              sizes="100vw"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 bg-gray-900/55" aria-hidden />
           <div
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='50' fill='none' stroke='%236b7280' stroke-width='1'/%3E%3Cline x1='60' y1='60' x2='60' y2='25' stroke='%239ca3af' stroke-width='2'/%3E%3Cline x1='60' y1='60' x2='85' y2='60' stroke='%239ca3af' stroke-width='1.5'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%239ca3af'/%3E%3C%3C/svg%3E")`,
-              backgroundSize: "80px 80px",
-            }}
+            className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/60 to-gray-900/75"
+            aria-hidden
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.12),transparent)]" />
-          <div className="absolute right-[5%] top-1/2 -translate-y-1/2 w-32 h-40 rounded-lg bg-gray-600/30 border border-gray-500/20 hidden lg:block" aria-hidden />
-          <div className="relative z-10 text-center px-6">
+          <div
+            className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_20%,rgba(6,182,212,0.15),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 24 }}
@@ -160,7 +199,7 @@ export default function TimeAndAttendancePage() {
                   Time & Attendance
                 </h2>
                 <p className="mt-4 text-gray-600 leading-relaxed text-base lg:max-w-md">
-                  Inopes Company introduces an innovative Time & Attendance Biometric Device, revolutionizing how businesses manage their workforce.
+                  InOps introduces biometric time and attendance capture designed for industrial and enterprise workforces—accurate punches, fewer disputes, and cleaner payroll inputs.
                 </p>
                 {/* Circular benefits infographic */}
                 <div className="mt-6 relative w-full max-w-sm aspect-square mx-auto lg:mx-0">
@@ -245,6 +284,20 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
+        <SolutionModulePanel
+          title="Authentication & Access Control"
+          intro="InOps Solutions provides a robust authentication and access control system designed to manage secure entry into industrial environments. This module integrates biometric devices such as fingerprint scanners and facial recognition systems with physical access control systems like turnstiles."
+          bullets={[
+            "Biometric identity verification using fingerprint and face recognition",
+            "Integration with turnstile gates and access control hardware",
+            "Real-time logging of entry and exit events",
+            "Prevention of unauthorized access and proxy attendance",
+          ]}
+          workflow="When a worker attempts entry, the biometric device captures identity data and sends it for validation. Upon successful verification, access is granted through turnstile systems. Each transaction is recorded instantly and reflected in the central dashboard."
+          closing="This module acts as the first layer of the platform, ensuring secure and controlled workforce entry while generating accurate attendance data."
+          imageGallery={[...authAccessGalleryImages]}
+        />
+
         {/* Features & Benefits */}
         <section className="border-t border-blue-100/80 bg-gradient-to-b from-slate-50 via-blue-50/35 to-slate-50 py-6 lg:py-10">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -285,87 +338,72 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        {/* Time & Attendance Biometric Device – title + empowerment paragraph */}
-        <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
-            <motion.h2
-              className="text-2xl font-bold text-slate-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Time & Attendance Biometric Device
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-16 rounded-full bg-blue-500" aria-hidden />
-            <motion.p
-              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-            >
-              Inopes Company&apos;s Time & Attendance Biometric Device empowers businesses to optimize workforce management, improve operational efficiency, and drive growth. Invest in our innovative solution today and experience the transformation firsthand.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Product visualization – device + software on monitor */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        {/* Product spotlight — one row: copy left, image right (stacks on small screens) */}
+        <section
+          className="border-t border-sky-100/80 bg-[#f5faff] py-10 lg:py-14"
+          aria-labelledby="ta-product-heading"
+        >
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-14">
               <motion.div
-                className="relative"
-                initial={{ opacity: 0, x: -24 }}
+                className="text-center lg:text-left"
+                initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
+                transition={{ duration: 0.55, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=85"
-                    alt="Time and attendance biometric device"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/90 px-4 py-3 font-mono">
-                    <p className="text-2xl font-bold text-gray-900">08:30</p>
-                    <p className="text-xs text-gray-600">Thursday 23 November</p>
-                  </div>
-                </div>
+                <span className="inline-flex rounded-full border border-blue-200/90 bg-blue-50/90 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-800">
+                  InOps Solutions
+                </span>
+                <h2
+                  id="ta-product-heading"
+                  className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+                >
+                  Time & Attendance Biometric Device
+                </h2>
+                <div
+                  className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 lg:mx-0"
+                  aria-hidden
+                />
+                <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  Rugged on-device punch capture and a clear timekeeping workspace—so supervisors see shifts, hours, and exceptions without waiting for month-end. InOps Solutions feeds cleaner data into payroll and HRMS.
+                </p>
+                <ul className="mx-auto mt-8 max-w-md space-y-3 text-left text-sm text-slate-600 lg:mx-0">
+                  {[
+                    "Biometric capture with audit-friendly logs for industrial floors.",
+                    "Live dashboards for planned shifts and today's roster.",
+                    "Structured punches ready for statutory and payroll workflows.",
+                  ].map((line) => (
+                    <li key={line} className="flex gap-3">
+                      <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+                        ✓
+                      </span>
+                      <span className="leading-snug">{line}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
+
               <motion.div
-                className="relative"
-                initial={{ opacity: 0, x: 24 }}
+                className="lg:pl-2"
+                initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-gray-200 bg-gray-900 shadow-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=85"
-                    alt="Attendance software dashboard on monitor"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs text-gray-600">
-                    <span>Weekly</span>
-                    <span>Planning</span>
-                    <span>Reporting</span>
-                    <span>John Scott</span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4 rounded-lg bg-white/95 p-3 text-gray-900">
-                    <p className="text-lg font-bold">01:23 — Friday 18th September</p>
-                    <div className="mt-2 flex flex-wrap gap-2 text-xs">
-                      {["Present", "Absent", "Late", "Early Leave", "Overtime", "Leave Day", "Holiday"].map((l) => (
-                        <span key={l} className="rounded bg-gray-200 px-2 py-0.5">{l}</span>
-                      ))}
+                <div className="relative">
+                  <div className="relative overflow-hidden rounded-2xl border-0 bg-transparent shadow-none ring-0">
+                    <div className="relative aspect-[4/3] w-full min-h-[220px] sm:min-h-[260px] lg:aspect-auto lg:min-h-[320px] xl:min-h-[420px]">
+                      <Image
+                        src={timeAttendanceProductImage}
+                        alt="InOps Solutions biometric attendance terminal with fingerprint reader next to a timekeeping and scheduling dashboard"
+                        fill
+                        className="object-contain object-center bg-transparent p-3 sm:p-5 lg:p-6 mt-10"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
                     </div>
                   </div>
+                 
                 </div>
               </motion.div>
             </div>
@@ -437,7 +475,7 @@ export default function TimeAndAttendancePage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
                     <div className="bg-gray-200/80 px-4 py-3 flex items-center justify-between border-b border-gray-200">

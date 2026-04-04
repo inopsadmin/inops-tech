@@ -30,6 +30,9 @@ export default function SmoothScroll({ children }: Props) {
     };
     rafId = window.requestAnimationFrame(raf);
 
+    const syncWindowScroll = () => window.dispatchEvent(new Event("scroll"));
+    lenis.on("scroll", syncWindowScroll);
+
     const onClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       const anchor = target?.closest?.("a[href^='#']") as HTMLAnchorElement | null;
@@ -60,6 +63,7 @@ export default function SmoothScroll({ children }: Props) {
     }
 
     return () => {
+      lenis.off("scroll", syncWindowScroll);
       document.removeEventListener("click", onClick, { capture: true } as AddEventListenerOptions);
       window.cancelAnimationFrame(rafId);
       lenis.destroy();

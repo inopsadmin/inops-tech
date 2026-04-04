@@ -7,6 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
+/** Hero background — `public/images/about-us.jpg` */
+const aboutHeroBg = "/images/about-us.jpg";
+
 const aboutImages = [
   { src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&q=85", alt: "Industrial and manufacturing" },
   { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=85", alt: "Team collaboration" },
@@ -130,32 +133,28 @@ export default function AboutPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero banner with background image */}
+        {/* Hero — about-us.jpg + overlays (CSS background for reliable load) */}
         <motion.section
-          className="relative min-h-[280px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1600&q=80"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gray-900/70" />
-          </div>
           <div
-            className="absolute inset-0 opacity-15"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='0.5'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
+            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${aboutHeroBg}")` }}
+            aria-hidden
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
-          <div className="relative z-10 text-center px-6">
+          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(56,189,248,0.12),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
               initial={{ opacity: 0, y: 24 }}
@@ -274,7 +273,7 @@ export default function AboutPage() {
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.28 }}
                 >
-                  At InOps Solutions, we believe in the power of technology to transform how businesses operate. Our mission is to drive innovation, efficiency, and growth through digital transformation. We partner with organizations to streamline operations, enhance compliance, and build scalable systems that adapt to your needs.
+                  At InOps Solutions, we believe in the power of technology to transform how businesses operate. Our mission is to drive innovation, efficiency, and growth through digital transformation. We partner with organizations to deliver Trusted Workforce Management Solutions—streamlining operations, enhancing compliance, and building scalable systems that adapt to your needs.
                 </motion.p>
 
                 {/* Key differentiators */}

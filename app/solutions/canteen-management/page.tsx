@@ -97,14 +97,6 @@ function ServiceIcon({ icon }: { icon: string }) {
   );
 }
 
-const mealTableRows = [
-  { date: "28/10/2019", id: "Samanth#24", name: "Narendra Prasad", type: "Dinner", total: "50.00", payment: "Paid", status: "Consumed" },
-  { date: "28/10/2019", id: "Samanth#25", name: "Samanth M", type: "Lunch", total: "280.00", payment: "Paid", status: "Approved" },
-  { date: "28/10/2019", id: "Samanth#26", name: "Site Administrator", type: "Breakfast", total: "150.00", payment: "Not Applicable", status: "Consumed" },
-  { date: "28/10/2019", id: "Samanth#27", name: "Narendra Prasad", type: "Lunch", total: "400.00", payment: "Paid", status: "Consumed" },
-  { date: "28/10/2019", id: "Samanth#28", name: "Samanth M", type: "Breakfast", total: "60.00", payment: "Paid", status: "Approved" },
-];
-
 export default function CanteenManagementPage() {
   return (
     <>
@@ -117,7 +109,7 @@ export default function CanteenManagementPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="absolute inset-0 bg-gray-100" />
-          <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0">
             <Image
               src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=1600&q=60"
               alt=""
@@ -253,7 +245,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="border-t border-gray-200 bg-white py-6 lg:py-10">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -289,11 +281,11 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Canteen Management System – intro + full-width Meal Consumption mockup */}
+        {/* Canteen Management System — heading, then row: copy left / screenshot right */}
         <section className="border-t border-gray-200 bg-gradient-to-b from-white to-slate-50/50 py-5 lg:py-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
-              className="w-full text-center"
+              className="w-full text-left"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -303,84 +295,43 @@ export default function CanteenManagementPage() {
                 Canteen Management System
               </h2>
               <div
-                className="mx-auto mt-2 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 sm:w-20"
+                className="mt-2 ml-40 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 sm:w-20"
                 aria-hidden
               />
-              <p className="mx-auto mt-4 w-full max-w-none text-gray-600 leading-relaxed text-base sm:text-lg">
-                At InOps Solution, we believe that a well-managed canteen is essential for fostering a healthy and productive work environment. With our Canteen Management System&apos;s advanced features and corresponding benefits, organizations can transform their dining facilities into efficient, employee-friendly spaces that promote well-being and satisfaction. Join us in revolutionizing workplace dining experiences with InOps Company today.
-              </p>
             </motion.div>
-            <motion.div
-              className="mt-6 w-full lg:mt-7"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-            >
-              <div className="overflow-hidden rounded-xl border border-gray-200/90 bg-gray-100/90 shadow-lg shadow-gray-900/10 ring-1 ring-black/[0.04]">
-                <div className="flex items-center gap-2 border-b border-gray-200 bg-gradient-to-b from-gray-100 to-gray-200/90 px-3 py-2.5 sm:px-4">
-                  <div className="flex gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+
+            <div className="mt-3 grid grid-cols-1 items-center gap-8 lg:mt-[-30] lg:grid-cols-2 lg:gap-10 xl:gap-12">
+              <motion.div
+                className="text-left"
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.04 }}
+              >
+                <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
+                  At InOps Solutions, we believe that a well-managed canteen is essential for fostering a healthy and productive work environment. With our Canteen Management System&apos;s advanced features and corresponding benefits, organizations can transform their dining facilities into efficient, employee-friendly spaces that promote well-being and satisfaction. Join us in revolutionizing workplace dining experiences with InOps Company today.
+                </p>
+              </motion.div>
+              <motion.div
+                className="lg:pl-2"
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
+              >
+                <div className="overflow-hidden">
+                  <div className="relative aspect-[16/10] w-full min-h-[220px] sm:min-h-[260px] lg:min-h-[280px]">
+                    <Image
+                      src="/images/cmsy.jpg"
+                      alt="Canteen Management System — operations and meal management interface"
+                      fill
+                      className="object-contain object-center p-3 sm:p-5"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
-                  <span className="flex-1 text-center text-sm font-semibold text-gray-700">Meal Consumption</span>
                 </div>
-                <div className="space-y-3 bg-white p-3 sm:p-4">
-                  <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
-                    <input type="text" placeholder="Meal Request ID" className="rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-700 placeholder-gray-500" readOnly />
-                    <div className="flex gap-1 col-span-2">
-                      <input type="text" placeholder="From" defaultValue="28/10/2019" className="flex-1 rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-700" readOnly />
-                      <input type="text" placeholder="To" className="flex-1 rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-700" readOnly />
-                    </div>
-                    <select className="rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-600" defaultValue="">
-                      <option>Meal Request Name -Select-</option>
-                    </select>
-                    <select className="rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-600" defaultValue="all">
-                      <option>Meal Type: All</option>
-                    </select>
-                    <select className="rounded border border-gray-200 bg-gray-200 px-2 py-1.5 text-xs text-gray-600" defaultValue="all">
-                      <option>Meal Status: All</option>
-                    </select>
-                  </div>
-                  <div className="flex gap-2">
-                    <button type="button" className="rounded bg-rose-500 px-3 py-1.5 text-xs font-medium text-white">Search</button>
-                    <button type="button" className="rounded bg-amber-500 px-3 py-1.5 text-xs font-medium text-white">Clear</button>
-                  </div>
-                  <div className="-mx-1 overflow-x-auto rounded-lg border border-gray-200 bg-gray-50/50 sm:mx-0">
-                    <table className="w-full min-w-[640px] text-xs sm:text-[13px]">
-                      <thead>
-                        <tr className="border-b border-gray-200 bg-gray-200/80">
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Select</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Meal Requested Date</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Meal Request ID</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Meal Requested Name</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Meal Type</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Total(INR)</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Payment Status</th>
-                          <th className="px-2 py-2 text-left font-medium text-gray-600">Meal Consumption Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-gray-500">
-                        {mealTableRows.map((row, i) => (
-                          <tr key={i} className="border-b border-gray-200">
-                            <td className="px-2 py-1.5"><input type="checkbox" className="rounded" readOnly /></td>
-                            <td className="px-2 py-1.5">{row.date}</td>
-                            <td className="px-2 py-1.5">{row.id}</td>
-                            <td className="px-2 py-1.5">{row.name}</td>
-                            <td className="px-2 py-1.5">{row.type}</td>
-                            <td className="px-2 py-1.5">{row.total}</td>
-                            <td className="px-2 py-1.5">{row.payment}</td>
-                            <td className="px-2 py-1.5">{row.status}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="flex justify-end text-xs text-gray-500">1 &lt; 1 &gt; 100</div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -449,7 +400,7 @@ export default function CanteenManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
                     <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200">

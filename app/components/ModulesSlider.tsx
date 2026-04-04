@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import Image from "next/image";
+import { moduleCarouselImages } from "@/app/lib/serviceImagery";
 
 const CARD_WIDTH = 320;
 const CARD_GAP = 0;
@@ -11,43 +12,51 @@ const SCROLL_STEP = CARD_WIDTH + CARD_GAP;
 const modules = [
   {
     title: "Time, Attendance & Leave",
-    description: "Accurate tracking of employee hours and leave for better productivity and compliance.",
-    imageUrl: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=900&q=85",
+    description:
+      "Record clock-in and clock-out, approve leave, and see daily attendance in one place—so payroll and compliance stay accurate.",
+    imageUrl: moduleCarouselImages[0],
   },
   {
-    title: "KYE - Employee Verification",
-    description: "Next-Gen CLMs through AI for document verification, challans, records, with smart reporting & analytics.",
-    imageUrl: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=900&q=85",
+    title: "KYE — Employee verification",
+    description:
+      "Know Your Employee (KYE): verify IDs and documents digitally, store contractor records safely, and pull reports when you need proof for audits.",
+    imageUrl: moduleCarouselImages[1],
   },
   {
     title: "Visitor Management",
-    description: "Secure visitor tracking with seamless check-in/out processes.",
-    imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=85",
+    description:
+      "Register visitors, issue passes, and track who is on site—replacing messy paper registers with a clear, searchable log.",
+    imageUrl: moduleCarouselImages[2],
   },
   {
     title: "Contractor & Payroll",
-    description: "End-to-end contractor lifecycle and payroll processing with statutory compliance.",
-    imageUrl: "https://images.unsplash.com/photo-1604594849809-dfedbc827105?w=900&q=85",
+    description:
+      "Handle contract workers from onboarding to payout: attendance links to wages, and statutory rules are applied consistently.",
+    imageUrl: moduleCarouselImages[3],
   },
   {
     title: "Compliance & Reporting",
-    description: "Automated PF, ESIC, and labour law reporting with audit-ready documentation.",
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=85",
+    description:
+      "Auto-build PF, ESIC, and labour-law reports with supporting data—less spreadsheet work and calmer inspection days.",
+    imageUrl: moduleCarouselImages[4],
   },
   {
     title: "Access Control & Security",
-    description: "Biometric and card-based access control with real-time monitoring.",
-    imageUrl: "https://images.unsplash.com/photo-1495433324511-bf8e92934d90?w=900&q=85",
+    description:
+      "Grant entry only to authorised people using biometrics or cards. Every attempt is logged so security teams can review access.",
+    imageUrl: moduleCarouselImages[5],
   },
   {
     title: "Shift & Roster Management",
-    description: "Plan shifts, manage rosters, and handle overtime with ease.",
-    imageUrl: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=85",
+    description:
+      "Plan who works which shift, fill gaps, and track overtime—so floors are staffed correctly without last-minute confusion.",
+    imageUrl: moduleCarouselImages[6],
   },
   {
     title: "Analytics & Dashboards",
-    description: "Real-time insights and reports for workforce and compliance metrics.",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85",
+    description:
+      "See attendance, cost, and compliance trends on simple dashboards—spot problems early instead of after month-end.",
+    imageUrl: moduleCarouselImages[7],
   },
 ];
 
@@ -61,20 +70,21 @@ function ModuleCard({
   imageUrl: string;
 }) {
   return (
-    <div className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden shadow-md shadow-slate-900/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/20">
+    <div className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden bg-slate-800 shadow-md shadow-slate-900/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/20">
       <Image
         src={imageUrl}
         alt={title}
         fill
         className="object-cover object-center transition duration-500 group-hover:scale-105"
         sizes="320px"
+        unoptimized
       />
-      {/* Hover overlay: title + description */}
-      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <div className="p-4 text-white">
-          <h3 className="text-sm sm:text-base font-heading leading-tight">{title}</h3>
-          <p className="mt-1.5 line-clamp-3 text-[11px] sm:text-xs leading-relaxed text-white/90">{description}</p>
-        </div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/88 via-black/35 to-transparent transition-opacity duration-300 group-hover:from-black/92" aria-hidden />
+      <div className="absolute inset-x-0 bottom-0 p-4 pt-12 sm:pt-14">
+        <h3 className="text-sm font-heading leading-tight text-white drop-shadow-sm sm:text-base">{title}</h3>
+        <p className="mt-1.5 text-[11px] leading-relaxed text-white/90 line-clamp-3 group-hover:line-clamp-none sm:text-xs">
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -111,14 +121,16 @@ export default function ModulesSlider() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-stretch lg:gap-8">
           {/* Left: text block */}
           <div className="flex flex-shrink-0 flex-col justify-center items-center text-center lg:items-start lg:text-left lg:w-[28%] xl:w-[26%]">
-            <span className="section-badge">Solutions</span>
-            <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            <span className="section-badge border-blue-200 bg-blue-50 text-blue-600">
+              Solutions
+            </span>
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-blue-600 sm:text-3xl">
               Our Modules
             </h2>
-            <p className="mt-3 max-w-sm text-gray-600 mx-auto lg:mx-0">
-              End-to-end tools for time, compliance, and workforce management
+            <p className="mt-3 max-w-sm text-slate-600 mx-auto lg:mx-0 text-sm leading-relaxed sm:text-[15px]">
+              Each module maps to a real operations job—time capture, gates, visitors, payroll, and compliance—with plain-language detail on every card.
             </p>
-            <div className="mt-4 h-0.5 w-12 rounded-full bg-blue-500" />
+            <div className="mt-4 h-0.5 w-12 rounded-full bg-blue-600" />
             <a
               href="#solutions"
               className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-blue-600"

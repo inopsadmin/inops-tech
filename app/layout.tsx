@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
+import ScrollRevealEnhancer from "./components/ScrollRevealEnhancer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,12 @@ const geistMono = Geist_Mono({
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") || "https://example.com";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -25,7 +32,22 @@ export const metadata: Metadata = {
     template: "%s | InOps Solutions",
   },
   description:
-    "Turn compliance challenges into opportunities with automated CLMS. One unified platform for complete control.",
+    "InOps Solutions delivers workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, and access control.",
+  keywords: [
+    "InOps",
+    "CLMS software",
+    "contract labour management system",
+    "biometric attendance system",
+    "workforce management India",
+    "access control systems",
+    "turnstiles",
+    "visitor management system",
+    "payroll compliance",
+    "industrial attendance",
+    "Best Authentication Services",
+    "Trusted Workforce Management Solutions",
+    "Reliable Access Control Systems",
+  ],
   alternates: {
     canonical: "/",
   },
@@ -46,13 +68,13 @@ export const metadata: Metadata = {
     siteName: "InOps Solutions",
     title: "InOps Solutions | Automated CLMS & Compliance",
     description:
-      "Turn compliance challenges into opportunities with automated CLMS. One unified platform for complete control.",
+      "InOps Solutions delivers workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, and access control.",
   },
   twitter: {
     card: "summary_large_image",
     title: "InOps Solutions | Automated CLMS & Compliance",
     description:
-      "Turn compliance challenges into opportunities with automated CLMS. One unified platform for complete control.",
+      "InOps Solutions delivers workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, and access control.",
   },
 };
 
@@ -68,9 +90,14 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <SmoothScroll>
-          <Navbar />
-          <main className="flex-1 min-w-0">{children}</main>
-          <Footer />
+          <div className="relative flex min-h-screen w-full flex-col">
+            <Navbar />
+            <main className="min-w-0 flex-1">
+              {children}
+              <ScrollRevealEnhancer />
+            </main>
+            <Footer />
+          </div>
         </SmoothScroll>
       </body>
     </html>

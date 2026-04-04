@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { productPageImagery } from "@/app/lib/serviceImagery";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -40,8 +41,9 @@ const accessories = [
     model: "WS3X3",
     description:
       "InOps Touchless request-to-exit (RTE) switch or motion sensor exit switch, is a device used in access control systems to allow individuals to exit a secured area without physically touching a switch or button.",
-    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=85",
+    imageUrl: productPageImagery.accessoryExit,
     imageAlt: "Wireless Exit Button - touchless request-to-exit switch",
+    imageClassName: "object-contain object-center p-6",
   },
   {
     name: "Exit Push Button",
@@ -50,8 +52,9 @@ const accessories = [
       "InOps' specially designed push button used on doors, gates or anywhere there is the access control system. Wide range of options such as push button size, color exists.",
       "This request to exit (REx) device allows you to open a locked door to exit without needing credentials.",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&q=85",
+    imageUrl: "/images/Exit-Push-300x300.png",
     imageAlt: "Exit Push Button - request to exit device",
+    imageClassName: "object-contain object-center p-6",
   },
 ];
 
@@ -61,7 +64,7 @@ const fpSensorAndRfCards = [
     subtitle: "Fingerprint Sensor",
     description:
       "InOps' fingerprint sensors integrates to enhance security and provide a convenient and reliable method for allowing or denying entry to secure areas. Access control systems with fingerprint sensors are widely used in various environments, including offices, government facilities, healthcare facilities, data centers, and more.",
-    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=85",
+    imageUrl: productPageImagery.fingerprintSensor,
     imageAlt: "Fingerprint sensor device for access control",
   },
   {
@@ -69,7 +72,7 @@ const fpSensorAndRfCards = [
     subtitle: "Proximity & MIFARE",
     description:
       "This card supports ISO Format proximity technology at both 125KHz and 13.56MHz frequencies. It is lightweight at 9 grams and can be printed on both sides. Common applications include access control, time and attendance, employee ID cards, ticketing, visitor management, and more.",
-    imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&q=85",
+    imageUrl: productPageImagery.rfCards,
     imageAlt: "RF card with access control terminal",
   },
 ];
@@ -78,7 +81,7 @@ const electroMagneticLocks = [
   {
     model: "SL-600",
     title: "Single Leaf Electro Magnetic Lock",
-    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=85",
+    imageUrl: "/images/SL-600.png",
     imageAlt: "SL-600 Single Leaf Electro Magnetic Lock",
     specs: [
       "Operating Voltage : Power DC 12V",
@@ -89,7 +92,7 @@ const electroMagneticLocks = [
   {
     model: "DL-600",
     title: "Double Leaf Electro Magnetic Lock",
-    imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500&q=85",
+    imageUrl: "/images/DL-600-1.png",
     imageAlt: "DL-600 Double Leaf Electro Magnetic Lock",
     specs: [
       "Operating Voltage : Power DC 12V-24V",
@@ -175,7 +178,7 @@ export default function AccessoriesPage() {
                       src={product.imageUrl}
                       alt={product.imageAlt}
                       fill
-                      className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                      className={`${product.imageClassName} transition duration-500 ease-out group-hover:scale-[1.03]`}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 36rem"
                     />
                   </div>
@@ -230,7 +233,7 @@ export default function AccessoriesPage() {
                       src={product.imageUrl}
                       alt={product.imageAlt}
                       fill
-                      className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                      className=" object-center transition duration-500 ease-out group-hover:scale-[1.03]"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 36rem"
                     />
                   </div>
@@ -277,7 +280,7 @@ export default function AccessoriesPage() {
                       src={product.imageUrl}
                       alt={product.imageAlt}
                       fill
-                      className="object-cover object-center transition duration-500 ease-out group-hover:scale-[1.03]"
+                      className="object-contain object-center p-4 transition duration-500 ease-out group-hover:scale-[1.03]"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 36rem"
                     />
                   </div>

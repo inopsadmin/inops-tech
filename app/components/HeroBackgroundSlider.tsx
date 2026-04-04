@@ -3,48 +3,17 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const HERO_IMAGES = [
-  {
-    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=3200&q=90",
-    alt: "Team collaboration and workforce management",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=3200&q=90",
-    alt: "Corporate team meeting",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=3200&q=90",
-    alt: "Software dashboard and analytics",
-  },
-];
+import { heroSlides } from "@/app/lib/serviceImagery";
 
 const SLIDE_INTERVAL_MS = 4500;
 const easeSmooth = [0.32, 0.72, 0, 1] as const;
-const transition = { duration: 2.2, ease: easeSmooth, type: "tween" as const };
+const transition = { duration: 1.85, ease: easeSmooth, type: "tween" as const };
 
-function getSlideVariants(imageIndex: number) {
-  const opacitySoft = 0.96;
-  if (imageIndex === 0) {
-    return {
-      initial: { x: "100%", opacity: opacitySoft },
-      animate: { x: 0, opacity: 1 },
-      exit: { x: "-100%", opacity: opacitySoft },
-    };
-  }
-  if (imageIndex === 1) {
-    return {
-      initial: { y: "100%", opacity: opacitySoft },
-      animate: { y: 0, opacity: 1 },
-      exit: { y: "-100%", opacity: opacitySoft },
-    };
-  }
-  return {
-    initial: { x: "-100%", opacity: opacitySoft },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: "100%", opacity: opacitySoft },
-  };
-}
+const slideVariants = {
+  initial: { opacity: 0, scale: 1.08 },
+  animate: { opacity: 1, scale: 1 },
+  exit: { opacity: 0, scale: 1 },
+};
 
 type HeroBackgroundSliderProps = {
   onPhaseChange?: (isDark: boolean) => void;
@@ -53,10 +22,13 @@ type HeroBackgroundSliderProps = {
 export default function HeroBackgroundSlider({ onPhaseChange }: HeroBackgroundSliderProps) {
   const [index, setIndex] = useState(0);
   const indexRef = useRef(index);
-  const phaseStartRef = useRef(Date.now());
+  const phaseStartRef = useRef(0);
 
   indexRef.current = index;
-  const variants = getSlideVariants(index);
+
+  useEffect(() => {
+    phaseStartRef.current = Date.now();
+  }, []);
 
   useEffect(() => {
     onPhaseChange?.(false);
@@ -66,7 +38,7 @@ export default function HeroBackgroundSlider({ onPhaseChange }: HeroBackgroundSl
     const id = setInterval(() => {
       const elapsed = Date.now() - phaseStartRef.current;
       if (elapsed >= SLIDE_INTERVAL_MS) {
-        const next = (indexRef.current + 1) % HERO_IMAGES.length;
+        const next = (indexRef.current + 1) % heroSlides.length;
         indexRef.current = next;
         phaseStartRef.current = Date.now();
         setIndex(next);
@@ -78,30 +50,32 @@ export default function HeroBackgroundSlider({ onPhaseChange }: HeroBackgroundSl
   const slideKey = `hero-${index}`;
 
   return (
-    <div className="absolute inset-0 overflow-hidden bg-black">
+    <div className="absolute inset-0 overflow-hidden bg-zinc-950">
       <AnimatePresence initial={false} mode="sync">
         <motion.div
           key={slideKey}
-          className="absolute inset-0 z-0 will-change-transform"
-          initial={variants.initial}
-          animate={variants.animate}
-          exit={variants.exit}
+          className="absolute inset-0 z-0 will-change-[opacity,transform]"
+          initial={slideVariants.initial}
+          animate={slideVariants.animate}
+          exit={slideVariants.exit}
           transition={transition}
           style={{ backfaceVisibility: "hidden" }}
         >
-          <Image
-            src={HERO_IMAGES[index].src}
-            alt={HERO_IMAGES[index].alt}
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-            priority
-          />
+          <div className="absolute inset-[-6%]">
+            <Image
+              src={heroSlides[index].src}
+              alt={heroSlides[index].alt}
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority
+            />
+          </div>
         </motion.div>
       </AnimatePresence>
       <div className="absolute inset-0 bg-black/50" aria-hidden />
       <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
-        {HERO_IMAGES.map((_, i) => (
+        {heroSlides.map((_, i) => (
           <button
             key={i}
             type="button"

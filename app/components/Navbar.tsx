@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 type NavItem =
@@ -47,7 +48,11 @@ const resourceRoutes: Record<string, string> = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
+  /** White bar + fixed sticky (true after home hero ends, or inner pages after small scroll). */
   const [scrolled, setScrolled] = useState(false);
+  /** Home only: navbar in document flow while hero is on screen — scrolls up with the page. */
+  const [navStaticHero, setNavStaticHero] = useState(pathname === "/");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<string | null>(null);
@@ -60,12 +65,32 @@ export default function Navbar() {
     return `#${key.toLowerCase().replace(/\s+/g, "-")}`;
   };
 
+  const updateNavLayout = useCallback(() => {
+    if (pathname === "/") {
+      const hero = document.getElementById("home-hero");
+      if (hero) {
+        const pastHero = hero.getBoundingClientRect().bottom <= 0;
+        setScrolled(pastHero);
+        setNavStaticHero(!pastHero);
+        return;
+      }
+    }
+    setScrolled(window.scrollY > 24);
+    setNavStaticHero(false);
+  }, [pathname]);
+
+  useLayoutEffect(() => {
+    updateNavLayout();
+  }, [updateNavLayout]);
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", updateNavLayout, { passive: true });
+    window.addEventListener("resize", updateNavLayout, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", updateNavLayout);
+      window.removeEventListener("resize", updateNavLayout);
+    };
+  }, [updateNavLayout]);
 
   useEffect(() => {
     if (!mobileOpen) setMobileSection(null);
@@ -77,13 +102,22 @@ export default function Navbar() {
       if (e.key === "Escape") setMobileOpen(false);
     };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobileOpen]);
 
   return (
+    <>
     <motion.header
       initial={false}
-      style={{ position: "fixed", top: 0, left: 0, right: 0 }}
+      style={{
+        position: navStaticHero ? "static" : "fixed",
+        ...(navStaticHero ? {} : { top: 0, left: 0, right: 0 }),
+      }}
       animate={{
         backgroundColor: scrolled ? "rgba(255, 255, 255, 0.98)" : "rgba(0, 0, 0, 0)",
         backdropFilter: scrolled ? "blur(12px)" : "blur(0px)",
@@ -91,10 +125,11 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 1px 3px 0 rgba(0,0,0,0.06)" : "0 0 0 0 transparent",
       }}
       transition={headerTransition}
-      className={`navbar-fixed-header w-full shrink-0 overflow-visible border-b border-transparent px-6 py-3.5 lg:px-12`}
+      className={`navbar-fixed-header w-full shrink-0 overflow-visible border-b border-transparent px-6 py-3.5 lg:px-12 ${navStaticHero ? "relative" : ""}`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <div className="mx-auto flex min-w-0 max-w-7xl items-center justify-between gap-2">
         <motion.div
+          className="min-w-0 shrink-0"
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
@@ -102,7 +137,7 @@ export default function Navbar() {
           <Link href="/" className="relative block transition-opacity hover:opacity-90">
             <Image
               src="/logo.png"
-              alt="InOps solutions"
+              alt="InOps Solutions"
               width={140}
               height={40}
               className={`h-8 w-auto object-contain transition-all duration-300 ${scrolled ? "opacity-90" : "opacity-95 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"}`}
@@ -154,7 +189,7 @@ export default function Navbar() {
                         transition={dropdownTransition}
                         className="absolute left-0 top-full z-[100] pt-2 min-w-[220px] origin-top-left"
                       >
-                        <div className="rounded-xl border border-gray-200 bg-white py-2 shadow-lg shadow-gray-200/80">
+                        <div className="rounded-xl border border-slate-200/90 bg-white py-2 shadow-lg shadow-slate-900/[0.06] ring-1 ring-slate-950/[0.03]">
                           {item.dropdown.map((d, j) => {
                             const href = resolveHref(item.label, d);
                             return (
@@ -275,13 +310,13 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             />
             <motion.aside
-              className="fixed right-0 top-0 z-50 h-full w-[88vw] max-w-sm border-l border-gray-200 bg-white shadow-xl md:hidden"
+              className="fixed right-0 top-0 z-50 flex h-[100dvh] max-h-[100dvh] w-[88vw] max-w-sm flex-col border-l border-gray-200 bg-white shadow-xl md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.25, ease: [0.33, 1, 0.68, 1] as const }}
             >
-              <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
+              <div className="flex shrink-0 items-center justify-between border-b border-gray-100 px-5 py-4">
                 <span className="text-sm font-semibold tracking-wide text-gray-800">Menu</span>
                 <button
                   type="button"
@@ -295,7 +330,7 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <div className="px-5 py-4 bg-gray-50/80">
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain bg-gray-50/80 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
                 <div className="space-y-2">
                   {navItems.map((item) => {
                     if (!hasDropdown(item)) {
@@ -385,5 +420,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
+    {pathname === "/" && scrolled ? <div className="h-[4.5rem] w-full shrink-0" aria-hidden /> : null}
+    </>
   );
 }

@@ -3,9 +3,38 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionModulePanel from "@/app/components/SolutionModulePanel";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
+
+/** Hero background — `public/images/Contract-1.png` */
+const labourHeroBg = "/images/Contract-1.png";
+
+/** Desktop + mobile product mockup — `public/images/labour-management-ui-showcase.png` */
+const labourUiShowcaseImage = "/images/laber2.png";
+
+/** Place files in `public/images/` with these exact names. */
+const workforceManagementGalleryImages = [
+  {
+    src: "/images/rag-dashboard-slide3.png",
+    alt: "Workforce analytics and RAG dashboard with operational insights",
+    width: 900,
+    height: 600,
+  },
+  {
+    src: "/images/asset-management-dashboard.jpg",
+    alt: "Asset and resource management dashboard for workforce visibility",
+    width: 900,
+    height: 600,
+  },
+  {
+    src: "/images/275581401627b0d3533467362f4c0372.jpg",
+    alt: "HR and workforce operations workspace with schedules and metrics",
+    width: 900,
+    height: 600,
+  },
+] as const;
 
 const insightBoxes = [
   {
@@ -126,27 +155,28 @@ export default function LabourManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – dark with industrial-style backdrop */}
+        {/* Hero — Contract-1.png + overlays (CSS background for reliable load) */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="absolute inset-0 bg-gray-900" />
-          <div className="absolute inset-0 opacity-25">
-            <Image
-              src="https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=1600&q=60"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gray-900/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.15),transparent)]" />
-          <div className="relative z-10 text-center px-6">
+          <div
+            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${labourHeroBg}")` }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden />
+          <div
+            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
               initial={{ opacity: 0, y: 24 }}
@@ -252,6 +282,20 @@ export default function LabourManagementPage() {
           </div>
         </section>
 
+        <SolutionModulePanel
+          title="Workforce Management"
+          intro="The workforce management module serves as the central control system for monitoring workforce activities in real time. It provides visibility into attendance, shift scheduling, workforce allocation, and performance tracking."
+          bullets={[
+            "Real-time workforce attendance tracking",
+            "Shift planning and scheduling",
+            "Contractor-wise and department-wise workforce monitoring",
+            "Workforce analytics and reporting dashboards",
+          ]}
+          workflow="Data from biometric systems flows into the workforce dashboard. Managers can view current workforce status, identify absenteeism, and analyze productivity trends. The system enables quick decision-making based on real-time insights."
+          closing="This module improves operational efficiency by eliminating manual tracking and enabling data-driven workforce management."
+          imageGallery={[...workforceManagementGalleryImages]}
+        />
+
         {/* Features & Benefits */}
         <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -289,27 +333,49 @@ export default function LabourManagementPage() {
           </div>
         </section>
 
-        {/* Timesheet+ Manager (desktop) + TOKN User (mobile) – product mockup (full width)
-        <section className="w-full py-6 lg:py-10 bg-gray-100 border-t border-gray-200">
-          <div className="w-full max-w-none px-0">
-            <motion.div
-              className="flex w-full justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
-            >
-              <Image
-                src="/images/labour-timesheet-mockup.png"
-                alt="Submitted Timesheets manager on desktop and TOKN User mobile app with weekly timesheet entries, New Daily and New Weekly actions"
-                width={1327}
-                height={434}
-                className="h-auto w-full max-w-none rounded-none shadow-none sm:shadow-2xl"
-                sizes="100vw"
-              />
-            </motion.div>
+        {/* Labour Management Software — intro copy + Timesheet+ / TOKN UI showcase */}
+        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+              <motion.div
+                className="text-center lg:max-w-xl lg:text-left xl:max-w-none"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                  Labour Management Software
+                </h2>
+                <div
+                  className="mx-auto mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 sm:w-24 lg:mx-0"
+                  aria-hidden
+                />
+                <p className="mx-auto mt-5 max-w-4xl text-gray-600 leading-relaxed text-base sm:mt-6 sm:text-lg lg:mx-0 lg:max-w-none">
+                  At InOps Company, we understand the critical role that effective labor management plays in the success of businesses. With our Labour Management Software&apos;s advanced features and corresponding benefits, organizations can optimize their workforce management processes, drive productivity, and achieve their business goals efficiently. Join us in revolutionizing labor management with InOps Company today.
+                </p>
+              </motion.div>
+              <motion.div
+                className="min-w-0"
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <div className="overflow-hidden">
+                  <Image
+                    src={labourUiShowcaseImage}
+                    alt="Timesheet+ Manager on desktop with submitted timesheets, and TOKN User mobile app for weekly and daily timesheet entries"
+                    width={1327}
+                    height={434}
+                    className="h-auto w-full"
+                    sizes="(max-width: 1023px) 100vw, (max-width: 1280px) 50vw, 640px"
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </section> */}
+        </section>
 
         {/* Powerful Services for Your Business */}
         <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
@@ -376,7 +442,7 @@ export default function LabourManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
                     <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200 flex gap-2">

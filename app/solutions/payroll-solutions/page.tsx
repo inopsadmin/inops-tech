@@ -3,9 +3,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionModulePanel from "@/app/components/SolutionModulePanel";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
+
+/** Place files in `public/images/` with these exact names. */
+const compliancePayrollGalleryImages = [
+  {
+    src: "/images/1708459316.png",
+    alt: "Payroll and workforce compliance dashboard with schedules and summaries",
+    width: 900,
+    height: 600,
+  },
+  {
+    src: "/images/275581401627b0d3533467362f4c0372.jpg",
+    alt: "HR and payroll operations workspace with attendance and compensation insights",
+    width: 900,
+    height: 600,
+  },
+  {
+    src: "/images/CobbleStone-Software-Contract-contracts-kpi-graphical-dashboard.webp",
+    alt: "Contracts and KPI dashboard with graphical compliance and performance metrics",
+    width: 900,
+    height: 600,
+  },
+] as const;
 
 const payrollFeatures = [
   { num: "01", label: "Customization", color: "#7c3aed" },
@@ -123,7 +146,7 @@ export default function PayrollSolutionsPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="absolute inset-0 bg-gray-900" />
-          <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0">
             <Image
               src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=60"
               alt=""
@@ -196,7 +219,7 @@ export default function PayrollSolutionsPage() {
               transition={{ duration: 0.6, ease: smoothEase }}
             >
               {/* Left pills – 5 */}
-              <div className="flex flex-col justify-center gap-3 w-full max-w-[280px]">
+              <div className="mx-auto flex w-full max-w-[280px] flex-col justify-center gap-3">
                 {payrollHighlights.slice(0, 5).map((text, i) => (
                   <div
                     key={i}
@@ -207,17 +230,17 @@ export default function PayrollSolutionsPage() {
                 ))}
               </div>
               {/* Central oval with gradient border */}
-              <div className="flex-shrink-0 flex items-center justify-center">
+              <div className="flex flex-shrink-0 items-center justify-center px-2">
                 <div className="rounded-full bg-gradient-to-r from-blue-400 to-violet-500 p-[2px]">
-                  <div className="rounded-full bg-gray-800 px-6 py-3.5 sm:px-8 sm:py-4">
-                    <span className="text-white font-bold text-sm sm:text-base uppercase tracking-wide whitespace-nowrap">
+                  <div className="rounded-full bg-gray-800 px-4 py-3 sm:px-8 sm:py-4">
+                    <span className="max-w-[16rem] text-center text-xs font-bold uppercase leading-snug tracking-wide text-white sm:max-w-none sm:text-sm sm:leading-normal md:text-base md:whitespace-nowrap">
                       Highlights of our payroll services
                     </span>
                   </div>
                 </div>
               </div>
               {/* Right pills – 5 */}
-              <div className="flex w-full flex-col justify-center gap-2.5 sm:max-w-[min(100%,280px)] lg:flex-1">
+              <div className="mx-auto flex w-full max-w-[280px] flex-col justify-center gap-2.5 lg:mx-0 lg:max-w-none lg:flex-1">
                 {payrollHighlights.slice(5, 10).map((text, i) => (
                   <div
                     key={i}
@@ -382,6 +405,21 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
+        <SolutionModulePanel
+          title="Compliance & Payroll"
+          intro="This module integrates compliance management and payroll processing into a single automated system. It ensures that organizations adhere to labour regulations while maintaining accurate payroll records."
+          bullets={[
+            "Automated PF (Provident Fund) and ESI (Employee State Insurance) calculations",
+            "Wage and salary processing",
+            "Generation of compliance and audit reports",
+            "Centralized documentation for regulatory requirements",
+          ]}
+          workflow="Attendance data is directly linked to payroll processing. The system calculates wages, deductions, and statutory contributions automatically. Reports are generated for compliance and audit purposes."
+          closing="This module reduces manual workload, minimizes errors, and ensures complete transparency in payroll and compliance operations."
+          imageGallery={[...compliancePayrollGalleryImages]}
+          accentBarClassName="bg-gradient-to-r from-blue-600 to-violet-500"
+        />
+
         {/* Features & Benefits */}
         <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -484,7 +522,7 @@ export default function PayrollSolutionsPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-800 bg-gray-100 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-800 bg-gray-100 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
                     <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200">

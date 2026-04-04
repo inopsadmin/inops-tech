@@ -3,9 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ProductSpecPanel from "@/app/components/ProductSpecPanel";
+import { productPageImagery } from "@/app/lib/serviceImagery";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
+
+/** Hero background — add asset at `public/images/biometric.jpg` */
+const biometricHeroBg = "/images/biometric.jpg";
 
 const featuresLeft = [
   {
@@ -105,56 +110,69 @@ export default function BiometricAccessControlPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero section - dark blue-grey with illustrations */}
-        <section className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gray-900" />
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-          {/* Abstract hero illustrations */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute left-[10%] top-1/2 -translate-y-1/2 w-32 h-40 rounded-lg bg-amber-900/30 border border-amber-700/20" aria-hidden />
-            <div className="absolute right-[20%] top-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
-              <div className="w-16 h-20 rounded-lg bg-gray-700/40 border border-gray-600/30 flex flex-col items-center justify-center p-1">
-                <div className="w-full h-6 rounded bg-gray-600/50 text-[8px] text-gray-600 flex items-center justify-center font-mono">ACCESS</div>
-                <div className="w-full flex-1 rounded bg-emerald-500/20 text-[8px] text-emerald-300 flex items-center justify-center font-mono mt-1">COMPLETE</div>
-              </div>
-              <div className="flex gap-0.5">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-1 h-8 bg-blue-400/20 rounded-full" style={{ animationDelay: `${i * 0.1}s` }} />
-                ))}
-              </div>
-            </div>
-            <div className="absolute right-[8%] top-1/3 w-24 h-16 rounded bg-gray-700/30 border border-gray-600/20" aria-hidden />
+        {/* Hero — biometric.jpg full-bleed background + overlays for title / breadcrumb */}
+        <motion.section
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="absolute inset-0">
+            <Image
+              src={biometricHeroBg}
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority
+            />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-transparent to-gray-800/60" />
-          <div className="relative z-10 text-center px-6">
+          <div className="absolute inset-0 bg-gray-900/55" aria-hidden />
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/60 to-gray-900/80"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(59,130,246,0.12),transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 px-6 text-center">
             <motion.h1
               className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase }}
+              transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
             >
               Biometric Access Control
             </motion.h1>
             <motion.nav
               className="mt-4 text-sm text-white/90"
-              initial={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: smoothEase }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.18 }}
               aria-label="Breadcrumb"
             >
-              <Link href="/" className="hover:text-white transition-colors">
+              <Link href="/" className="transition-colors hover:text-white">
                 Home
               </Link>
               <span className="mx-2 text-white/60">/</span>
-              <span className="text-blue-300 font-medium">Biometric Access Control</span>
+              <span className="font-medium text-blue-300">Biometric Access Control</span>
             </motion.nav>
           </div>
-        </section>
+        </motion.section>
+
+        {/* <ProductSpecPanel
+          title="At a glance — specifications"
+          subtitle="Typical deployment profiles for industrial and commercial sites. Final specs vary by reader model and integration."
+          imageSrc={productPageImagery.biometricSpecScene}
+          imageAlt="Secure access and identity verification for workforce entry points"
+          specs={[
+            { label: "Reader types", value: "Face recognition, fingerprint, and proximity / smart card (model-dependent)" },
+            { label: "Integration", value: "Wiegand, OSDP, and TCP/IP-friendly controllers; HRMS / payroll handoff via APIs" },
+            { label: "Environments", value: "Indoor lanes, office lobbies, factory turnstiles, and sheltered outdoor gates" },
+            { label: "Audit & compliance", value: "Time-stamped access events, exportable logs for labour and security audits" },
+          ]}
+        /> */}
 
         {/* Main content - two columns: device image left, text + CTAs right */}
         <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
@@ -168,10 +186,10 @@ export default function BiometricAccessControlPage() {
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-2xl lg:aspect-[5/4]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden   lg:aspect-[5/4]">
                   <Image
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
-                    alt="Biometric access control device with face recognition and keypad"
+                    src={productPageImagery.biometricHeroDevice}
+                    alt="Biometric access terminal at a secure entry point"
                     fill
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -348,12 +366,12 @@ export default function BiometricAccessControlPage() {
             >
               {/* On lg+, image fills column height to match Key capabilities block */}
               <div className="w-full min-h-0 lg:col-span-6 lg:h-full">
-                <div className="relative aspect-[4/3] w-full min-h-[14rem] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-xl lg:aspect-auto lg:h-full lg:min-h-[18rem] lg:shadow-2xl">
+                <div className="relative aspect-[4/3] w-full min-h-[14rem] overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[18rem]">
                   <Image
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85"
+                    src="/images/Gemini_Generated_Image_oqc1gqoqc1gqoqc1.png"
                     alt="Biometric device with face recognition and fingerprint"
                     fill
-                    className="object-cover object-center"
+                    className=" object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
@@ -464,7 +482,7 @@ export default function BiometricAccessControlPage() {
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
                 {/* Phone mockup with My Attendance app */}
-                <div className="relative w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
+                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
                   <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
                   <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
                     <div className="bg-gray-100/80 px-4 py-3 flex items-center justify-between border-b border-gray-200">

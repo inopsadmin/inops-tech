@@ -14,8 +14,9 @@ const posts = [
     snippet:
       "In a rapidly evolving digital landscape, access control technology continues to redefine security and convenience. Explore the key trends shaping the industry this year.",
     slug: "access-control-trends-2024",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
-    imageAlt: "Access control and security technology",
+    image:
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Electronic door access and keycard security at a modern entrance",
   },
   {
     title: "The Future of Work: How Biometric Attendance Systems are Shaping the Workplace",
@@ -24,8 +25,9 @@ const posts = [
     snippet:
       "In today's rapidly evolving business landscape, the future of work is being shaped by smart attendance and identity solutions. Learn how biometrics are transforming workforce management.",
     slug: "biometric-attendance-future-of-work",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80",
-    imageAlt: "Biometric and workplace technology",
+    image:
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Cybersecurity and digital identity technology representing biometric systems",
   },
   {
     title: "Navigating the Future of Work: 6 Trends in Employee Time and Attendance Tracking",
@@ -34,8 +36,9 @@ const posts = [
     snippet:
       "In today's dynamic work environment, where remote work, flexible hours, and hybrid models are the norm, effective time and attendance tracking has never been more critical.",
     slug: "time-attendance-tracking-trends",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-    imageAlt: "Employee time tracking and workspace",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Business professional reviewing schedules and analytics for time tracking",
   },
   {
     title: "Maximizing Employee Efficiency and Engagement: 6 Ways HR Technology Drives Success",
@@ -44,8 +47,9 @@ const posts = [
     snippet:
       "In today's fast-paced business environment, organizations are turning to HR technology to boost efficiency, engagement, and overall workforce performance.",
     slug: "hr-technology-efficiency-engagement",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
-    imageAlt: "HR technology and team collaboration",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "HR team collaboration and people strategy meeting in a modern office",
   },
 ];
 
@@ -62,8 +66,8 @@ export default function BlogPage() {
         >
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80"
-              alt=""
+              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85"
+              alt="Hands typing on a laptop — writing and reading blog content"
               fill
               className="object-cover object-center"
               sizes="100vw"
