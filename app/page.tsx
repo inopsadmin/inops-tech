@@ -135,10 +135,10 @@ export default function Home() {
                   </span>
                 </motion.div>
                 <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }} transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }} className="mt-7 sm:mt-8">
-                  <h1 className="mx-auto max-w-[min(100%,40rem)] font-sans text-[1.35rem] font-heading-bold leading-[1.22] tracking-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] sm:text-3xl sm:leading-[1.2] lg:max-w-[48rem] lg:text-4xl lg:leading-[1.18] xl:text-[2.35rem] xl:leading-[1.22] antialiased">
+                  <h1 className="mx-auto max-w-[min(100%,40rem)] font-sans text-[1.35rem] font-heading-bold leading-[1.22] tracking-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] sm:text-3xl sm:leading-[1.2] lg:max-w-[55rem] lg:text-4xl lg:leading-[1.18] xl:text-[2.68rem] xl:leading-[1.22] antialiased">
                     <span className="text-sky-100">InOps Solutions</span>{" "}
                     <span className="text-white">
-                      delivers advanced workforce management and authentication systems designed for industrial environments.
+                      delivers advanced <br /> workforce management and authentication systems designed for industrial <br />environments.
                     </span>
                   </h1>
                 </motion.div>
