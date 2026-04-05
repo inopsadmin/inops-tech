@@ -145,7 +145,7 @@ export default function SolutionModulePanel(props: SolutionModulePanelProps) {
               {gallery.map((item) => (
                 <div
                   key={item.src}
-                  className="relative aspect-[5/4] w-full shrink-0 overflow-hidden rounded-xl border border-gray-200/80 bg-white shadow-sm ring-1 ring-slate-950/[0.04] lg:aspect-auto lg:min-h-0 lg:flex-1"
+                  className="relative aspect-[5/4] w-full shrink-0 overflow-hidden ring-slate-950/[0.04] lg:aspect-auto lg:min-h-0 lg:flex-1"
                 >
                   <Image
                     src={item.src}
