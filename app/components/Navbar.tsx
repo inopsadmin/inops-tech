@@ -5,22 +5,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { SolutionsMegaMenuDesktop, SolutionsMegaMenuMobile } from "./SolutionsMegaMenu";
 
 type NavItem =
   | { label: string; href: string }
-  | { label: string; href: string; dropdown: string[] };
+  | { label: string; href: string; dropdown: string[] }
+  | { label: "Solutions"; href: string; solutionsMega: true };
+
+const SOLUTIONS_MENU_PANEL_ID = "nav-solutions-menu-panel";
 
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Product", href: "#product", dropdown: ["Biometric Access Control", "Turnstiles", "Accessories"] },
-  { label: "Solutions", href: "#solutions", dropdown: ["Time & Attendance", "Canteen Management", "Payroll Solutions" , "Labour Management Software" , "Visitor Management" , "Fixed Asset Management"] },
+  { label: "Solutions", href: "#solutions", solutionsMega: true },
   { label: "Resources", href: "#resources", dropdown: ["Blog", "Brochures"] },
   { label: "Contact", href: "/contact" },
 ];
 
 function hasDropdown(item: NavItem): item is NavItem & { dropdown: string[] } {
   return "dropdown" in item && Array.isArray(item.dropdown);
+}
+
+function hasSolutionsMega(item: NavItem): item is Extract<NavItem, { solutionsMega: true }> {
+  return "solutionsMega" in item && item.solutionsMega === true;
 }
 
 const headerTransition = { type: "tween" as const, duration: 0.45, ease: [0.33, 1, 0.68, 1] as const };
@@ -31,15 +38,6 @@ const productRoutes: Record<string, string> = {
   "Biometric Access Control": "/product/biometric-access-control",
   "Turnstiles": "/product/turnstiles",
   "Accessories": "/product/accessories",
-};
-
-const solutionRoutes: Record<string, string> = {
-  "Time & Attendance": "/solutions/time-and-attendance",
-  "Canteen Management": "/solutions/canteen-management",
-  "Payroll Solutions": "/solutions/payroll-solutions",
-  "Labour Management Software": "/solutions/labour-management",
-  "Visitor Management": "/solutions/visitor-management",
-  "Fixed Asset Management": "/solutions/fixed-asset-management",
 };
 
 const resourceRoutes: Record<string, string> = {
@@ -60,8 +58,6 @@ export default function Navbar() {
   const resolveHref = (itemLabel: string, raw: string) => {
     const key = raw.trim();
     if (itemLabel === "Resources" && resourceRoutes[key]) return resourceRoutes[key];
-    if (itemLabel === "Product" && productRoutes[key]) return productRoutes[key];
-    if (itemLabel === "Solutions" && solutionRoutes[key]) return solutionRoutes[key];
     return `#${key.toLowerCase().replace(/\s+/g, "-")}`;
   };
 
@@ -146,9 +142,53 @@ export default function Navbar() {
           </Link>
         </motion.div>
 
-        <nav className="hidden items-center gap-3 md:flex">
+        <nav className="hidden items-center gap-3 md:flex" aria-label="Primary">
           {navItems.map((item, i) =>
-            hasDropdown(item) ? (
+            hasSolutionsMega(item) ? (
+              <motion.div
+                key={item.label}
+                className="relative"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.08 + i * linkStagger, ease: "easeOut" }}
+              >
+                <div
+                  className="group relative"
+                  onMouseEnter={() => setOpenDropdown(item.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <motion.button
+                    type="button"
+                    id="nav-solutions-menu-button"
+                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors ${
+                      scrolled ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100" : "text-white hover:text-white/90 hover:bg-white/10"
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-expanded={openDropdown === "Solutions"}
+                    aria-haspopup="true"
+                    aria-controls={SOLUTIONS_MENU_PANEL_ID}
+                  >
+                    {item.label}
+                    <motion.span
+                      animate={{ rotate: openDropdown === item.label ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      aria-hidden
+                    >
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </motion.span>
+                  </motion.button>
+
+                  <AnimatePresence>
+                    {openDropdown === item.label ? (
+                      <SolutionsMegaMenuDesktop key="solutions-mega" menuId={SOLUTIONS_MENU_PANEL_ID} />
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ) : hasDropdown(item) ? (
               <motion.div
                 key={item.label}
                 className="relative"
@@ -168,11 +208,15 @@ export default function Navbar() {
                     }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    aria-expanded={openDropdown === item.label}
+                    aria-haspopup="true"
+                    aria-controls={`nav-dropdown-${item.label.replace(/\s+/g, "-").toLowerCase()}`}
                   >
                     {item.label}
                     <motion.span
                       animate={{ rotate: openDropdown === item.label ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
+                      aria-hidden
                     >
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -183,11 +227,14 @@ export default function Navbar() {
                   <AnimatePresence>
                     {openDropdown === item.label && (
                       <motion.div
+                        id={`nav-dropdown-${item.label.replace(/\s+/g, "-").toLowerCase()}`}
+                        role="group"
+                        aria-label={`${item.label} submenu`}
                         initial={{ opacity: 0, y: -8, scale: 0.96 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -8, scale: 0.96 }}
                         transition={dropdownTransition}
-                        className="absolute left-0 top-full z-[100] pt-2 min-w-[220px] origin-top-left"
+                        className="absolute left-0 top-full z-[100] min-w-[220px] origin-top-left pt-2"
                       >
                         <div className="rounded-xl border border-slate-200/90 bg-white py-2 shadow-lg shadow-slate-900/[0.06] ring-1 ring-slate-950/[0.03]">
                           {item.dropdown.map((d, j) => {
@@ -201,7 +248,7 @@ export default function Navbar() {
                               >
                                 <Link
                                   href={href}
-                                  className="block px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-blue-50 hover:text-blue-600"
+                                  className="block px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-blue-50 hover:text-blue-600 focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
                                 >
                                   {d}
                                 </Link>
@@ -333,6 +380,44 @@ export default function Navbar() {
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain bg-gray-50/80 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
                 <div className="space-y-2">
                   {navItems.map((item) => {
+                    if (hasSolutionsMega(item)) {
+                      const isOpen = mobileSection === item.label;
+                      return (
+                        <div key={item.label} className="rounded-xl border border-gray-200 bg-white shadow-sm">
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800"
+                            aria-expanded={isOpen}
+                            aria-controls="mobile-solutions-mega-panel"
+                            onClick={() => setMobileSection((prev) => (prev === item.label ? null : item.label))}
+                          >
+                            <span>{item.label}</span>
+                            <span className={`text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden>
+                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </span>
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {isOpen && (
+                              <motion.div
+                                id="mobile-solutions-mega-panel"
+                                role="region"
+                                aria-label="Solutions"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="overflow-hidden"
+                              >
+                                <SolutionsMegaMenuMobile onNavigate={() => setMobileOpen(false)} />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    }
+
                     if (!hasDropdown(item)) {
                       return (
                         <Link
