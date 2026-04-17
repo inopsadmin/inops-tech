@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { featuresSliderImages } from "@/app/lib/serviceImagery";
@@ -10,47 +9,23 @@ const viewport = { once: true, amount: 0.2 };
 
 const slides = [
   {
-    title: "Transform Contract Labour Management With Smart Automation",
+    title: "Built for Enterprises That Can't Afford Gaps",
     summary:
-      "One place for contractor onboarding, documents, and statutory tasks—so your team spends less time chasing paperwork and fewer compliance steps are missed.",
+      "Designed to keep operations connected, compliant, and scalable across every site.",
     features: [
-      "Automated Alerts & Escalations — timely email notifications for compliance.",
-      "Self-Service Contractor Portal — onboard, verify, and manage workers independently.",
-      "Multi-Language Support — seamless workforce communication.",
-      "e-KYC & Digital Documentation — paperless onboarding with Aadhaar, PAN, bank verification.",
-      "Seamless ERP & Payroll Integration — sync with HRMS, ERP, and payroll systems.",
-      "PF & ESIC Compliance — auto-tracks contributions and statutory submissions.",
-      "Secure Cloud-Based Storage — encrypted, high-availability workforce records.",
+      "Single Source of Truth Across Systems",
+      "Real-Time Visibility & Control",
+      "Compliance-First Architecture",
+      "Scalable Across Locations & Workforce Types",
+      "Hardware + Software Integrated",
     ],
     imageUrl: featuresSliderImages.clms,
   },
-  {
-    title: "Real-Time Visibility & Control Across Your Workforce",
-    summary:
-      "Managers see who is on site, how hours add up, and whether rules are being followed—without waiting for end-of-month reports.",
-    features: [
-      "Live dashboards for attendance and deployment.",
-      "Biometric & geo-tagged check-in/out.",
-      "Automated wage calculations.",
-      "Compliance-ready audit reports.",
-      "Smart shift & workforce allocation tools.",
-    ],
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85",
-  },
+  
 ];
 
 export default function FeaturesSlider() {
-  const [current, setCurrent] = useState(0);
-
-  const goNext = () => {
-    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
-  const goPrev = () => {
-    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
+  const current = 0;
   const slide = slides[current];
 
   return (
@@ -139,36 +114,6 @@ export default function FeaturesSlider() {
             </motion.div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-slate-200/80 bg-slate-50/90 px-6 py-4">
-            <div className="flex gap-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === current
-                      ? "w-8 bg-blue-500"
-                      : "w-2 bg-gray-300"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={goPrev}
-                className="h-9 w-9 rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 active:scale-95"
-              >
-                ‹
-              </button>
-              <button
-                onClick={goNext}
-                className="h-9 w-9 rounded-full border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 active:scale-95"
-              >
-                ›
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </section>

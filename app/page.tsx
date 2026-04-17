@@ -8,46 +8,44 @@ import HeroBackgroundSlider from "./components/HeroBackgroundSlider";
 import { FadeUp, StaggerContainer, StaggerItem } from "./components/MotionSection";
 import { AnimatedSection, AnimatedHeading, AnimatedParagraph, AnimatedCardGrid, AnimatedCardItem } from "./components/AnimatedSection";
 import FeaturesSlider from "./components/FeaturesSlider";
-import ModulesSlider from "./components/ModulesSlider";
 import IndustriesSlider from "./components/IndustriesSlider";
 import BrandsSlider from "./components/BrandsSlider";
 import ContactForm from "./components/ContactForm";
 import TiltCard from "./components/TiltCard";
 import SectionFade from "./components/SectionFade";
-import AnimatedCounter from "./components/AnimatedCounter";
-import { whySectionCardImages } from "@/app/lib/serviceImagery";
+import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
 
 const whyCards = [
   {
     icon: "chart",
-    title: "Decisions Powered by Real‑Time Data",
+    title: "Workforce Governance",
     text:
-      "Turn raw workforce data into clear, actionable insights. Live dashboards, geo-tagged attendance, and AI-based pattern detection help you boost productivity and spot issues before they become problems.",
-    badge: "Real-time insights",
-    imageUrl: whySectionCardImages[0],
-  },
-  {
-    icon: "lock",
-    title: "Security & Compliance You Can Trust",
-    text:
-      "Built for strict labour and statutory compliance from day one. InOps centralises records, enforces policy rules, and gives you clean, audit-ready trails that keep regulators and internal teams aligned.",
-    badge: "Security first",
+      "A single source of truth for managing your entire workforce ecosystem. Streamline HR operations, contract labour management, and workplace services with complete visibility and compliance.",
+    badge: "Governance",
     imageUrl: whySectionCardImages[1],
   },
   {
-    icon: "gear",
-    title: "Designed to Scale With You",
+    icon: "lock",
+    title: "Face Solutions",
     text:
-      "Start with one site or go enterprise-wide. Cloud, on‑premise, or hybrid—InOps adapts to your infra, connects to your existing systems, and grows smoothly as your workforce and contractor base expands.",
-    badge: "Built to scale",
-    imageUrl: whySectionCardImages[2],
+      "AI-powered face recognition across mobile, CCTV, and on-ground devices. Enable secure, touchless attendance and real-time workforce tracking across locations.",
+    badge: "Face recognition",
+    imageUrl: whySectionCardImages[0],
+  },
+  {
+    icon: "gear",
+    title: "Financial Wellness (EWA)",
+    text:
+      "Empowering employees with access to earned wages, when they need it. Improve financial well-being while helping organizations drive retention and productivity.",
+    badge: "EWA",
+    imageUrl: whySectionCardImages[5],
   },
   {
     icon: "integration",
-    title: "Hardware + Software That Just Works",
+    title: "Enterprise Solutions",
     text:
-      "Biometric devices, access control, turnstiles, and CLMS all in sync. InOps plugs into HRMS, payroll, and ERP so attendance, access, and payouts stay perfectly aligned without spreadsheets.",
-    badge: "Seamless integration",
+      "Digitizing operations across assets, logistics, and warehouses. Improve efficiency with real-time tracking, automation, and data-driven decision-making.",
+    badge: "Enterprise scale",
     imageUrl: whySectionCardImages[3],
   },
   {
@@ -58,18 +56,11 @@ const whyCards = [
     badge: "Workforce view",
     imageUrl: whySectionCardImages[4],
   },
-  {
-    icon: "doc",
-    title: "Compliance on Autopilot",
-    text:
-      "Standardise onboarding, attendance, wage calculation, and document collection in one place. InOps automates reminders, expiries, and reports so your teams spend less time chasing paperwork.",
-    badge: "Audit-ready",
-    imageUrl: whySectionCardImages[5],
-  },
 ];
 
 export default function Home() {
   const [heroDarkPhase, setHeroDarkPhase] = useState(true);
+  const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [whyOrder, setWhyOrder] = useState<string[]>(() => {
     const preferred = "A Single View of Your Workforce";
     const titles = whyCards.map((c) => c.title);
@@ -96,12 +87,12 @@ export default function Home() {
       <SectionFade>
         <section
           id="home-hero"
-          className="relative -mt-[4.5rem] flex min-h-[88vh] flex-col items-center justify-center overflow-hidden pt-[6.25rem] sm:pt-[7rem] noise-overlay"
+          className="relative -mt-[4.5rem] flex min-h-[calc(100svh-1rem)] flex-col items-center justify-center overflow-hidden pt-[6.25rem] sm:pt-[7rem] noise-overlay"
         >
-          <HeroBackgroundSlider onPhaseChange={setHeroDarkPhase} />
+          <HeroBackgroundSlider onPhaseChange={setHeroDarkPhase} onSlideChange={setActiveHeroIndex} />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/50" aria-hidden />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_20%,rgba(59,130,246,0.12),transparent_55%)]" aria-hidden />
-          <div className="relative z-[1] mx-auto flex min-h-[90vh] w-full max-w-5xl flex-col items-center justify-center px-6 pb-24 text-center sm:px-8 lg:px-12">
+          <div className="relative z-[1] mx-auto flex min-h-[calc(100svh-4.5rem)] w-full max-w-5xl flex-col items-center justify-center px-5 pb-16 text-center sm:px-8 sm:pb-24 lg:px-12">
             <motion.div
               className="flex flex-col items-center"
               initial={false}
@@ -135,29 +126,26 @@ export default function Home() {
                   </span>
                 </motion.div>
                 <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }} transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }} className="mt-7 sm:mt-8">
-                  <h1 className="mx-auto max-w-[min(100%,40rem)] font-sans text-[1.35rem] font-heading-bold leading-[1.22] tracking-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] sm:text-3xl sm:leading-[1.2] lg:max-w-[55rem] lg:text-4xl lg:leading-[1.18] xl:text-[2.68rem] xl:leading-[1.22] antialiased">
-                    <span className="text-sky-100">InOps Solutions</span>{" "}
-                    <span className="text-white">
-                      delivers advanced <br /> workforce management and authentication systems designed for industrial <br />environments.
-                    </span>
+                  <h1 className="mx-auto max-w-[min(100%,44rem)] font-sans text-[clamp(1.55rem,5.4vw,2.15rem)] font-heading-bold leading-[1.12] tracking-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] sm:text-3xl sm:leading-[1.12] lg:max-w-[58rem] lg:text-[2.65rem] lg:leading-[1.1] xl:text-[3.1rem] xl:leading-[1.1] antialiased">
+                    {heroSlides[activeHeroIndex]?.title}
                   </h1>
                 </motion.div>
-                <div className="relative mt-8 w-full max-w-2xl sm:mt-10">
+                <div className="relative mt-6 w-full max-w-2xl sm:mt-9">
                   <div
                     className="pointer-events-none absolute -inset-[1px] rounded-3xl bg-gradient-to-b from-white/20 via-white/[0.06] to-transparent opacity-90"
                     aria-hidden
                   />
-                  <div className="relative overflow-hidden rounded-3xl border border-white/[0.12] bg-slate-950/[0.42] px-6 py-6 shadow-[0_28px_90px_-24px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:px-8 sm:py-7">
+                  <div className="relative overflow-hidden rounded-3xl border border-white/[0.14] bg-slate-950/[0.38] px-5 py-4 shadow-[0_26px_85px_-28px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:px-8 sm:py-7">
                     <div
                       className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent sm:inset-x-8"
                       aria-hidden
                     />
                     <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 12 } }} transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}>
-                      <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-white/95 sm:text-base sm:leading-relaxed">
-                        Our platform combines biometric technology, real-time tracking, and automated compliance to help organizations manage contract workers efficiently and securely.
+                      <p className="mx-auto max-w-xl text-[14px] leading-relaxed text-white/90 sm:text-[16px] sm:leading-relaxed">
+                        {heroSlides[activeHeroIndex]?.description}
                       </p>
                     </motion.div>
-                    <motion.div
+                    {/* <motion.div
                       variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
                       transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
                       className="mt-5 border-t border-white/[0.08] pt-5"
@@ -165,38 +153,18 @@ export default function Home() {
                       <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-white/80 sm:text-base sm:leading-relaxed">
                         With seamless integration of attendance, payroll, and access control, InOps ensures accurate workforce visibility, reduced manual errors, and improved operational efficiency across factories and industrial sites.
                       </p>
-                    </motion.div>
-                    <motion.div
-                      variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 8 } }}
-                      transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1], delay: 0.05 }}
-                      className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
-                    >
-                      {[
-                        "CLMS software",
-                        "Biometric attendance",
-                        "Access control",
-                        "Contract compliance",
-                        "Payroll integration",
-                      ].map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-[10px] font-medium uppercase tracking-wide text-white/75 shadow-sm backdrop-blur-sm sm:text-[11px]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </motion.div>
+                    </motion.div> */}
                   </div>
                 </div>
                 <motion.div
                   variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 14 } }}
                   transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
-                  className="mt-11 flex flex-wrap items-center justify-center gap-3 sm:mt-12 sm:gap-4"
+                  className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-11 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
                 >
                   <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.98 }}>
                     <Link
                       href="#contact"
-                      className="btn-primary btn-glow inline-flex items-center justify-center rounded-2xl bg-gradient-to-b from-blue-500 to-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-[0_12px_40px_-8px_rgba(37,99,235,0.55)] ring-1 ring-white/15 transition hover:from-blue-600 hover:to-blue-700 hover:shadow-[0_16px_48px_-10px_rgba(37,99,235,0.6)]"
+                      className="btn-primary btn-glow inline-flex h-12 w-full items-center justify-center rounded-2xl bg-gradient-to-b from-blue-500 to-blue-600 px-6 text-[15px] font-semibold text-white shadow-[0_12px_40px_-8px_rgba(37,99,235,0.55)] ring-1 ring-white/15 transition hover:from-blue-600 hover:to-blue-700 hover:shadow-[0_16px_48px_-10px_rgba(37,99,235,0.6)] sm:w-auto sm:px-8 sm:text-base"
                     >
                       Get In Touch
                       <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,11 +175,24 @@ export default function Home() {
                   <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.98 }}>
                     <Link
                       href="#solutions"
-                      className="btn-secondary inline-flex items-center justify-center rounded-2xl border border-white/25 bg-white/[0.08] px-8 py-3.5 text-base font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] backdrop-blur-md transition hover:border-white/35 hover:bg-white/[0.14] hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)]"
+                      className="btn-secondary inline-flex h-12 w-full items-center justify-center rounded-2xl border border-white/25 bg-white/[0.08] px-6 text-[15px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] backdrop-blur-md transition hover:border-white/35 hover:bg-white/[0.14] hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] sm:w-auto sm:px-8 sm:text-base"
                     >
                       Our Solutions
                     </Link>
                   </motion.div>
+                </motion.div>
+
+                <motion.div
+                  variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
+                  transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1], delay: 0.04 }}
+                  className="mt-10 flex items-center justify-center gap-2 text-xs font-medium tracking-wide text-white/70 sm:mt-11"
+                >
+                  <span className="h-1 w-10 rounded-full bg-white/15" aria-hidden />
+                  <span>Scroll to explore</span>
+                  <svg className="h-4 w-4 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M12 5v14" />
+                    <path d="M19 12l-7 7-7-7" />
+                  </svg>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -255,7 +236,7 @@ export default function Home() {
 
           {/* Screenshot-inspired layout: featured card + compact grid */}
           <motion.div
-            className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1.25fr_0.95fr] lg:items-start"
+            className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1.25fr_0.95fr] lg:items-stretch"
             initial={{ opacity: 0, y: 42, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.22 }}
@@ -342,7 +323,7 @@ export default function Home() {
             </motion.div>
 
             {/* Right: compact grid (like resource cards) */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:h-full lg:grid-cols-2 lg:grid-rows-2">
               {whyOrder.slice(1).map((title, index) => {
                 const card = whyCards.find((c) => c.title === title);
                 if (!card) return null;
@@ -355,9 +336,10 @@ export default function Home() {
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.03 }}
                     whileHover={{ y: -6, scale: 1.02 }}
-                    className="group relative overflow-hidden rounded-3xl border border-gray-200/80 bg-white/70 shadow-sm backdrop-blur transition duration-300 hover:border-blue-300 hover:bg-white hover:shadow-[0_0_0_3px_rgba(59,130,246,0.16),0_18px_55px_-28px_rgba(2,132,199,0.45)]"
+                    className="group relative h-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/80 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-blue-300/80 hover:from-white hover:to-blue-50/40 hover:shadow-[0_0_0_2px_rgba(59,130,246,0.12),0_22px_55px_-26px_rgba(30,64,175,0.35)]"
                   >
                     <div className="pointer-events-none absolute inset-x-5 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-sky-400 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-blue-100/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                     <motion.div
                       animate={{ y: [0, -3, 0] }}
@@ -366,19 +348,19 @@ export default function Home() {
                       <button
                         type="button"
                         onClick={() => swapFeaturedWith(card.title)}
-                        className="w-full p-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                        className="h-full w-full p-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:p-5"
                         aria-label={`Show ${card.title}`}
                       >
-                        <div className="flex gap-3">
-                        <div className="relative h-14 w-16 flex-none overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm">
+                        <div className="flex h-full gap-3 sm:gap-3.5">
+                        <div className="relative h-14 w-16 flex-none overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:h-[3.7rem] sm:w-[4.2rem]">
                           <Image src={card.imageUrl} alt="" fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="64px" />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
                         </div>
 
-                        <div className="min-w-0 flex-1">
+                        <div className="min-w-0 flex flex-1 flex-col justify-between">
                           <div className="flex items-start justify-between gap-2">
-                            <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-50 to-white text-blue-700 ring-1 ring-blue-100 shadow-sm">
-                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+                            <div className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-white text-blue-700 ring-1 ring-blue-100 shadow-sm">
+                              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
                                 {card.icon === "chart" && <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2Zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2" />}
                                 {card.icon === "lock" && (
                                   <>
@@ -398,7 +380,10 @@ export default function Home() {
                             </div>
                           </div>
 
-                          <div className="mt-2 line-clamp-2 text-sm font-heading leading-snug text-gray-900">{card.title}</div>
+                          <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+                            {card.badge ?? "Capability"}
+                          </div>
+                          <div className="mt-1.5 line-clamp-2 text-[1rem] font-heading-semibold leading-snug text-slate-900">{card.title}</div>
                           <div className="mt-2 inline-flex items-center gap-2 text-xs font-body-medium text-blue-700/90">
                             <span className="relative">
                               Click to swap
@@ -422,11 +407,10 @@ export default function Home() {
       </AnimatedSection>
 
       <SectionFade className="border-t border-gray-100"><FeaturesSlider /></SectionFade>
-      <SectionFade className="border-t border-gray-100"><ModulesSlider /></SectionFade>
 
-      {/* Smart Contract Labour — full-bleed background (per reference) */}
+      {/* Operational challenges matrix — premium table layout */}
       <SectionFade>
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden py-2">
           <motion.div
             className="absolute inset-0"
             initial={{ opacity: 0, scale: 1.035 }}
@@ -435,123 +419,111 @@ export default function Home() {
             transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1800&q=85"
-              alt="Worker at access control"
+              src="/image.png"
+              alt="Operational dashboard and workforce management"
               fill
               className="object-cover"
               sizes="100vw"
               priority={false}
             />
-            <div className="absolute inset-0 bg-black/55" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/40" />
+            <div className="absolute inset-0 bg-slate-900/68" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#101b34]/85 via-[#15203b]/75 to-[#0f1a31]/88" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(59,130,246,0.22),transparent_40%),radial-gradient(circle_at_82%_80%,rgba(56,189,248,0.16),transparent_40%)]" />
           </motion.div>
 
-          <div className="relative mx-auto flex min-h-[min(72vh,38rem)] max-w-7xl flex-col items-center justify-center px-6 py-10 text-center text-white lg:px-12">
+          <div className="relative mx-auto flex min-h-[min(72vh,38rem)] max-w-7xl flex-col justify-center px-6 py-10 text-white lg:px-12">
             <motion.div
-              className="w-full max-w-5xl rounded-3xl border border-white/10 bg-white/5 px-6 py-10 shadow-depth-xl backdrop-blur-md sm:px-10 sm:py-12"
+              className="w-full rounded-[2rem] border border-white/20 bg-[linear-gradient(130deg,rgba(255,255,255,0.11),rgba(255,255,255,0.05)_45%,rgba(148,163,184,0.05))] px-5 py-8 shadow-[0_40px_100px_-36px_rgba(15,23,42,0.95)] ring-1 ring-white/10 backdrop-blur-2xl sm:px-8 sm:py-10 lg:px-10"
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-            <motion.span
-              className="text-sm font-body-medium tracking-wide text-white/75"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-            >
-              We are always ahead
-            </motion.span>
-
-            <motion.h2
-              className="mt-3 text-center text-3xl font-heading-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            >
-              Professional solutions for your business.
-            </motion.h2>
-
-            <motion.p
-              className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-white/75 sm:text-base"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
-            >
-              We provide premium customer support and affordable programs to roll out CLMS, attendance, and access—site by site, at your pace.
-            </motion.p>
-
-            <motion.div
-              className="mx-auto mt-6 flex gap-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: 0.22 }}
-            >
-              <div className="h-1 w-10 rounded-full bg-emerald-400" />
-            </motion.div>
-
-            <motion.div
-              className="mt-10 flex flex-wrap items-center justify-center gap-3"
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
-            >
-              <motion.div whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
-                <Link
-                  href="#contact"
-                  className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-2.5 text-sm text-white shadow-md transition hover:bg-blue-600"
-                >
-                  Start A Project
-                </Link>
-              </motion.div>
-              <motion.a
-                href="tel:08027745220"
-                className="btn-secondary inline-flex items-center justify-center rounded-full border-2 border-blue-200 bg-blue-50 px-4 py-2 text-sm text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
-                aria-label="Call us"
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.98 }}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.04 }}
               >
-                Call Us: 08027745220
-              </motion.a>
-              <span className="text-xs font-body text-white/70">For any question</span>
-            </motion.div>
+                <span className="inline-flex items-center rounded-full border border-blue-200/35 bg-blue-400/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
+                  Solutions
+                </span>
+                <h2 className="mt-4 bg-gradient-to-b from-white via-blue-100 to-slate-200 bg-clip-text text-2xl font-heading-bold tracking-tight text-transparent sm:text-3xl lg:text-[2.2rem]">
+                  Solving Real Operational Challenges
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm text-blue-100/75 sm:text-base">
+                  A practical matrix that maps daily operational risks to measurable, automated outcomes.
+                </p>
+              </motion.div>
 
-            <motion.div
-              className="mt-10 grid w-full grid-cols-1 gap-8 text-center sm:grid-cols-3 sm:gap-0"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.26 }}
-            >
-              <div className="sm:px-8">
-                <div className="text-5xl font-heading-bold tracking-tight text-white drop-shadow">
-                  <AnimatedCounter value={856} duration={1.3} delay={0} />
+              <motion.div
+                className="mt-8 overflow-hidden rounded-2xl border border-white/20 bg-[linear-gradient(to_bottom,rgba(15,23,42,0.55),rgba(15,23,42,0.42))] shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_26px_60px_-36px_rgba(15,23,42,0.95)]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              >
+                <div className="grid grid-cols-2 border-b border-white/15 bg-white/[0.06]">
+                  <div className="px-4 py-3.5 sm:px-6">
+                    <div className="mx-auto w-full max-w-[22rem] text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
+                      Problem
+                    </div>
+                  </div>
+                  <div className="border-l border-white/10 px-4 py-3.5 sm:px-6">
+                    <div className="mx-auto w-full max-w-[22rem] text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
+                      InOps Solution
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-2 text-xs font-body-medium uppercase tracking-[0.22em] text-white/70">Satisfied Clients</div>
-                <div className="mt-1 text-xs font-body text-white/55">Merits-leading experience</div>
-              </div>
-              <div className="relative sm:px-8">
-                <div className="pointer-events-none absolute inset-y-2 -left-px hidden w-px bg-white/12 sm:block" aria-hidden />
-                <div className="pointer-events-none absolute inset-y-2 -right-px hidden w-px bg-white/12 sm:block" aria-hidden />
-                <div className="text-5xl font-heading-bold tracking-tight text-white drop-shadow">
-                  <AnimatedCounter value={238} duration={1.3} delay={0.1} />
-                </div>
-                <div className="mt-2 text-xs font-body-medium uppercase tracking-[0.22em] text-white/70">Successful Investments</div>
-                <div className="mt-1 text-xs font-body text-white/55">Merits-leading experience</div>
-              </div>
-              <div className="sm:px-8">
-                <div className="text-5xl font-heading-bold tracking-tight text-white drop-shadow">
-                  <AnimatedCounter value={341} duration={1.3} delay={0.2} />
-                </div>
-                <div className="mt-2 text-xs font-body-medium uppercase tracking-[0.22em] text-white/70">Satisfied Clients</div>
-                <div className="mt-1 text-xs font-body text-white/55">Merits-leading experience</div>
-              </div>
-            </motion.div>
+
+                {[
+                  ["Fragmented workforce data", "Unified platform"],
+                  ["Compliance risks", "Automated tracking & alerts"],
+                  ["Workers has no access to formal credit", "Earned Wage Access"],
+                  ["Proxy attendance", "Face recognition"],
+                  ["Manual operations", "Automation & analytics"],
+                ].map(([problem, solution], idx) => (
+                  <div
+                    key={problem}
+                    className={`group grid min-h-[56px] grid-cols-2 items-center transition-colors duration-200 hover:bg-blue-400/[0.07] ${
+                      idx !== 4 ? "border-b border-white/10" : ""
+                    }`}
+                  >
+                    <div className="px-4 py-3.5 sm:px-6">
+                      <div className="mx-auto flex w-full max-w-[22rem] items-center gap-2.5 text-left text-sm leading-relaxed text-white/85 sm:text-[15px]">
+                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-300/80 transition-colors group-hover:bg-blue-200" />
+                        {problem}
+                      </div>
+                    </div>
+                    <div className="border-l border-white/10 px-4 py-3.5 sm:px-6">
+                      <div className="mx-auto flex w-full max-w-[22rem] items-center gap-2 text-left text-sm font-semibold leading-relaxed text-blue-100 sm:text-[15px]">
+                        <svg className="h-4 w-4 shrink-0 text-cyan-300/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                          <path d="m5 12 5 5L20 7" />
+                        </svg>
+                        {solution}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                className="mt-8 flex flex-wrap items-center justify-center gap-2.5"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
+              >
+                {["Data Integrity", "Compliance Automation", "Face Recognition", "EWA Ready", "Enterprise Scale"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/25 bg-white/[0.08] px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-white/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition hover:-translate-y-0.5 hover:bg-white/[0.14]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -593,7 +565,7 @@ export default function Home() {
                 >
                   {/* Card 01 */}
                   <motion.article
-                    className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md will-change-transform"
+                    className="group relative overflow-hidden rounded-3xl border border-transparent bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)] ring-1 ring-slate-200/80 transition will-change-transform hover:shadow-[0_30px_70px_-40px_rgba(15,23,42,0.55)] hover:ring-blue-200/70"
                     variants={{
                       hidden: { opacity: 0, y: 18, scale: 0.985 },
                       visible: {
@@ -606,60 +578,43 @@ export default function Home() {
                     whileHover={{ y: -6, scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 260, damping: 22, mass: 0.8 }}
                   >
-                    <div className="relative overflow-hidden">
-                      <TiltCard className="block">
-                        <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <div
+                      className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      aria-hidden
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/70 via-sky-200/30 to-transparent" />
+                    </div>
+                    <div className="relative px-6 pb-7 pt-6">
+                      <div className="flex items-center justify-between gap-4">
+                        <h3 className="text-xl font-heading-bold tracking-tight text-gray-900">
+                          Manager Dashboard
+                        </h3>
+                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+                          Team view
+                        </span>
+                      </div>
+                      <TiltCard className="mt-4 block">
+                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
                           <Image
-                            src="/Ghost employees.png"
-                            alt="Worker at biometric gate"
+                            src="/image-1024x692.png"
+                            alt="Manager dashboard"
                             fill
-                            className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                            className="object-cover object-center transition duration-500 group-hover:scale-[1.035]"
                             sizes="(max-width: 1024px) 100vw, 33vw"
                           />
+                          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/50" aria-hidden />
                         </div>
                       </TiltCard>
-                      <div className="pointer-events-none absolute bottom-4 left-4 text-4xl font-heading-bold tracking-tight text-white">
-                        01
-                      </div>
-                    </div>
-
-                    <div className="px-6 pb-7 pt-6">
-                      <div className="text-xs font-body italic text-gray-500">Workforce verification</div>
-                      <h2 className="mt-2 text-lg font-heading-bold leading-snug tracking-tight text-gray-900 sm:text-xl">
-                        No More Ghost Employees — <br /> Just Verified Workforce
-                      </h2>
-                      <p className="mt-3 text-sm font-body leading-relaxed text-gray-600">
-                        Eliminate ghost employees with biometric authentication, real-time tracking, and geofencing. Automated payroll and audit trails ensure accurate records, prevent fraud, and keep your workforce fully compliant.
+                      <div className="mt-5 h-px w-16 bg-gradient-to-r from-slate-200 to-transparent" aria-hidden />
+                      <p className="mt-4 text-sm font-body leading-relaxed text-gray-600">
+                        Real-time visibility into workforce attendance, productivity, and on-ground operations. Make faster decisions with actionable insights at a team level.
                       </p>
-
-                      <div className="mt-6 flex flex-wrap items-center gap-3">
-                        <motion.div whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
-                          <Link
-                            href="#contact"
-                            className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-2.5 text-sm text-white shadow-md transition hover:bg-blue-600"
-                          >
-                            Start A Project
-                          </Link>
-                        </motion.div>
-                        <motion.a
-                          href="tel:08027745220"
-                          className="btn-secondary inline-flex items-center justify-center rounded-full border-2 border-blue-200 bg-blue-50 px-4 py-2 text-sm text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
-                          aria-label="Call us"
-                          whileHover={{ scale: 1.02, y: -1 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          Call Us: 08027745220
-                        </motion.a>
-                        <span className="text-xs font-body text-gray-500">For any question</span>
-                      </div>
-
-                      <div className="mt-6 h-px w-14 bg-gray-200" aria-hidden />
                     </div>
                   </motion.article>
 
                   {/* Card 02 */}
                   <motion.article
-                    className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md will-change-transform"
+                    className="group relative overflow-hidden rounded-3xl border border-transparent bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)] ring-1 ring-slate-200/80 transition will-change-transform hover:shadow-[0_30px_70px_-40px_rgba(15,23,42,0.55)] hover:ring-blue-200/70"
                     variants={{
                       hidden: { opacity: 0, y: 18, scale: 0.985 },
                       visible: {
@@ -672,60 +627,43 @@ export default function Home() {
                     whileHover={{ y: -6, scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 260, damping: 22, mass: 0.8 }}
                   >
-                    <div className="relative overflow-hidden">
-                      <TiltCard className="block">
-                        <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <div
+                      className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      aria-hidden
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-200/60 via-blue-200/25 to-transparent" />
+                    </div>
+                    <div className="relative px-6 pb-7 pt-6">
+                      <div className="flex items-center justify-between gap-4">
+                        <h3 className="text-xl font-heading-bold tracking-tight text-gray-900">
+                          CXO Dashboard
+                        </h3>
+                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+                          Enterprise view
+                        </span>
+                      </div>
+                      <TiltCard className="mt-4 block">
+                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
                           <Image
-                            src="/Pilferage.png"
-                            alt="Worker with tablet"
+                            src="/1_r5bfwbn5H6UK8ZnAJ1kufA.jpg"
+                            alt="CXO dashboard"
                             fill
                             className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                             sizes="(max-width: 1024px) 100vw, 33vw"
                           />
+                          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/50" aria-hidden />
                         </div>
                       </TiltCard>
-                      <div className="pointer-events-none absolute bottom-4 left-4 text-4xl font-heading-bold tracking-tight text-white">
-                        02
-                      </div>
-                    </div>
-
-                    <div className="px-6 pb-7 pt-6">
-                      <div className="text-xs font-body italic text-gray-500">Access intelligence</div>
-                      <h2 className="mt-2 text-lg font-heading-bold leading-snug tracking-tight text-gray-900 sm:text-xl">
-                        Prevent Pilferage With Smart <br /> Access Control
-                      </h2>
-                      <p className="mt-3 text-sm font-body leading-relaxed text-gray-600">
-                        Ensure only authorized personnel access your premises with real-time movement tracking and intelligent, contract-based entry rules. Our system helps prevent pilferage, reduce theft, and eliminate misuse of resources.
+                      <div className="mt-5 h-px w-16 bg-gradient-to-r from-slate-200 to-transparent" aria-hidden />
+                      <p className="mt-4 text-sm font-body leading-relaxed text-gray-600">
+                        A unified view of workforce, compliance, and operational performance across the organization. Drive strategic decisions with a single source of truth and enterprise-level insights.
                       </p>
-
-                      <div className="mt-6 flex flex-wrap items-center gap-3">
-                        <motion.div whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
-                          <Link
-                            href="#contact"
-                            className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-2.5 text-sm text-white shadow-md transition hover:bg-blue-600"
-                          >
-                            Start A Project
-                          </Link>
-                        </motion.div>
-                        <motion.a
-                          href="tel:08027745220"
-                          className="btn-secondary inline-flex items-center justify-center rounded-full border-2 border-blue-200 bg-blue-50 px-4 py-2 text-sm text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
-                          aria-label="Call us"
-                          whileHover={{ scale: 1.02, y: -1 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          Call Us: 08027745220
-                        </motion.a>
-                        <span className="text-xs font-body text-gray-500">For any question</span>
-                      </div>
-
-                      <div className="mt-6 h-px w-14 bg-gray-200" aria-hidden />
                     </div>
                   </motion.article>
 
                   {/* Card 03 */}
                   <motion.article
-                    className="group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md will-change-transform"
+                    className="group relative overflow-hidden rounded-3xl border border-transparent bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)] ring-1 ring-slate-200/80 transition will-change-transform hover:shadow-[0_30px_70px_-40px_rgba(15,23,42,0.55)] hover:ring-blue-200/70"
                     variants={{
                       hidden: { opacity: 0, y: 18, scale: 0.985 },
                       visible: {
@@ -738,54 +676,37 @@ export default function Home() {
                     whileHover={{ y: -6, scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 260, damping: 22, mass: 0.8 }}
                   >
-                    <div className="relative overflow-hidden">
-                      <TiltCard className="block">
-                        <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <div
+                      className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      aria-hidden
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-sky-200/55 via-emerald-200/20 to-transparent" />
+                    </div>
+                    <div className="relative px-6 pb-7 pt-6">
+                      <div className="flex items-center justify-between gap-4">
+                        <h3 className="text-xl font-heading-bold tracking-tight text-gray-900">
+                          HR Dashboard
+                        </h3>
+                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+                          People ops
+                        </span>
+                      </div>
+                      <TiltCard className="mt-4 block">
+                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
                           <Image
-                            src="/ESG-Aligned Compliance.png"
-                            alt="Workers reviewing documents"
+                            src="/hr_kpi_dashboard.png"
+                            alt="HR dashboard"
                             fill
                             className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
                             sizes="(max-width: 1024px) 100vw, 33vw"
                           />
+                          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/50" aria-hidden />
                         </div>
                       </TiltCard>
-                      <div className="pointer-events-none absolute bottom-4 left-4 text-4xl font-heading-bold tracking-tight text-white">
-                        03
-                      </div>
-                    </div>
-
-                    <div className="px-6 pb-7 pt-6">
-                      <div className="text-xs font-body italic text-gray-500">ESG compliance</div>
-                      <h2 className="mt-2 text-lg font-heading-bold leading-snug tracking-tight text-gray-900 sm:text-xl">
-                        Driving ESG-Aligned <br /> Compliance
-                      </h2>
-                      <p className="mt-3 text-sm font-body leading-relaxed text-gray-600">
-                        Stay aligned with region-specific compliance norms and labor laws while fostering a safe and transparent workplace. The system supports ethical labor practices and reinforces the Social and Governance pillars of your ESG commitments.
+                      <div className="mt-5 h-px w-16 bg-gradient-to-r from-slate-200 to-transparent" aria-hidden />
+                      <p className="mt-4 text-sm font-body leading-relaxed text-gray-600">
+                        Centralized control over employee data, compliance, and lifecycle management. Ensure accuracy, visibility, and seamless workforce governance across systems.
                       </p>
-
-                      <div className="mt-6 flex flex-wrap items-center gap-3">
-                        <motion.div whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
-                          <Link
-                            href="#contact"
-                            className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-2.5 text-sm text-white shadow-md transition hover:bg-blue-600"
-                          >
-                            Start A Project
-                          </Link>
-                        </motion.div>
-                        <motion.a
-                          href="tel:08027745220"
-                          className="btn-secondary inline-flex items-center justify-center rounded-full border-2 border-blue-200 bg-blue-50 px-4 py-2 text-sm text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
-                          aria-label="Call us"
-                          whileHover={{ scale: 1.02, y: -1 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          Call Us: 08027745220
-                        </motion.a>
-                        <span className="text-xs font-body text-gray-500">For any question</span>
-                      </div>
-
-                      <div className="mt-6 h-px w-14 bg-gray-200" aria-hidden />
                     </div>
                   </motion.article>
                 </motion.div>

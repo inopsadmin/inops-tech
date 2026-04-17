@@ -17,9 +17,10 @@ const slideVariants = {
 
 type HeroBackgroundSliderProps = {
   onPhaseChange?: (isDark: boolean) => void;
+  onSlideChange?: (slideIndex: number) => void;
 };
 
-export default function HeroBackgroundSlider({ onPhaseChange }: HeroBackgroundSliderProps) {
+export default function HeroBackgroundSlider({ onPhaseChange, onSlideChange }: HeroBackgroundSliderProps) {
   const [index, setIndex] = useState(0);
   const indexRef = useRef(index);
   const phaseStartRef = useRef(0);
@@ -33,6 +34,10 @@ export default function HeroBackgroundSlider({ onPhaseChange }: HeroBackgroundSl
   useEffect(() => {
     onPhaseChange?.(false);
   }, [onPhaseChange]);
+
+  useEffect(() => {
+    onSlideChange?.(index);
+  }, [index, onSlideChange]);
 
   useEffect(() => {
     const id = setInterval(() => {

@@ -8,7 +8,7 @@ const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 2
 
 function MegaCell({ cell }: { cell: SolutionsMegaCell }) {
   if (cell.type === "empty") {
-    return <div className="hidden min-h-[100px] bg-white md:block md:min-h-[110px]" aria-hidden />;
+    return <div className="hidden min-h-[100px] bg-white md:block md:min-h-[140px]" aria-hidden />;
   }
 
   const accent = Boolean(cell.accent);
@@ -16,11 +16,11 @@ function MegaCell({ cell }: { cell: SolutionsMegaCell }) {
   return (
     <Link
       href={cell.href}
-      className={`block min-h-[96px] p-4 transition-colors duration-200 md:min-h-[110px] md:p-5 focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1D2B83] ${
+      className={`block min-h-[96px] p-4 transition-colors duration-200 md:min-h-[140px] md:p-7 focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1D2B83] ${
         accent ? "bg-[#eef6ff] hover:bg-[#e4efff]" : "bg-white hover:bg-slate-50"
       } ${isEwa ? "relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-slate-400/80 before:content-['']" : ""}`}
     >
-      <div className="text-sm font-semibold leading-snug text-[#1D2B83] md:text-[0.95rem]">{cell.title}</div>
+      <div className="text-sm font-semibold leading-snug text-[#1D2B83] md:text-base">{cell.title}</div>
       <p className="mt-1.5 text-xs leading-relaxed text-slate-600 md:mt-2 md:text-sm">{cell.description}</p>
     </Link>
   );
@@ -36,7 +36,7 @@ export function SolutionsMegaMenuDesktop({ menuId }: { menuId: string }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
       transition={dropdownTransition}
-      className="absolute left-0 top-full z-[100] w-[min(64rem,calc(100vw-2rem))] origin-top-left pt-2 md:left-1/2 md:-translate-x-1/2"
+      className="absolute left-0 top-full z-[100] w-[min(90vw,80rem)] origin-top-left pt-2 md:left-28 md:-translate-x-1/2"
     >
       <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-200/80 shadow-lg shadow-slate-900/[0.08] ring-1 ring-slate-950/[0.04]">
         <div className="flex flex-col gap-px">

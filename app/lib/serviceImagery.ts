@@ -5,16 +5,25 @@
 
 export const heroSlides = [
   {
-    src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=3200&q=85",
-    alt: "Industrial technician on a factory floor with machinery",
+    src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=3200&q=85",
+    alt: "Business team reviewing workforce governance dashboards on screens",
+    title: "Single Source of Truth for Workforce Governance",
+    description:
+      "Eliminate data silos by consolidating workforce and workplace systems into one platform. Achieve consistent governance and visibility across HR, contract labour, and facility management.",
   },
   {
-    src: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=3200&q=85",
-    alt: "Workforce and site operations at a glance—industrial and construction environment",
+    src: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=3200&q=85",
+    alt: "Biometric face recognition and secure identity verification interface",
+    title: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
+    description:
+      "From entry gates to remote check-ins, enable consistent face-based tracking. Strengthen security, reduce leakages, and improve workforce visibility.",
   },
   {
-    src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=3200&q=85",
-    alt: "Warehouse and logistics operations with pallet storage",
+    src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=3200&q=85",
+    alt: "Employee reviewing earnings and financial planning documents",
+    title: "Building Financial Resilience for the Workforce",
+    description:
+      "A platform designed to give employees access to earned wages while helping businesses build a more stable workforce.",
   },
 ] as const;
 
@@ -40,7 +49,7 @@ export const moduleCarouselImages = [
 ] as const;
 
 export const featuresSliderImages = {
-  clms: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=85",
+  clms: "/image1.png",
   visibility: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
 } as const;
 
