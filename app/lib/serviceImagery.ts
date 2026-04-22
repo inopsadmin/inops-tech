@@ -49,7 +49,7 @@ export const moduleCarouselImages = [
 ] as const;
 
 export const featuresSliderImages = {
-  clms: "/image1.png",
+  clms: "/WhatsApp Image 2026-04-20 at 3.24.40 PM.jpeg",
   visibility: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
 } as const;
 

@@ -58,6 +58,48 @@ const whyCards = [
   },
 ];
 
+const dashboardCards = [
+  {
+    title: "Manager Dashboard",
+    badge: "Team view",
+    imageSrc: "/image-1024x692.png",
+    imageAlt: "Manager dashboard",
+    description:
+      "Real-time visibility into workforce attendance, productivity, and on-ground operations. Make faster decisions with actionable insights at a team level.",
+    glowClass: "from-sky-300/55 via-blue-200/25 to-transparent",
+    outlineClass: "from-sky-400/70 via-blue-500/60 to-indigo-500/65",
+    badgeClass: "border-blue-200 bg-blue-50 text-blue-700",
+    footerClass: "border-blue-200 bg-blue-50 text-blue-700",
+    footerTag: "Unified command center",
+  },
+  {
+    title: "CXO Dashboard",
+    badge: "Enterprise view",
+    imageSrc: "/1_r5bfwbn5H6UK8ZnAJ1kufA.jpg",
+    imageAlt: "CXO dashboard",
+    description:
+      "A unified view of workforce, compliance, and operational performance across the organization. Drive strategic decisions with a single source of truth and enterprise-level insights.",
+    glowClass: "from-indigo-300/55 via-blue-200/25 to-transparent",
+    outlineClass: "from-indigo-400/75 via-violet-500/65 to-blue-500/65",
+    badgeClass: "border-violet-200 bg-violet-50 text-violet-700",
+    footerClass: "border-violet-200 bg-violet-50 text-violet-700",
+    footerTag: "Executive command center",
+  },
+  {
+    title: "HR Dashboard",
+    badge: "People ops",
+    imageSrc: "/hr_kpi_dashboard.png",
+    imageAlt: "HR dashboard",
+    description:
+      "Centralized control over employee data, compliance, and lifecycle management. Ensure accuracy, visibility, and seamless workforce governance across systems.",
+    glowClass: "from-cyan-300/55 via-emerald-200/25 to-transparent",
+    outlineClass: "from-cyan-400/75 via-emerald-500/65 to-teal-500/65",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    footerClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+    footerTag: "People operations control",
+  },
+] as const;
+
 export default function Home() {
   const [heroDarkPhase, setHeroDarkPhase] = useState(true);
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
@@ -119,12 +161,12 @@ export default function Home() {
                   },
                 }}
               >
-                <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 12 } }} transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}>
+                {/* <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 12 } }} transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}>
                   <span className="inline-flex max-w-[min(100%,22rem)] items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/95 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:max-w-none sm:px-5 sm:tracking-[0.22em] sm:text-[11px]">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.7)]" aria-hidden />
                     Contract Labour Management
                   </span>
-                </motion.div>
+                </motion.div> */}
                 <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }} transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }} className="mt-7 sm:mt-8">
                   <h1 className="mx-auto max-w-[min(100%,44rem)] font-sans text-[clamp(1.55rem,5.4vw,2.15rem)] font-heading-bold leading-[1.12] tracking-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] sm:text-3xl sm:leading-[1.12] lg:max-w-[58rem] lg:text-[2.65rem] lg:leading-[1.1] xl:text-[3.1rem] xl:leading-[1.1] antialiased">
                     {heroSlides[activeHeroIndex]?.title}
@@ -549,12 +591,42 @@ export default function Home() {
       {/* Feature cards + logo strip (single bordered container) */}
       <SectionFade effect="3d">
         <div className="max-w-full">
-          <div className="overflow-hidden rounded-3xl border-2 border-b-0 border-blue-200 bg-white shadow-depth-lg mr-[-5] shadow-gray-900/5">
-            {/* Feature cards — 3-up layout (per reference image) */}
-            <section className="bg-white py-8 lg:py-10">
+          <div className="overflow-hidden rounded-[2rem] border border-slate-200/80 bg-[linear-gradient(145deg,#f8fbff_0%,#ffffff_50%,#f5f9ff_100%)] shadow-[0_30px_90px_-52px_rgba(15,23,42,0.35)]">
+            <section className="relative overflow-hidden py-8 lg:py-10">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(56,189,248,0.14),transparent_40%),radial-gradient(circle_at_88%_82%,rgba(99,102,241,0.12),transparent_42%)]" aria-hidden />
               <div className="mx-auto max-w-7xl px-6 lg:px-12">
                 <motion.div
-                  className="grid grid-cols-1 gap-6 lg:grid-cols-3"
+                  className="relative mb-6 flex flex-col gap-4 rounded-3xl border border-blue-100/80 bg-white/80 px-5 py-5 shadow-[0_20px_45px_-34px_rgba(30,64,175,0.35)] backdrop-blur sm:px-6"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
+                        Command Dashboards
+                      </div>
+                      <h3 className="mt-2 text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.8rem]">
+                        One view for managers, leadership, and HR
+                      </h3>
+                    </div>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-emerald-700">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden />
+                      Live data sync enabled
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {["Attendance", "Compliance", "Productivity", "Executive KPIs"].map((chip) => (
+                      <span key={chip} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.18 }}
@@ -563,152 +635,64 @@ export default function Home() {
                     visible: { opacity: 1, transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
                   }}
                 >
-                  {/* Card 01 */}
-                  <motion.article
-                    className="group relative overflow-hidden rounded-3xl border border-transparent bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)] ring-1 ring-slate-200/80 transition will-change-transform hover:shadow-[0_30px_70px_-40px_rgba(15,23,42,0.55)] hover:ring-blue-200/70"
-                    variants={{
-                      hidden: { opacity: 0, y: 18, scale: 0.985 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        transition: { type: "spring", stiffness: 140, damping: 22, mass: 0.9 },
-                      },
-                    }}
-                    whileHover={{ y: -6, scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 22, mass: 0.8 }}
-                  >
-                    <div
-                      className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                      aria-hidden
+                  {dashboardCards.map((card) => (
+                    <motion.article
+                      key={card.title}
+                      className="group relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_24px_60px_-36px_rgba(15,23,42,0.38)] transition-all duration-300 hover:border-transparent"
+                      variants={{
+                        hidden: { opacity: 0, y: 18, scale: 0.99 },
+                        visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 145, damping: 22, mass: 0.9 } },
+                      }}
+                      whileHover={{ y: -5 }}
+                      transition={{ type: "spring", stiffness: 240, damping: 22, mass: 0.8 }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/70 via-sky-200/30 to-transparent" />
-                    </div>
-                    <div className="relative px-6 pb-7 pt-6">
-                      <div className="flex items-center justify-between gap-4">
-                        <h3 className="text-xl font-heading-bold tracking-tight text-gray-900">
-                          Manager Dashboard
-                        </h3>
-                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
-                          Team view
-                        </span>
+                      <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${card.glowClass} opacity-25`} aria-hidden />
+                      <div
+                        className={`pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r ${card.outlineClass} p-[1.5px] opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                        aria-hidden
+                      >
+                        <div className="h-full w-full rounded-3xl bg-white/95" />
                       </div>
-                      <TiltCard className="mt-4 block">
-                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
-                          <Image
-                            src="/image-1024x692.png"
-                            alt="Manager dashboard"
-                            fill
-                            className="object-cover object-center transition duration-500 group-hover:scale-[1.035]"
-                            sizes="(max-width: 1024px) 100vw, 33vw"
-                          />
-                          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/50" aria-hidden />
-                        </div>
-                      </TiltCard>
-                      <div className="mt-5 h-px w-16 bg-gradient-to-r from-slate-200 to-transparent" aria-hidden />
-                      <p className="mt-4 text-sm font-body leading-relaxed text-gray-600">
-                        Real-time visibility into workforce attendance, productivity, and on-ground operations. Make faster decisions with actionable insights at a team level.
-                      </p>
-                    </div>
-                  </motion.article>
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500" aria-hidden />
+                      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" aria-hidden />
 
-                  {/* Card 02 */}
-                  <motion.article
-                    className="group relative overflow-hidden rounded-3xl border border-transparent bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)] ring-1 ring-slate-200/80 transition will-change-transform hover:shadow-[0_30px_70px_-40px_rgba(15,23,42,0.55)] hover:ring-blue-200/70"
-                    variants={{
-                      hidden: { opacity: 0, y: 18, scale: 0.985 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        transition: { type: "spring", stiffness: 140, damping: 22, mass: 0.9 },
-                      },
-                    }}
-                    whileHover={{ y: -6, scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 22, mass: 0.8 }}
-                  >
-                    <div
-                      className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                      aria-hidden
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-indigo-200/60 via-blue-200/25 to-transparent" />
-                    </div>
-                    <div className="relative px-6 pb-7 pt-6">
-                      <div className="flex items-center justify-between gap-4">
-                        <h3 className="text-xl font-heading-bold tracking-tight text-gray-900">
-                          CXO Dashboard
-                        </h3>
-                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
-                          Enterprise view
-                        </span>
-                      </div>
-                      <TiltCard className="mt-4 block">
-                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
-                          <Image
-                            src="/1_r5bfwbn5H6UK8ZnAJ1kufA.jpg"
-                            alt="CXO dashboard"
-                            fill
-                            className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
-                            sizes="(max-width: 1024px) 100vw, 33vw"
-                          />
-                          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/50" aria-hidden />
+                      <div className="relative flex h-full flex-col p-5 sm:p-6">
+                        <div className="flex items-center justify-between gap-3">
+                          <h3 className="text-xl font-heading-bold tracking-tight text-slate-900 sm:text-2xl">
+                            {card.title}
+                          </h3>
+                          <span className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] shadow-sm ${card.badgeClass}`}>
+                            {card.badge}
+                          </span>
                         </div>
-                      </TiltCard>
-                      <div className="mt-5 h-px w-16 bg-gradient-to-r from-slate-200 to-transparent" aria-hidden />
-                      <p className="mt-4 text-sm font-body leading-relaxed text-gray-600">
-                        A unified view of workforce, compliance, and operational performance across the organization. Drive strategic decisions with a single source of truth and enterprise-level insights.
-                      </p>
-                    </div>
-                  </motion.article>
 
-                  {/* Card 03 */}
-                  <motion.article
-                    className="group relative overflow-hidden rounded-3xl border border-transparent bg-white shadow-[0_18px_45px_-30px_rgba(15,23,42,0.45)] ring-1 ring-slate-200/80 transition will-change-transform hover:shadow-[0_30px_70px_-40px_rgba(15,23,42,0.55)] hover:ring-blue-200/70"
-                    variants={{
-                      hidden: { opacity: 0, y: 18, scale: 0.985 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        transition: { type: "spring", stiffness: 140, damping: 22, mass: 0.9 },
-                      },
-                    }}
-                    whileHover={{ y: -6, scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 22, mass: 0.8 }}
-                  >
-                    <div
-                      className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                      aria-hidden
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-sky-200/55 via-emerald-200/20 to-transparent" />
-                    </div>
-                    <div className="relative px-6 pb-7 pt-6">
-                      <div className="flex items-center justify-between gap-4">
-                        <h3 className="text-xl font-heading-bold tracking-tight text-gray-900">
-                          HR Dashboard
-                        </h3>
-                        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
-                          People ops
-                        </span>
-                      </div>
-                      <TiltCard className="mt-4 block">
-                        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
-                          <Image
-                            src="/hr_kpi_dashboard.png"
-                            alt="HR dashboard"
-                            fill
-                            className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
-                            sizes="(max-width: 1024px) 100vw, 33vw"
-                          />
-                          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/50" aria-hidden />
+                        <TiltCard className="mt-4 block">
+                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[0_22px_48px_-32px_rgba(15,23,42,0.45)]">
+                            <Image
+                              src={card.imageSrc}
+                              alt={card.imageAlt}
+                              fill
+                              className="object-cover object-center transition duration-700 group-hover:scale-[1.05]"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                            />
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" aria-hidden />
+                            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/65" aria-hidden />
+                          </div>
+                        </TiltCard>
+
+                        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                          {card.description}
+                        </p>
+
+                        <div className="mt-5 pt-4 border-t border-slate-200/80">
+                          <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold tracking-wide ${card.footerClass}`}>
+                            <span className="h-1.5 w-1.5 rounded-full bg-current opacity-80" aria-hidden />
+                            {card.footerTag}
+                          </div>
                         </div>
-                      </TiltCard>
-                      <div className="mt-5 h-px w-16 bg-gradient-to-r from-slate-200 to-transparent" aria-hidden />
-                      <p className="mt-4 text-sm font-body leading-relaxed text-gray-600">
-                        Centralized control over employee data, compliance, and lifecycle management. Ensure accuracy, visibility, and seamless workforce governance across systems.
-                      </p>
-                    </div>
-                  </motion.article>
+                      </div>
+                    </motion.article>
+                  ))}
                 </motion.div>
               </div>
             </section>

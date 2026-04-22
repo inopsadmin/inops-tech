@@ -12,6 +12,10 @@
   --accent: #3b82f6;
   --accent-deep: #2563eb;
   --secondary-bg: #f5f7fa;
+  --inops-cyan: #39bde8;
+  --inops-blue: #1d5fbf;
+  --inops-navy: #0f2f57;
+  --inops-slate: #6b7280;
 }
 
 @theme inline {
@@ -43,6 +47,80 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Site-wide brand canvas inspired by logo palette */
+.site-shell {
+  isolation: isolate;
+}
+
+.brand-shape-canvas {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.brand-shape-canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 16%, rgba(57, 189, 232, 0.13), transparent 30%),
+    radial-gradient(circle at 88% 12%, rgba(29, 95, 191, 0.1), transparent 32%),
+    radial-gradient(circle at 84% 82%, rgba(15, 47, 87, 0.08), transparent 30%),
+    linear-gradient(180deg, #f7fbff 0%, #ffffff 45%, #f8fbff 100%);
+}
+
+.brand-shape-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 47, 87, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 189, 232, 0.03) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 85%);
+}
+
+.brand-shape {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(1px);
+  opacity: 0.4;
+}
+
+.brand-shape--top-left {
+  top: -6rem;
+  left: -7rem;
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle at 40% 40%, rgba(57, 189, 232, 0.2), rgba(57, 189, 232, 0.03) 68%, transparent 70%);
+}
+
+.brand-shape--top-right {
+  top: 3rem;
+  right: -5rem;
+  width: 16rem;
+  height: 16rem;
+  background: radial-gradient(circle at 50% 50%, rgba(29, 95, 191, 0.2), rgba(29, 95, 191, 0.02) 68%, transparent 70%);
+}
+
+.brand-shape--mid-right {
+  top: 40%;
+  right: -4.5rem;
+  width: 14rem;
+  height: 14rem;
+  background: radial-gradient(circle at 50% 50%, rgba(57, 189, 232, 0.16), rgba(57, 189, 232, 0.01) 66%, transparent 70%);
+}
+
+.brand-shape--bottom-left {
+  bottom: -6.5rem;
+  left: -5rem;
+  width: 17rem;
+  height: 17rem;
+  background: radial-gradient(circle at 50% 50%, rgba(15, 47, 87, 0.16), rgba(15, 47, 87, 0.02) 66%, transparent 70%);
 }
 
 /* Typography: specific font weights (InOps-style) */

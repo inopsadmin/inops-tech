@@ -107,7 +107,7 @@ export default function FeaturesSlider() {
                   alt="Dashboard Preview"
                   fill
                   className="object-cover transition duration-500 ease-out group-hover:scale-[1.02]"
-                  sizes="(max-width: 768px) 100vw, 46vw"
+                  sizes="(max-width: 768px) 100vw, 86vw"
                   priority={current === 0}
                 />
               </div>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedCounter from "../components/AnimatedCounter";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -11,24 +11,18 @@ const viewport = { once: true, amount: 0.2 };
 /** Hero background — `public/images/about-us.jpg` */
 const aboutHeroBg = "/images/about-us.jpg";
 
-const cultureCards: { title: string; imageSrc?: string }[] = [
-  { title: "Optisecure 5k", imageSrc: "/images/bio_new.png" },
-  { title: "Optisecure T7", imageSrc: "/images/SL-600.png" },
-  { title: "Biosense", imageSrc: "/images/DL-600-1.png" },
-  { title: "HR Information System" },
-  { title: "Contract workforce governance system" },
-  { title: "EWA" },
-  { title: "Enterprise solution" },
-  { title: "CCTV Sol" },
-  { title: "Mobile APP" },
-  { title: "Canteen& Visitor management" },
+const cultureCards: { title: string; imageSrc: string }[] = [
+  { title: "Optisecure 5K", imageSrc: "/optisecure5k.jpeg" },
+  { title: "Optisecure T7", imageSrc: "/optisecuret7.jpeg" },
+  { title: "Biosense", imageSrc: "/biosense.jpeg" },
+  { title: "HR Information System", imageSrc: "/hrinfromationsystem.jpeg" },
+  { title: "Contract Workforce Governance System", imageSrc: "/contractworkforcemanagemtsystem.jpeg" },
+  { title: "EWA", imageSrc: "/ewa.jpeg" },
+  { title: "Enterprise Solution", imageSrc: "/enterprise-solution.png" },
+  { title: "CCTV Solution", imageSrc: "/cctvsolution.png" },
+  { title: "Mobile Application", imageSrc: "/mobile-application.png" },
+  { title: "Canteen & Visitor Management", imageSrc: "/canteen-visitor-management.png" },
 ];
-
-const productRangeImages = [
-  "/images/product-range-1.png",
-  "/images/product-range-2.png",
-  "/images/product-range-3.png",
-] as const;
 
 // const differentiators = [
 //   {
@@ -83,6 +77,14 @@ export default function AboutPage() {
   const [expertiseIndex, setExpertiseIndex] = useState(0);
   const textColumnRef = useRef<HTMLDivElement>(null);
   const [galleryHeightPx, setGalleryHeightPx] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1));
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   useLayoutEffect(() => {
     const el = textColumnRef.current;
@@ -290,13 +292,23 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Our workspace / culture — full-bleed marquee like Industries We Serve, gapless tiles */}
-        <section className="relative overflow-x-hidden border-t border-gray-100/80 bg-gradient-to-b from-slate-50/90 to-gray-50 py-8 lg:py-10">
+        {/* Product Range — premium marquee strip */}
+        <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-[radial-gradient(circle_at_20%_0%,rgba(59,130,246,0.22),transparent_42%),radial-gradient(circle_at_80%_18%,rgba(14,165,233,0.2),transparent_36%),linear-gradient(180deg,#f5f9ff_0%,#e9f2ff_100%)] py-12 lg:py-14">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/65 to-transparent" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.5),transparent_40%,rgba(255,255,255,0.35))]" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <div className="text-center">
-              {/* <span className="section-badge">Culture</span> */}
+              <motion.span
+                className="inline-flex items-center rounded-full border border-blue-200/80 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700/90 shadow-[0_8px_24px_-18px_rgba(30,64,175,0.75)] backdrop-blur"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.45, ease: smoothEase }}
+              >
+                Product Showcase
+              </motion.span>
               <motion.h2
-                className="mt-4 text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+                className="mt-3 text-center text-[2rem] font-heading-bold tracking-tight text-slate-900 sm:text-[2.35rem]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -304,19 +316,19 @@ export default function AboutPage() {
               >
                Product Range
               </motion.h2>
-              {/* <motion.p
-                className="mx-auto mt-3 max-w-xl text-gray-600"
+              <motion.p
+                className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
               >
-                We believe in collaboration, innovation, and a culture that puts people and technology first.
-              </motion.p> */}
+                Smart devices and enterprise tools curated for workforce visibility, governance, and operational control.
+              </motion.p>
             </div>
           </div>
           <motion.div
-            className="hover-pause relative mt-8 w-screen max-w-[100vw] left-1/2 -translate-x-1/2 overflow-hidden"
+            className="hover-pause relative mt-8 w-screen max-w-[100vw] left-1/2 -translate-x-1/2 overflow-hidden py-2"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -326,30 +338,29 @@ export default function AboutPage() {
               {[...cultureCards, ...cultureCards, ...cultureCards].map((card, i) => (
                 <div
                   key={`${card.title}-${i}`}
-                  className="group relative h-[168px] w-[280px] flex-shrink-0 overflow-hidden border border-slate-200/70 bg-gradient-to-b from-[#14324d] via-[#163755] to-[#102a41] shadow-[0_22px_55px_-40px_rgba(15,23,42,0.7)] transition duration-300 hover:-translate-y-1 hover:border-sky-200/70 hover:shadow-[0_28px_70px_-44px_rgba(30,64,175,0.35)]"
+                  className="group relative h-[250px] w-[420px] flex-shrink-0 overflow-hidden border-r border-white/15 bg-slate-900/95 shadow-[0_30px_85px_-48px_rgba(15,23,42,0.85)] transition duration-300 hover:z-[1] hover:-translate-y-1.5"
                 >
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(56,189,248,0.26),transparent_55%),radial-gradient(circle_at_80%_75%,rgba(99,102,241,0.18),transparent_55%)] opacity-80" aria-hidden />
-                  <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-60" aria-hidden />
-
-                  <div className="relative flex h-full flex-col items-center justify-center px-5 text-center">
-                    <div className="relative h-[86px] w-[86px] rounded-2xl border border-white/15 bg-white/[0.07] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-sm">
-                      <Image
-                        src={productRangeImages[i % productRangeImages.length]}
-                        alt={card.title}
-                        fill
-                        className="object-contain p-2 drop-shadow-[0_12px_22px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-[1.05]"
-                        sizes="86px"
-                      />
-                    </div>
-                    <div className="mt-4">
-                      <div className="text-[13px] font-body-medium text-white/90 leading-snug tracking-wide">
-                        {card.title}
-                      </div>
-                    </div>
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.title}
+                    fill
+                    className="scale-110 object-cover object-center opacity-35 blur-[1.5px]"
+                    sizes="(max-width: 640px) 85vw, 390px"
+                  />
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.title}
+                    fill
+                    className="object-contain object-center p-2.5 transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 640px) 85vw, 420px"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/78 via-slate-950/20 to-transparent" aria-hidden />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-75" aria-hidden />
+                  <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-60" aria-hidden />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200/90">Product</p>
+                    <h3 className="mt-1 text-base font-semibold leading-snug text-white sm:text-xl">{card.title}</h3>
                   </div>
-
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/25 via-black/5 to-transparent opacity-80" aria-hidden />
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
                 </div>
               ))}
             </div>
@@ -357,11 +368,25 @@ export default function AboutPage() {
         </section>
 
         {/* Stats + Vision + Mission + CTA */}
-        <section className="relative border-t border-gray-100/80 bg-white py-10 lg:py-12">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(59,130,246,0.09),transparent_45%),radial-gradient(circle_at_82%_85%,rgba(14,165,233,0.08),transparent_45%)]" aria-hidden />
+        <section className="relative border-t border-slate-100/80 bg-[radial-gradient(circle_at_18%_12%,rgba(59,130,246,0.09),transparent_45%),radial-gradient(circle_at_82%_85%,rgba(14,165,233,0.08),transparent_45%),linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] py-14 lg:py-16">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
-              className="grid grid-cols-2 gap-6 sm:grid-cols-4"
+              className="mx-auto mb-9 max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.55, ease: smoothEase }}
+            >
+              <div className="inline-flex items-center rounded-full border border-blue-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 shadow-[0_10px_26px_-20px_rgba(37,99,235,0.9)] backdrop-blur">
+                Impact at Scale
+              </div>
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                Trusted by teams running critical workforce operations
+              </h3>
+            </motion.div>
+            <motion.div
+              className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -370,17 +395,20 @@ export default function AboutPage() {
               {[
                 { value: 2500, suffix: "+", label: "Hardware Managed" },
                 { value: 75, suffix: "+", label: "Plants Covered" },
-                { value: 25, suffix: "+", label: "Manufacturing Enterprise" },
+                { value: 25, suffix: "+", label: "Manufacturing Enterprises" },
                 { value: 1, suffix: "L+", label: "Workers on Platform" },
               ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-slate-200 bg-white/80 px-5 py-4 text-center shadow-[0_12px_32px_-26px_rgba(15,23,42,0.35)] backdrop-blur">
+                <div key={stat.label} className="group relative overflow-hidden rounded-2xl border border-white/65 bg-white/80 px-4 py-5 text-center shadow-[0_26px_60px_-40px_rgba(15,23,42,0.5)] ring-1 ring-slate-200/60 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1.5px_rgba(56,189,248,0.95),0_0_0_3px_rgba(99,102,241,0.55),0_0_0_5px_rgba(16,185,129,0.38),0_34px_70px_-42px_rgba(30,64,175,0.45)] sm:px-5 sm:py-6">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(56,189,248,0.18),transparent_40%),radial-gradient(circle_at_80%_85%,rgba(99,102,241,0.12),transparent_42%)]" aria-hidden />
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-sky-400/0 via-indigo-400/0 to-emerald-400/0 opacity-0 transition-opacity duration-300 group-hover:from-sky-400/20 group-hover:via-indigo-400/16 group-hover:to-emerald-400/20 group-hover:opacity-100" aria-hidden />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" aria-hidden />
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
                     duration={1.25}
-                    className="text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-3xl"
+                    className="relative text-[1.95rem] font-heading-bold tracking-tight text-slate-900 sm:text-[2.1rem]"
                   />
-                  <div className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
+                  <div className="relative mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600 sm:text-xs">
                     {stat.label}
                   </div>
                 </div>
@@ -388,26 +416,30 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2"
+              className="mt-11 grid grid-cols-1 gap-5 lg:grid-cols-2"
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.65, ease: smoothEase, delay: 0.05 }}
             >
-              <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50/70 p-7 shadow-[0_18px_55px_-38px_rgba(15,23,42,0.45)]">
-                <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
+              <div className="group relative overflow-hidden rounded-3xl border border-blue-100/90 bg-[linear-gradient(160deg,#ffffff_0%,#eef5ff_100%)] p-7 shadow-[0_24px_60px_-36px_rgba(30,64,175,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(59,130,246,0.95),0_0_0_3px_rgba(56,189,248,0.5),0_0_0_5px_rgba(99,102,241,0.35),0_30px_70px_-38px_rgba(30,64,175,0.42)]">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(59,130,246,0.09),transparent_45%)]" aria-hidden />
+                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-sky-400/0 to-indigo-400/0 opacity-0 transition-opacity duration-300 group-hover:from-blue-400/16 group-hover:via-sky-400/14 group-hover:to-indigo-400/16 group-hover:opacity-100" aria-hidden />
+                <div className="relative inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 shadow-sm">
                   Vision
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-700 sm:text-base">
+                <p className="relative mt-4 text-sm leading-relaxed text-slate-700 sm:text-base lg:text-[1.02rem]">
                   To build the most trusted workforce ecosystem—where work, identity, and financial access seamlessly come together.
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50/70 p-7 shadow-[0_18px_55px_-38px_rgba(15,23,42,0.45)]">
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700">
+              <div className="group relative overflow-hidden rounded-3xl border border-emerald-100/90 bg-[linear-gradient(160deg,#ffffff_0%,#effcf6_100%)] p-7 shadow-[0_24px_60px_-38px_rgba(5,150,105,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(16,185,129,0.95),0_0_0_3px_rgba(34,197,94,0.45),0_0_0_5px_rgba(6,182,212,0.35),0_30px_70px_-40px_rgba(5,150,105,0.4)]">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(16,185,129,0.08),transparent_45%)]" aria-hidden />
+                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-400/0 via-cyan-400/0 to-green-400/0 opacity-0 transition-opacity duration-300 group-hover:from-emerald-400/16 group-hover:via-cyan-400/14 group-hover:to-green-400/16 group-hover:opacity-100" aria-hidden />
+                <div className="relative inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700 shadow-sm">
                   Mission
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-700 sm:text-base">
+                <p className="relative mt-4 text-sm leading-relaxed text-slate-700 sm:text-base lg:text-[1.02rem]">
                   To help enterprises digitize and control workforce operations through unified governance and verified data, and extend this foundation to enable earned wage access and a curated marketplace of financial and worker-focused services.
                 </p>
               </div>
@@ -420,29 +452,29 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
             >
-              <div className="rounded-3xl bg-gradient-to-r from-amber-300 via-yellow-200 to-blue-600 p-[2px] shadow-[0_22px_70px_-46px_rgba(15,23,42,0.55)]">
-                <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-2px)] bg-white">
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(245,158,11,0.32),rgba(59,130,246,0.32),rgba(16,185,129,0.28))] opacity-20" aria-hidden />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-white/90" aria-hidden />
+              <div className="rounded-3xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-600 p-[1.5px] shadow-[0_30px_90px_-52px_rgba(29,78,216,0.75)]">
+                <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1.5px)] bg-[linear-gradient(145deg,#f8fbff_0%,#f1f7ff_48%,#eef8ff_100%)]">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_18%,rgba(56,189,248,0.2),transparent_40%),radial-gradient(circle_at_88%_78%,rgba(99,102,241,0.16),transparent_42%)]" aria-hidden />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-white/85" aria-hidden />
                   <div className="relative flex flex-col items-center justify-center gap-5 px-6 py-8 text-center sm:px-10 sm:py-10">
                     <div className="max-w-2xl">
-                      <div className="text-4xl font-bold text-slate-700">
+                      <div className="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
                         Ready to collaborate or learn more?
                       </div>
-                      <div className="mt-2 text-xl leading-relaxed text-slate-600 sm:text-base">
+                      <div className="mt-2 text-base leading-relaxed text-slate-600 sm:text-lg">
                         Reach out to us and let’s create impactful solutions together.
                       </div>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center justify-center gap-3">
                       <Link
                         href="/#contact"
-                        className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700"
+                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_35px_-20px_rgba(37,99,235,0.95)] transition hover:from-blue-700 hover:to-indigo-700"
                       >
                         Book a Demo
                       </Link>
                       <a
                         href="tel:08027745220"
-                        className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+                        className="inline-flex items-center justify-center rounded-xl border border-slate-300/80 bg-white/90 px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-white"
                       >
                         Get a Call Back
                       </a>
@@ -455,7 +487,7 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Us: tech tree visual + Expertise card */}
-        <section className="border-t border-gray-100/80 bg-white py-4 lg:py-6">
+        <section className="border-t border-gray-100/80 bg-white pb-0 pt-4 lg:pb-0 lg:pt-6">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -475,44 +507,34 @@ export default function AboutPage() {
             />
 
             <div className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:items-center lg:gap-5 xl:gap-6">
-              {/* Left: tech icons grid (tree-like visual) */}
+              {/* Left: illustrative image */}
               <motion.div
-                className="relative flex flex-wrap justify-center gap-4 sm:gap-6 lg:col-span-5"
+                className="relative overflow-hidden rounded-2xl bg-white lg:col-span-6"
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                {techIcons.map((icon, i) => (
-                  <motion.div
-                    key={icon.name}
-                    className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.4, ease: smoothEase, delay: 0.05 * i }}
-                    whileHover={{ scale: 1.08 }}
-                  >
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d={icon.path} />
-                    </svg>
-                  </motion.div>
-                ))}
+                <div className="relative min-h-[23rem] w-full sm:min-h-[28rem] lg:min-h-[34rem]">
+                  <Image
+                    src="/t2-removed.png"
+                    alt="Why choose us visual"
+                    fill
+                    className="object-contain object-center px-4 pt-4sm:p-6"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                  />
+                </div>
               </motion.div>
 
               {/* Right: Expertise card with slider */}
               <motion.div
-                className="rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm sm:p-7 lg:col-span-7 lg:p-8"
+                className="relative rounded-2xl border border-gray-200 bg-slate-50 p-6 shadow-sm sm:p-7 lg:col-span-6 lg:min-h-[34rem] lg:p-8"
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase }}
               >
-                <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">Expertise</h3>
-                <p className="mt-2 text-base leading-relaxed text-gray-600 sm:text-lg">
-                  Our team brings diverse expertise across technology, compliance, and operations to deliver solutions that work for you.
-                </p>
-                <div className="mt-5 min-h-[9.5rem] sm:min-h-[10rem] lg:min-h-[11rem]">
+                <div className="mx-auto flex min-h-[18rem] max-w-xl flex-col items-center justify-center text-center sm:min-h-[20rem] lg:min-h-[22rem]">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={expertiseIndex}
@@ -520,49 +542,52 @@ export default function AboutPage() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -12 }}
                       transition={{ duration: 0.3, ease: smoothEase }}
+                      className="flex flex-col items-center"
                     >
-                      <h4 className="text-lg font-bold tracking-tight text-gray-900 sm:text-xl lg:text-2xl">
+                      <h4 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                         {expertiseSlides[expertiseIndex].title}
                       </h4>
-                      <p className="mt-3 text-base leading-relaxed text-gray-600 sm:text-lg lg:text-xl lg:leading-relaxed">
+                      <p className="mt-4 max-w-[32rem] text-base leading-relaxed text-gray-600 sm:text-lg">
                         {expertiseSlides[expertiseIndex].text}
                       </p>
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <div className="mt-5 flex items-center justify-between sm:mt-6">
-                  <div className="flex gap-2">
+
+                <div className="absolute inset-x-0 bottom-6 flex items-center justify-center">
+                  <div className="flex gap-2.5">
                     {expertiseSlides.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setExpertiseIndex(i)}
                         className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                          i === expertiseIndex ? "scale-110 bg-blue-600" : "bg-gray-300 hover:bg-gray-400"
+                          i === expertiseIndex ? "scale-110 bg-blue-600" : "bg-slate-300 hover:bg-slate-400"
                         }`}
                         aria-label={`Go to slide ${i + 1}`}
                       />
                     ))}
                   </div>
-                  <div className="flex gap-1.5">
-                    <button
-                      onClick={() => setExpertiseIndex((prev) => (prev === 0 ? expertiseSlides.length - 1 : prev - 1))}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-gray-300 hover:bg-gray-100 active:scale-95"
-                      aria-label="Previous"
-                    >
-                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))}
-                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-gray-300 hover:bg-gray-100 active:scale-95"
-                      aria-label="Next"
-                    >
-                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
+                </div>
+
+                <div className="absolute bottom-5 left-5 flex gap-1.5">
+                  <button
+                    onClick={() => setExpertiseIndex((prev) => (prev === 0 ? expertiseSlides.length - 1 : prev - 1))}
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-300 text-gray-600 transition hover:border-gray-400 hover:bg-white active:scale-95"
+                    aria-label="Previous"
+                  >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))}
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-300 text-gray-600 transition hover:border-gray-400 hover:bg-white active:scale-95"
+                    aria-label="Next"
+                  >
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
               </motion.div>
             </div>
