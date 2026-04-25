@@ -2,19 +2,72 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useLayoutEffect, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedCounter from "../components/AnimatedCounter";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-/** Hero background — `public/images/about-us.jpg` */
-const aboutHeroBg = "/images/about-us.jpg";
+const aboutHeroOfficeImage =
+  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=85";
+
+const aboutHeroStats = [
+  {
+    value: "1L+",
+    label: "Verified workers",
+    icon: "users" as const,
+  },
+  {
+    value: "25+",
+    label: "Enterprise clients",
+    icon: "building" as const,
+  },
+  {
+    value: "3000+",
+    label: "Devices deployed",
+    icon: "chip" as const,
+  },
+  {
+    value: "₹5 Cr+",
+    label: "Enterprise revenue",
+    icon: "trend" as const,
+  },
+];
+
+function AboutHeroStatIcon({ name }: { name: (typeof aboutHeroStats)[number]["icon"] }) {
+  const c = "h-7 w-7 text-white/95";
+  if (name === "users") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M17 20v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M13 7a4 4 0 11-8 0 4 4 0 018 0zm6 6v2M21 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    );
+  }
+  if (name === "building") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    );
+  }
+  if (name === "chip") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+  );
+}
 
 const cultureCards: { title: string; imageSrc: string }[] = [
-  { title: "Optisecure 5K", imageSrc: "/optisecure5k.jpeg" },
-  { title: "Optisecure T7", imageSrc: "/optisecuret7.jpeg" },
-  { title: "Biosense", imageSrc: "/biosense.jpeg" },
+  { title: "Optisecure 5K", imageSrc: "/images/optisecure-5k.png" },
+  { title: "Optisecure T7", imageSrc: "/images/optisecure-t7.png" },
+  { title: "Biosense", imageSrc: "/images/biosense.png" },
   { title: "HR Information System", imageSrc: "/hrinfromationsystem.jpeg" },
   { title: "Contract Workforce Governance System", imageSrc: "/contractworkforcemanagemtsystem.jpeg" },
   { title: "EWA", imageSrc: "/ewa.jpeg" },
@@ -62,6 +115,107 @@ const expertiseSlides = [
   },
 ];
 
+type EvolutionMilestone = {
+  year: string;
+  side: "left" | "right";
+  title: string;
+  description: string;
+  icon: "grid" | "shield" | "users" | "building" | "layers" | "trend";
+  highlight?: boolean;
+  badge?: string;
+};
+
+const evolutionMilestones: EvolutionMilestone[] = [
+  {
+    year: "2014",
+    side: "right",
+    title: "Enterprise IT & Product Services",
+    description: "The foundation of our engineering excellence.",
+    icon: "grid",
+  },
+  {
+    year: "2021",
+    side: "left",
+    title: "Biometric & Hardware Solutions",
+    description: "Securing the perimeter with advanced identity tech.",
+    icon: "shield",
+  },
+  {
+    year: "2022",
+    side: "right",
+    title: "Attendance & Workforce Systems",
+    description: "Bridging the gap between physical and digital records.",
+    icon: "users",
+  },
+  {
+    year: "2023",
+    side: "left",
+    title: "Canteen & Visitor Management",
+    description: "Extending governance to secondary facility operations.",
+    icon: "building",
+  },
+  {
+    year: "2025",
+    side: "right",
+    title: "CLMS Platform",
+    description: "The launch of our flagship Labour Management System.",
+    icon: "layers",
+    highlight: true,
+  },
+  {
+    year: "2026",
+    side: "left",
+    title: "Financial Layer (EWA)",
+    description: "Empowering workers with Earned Wage Access.",
+    icon: "trend",
+    badge: "Roadmap",
+  },
+];
+
+function EvolutionTimelineIcon({ name }: { name: EvolutionMilestone["icon"] }) {
+  const c = "h-5 w-5";
+  if (name === "grid") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      </svg>
+    );
+  }
+  if (name === "shield") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    );
+  }
+  if (name === "users") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    );
+  }
+  if (name === "building") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    );
+  }
+  if (name === "layers") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3L2 8l10 5 10-5-10-5zM2 13l10 5 10-5M2 18l10 5 10-5" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 17l6-6 4 4 8-8M14 7h7v7" />
+    </svg>
+  );
+}
+
 const techIcons = [
   { name: "Cloud", path: "M3 15a4 4 0 004 4h10a4 4 0 004-4V9a4 4 0 00-4-4H7a4 4 0 00-4 4v6zm0 0h4v4" },
   { name: "Gear", path: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" },
@@ -75,8 +229,6 @@ const techIcons = [
 
 export default function AboutPage() {
   const [expertiseIndex, setExpertiseIndex] = useState(0);
-  const textColumnRef = useRef<HTMLDivElement>(null);
-  const [galleryHeightPx, setGalleryHeightPx] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -86,208 +238,350 @@ export default function AboutPage() {
     return () => window.clearInterval(timer);
   }, []);
 
-  useLayoutEffect(() => {
-    const el = textColumnRef.current;
-    if (!el || typeof ResizeObserver === "undefined") return;
-
-    const mq = window.matchMedia("(min-width: 1024px)");
-
-    const readTextHeight = () => {
-      const h = el.offsetHeight;
-      return h > 0 ? Math.round(h) : null;
-    };
-
-    const syncHeight = () => {
-      if (!mq.matches) {
-        setGalleryHeightPx(undefined);
-        return;
-      }
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const h = readTextHeight();
-          if (h != null) setGalleryHeightPx(h);
-        });
-      });
-    };
-
-    const ro = new ResizeObserver(syncHeight);
-    ro.observe(el);
-    mq.addEventListener("change", syncHeight);
-    window.addEventListener("resize", syncHeight);
-
-    let cancelled = false;
-    document.fonts?.ready?.then(() => {
-      if (!cancelled) syncHeight();
-    });
-
-    syncHeight();
-
-    return () => {
-      cancelled = true;
-      ro.disconnect();
-      mq.removeEventListener("change", syncHeight);
-      window.removeEventListener("resize", syncHeight);
-    };
-  }, []);
-
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — about-us.jpg + overlays (CSS background for reliable load) */}
+        {/* Hero — two-column intro + stats strip */}
         <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
+          className="border-b border-slate-100 bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
         >
-          <div
-            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url("${aboutHeroBg}")` }}
-            aria-hidden
-          />
-          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
-          <div
-            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(56,189,248,0.12),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              About US
-            </motion.h1>
+          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-14">
             <motion.nav
-              className="mt-3 text-sm text-white/90"
-              initial={{ opacity: 0, y: 16 }}
+              className="text-sm text-slate-500"
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
               aria-label="Breadcrumb"
             >
-              <Link href="/" className="hover:text-white transition-colors">
+              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-indigo-600">
                 Home
               </Link>
-              <span className="mx-2 text-white/60">/</span>
-              <span className="text-blue-300 font-medium">About US</span>
+              <span className="mx-2 text-slate-400">/</span>
+              <span className="font-medium text-slate-900">About us</span> */}
             </motion.nav>
+
+            <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:mt-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+              <div>
+                <motion.span
+                  className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-800"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+                >
+                  About InOps
+                </motion.span>
+                <motion.h1
+                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
+                >
+                  Bringing{" "}
+                  <span className="text-indigo-600">Control &amp; Transparency</span> to Enterprise
+                  Operations.
+                </motion.h1>
+                <motion.p
+                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                >
+                  InOps is a workforce technology platform built to optimize enterprise workforce
+                  operations. We unify identity, compliance, and financial layers into a single,
+                  seamless ecosystem.
+                </motion.p>
+              </div>
+
+              <motion.div
+                className="relative mx-auto w-full max-w-xl lg:max-w-none"
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/60 lg:aspect-[5/4]">
+                  <Image
+                    src={aboutHeroOfficeImage}
+                    alt="Modern enterprise office — glass meeting spaces and collaborative workspace"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-12 lg:pb-14 lg:pt-12">
+            {/* <motion.div
+              className="rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-700 px-5 py-8 shadow-lg shadow-indigo-900/20 sm:px-8 sm:py-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, ease: smoothEase, delay: 0.22 }}
+            >
+              <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6 lg:gap-8">
+                {aboutHeroStats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex flex-col items-center text-center sm:items-center"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10">
+                      <AboutHeroStatIcon name={stat.icon} />
+                    </div>
+                    <p className="mt-4 text-2xl font-bold tabular-nums tracking-tight text-white sm:text-3xl">
+                      {stat.value}
+                    </p>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-100 sm:text-xs">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div> */}
           </div>
         </motion.section>
 
-        {/* About InOps: intro + hero image */}
-        <section className="border-t border-gray-100/80 py-6 lg:py-10 bg-white">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-5 xl:gap-6 lg:items-start">
-              {/* Left: height matches text column on lg (ResizeObserver); full half width */}
-              <motion.div
-                className="w-full min-h-0 overflow-hidden lg:min-h-0"
-                style={
-                  galleryHeightPx != null
-                    ? { height: galleryHeightPx, maxHeight: galleryHeightPx }
-                    : undefined
-                }
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+        {/* Company story */}
+        {/* <section className="border-t border-gray-100/80 bg-white py-10 lg:py-14">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-12">
+            <motion.h2
+              className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              One Platform. Complete Workforce, Financial &amp; Operational Control
+            </motion.h2>
+            <motion.p
+              className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+            >
+              InOps IT Solutions enables enterprises to manage workforce operations, financial access,
+              and business processes through a unified platform. From workforce governance and
+              face-based identity solutions to earned wage access and enterprise operations, InOps
+              brings visibility, compliance, and control into one system. Designed for large,
+              distributed organizations, it integrates seamlessly with existing infrastructure while
+              improving efficiency, reducing risk, and driving productivity at scale.
+            </motion.p>
+          </div>
+        </section> */}
+
+        {/* Full-stack governance — leadership message */}
+        <section
+          className="relative overflow-hidden border-t border-slate-100 bg-gradient-to-b from-slate-50 via-white to-slate-50/40 py-14 lg:py-20"
+          aria-labelledby="governance-platform-heading"
+        >
+          <div
+            className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-indigo-400/15 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-sky-400/15 blur-3xl"
+            aria-hidden
+          />
+          <div className="relative mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-12">
+            <motion.div
+              className="relative w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-8 shadow-[0_24px_70px_-48px_rgba(15,23,42,0.45)] ring-1 ring-slate-100/80 sm:p-10 lg:p-12"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.6, ease: smoothEase }}
+            >
+              <div
+                className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-indigo-300/70 to-transparent sm:inset-x-12"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-500 via-sky-500 to-indigo-400/30 opacity-90 sm:w-1.5 sm:rounded-l-3xl"
+                aria-hidden
+              />
+
+              <div className="relative w-full sm:pl-2">
+              <motion.p
+                className="w-full max-w-none text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-600/90"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.75, ease: smoothEase }}
+                transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
               >
+                Leadership perspective
+              </motion.p>
+              <motion.h2
+                id="governance-platform-heading"
+                className="mt-4 w-full max-w-none text-center text-2xl font-bold tracking-tight text-balance text-slate-900 sm:text-3xl lg:text-4xl lg:leading-tight"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+              >
+                A Full-Stack Workforce Governance Platform
+              </motion.h2>
+              <motion.div
+                className="mt-8 flex flex-col gap-8 lg:mt-10 lg:flex-row lg:items-stretch lg:gap-0"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
+              >
+                <p className="flex-1 text-left text-base leading-[1.75] text-slate-600 sm:text-lg lg:pr-10 lg:leading-[1.72]">
+                  Starting with identity and access control systems, InOps has evolved into a comprehensive
+                  system enabling enterprises to manage contract labor at scale with real-time visibility
+                  and compliance assurance.
+                </p>
+
                 <motion.div
-                  className={
-                    "group relative min-h-0 overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 shadow-[0_28px_70px_-52px_rgba(15,23,42,0.55)] " +
-                    (galleryHeightPx != null ? "h-full" : "aspect-[16/10]")
-                  }
-                  initial={{ opacity: 0, y: 24 }}
+                  className="flex flex-col justify-center border-t border-slate-200/90 pt-8 lg:w-[min(100%,22rem)] lg:shrink-0 lg:self-stretch lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 xl:w-96"
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.6, ease: smoothEase }}
-                  whileHover={{ y: -3, transition: { duration: 0.22, ease: smoothEase } }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.16 }}
                 >
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-100/45 via-white/10 to-transparent" aria-hidden />
-                  <Image
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85"
-                    alt="Unified platform for workforce and operations"
-                    fill
-                    className="object-cover object-center transition duration-700 ease-out group-hover:scale-[1.03]"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority={false}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/10 to-transparent" aria-hidden />
-                  <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur">
-                    One platform
-                  </div>
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <div className="h-px w-full bg-gradient-to-r from-white/55 via-white/15 to-transparent" aria-hidden />
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {["Workforce", "Finance", "Operations", "Compliance"].map((pill) => (
-                        <span
-                          key={pill}
-                          className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-medium text-white/85 backdrop-blur"
-                        >
-                          {pill}
-                        </span>
-                      ))}
+                  <div className="flex h-full min-h-0 flex-col items-center justify-center gap-5 text-center sm:gap-6">
+                    <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full ring-[5px] ring-indigo-50 shadow-xl shadow-slate-900/15 sm:h-40 sm:w-40 lg:h-44 lg:w-44">
+                      <Image
+                        src="/images/image.png"
+                        alt="Prashanth K., Chief Executive Officer, InOps"
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 640px) 144px, 176px"
+                      />
+                    </div>
+                    <div className="min-w-0 max-w-[16rem]">
+                      <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Prashanth K.</p>
+                      <p className="mt-2 text-sm font-medium leading-snug text-slate-600 sm:text-base">
+                        Chief Executive Officer
+                      </p>
+                      <p className="mt-1.5 text-sm font-medium text-slate-500">InOps</p>
                     </div>
                   </div>
                 </motion.div>
               </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-              {/* Right: heading + paragraph — ref on native div so height sync always runs */}
-              <motion.div
-                className="min-h-0"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.75, ease: smoothEase, delay: 0.1 }}
+        {/* Our Evolution — vertical timeline */}
+        <section
+          className="border-t border-slate-200/80 bg-slate-50 py-14 lg:py-20"
+          aria-labelledby="our-evolution-heading"
+        >
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+            <motion.div
+              className="mx-auto max-w-2xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2
+                id="our-evolution-heading"
+                className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
               >
-                <div ref={textColumnRef} className="min-h-0">
-                <motion.h2
-                  className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.2 }}
-                >
-                  One Platform. Complete Workforce, Financial &amp; Operational Control
-                </motion.h2>
-                <motion.p
-                  className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.28 }}
-                >
-                  InOps IT Solutions enables enterprises to manage workforce operations, financial access, and business processes through a unified platform. From workforce governance and face-based identity solutions to earned wage access and enterprise operations, InOps brings visibility, compliance, and control into one system. Designed for large, distributed organizations, it integrates seamlessly with existing infrastructure while improving efficiency, reducing risk, and driving productivity at scale.
-                </motion.p>
+                Our Evolution
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
+                A decade of engineering excellence and workforce transformation.
+              </p>
+            </motion.div>
 
-                {/* Key differentiators */}
-                {/* <div className="mt-8 space-y-6">
-                  {differentiators.map((item, i) => (
-                    <motion.div
-                      key={item.title}
-                      className="flex gap-4 rounded-xl py-1 transition-colors duration-200 hover:bg-slate-50/80"
-                      initial={{ opacity: 0, x: 24 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={viewport}
-                      transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 * i }}
-                      whileHover={{ x: 4, transition: { duration: 0.2, ease: smoothEase } }}
+            <div className="relative mx-auto mt-14 max-w-4xl">
+              {/* Center rail (desktop) */}
+              <div
+                className="absolute left-8 top-2 bottom-2 hidden w-px bg-slate-300 md:left-1/2 md:block md:-translate-x-1/2"
+                aria-hidden
+              />
+              {/* Mobile line */}
+              <div className="absolute left-8 top-2 bottom-2 w-px bg-slate-300 md:hidden" aria-hidden />
+
+              <ul className="relative space-y-10 sm:space-y-12">
+                {evolutionMilestones.map((m, i) => (
+                  <li key={m.year} className="relative">
+                    {/* Node on the line */}
+                    <div
+                      className="absolute left-8 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-2 border-indigo-500 bg-white text-indigo-600 shadow-md md:left-1/2"
+                      aria-hidden
                     >
-                      <span className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 text-sm font-bold">
-                        ✓
-                      </span>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                        <p className="mt-1 text-gray-600 text-sm sm:text-base leading-relaxed">{item.text}</p>
-                      </div>
+                      <EvolutionTimelineIcon name={m.icon} />
+                    </div>
+
+                    <motion.div
+                      className={`pl-20 md:grid md:grid-cols-2 md:gap-10 md:pl-0 ${
+                        m.side === "left" ? "" : ""
+                      }`}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={viewport}
+                      transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.04, 0.2) }}
+                    >
+                      {m.side === "left" ? (
+                        <>
+                          <div className="md:col-start-1 md:row-start-1 md:pr-10 md:text-right">
+                            <div
+                              className={`rounded-2xl border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg ${
+                                m.highlight
+                                  ? "border-indigo-200/80 bg-violet-50/90"
+                                  : "border-slate-200/90 bg-white"
+                              }`}
+                            >
+                              <div className="flex flex-wrap items-baseline gap-2 md:justify-end">
+                                <span className="text-3xl font-bold tracking-tight text-indigo-600 sm:text-4xl">
+                                  {m.year}
+                                </span>
+                                {m.badge ? (
+                                  <span className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-slate-600">
+                                    {m.badge}
+                                  </span>
+                                ) : null}
+                              </div>
+                              <h3 className="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{m.title}</h3>
+                              <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                                {m.description}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="hidden md:col-start-2 md:block" aria-hidden />
+                        </>
+                      ) : (
+                        <>
+                          <div className="hidden md:col-start-1 md:block" aria-hidden />
+                          <div className="md:col-start-2 md:row-start-1 md:pl-10">
+                            <div
+                              className={`rounded-2xl border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg ${
+                                m.highlight
+                                  ? "border-indigo-200/80 bg-violet-50/90"
+                                  : "border-slate-200/90 bg-white"
+                              }`}
+                            >
+                              <div className="flex flex-wrap items-baseline gap-2">
+                                <span className="text-3xl font-bold tracking-tight text-indigo-600 sm:text-4xl">
+                                  {m.year}
+                                </span>
+                                {m.badge ? (
+                                  <span className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-slate-600">
+                                    {m.badge}
+                                  </span>
+                                ) : null}
+                              </div>
+                              <h3 className="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{m.title}</h3>
+                              <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                                {m.description}
+                              </p>
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </motion.div>
-                  ))}
-                </div> */}
-                </div>
-              </motion.div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>

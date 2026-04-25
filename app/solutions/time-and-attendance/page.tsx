@@ -7,6 +7,8 @@ import SolutionModulePanel from "@/app/components/SolutionModulePanel";
 
 /** Same asset as `public/WhatsApp Image 2026-04-02 at 11.52.33 AM.jpeg` (clean path for URLs) */
 const timeAttendanceProductImage = "/images/inops-time-attendance-product.jpeg";
+const optiCamSolutionImage =
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80";
 
 const authAccessGalleryImages = [
   {
@@ -28,10 +30,6 @@ const authAccessGalleryImages = [
     height: 600,
   },
 ] as const;
-
-/** Hero background — industrial / workforce (Unsplash, high-res) */
-const timeAttendanceHeroBg =
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2400&q=85";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -131,388 +129,561 @@ export default function TimeAndAttendancePage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — online background photo + overlay for title / breadcrumb */}
-        <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute inset-0">
-            <Image
-              src={timeAttendanceHeroBg}
-              alt=""
-              fill
-              unoptimized
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gray-900/55" aria-hidden />
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/60 to-gray-900/75"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_20%,rgba(6,182,212,0.15),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Time & Attendance
-            </motion.h1>
-            <motion.nav
-              className="mt-4 text-sm text-white/90"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-white/60">/</span>
-              <span className="text-blue-300 font-medium">Time & Attendance</span>
-            </motion.nav>
-          </div>
-        </motion.section>
-
-        {/* Main content – title, intro, benefits diagram, description */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="mt-10 border-t border-gray-200 bg-white py-8 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-start">
-              {/* Left: title + circular benefits infographic */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
-                className="flex flex-col items-center lg:items-start"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-                  Time & Attendance
-                </h2>
-                <p className="mt-4 text-gray-600 leading-relaxed text-base lg:max-w-md">
-                  InOps introduces biometric time and attendance capture designed for industrial and enterprise workforces—accurate punches, fewer disputes, and cleaner payroll inputs.
-                </p>
-                {/* Circular benefits infographic */}
-                <div className="mt-6 relative w-full max-w-sm aspect-square mx-auto lg:mx-0">
-                  <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
-                    {/* Connecting lines from center to nodes */}
-                    {benefits.map((_, i) => {
-                      const angle = (i * 60 - 90) * (Math.PI / 180);
-                      const x1 = 200 + 75 * Math.cos(angle);
-                      const y1 = 200 + 75 * Math.sin(angle);
-                      const x2 = 200 + 140 * Math.cos(angle);
-                      const y2 = 200 + 140 * Math.sin(angle);
-                      return (
-                        <line
-                          key={i}
-                          x1={x1}
-                          y1={y1}
-                          x2={x2}
-                          y2={y2}
-                          stroke="rgba(148, 163, 184, 0.5)"
-                          strokeWidth="2"
-                        />
-                      );
-                    })}
-                    {/* Center circle */}
-                    <circle cx="200" cy="200" r="70" fill="rgb(30 41 59)" stroke="rgb(71 85 105)" strokeWidth="2" />
-                    <text x="200" y="195" textAnchor="middle" fill="#e2e8f0" style={{ fontSize: "11px", fontWeight: 600 }}>Benefits of</text>
-                    <text x="200" y="210" textAnchor="middle" fill="#e2e8f0" style={{ fontSize: "11px", fontWeight: 600 }}>Attendance</text>
-                    <text x="200" y="225" textAnchor="middle" fill="#e2e8f0" style={{ fontSize: "11px", fontWeight: 600 }}>Tracking Software</text>
-                    {/* Outer benefit nodes */}
-                    {benefits.map((b, i) => {
-                      const angle = (i * 60 - 90) * (Math.PI / 180);
-                      const cx = 200 + 155 * Math.cos(angle);
-                      const cy = 200 + 155 * Math.sin(angle);
-                      const colors: Record<string, string> = {
-                        "bg-violet-500": "#8b5cf6",
-                        "bg-pink-500": "#ec4899",
-                        "bg-amber-500": "#f59e0b",
-                        "bg-yellow-500": "#eab308",
-                        "bg-emerald-500": "#10b981",
-                        "bg-cyan-500": "#06b6d4",
-                      };
-                      const fill = colors[b.color] || "#06b6d4";
-                      const words = b.label.split(" ");
-                      const line1 = words.length > 2 ? words.slice(0, 2).join(" ") : b.label;
-                      const line2 = words.length > 2 ? words.slice(2).join(" ") : "";
-                      return (
-                        <g key={b.label}>
-                          <circle cx={cx} cy={cy} r="44" fill={fill} />
-                          <text x={cx} y={line2 ? cy - 4 : cy} textAnchor="middle" dominantBaseline="middle" fill="white" style={{ fontSize: "9px", fontWeight: 600 }}>{line1}</text>
-                          {line2 && <text x={cx} y={cy + 8} textAnchor="middle" dominantBaseline="middle" fill="white" style={{ fontSize: "8px" }}>{line2}</text>}
-                        </g>
-                      );
-                    })}
-                  </svg>
-                </div>
-              </motion.div>
-
-              {/* Right: intro + second paragraph */}
-              <motion.div
-                className="lg:pt-8"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-                  With cutting-edge technology and user-friendly features, our device streamlines attendance tracking, boosts productivity, and ensures accurate timekeeping. Below are eight features and benefits that set our device apart:
-                </p>
-                {/* Benefit list as text backup */}
-                <ul className="mt-8 space-y-3">
-                  {benefits.map((b, i) => (
-                    <li key={b.label} className="flex items-center gap-3 text-gray-600">
-                      <span className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${b.color} text-sm font-bold text-white`}>
-                        {i + 1}
-                      </span>
-                      <span>{b.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <SolutionModulePanel
-          title="Authentication & Access Control"
-          intro="InOps Solutions provides a robust authentication and access control system designed to manage secure entry into industrial environments. This module integrates biometric devices such as fingerprint scanners and facial recognition systems with physical access control systems like turnstiles."
-          bullets={[
-            "Biometric identity verification using fingerprint and face recognition",
-            "Integration with turnstile gates and access control hardware",
-            "Real-time logging of entry and exit events",
-            "Prevention of unauthorized access and proxy attendance",
-          ]}
-          workflow="When a worker attempts entry, the biometric device captures identity data and sends it for validation. Upon successful verification, access is granted through turnstile systems. Each transaction is recorded instantly and reflected in the central dashboard."
-          closing="This module acts as the first layer of the platform, ensuring secure and controlled workforce entry while generating accurate attendance data."
-          imageGallery={[...authAccessGalleryImages]}
-        />
-
-        {/* Features & Benefits */}
-        <section className="border-t border-blue-100/80 bg-gradient-to-b from-slate-50 via-blue-50/35 to-slate-50 py-6 lg:py-10">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Features & Benefits
-            </motion.h2>
-            <div className="mx-auto mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600" aria-hidden />
-            <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-2 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-2">
-              {featuresAndBenefits.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className="flex gap-3 py-1 sm:gap-3.5"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
-                >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white shadow-sm`}>
-                    <CheckIcon className="h-5 w-5 text-white" />
-                  </span>
-                  <div className="min-w-0 space-y-2">
-                    <h3 className="font-bold text-slate-900">{item.title}</h3>
-                    <p className="text-sm leading-snug text-slate-600">{item.description}</p>
-                    <div>
-                      <p className="text-sm font-semibold text-blue-700">{item.sub.title}</p>
-                      <p className="mt-0.5 text-sm leading-snug text-slate-600">{item.sub.text}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Product spotlight — one row: copy left, image right (stacks on small screens) */}
-        <section
-          className="border-t border-sky-100/80 bg-[#f5faff] py-10 lg:py-14"
-          aria-labelledby="ta-product-heading"
-        >
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-14">
-              <motion.div
-                className="text-center lg:text-left"
-                initial={{ opacity: 0, x: -16 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
-                <span className="inline-flex rounded-full border border-blue-200/90 bg-blue-50/90 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-800">
-                  InOps Solutions
+                <span className="inline-flex rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
+                  Next-Gen Enterprise Attendance
                 </span>
-                <h2
-                  id="ta-product-heading"
-                  className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
-                >
-                  Time & Attendance Biometric Device
+                <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+                  <span className="text-slate-900">
+                    Attendance <br />
+                  </span>
+                  <span className="text-[color:var(--inops-blue)]">
+                    Without Devices.
+                  </span>
+                  <br />
+                  <span className="italic text-slate-900">Powered by AI.</span>
                 </h2>
-                <div
-                  className="mx-auto mt-4 h-1 w-24 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 lg:mx-0"
-                  aria-hidden
-                />
-                <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Rugged on-device punch capture and a clear timekeeping workspace—so supervisors see shifts, hours, and exceptions without waiting for month-end. InOps Solutions feeds cleaner data into payroll and HRMS.
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+                  Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer vision. No queues, no contact, no excuses.
                 </p>
-                <ul className="mx-auto mt-8 max-w-md space-y-3 text-left text-sm text-slate-600 lg:mx-0">
-                  {[
-                    "Biometric capture with audit-friendly logs for industrial floors.",
-                    "Live dashboards for planned shifts and today's roster.",
-                    "Structured punches ready for statutory and payroll workflows.",
-                  ].map((line) => (
-                    <li key={line} className="flex gap-3">
-                      <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[color:var(--inops-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--inops-navy)]"
+                  >
+                    Book a Live Demo
+                    <span aria-hidden>→</span>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center rounded-xl border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
+                  >
+                    Calculate ROI
+                  </Link>
+                </div>
+
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3, 4].map((dot) => (
+                      <span
+                        key={dot}
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-[10px] font-semibold text-emerald-600"
+                      >
                         ✓
                       </span>
-                      <span className="leading-snug">{line}</span>
-                    </li>
-                  ))}
-                </ul>
+                    ))}
+                  </div>
+                  <p className="text-sm text-slate-600">
+                    Trusted by <span className="font-semibold text-slate-900">500+ Enterprises</span> globally.
+                  </p>
+                </div>
               </motion.div>
 
               <motion.div
-                className="lg:pl-2"
-                initial={{ opacity: 0, x: 16 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+                className="relative"
               >
-                <div className="relative">
-                  <div className="relative overflow-hidden rounded-2xl border-0 bg-transparent shadow-none ring-0">
-                    <div className="relative aspect-[4/3] w-full min-h-[220px] sm:min-h-[260px] lg:aspect-auto lg:min-h-[320px] xl:min-h-[420px]">
-                      <Image
-                        src={timeAttendanceProductImage}
-                        alt="InOps Solutions biometric attendance terminal with fingerprint reader next to a timekeeping and scheduling dashboard"
-                        fill
-                        className="object-contain object-center bg-transparent p-3 sm:p-5 lg:p-6 mt-10"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                    </div>
+                <div className="relative overflow-hidden rounded-2xl border border-slate-300 bg-slate-100 shadow-lg">
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={timeAttendanceProductImage}
+                      alt="AI-enabled attendance monitoring interface"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
-                 
+                </div>
+                <div className="absolute -bottom-6 right-0 rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-xl">
+                  <p className="text-4xl font-bold text-slate-900">99.8%</p>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    Facial Recognition Accuracy
+                  </p>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="border-t border-gray-100 bg-[#f8fafc] py-10 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-2xl font-bold text-slate-900 sm:text-3xl"
+            <motion.div
+              className="max-w-3xl"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              Powerful Services for Your Business
-            </motion.h2>
-            <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              {powerfulServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
+              <h2 className="text-3xl font-bold tracking-tight text-[color:var(--inops-blue)] sm:text-5xl">
+                The Hidden Cost of Traditional Biometrics
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-slate-500 sm:text-xl">
+                Legacy hardware systems are failing modern enterprises with hidden costs and systemic inefficiencies.
+              </p>
+            </motion.div>
+
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+              {[
+                {
+                  title: "Endless Queues",
+                  description: "Employees spend average 8 minutes daily waiting at biometric checkpoints during peak hours.",
+                  icon: "clock",
+                },
+                {
+                  title: "Buddy Punching",
+                  description: "Time theft through shared cards or fingerprints costs businesses up to 2% of annual payroll.",
+                  icon: "users",
+                },
+                {
+                  title: "High Capex",
+                  description: "Proprietary hardware devices require frequent maintenance, licenses, and replacement.",
+                  icon: "briefcase",
+                },
+                {
+                  title: "Data Gaps",
+                  description: "Multi-location enterprises struggle with fragmented data and delayed sync between sites.",
+                  icon: "globe",
+                },
+              ].map((item, i) => (
+                <motion.article
+                  key={item.title}
+                  className="rounded-2xl bg-transparent p-1"
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
                 >
-                  <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
-                    <ServiceIcon icon={service.icon} />
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-400">
+                    {item.icon === "clock" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </svg>
+                    )}
+                    {item.icon === "users" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="9" cy="8" r="3" />
+                        <circle cx="17" cy="9" r="2" />
+                        <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                        <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                      </svg>
+                    )}
+                    {item.icon === "briefcase" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <rect x="3" y="7" width="18" height="12" rx="2" />
+                        <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
+                      </svg>
+                    )}
+                    {item.icon === "globe" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                      </svg>
+                    )}
                   </span>
-                  <h3 className="font-semibold text-gray-900">{service.title}</h3>
-                </motion.div>
+                  <h3 className="mt-5 text-3xl font-semibold text-slate-900">{item.title}</h3>
+                  <p className="mt-3 text-lg leading-relaxed text-slate-500">{item.description}</p>
+                </motion.article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Empowering Smarter Workplaces + mobile app */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="border-t border-gray-100 bg-white py-10 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
-                className="lg:pr-4"
-                initial={{ opacity: 0, x: -24 }}
+                className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm"
+                initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
+                transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-2xl font-bold text-blue-400 sm:text-3xl">
-                  Empowering Smarter Workplaces Across all Industries
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  InOps Tech empowers smarter workplaces across diverse industries by providing innovative technology solutions tailored to optimize efficiency, collaboration, and productivity.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-blue-600"
-                >
-                  Get Started
-                </Link>
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={optiCamSolutionImage}
+                    alt="OptiCam attendance dashboard on a tablet-style interface"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </motion.div>
+
               <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
+                initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
-                    <div className="bg-gray-200/80 px-4 py-3 flex items-center justify-between border-b border-gray-200">
-                      <span className="font-semibold text-gray-900 text-sm">My Attendance</span>
-                      <div className="flex gap-2">
-                        <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                        <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+                <h2 className="text-3xl font-bold tracking-tight text-[color:var(--inops-blue)] sm:text-5xl">
+                  The OptiCam Solution
+                </h2>
+
+                <div className="mt-6 space-y-6">
+                  {[
+                    {
+                      title: "Existing IP Cameras",
+                      description:
+                        "No new hardware required. OptiCam integrates directly with your existing CCTV network via ONVIF/RTSP.",
+                      icon: "camera",
+                    },
+                    {
+                      title: "Real-Time Detection",
+                      description:
+                        "AI detects faces as they walk through entrances. No stopping, no touching, just natural movement.",
+                      icon: "bolt",
+                    },
+                    {
+                      title: "Centralized Control",
+                      description:
+                        "Manage attendance across 100+ locations from a single cloud-based dashboard with instant HRMS sync.",
+                      icon: "grid",
+                    },
+                  ].map((item) => (
+                    <div key={item.title} className="flex items-start gap-4">
+                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
+                        {item.icon === "camera" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M4 7h4l2-2h4l2 2h4v12H4z" />
+                            <circle cx="12" cy="13" r="3" />
+                          </svg>
+                        )}
+                        {item.icon === "bolt" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+                          </svg>
+                        )}
+                        {item.icon === "grid" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <rect x="4" y="4" width="6" height="6" />
+                            <rect x="14" y="4" width="6" height="6" />
+                            <rect x="4" y="14" width="6" height="6" />
+                            <rect x="14" y="14" width="6" height="6" />
+                          </svg>
+                        )}
+                      </span>
+                      <div>
+                        <h3 className="text-2xl font-semibold text-slate-900">{item.title}</h3>
+                        <p className="mt-2 text-lg leading-relaxed text-slate-500">{item.description}</p>
                       </div>
                     </div>
-                    <div className="flex gap-1 p-2 border-b border-gray-200">
-                      <button type="button" className="flex-1 rounded-lg bg-blue-500/20 py-2 text-xs font-medium text-blue-300">SCAN</button>
-                      <button type="button" className="flex-1 rounded-lg bg-gray-200 py-2 text-xs font-medium text-gray-500">ADMIN</button>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-gray-500 font-medium text-center">&lt; 13-Jan-2019 - 19-Jan-2019 &gt;</div>
-                    <div className="px-3 pb-2 space-y-2">
-                      {[
-                        { time: "11:00", label: "CHECK IN", color: "bg-emerald-500" },
-                        { time: "14:20", label: "CHECK OUT", color: "bg-rose-500" },
-                        { time: "—", label: "LEAVE DAY", color: "bg-amber-500" },
-                        { time: "—", label: "HOLIDAY", color: "bg-gray-500" },
-                      ].map((row) => (
-                        <div key={row.label} className="flex items-center gap-2 text-sm">
-                          <span className={`w-1 h-6 rounded-full ${row.color}`} aria-hidden />
-                          <span className="text-gray-700">{row.time}</span>
-                          <span className="text-gray-500 text-xs">{row.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-3 border-t border-gray-200">
-                      <button type="button" className="w-full rounded-lg bg-emerald-500 py-3 text-sm font-semibold text-white">Check In</button>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
+
+        <section className="border-t border-gray-100 bg-[#f8fafc] py-10 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Seamless Deployment Cycle
+              </h2>
+              <p className="mt-4 text-lg font-medium text-[color:var(--inops-blue)] sm:text-xl">
+                Go from zero to fully automated attendance in less than 48 hours.
+              </p>
+            </motion.div>
+
+            <div className="relative mt-10">
+              <div className="pointer-events-none absolute left-0 right-0 top-[38px] hidden h-px bg-slate-200 md:block" aria-hidden />
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3 xl:grid-cols-5 xl:gap-4">
+                {[
+                  {
+                    step: "01",
+                    title: "Connect Cameras",
+                    description: "Plug in your RTSP feeds into the OptiCam cloud portal.",
+                    icon: "monitor",
+                  },
+                  {
+                    step: "02",
+                    title: "Enroll Staff",
+                    description: "Bulk upload employee photos or sync with existing HR records.",
+                    icon: "users",
+                  },
+                  {
+                    step: "03",
+                    title: "AI Detection",
+                    description: "Edge-compute nodes identify faces with sub-second latency.",
+                    icon: "chip",
+                  },
+                  {
+                    step: "04",
+                    title: "Log Attendance",
+                    description: "Encrypted logs are generated automatically for each entry.",
+                    icon: "database",
+                  },
+                  {
+                    step: "05",
+                    title: "HRMS Sync",
+                    description: "Data is pushed to SAP, Workday, or your custom ERP system.",
+                    icon: "check",
+                  },
+                ].map((item, i) => (
+                  <motion.article
+                    key={item.title}
+                    className="relative text-center"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
+                  >
+                    <span className="absolute left-1/2 top-0 z-10 -translate-x-[34px] -translate-y-2 rounded-md bg-slate-900 px-1.5 py-0.5 text-[11px] font-semibold text-white">
+                      {item.step}
+                    </span>
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm">
+                      {item.icon === "monitor" && (
+                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <rect x="3" y="4" width="18" height="12" rx="2" />
+                          <path d="M8 20h8M12 16v4" />
+                        </svg>
+                      )}
+                      {item.icon === "users" && (
+                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <circle cx="9" cy="8" r="3" />
+                          <circle cx="17" cy="9" r="2" />
+                          <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                          <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                        </svg>
+                      )}
+                      {item.icon === "chip" && (
+                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <rect x="7" y="7" width="10" height="10" rx="1.5" />
+                          <path d="M4 9h3M4 15h3M17 9h3M17 15h3M9 4v3M15 4v3M9 17v3M15 17v3" />
+                        </svg>
+                      )}
+                      {item.icon === "database" && (
+                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <ellipse cx="12" cy="6" rx="7" ry="3" />
+                          <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+                        </svg>
+                      )}
+                      {item.icon === "check" && (
+                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M8.5 12.5l2.5 2.5 4.5-5" />
+                        </svg>
+                      )}
+                    </div>
+                    <h3 className="mt-4 text-2xl font-semibold text-slate-900">{item.title}</h3>
+                    <p className="mt-2 text-lg leading-relaxed text-slate-500">{item.description}</p>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-100 bg-white py-10 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                The Standard for Modern Enterprise
+              </h2>
+              <p className="mt-4 text-lg text-slate-500 sm:text-xl">
+                Why the world&apos;s most innovative offices are switching to OptiCam.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mt-8 overflow-hidden rounded-2xl border border-slate-200"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 }}
+            >
+              <div className="grid grid-cols-3 border-b border-slate-200 bg-slate-50">
+                <div className="px-4 py-4 text-left text-sm font-semibold text-slate-700 sm:px-6 sm:text-base">Feature</div>
+                <div className="px-4 py-4 text-left text-sm font-semibold italic text-slate-500 sm:px-6 sm:text-base">Traditional Biometrics</div>
+                <div className="px-4 py-4 text-left text-sm font-semibold text-slate-800 sm:px-6 sm:text-base">OptiCam AI</div>
+              </div>
+
+              {[
+                {
+                  feature: "Setup Cost",
+                  traditional: "$5,000+ per device",
+                  opticam: "$0 (Existing Hardware)",
+                },
+                {
+                  feature: "Deployment Speed",
+                  traditional: "2-4 Weeks (Wiring/Installation)",
+                  opticam: "48 Hours (Software Config)",
+                },
+                {
+                  feature: "User Experience",
+                  traditional: "Queues & Physical Contact",
+                  opticam: "Zero Contact / Natural Walk",
+                },
+                {
+                  feature: "Scalability",
+                  traditional: "Linear Cost per Location",
+                  opticam: "Infinite Cloud Scaling",
+                },
+              ].map((row, idx) => (
+                <div key={row.feature} className={`grid grid-cols-3 ${idx !== 3 ? "border-b border-slate-200" : ""}`}>
+                  <div className="px-4 py-4 text-sm font-semibold text-slate-800 sm:px-6 sm:text-base">{row.feature}</div>
+                  <div className="px-4 py-4 text-sm text-slate-600 sm:px-6 sm:text-base">{row.traditional}</div>
+                  <div className="bg-slate-50/70 px-4 py-4 text-sm font-semibold text-slate-800 sm:px-6 sm:text-base">{row.opticam}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-800 bg-gradient-to-r from-[#0e1016] via-[#12141b] to-[#0e1016] py-10 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-10">
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+                  Measurable ROI for Your Infrastructure
+                </h2>
+                <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {[
+                    { value: "45%", label: "Reduction in Hardware TCO", icon: "trend" },
+                    { value: "100%", label: "Elimination of Buddy Punching", icon: "chart" },
+                    { value: "SOC2", label: "Enterprise Data Security", icon: "shield" },
+                    { value: "99%", label: "Employee Satisfaction Rate", icon: "users" },
+                  ].map((item, idx) => (
+                    <motion.article
+                      key={item.value + item.label}
+                      className="rounded-xl border border-slate-700 bg-slate-800/65 p-5"
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={viewport}
+                      transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                    >
+                      <span className="inline-flex h-8 w-8 items-center justify-center text-slate-300">
+                        {item.icon === "trend" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M4 16l6-6 4 4 6-6" />
+                            <path d="M14 8h6v6" />
+                          </svg>
+                        )}
+                        {item.icon === "chart" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
+                          </svg>
+                        )}
+                        {item.icon === "shield" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                          </svg>
+                        )}
+                        {item.icon === "users" && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <circle cx="9" cy="8" r="3" />
+                            <circle cx="17" cy="9" r="2" />
+                            <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                            <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                          </svg>
+                        )}
+                      </span>
+                      <p className="mt-3 text-4xl font-bold text-white">{item.value}</p>
+                      <p className="mt-1 text-lg text-slate-400">{item.label}</p>
+                    </motion.article>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="min-w-0 rounded-2xl border border-slate-300 bg-white p-6 shadow-xl"
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.07 }}
+              >
+                <h3 className="text-3xl font-bold text-slate-900">Enterprise Deployment Readiness</h3>
+                <ul className="mt-5 space-y-4">
+                  {[
+                    "Supports H.264, H.265, and MJPEG video codecs.",
+                    "GDPR & PDPA compliant data anonymization.",
+                    "Native integration with SAP, Workday, and Oracle.",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-3 text-lg text-slate-600">
+                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+                          <path d="M6 12l4 4 8-8" />
+                        </svg>
+                      </span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/contact"
+                  className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--inops-navy)]"
+                >
+                  Request Implementation Plan
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-100 bg-[#f8fafc] py-12 lg:py-16">
+          <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[color:var(--inops-blue)] sm:text-6xl">
+                Upgrade your attendance system without changing your infrastructure.
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-2xl">
+                Stop investing in plastic boxes and start investing in intelligence. Experience the future of workforce operations with OptiCam today.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-w-[200px] items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[color:var(--inops-navy)]"
+                >
+                  Start Free Trial
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex min-w-[200px] items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+                >
+                  Talk to an Expert
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
       </div>
     </>
   );

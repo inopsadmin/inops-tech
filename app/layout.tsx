@@ -5,6 +5,14 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import ScrollRevealEnhancer from "./components/ScrollRevealEnhancer";
+import OrganizationJsonLd from "./components/OrganizationJsonLd";
+import {
+  DEFAULT_DESCRIPTION,
+  KEYWORDS_BASE,
+  SITE_NAME,
+  defaultOgImageUrl,
+  getSiteUrl,
+} from "@/app/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +24,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") || "https://example.com";
+const siteUrl = getSiteUrl();
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -25,29 +32,26 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const ogImage = defaultOgImageUrl();
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: SITE_NAME,
   title: {
-    default: "InOps Solutions | Automated CLMS & Compliance",
-    template: "%s | InOps Solutions",
+    default: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance | Bengaluru`,
+    /** Child layouts set full titles (e.g. "About Us | InOps Solutions"); avoid double suffix. */
+    template: "%s",
   },
-  description:
-    "InOps Solutions delivers workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, and access control.",
-  keywords: [
-    "InOps",
-    "CLMS software",
-    "contract labour management system",
-    "biometric attendance system",
-    "workforce management India",
-    "access control systems",
-    "turnstiles",
-    "visitor management system",
-    "payroll compliance",
-    "industrial attendance",
-    "Best Authentication Services",
-    "Trusted Workforce Management Solutions",
-    "Reliable Access Control Systems",
-  ],
+  description: DEFAULT_DESCRIPTION,
+  keywords: [...KEYWORDS_BASE, "Best Authentication Services", "Trusted Workforce Management Solutions"],
+  authors: [{ name: SITE_NAME, url: siteUrl }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: "/",
   },
@@ -62,19 +66,23 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
   openGraph: {
     type: "website",
+    locale: "en_IN",
     url: "/",
-    siteName: "InOps Solutions",
-    title: "InOps Solutions | Automated CLMS & Compliance",
-    description:
-      "InOps Solutions delivers workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, and access control.",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: ogImage, alt: `${SITE_NAME} — enterprise workforce and access solutions` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "InOps Solutions | Automated CLMS & Compliance",
-    description:
-      "InOps Solutions delivers workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, and access control.",
+    title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
+    description: DEFAULT_DESCRIPTION,
+    images: [ogImage],
   },
 };
 
@@ -84,11 +92,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden" suppressHydrationWarning>
+    <html lang="en-IN" className="overflow-x-hidden" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col overflow-x-hidden bg-white text-gray-900 antialiased`}
         suppressHydrationWarning
       >
+        <OrganizationJsonLd />
         <SmoothScroll>
           <div className="site-shell relative flex min-h-screen w-full flex-col">
             <div className="brand-shape-canvas" aria-hidden>

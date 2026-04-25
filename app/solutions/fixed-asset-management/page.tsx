@@ -3,83 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import FourPillarsSection from "@/app/components/FourPillarsSection";
 
-/** Hero background — `public/images/masshin.jpg` */
-const fixedAssetHeroBg = "/images/masshin.jpg";
-
-/** Left graphic beside “Fixed Asset Management solution” — `public/images/fam2 (1).png` */
-const fixedAssetSolutionShowcaseImage = "/images/fam2%20(1).png";
+/** Hero visual — industrial equipment / fixed assets (`public/images/masshin.jpg`) */
+const fixedAssetHeroImage = "/images/masshin.jpg";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-const assetSegments = [
-  { label: "Asset Accounting", color: "#dc2626" },
-  { label: "Asset Tracking", color: "#16a34a" },
-  { label: "Maintenance Management", color: "#ea580c" },
-  { label: "Business Intelligence", color: "#2563eb" },
-  { label: "Capital Expenditure", color: "#eab308" },
-];
+const unifiedEcosystemBullets = [
+  "Eliminate ghost workers with biometric validation",
+  "Automate invoice reconciliation with contractor data",
+  "Ensure 100% compliance with local labor laws",
+  "Real-time visibility across multiple geographic sites",
+] as const;
 
-const featuresAndBenefits = [
-  {
-    title: "Asset Tracking",
-    circleColor: "bg-orange-500",
-    description: "Our FAM system provides a centralized database for tracking all fixed assets, including their location, status, and maintenance history.",
-    benefit: "Improved Visibility and Control Over Asset Inventory.",
-  },
-  {
-    title: "Depreciation Management",
-    circleColor: "bg-pink-500",
-    description: "Automate depreciation calculations based on various methods such as straight-line or declining balance, ensuring accurate financial reporting and compliance.",
-    benefit: "Simplified Accounting Processes and Compliance Adherence.",
-  },
-  {
-    title: "Asset Lifecycle Management",
-    circleColor: "bg-yellow-500",
-    description: "Manage the entire lifecycle of assets from acquisition to disposal, ensuring optimal utilization and maximizing return on investment.",
-    benefit: "Improved Asset Utilization and Cost Savings.",
-  },
-  {
-    title: "Integration with Accounting Systems",
-    circleColor: "bg-orange-500",
-    description: "Seamlessly integrate with accounting software to ensure accurate asset valuation, financial reporting, and budgeting.",
-    benefit: "Streamlined Financial Processes and Improved Decision-making.",
-  },
-  {
-    title: "Barcode and RFID Integration",
-    circleColor: "bg-emerald-500",
-    description: "Easily track assets using barcode or RFID tags, enabling quick and accurate asset identification and inventory management.",
-    benefit: "Streamlined Asset Identification and Reduced Manual Errors.",
-  },
-  {
-    title: "Maintenance Scheduling",
-    circleColor: "bg-cyan-500",
-    description: "Schedule and track asset maintenance activities, including preventive maintenance tasks, to prolong asset lifespan and minimize downtime.",
-    benefit: "Reduced Equipment Downtime and Increased Operational Efficiency.",
-  },
-  {
-    title: "Compliance Management",
-    circleColor: "bg-blue-600",
-    description: "Stay compliant with regulatory requirements and industry standards by tracking asset-related documentation and certifications.",
-    benefit: "Minimized Legal Risks and Improved Audit Preparedness.",
-  },
-  {
-    title: "Customizable Reporting",
-    circleColor: "bg-blue-700",
-    description: "Generate customizable reports on asset performance, utilization, and maintenance history, providing valuable insights for strategic decision-making.",
-    benefit: "Enhanced Data Visibility and Informed Decision-making.",
-  },
-];
-
-const powerfulServices = [
-  { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
-  { title: "Access Control System", icon: "card", color: "bg-pink-500" },
-  { title: "Canteen Management System", icon: "tray", color: "bg-cyan-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-sky-400" },
-  { title: "Visitor Management System", icon: "person", color: "bg-violet-500" },
-  { title: "Contract Management System", icon: "document-pen", color: "bg-amber-500" },
-];
+const unifiedEcosystemBackdrop =
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80";
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -89,378 +29,268 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function ServiceIcon({ icon }: { icon: string }) {
-  const c = "h-6 w-6";
-  return (
-    <>
-      {icon === "document" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-      {icon === "card" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>}
-      {icon === "tray" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>}
-      {icon === "id" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>}
-      {icon === "person" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>}
-      {icon === "document-pen" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>}
-    </>
-  );
-}
-
 export default function FixedAssetManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — masshin.jpg + overlays (CSS background for reliable load) */}
+        {/* Hero — platform positioning, copy left + fixed-asset imagery right */}
         <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
+          className="border-b border-slate-100 bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
         >
-          <div
-            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url("${fixedAssetHeroBg}")` }}
-            aria-hidden
-          />
-          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
-          <div
-            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Fixed Asset Management
-            </motion.h1>
+          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-12">
             <motion.nav
-              className="mt-4 text-sm text-white"
-              initial={{ opacity: 0, y: 16 }}
+              className="text-sm text-slate-500"
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
               aria-label="Breadcrumb"
             >
-              <Link href="/" className="text-white hover:text-white/90 transition-colors">
+              <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
                 Home
               </Link>
-              <span className="mx-2 text-white/80">/</span>
-              <span className="text-blue-400 font-medium">Fixed Asset Management</span>
+              <span className="mx-2 text-slate-400">/</span>
+              <span className="font-medium text-slate-900">Fixed Asset Management</span>
             </motion.nav>
-          </div>
-        </motion.section>
 
-        {/* Content – asset register diagram left, text right */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              {/* Left – circular diagram: ASSET REGISTER center + segments */}
-              <motion.div
-                className="flex justify-center lg:justify-start"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <div className="relative mx-auto aspect-square w-full max-w-[17.5rem] sm:max-w-xs lg:mx-0 lg:max-w-[37rem]">
-                  <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden>
-                    {/* 5 segments as pie slices (72° each), starting from top */}
-                    {assetSegments.map((seg, i) => {
-                      const startAngle = (i * 72 - 90) * (Math.PI / 180);
-                      const endAngle = ((i + 1) * 72 - 90) * (Math.PI / 180);
-                      const r1 = 95;
-                      const r2 = 180;
-                      const cx = 200;
-                      const cy = 200;
-                      const x1 = cx + r1 * Math.cos(startAngle);
-                      const y1 = cy + r1 * Math.sin(startAngle);
-                      const x2 = cx + r2 * Math.cos(startAngle);
-                      const y2 = cy + r2 * Math.sin(startAngle);
-                      const x3 = cx + r2 * Math.cos(endAngle);
-                      const y3 = cy + r2 * Math.sin(endAngle);
-                      const x4 = cx + r1 * Math.cos(endAngle);
-                      const y4 = cy + r1 * Math.sin(endAngle);
-                      const path = `M ${cx} ${cy} L ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} Z`;
-                      const midAngle = (startAngle + endAngle) / 2;
-                      const tx = cx + 140 * Math.cos(midAngle);
-                      const ty = cy + 140 * Math.sin(midAngle);
-                      return (
-                        <g key={i}>
-                          <path
-                            d={path}
-                            fill={seg.color}
-                            stroke="rgba(255,255,255,0.2)"
-                            strokeWidth="1"
-                          />
-                          <text
-                            x={tx}
-                            y={ty}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            fill="white"
-                            style={{ fontSize: "11px", fontWeight: 600 }}
-                          >
-                            {seg.label}
-                          </text>
-                        </g>
-                      );
-                    })}
-                    {/* Center circle – ASSET REGISTER (light blue-green) */}
-                    <circle
-                      cx="200"
-                      cy="200"
-                      r="88"
-                      fill="rgb(45 212 191)"
-                      fillOpacity="0.9"
-                      stroke="rgb(94 234 212)"
-                      strokeWidth="2"
-                    />
-                    <text
-                      x="200"
-                      y="195"
-                      textAnchor="middle"
-                      fill="white"
-                      style={{ fontSize: "13px", fontWeight: 700 }}
-                    >
-                      ASSET
-                    </text>
-                    <text
-                      x="200"
-                      y="212"
-                      textAnchor="middle"
-                      fill="white"
-                      style={{ fontSize: "13px", fontWeight: 700 }}
-                    >
-                      REGISTER
-                    </text>
-                  </svg>
-                </div>
-              </motion.div>
-
-              {/* Right – heading + paragraphs */}
-              <motion.div
-                className="lg:pl-4"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
-                  Fixed Asset Management
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Welcome to InOps Company&apos;s Fixed Asset Management (FAM) solution, where we simplify and streamline the management of your organization&apos;s valuable assets.
-                </p>
-                <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Our comprehensive FAM system is designed to make asset tracking and maintenance smooth, reliable, and efficient. Explore the eight key features and their corresponding benefits:
-                </p>
-                <ul
-                  className="mt-8 flex flex-wrap gap-2 sm:mt-9 sm:gap-3"
-                  aria-label="Fixed asset management focus areas"
+            <div className="grid grid-cols-1 items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14 lg:py-14">
+              <div className="text-left">
+                <motion.span
+                  className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
                 >
-                  {assetSegments.map((seg, i) => (
-                    <motion.li
-                      key={seg.label}
-                      initial={{ opacity: 0, y: 8 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={viewport}
-                      transition={{ duration: 0.35, ease: smoothEase, delay: i * 0.05 }}
-                    >
-                      <span
-                        className="inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-black/5"
-                        style={{ backgroundColor: seg.color }}
-                      >
-                        {seg.label}
-                      </span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Features & Benefits
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-cyan-500" aria-hidden />
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
-              {featuresAndBenefits.map((item, i) => (
+                  Platform Solutions
+                </motion.span>
+                <motion.h1
+                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
+                >
+                  <span className="block">Comprehensive Workforce</span>
+                  <span className="block">Solutions</span>
+                  <span className="block text-blue-600">for Enterprise Control</span>
+                </motion.h1>
+                <motion.p
+                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
+                >
+                  Our platform brings together identity, compliance, operations, and financial systems into a unified
+                  ecosystem designed for large-scale workforce management.
+                </motion.p>
                 <motion.div
-                  key={item.title}
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
+                  className="mt-8 flex flex-wrap items-center gap-3"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                 >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white`}>
-                    <CheckIcon className="h-5 w-5 text-white" />
-                  </span>
-                  <div className="space-y-2">
-                    <h3 className="font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    <p className="font-semibold text-blue-600 text-sm">{item.benefit}</p>
-                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
+                  >
+                    Request a Demo
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    Talk to an Expert
+                  </Link>
                 </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+              </div>
 
-        {/* FAM solution copy + product graphic — one row from lg */}
-        <section className="border-t border-gray-200 bg-gradient-to-b from-white via-slate-50/30 to-slate-50 py-10 lg:py-14">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
               <motion.div
-                className="order-1 w-full min-w-0 lg:col-span-7"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase }}
+                className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: smoothEase, delay: 0.08 }}
               >
-                <div className="overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/50">
                   <Image
-                    src={fixedAssetSolutionShowcaseImage}
-                    alt="Fixed Asset Management solution: asset register and operational overview"
-                    width={829}
-                    height={478}
-                    className="h-auto w-full"
-                    sizes="(max-width: 1023px) 100vw, 58vw"
+                    src={fixedAssetHeroImage}
+                    alt="Industrial machinery and fixed assets on a manufacturing floor, representing enterprise asset control"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
                   />
                 </div>
               </motion.div>
+            </div>
+          </div>
+        </motion.section>
+
+        <FourPillarsSection />
+
+        {/* One Unified Ecosystem */}
+        <section
+          className="border-t border-slate-200/80 bg-white py-14 lg:py-16"
+          aria-labelledby="unified-ecosystem-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2
+                  id="unified-ecosystem-heading"
+                  className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
+                >
+                  One Unified Ecosystem
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  Most enterprises struggle with fragmented data across HR, Finance, and Security. InOps bridges these
+                  silos by creating a single source of truth for every contract worker.
+                </p>
+                <ul className="mt-8 space-y-4">
+                  {unifiedEcosystemBullets.map((line) => (
+                    <li key={line} className="flex gap-3">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                        <CheckIcon className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="text-sm leading-relaxed text-slate-700 sm:text-base">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/contact"
+                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
+                >
+                  Explore Enterprise Integration
+                  <span aria-hidden>→</span>
+                </Link>
+              </motion.div>
 
               <motion.div
-                className="order-2 text-center lg:col-span-5 lg:pl-2 lg:text-left xl:pl-4"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-                  Fixed Asset Management solution
-                </h2>
-                <div
-                  className="mx-auto mt-3 h-1 w-14 origin-center rounded-full bg-cyan-500 lg:mx-0 lg:origin-left"
-                  aria-hidden
-                />
-                <p className="mt-6 text-base leading-relaxed text-gray-600 sm:text-lg">
-                  With InOps Company&apos;s Fixed Asset Management solution, organizations can effectively manage their assets throughout their lifecycle, from acquisition to disposal. By leveraging our system&apos;s advanced features and corresponding benefits, businesses can improve operational efficiency, reduce costs, and ensure compliance with regulatory requirements. Experience the power of streamlined asset management with InOps Company today.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Powerful Services for Your Business
-            </motion.h2>
-            <div className="mt-2 h-0.5 w-20 rounded-full bg-cyan-500" />
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              {powerfulServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-cyan-200/80 hover:shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
-                >
-                  <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
-                    <ServiceIcon icon={service.icon} />
-                  </span>
-                  <h3 className="font-semibold text-gray-900">{service.title}</h3>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <motion.div
-                className="lg:pr-8"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-                  Empowering Smarter Workplaces Across all Industries
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  InOps Tech empowers smarter workplaces across diverse industries by providing innovative technology solutions tailored to optimize efficiency, collaboration, and productivity.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex items-center rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-500"
-                >
-                  Get Started
-                </Link>
-              </motion.div>
-              <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-800 bg-slate-800 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-slate-800" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] bg-slate-800 border border-gray-600/80">
-                    <div className="bg-slate-700/80 px-4 py-3 border-b border-gray-600/80 flex items-center justify-between">
-                      <span className="font-semibold text-slate-100 text-sm">My Attendance</span>
-                    </div>
-                    <div className="flex gap-2 px-3 py-2 border-b border-gray-600/80">
-                      <span className="text-xs font-medium text-white py-1 px-2 rounded bg-emerald-500">PRESENT</span>
-                      <span className="text-xs text-slate-400 py-1 px-2">ABSENT</span>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-slate-400 text-center">12-Jun-2018 - 18-Jun-2018</div>
-                    <div className="px-3 pb-2 space-y-1.5 max-h-[180px] overflow-y-auto">
-                      {[
-                        { time: "17:00", status: "APPROVED", color: "bg-emerald-500" },
-                        { time: "09:00", status: "APPROVED", color: "bg-emerald-500" },
-                        { time: "—", status: "WEEKEND", color: "bg-slate-500" },
-                        { time: "—", status: "HOLIDAY", color: "bg-rose-500" },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs">
-                          <span className={`w-1.5 h-5 rounded-full ${item.color} flex-shrink-0`} aria-hidden />
-                          <span className="text-slate-200">{item.time}</span>
-                          <span className="text-slate-400 ml-auto">{item.status}</span>
+                <div className="relative min-h-[300px] overflow-hidden rounded-2xl sm:min-h-[380px] lg:min-h-[420px]">
+                  <Image
+                    src={unifiedEcosystemBackdrop}
+                    alt="Modern office interior, softly blurred behind the analytics preview"
+                    fill
+                    className="scale-105 object-cover blur-sm"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-slate-900/25" aria-hidden />
+                  <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 py-10 sm:px-10 sm:py-12">
+                    <div className="relative w-full max-w-[340px] rounded-xl border-[10px] border-slate-700 bg-slate-800 shadow-2xl shadow-slate-900/40 sm:max-w-[380px]">
+                      <div className="rounded-b-md bg-white px-4 pb-4 pt-3 sm:px-5 sm:pt-4">
+                        <p className="text-center text-xs font-bold text-slate-800 sm:text-sm">InOps Workforce Analytics</p>
+                        <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4">
+                          <div className="flex flex-col items-center justify-center rounded-lg bg-slate-50 py-4 ring-1 ring-slate-100">
+                            <div className="relative h-16 w-16">
+                              <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90" aria-hidden>
+                                <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgb(226 232 240)" strokeWidth="4" />
+                                <circle
+                                  cx="18"
+                                  cy="18"
+                                  r="15.5"
+                                  fill="none"
+                                  stroke="rgb(37 99 235)"
+                                  strokeWidth="4"
+                                  strokeDasharray="97 100"
+                                  strokeLinecap="round"
+                                />
+                              </svg>
+                              <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-slate-800">
+                                75%
+                              </span>
+                            </div>
+                          </div>
+                          <div className="rounded-lg bg-slate-50 p-3 ring-1 ring-slate-100">
+                            <p className="text-[10px] font-semibold text-slate-600">Job Proficiency Breakdown</p>
+                            <div className="mt-2 flex h-14 items-end justify-between gap-1">
+                              {[40, 70, 55, 85, 50].map((h, i) => (
+                                <div
+                                  key={i}
+                                  className="w-full max-w-[18%] rounded-t bg-blue-500/90"
+                                  style={{ height: `${h}%` }}
+                                />
+                              ))}
+                            </div>
+                          </div>
                         </div>
-                      ))}
+                        <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                          <div className="rounded-md bg-slate-100 py-2">
+                            <p className="text-lg font-bold text-slate-900">12</p>
+                            <p className="text-[9px] text-slate-500">Active</p>
+                          </div>
+                          <div className="rounded-md bg-slate-100 py-2">
+                            <p className="text-lg font-bold text-slate-900">3</p>
+                            <p className="text-[9px] text-slate-500">Alerts</p>
+                          </div>
+                          <div className="rounded-md bg-slate-100 py-2">
+                            <p className="text-lg font-bold text-slate-900">52%</p>
+                            <p className="text-[9px] text-slate-500">Efficiency</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <button type="button" className="mx-3 mb-2 w-[calc(100%-24px)] rounded-lg bg-emerald-500 py-2.5 text-sm font-semibold text-white">CHECK IN</button>
-                    <div className="p-3 border-t border-gray-600/80 text-center text-sm text-slate-400">Total Hours (39:42)</div>
+                    <div className="absolute bottom-5 left-5 z-20 max-w-[240px] rounded-lg bg-blue-600 px-4 py-3 text-xs font-semibold leading-snug text-white shadow-lg sm:bottom-8 sm:left-8 sm:max-w-[260px] sm:text-sm">
+                      15% Average cost savings for enterprises using the unified InOps layer.
+                    </div>
                   </div>
                 </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* CTA — workforce operations */}
+        <section className="mt-10 border-t border-slate-200/80 bg-slate-50/80 px-4 pb-16 pt-2 sm:px-6 lg:px-12 lg:pb-20">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="relative overflow-hidden rounded-3xl bg-blue-600 px-6 py-12 text-center shadow-lg shadow-blue-900/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.55, ease: smoothEase }}
+            >
+              <div
+                className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-blue-800/35"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-blue-500/40"
+                aria-hidden
+              />
+              <div className="relative z-10 mx-auto max-w-3xl">
+                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[2rem]">
+                  Ready to take control of your workforce operations?
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg">
+                  Join 25+ leading enterprises that have optimized their contract labor governance with InOps.
+                </p>
+                <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-slate-50"
+                  >
+                    Request a Custom Demo
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl border-2 border-white bg-transparent px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-white/10"
+                  >
+                    Contact Sales Team
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
       </div>

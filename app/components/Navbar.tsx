@@ -62,6 +62,12 @@ export default function Navbar() {
   };
 
   const updateNavLayout = useCallback(() => {
+    if (pathname.startsWith("/solutions") || pathname.startsWith("/about")) {
+      setScrolled(true);
+      setNavStaticHero(false);
+      return;
+    }
+
     if (pathname === "/") {
       const hero = document.getElementById("home-hero");
       if (hero) {
@@ -91,6 +97,10 @@ export default function Navbar() {
   useEffect(() => {
     if (!mobileOpen) setMobileSection(null);
   }, [mobileOpen]);
+
+  useEffect(() => {
+    setOpenDropdown(null);
+  }, [pathname]);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -183,7 +193,11 @@ export default function Navbar() {
 
                   <AnimatePresence>
                     {openDropdown === item.label ? (
-                      <SolutionsMegaMenuDesktop key="solutions-mega" menuId={SOLUTIONS_MENU_PANEL_ID} />
+                      <SolutionsMegaMenuDesktop
+                        key="solutions-mega"
+                        menuId={SOLUTIONS_MENU_PANEL_ID}
+                        onNavigate={() => setOpenDropdown(null)}
+                      />
                     ) : null}
                   </AnimatePresence>
                 </div>

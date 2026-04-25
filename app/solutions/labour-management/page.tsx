@@ -1,133 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import SolutionModulePanel from "@/app/components/SolutionModulePanel";
+import FourPillarsSection from "@/app/components/FourPillarsSection";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
-
-/** Hero background — `public/images/Contract-1.png` */
-const labourHeroBg = "/images/Contract-1.png";
-
-/** Desktop + mobile product mockup — `public/images/labour-management-ui-showcase.png` */
-const labourUiShowcaseImage = "/images/laber2.png";
-
-/** Place files in `public/images/` with these exact names. */
-const workforceManagementGalleryImages = [
-  {
-    src: "/images/rag-dashboard-slide3.png",
-    alt: "Workforce analytics and RAG dashboard with operational insights",
-    width: 900,
-    height: 600,
-  },
-  {
-    src: "/images/asset-management-dashboard.jpg",
-    alt: "Asset and resource management dashboard for workforce visibility",
-    width: 900,
-    height: 600,
-  },
-  {
-    src: "/images/275581401627b0d3533467362f4c0372.jpg",
-    alt: "HR and workforce operations workspace with schedules and metrics",
-    width: 900,
-    height: 600,
-  },
-] as const;
-
-const insightBoxes = [
-  {
-    num: "01",
-    text: "Which customers are making/ losing you money on labor.",
-    color: "bg-emerald-600",
-    borderColor: "border-emerald-500/50",
-  },
-  {
-    num: "02",
-    text: "How much time and money is being spent on each indirect or non-value-add process.",
-    color: "bg-lime-500",
-    borderColor: "border-lime-400/50",
-  },
-  {
-    num: "03",
-    text: "Which employees to promote or reward, & which might need training or counseling.",
-    color: "bg-orange-500",
-    borderColor: "border-orange-400/50",
-  },
-  {
-    num: "04",
-    text: "Staffing levels are needed for the work forecast, so you have just the right amount of staff for the job.",
-    color: "bg-rose-600",
-    borderColor: "border-rose-500/50",
-  },
-  {
-    num: "05",
-    text: "Which processes need improvement because they are inefficient or many employees are struggling with it.",
-    color: "bg-violet-700",
-    borderColor: "border-violet-500/50",
-  },
-];
-
-const featuresAndBenefits = [
-  {
-    title: "Employee Scheduling",
-    circleColor: "bg-orange-500",
-    description: "Create and manage employee schedules with ease, taking into account factors such as availability, skills, and labor laws.",
-    benefit: "Reduced Overtime Costs and Improved Workforce Efficiency.",
-  },
-  {
-    title: "Task Management",
-    circleColor: "bg-pink-600",
-    description: "Assign tasks to employees based on skillsets and availability, ensuring optimal utilization of resources and timely completion of projects.",
-    benefit: "Enhanced Task Allocation and Improved Productivity.",
-  },
-  {
-    title: "Performance Monitoring",
-    circleColor: "bg-yellow-500",
-    description: "Monitor employee performance metrics in real-time, enabling managers to identify top performers and areas for improvement.",
-    benefit: "Enhanced Performance Management and Employee Development.",
-  },
-  {
-    title: "Payroll Integration",
-    circleColor: "bg-orange-500",
-    description: "Seamlessly integrate with payroll systems to automate payroll processing, eliminating manual data entry and reducing errors.",
-    benefit: "Time Savings and Increased Payroll Accuracy.",
-  },
-  {
-    title: "Time and Attendance Tracking",
-    circleColor: "bg-emerald-500",
-    description: "Track employee attendance accurately using biometric or digital clock-in/out systems, ensuring compliance with labor regulations and payroll accuracy.",
-    benefit: "Elimination of Time Theft and Improved Payroll Accuracy.",
-  },
-  {
-    title: "Leave Management",
-    circleColor: "bg-cyan-500",
-    description: "Streamline the leave request and approval process, allowing employees to submit requests digitally and managers to approve them efficiently.",
-    benefit: "Reduced Administrative Burden and Improved Employee Satisfaction.",
-  },
-  {
-    title: "Compliance Management",
-    circleColor: "bg-violet-600",
-    description: "Stay compliant with labor laws and regulations by automating compliance tasks such as overtime tracking, breaks, and rest periods.",
-    benefit: "Minimized Legal Risks and Improved Regulatory Compliance.",
-  },
-  {
-    title: "Analytics and Reporting",
-    circleColor: "bg-blue-900",
-    description: "Generate comprehensive reports on labor costs, productivity metrics, and workforce trends, empowering data-driven decision-making.",
-    benefit: "Enhanced Strategic Planning and Operational Efficiency.",
-  },
-];
-
-const powerfulServices = [
-  { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
-  { title: "Access Control System", icon: "card", color: "bg-pink-500" },
-  { title: "Canteen Management System", icon: "tray", color: "bg-cyan-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-sky-400" },
-  { title: "Visitor Management System", icon: "person", color: "bg-violet-500" },
-  { title: "Contract Management System", icon: "document-pen", color: "bg-amber-500" },
-];
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -137,17 +15,252 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function ServiceIcon({ icon }: { icon: string }) {
+const labourHeroMetrics = [
+  { value: "1L+", label: "Workers verified" },
+  { value: "100%", label: "Audit ready" },
+  { value: "3000+", label: "Active devices" },
+] as const;
+
+const comprehensiveHrCards = [
+  {
+    icon: "lifecycle" as const,
+    title: "Employee Lifecycle Management",
+    description:
+      "Automate the journey from digital onboarding and background verification to shift assignments and final settlement. Reduce manual intervention by up to 80%.",
+  },
+  {
+    icon: "document" as const,
+    title: "Document & Compliance Tracking",
+    description:
+      "A centralized digital locker for all statutory documents. Automatically track expiry dates for licenses, medical certificates, and police clearances with instant alerts.",
+  },
+  {
+    icon: "sync" as const,
+    title: "Payroll & ERP Integration",
+    description:
+      "Seamless bi-directional sync with SAP, Oracle, and Tally. Eliminate manual data entry and ensure that payroll is based on verified attendance data.",
+  },
+  {
+    icon: "shield" as const,
+    title: "Role-Based Access Control",
+    description:
+      "Enterprise-grade security that ensures data privacy. Define granular permissions for contractors, site managers, HR admins, and finance teams.",
+  },
+] as const;
+
+const hireToExitSteps = [
+  {
+    icon: "onboarding" as const,
+    title: "Onboarding",
+    description: "Digital profile creation with biometric registration.",
+  },
+  {
+    icon: "verification" as const,
+    title: "Verification",
+    description: "Automated document check and KYC validation.",
+  },
+  {
+    icon: "activation" as const,
+    title: "Activation",
+    description: "Role mapping and site access granting.",
+  },
+  {
+    icon: "settlement" as const,
+    title: "Settlement",
+    description: "Final pay calculation and clearance processing.",
+  },
+  {
+    icon: "exit" as const,
+    title: "Exit",
+    description: "Digital de-boarding and access revocation.",
+  },
+] as const;
+
+const integrationConnectBullets = [
+  "RESTful APIs for custom platform connectivity",
+  "Direct database connectors for legacy systems",
+  "Automated CSV/Excel export for manual workflows",
+  "Real-time webhooks for instant notifications",
+] as const;
+
+const integrationPartners = [
+  { name: "SAP ERP", icon: "stack" as const },
+  { name: "Oracle", icon: "database" as const },
+  { name: "MS Dynamics", icon: "layers" as const },
+  { name: "Workday", icon: "person" as const },
+  { name: "Biometric Hub", icon: "shield" as const },
+  { name: "Payroll Engine", icon: "wallet" as const },
+] as const;
+
+function ComprehensiveHrCardIcon({ name }: { name: (typeof comprehensiveHrCards)[number]["icon"] }) {
   const c = "h-6 w-6";
+  if (name === "lifecycle") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    );
+  }
+  if (name === "document") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    );
+  }
+  if (name === "sync") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    );
+  }
   return (
-    <>
-      {icon === "document" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-      {icon === "card" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>}
-      {icon === "tray" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>}
-      {icon === "id" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>}
-      {icon === "person" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>}
-      {icon === "document-pen" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>}
-    </>
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  );
+}
+
+function HireToExitStepIcon({ name }: { name: (typeof hireToExitSteps)[number]["icon"] }) {
+  const c = "h-6 w-6";
+  if (name === "onboarding") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+      </svg>
+    );
+  }
+  if (name === "verification") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    );
+  }
+  if (name === "activation") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+      </svg>
+    );
+  }
+  if (name === "settlement") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+    </svg>
+  );
+}
+
+function IntegrationPartnerIcon({ name }: { name: (typeof integrationPartners)[number]["icon"] }) {
+  const c = "h-5 w-5 text-slate-500";
+  if (name === "stack") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+    );
+  }
+  if (name === "database") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+      </svg>
+    );
+  }
+  if (name === "layers") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      </svg>
+    );
+  }
+  if (name === "person") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    );
+  }
+  if (name === "shield") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+    </svg>
+  );
+}
+
+/** Abstract dashboard + compliance card — matches HRIS-style hero reference */
+function LabourHeroDashboardPreview() {
+  return (
+    <div className="relative mx-auto w-full max-w-xl lg:max-w-none" aria-hidden>
+      <motion.div
+        className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-4 shadow-xl shadow-slate-300/40 sm:p-6"
+        initial={{ opacity: 0, y: 22 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, ease: smoothEase, delay: 0.12 }}
+      >
+        <div className="mb-4 flex items-center gap-2 border-b border-slate-100 pb-4">
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
+          <span className="h-2.5 w-2.5 rounded-full bg-slate-200" />
+          <div className="ml-3 h-7 flex-1 max-w-[220px] rounded-md bg-slate-100" />
+        </div>
+        <div className="space-y-4 pb-16 sm:pb-20">
+          <div className="h-3 w-2/5 max-w-[180px] rounded bg-slate-100" />
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-5 sm:gap-4">
+            <div className="space-y-2 rounded-xl bg-slate-50 p-4 sm:col-span-3">
+              <div className="flex h-28 items-end justify-between gap-2 rounded-lg bg-white px-3 pb-2 pt-3 ring-1 ring-slate-100 sm:h-32">
+                {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
+                  <div
+                    key={i}
+                    className="w-full max-w-[14%] rounded-t bg-gradient-to-t from-blue-100 to-blue-200/90"
+                    style={{ height: `${h}%` }}
+                  />
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <div className="h-2 flex-1 rounded-full bg-slate-200" />
+                <div className="h-2 flex-1 rounded-full bg-slate-200" />
+              </div>
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              {[72, 56, 64, 48].map((w, i) => (
+                <div key={i} className="h-9 rounded-lg bg-slate-100" style={{ width: `${w}%` }} />
+              ))}
+            </div>
+          </div>
+        </div>
+        <motion.div
+          className="absolute bottom-4 left-4 right-4 max-w-[280px] rounded-xl border border-slate-200 bg-white p-4 shadow-lg sm:bottom-6 sm:left-6"
+          initial={{ opacity: 0, x: -12 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: smoothEase, delay: 0.35 }}
+        >
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Compliance status</p>
+          <div className="mt-2 flex items-center gap-2">
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            </span>
+            <p className="text-sm font-bold text-slate-900">Verified & Active</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -155,314 +268,306 @@ export default function LabourManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — Contract-1.png + overlays (CSS background for reliable load) */}
+        {/* Hero — HRIS-style: pill, headline, CTAs, metrics, dashboard preview */}
         <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
+          className="border-b border-slate-100 bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
         >
-          <div
-            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url("${labourHeroBg}")` }}
-            aria-hidden
-          />
-          <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden />
-          <div
-            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Labour Management Software
-            </motion.h1>
+          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-12">
             <motion.nav
-              className="mt-4 text-sm text-white"
-              initial={{ opacity: 0, y: 16 }}
+              className="text-sm text-slate-500"
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
               aria-label="Breadcrumb"
             >
-              <Link href="/" className="text-white hover:text-white/90 transition-colors">
+              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
                 Home
               </Link>
-              <span className="mx-2 text-white/80">/</span>
-              <span className="text-blue-400 font-medium">Labour Management Software</span>
+              <span className="mx-2 text-slate-400">/</span>
+              <span className="font-medium text-slate-900">Labour Management</span> */}
             </motion.nav>
+
+            <div className="grid grid-cols-1 items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14 lg:py-14">
+              <div>
+                <motion.span
+                  className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
+                >
+                  Labour Management System (LMS)
+                </motion.span>
+                <motion.h1
+                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
+                >
+                  The Digital Core for Your{" "}
+                  <span className="text-blue-600">Global Workforce</span>
+                </motion.h1>
+                <motion.p
+                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
+                >
+                  Centralize every employee record, automate complex workflows, and maintain full compliance across your
+                  contract and permanent workforce—from gate to payroll.
+                </motion.p>
+                <motion.div
+                  className="mt-8 flex flex-wrap items-center gap-3"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                >
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
+                  >
+                    Request a Demo
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    Talk to an Expert
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  className="mt-10 flex flex-col gap-6 border-t border-slate-100 pt-8 sm:flex-row sm:items-center sm:gap-0 sm:divide-x sm:divide-slate-200"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.22 }}
+                >
+                  {labourHeroMetrics.map((m, i) => (
+                    <div
+                      key={m.label}
+                      className={
+                        i > 0 ? "max-sm:border-t max-sm:border-slate-100 max-sm:pt-6 sm:px-8" : "sm:pr-8"
+                      }
+                    >
+                      <p className="text-2xl font-bold tabular-nums text-slate-900 sm:text-[1.65rem]">{m.value}</p>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">{m.label}</p>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              <LabourHeroDashboardPreview />
+            </div>
           </div>
         </motion.section>
 
-        {/* Intro – title, underline, paragraph */}
-        <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto w-full max-w-7xl px-6 lg:px-12 text-center">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
+        {/* Comprehensive HR Management — feature grid */}
+        <section
+          className="border-t border-slate-200/80 bg-white py-14 lg:py-16"
+          aria-labelledby="comprehensive-hr-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              Labour Management Software
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-24 rounded-full bg-blue-500" aria-hidden />
-            <motion.p
-              className="mx-auto mt-6 w-full max-w-none text-gray-600 leading-relaxed text-base sm:text-lg"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 }}
-            >
-              At InOps Company, we understand the critical role that effective labor management plays in the success of businesses. With our Labour Management Software&apos;s advanced features and corresponding benefits, organizations can optimize their workforce management processes, drive productivity, and achieve their business goals efficiently. Join us in revolutionizing labor management with InOps Company today.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Main content – arrow insight boxes left, intro text right */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              {/* Left – vertical stack of arrow-shaped insight boxes */}
-              <motion.div
-                className="flex flex-col gap-4"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
+              <h2
+                id="comprehensive-hr-heading"
+                className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
               >
-                {insightBoxes.map((item, i) => (
-                  <motion.div
-                    key={item.num}
-                    className={`relative flex items-center gap-4 rounded-l-xl rounded-r-sm border ${item.borderColor} py-4 pl-5 pr-10 ${item.color} min-h-[72px]`}
-                    initial={{ opacity: 0, x: -16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.4, ease: smoothEase, delay: i * 0.06 }}
-                    style={{
-                      clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%)",
-                    }}
-                  >
-                    <span className="text-2xl font-bold text-white tabular-nums flex-shrink-0">
-                      {item.num}
-                    </span>
-                    <p className="text-sm font-medium text-white leading-snug pr-2">
-                      {item.text}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
+                Comprehensive HR Management
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Built for the unique complexities of large-scale contract labor and enterprise workforce operations.
+              </p>
+            </motion.div>
 
-              {/* Right – heading + paragraphs */}
-              <motion.div
-                className="lg:pl-4"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl">
-                  Labour Management Software
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Welcome to InOps Company&apos;s Labour Management Software, a comprehensive solution designed to streamline workforce management and optimize productivity.
-                </p>
-                <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Our software offers a range of features tailored to meet the dynamic needs of businesses, empowering organizations to efficiently manage their workforce while maximizing operational efficiency. Explore the eight key features and their corresponding benefits:
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        <SolutionModulePanel
-          title="Workforce Management"
-          intro="The workforce management module serves as the central control system for monitoring workforce activities in real time. It provides visibility into attendance, shift scheduling, workforce allocation, and performance tracking."
-          bullets={[
-            "Real-time workforce attendance tracking",
-            "Shift planning and scheduling",
-            "Contractor-wise and department-wise workforce monitoring",
-            "Workforce analytics and reporting dashboards",
-          ]}
-          workflow="Data from biometric systems flows into the workforce dashboard. Managers can view current workforce status, identify absenteeism, and analyze productivity trends. The system enables quick decision-making based on real-time insights."
-          closing="This module improves operational efficiency by eliminating manual tracking and enabling data-driven workforce management."
-          imageGallery={[...workforceManagementGalleryImages]}
-        />
-
-        {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Features & Benefits
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
-              {featuresAndBenefits.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+              {comprehensiveHrCards.map((card, i) => (
+                <motion.article
+                  key={card.title}
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-indigo-200 hover:shadow-md"
+                  initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.06, 0.18) }}
                 >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white`}>
-                    <CheckIcon className="h-5 w-5 text-white" />
-                  </span>
-                  <div className="space-y-2">
-                    <h3 className="font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    <p className="font-semibold text-blue-300 text-sm">{item.benefit}</p>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-indigo-600 ring-1 ring-violet-200/80">
+                    <ComprehensiveHrCardIcon name={card.icon} />
                   </div>
-                </motion.div>
+                  <h3 className="mt-4 text-lg font-bold text-slate-900">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">{card.description}</p>
+                </motion.article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Labour Management Software — intro copy + Timesheet+ / TOKN UI showcase */}
-        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+        {/* The Hire-to-Exit Workflow — horizontal timeline */}
+        <section
+          className="border-t border-slate-200/80 bg-slate-50/80 py-14 lg:py-16"
+          aria-labelledby="hire-exit-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2
+                id="hire-exit-heading"
+                className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
+              >
+                The Hire-to-Exit Workflow
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                A streamlined, automated process that ensures every worker is compliant before they step onto your site.
+              </p>
+            </motion.div>
+
+            <div className="relative mx-auto mt-14 max-w-6xl">
+              <div
+                className="pointer-events-none absolute left-[8%] right-[8%] top-7 hidden h-px bg-indigo-200 lg:block"
+                aria-hidden
+              />
+              <ol className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-5 lg:gap-4">
+                {hireToExitSteps.map((step, i) => (
+                  <motion.li
+                    key={step.title}
+                    className="relative flex flex-col items-center text-center"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.07, 0.28) }}
+                  >
+                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-indigo-100 bg-white text-indigo-600 shadow-sm ring-4 ring-slate-50/80">
+                      <HireToExitStepIcon name={step.icon} />
+                    </div>
+                    <h3 className="mt-5 text-base font-bold text-slate-900">{step.title}</h3>
+                    <p className="mt-2 max-w-[220px] text-sm leading-relaxed text-slate-600">{step.description}</p>
+                  </motion.li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        {/* <FourPillarsSection /> */}
+
+        {/* Integrations — existing stack */}
+        <section
+          className="border-t border-slate-200/80 bg-white py-14 lg:py-16"
+          aria-labelledby="integrations-stack-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14">
               <motion.div
-                className="text-center lg:max-w-xl lg:text-left xl:max-w-none"
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  Labour Management Software
-                </h2>
-                <div
-                  className="mx-auto mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 sm:w-24 lg:mx-0"
-                  aria-hidden
-                />
-                <p className="mx-auto mt-5 max-w-4xl text-gray-600 leading-relaxed text-base sm:mt-6 sm:text-lg lg:mx-0 lg:max-w-none">
-                  At InOps Company, we understand the critical role that effective labor management plays in the success of businesses. With our Labour Management Software&apos;s advanced features and corresponding benefits, organizations can optimize their workforce management processes, drive productivity, and achieve their business goals efficiently. Join us in revolutionizing labor management with InOps Company today.
-                </p>
-              </motion.div>
-              <motion.div
-                className="min-w-0"
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-              >
-                <div className="overflow-hidden">
-                  <Image
-                    src={labourUiShowcaseImage}
-                    alt="Timesheet+ Manager on desktop with submitted timesheets, and TOKN User mobile app for weekly and daily timesheet entries"
-                    width={1327}
-                    height={434}
-                    className="h-auto w-full"
-                    sizes="(max-width: 1023px) 100vw, (max-width: 1280px) 50vw, 640px"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Powerful Services for Your Business
-            </motion.h2>
-            <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              {powerfulServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-gray-100/80 p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
+                <h2
+                  id="integrations-stack-heading"
+                  className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
                 >
-                  <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
-                    <ServiceIcon icon={service.icon} />
-                  </span>
-                  <h3 className="font-semibold text-gray-900">{service.title}</h3>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <motion.div
-                className="lg:pr-8"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-                  Empowering Smarter Workplaces Across all Industries
+                  Fits Seamlessly into Your Existing Stack
                 </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  InOps Tech empowers smarter workplaces across diverse industries by providing innovative technology solutions tailored to optimize efficiency, collaboration, and productivity.
+                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                  InOps doesn&apos;t operate in a vacuum. Our HRIS platform acts as a bridge between your ground-level
+                  operations and your corporate enterprise resource planning (ERP) systems.
                 </p>
+                <ul className="mt-8 space-y-4">
+                  {integrationConnectBullets.map((line) => (
+                    <li key={line} className="flex gap-3">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                        <CheckIcon className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="text-sm leading-relaxed text-slate-700 sm:text-base">{line}</span>
+                    </li>
+                  ))}
+                </ul>
                 <Link
                   href="/contact"
-                  className="mt-8 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-blue-600"
+                  className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition hover:text-blue-700"
                 >
-                  Get Started
+                  View Integration Directory
+                  <span aria-hidden>→</span>
                 </Link>
               </motion.div>
+
               <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="grid grid-cols-2 gap-3 sm:gap-4"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
               >
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
-                    <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200 flex gap-2">
-                      <span className="font-semibold text-gray-900 text-sm">My Attendance</span>
-                      <span className="text-xs text-gray-500 ml-auto">Today</span>
-                      <span className="text-xs text-gray-500">Month</span>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-gray-500 text-center">Calendar view</div>
-                    <div className="px-3 pb-2 space-y-2">
-                      {["08:30", "09:00", "10:00"].map((time, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm">
-                          <span className="w-1 h-8 rounded-full bg-emerald-500" aria-hidden />
-                          <span className="text-gray-700">{time}</span>
-                        </div>
-                      ))}
-                    </div>
+                {integrationPartners.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-slate-300 hover:shadow-md sm:px-4 sm:py-4"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-50">
+                      <IntegrationPartnerIcon name={partner.icon} />
+                    </span>
+                    <span className="text-sm font-semibold text-slate-900">{partner.name}</span>
                   </div>
-                </div>
+                ))}
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* CTA — workforce operations */}
+        <section className="mt-10 border-t border-slate-200/80 bg-slate-50/80 px-4 pb-16 pt-2 sm:px-6 lg:px-12 lg:pb-20">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="relative overflow-hidden rounded-3xl bg-blue-600 px-6 py-12 text-center shadow-lg shadow-blue-900/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.55, ease: smoothEase }}
+            >
+              <div
+                className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-blue-800/35"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-blue-500/40"
+                aria-hidden
+              />
+              <div className="relative z-10 mx-auto max-w-3xl">
+                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[2rem]">
+                  Ready to transform your workforce operations?
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg">
+                  Join 25+ enterprises who have centralized their contractor management and saved up to 15% in
+                  operational costs.
+                </p>
+                <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-slate-50"
+                  >
+                    Request a Free Demo
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-slate-50"
+                  >
+                    Contact Sales Team
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
       </div>

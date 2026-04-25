@@ -109,6 +109,7 @@ export default function Home() {
     if (!titles.includes(preferred)) return titles;
     return [preferred, ...titles.filter((t) => t !== preferred)];
   });
+  const [operationalChallengesExpanded, setOperationalChallengesExpanded] = useState(false);
 
   const selectedWhyTitle = whyOrder[0] ?? whyCards[0]?.title;
   const selectedWhyCard = whyCards.find((c) => c.title === selectedWhyTitle) ?? whyCards[0];
@@ -309,7 +310,7 @@ export default function Home() {
                     onClick={() =>
                       setWhyOrder((prev) => {
                         if (prev.length < 2) return prev;
-                        return [...prev.slice(1), prev[0]]; 
+                        return [...prev.slice(1), prev[0]];
                       })
                     }
                     className="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
@@ -322,42 +323,42 @@ export default function Home() {
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       className="grid grid-cols-1 lg:grid-cols-[1.12fr_0.88fr]"
                     >
-                  <div className="relative min-h-[220px] lg:min-h-[360px]">
-                    <Image
-                      src={selectedWhyCard.imageUrl}
-                      alt={selectedWhyCard.title}
-                      fill
-                      className="object-cover transition-transform duration-150 ease-out group-hover:scale-[1.03]"
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/20 to-transparent" />
-                    <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-body-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
-                      {selectedWhyCard.badge ?? "Dashboard view"}
-                    </div>
-                  </div>
-
-                  <div className="relative flex flex-col justify-between p-6 transition-colors duration-150 ease-out sm:p-8">
-                    <div>
-                      <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-label uppercase tracking-wider text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
-                        Why teams choose us
+                      <div className="relative min-h-[220px] lg:min-h-[360px]">
+                        <Image
+                          src={selectedWhyCard.imageUrl}
+                          alt={selectedWhyCard.title}
+                          fill
+                          className="object-cover transition-transform duration-150 ease-out group-hover:scale-[1.03]"
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/20 to-transparent" />
+                        <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-body-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
+                          {selectedWhyCard.badge ?? "Dashboard view"}
+                        </div>
                       </div>
-                      <h3 className="mt-4 text-xl font-heading-bold leading-tight tracking-tight text-gray-900 transition-colors duration-150 ease-out sm:text-2xl">
-                        {selectedWhyCard.title}
-                      </h3>
-                      <p className="mt-3 text-sm font-body leading-relaxed text-gray-600 transition-colors duration-150 ease-out group-hover:text-gray-700 sm:text-[15px]">
-                        {selectedWhyCard.text}
-                      </p>
-                    </div>
 
-                    <div className="mt-6 flex flex-wrap items-center gap-3">
-                      <span className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm text-white shadow-md transition-colors duration-150 ease-out group-hover:bg-blue-700">
-                        View all Solutions
-                      </span>
-                      <span className="text-xs font-body text-gray-500">Click to switch cards</span>
-                    </div>
+                      <div className="relative flex flex-col justify-between p-6 transition-colors duration-150 ease-out sm:p-8">
+                        <div>
+                          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-label uppercase tracking-wider text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
+                            Why teams choose us
+                          </div>
+                          <h3 className="mt-4 text-xl font-heading-bold leading-tight tracking-tight text-gray-900 transition-colors duration-150 ease-out sm:text-2xl">
+                            {selectedWhyCard.title}
+                          </h3>
+                          <p className="mt-3 text-sm font-body leading-relaxed text-gray-600 transition-colors duration-150 ease-out group-hover:text-gray-700 sm:text-[15px]">
+                            {selectedWhyCard.text}
+                          </p>
+                        </div>
 
-                    <div className="mt-6 h-px w-20 bg-gradient-to-r from-gray-200 to-transparent" aria-hidden />
-                  </div>
+                        <div className="mt-6 flex flex-wrap items-center gap-3">
+                          <span className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm text-white shadow-md transition-colors duration-150 ease-out group-hover:bg-blue-700">
+                            View all Solutions
+                          </span>
+                          <span className="text-xs font-body text-gray-500">Click to switch cards</span>
+                        </div>
+
+                        <div className="mt-6 h-px w-20 bg-gradient-to-r from-gray-200 to-transparent" aria-hidden />
+                      </div>
                     </motion.div>
                   </button>
                 </motion.div>
@@ -394,55 +395,55 @@ export default function Home() {
                         aria-label={`Show ${card.title}`}
                       >
                         <div className="flex h-full gap-3 sm:gap-3.5">
-                        <div className="relative h-14 w-16 flex-none overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:h-[3.7rem] sm:w-[4.2rem]">
-                          <Image src={card.imageUrl} alt="" fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="64px" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
-                        </div>
+                          <div className="relative h-14 w-16 flex-none overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:h-[3.7rem] sm:w-[4.2rem]">
+                            <Image src={card.imageUrl} alt="" fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="64px" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
+                          </div>
 
-                        <div className="min-w-0 flex flex-1 flex-col justify-between">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-white text-blue-700 ring-1 ring-blue-100 shadow-sm">
-                              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
-                                {card.icon === "chart" && <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2Zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2" />}
-                                {card.icon === "lock" && (
-                                  <>
-                                    <path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
-                                    <path d="M18 9V7a6 6 0 1 0-12 0v2" />
-                                  </>
-                                )}
-                                {card.icon === "gear" && (
-                                  <>
-                                    <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" />
-                                    <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                  </>
-                                )}
-                                {card.icon === "integration" && <path d="M11 4a2 2 0 1 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a2 2 0 1 0 0 4h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-1a2 2 0 1 0-4 0v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H4a2 2 0 1 1 0-4h1a1 1 0 0 0 1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 0 1-1V4Z" />}
-                                {card.icon === "doc" && <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2Z" />}
+                          <div className="min-w-0 flex flex-1 flex-col justify-between">
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-white text-blue-700 ring-1 ring-blue-100 shadow-sm">
+                                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}>
+                                  {card.icon === "chart" && <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2Zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2" />}
+                                  {card.icon === "lock" && (
+                                    <>
+                                      <path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
+                                      <path d="M18 9V7a6 6 0 1 0-12 0v2" />
+                                    </>
+                                  )}
+                                  {card.icon === "gear" && (
+                                    <>
+                                      <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065Z" />
+                                      <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </>
+                                  )}
+                                  {card.icon === "integration" && <path d="M11 4a2 2 0 1 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a2 2 0 1 0 0 4h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-1a2 2 0 1 0-4 0v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H4a2 2 0 1 1 0-4h1a1 1 0 0 0 1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 0 1-1V4Z" />}
+                                  {card.icon === "doc" && <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2Z" />}
+                                </svg>
+                              </div>
+                            </div>
+
+                            <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+                              {card.badge ?? "Capability"}
+                            </div>
+                            <div className="mt-1.5 line-clamp-2 text-[1rem] font-heading-semibold leading-snug text-slate-900">{card.title}</div>
+                            <div className="mt-2 inline-flex items-center gap-2 text-xs font-body-medium text-blue-700/90">
+                              <span className="relative">
+                                Click to swap
+                                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-blue-500 transition-transform duration-300 group-hover:scale-x-100" />
+                              </span>
+                              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                                <path d="M5 12h14" />
+                                <path d="M13 5l7 7-7 7" />
                               </svg>
                             </div>
                           </div>
-
-                          <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
-                            {card.badge ?? "Capability"}
-                          </div>
-                          <div className="mt-1.5 line-clamp-2 text-[1rem] font-heading-semibold leading-snug text-slate-900">{card.title}</div>
-                          <div className="mt-2 inline-flex items-center gap-2 text-xs font-body-medium text-blue-700/90">
-                            <span className="relative">
-                              Click to swap
-                              <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-blue-500 transition-transform duration-300 group-hover:scale-x-100" />
-                            </span>
-                            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                              <path d="M5 12h14" />
-                              <path d="M13 5l7 7-7 7" />
-                            </svg>
-                          </div>
-                        </div>
                         </div>
                       </button>
                     </motion.div>
                   </motion.div>
                 );
-                })}
+              })}
             </div>
           </motion.div>
         </div>
@@ -450,123 +451,214 @@ export default function Home() {
 
       <SectionFade className="border-t border-gray-100"><FeaturesSlider /></SectionFade>
 
-      {/* Operational challenges matrix — premium table layout */}
+      {/* Operational challenges — two-card light layout */}
       <SectionFade>
-        <section className="relative overflow-hidden py-2">
-          <motion.div
-            className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.035 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.22 }}
-            transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Image
-              src="/image.png"
-              alt="Operational dashboard and workforce management"
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority={false}
-            />
-            <div className="absolute inset-0 bg-slate-900/68" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#101b34]/85 via-[#15203b]/75 to-[#0f1a31]/88" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(59,130,246,0.22),transparent_40%),radial-gradient(circle_at_82%_80%,rgba(56,189,248,0.16),transparent_40%)]" />
-          </motion.div>
+        <section className="relative overflow-hidden bg-[#f8fafc] py-14 lg:py-20">
+          {/* subtle dot grid */}
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-60" aria-hidden />
+          {/* soft blue glow top */}
+          <div className="pointer-events-none absolute -top-32 left-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-blue-100/60 blur-3xl" aria-hidden />
 
-          <div className="relative mx-auto flex min-h-[min(72vh,38rem)] max-w-7xl flex-col justify-center px-6 py-10 text-white lg:px-12">
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            {/* section header */}
             <motion.div
-              className="w-full rounded-[2rem] border border-white/20 bg-[linear-gradient(130deg,rgba(255,255,255,0.11),rgba(255,255,255,0.05)_45%,rgba(148,163,184,0.05))] px-5 py-8 shadow-[0_40px_100px_-36px_rgba(15,23,42,0.95)] ring-1 ring-white/10 backdrop-blur-2xl sm:px-8 sm:py-10 lg:px-10"
-              initial={{ opacity: 0, y: 22 }}
+              className="mb-10 text-center"
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.04 }}
-              >
-                <span className="inline-flex items-center rounded-full border border-blue-200/35 bg-blue-400/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-50 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
-                  Solutions
-                </span>
-                <h2 className="mt-4 bg-gradient-to-b from-white via-blue-100 to-slate-200 bg-clip-text text-2xl font-heading-bold tracking-tight text-transparent sm:text-3xl lg:text-[2.2rem]">
-                  Solving Real Operational Challenges
-                </h2>
-                <p className="mx-auto mt-3 max-w-2xl text-sm text-blue-100/75 sm:text-base">
-                  A practical matrix that maps daily operational risks to measurable, automated outcomes.
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="mt-8 overflow-hidden rounded-2xl border border-white/20 bg-[linear-gradient(to_bottom,rgba(15,23,42,0.55),rgba(15,23,42,0.42))] shadow-[inset_0_1px_0_rgba(255,255,255,0.14),0_26px_60px_-36px_rgba(15,23,42,0.95)]"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              >
-                <div className="grid grid-cols-2 border-b border-white/15 bg-white/[0.06]">
-                  <div className="px-4 py-3.5 sm:px-6">
-                    <div className="mx-auto w-full max-w-[22rem] text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
-                      Problem
-                    </div>
-                  </div>
-                  <div className="border-l border-white/10 px-4 py-3.5 sm:px-6">
-                    <div className="mx-auto w-full max-w-[22rem] text-left text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
-                      InOps Solution
-                    </div>
-                  </div>
-                </div>
-
-                {[
-                  ["Fragmented workforce data", "Unified platform"],
-                  ["Compliance risks", "Automated tracking & alerts"],
-                  ["Workers has no access to formal credit", "Earned Wage Access"],
-                  ["Proxy attendance", "Face recognition"],
-                  ["Manual operations", "Automation & analytics"],
-                ].map(([problem, solution], idx) => (
-                  <div
-                    key={problem}
-                    className={`group grid min-h-[56px] grid-cols-2 items-center transition-colors duration-200 hover:bg-blue-400/[0.07] ${
-                      idx !== 4 ? "border-b border-white/10" : ""
-                    }`}
-                  >
-                    <div className="px-4 py-3.5 sm:px-6">
-                      <div className="mx-auto flex w-full max-w-[22rem] items-center gap-2.5 text-left text-sm leading-relaxed text-white/85 sm:text-[15px]">
-                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-slate-300/80 transition-colors group-hover:bg-blue-200" />
-                        {problem}
-                      </div>
-                    </div>
-                    <div className="border-l border-white/10 px-4 py-3.5 sm:px-6">
-                      <div className="mx-auto flex w-full max-w-[22rem] items-center gap-2 text-left text-sm font-semibold leading-relaxed text-blue-100 sm:text-[15px]">
-                        <svg className="h-4 w-4 shrink-0 text-cyan-300/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                          <path d="m5 12 5 5L20 7" />
-                        </svg>
-                        {solution}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-
-              <motion.div
-                className="mt-8 flex flex-wrap items-center justify-center gap-2.5"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
-              >
-                {["Data Integrity", "Compliance Automation", "Face Recognition", "EWA Ready", "Enterprise Scale"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/25 bg-white/[0.08] px-3.5 py-1.5 text-[11px] font-medium tracking-wide text-white/85 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] transition hover:-translate-y-0.5 hover:bg-white/[0.14]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </motion.div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-blue-700">
+                Solutions
+              </span>
+              <h2 className="mt-5 text-3xl font-heading-bold tracking-tight text-slate-900 sm:text-4xl">
+                Solving Real Operational Challenges
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
+                Every operational pain point mapped to a precise, automated InOps answer.
+              </p>
             </motion.div>
+
+            {/* two-card grid */}
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+
+              {/* ── Card 1: Workforce Governance ── */}
+              <motion.div
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_8px_32px_-12px_rgba(15,23,42,0.12)] transition-shadow duration-300 hover:shadow-[0_20px_48px_-18px_rgba(15,23,42,0.18)] sm:p-8"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.22 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {/* top accent line */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-400" aria-hidden />
+
+                {/* badge */}
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" aria-hidden />
+                  Operations &amp; Compliance
+                </span>
+
+                {/* heading + desc */}
+                <h3 className="mt-4 text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.7rem]">
+                  PROBLEM 
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  The operational gaps teams feel every day — and how InOps closes them with one connected platform.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setOperationalChallengesExpanded((e) => !e)}
+                  className="mt-3 text-xs font-semibold text-blue-600 underline-offset-2 hover:text-blue-700 hover:underline"
+                  aria-expanded={operationalChallengesExpanded}
+                  aria-controls="operational-challenges-problem-list"
+                >
+                  {operationalChallengesExpanded ? "Less" : "More"}
+                </button>
+
+                {/* feature rows */}
+                <div id="operational-challenges-problem-list" className="mt-6 space-y-3">
+                  {[
+                    {
+                      icon: "layers",
+                      title: "Fragmented workforce data",
+                      sub:   "Attendance, compliance, and HR data scattered across spreadsheets and tools — no single source of truth.",
+                    },
+                    {
+                      icon: "shield-check",
+                      title: "Compliance risks",
+                      sub:   "Statutory and site rules are easy to miss until an audit, incident, or penalty forces a reaction.",
+                    },
+                    {
+                      icon: "wallet",
+                      title: "Workers have no access to formal credit",
+                      sub:   "Pay cycles and informal lending leave little room for regulated, dignified access to earned wages.",
+                    },
+                    {
+                      icon: "eye",
+                      title: "Proxy attendance",
+                      sub:   "Buddy punching and weak verification mean the people marked “present” are not always who you think.",
+                    },
+                    {
+                      icon: "clipboard",
+                      title: "Manual operations",
+                      sub:   "Reconciliation, follow-ups, and reporting eat bandwidth that should go to managing the workforce.",
+                    },
+                  ].map(({ icon, title, sub }) => (
+                    <div
+                      key={title}
+                      className="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3.5 transition-colors duration-150 hover:border-blue-100 hover:bg-blue-50/40"
+                    >
+                      {/* icon circle */}
+                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+                        <svg className="h-4 w-4 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
+                          {icon === "layers"       && <><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.05 4.13a2 2 0 0 1-1.9 0L2 17.65"/><path d="m22 12.65-9.05 4.13a2 2 0 0 1-1.9 0L2 12.65"/></>}
+                          {icon === "shield-check"  && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></>}
+                          {icon === "wallet"       && <><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h2"/><path d="M2 10h20"/></>}
+                          {icon === "eye"           && <><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></>}
+                          {icon === "clipboard"     && <><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></>}
+                        </svg>
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-slate-800">{title}</p>
+                        {operationalChallengesExpanded ? (
+                          <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{sub}</p>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* ── Card 2: Financial & Operations ── */}
+              <motion.div
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_8px_32px_-12px_rgba(15,23,42,0.12)] transition-shadow duration-300 hover:shadow-[0_20px_48px_-18px_rgba(15,23,42,0.18)] sm:p-8"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.22 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              >
+                {/* top accent line */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-emerald-400 via-cyan-500 to-teal-400" aria-hidden />
+
+                {/* badge */}
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden />
+                  Worker Wellness &amp; Retention
+                </span>
+
+                {/* heading + desc */}
+                <h3 className="mt-4 text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.7rem]">
+                INOPS SOLUTION
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                  The same five pain points — answered with platform, automation, verification, and worker-first financial access.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setOperationalChallengesExpanded((e) => !e)}
+                  className="mt-3 text-xs font-semibold text-emerald-600 underline-offset-2 hover:text-emerald-700 hover:underline"
+                  aria-expanded={operationalChallengesExpanded}
+                  aria-controls="operational-challenges-solution-list"
+                >
+                  {operationalChallengesExpanded ? "Less" : "More"}
+                </button>
+
+                {/* feature rows */}
+                <div id="operational-challenges-solution-list" className="mt-6 space-y-3">
+                  {[
+                    {
+                      icon: "link",
+                      title: "Unified platform",
+                      sub:   "One connected system for workforce data, attendance, and compliance — no more siloed exports.",
+                    },
+                    {
+                      icon: "bell",
+                      title: "Automated tracking & alerts",
+                      sub:   "Continuous checks and timely alerts so compliance gaps are caught and fixed before they escalate.",
+                    },
+                    {
+                      icon: "wallet",
+                      title: "Earned Wage Access",
+                      sub:   "Formal, regulated on-demand access to earned wages through NBFC partners — not informal debt.",
+                    },
+                    {
+                      icon: "scan-face",
+                      title: "Face recognition",
+                      sub:   "AI-powered face authentication at check-in so proxy attendance cannot pass as the real worker.",
+                    },
+                    {
+                      icon: "bolt",
+                      title: "Automation & analytics",
+                      sub:   "End-to-end workflow automation plus live analytics — less manual chasing, more operational clarity.",
+                    },
+                  ].map(({ icon, title, sub }) => (
+                    <div
+                      key={title}
+                      className="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3.5 transition-colors duration-150 hover:border-emerald-100 hover:bg-emerald-50/40"
+                    >
+                      {/* icon circle */}
+                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+                        <svg className="h-4 w-4 text-emerald-600" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
+                          {icon === "link"      && <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></>}
+                          {icon === "bell"      && <><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></>}
+                          {icon === "wallet"    && <><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h2"/><path d="M2 10h20"/></>}
+                          {icon === "scan-face" && <><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="10" r="3"/><path d="M7 16h.01"/><path d="M17 16h.01"/></>}
+                          {icon === "bolt"      && <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/>}
+                        </svg>
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-slate-800">{title}</p>
+                        {operationalChallengesExpanded ? (
+                          <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{sub}</p>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+            </div>
           </div>
         </section>
       </SectionFade>
@@ -587,7 +679,7 @@ export default function Home() {
       <SectionFade className="border-t border-gray-100"><IndustriesSlider /></SectionFade>
 
       {/* Feature cards — blog-post style (per reference image) */}
-   
+
       {/* Feature cards + logo strip (single bordered container) */}
       <SectionFade effect="3d">
         <div className="max-w-full">
@@ -697,20 +789,20 @@ export default function Home() {
               </div>
             </section>
             <SectionFade><BrandsSlider /></SectionFade>
-         
+
           </div>
         </div>
       </SectionFade>
       {/* <SectionFade><BrandsSlider /></SectionFade> */}
 
       {/* Contact */}
-      <SectionFade id="contact" className="relative py-10 lg:py-14">
+      <SectionFade id="contact" className="relative pt-10 pb-0 lg:pt-14 lg:pb-0">
         <div className="relative">
           <div className="grid overflow-hidden lg:grid-cols-[57%_43%]">
             {/* Left image (separate from form component) */}
             <div className="relative min-h-[200px] w-full sm:min-h-[240px] lg:min-h-[min(28rem,50vh)]">
               <Image
-                src="/Gemini_Generated_Image_jpzp25jpzp25jpzp.png"
+                src="/Gemini_Generated_Image_ydoe81ydoe81ydoe.png"
                 alt="Request a consultation"
                 fill
                 className="object-cover object-center"

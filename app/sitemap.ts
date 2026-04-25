@@ -1,33 +1,35 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/app/lib/site";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") || "https://example.com";
+const siteUrl = getSiteUrl();
 
-const routes = [
-  "/",
-  "/about",
-  "/contact",
-  "/blog",
-  "/brochures",
-  "/all-pages",
-  "/product/biometric-access-control",
-  "/product/turnstiles",
-  "/product/accessories",
-  "/solutions/time-and-attendance",
-  "/solutions/canteen-management",
-  "/solutions/payroll-solutions",
-  "/solutions/labour-management",
-  "/solutions/visitor-management",
-  "/solutions/fixed-asset-management",
+type ChangeFreq = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+
+const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] = [
+  { path: "/", priority: 1, changeFrequency: "weekly" },
+  { path: "/about", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.85, changeFrequency: "weekly" },
+  { path: "/brochures", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/product/biometric-access-control", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/product/turnstiles", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/product/accessories", priority: 0.75, changeFrequency: "monthly" },
+  { path: "/solutions/time-and-attendance", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/canteen-management", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/payroll-solutions", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/labour-management", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/solutions/mobile-app", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/enterprise-solution", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/visitor-management", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/fixed-asset-management", priority: 0.85, changeFrequency: "monthly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return routes.map((path) => ({
+  return routes.map(({ path, priority, changeFrequency }) => ({
     url: `${siteUrl}${path}`,
     lastModified,
-    changeFrequency: path === "/" ? "weekly" : "monthly",
-    priority: path === "/" ? 1 : 0.7,
+    changeFrequency,
+    priority,
   }));
 }
-

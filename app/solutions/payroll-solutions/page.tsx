@@ -2,115 +2,308 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import SolutionModulePanel from "@/app/components/SolutionModulePanel";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-/** Place files in `public/images/` with these exact names. */
-const compliancePayrollGalleryImages = [
+/** Hero + feature grid — contract workforce / CLMS narrative */
+const clmsHeroImage =
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=85";
+
+const comprehensiveControlCards = [
   {
-    src: "/images/1708459316.png",
-    alt: "Payroll and workforce compliance dashboard with schedules and summaries",
-    width: 900,
-    height: 600,
+    title: "Digital Onboarding",
+    description:
+      "Verify identities, run background checks, and digitize paperwork so every contractor is cleared and audit-ready before day one.",
+    icon: "onboarding" as const,
   },
   {
-    src: "/images/275581401627b0d3533467362f4c0372.jpg",
-    alt: "HR and payroll operations workspace with attendance and compensation insights",
-    width: 900,
-    height: 600,
+    title: "Attendance & Shift Tracking",
+    description:
+      "Capture biometrics and shift rules at the gate, then feed clean hours straight into payroll and vendor billing.",
+    icon: "clock" as const,
   },
   {
-    src: "/images/CobbleStone-Software-Contract-contracts-kpi-graphical-dashboard.webp",
-    alt: "Contracts and KPI dashboard with graphical compliance and performance metrics",
-    width: 900,
-    height: 600,
+    title: "Wage & Compliance",
+    description:
+      "Automate minimum wage, overtime, statutory deductions, and policy checks so payouts stay defensible on every cycle.",
+    icon: "scale" as const,
+  },
+  {
+    title: "Invoice Reconciliation",
+    description:
+      "Match contractor invoices to verified headcount and hours—spot leakage before it hits the finance close.",
+    icon: "invoice" as const,
+  },
+  {
+    title: "Contractor Management",
+    description:
+      "Track licenses, renewals, and performance signals across vendors without losing sight of site-level accountability.",
+    icon: "contractor" as const,
   },
 ] as const;
 
-const payrollFeatures = [
-  { num: "01", label: "Customization", color: "#7c3aed" },
-  { num: "02", label: "Direct Deposit", color: "#ea580c" },
-  { num: "03", label: "Employee Self Service", color: "#f59e0b" },
-  { num: "04", label: "Tax Filing", color: "#eab308" },
-  { num: "05", label: "Compliance Management", color: "#2563eb" },
-  { num: "06", label: "Mobile App", color: "#16a34a" },
-];
+/** Horizontal “Our Modules” carousel — image, title, description per slide */
+const ourModulesSlides = [
+  {
+    title: "KYE — Employee Verification",
+    description:
+      "Next-gen CLMS with AI-assisted document verification for challans and records, plus smart reporting and analytics for faster, defensible decisions.",
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85",
+    alt: "Digital verification and identity check at a workforce kiosk",
+  },
+  {
+    title: "Visitor Management",
+    description:
+      "Secure visitor tracking with seamless check-in and check-out, host notifications, and lobby visibility tied to your access rules.",
+    image:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85",
+    alt: "Modern office reception and visitor check-in",
+  },
+  {
+    title: "Canteen Management",
+    description:
+      "Manage food ordering, inventory, billing, and employee meal benefits in one flow—aligned with subsidies and attendance where you need it.",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85",
+    alt: "Corporate cafeteria service line",
+  },
+  {
+    title: "Contractor Management",
+    description:
+      "Onboard vendors, track licenses and renewals, and reconcile headcount with attendance so contractor spend stays transparent.",
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85",
+    alt: "Contractors and supervisors on an industrial site",
+  },
+  {
+    title: "Time Attendance & Leave",
+    description:
+      "Biometric and policy-aware time capture, leave workflows, and exports that land cleanly in payroll without manual re-keying.",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85",
+    alt: "Team planning attendance and schedules",
+  },
+  {
+    title: "Wage",
+    description:
+      "Structure complex wage rules, statutory deductions, and pay cycles with audit trails from clock-in to payslip.",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=85",
+    alt: "Payroll and compensation review",
+  },
+  {
+    title: "Shift Roster",
+    description:
+      "Plan shifts and rotations by site or line, handle swaps and coverage, and feed rosters straight into attendance validation.",
+    image:
+      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=85",
+    alt: "Shift planning calendar and schedule",
+  },
+  {
+    title: "Background Verification",
+    description:
+      "Digitize verification steps, document outcomes, and keep a single source of truth for audits and renewals.",
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=85",
+    alt: "Document verification and compliance paperwork",
+  },
+  {
+    title: "AI Assistance",
+    description:
+      "Surface anomalies, suggest next actions, and reduce manual triage across documents, attendance, and compliance queues.",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85",
+    alt: "AI and data-driven workforce insights",
+  },
+  {
+    title: "Analytics & Compliance",
+    description:
+      "Dashboards for utilization, leakage, and statutory posture—with exports your finance and legal teams can rely on.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85",
+    alt: "Analytics dashboard with charts and KPIs",
+  },
+  {
+    title: "Hardware Integration",
+    description:
+      "Connect turnstiles, biometrics, and edge devices to the same policy engine so physical gates match payroll truth.",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85",
+    alt: "Biometric and access control hardware",
+  },
+] as const;
 
-const featuresAndBenefits = [
-  {
-    title: "Automated Payroll Processing",
-    circleColor: "bg-orange-500",
-    description: "Our payroll solution automates the entire payroll process, from calculating employee salaries to generating paychecks or direct deposits.",
-    benefit: "Reduced Administrative Burden and Increased Efficiency in Payroll Processing.",
-  },
-  {
-    title: "Tax Calculation and Filing",
-    circleColor: "bg-emerald-500",
-    description: "Automatically calculate taxes, including federal, state, and local taxes, and generate tax forms for filing, ensuring compliance with tax regulations.",
-    benefit: "Minimized Risk of Tax Penalties and Simplified Tax Filing.",
-  },
-  {
-    title: "Employee Self-Service Portal",
-    circleColor: "bg-pink-500",
-    description: "Provide employees with access to a self-service portal where they can view pay stubs, update personal information, and submit time-off requests.",
-    benefit: "Empowered Employees and Reduced HR Workload.",
-  },
-  {
-    title: "Integration with Time and Attendance Systems",
-    circleColor: "bg-cyan-500",
-    description: "Seamlessly integrate with time and attendance systems to ensure accurate tracking of employee hours and facilitate payroll processing.",
-    benefit: "Elimination of Manual Data Entry Errors and Improved Payroll Accuracy.",
-  },
-  {
-    title: "Customizable Deductions and Benefits",
-    circleColor: "bg-yellow-500",
-    description: "Customize deductions and benefits for each employee, such as health insurance, retirement contributions, and garnishments, to meet individual needs.",
-    benefit: "Enhanced Employee Satisfaction and Retention.",
-  },
-  {
-    title: "Compliance Management",
-    circleColor: "bg-violet-500",
-    description: "Stay compliant with labor laws and regulations by automating compliance tasks such as overtime calculations, minimum wage requirements, and leave entitlements.",
-    benefit: "Reduced Risk of Non-Compliance and Legal Penalties.",
-  },
-  {
-    title: "Direct Deposit and Payment Options",
-    circleColor: "bg-orange-500",
-    description: "Offer employees the convenience of direct deposit and other payment options, such as paycards or paper checks, to suit their preferences.",
-    benefit: "Enhanced Employee Convenience and Satisfaction.",
-  },
-  {
-    title: "Comprehensive Reporting and Analytics",
-    circleColor: "bg-blue-900",
-    description: "Generate customizable reports on payroll expenses, tax liabilities, and employee earnings, providing valuable insights for financial planning and analysis.",
-    benefit: "Enhanced Data Visibility and Informed Decision-making.",
-  },
-];
+function useModulesPerView() {
+  const [perView, setPerView] = useState(1);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w >= 1024) setPerView(3);
+      else if (w >= 640) setPerView(2);
+      else setPerView(1);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return perView;
+}
 
-const payrollHighlights = [
-  "Supports dynamic component reaction",
-  "End to end payroll process management",
-  "Customized and fully automated payroll processing",
-  "Data security and confidentiality SSAE 18 Type 2 Compliant",
-  "Flexibility to accommodate multiple salary revisions",
-  "Robust payroll software/supports complex pay structures",
-  "Clearly defined SLAs-No hidden cost",
-  "Multi-level process checks to mitigate errors",
-  "Yearly payroll calendar-Proactive planning for the year",
-  "Support most bank uploadable formats",
-];
+const MODULES_AUTOPLAY_MS = 5500;
 
-const powerfulServices = [
-  { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
-  { title: "Access Control System", icon: "card", color: "bg-pink-500" },
-  { title: "Canteen Management System", icon: "tray", color: "bg-cyan-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-sky-400" },
-  { title: "Visitor Management System", icon: "person", color: "bg-violet-500" },
-  { title: "Contract Management System", icon: "document-pen", color: "bg-amber-500" },
-];
+function OurModulesCarousel() {
+  const perView = useModulesPerView();
+  const maxStart = Math.max(0, ourModulesSlides.length - perView);
+  const [start, setStart] = useState(0);
+  const [hoverPaused, setHoverPaused] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const read = () => setReduceMotion(mq.matches);
+    read();
+    mq.addEventListener("change", read);
+    return () => mq.removeEventListener("change", read);
+  }, []);
+
+  useEffect(() => {
+    setStart((s) => Math.min(s, maxStart));
+  }, [maxStart]);
+
+  useEffect(() => {
+    if (reduceMotion || maxStart <= 0 || hoverPaused) return;
+    const id = window.setInterval(() => {
+      setStart((s) => (s >= maxStart ? 0 : s + 1));
+    }, MODULES_AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [maxStart, hoverPaused, reduceMotion]);
+
+  const goPrev = useCallback(() => {
+    setStart((s) => (s <= 0 ? maxStart : s - 1));
+  }, [maxStart]);
+
+  const goNext = useCallback(() => {
+    setStart((s) => (s >= maxStart ? 0 : s + 1));
+  }, [maxStart]);
+
+  const visible = ourModulesSlides.slice(start, start + perView);
+
+  return (
+    <section
+      className="border-t border-slate-200/80 bg-slate-100/60 py-14 lg:py-16"
+      aria-labelledby="our-modules-heading"
+      onMouseEnter={() => setHoverPaused(true)}
+      onMouseLeave={() => setHoverPaused(false)}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <motion.h2
+          id="our-modules-heading"
+          className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.45, ease: smoothEase }}
+        >
+          Our Modules
+        </motion.h2>
+
+        <p className="sr-only">
+          Carousel advances automatically. Hover to pause. Use previous and next buttons to move slides.
+        </p>
+
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {visible.map((slide) => (
+            <motion.article
+              key={slide.title}
+              className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md shadow-slate-900/5"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, ease: smoothEase }}
+            >
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                <Image
+                  src={slide.image}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
+              <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:px-6">
+                <h3 className="text-base font-bold leading-snug text-slate-900 sm:text-lg">{slide.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="mt-10 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-indigo-600 shadow-sm transition hover:bg-slate-50"
+            aria-label="Previous modules"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-indigo-600 shadow-sm transition hover:bg-slate-50"
+            aria-label="Next modules"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ComprehensiveControlIcon({ name }: { name: (typeof comprehensiveControlCards)[number]["icon"] }) {
+  const c = "h-6 w-6";
+  if (name === "onboarding") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+      </svg>
+    );
+  }
+  if (name === "clock") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    );
+  }
+  if (name === "scale") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+      </svg>
+    );
+  }
+  if (name === "invoice") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>
+  );
+}
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -120,433 +313,387 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function ServiceIcon({ icon }: { icon: string }) {
-  const c = "h-6 w-6";
-  return (
-    <>
-      {icon === "document" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-      {icon === "card" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>}
-      {icon === "tray" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>}
-      {icon === "id" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>}
-      {icon === "person" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>}
-      {icon === "document-pen" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>}
-    </>
-  );
-}
-
 export default function PayrollSolutionsPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – dark with abstract geometric backdrop */}
+        {/* Hero — platform solutions, contract workforce governance */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="border-b border-slate-100 bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
         >
-          <div className="absolute inset-0 bg-gray-900" />
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=60"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gray-900/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.15),transparent)]" />
-          <div className="relative z-10 text-center px-6">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Payroll Solutions
-            </motion.h1>
+          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-12">
             <motion.nav
-              className="mt-4 text-sm text-white"
-              initial={{ opacity: 0, y: 16 }}
+              className="text-sm text-slate-500"
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
               aria-label="Breadcrumb"
             >
-              <Link href="/" className="text-white hover:text-white/90 transition-colors">
+              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-indigo-600">
                 Home
               </Link>
-              <span className="mx-2 text-white/80">/</span>
-              <span className="text-blue-400 font-medium">Payroll Solutions</span>
+              <span className="mx-2 text-slate-400">/</span>
+              <span className="font-medium text-slate-900">Payroll Solutions</span> */}
             </motion.nav>
+
+            <div className="grid grid-cols-1 items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14 lg:py-14">
+              <div>
+                <motion.span
+                  className="inline-flex rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-indigo-600 ring-1 ring-indigo-100"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
+                >
+                  Platform Solutions
+                </motion.span>
+                <motion.h1
+                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
+                >
+                  End-to-End Contract{" "}
+                  <span className="text-indigo-600">Workforce Governance</span>
+                </motion.h1>
+                <motion.p
+                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
+                >
+                  Manage the entire lifecycle of contract employees with complete visibility and control.
+                  Eliminate leakages, ensure compliance, and optimize costs on a single platform.
+                </motion.p>
+                <motion.div
+                  className="mt-8 flex flex-wrap items-center gap-3"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                >
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-indigo-600/25 transition hover:bg-indigo-700"
+                  >
+                    Get Started
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
+                  >
+                    View Case Studies
+                  </Link>
+                </motion.div>
+              </div>
+
+              <motion.div
+                className="relative mx-auto w-full max-w-xl lg:max-w-none"
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: smoothEase, delay: 0.08 }}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/50">
+                  <Image
+                    src={clmsHeroImage}
+                    alt="Operations team reviewing workforce data on a tablet"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" aria-hidden />
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-auto sm:max-w-sm">
+                    <div className="rounded-xl border border-white/25 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-md sm:px-5 sm:py-4">
+                      <p className="text-xs font-bold uppercase tracking-wide text-slate-900">Live monitoring</p>
+                      <p className="mt-1 text-sm leading-snug text-slate-600">
+                        Real-time attendance tracking across 12 manufacturing sites.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.section>
 
-        {/* Intro – title, underline, paragraph (full content width) */}
-        <section className="border-t border-gray-200 bg-white pb-5 pt-4 sm:pb-6 sm:pt-5 lg:pb-7 lg:pt-5">
-          <div className="mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-10">
-            <motion.h2
-              className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+        {/* Comprehensive Control — CLMS touchpoints */}
+        <section
+          className="border-t border-slate-200/80 bg-slate-50 py-14 lg:py-16"
+          aria-labelledby="comprehensive-control-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-2xl text-center"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              Payroll Solutions
-            </motion.h2>
-            <div className="mx-auto mt-2 h-1 w-20 rounded-full bg-gradient-to-r from-blue-600 to-violet-500 sm:w-24" aria-hidden />
-            <motion.p
-              className="mx-auto mt-5 w-full max-w-none text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-2xl lg:leading-relaxed lg:mt-6"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 }}
-            >
-              At InOps Company, our payroll solutions help you streamline processes, reduce errors, and ensure compliance—saving time and resources while leveraging advanced features for greater efficiency and employee satisfaction.
-            </motion.p>
+              <h2
+                id="comprehensive-control-heading"
+                className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
+              >
+                Comprehensive Control
+              </h2>
+              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Our CLMS covers every touchpoint of your contract labor operations.
+              </p>
+            </motion.div>
+
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+              {comprehensiveControlCards.map((card, i) => (
+                <motion.div
+                  key={card.title}
+                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px shadow-sm transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.2) }}
+                >
+                  <div className="flex h-full flex-col rounded-2xl bg-white p-6">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-50 text-indigo-600 ring-1 ring-indigo-100/80">
+                      <ComprehensiveControlIcon name={card.icon} />
+                    </div>
+                    <h3 className="mt-4 text-lg font-bold text-slate-900">{card.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+
+              <motion.div
+                className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-violet-300 bg-violet-50/90 p-6 text-center shadow-sm sm:col-span-2 lg:col-span-1"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.45, ease: smoothEase, delay: 0.15 }}
+              >
+                <h3 className="text-lg font-bold text-slate-900">Need Custom Integration?</h3>
+                <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-600">
+                  We sync with SAP, Oracle, and legacy ERP systems.
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 transition hover:text-indigo-700"
+                >
+                  Talk to Tech Support
+                  <span aria-hidden>→</span>
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Highlights of our payroll services – central oval + pills */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-6xl px-6 lg:px-12">
+        <OurModulesCarousel />
+
+        {/* Real-time access governance — split visual + dark copy */}
+        <section
+          id="access-governance"
+          className="border-t border-slate-200"
+          aria-labelledby="access-governance-heading"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2">
             <motion.div
-              className="relative flex flex-col items-stretch gap-5 sm:items-center lg:flex-row lg:justify-between lg:gap-6 xl:gap-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="relative min-h-[280px] bg-slate-900 sm:min-h-[360px] lg:min-h-[min(100vh,520px)]"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
+              transition={{ duration: 0.55, ease: smoothEase }}
             >
-              {/* Left pills – 5 */}
-              <div className="mx-auto flex w-full max-w-[280px] flex-col justify-center gap-3">
-                {payrollHighlights.slice(0, 5).map((text, i) => (
-                  <div
-                    key={i}
-                    className={`rounded-full px-4 py-2.5 text-sm font-medium text-gray-900 border border-gray-200 ${i < 2 ? "bg-blue-400/90" : "bg-violet-400/90"}`}
-                  >
-                    {text}
-                  </div>
-                ))}
-              </div>
-              {/* Central oval with gradient border */}
-              <div className="flex flex-shrink-0 items-center justify-center px-2">
-                <div className="rounded-full bg-gradient-to-r from-blue-400 to-violet-500 p-[2px]">
-                  <div className="rounded-full bg-gray-800 px-4 py-3 sm:px-8 sm:py-4">
-                    <span className="max-w-[16rem] text-center text-xs font-bold uppercase leading-snug tracking-wide text-white sm:max-w-none sm:text-sm sm:leading-normal md:text-base md:whitespace-nowrap">
-                      Highlights of our payroll services
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/* Right pills – 5 */}
-              <div className="mx-auto flex w-full max-w-[280px] flex-col justify-center gap-2.5 lg:mx-0 lg:max-w-none lg:flex-1">
-                {payrollHighlights.slice(5, 10).map((text, i) => (
-                  <div
-                    key={i}
-                    className="rounded-full px-4 py-2.5 text-sm font-medium text-gray-900 bg-violet-400/90 border border-gray-200"
-                  >
-                    {text}
-                  </div>
-                ))}
-              </div>
+              <Image
+                src="/images/Hardware Integration.jpg"
+                alt="Contract worker using an industrial turnstile with integrated biometric access hardware"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </motion.div>
+            <motion.div
+              className="flex flex-col justify-center bg-black px-6 py-12 sm:px-10 sm:py-14 lg:min-h-[min(100vh,520px)] lg:px-14 lg:py-16"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.55, ease: smoothEase, delay: 0.05 }}
+            >
+              <h2
+                id="access-governance-heading"
+                className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-[2.125rem] lg:leading-snug"
+              >
+                Real-Time Entry, Exit &amp; Access Governance
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-white/88 sm:text-lg">
+                Manage your contract workforce efficiently with our software that seamlessly integrates with biometric
+                hardware—including face, card, and fingerprint readers. The system works effortlessly with access control
+                solutions like turnstiles and flap barriers to ensure only authorized personnel enter your premises.
+                Track real-time attendance, manage shifts, and generate contractor-wise reports—all from a single
+                platform. Get automated alerts for early exits, overstays, and unauthorized access, enhancing both
+                security and compliance.
+              </p>
+              <div className="mt-10 h-1 w-14 rounded-full bg-blue-500" aria-hidden />
             </motion.div>
           </div>
         </section>
 
-        {/* Main content – infographic left, text right */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-stretch">
-              {/* Left – circular infographic: six must-have features */}
-              <motion.div
-                className="flex justify-center lg:h-full lg:items-center lg:justify-start"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <div className="relative w-full aspect-square">
-                  <svg viewBox="0 0 400 400" className="w-full h-full" aria-hidden>
-                    {/* 6 segments as pie slices (60° each), starting from top */}
-                    {payrollFeatures.map((seg, i) => {
-                      const startAngle = (i * 60 - 90) * (Math.PI / 180);
-                      const endAngle = ((i + 1) * 60 - 90) * (Math.PI / 180);
-                      const r1 = 90;
-                      const r2 = 170;
-                      const cx = 200;
-                      const cy = 200;
-                      const x1 = cx + r1 * Math.cos(startAngle);
-                      const y1 = cy + r1 * Math.sin(startAngle);
-                      const x2 = cx + r2 * Math.cos(startAngle);
-                      const y2 = cy + r2 * Math.sin(startAngle);
-                      const x3 = cx + r2 * Math.cos(endAngle);
-                      const y3 = cy + r2 * Math.sin(endAngle);
-                      const x4 = cx + r1 * Math.cos(endAngle);
-                      const y4 = cy + r1 * Math.sin(endAngle);
-                      const path = `M ${cx} ${cy} L ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} Z`;
-                      const midAngle = (startAngle + endAngle) / 2;
-                      const lineEndR = 192;
-                      const labelR = 218;
-                      const labelX = cx + labelR * Math.cos(midAngle);
-                      const labelY = cy + labelR * Math.sin(midAngle);
-                      return (
-                        <g key={i}>
-                          <path
-                            d={path}
-                            fill={seg.color}
-                            stroke="rgba(255,255,255,0.2)"
-                            strokeWidth="1"
-                          />
-                          <line
-                            x1={cx + 170 * Math.cos(midAngle)}
-                            y1={cy + 170 * Math.sin(midAngle)}
-                            x2={cx + lineEndR * Math.cos(midAngle)}
-                            y2={cy + lineEndR * Math.sin(midAngle)}
-                            stroke="rgba(255,255,255,0.3)"
-                            strokeWidth="1"
-                          />
-                          <g transform={`translate(${labelX}, ${labelY})`}>
-                            <rect
-                              x="-48"
-                              y="-12"
-                              width="96"
-                              height="24"
-                              rx="6"
-                              fill="rgb(30 41 59)"
-                              stroke="rgb(71 85 105)"
-                              strokeWidth="1"
-                            />
-                            <circle cx="-32" cy="0" r="8" fill={seg.color} />
-                            <text x="-32" y="0" textAnchor="middle" dominantBaseline="middle" fill="white" style={{ fontSize: "8px", fontWeight: 700 }}>
-                              {seg.num}
-                            </text>
-                            <text x="4" y="0" textAnchor="start" dominantBaseline="middle" fill="#e2e8f0" style={{ fontSize: "9px", fontWeight: 500 }}>
-                              {seg.label}
-                            </text>
-                          </g>
-                        </g>
-                      );
-                    })}
-                    {/* Center circle with text */}
-                    <circle
-                      cx="200"
-                      cy="200"
-                      r="85"
-                      fill="rgb(15 23 42)"
-                      stroke="rgb(71 85 105)"
-                      strokeWidth="2"
-                    />
-                    <text
-                      x="200"
-                      y="185"
-                      textAnchor="middle"
-                      fill="white"
-                      style={{ fontSize: "11px", fontWeight: 700 }}
-                    >
-                      SIX MUST-HAVE
-                    </text>
-                    <text
-                      x="200"
-                      y="200"
-                      textAnchor="middle"
-                      fill="white"
-                      style={{ fontSize: "11px", fontWeight: 700 }}
-                    >
-                      FEATURES IN
-                    </text>
-                    <text
-                      x="200"
-                      y="215"
-                      textAnchor="middle"
-                      fill="white"
-                      style={{ fontSize: "11px", fontWeight: 700 }}
-                    >
-                      PAYROLL SOFTWARE
-                    </text>
-                  </svg>
-                  {/* Labels list for small screens */}
-                  <div className="mt-6 flex flex-wrap justify-center gap-2 lg:hidden">
-                    {payrollFeatures.map((seg, i) => (
-                      <span
-                        key={i}
-                        className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-white"
-                        style={{ backgroundColor: seg.color }}
-                      >
-                        <span>{seg.num}</span>
-                        <span>{seg.label}</span>
-                      </span>
+        {/* Proven Business Impact */}
+        <section
+          className="border-t border-slate-200 bg-white py-12 lg:py-16"
+          aria-labelledby="proven-impact-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="overflow-hidden rounded-3xl bg-violet-100/90 px-6 py-10 shadow-sm ring-1 ring-violet-200/60 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+              <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12 lg:items-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.5, ease: smoothEase }}
+                >
+                  <h2
+                    id="proven-impact-heading"
+                    className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem]"
+                  >
+                    Proven Business <span className="text-blue-600">Impact</span>
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
+                    InOps CLMS isn&apos;t just about management; it&apos;s about measurable financial and operational
+                    excellence.
+                  </p>
+                  <ul className="mt-8 space-y-4">
+                    {[
+                      "90% reduction in manual reconciliation",
+                      "3–5% immediate fraud elimination",
+                      "100% automated audit logging",
+                      "Real-time visibility across all vendors",
+                    ].map((line) => (
+                      <li key={line} className="flex gap-3 text-sm leading-snug text-slate-800 sm:text-base">
+                        <span
+                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-600 text-white"
+                          aria-hidden
+                        >
+                          <CheckIcon className="h-3.5 w-3.5 text-white" />
+                        </span>
+                        {line}
+                      </li>
                     ))}
-                  </div>
-                </div>
-              </motion.div>
+                  </ul>
+                </motion.div>
 
-              {/* Right – heading + paragraphs (column height matches infographic; content vertically centered) */}
-              <motion.div
-                className="flex flex-col justify-center gap-6 lg:h-full lg:min-h-0 lg:gap-8 lg:pl-4 xl:gap-10"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-[3.25rem]">
-                  Payroll Solutions
-                </h2>
-                <div className="space-y-4 lg:space-y-6 xl:space-y-8">
-                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg lg:text-xl lg:leading-loose xl:text-2xl xl:leading-relaxed">
-                    Welcome to InOps Company&apos;s payroll solutions, where we revolutionize the way organizations manage their payroll processes.
-                  </p>
-                  <p className="text-gray-600 leading-relaxed text-base sm:text-lg lg:text-xl lg:leading-loose xl:text-2xl xl:leading-relaxed">
-                    Our comprehensive payroll system is designed to simplify payroll administration, enhance accuracy, and ensure compliance with regulations. Explore the six key features and their corresponding benefits:
-                  </p>
-                </div>
-              </motion.div>
+                <motion.div
+                  className="flex flex-col gap-4"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+                >
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-5 shadow-sm sm:p-6">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600/15 text-emerald-700">
+                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="mt-4 text-base font-bold text-slate-900 sm:text-lg">Eliminate Ghost Workers</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        Aadhaar-linked biometric verification ensures every worker on site is legitimate and verified.
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-violet-200/80 bg-violet-50/90 p-5 shadow-sm sm:p-6">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-600/15 text-violet-700">
+                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="mt-4 text-base font-bold text-slate-900 sm:text-lg">Reduce Cost Leakages</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        Automated invoice cross-verification typically recovers 10–15% in previously undetected billing
+                        errors.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-8">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-0">
+                      <div className="border-b border-slate-200 pb-6 text-center sm:border-b-0 sm:border-r sm:pb-0 sm:pr-6">
+                        <p className="text-2xl font-bold tabular-nums text-blue-600 sm:text-3xl">₹2–3 Cr</p>
+                        <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500 sm:text-sm sm:normal-case sm:tracking-normal">
+                          Annual savings per 1000 contractors
+                        </p>
+                      </div>
+                      <div className="text-center sm:pl-6">
+                        <p className="text-2xl font-bold tabular-nums text-slate-800 sm:text-3xl">30–60 Days</p>
+                        <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500 sm:text-sm sm:normal-case sm:tracking-normal">
+                          Typical deployment timeframe
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
 
-        <SolutionModulePanel
-          title="Compliance & Payroll"
-          intro="This module integrates compliance management and payroll processing into a single automated system. It ensures that organizations adhere to labour regulations while maintaining accurate payroll records."
-          bullets={[
-            "Automated PF (Provident Fund) and ESI (Employee State Insurance) calculations",
-            "Wage and salary processing",
-            "Generation of compliance and audit reports",
-            "Centralized documentation for regulatory requirements",
-          ]}
-          workflow="Attendance data is directly linked to payroll processing. The system calculates wages, deductions, and statutory contributions automatically. Reports are generated for compliance and audit purposes."
-          closing="This module reduces manual workload, minimizes errors, and ensures complete transparency in payroll and compliance operations."
-          imageGallery={[...compliancePayrollGalleryImages]}
-          accentBarClassName="bg-gradient-to-r from-blue-600 to-violet-500"
-        />
-
-        {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        {/* CLMS CTA */}
+        <section className="mt-10 border-t border-slate-200 bg-white py-14 lg:py-16">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
+              className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.125rem] lg:leading-snug"
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              Features & Benefits
+              Ready to take control of your contract workforce?
             </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
-              {featuresAndBenefits.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
-                >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white`}>
-                    <CheckIcon className="h-5 w-5 text-white" />
-                  </span>
-                  <div className="space-y-2">
-                    <h3 className="font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    <p className="font-semibold text-blue-300 text-sm">{item.benefit}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
+            <motion.p
+              className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg"
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
             >
-              Powerful Services for Your Business
-            </motion.h2>
-            <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              {powerfulServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
-                >
-                  <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
-                    <ServiceIcon icon={service.icon} />
-                  </span>
-                  <h3 className="font-semibold text-gray-900">{service.title}</h3>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <motion.div
-                className="lg:pr-8"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
+              Join leading enterprises who have digitized their workforce governance with InOps. Book a personalized
+              walkthrough of the CLMS platform today.
+            </motion.p>
+            <motion.div
+              className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.1 }}
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700"
               >
-                <h2 className="text-2xl font-bold text-blue-400 sm:text-3xl">
-                  Empowering Smarter Workplaces Across all Industries
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  InOps Tech empowers smarter workplaces across diverse industries by providing innovative technology solutions tailored to optimize efficiency, collaboration, and productivity.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-blue-600"
-                >
-                  Get Started
-                </Link>
-              </motion.div>
-              <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
+                Request a Demo
+              </Link>
+              <Link
+                href="/brochures"
+                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
               >
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-800 bg-gray-100 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
-                    <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200">
-                      <span className="font-semibold text-gray-900 text-sm">My Attendance</span>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-slate-400 text-center">15-JAN-2023 - 15-JAN-2023</div>
-                    <div className="px-3 pb-2 space-y-2">
-                      {[
-                        { time: "09:00", color: "bg-emerald-500" },
-                        { time: "12:00", color: "bg-rose-500" },
-                        { time: "13:00", color: "bg-emerald-500" },
-                        { time: "17:00", color: "bg-rose-500" },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm">
-                          <span className={`w-1 h-8 rounded-full ${item.color}`} aria-hidden />
-                          <span className="text-gray-700">{item.time}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-3 border-t border-gray-200 text-center text-sm text-slate-400">Total Hours 09:43</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+                Download Brochure
+              </Link>
+            </motion.div>
+            <motion.p
+              className="mt-8 text-xs leading-relaxed text-slate-500 sm:text-sm"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={viewport}
+              transition={{ duration: 0.4, delay: 0.12 }}
+            >
+              Trusted by Fortune 500 manufacturing, logistics, and infrastructure giants.
+            </motion.p>
           </div>
         </section>
       </div>

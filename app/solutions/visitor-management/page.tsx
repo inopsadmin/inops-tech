@@ -146,7 +146,7 @@ export default function VisitorManagementPage() {
         </motion.section>
 
         {/* Content – flow diagram left, text right */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="mt-10 py-6 lg:py-10 bg-white border-t border-gray-200">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center lg:gap-8 xl:gap-10">
               {/* Left – visitor flow diagram: person at kiosk + connected nodes */}

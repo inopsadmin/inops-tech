@@ -19,6 +19,8 @@ const solutionPages = [
   { label: "Canteen Management", href: "/solutions/canteen-management" },
   { label: "Payroll Solutions", href: "/solutions/payroll-solutions" },
   { label: "Labour Management Software", href: "/solutions/labour-management" },
+  { label: "Mobile App", href: "/solutions/mobile-app" },
+  { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
   { label: "Visitor Management", href: "/solutions/visitor-management" },
   { label: "Fixed Asset Management", href: "/solutions/fixed-asset-management" },
 ];

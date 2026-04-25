@@ -52,7 +52,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       type: "tile",
       title: "Mobile App",
       description: "Employee self-service and identity on the go.",
-      href: "/contact",
+      href: "/solutions/mobile-app",
     },
     {
       type: "tile",
@@ -100,7 +100,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Enterprise Solution",
       description: "Enterprise-wide visibility for assets and operations.",
-      href: "/solutions/fixed-asset-management",
+      href: "/solutions/enterprise-solution",
     },
     // {
     //   type: "tile",
@@ -127,7 +127,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "EWA (Earned Wage Access)",
       description: "Early access to earned wages when employees need financial flexibility.",
-      href: "/contact",
+      href: "/solutions/ewa",
     },
     // {
     //   type: "tile",

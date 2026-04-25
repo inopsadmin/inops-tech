@@ -1,15 +1,14 @@
+import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = routeMetadata({
   title: "Accessories | InOps Solutions",
   description:
-    "InOps access control accessories: Wireless Exit Button and Exit Push Button for request-to-exit and access control systems.",
-};
+    "Access control accessories — wireless exit button, exit push button, and add-ons for request-to-exit and integrated security systems from InOps.",
+  path: "/product/accessories",
+  extraKeywords: ["exit button access control", "RTE button India", "proximity card accessories"],
+});
 
-export default function AccessoriesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AccessoriesLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

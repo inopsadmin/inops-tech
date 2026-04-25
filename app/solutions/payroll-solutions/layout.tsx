@@ -1,15 +1,14 @@
+import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = routeMetadata({
   title: "Payroll Solutions | InOps Solutions",
   description:
-    "InOps Payroll Solutions – simplify payroll administration, enhance accuracy, and ensure compliance with comprehensive payroll software features.",
-};
+    "Payroll and compliance workflows aligned with attendance and labour data — fewer errors, faster cycles, and audit-ready reporting with InOps.",
+  path: "/solutions/payroll-solutions",
+  extraKeywords: ["payroll software India", "statutory compliance payroll", "attendance payroll integration"],
+});
 
-export default function PayrollSolutionsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PayrollSolutionsLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

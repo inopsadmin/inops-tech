@@ -1,14 +1,14 @@
+import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = routeMetadata({
   title: "Brochures | InOps Solutions",
-  description: "Download InOps product and solution brochures for access control, biometrics, visitor management, and more.",
-};
+  description:
+    "Download InOps brochures for biometric access control, turnstiles, visitor management, canteen, payroll, and workforce compliance — PDF resources.",
+  path: "/brochures",
+  extraKeywords: ["InOps PDF brochure", "workforce software datasheet", "CLMS brochure download"],
+});
 
-export default function BrochuresLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function BrochuresLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

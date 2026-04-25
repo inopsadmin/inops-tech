@@ -6,7 +6,7 @@ import { solutionsMegaRows, type SolutionsMegaCell } from "./solutionsMenuData";
 
 const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 28 };
 
-function MegaCell({ cell }: { cell: SolutionsMegaCell }) {
+function MegaCell({ cell, onNavigate }: { cell: SolutionsMegaCell; onNavigate?: () => void }) {
   if (cell.type === "empty") {
     return <div className="hidden min-h-[100px] bg-white md:block md:min-h-[140px]" aria-hidden />;
   }
@@ -16,6 +16,7 @@ function MegaCell({ cell }: { cell: SolutionsMegaCell }) {
   return (
     <Link
       href={cell.href}
+      onClick={() => onNavigate?.()}
       className={`block min-h-[96px] p-4 transition-colors duration-200 md:min-h-[140px] md:p-7 focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1D2B83] ${
         accent ? "bg-[#eef6ff] hover:bg-[#e4efff]" : "bg-white hover:bg-slate-50"
       } ${isEwa ? "relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-slate-400/80 before:content-['']" : ""}`}
@@ -26,7 +27,13 @@ function MegaCell({ cell }: { cell: SolutionsMegaCell }) {
   );
 }
 
-export function SolutionsMegaMenuDesktop({ menuId }: { menuId: string }) {
+export function SolutionsMegaMenuDesktop({
+  menuId,
+  onNavigate,
+}: {
+  menuId: string;
+  onNavigate?: () => void;
+}) {
   return (
     <motion.div
       id={menuId}
@@ -52,7 +59,7 @@ export function SolutionsMegaMenuDesktop({ menuId }: { menuId: string }) {
               }`}
             >
               {row.map((cell, colIndex) => (
-                <MegaCell key={`${rowIndex}-${colIndex}`} cell={cell} />
+                <MegaCell key={`${rowIndex}-${colIndex}`} cell={cell} onNavigate={onNavigate} />
               ))}
             </div>
           ))}

@@ -3,516 +3,719 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ProductSpecPanel from "@/app/components/ProductSpecPanel";
-import { productPageImagery } from "@/app/lib/serviceImagery";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
-/** Hero background — add asset at `public/images/biometric.jpg` */
-const biometricHeroBg = "/images/biometric.jpg";
-
-const featuresLeft = [
+const smartAccessShowcaseImage =
+  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
+const deviceCategoryCards = [
   {
-    title: "Advanced Facial Recognition Technology",
-    color: "text-amber-500",
-    points: [
-      "Utilizes sophisticated algorithms to accurately identify individuals based on facial features.",
-      { label: "Enhanced Security:", text: "Provides a high level of security by utilizing biometric data that is unique to each individual, reducing the risk of unauthorized access." },
-    ],
+    title: "Face Recognition",
+    description: "Sub-second 3D facial authentication with anti-spoofing technology for touchless entry.",
+    image:
+      "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=1200&q=80",
+    icon: "face",
   },
   {
-    title: "Anti-Spoofing Measures",
-    color: "text-pink-500",
-    points: [
-      "Incorporates anti-spoofing techniques to prevent unauthorized access using photos or videos.",
-      { label: "Speed and Efficiency:", text: "Streamlines access management processes with fast and accurate identification, improving overall operational efficiency." },
-    ],
+    title: "Fingerprint Systems",
+    description: "High-capacity optical sensors for reliable biometric logging in high-traffic zones.",
+    image:
+      "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&w=1200&q=80",
+    icon: "finger",
   },
   {
-    title: "User-Friendly Interface",
-    color: "text-yellow-500",
-    points: [
-      "Intuitive interface for easy operation and user enrollment.",
-      { label: "Compliance:", text: "Helps organizations meet regulatory requirements by providing an auditable record of access events." },
-    ],
+    title: "RFID & Card Access",
+    description: "Standard proximity and smart card readers for quick, legacy-compatible entry points.",
+    image:
+      "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1200&q=80",
+    icon: "card",
   },
   {
-    title: "Integration Capabilities",
-    color: "text-blue-500",
-    points: [
-      "Compatible with existing access control systems for seamless integration.",
-      { label: "Cost-Effective:", text: "Reduces the costs associated with managing and replacing physical credentials such as cards or keys." },
-    ],
+    title: "Integrated Kiosks",
+    description: "Multimodal pedestals combining face, QR, and thermal sensing for lobby management.",
+    image:
+      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1200&q=80",
+    icon: "kiosk",
   },
-];
-
-const featuresRight = [
-  {
-    title: "High-Speed Processing",
-    color: "text-emerald-500",
-    points: [
-      "Offers rapid authentication, allowing authorized personnel to access secured areas without delays.",
-      { label: "Convenience:", text: "Eliminates the need for physical credentials such as keys or cards, offering a more convenient and user-friendly access control solution." },
-    ],
-  },
-  {
-    title: "Wide Angle Recognition",
-    color: "text-teal-500",
-    points: [
-      "Capable of capturing facial images from various angles for reliable identification.",
-      { label: "Adaptability:", text: "Suitable for various environments and lighting conditions, offering reliable performance in diverse settings." },
-    ],
-  },
-  {
-    title: "High-Resolution Fingerprint Scanning",
-    color: "text-blue-600",
-    points: [
-      "Captures detailed fingerprint images for accurate identification.",
-      { label: "Durability:", text: "Built to withstand heavy usage and harsh environmental conditions, ensuring long-term reliability." },
-    ],
-  },
-  {
-    title: "Tamper Detection",
-    color: "text-violet-500",
-    points: [
-      "Detects and alerts administrators to tampering attempts to ensure system integrity.",
-      { label: "Compliance:", text: "Helps organizations comply with data protection regulations by securely storing biometric data and providing audit trails of access events." },
-    ],
-  },
-];
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
-
-const deviceCallouts = [
-  "Long distance verification",
-  "Low Light Verification",
-  "Auto Focus",
-  "Identifies colour fingerprints",
-];
-
-const powerfulServices = [
-  { title: "Integrated Applications For Enterprise", icon: "document" },
-  { title: "Access Control System", icon: "card" },
-  { title: "Canteen Management System", icon: "tray" },
-  { title: "Biometric Attendance System", icon: "id" },
-  { title: "Visitor Management System", icon: "person" },
-  { title: "Contract Management System", icon: "document-pen" },
-];
+] as const;
 
 export default function BiometricAccessControlPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — biometric.jpg full-bleed background + overlays for title / breadcrumb */}
-        <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute inset-0">
-            <Image
-              src={biometricHeroBg}
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gray-900/55" aria-hidden />
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/60 to-gray-900/80"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(59,130,246,0.12),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-            >
-              Biometric Access Control
-            </motion.h1>
-            <motion.nav
-              className="mt-4 text-sm text-white/90"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.18 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="transition-colors hover:text-white">
-                Home
-              </Link>
-              <span className="mx-2 text-white/60">/</span>
-              <span className="font-medium text-blue-300">Biometric Access Control</span>
-            </motion.nav>
-          </div>
-        </motion.section>
-
-        {/* <ProductSpecPanel
-          title="At a glance — specifications"
-          subtitle="Typical deployment profiles for industrial and commercial sites. Final specs vary by reader model and integration."
-          imageSrc={productPageImagery.biometricSpecScene}
-          imageAlt="Secure access and identity verification for workforce entry points"
-          specs={[
-            { label: "Reader types", value: "Face recognition, fingerprint, and proximity / smart card (model-dependent)" },
-            { label: "Integration", value: "Wiegand, OSDP, and TCP/IP-friendly controllers; HRMS / payroll handoff via APIs" },
-            { label: "Environments", value: "Indoor lanes, office lobbies, factory turnstiles, and sheltered outdoor gates" },
-            { label: "Audit & compliance", value: "Time-stamped access events, exportable logs for labour and security audits" },
-          ]}
-        /> */}
-
-        {/* Main content - two columns: device image left, text + CTAs right */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14 lg:items-center">
-              {/* Left: biometric device image */}
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
-                className="relative order-2 lg:order-1 lg:col-span-6"
-                initial={{ opacity: 0, x: -40 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.7, ease: smoothEase }}
+                transition={{ duration: 0.55, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden   lg:aspect-[5/4]">
-                  <Image
-                    src={productPageImagery.biometricHeroDevice}
-                    alt="Biometric access terminal at a secure entry point"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-              </motion.div>
-
-              {/* Right: heading, description, CTAs */}
-              <motion.div
-                className="order-1 lg:order-2 lg:col-span-6 lg:pl-2 xl:pl-6"
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
-              >
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl xl:text-[3rem] xl:leading-[1.1]">
-                  Biometric Access Control
+                <span className="inline-flex rounded-full border border-gray-300 bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
+                  Enterprise Access Solutions
+                </span>
+                <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-6xl">
+                  Smart Access.
+                  <br />
+                  Secure Workforce.
                 </h2>
-                <p className="mt-6 max-w-none text-gray-600 leading-relaxed text-lg sm:text-xl lg:text-xl xl:text-[1.35rem] xl:leading-relaxed sm:mt-8">
-                  InOps offers a comprehensive range of biometric access control products, including Face Reader, Fingerprint Reader, and Card Reader solutions, designed to provide robust security and streamlined access management for various environments. Here are the features and benefits of each:
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-600">
+                  Advanced biometric devices engineered for high-precision attendance, access control, and seamless workforce management across industrial environments.
                 </p>
-                <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-4 lg:gap-x-10">
-                  <Link
-                    href="#"
-                    className="inline-flex min-h-11 items-center font-semibold text-blue-600 transition-colors hover:text-blue-500 sm:min-h-12 text-base sm:text-lg uppercase tracking-wide"
-                  >
-                    Download Brochure
-                  </Link>
+
+                <div className="mt-7 flex flex-wrap gap-3">
                   <Link
                     href="/contact"
-                    className="inline-flex min-h-11 items-center gap-2 font-semibold text-blue-600 transition-colors hover:text-blue-500 sm:min-h-12 text-base sm:text-lg"
+                    className="inline-flex items-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
                   >
-                    Get Started
+                    Request Demo
                   </Link>
                   <Link
                     href="#"
-                    className="inline-flex min-h-11 items-center gap-2.5 font-semibold text-blue-600 transition-colors hover:text-blue-500 sm:min-h-12 text-base sm:text-lg"
+                    className="inline-flex items-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition hover:border-gray-400"
                   >
-                    <svg className="h-6 w-6 flex-shrink-0 sm:h-7 sm:w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                    Watch Video
+                    Explore Solutions
                   </Link>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src={smartAccessShowcaseImage}
+                    alt="Enterprise biometric access devices in a modern secure facility"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              Features & Benefits
-            </motion.h2>
-            <motion.div
-              className="mx-auto mt-2 h-1 w-20 rounded-full bg-blue-500"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase }}
-            />
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
-              {/* Left column */}
-              <div className="space-y-6">
-                {featuresLeft.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    className="flex gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  >
-                    <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center">
-                      <CheckIcon className={`h-6 w-6 ${item.color}`} />
-                    </span>
-                    <div className="space-y-2">
-                      <h3 className="font-bold text-gray-900">{item.title}</h3>
-                      <ul className="space-y-2 text-gray-600 text-sm leading-relaxed">
-                        {item.points.map((p, j) =>
-                          typeof p === "string" ? (
-                            <li key={j}>{p}</li>
-                          ) : (
-                            <li key={j}>
-                              <span className="font-semibold text-blue-300">{p.label}</span> {p.text}
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              {/* Right column */}
-              <div className="space-y-6">
-                {featuresRight.map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    className="flex gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  >
-                    <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center">
-                      <CheckIcon className={`h-6 w-6 ${item.color}`} />
-                    </span>
-                    <div className="space-y-2">
-                      <h3 className="font-bold text-gray-900">{item.title}</h3>
-                      <ul className="space-y-2 text-gray-600 text-sm leading-relaxed">
-                        {item.points.map((p, j) =>
-                          typeof p === "string" ? (
-                            <li key={j}>{p}</li>
-                          ) : (
-                            <li key={j}>
-                              <span className="font-semibold text-blue-300">{p.label}</span> {p.text}
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Introduction – full paragraph (full content width) */}
-        <section className="py-6 lg:py-8 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-blue-500 sm:text-3xl"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Biometric Access Control
-            </motion.h2>
-            <div
-              className="mx-auto mt-2 h-0.5 w-16 rounded-full bg-blue-500"
-              aria-hidden
-            />
-            <motion.p
-              className="mt-6 w-full max-w-none text-left text-gray-600 leading-relaxed text-base sm:text-lg"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-            >
-              InOps Company&apos;s biometric access control products, including Face Reader, Fingerprint Reader, and Card Reader solutions, offer a combination of advanced technology, convenience, and security features to meet the diverse access management needs of modern organizations. Whether it&apos;s facial recognition for high-security environments, fingerprint scanning for precise authentication, or card readers for convenience and scalability, our products provide reliable access control solutions tailored to the unique requirements of each organization.
-            </motion.p>
-          </div>
-        </section>
-
-        {/* Biometric device features – image + callouts (scaled to match hero proportions) */}
-        <section className=" py-8 lg:py-10">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <motion.div
-              className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-14"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
-            >
-              {/* On lg+, image fills column height to match Key capabilities block */}
-              <div className="w-full min-h-0 lg:col-span-6 lg:h-full">
-                <div className="relative aspect-[4/3] w-full min-h-[14rem] overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[18rem]">
-                  <Image
-                    src="/images/Gemini_Generated_Image_oqc1gqoqc1gqoqc1.png"
-                    alt="Biometric device with face recognition and fingerprint"
-                    fill
-                    className=" object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-              <div className="lg:col-span-6 lg:pl-2 xl:pl-6">
-                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 sm:text-base lg:mb-6 lg:text-lg">
-                  Key capabilities
-                </p>
-                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-5">
-                  {deviceCallouts.map((label) => (
-                    <li key={label}>
-                      <div className="flex h-full min-h-[4.5rem] items-center gap-3 rounded-2xl border border-gray-200/90 bg-white px-4 py-4 text-left shadow-md shadow-slate-900/[0.04] sm:min-h-[5rem] sm:gap-4 sm:px-5 sm:py-4 lg:min-h-[5.5rem] lg:gap-5 lg:px-6 lg:py-5">
-                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-blue-500 text-white shadow-md shadow-blue-500/25 sm:h-11 sm:w-11 lg:h-14 lg:w-14">
-                          <svg className="h-5 w-5 lg:h-6 lg:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                            <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </span>
-                        <span className="text-sm font-semibold leading-snug text-gray-900 sm:text-base lg:text-lg">{label}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Device Categories</h2>
+              <p className="mt-3 text-base text-gray-500 sm:text-lg">
+                Flexible authentication methods designed for different operational needs.
+              </p>
             </motion.div>
-          </div>
-        </section>
 
-        {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-blue-500 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Powerful Services for Your Business
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              {powerfulServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-6 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/70 hover:shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {deviceCategoryCards.map((card, idx) => (
+                <motion.article
+                  key={card.title}
+                  className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                  whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
+                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/20 text-blue-500">
-                    {service.icon === "document" && (
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                    )}
-                    {service.icon === "card" && (
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
-                    )}
-                    {service.icon === "tray" && (
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                    )}
-                    {service.icon === "id" && (
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>
-                    )}
-                    {service.icon === "person" && (
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                    )}
-                    {service.icon === "document-pen" && (
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-                    )}
-                  </span>
-                  <h3 className="font-semibold text-gray-900">{service.title}</h3>
-                </motion.div>
+                  <div className="relative aspect-[4/3]">
+                    <Image src={card.image} alt={card.title} fill className="object-cover" sizes="(max-width: 1280px) 50vw, 25vw" />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-start gap-2">
+                      <span className="mt-1 inline-flex h-5 w-5 items-center justify-center text-gray-500">
+                        {card.icon === "face" && (
+                          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <rect x="4" y="4" width="16" height="16" rx="3" />
+                            <circle cx="9" cy="10" r="1" />
+                            <circle cx="15" cy="10" r="1" />
+                            <path d="M8 15c1.1.9 2.3 1.2 4 1.2s2.9-.3 4-1.2" />
+                          </svg>
+                        )}
+                        {card.icon === "finger" && (
+                          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <path d="M12 3a3 3 0 013 3v5M8.5 8V7a3.5 3.5 0 017 0v6M5 12v2a7 7 0 0014 0v-2" />
+                          </svg>
+                        )}
+                        {card.icon === "card" && (
+                          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <rect x="3" y="6" width="18" height="12" rx="2" />
+                            <path d="M3 10h18" />
+                          </svg>
+                        )}
+                        {card.icon === "kiosk" && (
+                          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <rect x="7" y="3" width="10" height="18" rx="2" />
+                            <path d="M10 7h4M10 11h4M10 15h4" />
+                          </svg>
+                        )}
+                      </span>
+                      <h3 className="text-xl font-semibold text-gray-900">{card.title}</h3>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-500">{card.description}</p>
+                  </div>
+                </motion.article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Empowering Workplaces & Mobile App */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <motion.div
-                className="lg:pr-8"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <h2 className="text-2xl font-bold text-blue-500 sm:text-3xl">
-                  Empowering Smarter Workplaces Across all Industries.
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  InOps Tech empowers smarter workplaces across diverse industries by providing innovative technology solutions tailored to optimize efficiency, collaboration, and productivity.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-blue-600"
+            <motion.div
+              className="mx-auto max-w-4xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Built for Speed, Accuracy, and Reliability
+              </h2>
+            </motion.div>
+
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Fast Face Recognition",
+                  description: "Proprietary algorithms deliver sub-second authentication for seamless movement.",
+                  icon: "face",
+                },
+                {
+                  title: "Multi-mode Authentication",
+                  description: "Support for face, fingerprint, RFID, QR, and PIN in a single unified system.",
+                  icon: "grid",
+                },
+                {
+                  title: "Anti-spoofing Tech",
+                  description: "Liveness detection prevents unauthorized access via photos or 3D masks.",
+                  icon: "shield",
+                },
+                {
+                  title: "High User Capacity",
+                  description: "Storage for up to 100,000 users and millions of transaction logs locally.",
+                  icon: "users",
+                },
+                {
+                  title: "Intuitive UI",
+                  description: "Crisp touchscreen interfaces with multi-language support and visual feedback.",
+                  icon: "monitor",
+                },
+                {
+                  title: "Extreme Durability",
+                  description: "Operational in low-light, high-humidity, and industrial dust environments.",
+                  icon: "chart",
+                },
+              ].map((item, idx) => (
+                <motion.article
+                  key={item.title}
+                  className="rounded-xl border border-gray-200 bg-gray-50 p-4"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  Get Started
-                </Link>
-              </motion.div>
-              <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                {/* Phone mockup with My Attendance app */}
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-100 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-100" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] bg-gray-100 border border-gray-200">
-                    <div className="bg-gray-100/80 px-4 py-3 flex items-center justify-between border-b border-gray-200">
-                      <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                      <span className="font-semibold text-gray-900 text-sm">My Attendance</span>
-                      <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </div>
-                    <div className="flex gap-1 p-2 border-b border-gray-200">
-                      <button type="button" className="flex-1 rounded-lg bg-blue-500/20 py-2 text-xs font-medium text-blue-300">PREV</button>
-                      <button type="button" className="flex-1 rounded-lg bg-gray-100 py-2 text-xs font-medium text-gray-500">NEXT</button>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-gray-500 font-medium">12-Jul-2018 - 18-Jul-2018</div>
-                    <div className="px-3 pb-2 space-y-2">
-                      {["10:00", "09:50", "08:50"].map((time, i) => (
-                        <div key={time} className="flex items-center justify-between text-sm">
-                          <span className="text-gray-700">{time}</span>
-                          <span className={`text-xs font-medium ${i === 0 ? "text-emerald-400" : "text-gray-500"}`}>{i === 0 ? "Present" : "—"}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-3 border-t border-gray-200">
-                      <button type="button" className="w-full rounded-lg bg-emerald-500 py-3 text-sm font-semibold text-white">CHECK IN</button>
-                      <p className="mt-2 text-center text-xs text-gray-500">Total Hours: 35.43</p>
+                  <div className="flex items-start gap-3">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600">
+                      {item.icon === "face" && (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <rect x="4" y="4" width="16" height="16" rx="3" />
+                          <circle cx="9" cy="10" r="1" />
+                          <circle cx="15" cy="10" r="1" />
+                          <path d="M8 15c1.1.9 2.3 1.2 4 1.2s2.9-.3 4-1.2" />
+                        </svg>
+                      )}
+                      {item.icon === "grid" && (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <rect x="4" y="4" width="6" height="6" />
+                          <rect x="14" y="4" width="6" height="6" />
+                          <rect x="4" y="14" width="6" height="6" />
+                          <rect x="14" y="14" width="6" height="6" />
+                        </svg>
+                      )}
+                      {item.icon === "shield" && (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                        </svg>
+                      )}
+                      {item.icon === "users" && (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <circle cx="9" cy="8" r="3" />
+                          <circle cx="17" cy="9" r="2" />
+                          <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                          <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                        </svg>
+                      )}
+                      {item.icon === "monitor" && (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <rect x="3" y="4" width="18" height="12" rx="2" />
+                          <path d="M8 20h8M12 16v4" />
+                        </svg>
+                      )}
+                      {item.icon === "chart" && (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
+                        </svg>
+                      )}
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-gray-500">{item.description}</p>
                     </div>
                   </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Seamless System Flow
+              </h2>
+              <p className="mt-3 text-base text-gray-500 sm:text-lg">
+                Integrated authentication that bridges hardware and workforce management software.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="relative mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
+            >
+              <div className="pointer-events-none absolute left-0 right-0 top-[58px] hidden h-px bg-gray-200 md:block" aria-hidden />
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-5 md:gap-4">
+                {[
+                  { step: "01", title: "User Authentication" },
+                  { step: "02", title: "Identity Verification" },
+                  { step: "03", title: "Access Granted" },
+                  { step: "04", title: "Synced to System" },
+                  { step: "05", title: "Reporting & Dashboard" },
+                ].map((item, idx) => (
+                  <motion.div
+                    key={item.step}
+                    className="relative text-center"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.35, ease: smoothEase, delay: idx * 0.05 }}
+                  >
+                    <span className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-400 bg-white text-sm font-semibold text-gray-800">
+                      {item.step}
+                    </span>
+                    <p className="mx-auto mt-3 max-w-[120px] text-sm font-semibold leading-snug text-gray-700">
+                      {item.title}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Deployment Environments
+              </h2>
+              <p className="mt-3 text-base text-gray-500 sm:text-lg">
+                Scalable solutions for every sector.
+              </p>
+            </motion.div>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
+              {[
+                {
+                  title: "Entry & Exit Access Control",
+                  subtitle: "Secure turnstiles and gates for mass workforce entry.",
+                  image:
+                    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+                },
+                {
+                  title: "Workforce Attendance Tracking",
+                  subtitle: "Automated logging for payroll and HR management.",
+                  image:
+                    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+                },
+                {
+                  title: "Restricted Area Access",
+                  subtitle: "Multi-factor authentication for sensitive zones.",
+                  image:
+                    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80",
+                },
+                {
+                  title: "High-Volume Environments",
+                  subtitle: "Reliable performance for shift changes in logistics.",
+                  image:
+                    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80",
+                },
+              ].map((card, idx) => (
+                <motion.article
+                  key={card.title}
+                  className="group relative overflow-hidden rounded-xl border border-gray-200"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: idx * 0.05 }}
+                >
+                  <div className="relative aspect-[16/8]">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" aria-hidden />
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                    <h3 className="text-2xl font-semibold text-white">{card.title}</h3>
+                    <p className="mt-1 text-sm text-white/85">{card.subtitle}</p>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="max-w-4xl"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Universal Device Excellence
+              </h2>
+            </motion.div>
+
+            <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {[
+                {
+                  title: "Rugged Industrial Design",
+                  description:
+                    "Encased in aircraft-grade aluminum and impact-resistant glass, our devices are IP65 rated for dust and humidity protection.",
+                },
+                {
+                  title: "High-Speed Processing",
+                  description:
+                    "Equipped with dedicated NPU (Neural Processing Unit) cores for lightning-fast biometric template matching.",
+                },
+                {
+                  title: "Enterprise Capacity",
+                  description:
+                    "Designed for massive deployments, managing distributed data across thousands of devices from a central hub.",
+                },
+              ].map((item, idx) => (
+                <motion.article
+                  key={item.title}
+                  className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                >
+                  <h3 className="text-xl font-semibold text-gray-900">• {item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                  Seamlessly Connected to Your Systems
+                </h2>
+                <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">
+                  Modern APIs and native integrations ensure your data moves where you need it, when you need it.
+                </p>
+
+                <ul className="mt-6 space-y-4">
+                  {[
+                    {
+                      title: "API-Based Integration",
+                      description: "RESTful APIs for custom software hooks.",
+                    },
+                    {
+                      title: "Real-time Data Sync",
+                      description: "Zero-latency updates for immediate attendance visibility.",
+                    },
+                    {
+                      title: "Centralized Dashboard",
+                      description: "Manage all hardware globally from a single browser interface.",
+                    },
+                  ].map((item) => (
+                    <li key={item.title} className="flex items-start gap-3">
+                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 text-gray-500">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+                          <path d="M6 12l4 4 8-8" />
+                        </svg>
+                      </span>
+                      <div>
+                        <p className="text-base font-semibold text-gray-900">{item.title}</p>
+                        <p className="text-sm text-gray-500">{item.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                className="rounded-xl border border-gray-200 bg-gray-50 p-5 shadow-sm"
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+              >
+                <div className="relative grid grid-cols-2 gap-3">
+                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
+                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="3" y="4" width="18" height="12" rx="2" />
+                        <path d="M8 20h8M12 16v4" />
+                      </svg>
+                    </span>
+                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">DEVICES</p>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
+                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </svg>
+                    </span>
+                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">ATTENDANCE</p>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
+                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="3" y="6" width="18" height="12" rx="2" />
+                        <path d="M3 10h18" />
+                      </svg>
+                    </span>
+                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">HRMS/PAYROLL</p>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
+                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
+                      </svg>
+                    </span>
+                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">REPORTS</p>
+                  </div>
+                  <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-900 text-white shadow-md">
+                    →
+                  </span>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
+
+        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                Why Choose BioSecure?
+              </h2>
+            </motion.div>
+
+            <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {[
+                {
+                  title: "Improved Security",
+                  description:
+                    "Eliminate buddy punching and unauthorized access with ironclad biometric verification.",
+                  icon: "shield",
+                },
+                {
+                  title: "Accurate Tracking",
+                  description:
+                    "Capture precise time-stamps down to the second for fair and accurate payroll processing.",
+                  icon: "clock",
+                },
+                {
+                  title: "Reduced Manual Work",
+                  description:
+                    "Automate the entire logging process, freeing up HR teams for more strategic initiatives.",
+                  icon: "bolt",
+                },
+                {
+                  title: "Global Scalability",
+                  description:
+                    "Easily deploy across multiple locations and manage everything via a centralized cloud hub.",
+                  icon: "users",
+                },
+              ].map((item, idx) => (
+                <motion.article
+                  key={item.title}
+                  className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                >
+                  <span className="inline-flex h-8 w-8 items-center justify-center text-gray-600">
+                    {item.icon === "shield" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                      </svg>
+                    )}
+                    {item.icon === "clock" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </svg>
+                    )}
+                    {item.icon === "bolt" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+                      </svg>
+                    )}
+                    {item.icon === "users" && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="9" cy="8" r="3" />
+                        <circle cx="17" cy="9" r="2" />
+                        <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                        <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                      </svg>
+                    )}
+                  </span>
+                  <h3 className="mt-3 text-xl font-semibold text-gray-900">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
+                </motion.article>
+              ))}
+            </div>
+
+            <motion.div
+              className="mt-10 overflow-hidden rounded-2xl border border-slate-700 bg-gradient-to-r from-[#101724] to-[#0c111b] p-7 sm:p-9"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+            >
+              <h3 className="text-3xl font-bold text-white sm:text-4xl">Designed for Every Environment</h3>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                From climate-controlled executive offices to the dusty floors of manufacturing plants, our hardware is engineered to perform without compromise.
+              </p>
+
+              <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                {["Corporate Offices", "Industrial Plants", "Large Warehouses"].map((label) => (
+                  <div key={label} className="rounded-lg border border-slate-700 bg-slate-900/35 px-4 py-3 text-center text-sm font-semibold text-slate-100">
+                    {label}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                {["Indoor & Outdoor Support", "Multi-location Networking", "Battery Backup Ready"].map((label) => (
+                  <div key={label} className="rounded-lg border border-slate-700 bg-slate-900/35 px-4 py-3 text-center text-sm font-semibold text-slate-100">
+                    {label}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-200 bg-white py-10 lg:py-14">
+          <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-6xl">
+                Upgrade to Intelligent Access
+              </h2>
+              <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-500 sm:text-2xl">
+                Choose the right combination of biometric devices based on your unique operational needs. Our experts are ready to help you design the perfect system.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-800"
+                >
+                  Request a Demo
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition hover:border-gray-400 hover:bg-gray-50"
+                >
+                  Talk to an Expert
+                </Link>
+              </div>
+
+              <div className="mt-10 flex items-center justify-center gap-3">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3].map((avatar) => (
+                    <span
+                      key={avatar}
+                      className="relative inline-flex h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm"
+                    >
+                      <Image
+                        src="/images/image.png"
+                        alt="Prashanth K."
+                        fill
+                        className="object-cover"
+                        sizes="40px"
+                      />
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-500 sm:text-base">
+                  Join <span className="font-semibold text-gray-700">2,500+ enterprises</span> who trust BioSecure.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
       </div>
     </>
   );
