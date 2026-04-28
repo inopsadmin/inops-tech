@@ -17,7 +17,7 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/solutions/time-and-attendance", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/canteen-management", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/payroll-solutions", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/solutions/labour-management", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/solutions/labourmanagement", priority: 0.95, changeFrequency: "monthly" },
   { path: "/solutions/mobile-app", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/enterprise-solution", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/visitor-management", priority: 0.9, changeFrequency: "monthly" },

@@ -417,7 +417,7 @@ export default function CanteenManagementPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
                 >
-                  Canteen, visitor desk &amp; facility ops
+                  Canteen and Visitor Solutions
                 </motion.span>
                 <motion.h1
                   className="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[2.75rem] lg:leading-tight"
@@ -433,7 +433,7 @@ export default function CanteenManagementPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                 >
-                  Centralize meal issuance, biometric verification, and subsidy rules on one platform—from the serving line to payroll—so finance and facilities stay aligned. Pair the same stack with visitor check-in, badges, and lobby analytics for one campus story.
+                  Centralize meal issuance, biometric verification, and subsidy rules on one platform from the serving line to payroll so finance and facilities stay aligned. Pair the same stack with visitor check in, badges, and lobby analytics for one campus story.
                 </motion.p>
                 <motion.div
                   className="mt-8 flex flex-wrap items-center gap-3"
@@ -485,12 +485,12 @@ export default function CanteenManagementPage() {
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
                     <span className="ml-2 text-xs font-medium text-slate-500">Canteen ops — live dashboard</span>
                   </div>
-                  <div className="relative aspect-[4/3] w-full bg-slate-50">
+                  <div className="relative h-[230px] w-full bg-slate-50 sm:h-[270px] lg:h-[300px]">
                     <Image
-                      src="/canteen-visitor-management.png"
+                      src="/1111.png"
                       alt="Digital canteen operations and visitor management — campus dining, subsidy control, and lobby workflows"
                       fill
-                      className="object-contain object-center p-2 sm:p-3"
+                      className=""
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       priority
                     />
@@ -713,277 +713,6 @@ export default function CanteenManagementPage() {
                   </div>
                   <h3 className="mt-4 font-bold text-slate-900">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Features & Benefits */}
-        <section id="canteen-features" className="border-t border-gray-200 bg-white py-6 lg:py-10 scroll-mt-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            {/* Enterprise analytics — above Features & benefits heading */}
-            <div
-              id="enterprise-analytics"
-              className={`mb-10 scroll-mt-20 rounded-2xl border border-slate-200/90 bg-slate-100/90 p-5 sm:p-6 lg:p-8 ${interactiveSurfaceHover}`}
-              aria-labelledby="enterprise-analytics-heading"
-            >
-              <motion.div
-                className="mx-auto max-w-3xl text-center"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase }}
-              >
-                <h2 id="enterprise-analytics-heading" className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl lg:text-3xl">
-                  Enterprise Analytics at Your Fingertips
-                </h2>
-                <p className="mt-3 text-sm text-slate-600 sm:text-base">
-                  Get deep insights into facility utilization, peak hours, and security compliance with our built-in analytics suite.
-                </p>
-              </motion.div>
-
-              <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6">
-                <div className="flex flex-col gap-4 lg:col-span-4">
-                  <motion.div
-                    className={`rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ${interactiveSurfaceHover}`}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: 0.02 }}
-                  >
-                    <p className="text-sm font-medium text-slate-500">Daily Visitors</p>
-                    <p className="mt-2 text-3xl font-bold tabular-nums tracking-tight text-slate-900">1,245</p>
-                    <p className="mt-2 flex items-center gap-1 text-sm font-medium text-emerald-600">
-                      <span aria-hidden>↑</span>
-                      +12% from yesterday
-                    </p>
-                  </motion.div>
-                  <motion.div
-                    className={`rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ${interactiveSurfaceHover}`}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
-                  >
-                    <p className="text-sm font-medium text-slate-500">Canteen Utilization</p>
-                    <p className="mt-2 text-3xl font-bold tabular-nums tracking-tight text-slate-900">89.4%</p>
-                    <p className="mt-2 text-sm font-medium" style={{ color: analyticsAccent }}>
-                      Optimal capacity range
-                    </p>
-                  </motion.div>
-                  <motion.div
-                    className={`rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ${interactiveSurfaceHover}`}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: 0.1 }}
-                  >
-                    <p className="text-sm font-medium text-slate-500">Avg. Wait Time</p>
-                    <p className="mt-2 text-3xl font-bold tabular-nums tracking-tight text-slate-900">1.2m</p>
-                    <p className="mt-2 flex items-center gap-1 text-sm font-medium text-emerald-600">
-                      <span aria-hidden>↓</span>
-                      −30s after digital switch
-                    </p>
-                  </motion.div>
-                </div>
-
-                <motion.div
-                  className={`rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm lg:col-span-8 lg:flex lg:flex-col ${interactiveSurfaceHover}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.04 }}
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <p className="text-lg font-bold text-slate-900">Visitor Trends</p>
-                      <p className="text-sm text-slate-500">7-day entry volume analysis</p>
-                    </div>
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-2 self-start rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition-all duration-300 hover:border-[#00AAFF]/45 hover:bg-white hover:shadow-md"
-                    >
-                      <svg className="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      Weekly
-                      <svg className="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                  </div>
-                  <div className="mt-8 flex min-h-[200px] flex-1 items-end justify-between gap-2 border-b border-slate-100 pb-2 pl-1 pr-1 pt-4 sm:gap-3">
-                    {visitorTrendWeek.map((bar) => (
-                      <div key={bar.day} className="flex flex-1 flex-col items-center gap-2">
-                        <div
-                          className="w-full max-w-[3.25rem] rounded-t-md sm:max-w-none"
-                          style={{
-                            height: `${Math.max(12, (bar.pct / 100) * 160)}px`,
-                            backgroundColor: analyticsAccent,
-                            opacity: bar.pct >= 85 ? 1 : 0.55 + bar.pct / 250,
-                          }}
-                          role="presentation"
-                        />
-                        <span className="text-xs font-medium text-slate-500">{bar.day}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-
-              <motion.div
-                className={`mt-6 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm sm:p-6 ${interactiveSurfaceHover}`}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
-              >
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <p className="text-lg font-bold text-slate-900">Live Movement Logs</p>
-                    <p className="text-sm text-slate-500">Real-time stream of facility activity</p>
-                  </div>
-                  <label className="relative w-full sm:max-w-xs">
-                    <span className="sr-only">Search logs</span>
-                    <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-slate-400">
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                    </span>
-                    <input
-                      type="search"
-                      placeholder="Search logs..."
-                      readOnly
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#00AAFF] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#00AAFF]/25"
-                    />
-                  </label>
-                </div>
-                <div className="mt-5 overflow-x-auto rounded-xl border border-slate-100">
-                  <table className="min-w-full text-left text-sm">
-                    <thead>
-                      <tr className="border-b border-slate-100 bg-slate-50/80">
-                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold text-slate-700">
-                          Log ID
-                        </th>
-                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold text-slate-700">
-                          Personnel
-                        </th>
-                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold text-slate-700">
-                          Entity / Type
-                        </th>
-                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold text-slate-700">
-                          Check-in Time
-                        </th>
-                        <th scope="col" className="whitespace-nowrap px-4 py-3 font-semibold text-slate-700">
-                          Activity Status
-                        </th>
-                        <th scope="col" className="whitespace-nowrap px-4 py-3 text-right font-semibold text-slate-700">
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 bg-white">
-                      {liveMovementLogs.map((row) => (
-                        <tr
-                          key={row.id}
-                          className="transition-[background-color,box-shadow] duration-200 hover:bg-sky-50/70 hover:shadow-[inset_3px_0_0_#00AAFF]"
-                        >
-                          <td className="whitespace-nowrap px-4 py-3 font-mono text-xs font-medium text-slate-600">{row.id}</td>
-                          <td className="whitespace-nowrap px-4 py-3 font-medium text-slate-900">{row.personnel}</td>
-                          <td className="whitespace-nowrap px-4 py-3">
-                            <span className="inline-flex items-center gap-2 text-slate-700">
-                              <LogEntityIcon kind={row.entityKind} />
-                              {row.entity}
-                            </span>
-                          </td>
-                          <td className="whitespace-nowrap px-4 py-3 tabular-nums text-slate-600">{row.time}</td>
-                          <td className="whitespace-nowrap px-4 py-3">
-                            <LogStatusPill status={row.status} />
-                          </td>
-                          <td className="whitespace-nowrap px-4 py-3 text-right">
-                            <button
-                              type="button"
-                              className="inline-flex rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
-                              aria-label={`Actions for ${row.id}`}
-                            >
-                              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                                <circle cx="12" cy="6" r="1.5" />
-                                <circle cx="12" cy="12" r="1.5" />
-                                <circle cx="12" cy="18" r="1.5" />
-                              </svg>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </motion.div>
-            </div>
-
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Features &amp; benefits
-            </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
-            <motion.p
-              className="mx-auto mt-4 max-w-2xl text-center text-sm text-gray-600 sm:text-base"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
-            >
-              Canteen capabilities below; visitor desk modules extend the same enterprise footprint without a second vendor silo.
-            </motion.p>
-
-            <h3 className="mt-10 text-center text-lg font-bold text-gray-900 sm:text-xl">Canteen &amp; kitchen</h3>
-            <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
-              {featuresAndBenefits.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className={`flex gap-4 ${featureRowHover}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
-                >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white`}>
-                    <CheckIcon className="h-5 w-5 text-white" />
-                  </span>
-                  <div className="space-y-2">
-                    <h4 className="font-bold text-gray-900">{item.title}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    <p className="text-sm font-semibold text-blue-700">{item.benefit}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <h3 className="mt-14 text-center text-lg font-bold text-gray-900 sm:text-xl">Visitor &amp; lobby</h3>
-            <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
-              {visitorDeskFeatures.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className={`flex gap-4 ${featureRowHover}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: (i % 8) * 0.04 }}
-                >
-                  <span className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${item.circleColor} text-white`}>
-                    <CheckIcon className="h-5 w-5 text-white" />
-                  </span>
-                  <div className="space-y-2">
-                    <h4 className="font-bold text-gray-900">{item.title}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                    <p className="text-sm font-semibold text-cyan-700">{item.benefit}</p>
-                  </div>
                 </motion.div>
               ))}
             </div>

@@ -24,7 +24,7 @@ const inOpsPillars = [
         rowIcon: "database" as const,
         name: "HR Information System (HRIS)",
         blurb: "Centralized records and role-based access.",
-        href: "/solutions/labour-management",
+        href: "/solutions/labourmanagement",
       },
     ],
   },

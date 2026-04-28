@@ -298,7 +298,7 @@ export default function LabourManagementPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
                 >
-                  Labour Management System (LMS)
+                  HR Information System (HRIS)
                 </motion.span>
                 <motion.h1
                   className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
@@ -316,7 +316,7 @@ export default function LabourManagementPage() {
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                 >
                   Centralize every employee record, automate complex workflows, and maintain full compliance across your
-                  contract and permanent workforce—from gate to payroll.
+                  contract and permanent workforce from gate to payroll.
                 </motion.p>
                 <motion.div
                   className="mt-8 flex flex-wrap items-center gap-3"

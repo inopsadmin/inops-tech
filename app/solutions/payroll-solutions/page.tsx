@@ -45,95 +45,104 @@ const comprehensiveControlCards = [
   },
 ] as const;
 
-/** Horizontal “Our Modules” carousel — image, title, description per slide */
+const whyInopsCards = [
+  {
+    title: "Data-Driven Decision Making",
+    description:
+      "Leverage real-time analytics and AI-driven insights to optimize workforce productivity and operational efficiency. AI-driven attendance monitoring, geo-tagging, and facial recognition ensure accurate contractor management.",
+    icon: "chart" as const,
+  },
+  {
+    title: "Security & Compliance First",
+    description:
+      "We ensure high security and compliance with regulatory standards, making workforce tracking seamless while maintaining legal transparency.",
+    icon: "security" as const,
+  },
+  {
+    title: "Scalable & Customizable",
+    description:
+      "Our solutions cater to businesses of all sizes-whether you need on-premise, cloud, or hybrid deployment, InOps adapts to your needs.",
+    icon: "scalable" as const,
+  },
+  {
+    title: "Advanced Hardware & Software Integration",
+    description:
+      "Seamlessly integrate our biometric devices, access control, and attendance tracking with HRMS, payroll, and ERP systems.",
+    icon: "integration" as const,
+  },
+  {
+    title: "End-to-End Compliance Automation",
+    description:
+      "Streamline contractor onboarding, payroll, attendance, and compliance reporting-all in one platform.",
+    icon: "compliance" as const,
+  },
+] as const;
+
+/** Horizontal “Our Module” carousel — image, title, description per slide */
 const ourModulesSlides = [
   {
-    title: "KYE — Employee Verification",
+    title: "Time Attendance and Leave",
     description:
-      "Next-gen CLMS with AI-assisted document verification for challans and records, plus smart reporting and analytics for faster, defensible decisions.",
+      "Track attendance in real time, apply shift and leave policies automatically, and push verified hours directly to payroll.",
     image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=85",
-    alt: "Digital verification and identity check at a workforce kiosk",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85",
+    alt: "Team planning attendance and leave schedules",
   },
   {
-    title: "Visitor Management",
+    title: "Wage/Payroll",
     description:
-      "Secure visitor tracking with seamless check-in and check-out, host notifications, and lobby visibility tied to your access rules.",
+      "Calculate wages, statutory deductions, and overtime with audit trails that stay compliant across every pay cycle.",
     image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85",
-    alt: "Modern office reception and visitor check-in",
-  },
-  {
-    title: "Canteen Management",
-    description:
-      "Manage food ordering, inventory, billing, and employee meal benefits in one flow—aligned with subsidies and attendance where you need it.",
-    image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=85",
-    alt: "Corporate cafeteria service line",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=85",
+    alt: "Payroll and compensation dashboard",
   },
   {
     title: "Contractor Management",
     description:
-      "Onboard vendors, track licenses and renewals, and reconcile headcount with attendance so contractor spend stays transparent.",
+      "Manage vendor profiles, manpower allocation, renewals, and site-level accountability from one centralized view.",
     image:
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85",
     alt: "Contractors and supervisors on an industrial site",
   },
   {
-    title: "Time Attendance & Leave",
+    title: "CXO Dashboard",
     description:
-      "Biometric and policy-aware time capture, leave workflows, and exports that land cleanly in payroll without manual re-keying.",
+      "Give leadership real-time visibility into headcount, productivity, compliance posture, and cost leakages.",
     image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85",
-    alt: "Team planning attendance and schedules",
-  },
-  {
-    title: "Wage",
-    description:
-      "Structure complex wage rules, statutory deductions, and pay cycles with audit trails from clock-in to payslip.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=85",
-    alt: "Payroll and compensation review",
-  },
-  {
-    title: "Shift Roster",
-    description:
-      "Plan shifts and rotations by site or line, handle swaps and coverage, and feed rosters straight into attendance validation.",
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=85",
-    alt: "Shift planning calendar and schedule",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85",
+    alt: "Executive dashboard with operations KPIs",
   },
   {
     title: "Background Verification",
     description:
-      "Digitize verification steps, document outcomes, and keep a single source of truth for audits and renewals.",
+      "Verify contractor identity and documents before onboarding, with complete records ready for audits and renewals.",
     image:
       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=85",
-    alt: "Document verification and compliance paperwork",
+    alt: "Document and background verification process",
   },
   {
     title: "AI Assistance",
     description:
-      "Surface anomalies, suggest next actions, and reduce manual triage across documents, attendance, and compliance queues.",
+      "Use AI to flag anomalies, predict risks, and suggest next actions across attendance, compliance, and billing workflows.",
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=85",
-    alt: "AI and data-driven workforce insights",
+    alt: "AI workforce analytics and assistance",
   },
   {
-    title: "Analytics & Compliance",
+    title: "Compliance Report",
     description:
-      "Dashboards for utilization, leakage, and statutory posture—with exports your finance and legal teams can rely on.",
+      "Generate ready-to-submit compliance reports for labor laws, statutory filings, and internal governance reviews.",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85",
-    alt: "Analytics dashboard with charts and KPIs",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85",
+    alt: "Compliance reports and governance analytics",
   },
   {
-    title: "Hardware Integration",
+    title: "Challan Reconciliation",
     description:
-      "Connect turnstiles, biometrics, and edge devices to the same policy engine so physical gates match payroll truth.",
+      "Reconcile challans with attendance and wage data to detect mismatches early and prevent financial leakage.",
     image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85",
-    alt: "Biometric and access control hardware",
+      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=800&q=85",
+    alt: "Invoice and challan reconciliation review",
   },
 ] as const;
 
@@ -208,7 +217,7 @@ function OurModulesCarousel() {
           viewport={viewport}
           transition={{ duration: 0.45, ease: smoothEase }}
         >
-          Our Modules
+          Our Module
         </motion.h2>
 
         <p className="sr-only">
@@ -313,112 +322,220 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
+function WhyInopsIcon({ name }: { name: (typeof whyInopsCards)[number]["icon"] }) {
+  const c = "h-7 w-7";
+  if (name === "chart") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 2 2 5-5m2 10H5a2 2 0 01-2-2V5m14 0h4v4m0-4l-7 7" />
+      </svg>
+    );
+  }
+  if (name === "security") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 12a3 3 0 100-6 3 3 0 000 6zm0 0v2m0 4h.01M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41M12 2v2m0 16v2" />
+      </svg>
+    );
+  }
+  if (name === "scalable") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 16v-2m8-6h-2M6 12H4m12.95 6.95l-1.41-1.41M8.46 8.46L7.05 7.05m9.9 0l-1.41 1.41M8.46 15.54l-1.41 1.41M12 9a3 3 0 100 6 3 3 0 000-6z" />
+      </svg>
+    );
+  }
+  if (name === "integration") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7a3 3 0 116 0m-9 9a3 3 0 116 0m6-9a3 3 0 11-6 0m0 0v6m-3-3h6m-9 6h12" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>
+  );
+}
+
 export default function PayrollSolutionsPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero — platform solutions, contract workforce governance */}
         <motion.section
-          className="border-b border-slate-100 bg-white"
+          className="hero-tight border-b border-slate-100 bg-white pt-0 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-12">
-            <motion.nav
-              className="text-sm text-slate-500"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
-              aria-label="Breadcrumb"
-            >
-              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-indigo-600">
-                Home
-              </Link>
-              <span className="mx-2 text-slate-400">/</span>
-              <span className="font-medium text-slate-900">Payroll Solutions</span> */}
-            </motion.nav>
-
-            <div className="grid grid-cols-1 items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14 lg:py-14">
-              <div>
-                <motion.span
-                  className="inline-flex rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-indigo-600 ring-1 ring-indigo-100"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
-                >
-                  Platform Solutions
-                </motion.span>
-                <motion.h1
-                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
-                >
-                  End-to-End Contract{" "}
-                  <span className="text-indigo-600">Workforce Governance</span>
-                </motion.h1>
-                <motion.p
-                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
-                >
-                  Manage the entire lifecycle of contract employees with complete visibility and control.
-                  Eliminate leakages, ensure compliance, and optimize costs on a single platform.
-                </motion.p>
-                <motion.div
-                  className="mt-8 flex flex-wrap items-center gap-3"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
-                >
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-indigo-600/25 transition hover:bg-indigo-700"
-                  >
-                    Get Started
-                  </Link>
-                  <Link
-                    href="/blog"
-                    className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
-                  >
-                    View Case Studies
-                  </Link>
-                </motion.div>
-              </div>
-
-              <motion.div
-                className="relative mx-auto w-full max-w-xl lg:max-w-none"
-                initial={{ opacity: 0, y: 22 }}
+          <div className="pt-8 lg:pt-0">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <motion.nav
+                className="text-sm text-slate-500"
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.08 }}
+                transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
+                aria-label="Breadcrumb"
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/50">
-                  <Image
-                    src={clmsHeroImage}
-                    alt="Operations team reviewing workforce data on a tablet"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" aria-hidden />
-                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-auto sm:max-w-sm">
-                    <div className="rounded-xl border border-white/25 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-md sm:px-5 sm:py-4">
-                      <p className="text-xs font-bold uppercase tracking-wide text-slate-900">Live monitoring</p>
-                      <p className="mt-1 text-sm leading-snug text-slate-600">
-                        Real-time attendance tracking across 12 manufacturing sites.
-                      </p>
-                    </div>
+                {/* <Link href="/" className="text-slate-600 transition-colors hover:text-indigo-600">
+                  Home
+                </Link>
+                <span className="mx-2 text-slate-400">/</span>
+                <span className="font-medium text-slate-900">Payroll Solutions</span> */}
+              </motion.nav>
+            </div>
+
+            <motion.div
+              className="relative mt-6 overflow-hidden rounded-none border border-slate-200/70 sm:mt-8"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="relative min-h-[340px] sm:min-h-[390px] lg:min-h-[430px]">
+                <Image
+                  src="/image.jpg"
+                  alt="Site supervisor standing in a factory floor"
+                  fill
+                  className="object-cover object-center"
+                  sizes="100vw"
+                  priority
+                />
+                <div
+                  className=""
+                  aria-hidden
+                />
+                <div className="relative z-10 max-w-3xl px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16 ml-10">
+                  <motion.h1
+                    className="text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[3.2rem]"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
+                  >
+                    Turn Compliance Challenges into Opportunities with Automated CLMS and Eliminate Manual Effort
+                  </motion.h1>
+                  <motion.p
+                    className="mt-6 text-sm text-slate-600 sm:text-base"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
+                  >
+                    One Unified Platform for Complete Control
+                  </motion.p>
+                  <motion.div
+                    className="mt-7 flex flex-wrap items-center gap-3"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                  >
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/25 transition hover:bg-sky-600"
+                    >
+                      Get In Touch
+                    </Link>
+                    <Link
+                      href="/blog"
+                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
+                    >
+                      Learn More
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="mx-auto mt-15 max-w-7xl px-4 pb-10 sm:px-6 sm:pb-12 lg:px-12">
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.45, ease: smoothEase }}
+              >
+                <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">Why Inops?</h2>
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {whyInopsCards.slice(0, 1).map((card, i) => (
+                  <motion.div
+                    key={card.title}
+                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.2) }}
+                  >
+                    <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-100">
+                        <WhyInopsIcon name={card.icon} />
+                      </div>
+                      <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                    </article>
+                  </motion.div>
+                ))}
+
+                <motion.div
+                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
+                >
+                  <div className="relative min-h-[340px] sm:min-h-[390px] lg:min-h-[300px] overflow-hidden rounded-2xl bg-slate-100 transition-transform duration-300 group-hover:-translate-y-1">
+                    <Image
+                      src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
+                      alt="Site supervisor standing with safety gear"
+                      fill
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
+                </motion.div>
+
+                {whyInopsCards.slice(1, 2).map((card, i) => (
+                  <motion.div
+                    key={card.title}
+                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min((i + 2) * 0.05, 0.2) }}
+                  >
+                    <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-100">
+                        <WhyInopsIcon name={card.icon} />
+                      </div>
+                      <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                    </article>
+                  </motion.div>
+                ))}
+
+                {whyInopsCards.slice(2).map((card, i) => (
+                  <motion.div
+                    key={card.title}
+                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min((i + 3) * 0.05, 0.25) }}
+                  >
+                    <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-100">
+                        <WhyInopsIcon name={card.icon} />
+                      </div>
+                      <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.description}</p>
+                    </article>
+                  </motion.div>
+                ))}
                 </div>
               </motion.div>
             </div>
           </div>
         </motion.section>
 
-        {/* Comprehensive Control — CLMS touchpoints */}
+        {/* Comprehensive Control — CLMS touchpoints
         <section
           className="border-t border-slate-200/80 bg-slate-50 py-14 lg:py-16"
           aria-labelledby="comprehensive-control-heading"
@@ -483,7 +600,7 @@ export default function PayrollSolutionsPage() {
               </motion.div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <OurModulesCarousel />
 

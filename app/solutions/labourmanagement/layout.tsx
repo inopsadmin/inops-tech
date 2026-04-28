@@ -5,7 +5,7 @@ export const metadata: Metadata = routeMetadata({
   title: "Labour Management Software | InOps Solutions",
   description:
     "Contract labour management system (CLMS) — onboarding, ID issuance, gate compliance, and contractor governance for Indian industrial sites.",
-  path: "/solutions/labour-management",
+  path: "/solutions/labourmanagement",
   extraKeywords: ["CLMS India", "contract labour compliance", "contractor workforce software"],
 });
 

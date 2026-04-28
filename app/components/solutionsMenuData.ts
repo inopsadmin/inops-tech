@@ -31,7 +31,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       type: "tile",
       title: "HR Information System",
       description: "Central employee records and labour workflows for your organisation.",
-      href: "/solutions/labour-management",
+      href: "/solutions/labourmanagement",
     },
     {
       type: "tile",

@@ -18,7 +18,7 @@ const solutionPages = [
   { label: "Time & Attendance", href: "/solutions/time-and-attendance" },
   { label: "Canteen Management", href: "/solutions/canteen-management" },
   { label: "Payroll Solutions", href: "/solutions/payroll-solutions" },
-  { label: "Labour Management Software", href: "/solutions/labour-management" },
+  { label: "Labour Management Software", href: "/solutions/labourmanagement" },
   { label: "Mobile App", href: "/solutions/mobile-app" },
   { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
   { label: "Visitor Management", href: "/solutions/visitor-management" },

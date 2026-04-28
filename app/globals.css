@@ -624,3 +624,31 @@ button, a, [role="button"] {
     transform: translateY(-1px);
   }
 }
+
+/* ===== Global page template unification ===== */
+.inops-template > div > section:not(.hero-tight) {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+@media (min-width: 1024px) {
+  .inops-template > div > section:not(.hero-tight) {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* Normalize light section backgrounds used across pages */
+.inops-template [class*="bg-[#f6f7"],
+.inops-template [class*="bg-[#f7f6"],
+.inops-template [class*="bg-[#f8fb"],
+.inops-template [class*="bg-[#f3f6"],
+.inops-template [class*="bg-[#f8fa"] {
+  background-color: #f8fafc !important;
+}
+
+/* Keep heading hierarchy visually consistent across templates */
+.inops-template h1,
+.inops-template h2 {
+  letter-spacing: -0.02em;
+}

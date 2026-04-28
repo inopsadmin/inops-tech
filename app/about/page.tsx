@@ -248,7 +248,7 @@ export default function AboutPage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-14">
+          <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 lg:px-12 lg:pb-14 lg:pt-14">
             <motion.nav
               className="text-sm text-slate-500"
               initial={{ opacity: 0, y: 8 }}
@@ -264,7 +264,7 @@ export default function AboutPage() {
             </motion.nav>
 
             <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:mt-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-              <div>
+              <div className="ml-0 lg:ml-10">
                 <motion.span
                   className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-800"
                   initial={{ opacity: 0, y: 12 }}
@@ -296,12 +296,12 @@ export default function AboutPage() {
               </div>
 
               <motion.div
-                className="relative mx-auto w-full max-w-xl lg:max-w-none"
+                className="relative mx-auto w-full max-w-lg lg:ml-auto lg:mr-0 lg:max-w-[34rem]"
                 initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/60 lg:aspect-[5/4]">
+                <div className="relative aspect-[5/4] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/60">
                   <Image
                     src={aboutHeroOfficeImage}
                     alt="Modern enterprise office — glass meeting spaces and collaborative workspace"
@@ -315,33 +315,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-12 lg:pb-14 lg:pt-12">
-            {/* <motion.div
-              className="rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-700 px-5 py-8 shadow-lg shadow-indigo-900/20 sm:px-8 sm:py-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: smoothEase, delay: 0.22 }}
-            >
-              <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-6 lg:gap-8">
-                {aboutHeroStats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="flex flex-col items-center text-center sm:items-center"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10">
-                      <AboutHeroStatIcon name={stat.icon} />
-                    </div>
-                    <p className="mt-4 text-2xl font-bold tabular-nums tracking-tight text-white sm:text-3xl">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-100 sm:text-xs">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div> */}
-          </div>
         </motion.section>
 
         {/* Company story */}
@@ -446,7 +419,7 @@ export default function AboutPage() {
                   <div className="flex h-full min-h-0 flex-col items-center justify-center gap-5 text-center sm:gap-6">
                     <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full ring-[5px] ring-indigo-50 shadow-xl shadow-slate-900/15 sm:h-40 sm:w-40 lg:h-44 lg:w-44">
                       <Image
-                        src="/images/image.png"
+                        src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
                         alt="Prashanth K., Chief Executive Officer, InOps"
                         fill
                         className="object-cover object-top"
@@ -454,11 +427,11 @@ export default function AboutPage() {
                       />
                     </div>
                     <div className="min-w-0 max-w-[16rem]">
-                      <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Prashanth K.</p>
+                      <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Satish Sinha</p>
                       <p className="mt-2 text-sm font-medium leading-snug text-slate-600 sm:text-base">
-                        Chief Executive Officer
+                        Founder
                       </p>
-                      <p className="mt-1.5 text-sm font-medium text-slate-500">InOps</p>
+                      {/* <p className="mt-1.5 text-sm font-medium text-slate-500">InOps</p> */}
                     </div>
                   </div>
                 </motion.div>

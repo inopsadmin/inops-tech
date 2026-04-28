@@ -11,7 +11,7 @@ const solutions = [
   { label: "Time & Attendance", href: "/solutions/time-and-attendance" },
   { label: "Canteen Management", href: "/solutions/canteen-management" },
   { label: "Payroll Solutions", href: "/solutions/payroll-solutions" },
-  { label: "Labour Management", href: "/solutions/labour-management" },
+  { label: "Labour Management", href: "/solutions/labourmanagement" },
   { label: "Visitor Management", href: "/solutions/visitor-management" },
   { label: "Fixed Asset Management", href: "/solutions/fixed-asset-management" },
 ];

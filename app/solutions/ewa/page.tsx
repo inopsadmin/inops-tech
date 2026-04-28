@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -18,7 +19,7 @@ export default function EwaPage() {
             transition={{ duration: 0.55, ease: smoothEase }}
           >
             <span className="inline-flex rounded-full border border-indigo-100 bg-white px-3 py-1 text-xs font-semibold text-indigo-600">
-              User-Friendly Payroll Integration 4.0
+              Early wage access
             </span>
             <h1 className="mt-4 text-[2.6rem] font-bold leading-[1.02] tracking-tight text-gray-900 sm:text-[4rem] lg:text-[4.4rem]">
               Instant Access to
@@ -45,46 +46,30 @@ export default function EwaPage() {
                 See How It Works
               </Link>
             </div>
-            <p className="mt-6 text-sm font-medium text-gray-500">No loans. No paperwork. Just earned wage access.</p>
+            {/* <p className="mt-6 text-sm font-medium text-gray-500">No loans. No paperwork. Just earned wage access.</p> */}
+            <div className="mt-6 inline-flex flex-wrap items-center gap-2 rounded-xl border border-orange-200 bg-orange-50 px-4 py-2.5 text-sm font-semibold text-orange-700">
+              <span>1L+ workers on platform</span>
+              <span className="text-orange-400">|</span>
+              <span>3000+ device deployed</span>
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            whileHover={{ y: -6, scale: 1.01 }}
             viewport={viewport}
             transition={{ duration: 0.55, ease: smoothEase, delay: 0.05 }}
-            className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-[0_24px_54px_-32px_rgba(15,23,42,0.35)] sm:p-6"
+            className="relative overflow-hidden"
           >
-            <div className="rounded-xl border border-gray-100 bg-[#fbfcff] p-4">
-              <div className="mb-4 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-rose-300" />
-                <span className="h-2 w-2 rounded-full bg-amber-300" />
-                <span className="h-2 w-2 rounded-full bg-emerald-300" />
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="h-16 rounded-lg border border-indigo-100 bg-indigo-50/60" />
-                ))}
-              </div>
-              <div className="mt-4 h-28 rounded-xl border border-gray-100 bg-white" />
-            </div>
-
-            <div className="pointer-events-none absolute bottom-4 right-4 w-[34%] min-w-[160px] min-h-[220px] rounded-[2rem] border-[3px] border-gray-900 bg-white p-3 shadow-2xl sm:bottom-6 sm:right-6 sm:min-h-[250px]">
-              <div className="mb-2 flex items-center justify-between">
-                <div className="h-6 w-6 rounded-full bg-sky-100" />
-                <span className="text-xs font-medium text-gray-500">Active</span>
-              </div>
-              <div className="rounded-xl bg-indigo-50 p-3 mt-8">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-indigo-500">Earned Today</p>
-                <p className="mt-1 text-2xl font-bold text-gray-900">$142.50</p>
-              </div>
-              <button
-                type="button"
-                className="mt-8 w-full rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white"
-              >
-                Withdraw Now
-              </button>
+            <div className="relative aspect-[16/9] w-full">
+              <Image
+                src="/Gemini_Generated_Image_po31j8po31j8po31.png"
+                alt="Early wage access dashboard and mobile screen"
+                fill
+                className=""
+                sizes="(max-width: 1024px) 100vw, 82vw"
+                priority
+              />
             </div>
           </motion.div>
         </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -266,18 +267,19 @@ function ModernTeamIcon({ kind }: { kind: (typeof modernTeamPoints)[number]["ico
 
 export default function MobileAppPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <section className="mt-10 relative overflow-hidden border-b border-blue-100 bg-gradient-to-br from-cyan-50 via-white to-blue-50">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-2 lg:gap-14 lg:px-12 lg:py-24">
+    <div className="min-h-screen overflow-x-hidden bg-white text-gray-900">
+      <section className="relative mt-10 overflow-hidden border-b border-blue-100 bg-gradient-to-br from-cyan-50 via-white to-blue-50">
+        <div className="mx-auto grid min-w-0 max-w-7xl grid-cols-1 items-center gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-4 lg:px-10 lg:py-16 xl:gap-6">
           <motion.div
+            className="min-w-0 max-w-xl lg:ml-20 lg:max-w-lg xl:max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: smoothEase }}
           >
             <span className="inline-flex rounded-full border border-cyan-200 bg-cyan-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-700">
-              AI-Powered Attendance Management
+             MOBILE BASED ATTENDANCE
             </span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+            <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 max-sm:text-3xl sm:text-6xl">
               Attendance, Now in{" "}
               <span className="bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text italic text-transparent">
                 Your Pocket.
@@ -306,39 +308,18 @@ export default function MobileAppPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
-            className="flex justify-center lg:justify-end"
+            className="flex w-full min-w-0 justify-center lg:w-auto lg:justify-start lg:pl-2"
           >
-            <div className="relative w-full max-w-[310px] rounded-[2.6rem] border-[10px] border-slate-900 bg-slate-900 p-2 shadow-2xl shadow-cyan-100">
-              <div className="absolute left-1/2 top-0 h-6 w-28 -translate-x-1/2 rounded-b-2xl bg-slate-900" aria-hidden />
-              <div className="overflow-hidden rounded-[1.7rem] bg-white">
-                <div className="bg-sky-500 px-4 pb-3 pt-8 text-white">
-                  <p className="text-[11px] uppercase tracking-[0.12em] text-white/80">Live</p>
-                  <h2 className="mt-1 text-xl font-bold">Good Morning, Alex</h2>
-                  <p className="text-xs text-white/80">Monday, Oct 23 - 08:45 AM</p>
-                </div>
-                <div className="space-y-3 p-4">
-                  <div className="rounded-xl bg-slate-50 p-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Status</p>
-                    <div className="mt-2 flex items-center justify-between gap-2">
-                      <span className="text-sm font-semibold text-slate-900">Not Checked In</span>
-                      <button type="button" className="rounded-lg bg-sky-500 px-3 py-1.5 text-xs font-semibold text-white">
-                        Check In
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Recent Activity</p>
-                    <div className="mt-2 space-y-2">
-                      {["Checkout", "Checkout", "Checkout"].map((item, idx) => (
-                        <div key={`${item}-${idx}`} className="flex items-center justify-between rounded-lg border border-slate-100 px-3 py-2">
-                          <span className="text-sm text-slate-700">{item}</span>
-                          <span className="text-xs text-slate-400">05:12 PM</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="flex w-full max-w-[min(100%,220px)] shrink-0 justify-center sm:max-w-none lg:max-w-none">
+              <Image
+                src="/WhatsApp_Image_2026-04-27_at_3.53.34_PM-removebg-preview.png"
+                alt="SmartAttendance mobile app sign in screen"
+                width={780}
+                height={1688}
+                className="h-auto max-h-[360px] w-full object-contain object-bottom drop-shadow-[0_24px_48px_rgba(14,116,144,0.22)] sm:max-h-[400px] sm:w-[210px] lg:mr-20 lg:max-h-[490px] lg:w-[380px]"
+                sizes="(max-width: 640px) 190px, (max-width: 1024px) 210px, 380px"
+                priority
+              />
             </div>
           </motion.div>
         </div>
@@ -377,8 +358,8 @@ export default function MobileAppPage() {
         </div>
       </section> */}
 
-      <section className="bg-slate-50 pb-0 pt-14 lg:pt-16">
-        <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-12 lg:pb-12">
+      <section className="bg-slate-50 pb-0 pt-16 lg:pt-24">
+        <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-12 lg:pb-20">
           <motion.div
             className="mx-auto max-w-3xl text-center"
             initial={{ opacity: 0, y: 16 }}
@@ -389,12 +370,12 @@ export default function MobileAppPage() {
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               Everything You Need for Accurate Tracking
             </h2>
-            <p className="mt-3 text-sm text-slate-500 sm:text-base">
+            <p className="mt-4 text-sm text-slate-500 sm:text-base">
               Powerful features designed to eliminate time theft and manual errors.
             </p>
           </motion.div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {accurateTrackingFeatures.map((feature, idx) => (
               <motion.article
                 key={feature.title}
@@ -414,7 +395,7 @@ export default function MobileAppPage() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-12 lg:pb-12">
+        <div className="mx-auto max-w-7xl border-t border-slate-200/90 px-4 pb-16 pt-14 sm:px-6 lg:px-12 lg:pb-20 lg:pt-20">
           <motion.div
             className="mx-auto max-w-3xl text-center"
             initial={{ opacity: 0, y: 16 }}
@@ -425,12 +406,12 @@ export default function MobileAppPage() {
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               Seamless From Start to Finish
             </h2>
-            <p className="mt-3 text-sm text-slate-500 sm:text-base">
+            <p className="mt-4 text-sm text-slate-500 sm:text-base">
               A frictionless experience for both employees and management.
             </p>
           </motion.div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-10 grid grid-cols-1 gap-8 max-sm:mx-auto max-sm:max-w-md sm:grid-cols-2 sm:gap-5 md:mt-12 md:grid-cols-3 md:gap-6 lg:grid-cols-5 lg:gap-8">
             {workflowSteps.map((step, idx) => (
               <motion.article
                 key={step.title}
@@ -440,20 +421,21 @@ export default function MobileAppPage() {
                 viewport={viewport}
                 transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
               >
-                <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
+                <div className="relative inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
                   <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-sky-500 ring-2 ring-white" aria-hidden />
                   <WorkflowStepIcon kind={step.icon} />
                 </div>
-                <h3 className="mt-3 text-xl font-semibold text-slate-900">{step.title}</h3>
-                <p className="mt-1 max-w-[150px] text-sm leading-relaxed text-slate-500">{step.description}</p>
+                <h3 className="mt-3 text-xl font-semibold text-slate-900 max-sm:text-lg">{step.title}</h3>
+                <p className="mt-1 max-w-[150px] text-sm leading-relaxed text-slate-500 max-sm:max-w-[min(18rem,calc(100vw-2rem))]">{step.description}</p>
               </motion.article>
             ))}
           </div>
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-12 lg:pb-12">
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10">
+        <div className="mx-auto max-w-7xl border-t border-slate-200/90 px-4 pb-16 pt-14 sm:px-6 lg:px-12 lg:pb-20 lg:pt-20">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
             <motion.div
+              className="min-w-0"
               initial={{ opacity: 0, x: -18 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
@@ -462,7 +444,7 @@ export default function MobileAppPage() {
               <span className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-600">
                 For Supervisors
               </span>
-              <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-slate-900 max-sm:text-3xl sm:text-5xl">
                 Full Control Over Your Workforce
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -497,14 +479,14 @@ export default function MobileAppPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+              className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
             >
-              <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-sky-500" aria-hidden />
-                  <span className="text-sm font-semibold text-slate-800">Attendance Overview</span>
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3 lg:flex-nowrap lg:gap-0">
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-sky-500" aria-hidden />
+                  <span className="truncate text-sm font-semibold text-slate-800">Attendance Overview</span>
                 </div>
-                <span className="text-xs font-medium text-slate-500">Department: Sales</span>
+                <span className="shrink-0 text-xs font-medium text-slate-500">Department: Sales</span>
               </div>
               <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-[220px_1fr]">
                 <div className="space-y-3">
@@ -558,7 +540,7 @@ export default function MobileAppPage() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 pb-10 lg:px-12 lg:pb-12">
+        <div className="mx-auto max-w-7xl border-t border-slate-200/90 px-4 pb-16 pt-14 sm:px-6 lg:px-12 lg:pb-20 lg:pt-20">
           <motion.div
             className="mx-auto max-w-3xl text-center"
             initial={{ opacity: 0, y: 16 }}
@@ -575,7 +557,7 @@ export default function MobileAppPage() {
           </motion.div>
 
           <motion.div
-            className="mx-auto mt-8 max-w-5xl rounded-[2rem] border border-cyan-100 bg-gradient-to-r from-cyan-50 to-blue-50 p-6 shadow-sm lg:p-8"
+            className="mx-auto mt-10 max-w-5xl rounded-[2rem] border border-cyan-100 bg-gradient-to-r from-cyan-50 to-blue-50 p-6 shadow-sm sm:mt-12 lg:mt-14 lg:p-8"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -618,7 +600,7 @@ export default function MobileAppPage() {
             </div>
           </motion.div>
 
-          <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 text-center sm:grid-cols-3">
+          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-8 text-center sm:grid-cols-3 sm:gap-10 lg:mt-14">
             {integrationBenefits.map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -634,18 +616,18 @@ export default function MobileAppPage() {
           </div>
         </div>
 
-        <div className="w-full pb-10 lg:pb-12">
+        <div className="w-full border-t border-slate-200/90 pb-12 pt-12 lg:pb-16 lg:pt-16">
           <motion.section
-            className="overflow-hidden border-y border-slate-800 bg-gradient-to-r from-[#0b141f] via-[#101a27] to-[#0b141f] py-7 shadow-2xl shadow-slate-900/40 sm:py-8 lg:py-10"
+            className="overflow-hidden border-y border-slate-800 bg-gradient-to-r from-[#0b141f] via-[#101a27] to-[#0b141f] py-12 shadow-2xl shadow-slate-900/40 sm:py-14 lg:py-16"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.55, ease: smoothEase }}
           >
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:px-12">
-              <div>
-                <h2 className="max-w-md text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
-                  Why Modern Teams Choose SmartAttendance
+            <div className="mx-auto grid min-w-0 max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:px-12">
+              <div className="min-w-0">
+                <h2 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
+                  Why Modern Teams <br /> Choose SmartAttendance
                 </h2>
                 <p className="mt-5 text-base text-slate-300 sm:text-lg">
                   Built for speed, accuracy, and enterprise-grade reliability.
@@ -670,41 +652,29 @@ export default function MobileAppPage() {
                 </div>
               </div>
 
-              <motion.article
-                className="rounded-3xl border border-slate-700/80 bg-slate-800/55 p-5 backdrop-blur-sm sm:p-6"
+              <motion.div
+                className="relative flex min-h-[200px] items-center justify-center p-4 sm:min-h-[260px] sm:p-6 lg:min-h-[600px] lg:p-8"
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
               >
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-sm font-semibold text-slate-800">
-                      JR
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-white">Julia Roberts</p>
-                      <p className="text-xs text-slate-400">HR Director @ TechCorp</p>
-                    </div>
-                  </div>
-                  <span className="text-slate-500">
-                    <svg className="h-9 w-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-                      <path d="M9 9H5a2 2 0 00-2 2v4M15 9h4a2 2 0 012 2v4M9 15H5a2 2 0 01-2-2V9M15 15h4a2 2 0 002-2V9" />
-                      <circle cx="12" cy="12" r="1.5" />
-                    </svg>
-                  </span>
-                </div>
-                <blockquote className="text-3xl font-semibold italic leading-relaxed text-white sm:text-4xl">
-                  "Switching to SmartAttendance reduced our payroll disputes by 95%. Our employees love the simple interface, and our managers love the real-time visibility."
-                </blockquote>
-                <p className="mt-5 text-xl tracking-[0.2em] text-white">★★★★★</p>
-              </motion.article>
+                <Image
+                  src="/dsfdf-removebg-preview.png"
+                  alt="SmartAttendance mobile and workforce experience"
+                  width={960}
+                  height={600}
+                  className="relative h-auto max-h-[min(55vh,320px)] w-full max-w-2xl object-contain sm:max-h-[380px] lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[600px] lg:max-h-[600px] lg:w-full lg:-translate-x-1/2 lg:-translate-y-1/2"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+              </motion.div>
             </div>
           </motion.section>
         </div>
 
+        <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-12 lg:pb-20 lg:pt-14">
         <motion.div
-          className="relative overflow-hidden rounded-3xl bg-sky-500 px-6 py-14 text-center shadow-xl sm:px-10"
+          className="relative overflow-hidden rounded-3xl bg-sky-500 px-6 py-16 text-center shadow-xl max-sm:rounded-2xl max-sm:px-4 max-sm:py-12 sm:px-10 lg:py-20"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
@@ -719,10 +689,10 @@ export default function MobileAppPage() {
             aria-hidden
           />
 
-          <h2 className="relative z-10 mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-6xl">
+          <h2 className="relative z-10 mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-950 max-sm:text-3xl sm:text-6xl">
             Transform attendance management with a mobile-first solution.
           </h2>
-          <p className="relative z-10 mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-900/80 sm:text-2xl">
+          <p className="relative z-10 mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-900/80 max-sm:mt-4 max-sm:text-sm sm:text-2xl">
             Join thousands of businesses streamlining their operations with SmartAttendance. Start your 14-day free trial today.
           </p>
 
@@ -745,6 +715,7 @@ export default function MobileAppPage() {
             No credit card required • Unlimited users • Instant setup
           </p>
         </motion.div>
+        </div>
       </section>
     </div>
   );

@@ -5,10 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionModulePanel from "@/app/components/SolutionModulePanel";
 
-/** Same asset as `public/WhatsApp Image 2026-04-02 at 11.52.33 AM.jpeg` (clean path for URLs) */
-const timeAttendanceProductImage = "/images/inops-time-attendance-product.jpeg";
+const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
 const optiCamSolutionImage =
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80";
+  "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.png";
 
 const authAccessGalleryImages = [
   {
@@ -129,7 +128,7 @@ export default function TimeAndAttendancePage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        <section className="mt-10 border-t border-gray-200 bg-white py-8 lg:py-12">
+        <section className="mt-10 border-t border-gray-200 bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
@@ -139,7 +138,7 @@ export default function TimeAndAttendancePage() {
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
                 <span className="inline-flex rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
-                  Next-Gen Enterprise Attendance
+                  CCTV based attendance solution
                 </span>
                 <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
                   <span className="text-slate-900">
@@ -171,7 +170,7 @@ export default function TimeAndAttendancePage() {
                   </Link>
                 </div>
 
-                <div className="mt-6 flex items-center gap-3">
+                {/* <div className="mt-6 flex items-center gap-3">
                   <div className="flex -space-x-2">
                     {[1, 2, 3, 4].map((dot) => (
                       <span
@@ -185,7 +184,7 @@ export default function TimeAndAttendancePage() {
                   <p className="text-sm text-slate-600">
                     Trusted by <span className="font-semibold text-slate-900">500+ Enterprises</span> globally.
                   </p>
-                </div>
+                </div> */}
               </motion.div>
 
               <motion.div
@@ -195,29 +194,29 @@ export default function TimeAndAttendancePage() {
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
                 className="relative"
               >
-                <div className="relative overflow-hidden rounded-2xl border border-slate-300 bg-slate-100 shadow-lg">
+                <div className="relative overflow-hidden">
                   <div className="relative aspect-[16/10]">
                     <Image
                       src={timeAttendanceProductImage}
-                      alt="AI-enabled attendance monitoring interface"
+                      alt="CCTV attendance device and dashboard preview"
                       fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover scale-101"
+                      sizes="(max-width: 1024px) 100vw, 100vw"
                     />
                   </div>
                 </div>
-                <div className="absolute -bottom-6 right-0 rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-xl">
+                {/* <div className="absolute -bottom-6 right-0 rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-xl">
                   <p className="text-4xl font-bold text-slate-900">99.8%</p>
                   <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
                     Facial Recognition Accuracy
                   </p>
-                </div>
+                </div> */}
               </motion.div>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-[#f8fafc] py-10 lg:py-12">
+        <section className="border-t border-gray-100 bg-[#f8fafc] py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="max-w-3xl"
@@ -301,11 +300,11 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-white py-10 lg:py-12">
+        <section className="border-t border-gray-100 bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
-                className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm"
+                className="relative overflow-hidden"
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
@@ -387,7 +386,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-[#f8fafc] py-10 lg:py-12">
+        <section className="border-t border-gray-100 bg-[#f8fafc] py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -493,7 +492,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-white py-10 lg:py-12">
+        <section className="border-t border-gray-100 bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -555,7 +554,10 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-slate-800 bg-gradient-to-r from-[#0e1016] via-[#12141b] to-[#0e1016] py-10 lg:py-12">
+        <section className="border-t border-slate-800 bg-gradient-to-r from-[#0e1016] via-[#12141b] to-[#0e1016] py-12 lg:py-16">
+          <h2 className="text-3xl text-center font-bold tracking-tight text-white sm:text-5xl mb-5">
+            Measurable ROI for Your Infrastructure
+          </h2>
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-10">
               <motion.div
@@ -564,9 +566,9 @@ export default function TimeAndAttendancePage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+                {/* <h2 className="text-3xl text-center font-bold tracking-tight text-white sm:text-5xl">
                   Measurable ROI for Your Infrastructure
-                </h2>
+                </h2> */}
                 <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {[
                     { value: "45%", label: "Reduction in Hardware TCO", icon: "trend" },
@@ -616,14 +618,14 @@ export default function TimeAndAttendancePage() {
               </motion.div>
 
               <motion.div
-                className="min-w-0 rounded-2xl border border-slate-300 bg-white p-6 shadow-xl"
+                className="min-w-0 rounded-2xl border border-slate-300 bg-white p-6 shadow-xl mt-7"
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.07 }}
               >
                 <h3 className="text-3xl font-bold text-slate-900">Enterprise Deployment Readiness</h3>
-                <ul className="mt-5 space-y-4">
+                <ul className="mt-5 space-y-8">
                   {[
                     "Supports H.264, H.265, and MJPEG video codecs.",
                     "GDPR & PDPA compliant data anonymization.",
