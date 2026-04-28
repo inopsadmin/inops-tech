@@ -691,7 +691,7 @@ export default function BiometricAccessControlPage() {
                 </Link>
               </div>
 
-              <div className="mt-10 flex items-center justify-center gap-3">
+              {/* <div className="mt-10 flex items-center justify-center gap-3">
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map((avatar) => (
                     <span
@@ -711,7 +711,7 @@ export default function BiometricAccessControlPage() {
                 <p className="text-sm text-gray-500 sm:text-base">
                   Join <span className="font-semibold text-gray-700">2,500+ enterprises</span> who trust BioSecure.
                 </p>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </section>
