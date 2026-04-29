@@ -353,7 +353,7 @@ export default function AboutPage() {
 
         {/* Full-stack governance — leadership message */}
         <section
-          className="border-t border-slate-100 bg-white py-14 lg:py-20"
+          className="border-t border-slate-100 bg-white pb-14 lg:pb-20"
           aria-labelledby="governance-platform-heading"
         >
           <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-12">
@@ -369,9 +369,9 @@ export default function AboutPage() {
               </p> */}
               <h2
                 id="governance-platform-heading"
-                className="mx-auto mt-4 max-w-6xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-800 sm:text-5xl lg:text-[3.5rem]"
+                className="mx-auto mt-4 max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-800 sm:text-5xl lg:text-[3.5rem]"
               >
-                A Full-Stack Workforce Governance Platform
+                A Full-Stack Workforce Governance <br /> Platform
               </h2>
               <p className="mx-auto mt-8 max-w-3xl text-[1.05rem] leading-relaxed text-slate-500 sm:text-[1.08rem]">
                 Starting with identity and access control systems, InOps has evolved into a comprehensive system
