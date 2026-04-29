@@ -29,8 +29,7 @@ export default function FeaturesSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative isolate border-y border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50 py-10 lg:py-12">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-10%,rgba(59,130,246,0.12),transparent_55%)]" aria-hidden />
+    <section className="relative isolate border-y border-slate-200/80 bg-white py-10 lg:py-12">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         <div className="overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/80 hover:shadow-xl hover:shadow-blue-900/10">
           <div className="flex flex-col items-stretch md:flex-row md:min-h-[min(28rem,75vh)]">

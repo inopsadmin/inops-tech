@@ -130,7 +130,7 @@ export default function Home() {
       <SectionFade>
         <section
           id="home-hero"
-          className="relative -mt-[4.5rem] flex min-h-[calc(100svh-1rem)] flex-col items-center justify-center overflow-hidden pt-[6.25rem] sm:pt-[7rem] noise-overlay"
+          className="relative -mt-[4.5rem] flex min-h-[calc(100svh-1rem)] flex-col items-center justify-center overflow-hidden bg-white pt-[6.25rem] sm:pt-[7rem] noise-overlay"
         >
           <HeroBackgroundSlider onPhaseChange={setHeroDarkPhase} onSlideChange={setActiveHeroIndex} />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/50" aria-hidden />
@@ -246,10 +246,6 @@ export default function Home() {
       {/* Why InOps */}
       <AnimatedSection id="about" className="relative bg-white py-10 lg:py-12">
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-50" aria-hidden />
-        <div className="pointer-events-none absolute inset-0" aria-hidden>
-          <div className="absolute -top-24 left-1/2 h-[22rem] w-[22rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-blue-200/55 via-sky-200/30 to-transparent blur-3xl" />
-          <div className="absolute -bottom-24 right-0 h-[18rem] w-[18rem] rounded-full bg-gradient-to-tr from-indigo-200/45 via-blue-200/20 to-transparent blur-3xl" />
-        </div>
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-label uppercase tracking-wider text-blue-700">
@@ -453,11 +449,9 @@ export default function Home() {
 
       {/* Operational challenges — two-card light layout */}
       <SectionFade>
-        <section className="relative overflow-hidden bg-[#f8fafc] py-14 lg:py-20">
+        <section className="relative overflow-hidden bg-white py-14 lg:py-20">
           {/* subtle dot grid */}
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-60" aria-hidden />
-          {/* soft blue glow top */}
-          <div className="pointer-events-none absolute -top-32 left-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-blue-100/60 blur-3xl" aria-hidden />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             {/* section header */}
@@ -683,9 +677,8 @@ export default function Home() {
       {/* Feature cards + logo strip (single bordered container) */}
       <SectionFade effect="3d">
         <div className="max-w-full">
-          <div className="overflow-hidden rounded-[2rem] border border-slate-200/80 bg-[linear-gradient(145deg,#f8fbff_0%,#ffffff_50%,#f5f9ff_100%)] shadow-[0_30px_90px_-52px_rgba(15,23,42,0.35)]">
-            <section className="relative overflow-hidden py-8 lg:py-10">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(56,189,248,0.14),transparent_40%),radial-gradient(circle_at_88%_82%,rgba(99,102,241,0.12),transparent_42%)]" aria-hidden />
+          <div className="overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white shadow-[0_30px_90px_-52px_rgba(15,23,42,0.35)]">
+            <section className="relative overflow-hidden bg-white py-8 lg:py-10">
               <div className="mx-auto max-w-7xl px-6 lg:px-12">
                 <motion.div
                   className="relative mb-6 flex flex-col gap-4 rounded-3xl border border-blue-100/80 bg-white/80 px-5 py-5 shadow-[0_20px_45px_-34px_rgba(30,64,175,0.35)] backdrop-blur sm:px-6"
@@ -796,7 +789,7 @@ export default function Home() {
       {/* <SectionFade><BrandsSlider /></SectionFade> */}
 
       {/* Contact */}
-      <SectionFade id="contact" className="relative pt-10 pb-0 lg:pt-14 lg:pb-0">
+      <SectionFade id="contact" className="relative bg-white pt-10 pb-0 lg:pt-14 lg:pb-0">
         <div className="relative">
           <div className="grid overflow-hidden lg:grid-cols-[57%_43%]">
             {/* Left image (separate from form component) */}

@@ -132,6 +132,7 @@ const evolutionMilestones: EvolutionMilestone[] = [
     title: "Enterprise IT & Product Services",
     description: "The foundation of our engineering excellence.",
     icon: "grid",
+    highlight: true,
   },
   {
     year: "2021",
@@ -139,6 +140,7 @@ const evolutionMilestones: EvolutionMilestone[] = [
     title: "Biometric & Hardware Solutions",
     description: "Securing the perimeter with advanced identity tech.",
     icon: "shield",
+    highlight: true,
   },
   {
     year: "2022",
@@ -146,6 +148,7 @@ const evolutionMilestones: EvolutionMilestone[] = [
     title: "Attendance & Workforce Systems",
     description: "Bridging the gap between physical and digital records.",
     icon: "users",
+    highlight: true,
   },
   {
     year: "2023",
@@ -153,6 +156,7 @@ const evolutionMilestones: EvolutionMilestone[] = [
     title: "Canteen & Visitor Management",
     description: "Extending governance to secondary facility operations.",
     icon: "building",
+    highlight: true,
   },
   {
     year: "2025",
@@ -169,6 +173,7 @@ const evolutionMilestones: EvolutionMilestone[] = [
     description: "Empowering workers with Earned Wage Access.",
     icon: "trend",
     badge: "Roadmap",
+    highlight: true,
   },
 ];
 
@@ -705,8 +710,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Why Choose Us: tech tree visual + Expertise card */}
-        <section className="border-t border-gray-100/80 bg-white pb-0 pt-4 lg:pb-0 lg:pt-6">
+        {/* Why Choose Us: tech tree visual + Expertise card (flush to site footer; global section padding skipped) */}
+        <section className="section-flush-footer border-t border-gray-100/80 bg-white pb-0 pt-4 lg:pb-0 lg:pt-6">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"

@@ -626,13 +626,14 @@ button, a, [role="button"] {
 }
 
 /* ===== Global page template unification ===== */
-.inops-template > div > section:not(.hero-tight) {
+/* #contact / .section-flush-footer: last sections above footer — skip bottom padding to avoid a white gap. */
+.inops-template > div > section:not(.hero-tight):not(#contact):not(.section-flush-footer) {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
 }
 
 @media (min-width: 1024px) {
-  .inops-template > div > section:not(.hero-tight) {
+  .inops-template > div > section:not(.hero-tight):not(#contact):not(.section-flush-footer) {
     padding-top: 4rem !important;
     padding-bottom: 4rem !important;
   }
@@ -695,59 +696,5 @@ button, a, [role="button"] {
   line-height: 1.5 !important;
 }
 
-/* ===== Single brand color enforcement (remove blue/purple drift) ===== */
-.inops-template [class*="text-blue-"],
-.inops-template [class*="text-indigo-"],
-.inops-template [class*="text-violet-"],
-.inops-template [class*="text-sky-"],
-.inops-template [class*="text-cyan-"] {
-  color: var(--brand) !important;
-}
-
-.inops-template [class*="bg-blue-"],
-.inops-template [class*="bg-indigo-"],
-.inops-template [class*="bg-violet-"],
-.inops-template [class*="bg-sky-"],
-.inops-template [class*="bg-cyan-"] {
-  background-color: var(--brand) !important;
-}
-
-.inops-template [class*="border-blue-"],
-.inops-template [class*="border-indigo-"],
-.inops-template [class*="border-violet-"],
-.inops-template [class*="border-sky-"],
-.inops-template [class*="border-cyan-"] {
-  border-color: var(--brand) !important;
-}
-
-.inops-template [class*="ring-blue-"],
-.inops-template [class*="ring-indigo-"],
-.inops-template [class*="ring-violet-"],
-.inops-template [class*="ring-sky-"],
-.inops-template [class*="ring-cyan-"] {
-  --tw-ring-color: color-mix(in srgb, var(--brand) 60%, white) !important;
-}
-
-.inops-template [class*="from-blue-"],
-.inops-template [class*="from-indigo-"],
-.inops-template [class*="from-violet-"],
-.inops-template [class*="from-sky-"],
-.inops-template [class*="from-cyan-"] {
-  --tw-gradient-from: color-mix(in srgb, var(--brand) 92%, white) var(--tw-gradient-from-position) !important;
-}
-
-.inops-template [class*="via-blue-"],
-.inops-template [class*="via-indigo-"],
-.inops-template [class*="via-violet-"],
-.inops-template [class*="via-sky-"],
-.inops-template [class*="via-cyan-"] {
-  --tw-gradient-via: color-mix(in srgb, var(--brand) 84%, white) var(--tw-gradient-via-position) !important;
-}
-
-.inops-template [class*="to-blue-"],
-.inops-template [class*="to-indigo-"],
-.inops-template [class*="to-violet-"],
-.inops-template [class*="to-sky-"],
-.inops-template [class*="to-cyan-"] {
-  --tw-gradient-to: color-mix(in srgb, var(--brand) 76%, white) var(--tw-gradient-to-position) !important;
-}
+/* Removed broad brand overrides: `[class*="bg-blue-"]` matched hover/tint utilities like
+   `hover:bg-blue-50` and `to-blue-50/40`, forcing solid var(--brand) across entire cards. */
