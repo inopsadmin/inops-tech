@@ -1,19 +1,20 @@
+ "use client";
+
 import Image from "next/image";
 import Link from "next/link";
-
-const products = [
-  { label: "Biometric Access Control", href: "/product/biometric-access-control" },
-  { label: "Turnstiles", href: "/product/turnstiles" },
-  { label: "Accessories", href: "/product/accessories" },
-];
+import { usePathname } from "next/navigation";
 
 const solutions = [
-  { label: "Time & Attendance", href: "/solutions/time-and-attendance" },
-  { label: "Canteen Management", href: "/solutions/canteen-management" },
-  { label: "Payroll Solutions", href: "/solutions/payroll-solutions" },
-  { label: "Labour Management", href: "/solutions/labourmanagement" },
-  { label: "Visitor Management", href: "/solutions/visitor-management" },
-  { label: "Fixed Asset Management", href: "/solutions/fixed-asset-management" },
+  { label: "Workforce Governance Solution", href: "/solutions/time-and-attendance" },
+  { label: "Contract Employee Governance System", href: "/solutions/payroll-solutions" },
+  { label: "HR Information System", href: "/solutions/labourmanagement" },
+  { label: "Canteen & Visitor Management", href: "/solutions/canteen-management" },
+  { label: "Identity & Face Solution", href: "/solutions/time-and-attendance" },
+  { label: "Mobile App", href: "/solutions/mobile-app" },
+  { label: "CCTV Attendance", href: "/solutions/time-and-attendance" },
+  { label: "Face Reader", href: "/product/biometric-access-control" },
+  { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
+  { label: "EWA (Earned Wage Access)", href: "/solutions/ewa" },
 ];
 
 const company = [
@@ -28,6 +29,23 @@ const socialLinks = [
   { label: "Twitter / X", href: "https://twitter.com/", icon: "twitter" as const },
   { label: "Facebook", href: "https://www.facebook.com/", icon: "facebook" as const },
 ];
+
+type NavItem = { label: string; href: string };
+
+function orderWithActiveFirst(items: NavItem[], pathname: string) {
+  const activeIndex = items.findIndex((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
+  if (activeIndex <= 0) return items;
+  return [items[activeIndex], ...items.slice(0, activeIndex), ...items.slice(activeIndex + 1)];
+}
+
+function uniqueByLabel(items: NavItem[]) {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    if (seen.has(item.label)) return false;
+    seen.add(item.label);
+    return true;
+  });
+}
 
 function SocialIcon({ icon }: { icon: "facebook" | "twitter" | "linkedin" }) {
   const paths: Record<typeof icon, React.ReactElement> = {
@@ -48,11 +66,13 @@ function SocialIcon({ icon }: { icon: "facebook" | "twitter" | "linkedin" }) {
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+function FooterLink({ href, children, isActive = false }: { href: string; children: React.ReactNode; isActive?: boolean }) {
   return (
     <Link
       href={href}
-      className="text-sm text-slate-400 underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline"
+      className={`text-sm underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline ${
+        isActive ? "font-medium text-blue-300" : "text-slate-400"
+      }`}
     >
       {children}
     </Link>
@@ -66,6 +86,11 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export default function Footer() {
+  const pathname = usePathname();
+  const solutionItems = uniqueByLabel(orderWithActiveFirst(solutions, pathname));
+  const activeSolutionLabel =
+    solutionItems.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))?.label ?? null;
+
   return (
     <footer className="relative mt-auto overflow-hidden border-t border-white/[0.08] bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300">
       {/* Accent + grid */}
@@ -126,32 +151,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Products */}
-          <div className="lg:col-span-2">
-            <SectionTitle>Products</SectionTitle>
-            <ul className="mt-5 space-y-3">
-              {products.map((item) => (
-                <li key={item.href}>
-                  <FooterLink href={item.href}>{item.label}</FooterLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Solutions */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <SectionTitle>Solutions</SectionTitle>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-1 xl:grid-cols-2">
-              {solutions.map((item) => (
-                <li key={item.href} className="min-w-0">
-                  <FooterLink href={item.href}>{item.label}</FooterLink>
+              {solutionItems.map((item) => (
+                <li key={`${item.href}-${item.label}`} className="min-w-0">
+                  <FooterLink href={item.href} isActive={activeSolutionLabel === item.label}>
+                    {item.label}
+                  </FooterLink>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Contact card */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <SectionTitle>Head office</SectionTitle>
             <div className="mt-5 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-5 shadow-xl shadow-black/20 backdrop-blur-sm">
               <div className="space-y-4 text-sm text-slate-400">

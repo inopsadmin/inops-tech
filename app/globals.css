@@ -6,11 +6,11 @@
   --muted: #6b7280;
   --card: #f9fafb;
   --card-border: #e5e7eb;
-  --brand: #3b82f6;
-  --brand-hover: #2563eb;
-  --brand-light: #eff6ff;
-  --accent: #3b82f6;
-  --accent-deep: #2563eb;
+  --brand: #1d5fbf;
+  --brand-hover: #184e9c;
+  --brand-light: #e9f1fb;
+  --accent: #1d5fbf;
+  --accent-deep: #184e9c;
   --secondary-bg: #f5f7fa;
   --inops-cyan: #39bde8;
   --inops-blue: #1d5fbf;
@@ -651,4 +651,103 @@ button, a, [role="button"] {
 .inops-template h1,
 .inops-template h2 {
   letter-spacing: -0.02em;
+}
+
+/* ===== Site-wide typography uniformity ===== */
+.inops-template h1 {
+  font-size: clamp(2.15rem, 1.9rem + 1.25vw, 3.1rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 700 !important;
+}
+
+.inops-template h2 {
+  font-size: clamp(1.75rem, 1.55rem + 0.9vw, 2.45rem) !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+.inops-template h3 {
+  font-size: clamp(1.25rem, 1.18rem + 0.4vw, 1.5rem) !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+}
+
+.inops-template h4,
+.inops-template h5,
+.inops-template h6 {
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem) !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+}
+
+.inops-template p,
+.inops-template li,
+.inops-template dd,
+.inops-template dt {
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+}
+
+.inops-template small,
+.inops-template .text-xs,
+.inops-template .text-sm {
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+}
+
+/* ===== Single brand color enforcement (remove blue/purple drift) ===== */
+.inops-template [class*="text-blue-"],
+.inops-template [class*="text-indigo-"],
+.inops-template [class*="text-violet-"],
+.inops-template [class*="text-sky-"],
+.inops-template [class*="text-cyan-"] {
+  color: var(--brand) !important;
+}
+
+.inops-template [class*="bg-blue-"],
+.inops-template [class*="bg-indigo-"],
+.inops-template [class*="bg-violet-"],
+.inops-template [class*="bg-sky-"],
+.inops-template [class*="bg-cyan-"] {
+  background-color: var(--brand) !important;
+}
+
+.inops-template [class*="border-blue-"],
+.inops-template [class*="border-indigo-"],
+.inops-template [class*="border-violet-"],
+.inops-template [class*="border-sky-"],
+.inops-template [class*="border-cyan-"] {
+  border-color: var(--brand) !important;
+}
+
+.inops-template [class*="ring-blue-"],
+.inops-template [class*="ring-indigo-"],
+.inops-template [class*="ring-violet-"],
+.inops-template [class*="ring-sky-"],
+.inops-template [class*="ring-cyan-"] {
+  --tw-ring-color: color-mix(in srgb, var(--brand) 60%, white) !important;
+}
+
+.inops-template [class*="from-blue-"],
+.inops-template [class*="from-indigo-"],
+.inops-template [class*="from-violet-"],
+.inops-template [class*="from-sky-"],
+.inops-template [class*="from-cyan-"] {
+  --tw-gradient-from: color-mix(in srgb, var(--brand) 92%, white) var(--tw-gradient-from-position) !important;
+}
+
+.inops-template [class*="via-blue-"],
+.inops-template [class*="via-indigo-"],
+.inops-template [class*="via-violet-"],
+.inops-template [class*="via-sky-"],
+.inops-template [class*="via-cyan-"] {
+  --tw-gradient-via: color-mix(in srgb, var(--brand) 84%, white) var(--tw-gradient-via-position) !important;
+}
+
+.inops-template [class*="to-blue-"],
+.inops-template [class*="to-indigo-"],
+.inops-template [class*="to-violet-"],
+.inops-template [class*="to-sky-"],
+.inops-template [class*="to-cyan-"] {
+  --tw-gradient-to: color-mix(in srgb, var(--brand) 76%, white) var(--tw-gradient-to-position) !important;
 }

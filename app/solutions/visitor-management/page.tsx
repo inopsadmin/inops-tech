@@ -46,7 +46,7 @@ const featuresAndBenefits = [
   },
   {
     title: "Access Control Integration",
-    circleColor: "bg-cyan-500",
+    circleColor: "bg-blue-500",
     description: "Seamlessly integrate with access control systems to manage visitor access to restricted areas, enhancing overall facility security.",
     benefit: "Tightened Access Control and Improved Security Measures.",
   },
@@ -58,7 +58,7 @@ const featuresAndBenefits = [
   },
   {
     title: "Cloud-based Data Storage",
-    circleColor: "bg-indigo-800",
+    circleColor: "bg-blue-800",
     description: "All visitor data is securely stored in the cloud, accessible anytime and anywhere, ensuring data integrity and compliance.",
     benefit: "Convenient Access and Enhanced Data Security.",
   },
@@ -66,10 +66,10 @@ const featuresAndBenefits = [
 
 const powerfulServices = [
   { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-sky-400" },
+  { title: "Biometric Attendance System", icon: "id", color: "bg-blue-400" },
   { title: "Access Control System", icon: "card", color: "bg-pink-500" },
-  { title: "Visitor Management System", icon: "person", color: "bg-violet-500" },
-  { title: "Canteen Management System", icon: "tray", color: "bg-cyan-500" },
+  { title: "Visitor Management System", icon: "person", color: "bg-blue-500" },
+  { title: "Canteen Management System", icon: "tray", color: "bg-blue-500" },
   { title: "Contract Management System", icon: "document-pen", color: "bg-amber-500" },
 ];
 
@@ -101,7 +101,7 @@ export default function VisitorManagementPage() {
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero — visitor.jpg + overlays (CSS background for reliable load) */}
         <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px] bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -146,7 +146,7 @@ export default function VisitorManagementPage() {
         </motion.section>
 
         {/* Content – flow diagram left, text right */}
-        <section className="mt-10 py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="mt-10 py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center lg:gap-8 xl:gap-10">
               {/* Left – visitor flow diagram: person at kiosk + connected nodes */}
@@ -245,7 +245,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -256,7 +256,7 @@ export default function VisitorManagementPage() {
             >
               Features & Benefits
             </motion.h2>
-            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-cyan-500" aria-hidden />
+            <div className="mx-auto mt-2 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
             <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
               {featuresAndBenefits.map((item, i) => (
                 <motion.div
@@ -282,7 +282,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Visitor Management System — intro + process infographic (row: text left, graphic right) */}
-        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
               <motion.div
@@ -296,7 +296,7 @@ export default function VisitorManagementPage() {
                   Visitor Management System
                 </h2>
                 <div
-                  className="mt-2 h-0.5 w-24 rounded-full bg-cyan-500 lg:mx-0"
+                  className="mt-2 h-0.5 w-24 rounded-full bg-blue-500 lg:mx-0"
                   aria-hidden
                 />
                 <p className="mx-auto mt-6 text-gray-600 leading-relaxed text-base sm:text-lg lg:mx-0 lg:max-w-none">
@@ -326,7 +326,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -337,7 +337,7 @@ export default function VisitorManagementPage() {
             >
               Powerful Services for <span className="underline decoration-orange-400 decoration-2 underline-offset-2">Your Business</span>
             </motion.h2>
-            <div className="mt-2 h-0.5 w-20 rounded-full bg-cyan-500" />
+            <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
             <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
               {powerfulServices.map((service, i) => (
                 <motion.div
@@ -360,7 +360,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
@@ -397,14 +397,14 @@ export default function VisitorManagementPage() {
                       <span className="font-semibold text-gray-900 text-sm">My Attendance</span>
                     </div>
                     <div className="flex gap-2 px-3 py-2 border-b border-gray-200">
-                      <span className="text-xs font-medium text-blue-400 py-1 px-2 rounded bg-cyan-500/20">week</span>
+                      <span className="text-xs font-medium text-blue-400 py-1 px-2 rounded bg-blue-500/20">week</span>
                       <span className="text-xs text-gray-400 py-1 px-2">month</span>
                     </div>
                     <div className="px-3 py-2 text-xs text-gray-400 text-center">15-Jan-2026 - 18-Jan-2026</div>
                     <div className="px-3 pb-2 space-y-1.5">
                       {[
                         { label: "ARRIVAL", time: "09:00", color: "bg-emerald-500" },
-                        { label: "MEETING", time: "09:40", color: "bg-cyan-500" },
+                        { label: "MEETING", time: "09:40", color: "bg-blue-500" },
                         { label: "LUNCH", time: "13:00", color: "bg-amber-500" },
                         { label: "WORKING", time: "14:00", color: "bg-blue-500" },
                         { label: "LEAVING", time: "18:00", color: "bg-rose-500" },

@@ -10,7 +10,7 @@ const viewport = { once: true, amount: 0.2 };
 export default function EwaPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <section className="mt-10 border-t border-gray-200 bg-[#f6f7fc] py-12 lg:py-16">
+      <section className="mt-10 border-t border-gray-200 py-12 lg:py-16 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -18,13 +18,13 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.55, ease: smoothEase }}
           >
-            <span className="inline-flex rounded-full border border-indigo-100 bg-white px-3 py-1 text-xs font-semibold text-indigo-600">
+            <span className="inline-flex rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-semibold text-blue-600">
               Early wage access
             </span>
             <h1 className="mt-4 text-[2.6rem] font-bold leading-[1.02] tracking-tight text-gray-900 sm:text-[4rem] lg:text-[4.4rem]">
               Instant Access to
               <br />
-              <span className="bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text italic text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text italic text-transparent">
                 Earned Wages
               </span>
             </h1>
@@ -35,7 +35,7 @@ export default function EwaPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="inline-flex h-11 items-center rounded-xl bg-indigo-600 px-6 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-md active:scale-95"
+                className="inline-flex h-11 items-center rounded-xl bg-blue-600 px-6 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:scale-95"
               >
                 Request Demo
               </Link>
@@ -75,7 +75,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -150,7 +150,7 @@ export default function EwaPage() {
                 viewport={viewport}
                 transition={{ duration: 0.42, ease: smoothEase, delay: index * 0.04 }}
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-500">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-500">
                   {item.icon}
                 </div>
                 <h3 className="mt-4 text-2xl font-semibold text-gray-900">{item.title}</h3>
@@ -161,7 +161,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-[#f6f7fb] py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -185,8 +185,8 @@ export default function EwaPage() {
                 title: "Real-time wage visibility",
                 description:
                   "Workers can track exactly how much they've earned after every shift, reinforcing the value of their labor instantly.",
-                cardClass: "bg-[#ddd7fb] border-[#cfc7fa]",
-                iconClass: "bg-indigo-600 text-white",
+                cardClass: "bg-blue-50 border-blue-200",
+                iconClass: "bg-blue-600 text-white",
                 icon: (
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
                     <path d="M4 19h16" />
@@ -200,8 +200,8 @@ export default function EwaPage() {
                 title: "On-demand access",
                 description:
                   "Empower workers to withdraw a percentage of their earned income 24/7 through a seamless mobile interface.",
-                cardClass: "bg-[#c9f4f2] border-[#afeceb]",
-                iconClass: "bg-cyan-500 text-white",
+                cardClass: "bg-blue-50 border-blue-200",
+                iconClass: "bg-blue-500 text-white",
                 icon: (
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
                     <rect x="7" y="3" width="10" height="18" rx="2" />
@@ -213,7 +213,7 @@ export default function EwaPage() {
                 title: "Payroll-integrated system",
                 description:
                   "Automated reconciliation ensures zero manual work for HR teams during monthly payroll disbursement.",
-                cardClass: "bg-[#f7e5d0] border-[#f0d5b8]",
+                cardClass: "bg-blue-50 border-blue-200",
                 iconClass: "bg-amber-500 text-white",
                 icon: (
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -246,7 +246,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-[#0d131c] py-14 lg:py-20">
+      <section className="py-14 lg:py-20 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -280,7 +280,7 @@ export default function EwaPage() {
                     viewport={viewport}
                     transition={{ duration: 0.42, ease: smoothEase, delay: index * 0.05 }}
                   >
-                    <div className="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 text-sm font-bold text-white shadow-[0_0_0_4px_rgba(99,102,241,0.14)]">
+                    <div className="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-sm font-bold text-white shadow-[0_0_0_4px_rgba(99,102,241,0.14)]">
                       {String(index + 1).padStart(2, "0")}
                     </div>
                     <p className="mx-auto mt-8 max-w-[12rem] text-sm leading-relaxed text-slate-300">
@@ -308,7 +308,7 @@ export default function EwaPage() {
                 viewport={viewport}
                 transition={{ duration: 0.38, ease: smoothEase, delay: index * 0.04 }}
               >
-                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 text-xs font-bold text-white">
+                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300">{step}</p>
@@ -318,7 +318,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-[#f6f7fb] py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -388,7 +388,7 @@ export default function EwaPage() {
                 viewport={viewport}
                 transition={{ duration: 0.42, ease: smoothEase, delay: index * 0.04 }}
               >
-                <div className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-full bg-indigo-50 text-indigo-500">
+                <div className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-full bg-blue-50 text-blue-500">
                   {item.icon}
                 </div>
                 <h3 className="mt-4 text-xl font-semibold text-gray-900 sm:text-2xl">{item.title}</h3>
@@ -398,7 +398,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
             <motion.div
@@ -418,9 +418,9 @@ export default function EwaPage() {
 
               <div className="space-y-3">
                 {[
-                  { label: "Attendance Sync", value: "99.9%", valueClass: "bg-indigo-500 text-white" },
+                  { label: "Attendance Sync", value: "99.9%", valueClass: "bg-blue-500 text-white" },
                   { label: "Identity Check", value: "Verified", valueClass: "bg-slate-600 text-slate-100" },
-                  { label: "Disbursement Speed", value: "< 2m", valueClass: "bg-cyan-500 text-white" },
+                  { label: "Disbursement Speed", value: "< 2m", valueClass: "bg-blue-500 text-white" },
                 ].map((row) => (
                   <div
                     key={row.label}
@@ -436,7 +436,7 @@ export default function EwaPage() {
 
               <div className="mt-5 rounded-lg border border-slate-700 bg-slate-900/70 p-3">
                 <div className="h-1.5 w-full rounded-full bg-slate-700">
-                  <div className="h-1.5 w-[84%] rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />
+                  <div className="h-1.5 w-[84%] rounded-full bg-gradient-to-r from-blue-500 to-blue-500" />
                 </div>
                 <div className="mt-2 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
                   <span>Data Arc</span>
@@ -479,7 +479,7 @@ export default function EwaPage() {
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3">
-                    <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 text-indigo-500">
+                    <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-500">
                       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} aria-hidden>
                         <path d="M12 3 5 6v6c0 5 3.5 7.8 7 9 3.5-1.2 7-4 7-9V6l-7-3Z" />
                         <path d="m9.5 12 1.7 1.7 3.3-3.4" />
@@ -497,7 +497,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-[#f6f7fb] py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_16px_36px_-28px_rgba(15,23,42,0.25)]">
             <div className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
@@ -533,7 +533,7 @@ export default function EwaPage() {
                   viewport={viewport}
                   transition={{ duration: 0.42, ease: smoothEase, delay: index * 0.05 }}
                 >
-                  <span className="inline-flex rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600">
+                  <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
                     {column.badge}
                   </span>
                   <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -560,7 +560,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -586,13 +586,13 @@ export default function EwaPage() {
                 value: "40%",
                 label: "Stability",
                 description: "Reduction in workforce churn rate across all departments.",
-                valueClass: "text-indigo-600",
+                valueClass: "text-blue-600",
               },
               {
                 value: "15%",
                 label: "Productivity",
                 description: "Increase in shift fulfillment and overtime willingness.",
-                valueClass: "text-cyan-500",
+                valueClass: "text-blue-500",
               },
               {
                 value: "Zero",
@@ -625,7 +625,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-600 py-16 lg:py-20">
+      <section className="from-blue-500 via-blue-500 to-blue-600 py-16 lg:py-20 bg-blue-50">
         <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -633,10 +633,10 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
+            <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl">
               Enable Financial Wellness for Your Workforce
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-indigo-100 sm:text-2xl">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-2xl">
               Transform how your workforce accesses and manages earnings. Start your pilot program in
               less than 7 days.
             </p>
@@ -644,13 +644,13 @@ export default function EwaPage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex min-w-[210px] items-center justify-center rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-indigo-600 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-50 hover:shadow-md active:scale-95"
+                className="inline-flex min-w-[210px] items-center justify-center rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-blue-600 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-50 hover:shadow-md active:scale-95"
               >
                 Request Demo
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex min-w-[210px] items-center justify-center rounded-xl border border-white/70 bg-white px-7 py-3.5 text-sm font-semibold text-gray-800 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-50 hover:shadow-md active:scale-95"
+                className="inline-flex min-w-[210px] items-center justify-center rounded-xl border border-white/70 bg-white px-7 py-3.5 text-sm font-semibold text-gray-800 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-50 hover:shadow-md active:scale-95"
               >
                 Talk to Sales
               </Link>

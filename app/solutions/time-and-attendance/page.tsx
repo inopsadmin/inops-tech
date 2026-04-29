@@ -34,12 +34,12 @@ const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
 const benefits = [
-  { label: "Streamline Payroll", color: "bg-violet-500", icon: "payroll" },
+  { label: "Streamline Payroll", color: "bg-blue-500", icon: "payroll" },
   { label: "It Averts Lawsuits", color: "bg-pink-500", icon: "law" },
   { label: "Precise Time Tracking", color: "bg-amber-500", icon: "clock" },
   { label: "Lessen Paper Usage", color: "bg-yellow-500", icon: "docs" },
   { label: "Prevention of Tax Issues", color: "bg-emerald-500", icon: "tax" },
-  { label: "Boosts Employee Satisfaction", color: "bg-cyan-500", icon: "satisfaction" },
+  { label: "Boosts Employee Satisfaction", color: "bg-blue-500", icon: "satisfaction" },
 ];
 
 const featuresAndBenefits = [
@@ -75,7 +75,7 @@ const featuresAndBenefits = [
   },
   {
     title: "Customizable Reporting",
-    circleColor: "bg-sky-400",
+    circleColor: "bg-blue-400",
     description: "Generate detailed reports tailored to your business needs, including attendance summaries, late arrivals, and absenteeism patterns, for informed decision-making.",
     sub: { title: "Compliance Assurance", text: "Stay compliant with labor regulations and policies effortlessly as our device provides thorough documentation of attendance records for audits and compliance purposes." },
   },
@@ -97,9 +97,9 @@ const powerfulServices = [
   { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-rose-500" },
   { title: "Access Control System", icon: "card", color: "bg-rose-500" },
   { title: "Canteen Management System", icon: "tray", color: "bg-rose-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-violet-500" },
-  { title: "Visitor Management System", icon: "person", color: "bg-violet-500" },
-  { title: "Contract Management System", icon: "document-pen", color: "bg-violet-500" },
+  { title: "Biometric Attendance System", icon: "id", color: "bg-blue-500" },
+  { title: "Visitor Management System", icon: "person", color: "bg-blue-500" },
+  { title: "Contract Management System", icon: "document-pen", color: "bg-blue-500" },
 ];
 
 function CheckIcon({ className }: { className?: string }) {
@@ -128,7 +128,7 @@ export default function TimeAndAttendancePage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        <section className="mt-10 border-t border-gray-200 bg-white py-12 lg:py-16">
+        <section className="mt-10 border-t border-gray-200 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
@@ -216,7 +216,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-[#f8fafc] py-12 lg:py-16">
+        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="max-w-3xl"
@@ -300,7 +300,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-white py-12 lg:py-16">
+        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
@@ -386,7 +386,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-[#f8fafc] py-12 lg:py-16">
+        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -492,7 +492,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-white py-12 lg:py-16">
+        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -554,7 +554,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-slate-800 bg-gradient-to-r from-[#0e1016] via-[#12141b] to-[#0e1016] py-12 lg:py-16">
+        <section className="border-t border-slate-800 from-[#0e1016] via-[#12141b] to-[#0e1016] py-12 lg:py-16 bg-black">
           <h2 className="text-3xl text-center font-bold tracking-tight text-white sm:text-5xl mb-5">
             Measurable ROI for Your Infrastructure
           </h2>
@@ -653,7 +653,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-[#f8fafc] py-12 lg:py-16">
+        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
             <motion.div
               initial={{ opacity: 0, y: 16 }}

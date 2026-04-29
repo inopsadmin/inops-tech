@@ -54,10 +54,10 @@ const numberedFeatures = [
 
 /** Cohesive blue–teal accent squares (single family, not rainbow). */
 const featureBullets = [
-  { text: "High-quality electric component", iconBg: "bg-sky-500" },
-  { text: "Visual indicator for access granted or denied", iconBg: "bg-cyan-600" },
+  { text: "High-quality electric component", iconBg: "bg-blue-500" },
+  { text: "Visual indicator for access granted or denied", iconBg: "bg-blue-600" },
   { text: "Patented oil lubrication system reduces the need for maintenance", iconBg: "bg-blue-600" },
-  { text: "Stainless steel casework which ensures long-lasting durability", iconBg: "bg-indigo-500" },
+  { text: "Stainless steel casework which ensures long-lasting durability", iconBg: "bg-blue-500" },
 ];
 
 function CheckIcon({ className }: { className?: string }) {
@@ -74,7 +74,7 @@ export default function TurnstilesPage() {
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero — Turnstiles2.jpg + overlays */}
         <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
+          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px] bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -120,7 +120,7 @@ export default function TurnstilesPage() {
         </motion.section>
 
         {/* Main content – tripod turnstile image left, text right */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10 lg:items-center">
               <motion.div
@@ -160,7 +160,7 @@ export default function TurnstilesPage() {
         </section>
 
         {/* Features – three numbered blocks */}
-        <section className="py-6 lg:py-10 bg-gray-50/50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
               {numberedFeatures.map((item, i) => (
@@ -184,7 +184,7 @@ export default function TurnstilesPage() {
         </section>
 
         {/* Features + specifications — side by side from lg */}
-        <section className="border-t border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50 py-10 lg:py-14">
+        <section className="border-t border-slate-200/80 from-slate-50 via-white to-slate-50 py-10 lg:py-14 bg-white">
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-14">
               {/* Left: Features */}
@@ -282,7 +282,7 @@ function WhyChooseUsSection() {
   const slides = whyChooseSlides;
 
   return (
-    <section className="py-4 lg:py-6 bg-white border-t border-gray-200">
+    <section className="py-4 lg:py-6 border-t border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.h2
           className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"

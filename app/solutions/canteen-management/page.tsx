@@ -15,7 +15,7 @@ const buttonHover =
   "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg";
 
 const featureRowHover =
-  "rounded-xl border border-transparent p-4 transition-[border-color,box-shadow,background-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-[#00AAFF]/40 hover:bg-sky-50/40 hover:shadow-md hover:shadow-[#00AAFF]/8 sm:p-5";
+  "rounded-xl border border-transparent p-4 transition-[border-color,box-shadow,background-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-[#00AAFF]/40 hover:bg-blue-50/40 hover:shadow-md hover:shadow-[#00AAFF]/8 sm:p-5";
 
 /** Visily “Real-time Operational Visibility”–style metrics, adapted for canteen. */
 const operationalMetrics = [
@@ -40,16 +40,16 @@ const operationalMetrics = [
     value: "Real-time",
     hint: "Accruals tied to HR / payroll",
     icon: "link" as const,
-    accent: "text-sky-600",
-    bg: "bg-sky-50",
+    accent: "text-blue-600",
+    bg: "bg-blue-50",
   },
   {
     label: "Platform uptime",
     value: "99.98%",
     hint: "Mission-critical site operations",
     icon: "clock" as const,
-    accent: "text-violet-600",
-    bg: "bg-violet-50",
+    accent: "text-blue-600",
+    bg: "bg-blue-50",
   },
 ];
 
@@ -191,7 +191,7 @@ const visitorDeskFeatures = [
   },
   {
     title: "Pre-registration & visitor analytics",
-    circleColor: "bg-indigo-800",
+    circleColor: "bg-blue-800",
     description:
       "Hosts pre-register guests; analytics cover volumes, demographics, and trends over time.",
     benefit: "Data-led decisions for staffing, space, and policy.",
@@ -201,14 +201,14 @@ const visitorDeskFeatures = [
 const featuresAndBenefits = [
   {
     title: "Biometric meal counting",
-    circleColor: "bg-violet-600",
+    circleColor: "bg-blue-600",
     description:
       "Use face recognition and biometrics to tie each meal to the right person, cutting unaccounted issues and proxy swipes.",
     benefit: "Trustworthy meal logs for audits, subsidies, and capacity planning.",
   },
   {
     title: "Subsidy calculation & payroll",
-    circleColor: "bg-sky-500",
+    circleColor: "bg-blue-500",
     description:
       "Apply rules in real time, sync with payroll and HR master data, and keep deductions and employer contributions accurate.",
     benefit: "Fewer payroll corrections and clearer visibility for finance teams.",
@@ -259,9 +259,9 @@ const featuresAndBenefits = [
 
 const powerfulServices = [
   { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-sky-400" },
+  { title: "Biometric Attendance System", icon: "id", color: "bg-blue-400" },
   { title: "Access Control System", icon: "card", color: "bg-pink-500" },
-  { title: "Visitor Management System", icon: "person", color: "bg-violet-500" },
+  { title: "Visitor Management System", icon: "person", color: "bg-blue-500" },
   { title: "Canteen Management System", icon: "tray", color: "bg-pink-500" },
   { title: "Contract Management System", icon: "document-pen", color: "bg-amber-500" },
 ];
@@ -385,7 +385,7 @@ export default function CanteenManagementPage() {
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero – Visily-style light layout + facility ops positioning */}
         <motion.section
-          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-white"
+          className="relative overflow-hidden border-b border-slate-200/80 from-slate-50 via-white to-white bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -449,13 +449,13 @@ export default function CanteenManagementPage() {
                   </Link>
                   <a
                     href="#canteen-features"
-                    className={`inline-flex items-center justify-center rounded-xl border-2 border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-blue-700 hover:border-[#00AAFF] hover:bg-sky-50/80 hover:shadow-[#00AAFF]/15 ${buttonHover}`}
+                    className={`inline-flex items-center justify-center rounded-xl border-2 border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-blue-700 hover:border-[#00AAFF] hover:bg-blue-50/80 hover:shadow-[#00AAFF]/15 ${buttonHover}`}
                   >
                     View capabilities
                   </a>
                   <Link
                     href="/solutions/visitor-management"
-                    className={`inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:border-[#00AAFF]/45 hover:bg-sky-50/50 ${buttonHover}`}
+                    className={`inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:border-[#00AAFF]/45 hover:bg-blue-50/50 ${buttonHover}`}
                   >
                     Visitor management
                   </Link>
@@ -515,7 +515,7 @@ export default function CanteenManagementPage() {
         </motion.section>
 
         {/* Operational metrics – Visily “Real-time visibility” strip */}
-        <section className="mt-10 border-b border-slate-200 bg-white py-10 lg:py-12">
+        <section className="mt-10 border-b border-slate-200 py-10 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <motion.div
               className="mx-auto max-w-2xl text-center"
@@ -552,7 +552,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Digital Canteen & Subsidy Control – Visily feature block (image + checklist) */}
-        <section className="border-b border-slate-200 bg-slate-50/40 py-12 lg:py-16">
+        <section className="border-b border-slate-200 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
               <motion.div
@@ -579,7 +579,7 @@ export default function CanteenManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700" aria-hidden>
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700" aria-hidden>
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
@@ -615,7 +615,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Secondary highlights – queue, mobile ops, alerts */}
-        <section className="border-b border-slate-200 bg-white py-10 lg:py-12">
+        <section className="border-b border-slate-200 py-10 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
               {secondaryHighlights.map((item, i) => (
@@ -639,7 +639,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Visitor desk & lobby — brochure “canteen + visitor” pairing */}
-        <section id="visitor-desk" className="border-b border-slate-200 bg-white py-12 lg:py-16 scroll-mt-20">
+        <section id="visitor-desk" className="border-b border-slate-200 py-12 lg:py-16 scroll-mt-20 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
               <motion.div
@@ -648,7 +648,7 @@ export default function CanteenManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-100 text-cyan-700" aria-hidden>
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700" aria-hidden>
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
@@ -662,7 +662,7 @@ export default function CanteenManagementPage() {
                 <ul className="mt-6 space-y-3">
                   {visitorExperiencePillars.map((line) => (
                     <li key={line} className="flex gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-cyan-600 text-white">
+                      <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
                         <CheckIcon className="h-3.5 w-3.5" />
                       </span>
                       <span className="text-slate-700 leading-relaxed">{line}</span>
@@ -671,7 +671,7 @@ export default function CanteenManagementPage() {
                 </ul>
                 <Link
                   href="/solutions/visitor-management"
-                  className="group mt-8 inline-flex items-center gap-1 text-sm font-semibold text-cyan-700 transition-colors duration-300 hover:text-[#00AAFF]"
+                  className="group mt-8 inline-flex items-center gap-1 text-sm font-semibold text-blue-700 transition-colors duration-300 hover:text-[#00AAFF]"
                 >
                   Explore visitor management
                   <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
@@ -708,7 +708,7 @@ export default function CanteenManagementPage() {
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.06 }}
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-600 text-white transition-transform duration-300 group-hover:scale-105">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
                     <HighlightIcon name={item.icon} />
                   </div>
                   <h3 className="mt-4 font-bold text-slate-900">{item.title}</h3>
@@ -720,7 +720,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Deep-dive: why InOps canteen */}
-        <section className="border-t border-gray-200 bg-gradient-to-b from-white to-slate-50/50 py-8 lg:py-12">
+        <section className="border-t border-gray-200 from-white to-slate-50/50 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
               className="w-full text-left"
@@ -732,7 +732,7 @@ export default function CanteenManagementPage() {
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                 Built for high-volume sites and enterprise policy
               </h2>
-              <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 sm:w-20" aria-hidden />
+              <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 sm:w-20" aria-hidden />
             </motion.div>
 
             <div className="mt-8 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
@@ -774,7 +774,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 bg-gray-50 border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold text-gray-900 sm:text-3xl"
@@ -807,7 +807,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* Field / supervisor view */}
-        <section className="py-6 lg:py-10 bg-white border-t border-gray-200">
+        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
               <motion.div
@@ -847,7 +847,7 @@ export default function CanteenManagementPage() {
                     <div className="px-3 pb-3 space-y-2">
                       {[
                         { label: "Biometric verified", count: 342, tone: "bg-emerald-500" },
-                        { label: "Contractor meals", count: 118, tone: "bg-sky-500" },
+                        { label: "Contractor meals", count: 118, tone: "bg-blue-500" },
                         { label: "Overrides / manual", count: 7, tone: "bg-amber-500" },
                         { label: "Exceptions flagged", count: 2, tone: "bg-rose-500" },
                       ].map((row) => (
@@ -871,7 +871,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* CTA band — light banner aligned with hero (sky, dark type, white buttons) */}
-        <section className="border-t border-sky-300/40 bg-sky-100 py-12 lg:py-16">
+        <section className="border-t border-blue-300/40 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-5xl px-6 text-center lg:px-8">
             <motion.h2
               className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.95rem] lg:leading-snug"
@@ -900,7 +900,7 @@ export default function CanteenManagementPage() {
             >
               <Link
                 href="/contact"
-                className={`inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:bg-sky-50 hover:ring-[#00AAFF]/35 ${buttonHover}`}
+                className={`inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:bg-blue-50 hover:ring-[#00AAFF]/35 ${buttonHover}`}
               >
                 Request a demo
               </Link>

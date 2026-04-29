@@ -140,7 +140,7 @@ const modernTeamPoints = [
 ] as const;
 
 function FeatureIcon({ kind }: { kind: (typeof accurateTrackingFeatures)[number]["icon"] }) {
-  const cls = "h-5 w-5 text-sky-500";
+  const cls = "h-5 w-5 text-blue-500";
   if (kind === "face") {
     return (
       <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -193,7 +193,7 @@ function FeatureIcon({ kind }: { kind: (typeof accurateTrackingFeatures)[number]
 }
 
 function WorkflowStepIcon({ kind }: { kind: (typeof workflowSteps)[number]["icon"] }) {
-  const cls = "h-5 w-5 text-sky-500";
+  const cls = "h-5 w-5 text-blue-500";
   if (kind === "open") {
     return (
       <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -235,7 +235,7 @@ function WorkflowStepIcon({ kind }: { kind: (typeof workflowSteps)[number]["icon
 }
 
 function ModernTeamIcon({ kind }: { kind: (typeof modernTeamPoints)[number]["icon"] }) {
-  const cls = "h-4 w-4 text-sky-400";
+  const cls = "h-4 w-4 text-blue-400";
   if (kind === "shield") {
     return (
       <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -268,7 +268,7 @@ function ModernTeamIcon({ kind }: { kind: (typeof modernTeamPoints)[number]["ico
 export default function MobileAppPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-gray-900">
-      <section className="relative mt-10 overflow-hidden border-b border-blue-100 bg-gradient-to-br from-cyan-50 via-white to-blue-50">
+      <section className="relative mt-10 overflow-hidden border-b border-blue-100 from-blue-50 via-white to-blue-50 bg-white">
         <div className="mx-auto grid min-w-0 max-w-7xl grid-cols-1 items-center gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-4 lg:px-10 lg:py-16 xl:gap-6">
           <motion.div
             className="min-w-0 max-w-xl lg:ml-20 lg:max-w-lg xl:max-w-2xl"
@@ -276,12 +276,12 @@ export default function MobileAppPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: smoothEase }}
           >
-            <span className="inline-flex rounded-full border border-cyan-200 bg-cyan-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-700">
+            <span className="inline-flex rounded-full border border-blue-200 bg-blue-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-blue-700">
              MOBILE BASED ATTENDANCE
             </span>
             <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 max-sm:text-3xl sm:text-6xl">
               Attendance, Now in{" "}
-              <span className="bg-gradient-to-r from-sky-500 to-cyan-500 bg-clip-text italic text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text italic text-transparent">
                 Your Pocket.
               </span>
             </h1>
@@ -291,13 +291,13 @@ export default function MobileAppPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center rounded-xl bg-sky-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-600"
+                className="inline-flex items-center rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600"
               >
                 Request Live Demo
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-sky-300 hover:text-sky-600"
+                className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600"
               >
                 Download App
               </Link>
@@ -325,7 +325,7 @@ export default function MobileAppPage() {
         </div>
       </section>
 {/* 
-      <section className="border-b border-gray-100 bg-white py-14 lg:py-16">
+      <section className="border-b border-gray-100 py-14 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="max-w-3xl"
@@ -344,7 +344,7 @@ export default function MobileAppPage() {
             {featureCards.map((card, idx) => (
               <motion.div
                 key={card.title}
-                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md"
+                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md"
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -358,7 +358,7 @@ export default function MobileAppPage() {
         </div>
       </section> */}
 
-      <section className="bg-slate-50 pb-0 pt-16 lg:pt-24">
+      <section className="pb-0 pt-16 lg:pt-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-12 lg:pb-20">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -385,7 +385,7 @@ export default function MobileAppPage() {
                 viewport={viewport}
                 transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.04 }}
               >
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-sky-50">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50">
                   <FeatureIcon kind={feature.icon} />
                 </span>
                 <h3 className="mt-3 text-lg font-semibold text-slate-900">{feature.title}</h3>
@@ -422,7 +422,7 @@ export default function MobileAppPage() {
                 transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
               >
                 <div className="relative inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white shadow-sm">
-                  <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-sky-500 ring-2 ring-white" aria-hidden />
+                  <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-blue-500 ring-2 ring-white" aria-hidden />
                   <WorkflowStepIcon kind={step.icon} />
                 </div>
                 <h3 className="mt-3 text-xl font-semibold text-slate-900 max-sm:text-lg">{step.title}</h3>
@@ -468,7 +468,7 @@ export default function MobileAppPage() {
               </ul>
               <Link
                 href="/contact"
-                className="mt-7 inline-flex items-center rounded-xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-600"
+                className="mt-7 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600"
               >
                 Explore Dashboard Features
               </Link>
@@ -483,7 +483,7 @@ export default function MobileAppPage() {
             >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3 lg:flex-nowrap lg:gap-0">
                 <div className="flex min-w-0 items-center gap-2">
-                  <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-sky-500" aria-hidden />
+                  <span className="inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-blue-500" aria-hidden />
                   <span className="truncate text-sm font-semibold text-slate-800">Attendance Overview</span>
                 </div>
                 <span className="shrink-0 text-xs font-medium text-slate-500">Department: Sales</span>
@@ -494,7 +494,7 @@ export default function MobileAppPage() {
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Total Employees</p>
                     <p className="mt-1 text-4xl font-bold text-slate-900">1,248</p>
                   </div>
-                  <div className="rounded-xl border border-cyan-100 bg-cyan-50 p-3">
+                  <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">Currently Present</p>
                     <p className="mt-1 text-4xl font-bold text-slate-900">1,102 <span className="text-sm text-emerald-600">+ 12%</span></p>
                   </div>
@@ -507,7 +507,7 @@ export default function MobileAppPage() {
                 <div>
                   <div className="mb-3 flex items-center justify-between">
                     <h3 className="text-sm font-semibold text-slate-800">Real-time Activity</h3>
-                    <span className="text-xs font-semibold text-sky-500">View Reports</span>
+                    <span className="text-xs font-semibold text-blue-500">View Reports</span>
                   </div>
                   <div className="space-y-2">
                     {[
@@ -557,7 +557,7 @@ export default function MobileAppPage() {
           </motion.div>
 
           <motion.div
-            className="mx-auto mt-10 max-w-5xl rounded-[2rem] border border-cyan-100 bg-gradient-to-r from-cyan-50 to-blue-50 p-6 shadow-sm sm:mt-12 lg:mt-14 lg:p-8"
+            className="mx-auto mt-10 max-w-5xl rounded-[2rem] border border-blue-100 bg-gradient-to-r from-blue-50 to-blue-50 p-6 shadow-sm sm:mt-12 lg:mt-14 lg:p-8"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -566,7 +566,7 @@ export default function MobileAppPage() {
             <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
               <div className="space-y-3">
                 <div className="inline-flex min-h-[46px] w-full items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-                  <span className="text-sky-500">📱</span>
+                  <span className="text-blue-500">📱</span>
                   <span className="text-sm font-semibold text-slate-700">Mobile App</span>
                 </div>
                 <div className="inline-flex min-h-[46px] w-full items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
@@ -576,9 +576,9 @@ export default function MobileAppPage() {
               </div>
 
               <div className="relative flex items-center justify-center py-2">
-                <span className="absolute left-[-40px] hidden h-[2px] w-10 bg-cyan-200 lg:block" aria-hidden />
-                <span className="absolute right-[-40px] hidden h-[2px] w-10 bg-cyan-200 lg:block" aria-hidden />
-                <div className="flex h-28 w-28 flex-col items-center justify-center rounded-full bg-sky-500 text-center text-white shadow-lg shadow-sky-300/50">
+                <span className="absolute left-[-40px] hidden h-[2px] w-10 bg-blue-200 lg:block" aria-hidden />
+                <span className="absolute right-[-40px] hidden h-[2px] w-10 bg-blue-200 lg:block" aria-hidden />
+                <div className="flex h-28 w-28 flex-col items-center justify-center rounded-full bg-blue-500 text-center text-white shadow-lg shadow-blue-300/50">
                   <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
                     <path d="M7 18a4 4 0 010-8 5 5 0 019.7 1A3.5 3.5 0 0117 18H7z" />
                     <path d="M12 12v5M10 15l2 2 2-2" />
@@ -589,7 +589,7 @@ export default function MobileAppPage() {
 
               <div className="space-y-3">
                 <div className="inline-flex min-h-[46px] w-full items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-                  <span className="text-violet-500">🗄️</span>
+                  <span className="text-blue-500">🗄️</span>
                   <span className="text-sm font-semibold text-slate-700">Core HR System</span>
                 </div>
                 <div className="inline-flex min-h-[46px] w-full items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
@@ -618,7 +618,7 @@ export default function MobileAppPage() {
 
         <div className="w-full border-t border-slate-200/90 pb-12 pt-12 lg:pb-16 lg:pt-16">
           <motion.section
-            className="overflow-hidden border-y border-slate-800 bg-gradient-to-r from-[#0b141f] via-[#101a27] to-[#0b141f] py-12 shadow-2xl shadow-slate-900/40 sm:py-14 lg:py-16"
+            className="overflow-hidden border-y border-slate-800 from-[#0b141f] via-[#101a27] to-[#0b141f] py-12 shadow-2xl shadow-slate-900/40 sm:py-14 lg:py-16 bg-black"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -674,7 +674,7 @@ export default function MobileAppPage() {
 
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-12 lg:pb-20 lg:pt-14">
         <motion.div
-          className="relative overflow-hidden rounded-3xl bg-sky-500 px-6 py-16 text-center shadow-xl max-sm:rounded-2xl max-sm:px-4 max-sm:py-12 sm:px-10 lg:py-20"
+          className="relative overflow-hidden rounded-3xl bg-blue-500 px-6 py-16 text-center shadow-xl max-sm:rounded-2xl max-sm:px-4 max-sm:py-12 sm:px-10 lg:py-20"
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}

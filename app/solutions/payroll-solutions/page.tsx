@@ -162,13 +162,12 @@ function useModulesPerView() {
   return perView;
 }
 
-const MODULES_AUTOPLAY_MS = 5500;
+const MODULES_AUTOPLAY_MS = 3500;
 
 function OurModulesCarousel() {
   const perView = useModulesPerView();
   const maxStart = Math.max(0, ourModulesSlides.length - perView);
   const [start, setStart] = useState(0);
-  const [hoverPaused, setHoverPaused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -184,12 +183,12 @@ function OurModulesCarousel() {
   }, [maxStart]);
 
   useEffect(() => {
-    if (reduceMotion || maxStart <= 0 || hoverPaused) return;
+    if (reduceMotion || maxStart <= 0) return;
     const id = window.setInterval(() => {
       setStart((s) => (s >= maxStart ? 0 : s + 1));
     }, MODULES_AUTOPLAY_MS);
     return () => window.clearInterval(id);
-  }, [maxStart, hoverPaused, reduceMotion]);
+  }, [maxStart, reduceMotion]);
 
   const goPrev = useCallback(() => {
     setStart((s) => (s <= 0 ? maxStart : s - 1));
@@ -199,14 +198,10 @@ function OurModulesCarousel() {
     setStart((s) => (s >= maxStart ? 0 : s + 1));
   }, [maxStart]);
 
-  const visible = ourModulesSlides.slice(start, start + perView);
-
   return (
     <section
-      className="border-t border-slate-200/80 bg-slate-100/60 py-14 lg:py-16"
+      className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
       aria-labelledby="our-modules-heading"
-      onMouseEnter={() => setHoverPaused(true)}
-      onMouseLeave={() => setHoverPaused(false)}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
         <motion.h2
@@ -224,37 +219,43 @@ function OurModulesCarousel() {
           Carousel advances automatically. Hover to pause. Use previous and next buttons to move slides.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {visible.map((slide) => (
-            <motion.article
-              key={slide.title}
-              className="flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md shadow-slate-900/5"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: smoothEase }}
-            >
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
-                <Image
-                  src={slide.image}
-                  alt={slide.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:px-6">
-                <h3 className="text-base font-bold leading-snug text-slate-900 sm:text-lg">{slide.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
-              </div>
-            </motion.article>
-          ))}
+        <div className="mt-10 overflow-hidden">
+          <motion.div
+            className="flex will-change-transform"
+            animate={{ x: `-${(start * 100) / perView}%` }}
+            transition={{ duration: 0.4, ease: smoothEase }}
+          >
+            {ourModulesSlides.map((slide) => (
+              <article
+                key={slide.title}
+                className="flex shrink-0"
+                style={{ width: `${100 / perView}%` }}
+              >
+                <div className="flex w-full flex-col overflow-hidden border border-slate-100 bg-white shadow-md shadow-slate-900/5">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={slide.image}
+                      alt={slide.alt}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:px-6">
+                    <h3 className="text-base font-bold leading-snug text-slate-900 sm:text-lg">{slide.title}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </motion.div>
         </div>
 
         <div className="mt-10 flex items-center justify-center gap-3">
           <button
             type="button"
             onClick={goPrev}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-indigo-600 shadow-sm transition hover:bg-slate-50"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-slate-50"
             aria-label="Previous modules"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -264,7 +265,7 @@ function OurModulesCarousel() {
           <button
             type="button"
             onClick={goNext}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-indigo-600 shadow-sm transition hover:bg-slate-50"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-blue-600 shadow-sm transition hover:bg-slate-50"
             aria-label="Next modules"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -365,7 +366,7 @@ export default function PayrollSolutionsPage() {
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero — platform solutions, contract workforce governance */}
         <motion.section
-          className="hero-tight border-b border-slate-100 bg-white pt-0 lg:pt-10"
+          className="hero-tight border-b border-slate-100 pt-0 lg:pt-10 bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
@@ -379,7 +380,7 @@ export default function PayrollSolutionsPage() {
                 transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
                 aria-label="Breadcrumb"
               >
-                {/* <Link href="/" className="text-slate-600 transition-colors hover:text-indigo-600">
+                {/* <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
                   Home
                 </Link>
                 <span className="mx-2 text-slate-400">/</span>
@@ -431,13 +432,13 @@ export default function PayrollSolutionsPage() {
                   >
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/25 transition hover:bg-sky-600"
+                      className="inline-flex items-center justify-center rounded-full bg-blue-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition hover:bg-blue-600"
                     >
                       Get In Touch
                     </Link>
                     <Link
                       href="/blog"
-                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
+                      className="inline-flex items-center justify-center rounded-full bg-blue-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
                     >
                       Learn More
                     </Link>
@@ -458,14 +459,14 @@ export default function PayrollSolutionsPage() {
                 {whyInopsCards.slice(0, 1).map((card, i) => (
                   <motion.div
                     key={card.title}
-                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
                     transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.2) }}
                   >
                     <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-100">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-100">
                         <WhyInopsIcon name={card.icon} />
                       </div>
                       <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
@@ -475,7 +476,7 @@ export default function PayrollSolutionsPage() {
                 ))}
 
                 <motion.div
-                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
@@ -495,14 +496,14 @@ export default function PayrollSolutionsPage() {
                 {whyInopsCards.slice(1, 2).map((card, i) => (
                   <motion.div
                     key={card.title}
-                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
                     transition={{ duration: 0.45, ease: smoothEase, delay: Math.min((i + 2) * 0.05, 0.2) }}
                   >
                     <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-100">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-100">
                         <WhyInopsIcon name={card.icon} />
                       </div>
                       <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
@@ -514,14 +515,14 @@ export default function PayrollSolutionsPage() {
                 {whyInopsCards.slice(2).map((card, i) => (
                   <motion.div
                     key={card.title}
-                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
                     transition={{ duration: 0.45, ease: smoothEase, delay: Math.min((i + 3) * 0.05, 0.25) }}
                   >
                     <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 transition-colors duration-300 group-hover:bg-indigo-100">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-100">
                         <WhyInopsIcon name={card.icon} />
                       </div>
                       <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
@@ -537,7 +538,7 @@ export default function PayrollSolutionsPage() {
 
         {/* Comprehensive Control — CLMS touchpoints
         <section
-          className="border-t border-slate-200/80 bg-slate-50 py-14 lg:py-16"
+          className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
           aria-labelledby="comprehensive-control-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
@@ -563,14 +564,14 @@ export default function PayrollSolutionsPage() {
               {comprehensiveControlCards.map((card, i) => (
                 <motion.div
                   key={card.title}
-                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px shadow-sm transition-all duration-300 hover:from-indigo-500 hover:via-violet-500 hover:to-sky-500 hover:shadow-lg hover:shadow-indigo-500/20"
+                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px shadow-sm transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.2) }}
                 >
                   <div className="flex h-full flex-col rounded-2xl bg-white p-6">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-sky-50 text-indigo-600 ring-1 ring-indigo-100/80">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100/80">
                       <ComprehensiveControlIcon name={card.icon} />
                     </div>
                     <h3 className="mt-4 text-lg font-bold text-slate-900">{card.title}</h3>
@@ -580,7 +581,7 @@ export default function PayrollSolutionsPage() {
               ))}
 
               <motion.div
-                className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-violet-300 bg-violet-50/90 p-6 text-center shadow-sm sm:col-span-2 lg:col-span-1"
+                className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50/90 p-6 text-center shadow-sm sm:col-span-2 lg:col-span-1"
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -592,7 +593,7 @@ export default function PayrollSolutionsPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 transition hover:text-indigo-700"
+                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition hover:text-blue-700"
                 >
                   Talk to Tech Support
                   <span aria-hidden>→</span>
@@ -607,7 +608,7 @@ export default function PayrollSolutionsPage() {
         {/* Real-time access governance — split visual + dark copy */}
         <section
           id="access-governance"
-          className="border-t border-slate-200"
+          className="border-t border-slate-200 bg-white"
           aria-labelledby="access-governance-heading"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -619,11 +620,12 @@ export default function PayrollSolutionsPage() {
               transition={{ duration: 0.55, ease: smoothEase }}
             >
               <Image
-                src="/images/Hardware Integration.jpg"
+                src="/images/77913ee0-6e66-4c3b-bdad-da60ad90e710.jpg"
                 alt="Contract worker using an industrial turnstile with integrated biometric access hardware"
                 fill
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={200}
+                className=" object-center"
+                sizes="(max-width: 1024px) 100vw, 100vw"
               />
             </motion.div>
             <motion.div
@@ -654,11 +656,11 @@ export default function PayrollSolutionsPage() {
 
         {/* Proven Business Impact */}
         <section
-          className="border-t border-slate-200 bg-white py-12 lg:py-16"
+          className="border-t border-slate-200 py-12 lg:py-16 bg-white"
           aria-labelledby="proven-impact-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="overflow-hidden rounded-3xl bg-violet-100/90 px-6 py-10 shadow-sm ring-1 ring-violet-200/60 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+            <div className="overflow-hidden rounded-3xl bg-blue-100/90 px-6 py-10 shadow-sm ring-1 ring-blue-200/60 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
               <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12 lg:items-start">
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
@@ -685,7 +687,7 @@ export default function PayrollSolutionsPage() {
                     ].map((line) => (
                       <li key={line} className="flex gap-3 text-sm leading-snug text-slate-800 sm:text-base">
                         <span
-                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-600 text-white"
+                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white"
                           aria-hidden
                         >
                           <CheckIcon className="h-3.5 w-3.5 text-white" />
@@ -720,8 +722,8 @@ export default function PayrollSolutionsPage() {
                         Aadhaar-linked biometric verification ensures every worker on site is legitimate and verified.
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-violet-200/80 bg-violet-50/90 p-5 shadow-sm sm:p-6">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-600/15 text-violet-700">
+                    <div className="rounded-2xl border border-blue-200/80 bg-blue-50/90 p-5 shadow-sm sm:p-6">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/15 text-blue-700">
                         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                           <path
                             strokeLinecap="round"
@@ -761,7 +763,7 @@ export default function PayrollSolutionsPage() {
         </section>
 
         {/* CLMS CTA */}
-        <section className="mt-10 border-t border-slate-200 bg-white py-14 lg:py-16">
+        <section className="mt-10 border-t border-slate-200 py-14 lg:py-16 bg-white">
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <motion.h2
               className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.125rem] lg:leading-snug"

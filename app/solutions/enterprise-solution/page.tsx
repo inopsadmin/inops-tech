@@ -33,7 +33,7 @@ export default function EnterpriseSolutionPage() {
       title: "Asset Management",
       description:
         "End-to-end tracking and maintenance for physical capital across global locations.",
-      accent: "bg-sky-50 text-sky-500",
+      accent: "bg-blue-50 text-blue-500",
       href: "/contact",
       icon: (
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -47,7 +47,7 @@ export default function EnterpriseSolutionPage() {
       title: "Route Optimization",
       description:
         "Intelligent dispatch and navigation algorithms to maximize efficiency and reduce fuel costs.",
-      accent: "bg-cyan-50 text-cyan-500",
+      accent: "bg-blue-50 text-blue-500",
       href: "/contact",
       icon: (
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -64,7 +64,7 @@ export default function EnterpriseSolutionPage() {
       title: "Warehouse Management",
       description:
         "Real-time inventory control and space utilization for high-velocity supply chains.",
-      accent: "bg-indigo-50 text-indigo-500",
+      accent: "bg-blue-50 text-blue-500",
       href: "/contact",
       icon: (
         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -79,7 +79,7 @@ export default function EnterpriseSolutionPage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <section className="mt-10 border-t border-gray-200 bg-[#f3f6f9] py-10 lg:py-12">
+      <section className="mt-10 border-t border-gray-200 py-10 lg:py-12 bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1fr_1.08fr] lg:gap-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -192,7 +192,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f6f9] py-12 lg:py-16">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -232,7 +232,7 @@ export default function EnterpriseSolutionPage() {
                 </p>
                 <Link
                   href={module.href}
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-sky-500 transition-all duration-200 hover:gap-3 hover:text-sky-600"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-500 transition-all duration-200 hover:gap-3 hover:text-blue-600"
                 >
                   Learn more
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
@@ -245,7 +245,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 lg:py-16">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
             <motion.div
@@ -254,7 +254,7 @@ export default function EnterpriseSolutionPage() {
               viewport={viewport}
               transition={{ duration: 0.52, ease: smoothEase }}
             >
-              <span className="inline-flex rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-600">
+              <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
                 Module 01
               </span>
 
@@ -322,7 +322,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f6f9] py-12 lg:py-16">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
             <motion.div
@@ -333,7 +333,7 @@ export default function EnterpriseSolutionPage() {
               transition={{ duration: 0.52, ease: smoothEase }}
             >
               <div
-                className="relative overflow-hidden rounded-2xl border border-cyan-200/40 bg-cover bg-center shadow-[0_18px_50px_-30px_rgba(15,23,42,0.45)]"
+                className="relative overflow-hidden rounded-2xl border border-blue-200/40 bg-cover bg-center shadow-[0_18px_50px_-30px_rgba(15,23,42,0.45)]"
                 style={{ backgroundImage: `url(${moduleVisuals.efficiencyGain})` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/45 via-slate-900/20 to-transparent" aria-hidden />
@@ -358,7 +358,7 @@ export default function EnterpriseSolutionPage() {
               viewport={viewport}
               transition={{ duration: 0.52, ease: smoothEase, delay: 0.05 }}
             >
-              <span className="inline-flex rounded-full border border-cyan-100 bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-600">
+              <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
                 Module 02
               </span>
 
@@ -391,7 +391,7 @@ export default function EnterpriseSolutionPage() {
 
               <Link
                 href="/contact"
-                className="mt-8 inline-flex items-center rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan-600 hover:shadow-md active:scale-95"
+                className="mt-8 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:scale-95"
               >
                 Optimize Fleet
               </Link>
@@ -400,7 +400,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-white py-12 lg:py-16">
+      <section className="py-12 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
             <motion.div
@@ -409,7 +409,7 @@ export default function EnterpriseSolutionPage() {
               viewport={viewport}
               transition={{ duration: 0.52, ease: smoothEase }}
             >
-              <span className="inline-flex rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600">
+              <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
                 Module 03
               </span>
 
@@ -443,7 +443,7 @@ export default function EnterpriseSolutionPage() {
 
               <Link
                 href="/contact"
-                className="mt-8 inline-flex items-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-md active:scale-95"
+                className="mt-8 inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:scale-95"
               >
                 Streamline Inventory
               </Link>
@@ -476,7 +476,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f6f9] py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -564,7 +564,7 @@ export default function EnterpriseSolutionPage() {
                     viewport={viewport}
                     transition={{ duration: 0.45, ease: smoothEase, delay: index * 0.05 }}
                   >
-                    <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full border border-sky-100 bg-white text-sky-500 shadow-[0_10px_28px_-16px_rgba(15,23,42,0.32)]">
+                    <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full border border-blue-100 bg-white text-blue-500 shadow-[0_10px_28px_-16px_rgba(15,23,42,0.32)]">
                       {step.icon}
                     </div>
                     <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400">
@@ -615,7 +615,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
             <motion.div
@@ -706,7 +706,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f6f9] py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center"
@@ -797,7 +797,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 lg:py-18">
+      <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -814,7 +814,7 @@ export default function EnterpriseSolutionPage() {
             {[
               {
                 title: "Manufacturing",
-                accent: "from-sky-500/70 via-blue-700/55 to-slate-950/85",
+                accent: "from-blue-500/70 via-blue-700/55 to-slate-950/85",
                 icon: (
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
                     <path d="M3 20h18" />
@@ -827,7 +827,7 @@ export default function EnterpriseSolutionPage() {
               },
               {
                 title: "Logistics",
-                accent: "from-cyan-500/70 via-sky-700/55 to-slate-950/85",
+                accent: "from-blue-500/70 via-blue-700/55 to-slate-950/85",
                 icon: (
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
                     <path d="M3 12h13" />
@@ -840,7 +840,7 @@ export default function EnterpriseSolutionPage() {
               },
               {
                 title: "Warehousing",
-                accent: "from-indigo-500/65 via-slate-700/55 to-slate-950/85",
+                accent: "from-blue-500/65 via-slate-700/55 to-slate-950/85",
                 icon: (
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
                     <path d="m3 9 9-5 9 5" />
@@ -851,7 +851,7 @@ export default function EnterpriseSolutionPage() {
               },
               {
                 title: "Enterprise Ops",
-                accent: "from-slate-700/75 via-indigo-900/60 to-slate-950/85",
+                accent: "from-slate-700/75 via-blue-900/60 to-slate-950/85",
                 icon: (
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
                     <circle cx="12" cy="12" r="8" />
@@ -892,7 +892,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-[#2f8df3] py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-blue-50">
         <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -900,10 +900,10 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
+            <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl">
               Transform Enterprise Operations with a Unified Platform
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-blue-50 sm:text-2xl">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-2xl">
               Join the world&apos;s most efficient companies. Schedule a personalized walkthrough
               of the nexusOps environment today.
             </p>

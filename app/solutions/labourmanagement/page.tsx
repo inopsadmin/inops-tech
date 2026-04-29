@@ -293,7 +293,7 @@ export default function LabourManagementPage() {
             <div className="grid grid-cols-1 items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14 lg:py-14">
               <div>
                 <motion.span
-                  className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700"
+                  className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
@@ -365,7 +365,7 @@ export default function LabourManagementPage() {
 
         {/* Comprehensive HR Management — feature grid */}
         <section
-          className="border-t border-slate-200/80 bg-white py-14 lg:py-16"
+          className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
           aria-labelledby="comprehensive-hr-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
@@ -391,13 +391,13 @@ export default function LabourManagementPage() {
               {comprehensiveHrCards.map((card, i) => (
                 <motion.article
                   key={card.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-indigo-200 hover:shadow-md"
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-blue-200 hover:shadow-md"
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.06, 0.18) }}
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100 text-indigo-600 ring-1 ring-violet-200/80">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 ring-1 ring-blue-200/80">
                     <ComprehensiveHrCardIcon name={card.icon} />
                   </div>
                   <h3 className="mt-4 text-lg font-bold text-slate-900">{card.title}</h3>
@@ -410,7 +410,7 @@ export default function LabourManagementPage() {
 
         {/* The Hire-to-Exit Workflow — horizontal timeline */}
         <section
-          className="border-t border-slate-200/80 bg-slate-50/80 py-14 lg:py-16"
+          className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
           aria-labelledby="hire-exit-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
@@ -434,7 +434,7 @@ export default function LabourManagementPage() {
 
             <div className="relative mx-auto mt-14 max-w-6xl">
               <div
-                className="pointer-events-none absolute left-[8%] right-[8%] top-7 hidden h-px bg-indigo-200 lg:block"
+                className="pointer-events-none absolute left-[8%] right-[8%] top-7 hidden h-px bg-blue-200 lg:block"
                 aria-hidden
               />
               <ol className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-5 lg:gap-4">
@@ -447,7 +447,7 @@ export default function LabourManagementPage() {
                     viewport={viewport}
                     transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.07, 0.28) }}
                   >
-                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-indigo-100 bg-white text-indigo-600 shadow-sm ring-4 ring-slate-50/80">
+                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-blue-100 bg-white text-blue-600 shadow-sm ring-4 ring-slate-50/80">
                       <HireToExitStepIcon name={step.icon} />
                     </div>
                     <h3 className="mt-5 text-base font-bold text-slate-900">{step.title}</h3>
@@ -463,7 +463,7 @@ export default function LabourManagementPage() {
 
         {/* Integrations — existing stack */}
         <section
-          className="border-t border-slate-200/80 bg-white py-14 lg:py-16"
+          className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
           aria-labelledby="integrations-stack-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
@@ -487,7 +487,7 @@ export default function LabourManagementPage() {
                 <ul className="mt-8 space-y-4">
                   {integrationConnectBullets.map((line) => (
                     <li key={line} className="flex gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                         <CheckIcon className="h-3.5 w-3.5" />
                       </span>
                       <span className="text-sm leading-relaxed text-slate-700 sm:text-base">{line}</span>
@@ -527,7 +527,7 @@ export default function LabourManagementPage() {
         </section>
 
         {/* CTA — workforce operations */}
-        <section className="mt-10 border-t border-slate-200/80 bg-slate-50/80 px-4 pb-16 pt-2 sm:px-6 lg:px-12 lg:pb-20">
+        <section className="mt-10 border-t border-slate-200/80 px-4 pb-16 pt-2 sm:px-6 lg:px-12 lg:pb-20 bg-white">
           <div className="mx-auto max-w-7xl">
             <motion.div
               className="relative overflow-hidden rounded-3xl bg-blue-600 px-6 py-12 text-center shadow-lg shadow-blue-900/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"

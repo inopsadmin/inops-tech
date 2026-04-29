@@ -256,7 +256,7 @@ export default function AboutPage() {
               transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
               aria-label="Breadcrumb"
             >
-              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-indigo-600">
+              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
                 Home
               </Link>
               <span className="mx-2 text-slate-400">/</span>
@@ -266,7 +266,7 @@ export default function AboutPage() {
             <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:mt-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
               <div className="ml-0 lg:ml-10">
                 <motion.span
-                  className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-800"
+                  className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
@@ -280,7 +280,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
                 >
                   Bringing{" "}
-                  <span className="text-indigo-600">Control &amp; Transparency</span> to Enterprise
+                  <span className="text-blue-600">Control &amp; Transparency</span> to Enterprise
                   Operations.
                 </motion.h1>
                 <motion.p
@@ -348,94 +348,46 @@ export default function AboutPage() {
 
         {/* Full-stack governance — leadership message */}
         <section
-          className="relative overflow-hidden border-t border-slate-100 bg-gradient-to-b from-slate-50 via-white to-slate-50/40 py-14 lg:py-20"
+          className="border-t border-slate-100 bg-white py-14 lg:py-20"
           aria-labelledby="governance-platform-heading"
         >
-          <div
-            className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-indigo-400/15 blur-3xl"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-sky-400/15 blur-3xl"
-            aria-hidden
-          />
-          <div className="relative mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-12">
+          <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-12">
             <motion.div
-              className="relative w-full overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-8 shadow-[0_24px_70px_-48px_rgba(15,23,42,0.45)] ring-1 ring-slate-100/80 sm:p-10 lg:p-12"
-              initial={{ opacity: 0, y: 28 }}
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
+              transition={{ duration: 0.55, ease: smoothEase }}
             >
-              <div
-                className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-indigo-300/70 to-transparent sm:inset-x-12"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-500 via-sky-500 to-indigo-400/30 opacity-90 sm:w-1.5 sm:rounded-l-3xl"
-                aria-hidden
-              />
-
-              <div className="relative w-full sm:pl-2">
-              <motion.p
-                className="w-full max-w-none text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-600/90"
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-              >
+              {/* <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
                 Leadership perspective
-              </motion.p>
-              <motion.h2
+              </p> */}
+              <h2
                 id="governance-platform-heading"
-                className="mt-4 w-full max-w-none text-center text-2xl font-bold tracking-tight text-balance text-slate-900 sm:text-3xl lg:text-4xl lg:leading-tight"
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+                className="mx-auto mt-4 max-w-6xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-800 sm:text-5xl lg:text-[3.5rem]"
               >
                 A Full-Stack Workforce Governance Platform
-              </motion.h2>
-              <motion.div
-                className="mt-8 flex flex-col gap-8 lg:mt-10 lg:flex-row lg:items-stretch lg:gap-0"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
-              >
-                <p className="flex-1 text-left text-base leading-[1.75] text-slate-600 sm:text-lg lg:pr-10 lg:leading-[1.72]">
-                  Starting with identity and access control systems, InOps has evolved into a comprehensive
-                  system enabling enterprises to manage contract labor at scale with real-time visibility
-                  and compliance assurance.
-                </p>
+              </h2>
+              <p className="mx-auto mt-8 max-w-3xl text-[1.05rem] leading-relaxed text-slate-500 sm:text-[1.08rem]">
+                Starting with identity and access control systems, InOps has evolved into a comprehensive system
+                enabling enterprises to manage contract labor at scale with real-time visibility and compliance
+                assurance.
+              </p>
 
-                <motion.div
-                  className="flex flex-col justify-center border-t border-slate-200/90 pt-8 lg:w-[min(100%,22rem)] lg:shrink-0 lg:self-stretch lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0 xl:w-96"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.16 }}
-                >
-                  <div className="flex h-full min-h-0 flex-col items-center justify-center gap-5 text-center sm:gap-6">
-                    <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full ring-[5px] ring-indigo-50 shadow-xl shadow-slate-900/15 sm:h-40 sm:w-40 lg:h-44 lg:w-44">
-                      <Image
-                        src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
-                        alt="Prashanth K., Chief Executive Officer, InOps"
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 640px) 144px, 176px"
-                      />
-                    </div>
-                    <div className="min-w-0 max-w-[16rem]">
-                      <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Satish Sinha</p>
-                      <p className="mt-2 text-sm font-medium leading-snug text-slate-600 sm:text-base">
-                        Founder
-                      </p>
-                      {/* <p className="mt-1.5 text-sm font-medium text-slate-500">InOps</p> */}
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
+              <div className="mt-10 flex items-center justify-center gap-3 sm:mt-12">
+                <div className="relative h-14 w-14 overflow-hidden rounded-full bg-slate-200">
+                  <Image
+                    src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
+                    alt="Prashanth K., Chief Executive Officer, InOps"
+                    fill
+                    className="object-cover object-top"
+                    sizes="56px"
+                  />
+                </div>
+                <div className="text-left">
+                  <p className="text-[1.95rem] font-bold tracking-tight text-slate-800 sm:text-[2.05rem]">Satish Sinha</p>
+                  <p className=" text-center text-[1.45rem] font-medium text-slate-500 sm:text-[1.52rem]">Founder</p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -443,7 +395,7 @@ export default function AboutPage() {
 
         {/* Our Evolution — vertical timeline */}
         <section
-          className="border-t border-slate-200/80 bg-slate-50 py-14 lg:py-20"
+          className="border-t border-slate-200/80 bg-white py-14 lg:py-20"
           aria-labelledby="our-evolution-heading"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
@@ -479,7 +431,7 @@ export default function AboutPage() {
                   <li key={m.year} className="relative">
                     {/* Node on the line */}
                     <div
-                      className="absolute left-8 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-2 border-indigo-500 bg-white text-indigo-600 shadow-md md:left-1/2"
+                      className="absolute left-8 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-2 border-blue-500 bg-white text-blue-600 shadow-md md:left-1/2"
                       aria-hidden
                     >
                       <EvolutionTimelineIcon name={m.icon} />
@@ -500,12 +452,12 @@ export default function AboutPage() {
                             <div
                               className={`rounded-2xl border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg ${
                                 m.highlight
-                                  ? "border-indigo-200/80 bg-violet-50/90"
+                                  ? "border-blue-200/80 bg-blue-50/90"
                                   : "border-slate-200/90 bg-white"
                               }`}
                             >
                               <div className="flex flex-wrap items-baseline gap-2 md:justify-end">
-                                <span className="text-3xl font-bold tracking-tight text-indigo-600 sm:text-4xl">
+                                <span className="text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">
                                   {m.year}
                                 </span>
                                 {m.badge ? (
@@ -529,12 +481,12 @@ export default function AboutPage() {
                             <div
                               className={`rounded-2xl border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg ${
                                 m.highlight
-                                  ? "border-indigo-200/80 bg-violet-50/90"
+                                  ? "border-blue-200/80 bg-blue-50/90"
                                   : "border-slate-200/90 bg-white"
                               }`}
                             >
                               <div className="flex flex-wrap items-baseline gap-2">
-                                <span className="text-3xl font-bold tracking-tight text-indigo-600 sm:text-4xl">
+                                <span className="text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">
                                   {m.year}
                                 </span>
                                 {m.badge ? (
@@ -560,7 +512,7 @@ export default function AboutPage() {
         </section>
 
         {/* Product Range — premium marquee strip */}
-        <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-[radial-gradient(circle_at_20%_0%,rgba(59,130,246,0.22),transparent_42%),radial-gradient(circle_at_80%_18%,rgba(14,165,233,0.2),transparent_36%),linear-gradient(180deg,#f5f9ff_0%,#e9f2ff_100%)] py-12 lg:py-14">
+        <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-white py-12 lg:py-14">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/65 to-transparent" aria-hidden />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.5),transparent_40%,rgba(255,255,255,0.35))]" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
@@ -635,7 +587,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats + Vision + Mission + CTA */}
-        <section className="relative border-t border-slate-100/80 bg-[radial-gradient(circle_at_18%_12%,rgba(59,130,246,0.09),transparent_45%),radial-gradient(circle_at_82%_85%,rgba(14,165,233,0.08),transparent_45%),linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] py-14 lg:py-16">
+        <section className="relative border-t border-slate-100/80 bg-white py-14 lg:py-16">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
@@ -660,14 +612,14 @@ export default function AboutPage() {
               transition={{ duration: 0.6, ease: smoothEase }}
             >
               {[
-                { value: 2500, suffix: "+", label: "Hardware Managed" },
+                { value: 3000, suffix: "+", label: "Hardware Managed" },
                 { value: 75, suffix: "+", label: "Plants Covered" },
                 { value: 25, suffix: "+", label: "Manufacturing Enterprises" },
                 { value: 1, suffix: "L+", label: "Workers on Platform" },
               ].map((stat) => (
                 <div key={stat.label} className="group relative overflow-hidden rounded-2xl border border-white/65 bg-white/80 px-4 py-5 text-center shadow-[0_26px_60px_-40px_rgba(15,23,42,0.5)] ring-1 ring-slate-200/60 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1.5px_rgba(56,189,248,0.95),0_0_0_3px_rgba(99,102,241,0.55),0_0_0_5px_rgba(16,185,129,0.38),0_34px_70px_-42px_rgba(30,64,175,0.45)] sm:px-5 sm:py-6">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(56,189,248,0.18),transparent_40%),radial-gradient(circle_at_80%_85%,rgba(99,102,241,0.12),transparent_42%)]" aria-hidden />
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-sky-400/0 via-indigo-400/0 to-emerald-400/0 opacity-0 transition-opacity duration-300 group-hover:from-sky-400/20 group-hover:via-indigo-400/16 group-hover:to-emerald-400/20 group-hover:opacity-100" aria-hidden />
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 via-blue-400/0 to-emerald-400/0 opacity-0 transition-opacity duration-300 group-hover:from-blue-400/20 group-hover:via-blue-400/16 group-hover:to-emerald-400/20 group-hover:opacity-100" aria-hidden />
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" aria-hidden />
                   <AnimatedCounter
                     value={stat.value}
@@ -689,9 +641,9 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.65, ease: smoothEase, delay: 0.05 }}
             >
-              <div className="group relative overflow-hidden rounded-3xl border border-blue-100/90 bg-[linear-gradient(160deg,#ffffff_0%,#eef5ff_100%)] p-7 shadow-[0_24px_60px_-36px_rgba(30,64,175,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(59,130,246,0.95),0_0_0_3px_rgba(56,189,248,0.5),0_0_0_5px_rgba(99,102,241,0.35),0_30px_70px_-38px_rgba(30,64,175,0.42)]">
+              <div className="group relative overflow-hidden rounded-3xl border border-blue-100/90 bg-white p-7 shadow-[0_24px_60px_-36px_rgba(30,64,175,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(59,130,246,0.95),0_0_0_3px_rgba(56,189,248,0.5),0_0_0_5px_rgba(99,102,241,0.35),0_30px_70px_-38px_rgba(30,64,175,0.42)]">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(59,130,246,0.09),transparent_45%)]" aria-hidden />
-                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-sky-400/0 to-indigo-400/0 opacity-0 transition-opacity duration-300 group-hover:from-blue-400/16 group-hover:via-sky-400/14 group-hover:to-indigo-400/16 group-hover:opacity-100" aria-hidden />
+                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-blue-400/0 to-blue-400/0 opacity-0 transition-opacity duration-300 group-hover:from-blue-400/16 group-hover:via-blue-400/14 group-hover:to-blue-400/16 group-hover:opacity-100" aria-hidden />
                 <div className="relative inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 shadow-sm">
                   Vision
                 </div>
@@ -700,9 +652,9 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="group relative overflow-hidden rounded-3xl border border-emerald-100/90 bg-[linear-gradient(160deg,#ffffff_0%,#effcf6_100%)] p-7 shadow-[0_24px_60px_-38px_rgba(5,150,105,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(16,185,129,0.95),0_0_0_3px_rgba(34,197,94,0.45),0_0_0_5px_rgba(6,182,212,0.35),0_30px_70px_-40px_rgba(5,150,105,0.4)]">
+              <div className="group relative overflow-hidden rounded-3xl border border-emerald-100/90 bg-white p-7 shadow-[0_24px_60px_-38px_rgba(5,150,105,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(16,185,129,0.95),0_0_0_3px_rgba(34,197,94,0.45),0_0_0_5px_rgba(6,182,212,0.35),0_30px_70px_-40px_rgba(5,150,105,0.4)]">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(16,185,129,0.08),transparent_45%)]" aria-hidden />
-                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-400/0 via-cyan-400/0 to-green-400/0 opacity-0 transition-opacity duration-300 group-hover:from-emerald-400/16 group-hover:via-cyan-400/14 group-hover:to-green-400/16 group-hover:opacity-100" aria-hidden />
+                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-400/0 via-blue-400/0 to-green-400/0 opacity-0 transition-opacity duration-300 group-hover:from-emerald-400/16 group-hover:via-blue-400/14 group-hover:to-green-400/16 group-hover:opacity-100" aria-hidden />
                 <div className="relative inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700 shadow-sm">
                   Mission
                 </div>
@@ -719,8 +671,8 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
             >
-              <div className="rounded-3xl bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-600 p-[1.5px] shadow-[0_30px_90px_-52px_rgba(29,78,216,0.75)]">
-                <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1.5px)] bg-[linear-gradient(145deg,#f8fbff_0%,#f1f7ff_48%,#eef8ff_100%)]">
+              <div className="rounded-3xl bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 p-[1.5px] shadow-[0_30px_90px_-52px_rgba(29,78,216,0.75)]">
+                <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1.5px)] bg-white">
                   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_18%,rgba(56,189,248,0.2),transparent_40%),radial-gradient(circle_at_88%_78%,rgba(99,102,241,0.16),transparent_42%)]" aria-hidden />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-white/85" aria-hidden />
                   <div className="relative flex flex-col items-center justify-center gap-5 px-6 py-8 text-center sm:px-10 sm:py-10">
@@ -735,7 +687,7 @@ export default function AboutPage() {
                     <div className="mt-1 flex flex-wrap items-center justify-center gap-3">
                       <Link
                         href="/#contact"
-                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_35px_-20px_rgba(37,99,235,0.95)] transition hover:from-blue-700 hover:to-indigo-700"
+                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_35px_-20px_rgba(37,99,235,0.95)] transition hover:from-blue-700 hover:to-blue-700"
                       >
                         Book a Demo
                       </Link>
@@ -795,7 +747,7 @@ export default function AboutPage() {
 
               {/* Right: Expertise card with slider */}
               <motion.div
-                className="relative rounded-2xl border border-gray-200 bg-slate-50 p-6 shadow-sm sm:p-7 lg:col-span-6 lg:min-h-[34rem] lg:p-8"
+                className="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-7 lg:col-span-6 lg:min-h-[34rem] lg:p-8"
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}

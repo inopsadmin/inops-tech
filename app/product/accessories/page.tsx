@@ -108,7 +108,7 @@ export default function AccessoriesPage() {
       <div className="min-h-screen bg-white text-gray-900">
         {/* Hero – dark background with overlay */}
         <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden"
+          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -151,7 +151,7 @@ export default function AccessoriesPage() {
         </motion.section>
 
         {/* Main content – section title + two products */}
-        <section className="border-t border-slate-200/80 bg-white py-10 lg:py-14">
+        <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
@@ -203,7 +203,7 @@ export default function AccessoriesPage() {
         </section>
 
         {/* FP Sensor & RF Cards */}
-        <section className="border-t border-slate-200/80 bg-slate-50/80 py-10 lg:py-14">
+        <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"
@@ -250,7 +250,7 @@ export default function AccessoriesPage() {
         </section>
 
         {/* Electro-Magnetic Locks – SL-600 & DL-600 */}
-        <section className="border-t border-slate-200/80 bg-white py-10 lg:py-14">
+        <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"

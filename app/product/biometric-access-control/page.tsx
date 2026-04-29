@@ -8,34 +8,34 @@ const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
 const smartAccessShowcaseImage =
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
+  "/WhatsApp Image 2026-04-29 at 3.18.32 PM.jpeg";
 const deviceCategoryCards = [
   {
     title: "Face Recognition",
     description: "Sub-second 3D facial authentication with anti-spoofing technology for touchless entry.",
     image:
-      "https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&w=1200&q=80",
+      "/face reconiging.png",
     icon: "face",
   },
   {
     title: "Fingerprint Systems",
     description: "High-capacity optical sensors for reliable biometric logging in high-traffic zones.",
     image:
-      "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&w=1200&q=80",
+      "/fingerprintsystem.png",
     icon: "finger",
   },
   {
     title: "RFID & Card Access",
     description: "Standard proximity and smart card readers for quick, legacy-compatible entry points.",
     image:
-      "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1200&q=80",
+      "/REID card.png",
     icon: "card",
   },
   {
     title: "Integrated Kiosks",
     description: "Multimodal pedestals combining face, QR, and thermal sensing for lobby management.",
     image:
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1200&q=80",
+      "/KIOSK.png",
     icon: "kiosk",
   },
 ] as const;
@@ -44,7 +44,7 @@ export default function BiometricAccessControlPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
@@ -54,9 +54,9 @@ export default function BiometricAccessControlPage() {
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
                 <span className="inline-flex rounded-full border border-gray-300 bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-600">
-                  Enterprise Access Solutions
+                 Face Reader
                 </span>
-                <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-6xl">
+                <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-blue-600 sm:text-6xl">
                   Smart Access.
                   <br />
                   Secure Workforce.
@@ -68,13 +68,13 @@ export default function BiometricAccessControlPage() {
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
+                    className="inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
                   >
                     Request Demo
                   </Link>
                   <Link
                     href="#"
-                    className="inline-flex items-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition hover:border-gray-400"
+                    className="inline-flex items-center rounded-xl border border-blue-200 bg-blue-50 px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
                   >
                     Explore Solutions
                   </Link>
@@ -82,7 +82,7 @@ export default function BiometricAccessControlPage() {
               </motion.div>
 
               <motion.div
-                className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm"
+                className="relative overflow-hidden rounded-2xl"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
@@ -102,7 +102,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -111,7 +111,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Device Categories</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">Device Categories</h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
                 Flexible authentication methods designed for different operational needs.
               </p>
@@ -127,8 +127,14 @@ export default function BiometricAccessControlPage() {
                   viewport={viewport}
                   transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  <div className="relative aspect-[4/3]">
-                    <Image src={card.image} alt={card.title} fill className="object-cover" sizes="(max-width: 1280px) 50vw, 25vw" />
+                  <div className="relative h-44 bg-gray-50 sm:h-48">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-contain object-center p-2"
+                      sizes="(max-width: 1280px) 50vw, 25vw"
+                    />
                   </div>
                   <div className="p-4">
                     <div className="flex items-start gap-2">
@@ -159,7 +165,7 @@ export default function BiometricAccessControlPage() {
                           </svg>
                         )}
                       </span>
-                      <h3 className="text-xl font-semibold text-gray-900">{card.title}</h3>
+                      <h3 className="text-xl font-semibold text-blue-600">{card.title}</h3>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-gray-500">{card.description}</p>
                   </div>
@@ -169,7 +175,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-4xl text-center"
@@ -178,7 +184,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
                 Built for Speed, Accuracy, and Reliability
               </h2>
             </motion.div>
@@ -268,7 +274,7 @@ export default function BiometricAccessControlPage() {
                       )}
                     </span>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                      <h3 className="text-lg font-semibold text-blue-600">{item.title}</h3>
                       <p className="mt-1 text-sm leading-relaxed text-gray-500">{item.description}</p>
                     </div>
                   </div>
@@ -278,7 +284,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -287,7 +293,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
                 Seamless System Flow
               </h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
@@ -332,7 +338,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -341,7 +347,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
                 Deployment Environments
               </h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
@@ -355,19 +361,19 @@ export default function BiometricAccessControlPage() {
                   title: "Entry & Exit Access Control",
                   subtitle: "Secure turnstiles and gates for mass workforce entry.",
                   image:
-                    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
+                    "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
                 },
                 {
                   title: "Workforce Attendance Tracking",
                   subtitle: "Automated logging for payroll and HR management.",
                   image:
-                    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+                    "/Gemini_Generated_Image_qpp7k7qpp7k7qpp7.png",
                 },
                 {
                   title: "Restricted Area Access",
                   subtitle: "Multi-factor authentication for sensitive zones.",
                   image:
-                    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80",
+                    "/images/multifactor authentication hero.webp",
                 },
                 {
                   title: "High-Volume Environments",
@@ -404,7 +410,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="max-w-4xl"
@@ -413,7 +419,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
                 Universal Device Excellence
               </h2>
             </motion.div>
@@ -444,7 +450,7 @@ export default function BiometricAccessControlPage() {
                   viewport={viewport}
                   transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  <h3 className="text-xl font-semibold text-gray-900">• {item.title}</h3>
+                  <h3 className="text-xl font-semibold text-blue-600">• {item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
                 </motion.article>
               ))}
@@ -452,7 +458,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-white py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
               <motion.div
@@ -461,7 +467,7 @@ export default function BiometricAccessControlPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
                   Seamlessly Connected to Your Systems
                 </h2>
                 <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">
@@ -490,7 +496,7 @@ export default function BiometricAccessControlPage() {
                         </svg>
                       </span>
                       <div>
-                        <p className="text-base font-semibold text-gray-900">{item.title}</p>
+                        <p className="text-base font-semibold text-blue-600">{item.title}</p>
                         <p className="text-sm text-gray-500">{item.description}</p>
                       </div>
                     </li>
@@ -541,7 +547,7 @@ export default function BiometricAccessControlPage() {
                     </span>
                     <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">REPORTS</p>
                   </div>
-                  <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-900 text-white shadow-md">
+                  <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
                     →
                   </span>
                 </div>
@@ -550,7 +556,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-[#f8fafc] py-8 lg:py-12">
+        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -559,7 +565,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
                 Why Choose BioSecure?
               </h2>
             </motion.div>
@@ -625,7 +631,7 @@ export default function BiometricAccessControlPage() {
                       </svg>
                     )}
                   </span>
-                  <h3 className="mt-3 text-xl font-semibold text-gray-900">{item.title}</h3>
+                  <h3 className="mt-3 text-xl font-semibold text-blue-600">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
                 </motion.article>
               ))}
@@ -661,7 +667,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-white py-10 lg:py-14">
+        <section className="border-t border-gray-200 py-10 lg:py-14 bg-white">
           <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -669,7 +675,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-6xl">
+              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-blue-600 sm:text-6xl">
                 Upgrade to Intelligent Access
               </h2>
               <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-500 sm:text-2xl">
@@ -679,13 +685,13 @@ export default function BiometricAccessControlPage() {
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-800"
+                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
                 >
                   Request a Demo
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-semibold text-gray-700 transition hover:border-gray-400 hover:bg-gray-50"
+                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
                 >
                   Talk to an Expert
                 </Link>
