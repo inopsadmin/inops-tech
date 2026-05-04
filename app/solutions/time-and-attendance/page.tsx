@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionModulePanel from "@/app/components/SolutionModulePanel";
-
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
 const optiCamSolutionImage =
   "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.png";
@@ -128,93 +127,87 @@ export default function TimeAndAttendancePage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        <section className="mt-10 border-t border-gray-200 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase }}
-              >
-                <span className="inline-flex rounded-full border border-slate-300 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
-                  CCTV based attendance solution
-                </span>
-                <h2 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-                  <span className="text-slate-900">
-                    Attendance <br />
-                  </span>
-                  <span className="text-[color:var(--inops-blue)]">
-                    Without Devices.
-                  </span>
-                  <br />
-                  <span className="italic text-slate-900">Powered by AI.</span>
-                </h2>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-                  Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer vision. No queues, no contact, no excuses.
-                </p>
-
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 rounded-xl bg-[color:var(--inops-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--inops-navy)]"
+        <motion.section
+          className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.45 }}
+        >
+          <motion.div
+            className="relative w-full overflow-hidden"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
+          >
+            <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+              <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+                <Image
+                  src={timeAttendanceProductImage}
+                  alt="CCTV-based attendance and computer vision monitoring on site"
+                  fill
+                  className="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div
+                  className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white to-transparent lg:block"
+                  aria-hidden
+                />
+              </div>
+              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+                <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
                   >
-                    Book a Live Demo
-                    <span aria-hidden>→</span>
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center rounded-xl border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
+                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/85 px-3.5 py-1.5 text-xs font-semibold text-blue-700 shadow-sm backdrop-blur">
+                      <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                      CCTV based attendance solution
+                    </span>
+                  </motion.div>
+                  <motion.h1
+                    className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    Calculate ROI
-                  </Link>
+                    Attendance without devices,{" "}
+                    <span className="text-[color:var(--inops-blue)]">powered by AI</span>
+                  </motion.h1>
+                  <motion.p
+                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
+                  >
+                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer
+                    vision. No queues, no contact, no excuses.
+                  </motion.p>
+                  <motion.div
+                    className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                  >
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
+                    >
+                      Book a Live Demo
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
+                    >
+                      Calculate ROI
+                    </Link>
+                  </motion.div>
                 </div>
-
-                {/* <div className="mt-6 flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((dot) => (
-                      <span
-                        key={dot}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-[10px] font-semibold text-emerald-600"
-                      >
-                        ✓
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-sm text-slate-600">
-                    Trusted by <span className="font-semibold text-slate-900">500+ Enterprises</span> globally.
-                  </p>
-                </div> */}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-                className="relative"
-              >
-                <div className="relative overflow-hidden">
-                  <div className="relative aspect-[16/10]">
-                    <Image
-                      src={timeAttendanceProductImage}
-                      alt="CCTV attendance device and dashboard preview"
-                      fill
-                      className="object-cover scale-101"
-                      sizes="(max-width: 1024px) 100vw, 100vw"
-                    />
-                  </div>
-                </div>
-                {/* <div className="absolute -bottom-6 right-0 rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-xl">
-                  <p className="text-4xl font-bold text-slate-900">99.8%</p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    Facial Recognition Accuracy
-                  </p>
-                </div> */}
-              </motion.div>
+              </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -310,12 +303,12 @@ export default function TimeAndAttendancePage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl ml-20">
                   <Image
                     src={optiCamSolutionImage}
                     alt="OptiCam attendance dashboard on a tablet-style interface"
                     fill
-                    className="object-cover"
+                    className="object-contain object-left"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
@@ -525,8 +518,8 @@ export default function TimeAndAttendancePage() {
               {[
                 {
                   feature: "Setup Cost",
-                  traditional: "$5,000+ per device",
-                  opticam: "$0 (Existing Hardware)",
+                  traditional: "5,000+ per device",
+                  opticam: "0 (Existing Hardware)",
                 },
                 {
                   feature: "Deployment Speed",

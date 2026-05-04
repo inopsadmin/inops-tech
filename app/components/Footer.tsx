@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -113,13 +113,13 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="InOps Solutions"
-                width={168}
-                height={52}
-                className="h-11 w-auto object-contain brightness-0 invert"
+                width={192}
+                height={60}
+                className="h-12 w-auto object-contain sm:h-[3.25rem]"
               />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
-              Enterprise CLMS, workforce compliance, and hardware—integrated so your teams run operations, not spreadsheets.
+              Enterprise workforce compliance and hardware—integrated so your teams run operations, not spreadsheets.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -135,19 +135,31 @@ export default function Footer() {
                 Call sales
               </a>
             </div>
-            <div className="mt-8 flex gap-2">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300 active:scale-95"
-                  aria-label={s.label}
-                >
-                  <SocialIcon icon={s.icon} />
-                </a>
-              ))}
+            <div className="mt-7 flex max-w-lg flex-col gap-3">
+              <div className="flex flex-wrap gap-2">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300 active:scale-95"
+                    aria-label={s.label}
+                  >
+                    <SocialIcon icon={s.icon} />
+                  </a>
+                ))}
+              </div>
+              <div className="w-full max-w-[220px] shrink-0 sm:max-w-[260px]">
+                <Image
+                  src="/images/162d25e8-2734-49f7-a567-df2fc8f37e3d.png"
+                  alt="Certifications: ISO 27001, SOC 2 Type 2, GDPR, India data privacy, and Make in India"
+                  width={1536}
+                  height={1024}
+                  sizes="(max-width: 640px) 220px, 260px"
+                  className="h-auto w-full max-h-14 object-contain object-left sm:max-h-16 md:max-h-[4.25rem]"
+                />
+              </div>
             </div>
           </div>
 

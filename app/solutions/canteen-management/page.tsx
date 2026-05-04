@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -14,8 +15,8 @@ const interactiveSurfaceHover =
 const buttonHover =
   "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg";
 
-const featureRowHover =
-  "rounded-xl border border-transparent p-4 transition-[border-color,box-shadow,background-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-[#00AAFF]/40 hover:bg-blue-50/40 hover:shadow-md hover:shadow-[#00AAFF]/8 sm:p-5";
+/** Scheduled vs walk-up process — `public/images/Visitor-Management-Process (1).png` */
+const visitorManagementProcessImage = "/images/Visitor-Management-Process (1).png";
 
 /** Visily “Real-time Operational Visibility”–style metrics, adapted for canteen. */
 const operationalMetrics = [
@@ -52,62 +53,6 @@ const operationalMetrics = [
     bg: "bg-blue-50",
   },
 ];
-
-/** Enterprise analytics dashboard — visitor volume (Thu peak), facility KPIs, live logs. */
-const analyticsAccent = "#00AAFF";
-
-const visitorTrendWeek = [
-  { day: "Mon", pct: 52 },
-  { day: "Tue", pct: 78 },
-  { day: "Wed", pct: 65 },
-  { day: "Thu", pct: 100 },
-  { day: "Fri", pct: 88 },
-  { day: "Sat", pct: 28 },
-  { day: "Sun", pct: 18 },
-] as const;
-
-const liveMovementLogs = [
-  {
-    id: "LOG-9281",
-    personnel: "Sarah Jenkins",
-    entity: "Astra Corp",
-    entityKind: "company" as const,
-    time: "09:12 AM",
-    status: "Active" as const,
-  },
-  {
-    id: "LOG-9282",
-    personnel: "David Miller",
-    entity: "Contractor",
-    entityKind: "contractor" as const,
-    time: "09:18 AM",
-    status: "Success" as const,
-  },
-  {
-    id: "LOG-9283",
-    personnel: "Priya Nair",
-    entity: "Staff",
-    entityKind: "staff" as const,
-    time: "09:24 AM",
-    status: "Active" as const,
-  },
-  {
-    id: "LOG-9284",
-    personnel: "James Okonkwo",
-    entity: "Astra Corp",
-    entityKind: "company" as const,
-    time: "09:31 AM",
-    status: "Expired" as const,
-  },
-  {
-    id: "LOG-9285",
-    personnel: "Elena Rossi",
-    entity: "Staff",
-    entityKind: "staff" as const,
-    time: "09:45 AM",
-    status: "Success" as const,
-  },
-] as const;
 
 /** Core pillars from Visily “Digital Canteen & Subsidy Control” section. */
 const digitalCanteenPillars = [
@@ -165,105 +110,6 @@ const visitorLobbyHighlights = [
       "Traffic patterns, dwell insights, and exports for facilities, security, and compliance reviews.",
     icon: "chart" as const,
   },
-];
-
-const visitorDeskFeatures = [
-  {
-    title: "Streamlined visitor check-in",
-    circleColor: "bg-orange-500",
-    description:
-      "Digitize registration, shorten wait times, and keep reception predictable during busy windows.",
-    benefit: "Better visitor experience and less lobby congestion.",
-  },
-  {
-    title: "Real-time visitor monitoring",
-    circleColor: "bg-pink-500",
-    description:
-      "See who is on-site live, spot exceptions early, and coordinate security or hosts quickly.",
-    benefit: "Stronger security posture and faster incident response.",
-  },
-  {
-    title: "Visitor badges & access integration",
-    circleColor: "bg-yellow-500",
-    description:
-      "Issue branded badges and sync with access control so restricted areas stay enforced.",
-    benefit: "Clear identification and tighter zone governance.",
-  },
-  {
-    title: "Pre-registration & visitor analytics",
-    circleColor: "bg-blue-800",
-    description:
-      "Hosts pre-register guests; analytics cover volumes, demographics, and trends over time.",
-    benefit: "Data-led decisions for staffing, space, and policy.",
-  },
-];
-
-const featuresAndBenefits = [
-  {
-    title: "Biometric meal counting",
-    circleColor: "bg-blue-600",
-    description:
-      "Use face recognition and biometrics to tie each meal to the right person, cutting unaccounted issues and proxy swipes.",
-    benefit: "Trustworthy meal logs for audits, subsidies, and capacity planning.",
-  },
-  {
-    title: "Subsidy calculation & payroll",
-    circleColor: "bg-blue-500",
-    description:
-      "Apply rules in real time, sync with payroll and HR master data, and keep deductions and employer contributions accurate.",
-    benefit: "Fewer payroll corrections and clearer visibility for finance teams.",
-  },
-  {
-    title: "Inventory & waste tracking",
-    circleColor: "bg-teal-500",
-    description:
-      "Track stock, consumption, and spoilage so procurement matches real demand instead of guesswork.",
-    benefit: "Lower food waste and more predictable supply spend.",
-  },
-  {
-    title: "Contractor vs. employee pricing",
-    circleColor: "bg-orange-500",
-    description:
-      "Enforce different rates, caps, and subsidies by workforce type without separate tills or manual reconciliations.",
-    benefit: "Fair, consistent pricing and less revenue leakage at the counter.",
-  },
-  {
-    title: "Menu management",
-    circleColor: "bg-amber-500",
-    description:
-      "Publish menus and rotations with allergens and dietary tags so employees know what they can order.",
-    benefit: "Better variety, compliance, and employee satisfaction.",
-  },
-  {
-    title: "Cashless & integrated payments",
-    circleColor: "bg-pink-500",
-    description:
-      "Connect wallets, cards, and account deductions for fast checkout and fewer cash-handling errors.",
-    benefit: "Shorter lines and simpler reconciliation.",
-  },
-  {
-    title: "Ordering & feedback",
-    circleColor: "bg-emerald-500",
-    description:
-      "Let staff pre-order or rate meals so you can tune menus and service based on real usage.",
-    benefit: "Continuous improvement loop from the floor.",
-  },
-  {
-    title: "Analytics & reporting",
-    circleColor: "bg-blue-800",
-    description:
-      "Report on sales, subsidies, peak hours, and exceptions to support finance and facilities in one place.",
-    benefit: "Data-led decisions for menus, staffing, and spend.",
-  },
-];
-
-const powerfulServices = [
-  { title: "Integrated Applications For Enterprise", icon: "document", color: "bg-amber-500" },
-  { title: "Biometric Attendance System", icon: "id", color: "bg-blue-400" },
-  { title: "Access Control System", icon: "card", color: "bg-pink-500" },
-  { title: "Visitor Management System", icon: "person", color: "bg-blue-500" },
-  { title: "Canteen Management System", icon: "tray", color: "bg-pink-500" },
-  { title: "Contract Management System", icon: "document-pen", color: "bg-amber-500" },
 ];
 
 function CheckIcon({ className }: { className?: string }) {
@@ -341,178 +187,28 @@ function HighlightIcon({ name }: { name: "chart" | "device" | "bell" | "calendar
   );
 }
 
-function ServiceIcon({ icon }: { icon: string }) {
-  const c = "h-6 w-6";
-  return (
-    <>
-      {icon === "document" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-      {icon === "card" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>}
-      {icon === "tray" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>}
-      {icon === "id" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>}
-      {icon === "person" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>}
-      {icon === "document-pen" && <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>}
-    </>
-  );
-}
-
-function LogEntityIcon({ kind }: { kind: "company" | "contractor" | "staff" }) {
-  const c = "h-4 w-4 shrink-0 text-slate-500";
-  if (kind === "staff") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-    </svg>
-  );
-}
-
-function LogStatusPill({ status }: { status: "Active" | "Success" | "Expired" }) {
-  return (
-    <span className="inline-flex rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200/80">
-      {status}
-    </span>
-  );
-}
-
 export default function CanteenManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – Visily-style light layout + facility ops positioning */}
-        <motion.section
-          className="relative overflow-hidden border-b border-slate-200/80 from-slate-50 via-white to-white bg-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_50%_-10%,rgba(37,99,235,0.09),transparent)]"
-            aria-hidden
-          />
-          <div className="relative mx-auto max-w-7xl px-6 pb-14 pt-10 sm:pb-16 sm:pt-12 lg:px-8 lg:pb-20 lg:pt-14">
-            <motion.nav
-              className="mb-8 text-sm text-slate-500"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-              aria-label="Breadcrumb"
-            >
-              {/* <Link href="/" className="text-slate-600 hover:text-blue-600 transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-slate-400">/</span>
-              <span className="font-medium text-slate-800">Canteen management</span> */}
-            </motion.nav>
-
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
-              <div>
-                <motion.span
-                  className="inline-flex rounded-full border border-blue-100 bg-blue-50/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700 transition-[border-color,box-shadow,background-color] duration-300 hover:border-[#00AAFF]/45 hover:bg-white hover:shadow-md hover:shadow-[#00AAFF]/10"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-                >
-                  Canteen and Visitor Solutions
-                </motion.span>
-                <motion.h1
-                  className="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[2.75rem] lg:leading-tight"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
-                >
-                  Digital canteen operations &amp; subsidy control
-                </motion.h1>
-                <motion.p
-                  className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
-                >
-                  Centralize meal issuance, biometric verification, and subsidy rules on one platform from the serving line to payroll so finance and facilities stay aligned. Pair the same stack with visitor check in, badges, and lobby analytics for one campus story.
-                </motion.p>
-                <motion.div
-                  className="mt-8 flex flex-wrap items-center gap-3"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.22 }}
-                >
-                  <Link
-                    href="/contact"
-                    className={`inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 hover:bg-blue-700 ${buttonHover}`}
-                  >
-                    Get started
-                  </Link>
-                  <a
-                    href="#canteen-features"
-                    className={`inline-flex items-center justify-center rounded-xl border-2 border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-blue-700 hover:border-[#00AAFF] hover:bg-blue-50/80 hover:shadow-[#00AAFF]/15 ${buttonHover}`}
-                  >
-                    View capabilities
-                  </a>
-                  <Link
-                    href="/solutions/visitor-management"
-                    className={`inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 hover:border-[#00AAFF]/45 hover:bg-blue-50/50 ${buttonHover}`}
-                  >
-                    Visitor management
-                  </Link>
-                </motion.div>
-                <motion.p
-                  className="mt-8 text-sm font-medium text-slate-500"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.45, delay: 0.28 }}
-                >
-                  Trusted by 2,500+ site and facility teams nationwide.
-                </motion.p>
-              </div>
-
-              <motion.div
-                className="relative mx-auto w-full max-w-lg lg:max-w-none"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.15 }}
-              >
-                <div
-                  className={`relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl shadow-slate-200/50 ring-1 ring-slate-100 ${interactiveSurfaceHover}`}
-                >
-                  <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50/80 px-4 py-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-red-400" aria-hidden />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400" aria-hidden />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
-                    <span className="ml-2 text-xs font-medium text-slate-500">Canteen ops — live dashboard</span>
-                  </div>
-                  <div className="relative h-[230px] w-full bg-slate-50 sm:h-[270px] lg:h-[300px]">
-                    <Image
-                      src="/1111.png"
-                      alt="Digital canteen operations and visitor management — campus dining, subsidy control, and lobby workflows"
-                      fill
-                      className=""
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-px border-t border-slate-100 bg-slate-100 sm:grid-cols-4">
-                    {[
-                      { k: "Meals today", v: "1,204" },
-                      { k: "Pending overrides", v: "12" },
-                      { k: "Subsidy sync", v: "OK" },
-                      { k: "Waste vs. plan", v: "−4%" },
-                    ].map((row) => (
-                      <div key={row.k} className="bg-white px-3 py-3 text-center sm:px-4">
-                        <div className="text-lg font-bold tabular-nums text-slate-900">{row.v}</div>
-                        <div className="text-[10px] font-medium uppercase tracking-wide text-slate-500 sm:text-xs">{row.k}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
+        <SolutionLandingHero
+          badge={
+            <span className="inline-flex rounded-full border border-blue-100 bg-blue-50/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
+              Canteen and visitor solutions
+            </span>
+          }
+          title="Manage Visitors and Canteen Operations with Ease"
+          subtitle="Centralize meal issuance, biometric verification, and subsidy rules from the serving line to payroll—aligned with visitor check-in and lobby workflows when you need one campus story."
+          imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
+          imageAlt="Digital canteen and subsidy operations on an industrial campus"
+          sectionClassName="min-h-[380px] sm:min-h-[460px] lg:min-h-[560px]"
+          imageWrapperClassName="absolute top-0 bottom-0 right-0 overflow-hidden w-[min(100%,29rem)] sm:w-[min(100%,34rem)] lg:w-[min(100%,40rem)]"
+          imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 34rem, 40rem"
+          imageClassName="object-contain object-[right_center] opacity-[0.82]"
+          // imageEdgeFadeClassName="z-[1] bg-[linear-gradient(to_top,rgba(255,255,255,0.44),transparent_44%),linear-gradient(to_bottom,rgba(255,255,255,0.44),transparent_44%),linear-gradient(to_left,rgba(255,255,255,0.4),transparent_38%),linear-gradient(to_right,rgba(255,255,255,0.4),transparent_38%)]"
+          gradientClassName="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.78)_11%,rgba(255,255,255,0.35)_20%,rgba(255,255,255,0.12)_28%,transparent_40%)] sm:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.72)_12%,rgba(255,255,255,0.28)_21%,rgba(255,255,255,0.08)_30%,transparent_42%)] lg:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.68)_13%,rgba(255,255,255,0.22)_22%,transparent_38%)]"
+          mobileStackGradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white/15 via-transparent to-white/10 sm:hidden"
+        />
 
         {/* Operational metrics – Visily “Real-time visibility” strip */}
         <section className="mt-10 border-b border-slate-200 py-10 lg:py-12 bg-white">
@@ -669,15 +365,15 @@ export default function CanteenManagementPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/solutions/visitor-management"
-                  className="group mt-8 inline-flex items-center gap-1 text-sm font-semibold text-blue-700 transition-colors duration-300 hover:text-[#00AAFF]"
-                >
-                  Explore visitor management
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
+                <div className="mt-8 space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Visitor Management System</p>
+                  <Link
+                    href="/contact"
+                    className={`inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-blue-700 ${buttonHover}`}
+                  >
+                    Get started
+                  </Link>
+                </div>
               </motion.div>
               <motion.div
                 className={`relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-lg ${interactiveSurfaceHover}`}
@@ -719,154 +415,44 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Deep-dive: why InOps canteen */}
-        <section className="border-t border-gray-200 from-white to-slate-50/50 py-8 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Visitor Management System — overview + process diagram */}
+        <section className="border-t border-slate-200 py-10 lg:py-14 bg-white">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <motion.div
-              className="w-full text-left"
-              initial={{ opacity: 0, y: 16 }}
+              className="mx-auto max-w-3xl lg:max-w-6xl"
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                Built for high-volume sites and enterprise policy
+              <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Visitor Management System
               </h2>
-              <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 sm:w-20" aria-hidden />
+              <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 sm:w-20" aria-hidden />
+              <p className="mt-6 text-base leading-relaxed text-center text-slate-600 sm:text-lg">
+                InOps Company&apos;s Visitor Management System offers a holistic solution to visitor tracking and security,
+                empowering organizations to create safe and welcoming environments for employees, guests, and clients alike.
+                With its advanced features and corresponding benefits, our system sets the standard for modern visitor
+                management practices, delivering unparalleled efficiency, security, and peace of mind. Experience the future
+                of visitor management with InOps Company today.
+              </p>
             </motion.div>
-
-            <div className="mt-8 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
-              <motion.div
-                className="text-left"
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase, delay: 0.04 }}
-              >
-                <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-                  A well-run canteen is part productivity, part cost control. InOps ties every meal event to identity and policy so subsidy leakage, contractor mis-rating, and unplanned waste surface while you can still act—not after the quarter closes.
-                </p>
-                <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  Whether you operate one campus kitchen or a network of contractor-run outlets, the same dashboards, alerts, and payroll-ready exports keep facilities, HR, and finance on one version of the truth.
-                </p>
-              </motion.div>
-              <motion.div
-                className="lg:pl-2"
-                initial={{ opacity: 0, x: 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
-              >
-                <div className={`overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-md ${interactiveSurfaceHover}`}>
-                  <div className="relative aspect-[16/10] w-full min-h-[220px] sm:min-h-[260px] lg:min-h-[280px]">
-                    <Image
-                      src="/images/cmsy.jpg"
-                      alt="Canteen management — operations and meal management interface"
-                      fill
-                      className="object-contain object-center p-3 sm:p-5"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 16 }}
+            <motion.div
+              className={`relative mt-10 overflow-hidden rounded-2xl  p-3 sm:p-5 lg:mt-12`}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
+              transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
             >
-              Powerful Services for Your Business
-            </motion.h2>
-            <div className="mt-2 h-0.5 w-20 rounded-full bg-blue-500" />
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-              {powerfulServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  className={`flex items-start gap-4 rounded-xl border border-gray-200 bg-gray-100/80 p-6 shadow-sm backdrop-blur-sm ${interactiveSurfaceHover}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: i * 0.05 }}
-                >
-                  <span className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg ${service.color} text-white`}>
-                    <ServiceIcon icon={service.icon} />
-                  </span>
-                  <h3 className="font-semibold text-gray-900">{service.title}</h3>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Field / supervisor view */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <motion.div
-                className="lg:pr-8"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <h2 className="text-2xl font-bold text-blue-600 sm:text-3xl">
-                  Smarter canteens across campuses and industries
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  From IT parks to plants and large contractor populations, InOps gives ops teams the same disciplined workflow: verify the person, apply the right subsidy, and push clean numbers to payroll—without slowing the lunch rush.
-                </p>
-                <Link
-                  href="/contact"
-                  className={`mt-8 inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-lg hover:bg-blue-700 ${buttonHover}`}
-                >
-                  Get started
-                </Link>
-              </motion.div>
-              <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-slate-200 bg-slate-100 p-2 shadow-2xl transition-[border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-[#00AAFF]/40 hover:shadow-[0_25px_50px_-12px_rgba(0,170,255,0.2)]">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-slate-100" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white">
-                    <div className="border-b border-slate-200 bg-slate-50 px-4 py-3">
-                      <span className="font-semibold text-slate-900 text-sm">Shift meal summary</span>
-                    </div>
-                    <div className="px-3 py-2 text-center text-xs text-slate-500">Today · Lunch window</div>
-                    <div className="px-3 pb-3 space-y-2">
-                      {[
-                        { label: "Biometric verified", count: 342, tone: "bg-emerald-500" },
-                        { label: "Contractor meals", count: 118, tone: "bg-blue-500" },
-                        { label: "Overrides / manual", count: 7, tone: "bg-amber-500" },
-                        { label: "Exceptions flagged", count: 2, tone: "bg-rose-500" },
-                      ].map((row) => (
-                        <div key={row.label} className="flex items-center justify-between gap-2 rounded-lg border border-slate-100 bg-slate-50/50 px-3 py-2 text-sm">
-                          <span className="flex items-center gap-2 text-slate-700">
-                            <span className={`h-6 w-1 rounded-full ${row.tone}`} aria-hidden />
-                            {row.label}
-                          </span>
-                          <span className="tabular-nums font-semibold text-slate-900">{row.count}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="border-t border-slate-200 p-3 text-center text-xs text-slate-500">
-                      Subsidy export · synced to payroll rules
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+              <Image
+                src={visitorManagementProcessImage}
+                alt="Visitor management process: tracking, security, and workflow overview"
+                width={1230}
+                height={650}
+                className="h-auto w-full object-contain"
+                sizes="(max-width: 1024px) 100vw, 1200px"
+              />
+            </motion.div>
           </div>
         </section>
 

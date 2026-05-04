@@ -65,9 +65,7 @@ function AboutHeroStatIcon({ name }: { name: (typeof aboutHeroStats)[number]["ic
 }
 
 const cultureCards: { title: string; imageSrc: string }[] = [
-  { title: "Optisecure 5K", imageSrc: "/images/optisecure-5k.png" },
-  { title: "Optisecure T7", imageSrc: "/images/optisecure-t7.png" },
-  { title: "Biosense", imageSrc: "/images/biosense.png" },
+  { title: "Face Recognition System", imageSrc: "/images/7a6a2a07-b8a7-48d1-ac83-4201e948805e.png" },
   { title: "HR Information System", imageSrc: "/hrinfromationsystem.jpeg" },
   { title: "Contract Workforce Governance System", imageSrc: "/contractworkforcemanagemtsystem.jpeg" },
   { title: "EWA", imageSrc: "/ewa.jpeg" },
@@ -383,7 +381,7 @@ export default function AboutPage() {
                 <div className="relative h-14 w-14 overflow-hidden rounded-full bg-slate-200">
                   <Image
                     src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
-                    alt="Prashanth K., Chief Executive Officer, InOps"
+                    alt="Satish Sinha, Founder, InOps"
                     fill
                     className="object-cover object-top"
                     sizes="56px"

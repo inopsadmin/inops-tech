@@ -102,24 +102,24 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       description: "Enterprise-wide visibility for assets and operations.",
       href: "/solutions/enterprise-solution",
     },
-    // {
-    //   type: "tile",
-    //   title: "Biometric Access Control",
-    //   description: "Readers, controllers, and integrations for secure entry and identity.",
-    //   href: "/product/biometric-access-control",
-    // },
-    // {
-    //   type: "tile",
-    //   title: "Turnstiles",
-    //   description: "Speed gates and turnstiles for orderly, high-throughput access.",
-    //   href: "/product/turnstiles",
-    // },
-    // {
-    //   type: "tile",
-    //   title: "Accessories",
-    //   description: "Mounts, cards, cables, and add-ons to complete your deployment.",
-    //   href: "/product/accessories",
-    // },
+    {
+      type: "tile",
+      title: "Asset Management",
+      description: "End-to-end asset lifecycle tracking with intelligent maintenance scheduling.",
+      href: "/solutions/enterprise-solution",
+    },
+    {
+      type: "tile",
+      title: "Route Optimization",
+      description: "AI-powered route planning with live fleet tracking to reduce fuel and transit time.",
+      href: "/solutions/enterprise-solution",
+    },
+    {
+      type: "tile",
+      title: "Warehouse Management",
+      description: "Advanced inventory control with smart slotting and real-time stock visibility.",
+      href: "/solutions/enterprise-solution",
+    },
   ],
   [
     {

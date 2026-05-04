@@ -7,21 +7,23 @@ import { motion } from "framer-motion";
 import HeroBackgroundSlider from "./components/HeroBackgroundSlider";
 import { FadeUp, StaggerContainer, StaggerItem } from "./components/MotionSection";
 import { AnimatedSection, AnimatedHeading, AnimatedParagraph, AnimatedCardGrid, AnimatedCardItem } from "./components/AnimatedSection";
+import ConnectedEcosystemSection from "./components/ConnectedEcosystemSection";
 import FeaturesSlider from "./components/FeaturesSlider";
 import IndustriesSlider from "./components/IndustriesSlider";
 import BrandsSlider from "./components/BrandsSlider";
 import ContactForm from "./components/ContactForm";
 import TiltCard from "./components/TiltCard";
 import SectionFade from "./components/SectionFade";
+import { industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
 import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
 
 const whyCards = [
   {
     icon: "chart",
-    title: "Workforce Governance",
+    title: "Workforce System",
     text:
-      "A single source of truth for managing your entire workforce ecosystem. Streamline HR operations, contract labour management, and workplace services with complete visibility and compliance.",
-    badge: "Governance",
+      "Modular HRIS capabilities for employee data, attendance, payroll, canteen, and visitors seamlessly. Reduce manual effort, eliminate errors, and gain real-time visibility.",
+    badge: "HRIS",
     imageUrl: whySectionCardImages[1],
   },
   {
@@ -50,7 +52,7 @@ const whyCards = [
   },
   {
     icon: "image",
-    title: "A Single View of Your Workforce",
+    title: "Sites, Contractors & Shifts at a Glance",
     text:
       "See sites, contractors, and shifts at a glance with a clean, visual dashboard that lets you drill into the details only when you need to.",
     badge: "Workforce view",
@@ -88,7 +90,7 @@ const dashboardCards = [
   {
     title: "HR Dashboard",
     badge: "People ops",
-    imageSrc: "/hr_kpi_dashboard.png",
+    imageSrc: "/images/improve-hiring-quality.jpg",
     imageAlt: "HR dashboard",
     description:
       "Centralized control over employee data, compliance, and lifecycle management. Ensure accuracy, visibility, and seamless workforce governance across systems.",
@@ -104,13 +106,11 @@ export default function Home() {
   const [heroDarkPhase, setHeroDarkPhase] = useState(true);
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [whyOrder, setWhyOrder] = useState<string[]>(() => {
-    const preferred = "A Single View of Your Workforce";
+    const preferred = "Sites, Contractors & Shifts at a Glance";
     const titles = whyCards.map((c) => c.title);
     if (!titles.includes(preferred)) return titles;
     return [preferred, ...titles.filter((t) => t !== preferred)];
   });
-  const [operationalChallengesExpanded, setOperationalChallengesExpanded] = useState(false);
-
   const selectedWhyTitle = whyOrder[0] ?? whyCards[0]?.title;
   const selectedWhyCard = whyCards.find((c) => c.title === selectedWhyTitle) ?? whyCards[0];
 
@@ -173,32 +173,7 @@ export default function Home() {
                     {heroSlides[activeHeroIndex]?.title}
                   </h1>
                 </motion.div>
-                <div className="relative mt-6 w-full max-w-2xl sm:mt-9">
-                  <div
-                    className="pointer-events-none absolute -inset-[1px] rounded-3xl bg-gradient-to-b from-white/20 via-white/[0.06] to-transparent opacity-90"
-                    aria-hidden
-                  />
-                  <div className="relative overflow-hidden rounded-3xl border border-white/[0.14] bg-slate-950/[0.38] px-5 py-4 shadow-[0_26px_85px_-28px_rgba(0,0,0,0.65)] backdrop-blur-2xl sm:px-8 sm:py-7">
-                    <div
-                      className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent sm:inset-x-8"
-                      aria-hidden
-                    />
-                    <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 12 } }} transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}>
-                      <p className="mx-auto max-w-xl text-[14px] leading-relaxed text-white/90 sm:text-[16px] sm:leading-relaxed">
-                        {heroSlides[activeHeroIndex]?.description}
-                      </p>
-                    </motion.div>
-                    {/* <motion.div
-                      variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
-                      transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
-                      className="mt-5 border-t border-white/[0.08] pt-5"
-                    >
-                      <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-white/80 sm:text-base sm:leading-relaxed">
-                        With seamless integration of attendance, payroll, and access control, InOps ensures accurate workforce visibility, reduced manual errors, and improved operational efficiency across factories and industrial sites.
-                      </p>
-                    </motion.div> */}
-                  </div>
-                </div>
+                
                 <motion.div
                   variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 14 } }}
                   transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
@@ -225,7 +200,7 @@ export default function Home() {
                   </motion.div>
                 </motion.div>
 
-                <motion.div
+                {/* <motion.div
                   variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
                   transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1], delay: 0.04 }}
                   className="mt-10 flex items-center justify-center gap-2 text-xs font-medium tracking-wide text-white/70 sm:mt-11"
@@ -236,12 +211,92 @@ export default function Home() {
                     <path d="M12 5v14" />
                     <path d="M19 12l-7 7-7-7" />
                   </svg>
-                </motion.div>
+                </motion.div> */}
               </motion.div>
             </motion.div>
           </div>
         </section>
       </SectionFade>
+
+      <section
+        aria-labelledby="hero-trusted-clients-heading"
+        className="relative overflow-x-hidden border-b border-gray-100 bg-white py-6 sm:py-8 lg:py-10"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <h2
+              id="hero-trusted-clients-heading"
+              className="text-base font-heading-bold leading-snug text-slate-900 sm:text-lg lg:text-xl"
+            >
+              Trusted by leading manufacturing &amp; infrastructure companies
+            </h2>
+            {/* <p className="mt-3 text-sm text-gray-600 sm:text-base">
+              Teams rely on our platform for consistent, compliant, and efficient operations.
+            </p> */}
+            <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
+          </motion.div>
+          <motion.div
+            className="relative mt-8 overflow-hidden rounded-3xl border border-slate-200/80 bg-white py-6 shadow-depth backdrop-blur"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.05 }}
+          >
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-12 bg-gradient-to-r from-white via-white/90 to-transparent" aria-hidden />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-12 bg-gradient-to-l from-white via-white/90 to-transparent" aria-hidden />
+            <div className="hover-pause relative flex motion-reduce:overflow-x-auto">
+              <div
+                className="flex animate-marquee gap-0 motion-reduce:animate-none"
+                role="list"
+                aria-label="Client logos"
+              >
+                {industryLeaderClientLogos.map((src, i) => (
+                  <div
+                    key={`hero-logo-a-${i}`}
+                    role="listitem"
+                    className="group relative flex h-20 min-w-[120px] flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:min-w-[150px] sm:px-4"
+                  >
+                    <Image
+                      src={src}
+                      alt={logoAltFromSrc(src)}
+                      width={140}
+                      height={56}
+                      className="h-12 w-auto max-w-[120px] object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                      sizes="140px"
+                      unoptimized={src.endsWith(".svg")}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="flex animate-marquee gap-0 motion-reduce:animate-none" aria-hidden>
+                {industryLeaderClientLogos.map((src, i) => (
+                  <div
+                    key={`hero-logo-b-${i}`}
+                    className="group relative flex h-20 min-w-[120px] flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:min-w-[150px] sm:px-4"
+                  >
+                    <Image
+                      src={src}
+                      alt=""
+                      width={140}
+                      height={56}
+                      className="h-12 w-auto max-w-[120px] object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                      sizes="140px"
+                      unoptimized={src.endsWith(".svg")}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Why InOps */}
       <AnimatedSection id="about" className="relative bg-white py-10 lg:py-12">
@@ -249,7 +304,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-label uppercase tracking-wider text-blue-700">
-              Why InOps
+              What we do
             </span>
             <motion.div
               className="mt-6"
@@ -264,7 +319,7 @@ export default function Home() {
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <AnimatedHeading as="h2" className="text-3xl font-heading-bold tracking-tight text-gray-900 sm:text-4xl">
-                  Built for Enterprises That Can’t Afford Compliance Gaps
+                  Workforce Governance In One Platform.
                 </AnimatedHeading>
               </motion.div>
             </motion.div>
@@ -350,7 +405,6 @@ export default function Home() {
                           <span className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm text-white shadow-md transition-colors duration-150 ease-out group-hover:bg-blue-700">
                             View all Solutions
                           </span>
-                          <span className="text-xs font-body text-gray-500">Click to switch cards</span>
                         </div>
 
                         <div className="mt-6 h-px w-20 bg-gradient-to-r from-gray-200 to-transparent" aria-hidden />
@@ -423,16 +477,6 @@ export default function Home() {
                               {card.badge ?? "Capability"}
                             </div>
                             <div className="mt-1.5 line-clamp-2 text-[1rem] font-heading-semibold leading-snug text-slate-900">{card.title}</div>
-                            <div className="mt-2 inline-flex items-center gap-2 text-xs font-body-medium text-blue-700/90">
-                              <span className="relative">
-                                Click to swap
-                                <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-blue-500 transition-transform duration-300 group-hover:scale-x-100" />
-                              </span>
-                              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                                <path d="M5 12h14" />
-                                <path d="M13 5l7 7-7 7" />
-                              </svg>
-                            </div>
                           </div>
                         </div>
                       </button>
@@ -445,213 +489,101 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      <SectionFade className="border-t border-gray-100">
+        <ConnectedEcosystemSection />
+      </SectionFade>
+
       <SectionFade className="border-t border-gray-100"><FeaturesSlider /></SectionFade>
 
-      {/* Operational challenges — two-card light layout */}
+      {/* Proven business impact — replaces former Solutions / operational challenges block */}
       <SectionFade>
-        <section className="relative overflow-hidden bg-white py-14 lg:py-20">
-          {/* subtle dot grid */}
-          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-60" aria-hidden />
+        <section className="relative overflow-hidden  py-14 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-            {/* section header */}
-            <motion.div
-              className="mb-10 text-center"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-blue-700">
-                Solutions
-              </span>
-              <h2 className="mt-5 text-3xl font-heading-bold tracking-tight text-slate-900 sm:text-4xl">
-                Solving Real Operational Challenges
-              </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-500 sm:text-base">
-                Every operational pain point mapped to a precise, automated InOps answer.
-              </p>
-            </motion.div>
-
-            {/* two-card grid */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-
-              {/* ── Card 1: Workforce Governance ── */}
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <motion.div
-                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_8px_32px_-12px_rgba(15,23,42,0.12)] transition-shadow duration-300 hover:shadow-[0_20px_48px_-18px_rgba(15,23,42,0.18)] sm:p-8"
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.22 }}
+                viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                {/* top accent line */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-400" aria-hidden />
-
-                {/* badge */}
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" aria-hidden />
-                  Operations &amp; Compliance
+                <span className="inline-flex items-center rounded-full border border-blue-200/80 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700 shadow-sm backdrop-blur">
+                  Business impact
                 </span>
-
-                {/* heading + desc */}
-                <h3 className="mt-4 text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.7rem]">
-                  PROBLEM 
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                  The operational gaps teams feel every day — and how InOps closes them with one connected platform.
+                <h2 className="mt-5 text-3xl font-heading-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
+                  Proven Business{" "}
+                  <span className="text-blue-600">Impact</span>
+                </h2>
+                <p className="mt-4 max-w-lg text-sm leading-relaxed text-slate-600 sm:text-base">
+                  InOps isn&apos;t just about management; it&apos;s about measurable financial and operational excellence.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setOperationalChallengesExpanded((e) => !e)}
-                  className="mt-3 text-xs font-semibold text-blue-600 underline-offset-2 hover:text-blue-700 hover:underline"
-                  aria-expanded={operationalChallengesExpanded}
-                  aria-controls="operational-challenges-problem-list"
-                >
-                  {operationalChallengesExpanded ? "Less" : "More"}
-                </button>
-
-                {/* feature rows */}
-                <div id="operational-challenges-problem-list" className="mt-6 space-y-3">
+                <ul className="mt-8 space-y-4">
                   {[
-                    {
-                      icon: "layers",
-                      title: "Fragmented workforce data",
-                      sub:   "Attendance, compliance, and HR data scattered across spreadsheets and tools — no single source of truth.",
-                    },
-                    {
-                      icon: "shield-check",
-                      title: "Compliance risks",
-                      sub:   "Statutory and site rules are easy to miss until an audit, incident, or penalty forces a reaction.",
-                    },
-                    {
-                      icon: "wallet",
-                      title: "Workers have no access to formal credit",
-                      sub:   "Pay cycles and informal lending leave little room for regulated, dignified access to earned wages.",
-                    },
-                    {
-                      icon: "eye",
-                      title: "Proxy attendance",
-                      sub:   "Buddy punching and weak verification mean the people marked “present” are not always who you think.",
-                    },
-                    {
-                      icon: "clipboard",
-                      title: "Manual operations",
-                      sub:   "Reconciliation, follow-ups, and reporting eat bandwidth that should go to managing the workforce.",
-                    },
-                  ].map(({ icon, title, sub }) => (
-                    <div
-                      key={title}
-                      className="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3.5 transition-colors duration-150 hover:border-blue-100 hover:bg-blue-50/40"
-                    >
-                      {/* icon circle */}
-                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
-                        <svg className="h-4 w-4 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
-                          {icon === "layers"       && <><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.05 4.13a2 2 0 0 1-1.9 0L2 17.65"/><path d="m22 12.65-9.05 4.13a2 2 0 0 1-1.9 0L2 12.65"/></>}
-                          {icon === "shield-check"  && <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></>}
-                          {icon === "wallet"       && <><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h2"/><path d="M2 10h20"/></>}
-                          {icon === "eye"           && <><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></>}
-                          {icon === "clipboard"     && <><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></>}
+                    "90% reduction in manual reconciliation",
+                    "3–5% immediate fraud elimination",
+                    "100% automated audit logging",
+                    "Real-time visibility across all vendors",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm" aria-hidden>
+                        <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M20 6 9 17l-5-5" />
                         </svg>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-slate-800">{title}</p>
-                        {operationalChallengesExpanded ? (
-                          <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{sub}</p>
-                        ) : null}
-                      </div>
-                    </div>
+                      </span>
+                      <span className="text-sm font-medium leading-relaxed text-slate-800 sm:text-[15px]">{line}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </motion.div>
 
-              {/* ── Card 2: Financial & Operations ── */}
               <motion.div
-                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 shadow-[0_8px_32px_-12px_rgba(15,23,42,0.12)] transition-shadow duration-300 hover:shadow-[0_20px_48px_-18px_rgba(15,23,42,0.18)] sm:p-8"
-                initial={{ opacity: 0, y: 28 }}
+                className="grid gap-4"
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.22 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
               >
-                {/* top accent line */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-emerald-400 via-cyan-500 to-teal-400" aria-hidden />
-
-                {/* badge */}
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden />
-                  Worker Wellness &amp; Retention
-                </span>
-
-                {/* heading + desc */}
-                <h3 className="mt-4 text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.7rem]">
-                INOPS SOLUTION
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-500">
-                  The same five pain points — answered with platform, automation, verification, and worker-first financial access.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setOperationalChallengesExpanded((e) => !e)}
-                  className="mt-3 text-xs font-semibold text-emerald-600 underline-offset-2 hover:text-emerald-700 hover:underline"
-                  aria-expanded={operationalChallengesExpanded}
-                  aria-controls="operational-challenges-solution-list"
-                >
-                  {operationalChallengesExpanded ? "Less" : "More"}
-                </button>
-
-                {/* feature rows */}
-                <div id="operational-challenges-solution-list" className="mt-6 space-y-3">
-                  {[
-                    {
-                      icon: "link",
-                      title: "Unified platform",
-                      sub:   "One connected system for workforce data, attendance, and compliance — no more siloed exports.",
-                    },
-                    {
-                      icon: "bell",
-                      title: "Automated tracking & alerts",
-                      sub:   "Continuous checks and timely alerts so compliance gaps are caught and fixed before they escalate.",
-                    },
-                    {
-                      icon: "wallet",
-                      title: "Earned Wage Access",
-                      sub:   "Formal, regulated on-demand access to earned wages through NBFC partners — not informal debt.",
-                    },
-                    {
-                      icon: "scan-face",
-                      title: "Face recognition",
-                      sub:   "AI-powered face authentication at check-in so proxy attendance cannot pass as the real worker.",
-                    },
-                    {
-                      icon: "bolt",
-                      title: "Automation & analytics",
-                      sub:   "End-to-end workflow automation plus live analytics — less manual chasing, more operational clarity.",
-                    },
-                  ].map(({ icon, title, sub }) => (
-                    <div
-                      key={title}
-                      className="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3.5 transition-colors duration-150 hover:border-emerald-100 hover:bg-emerald-50/40"
-                    >
-                      {/* icon circle */}
-                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
-                        <svg className="h-4 w-4 text-emerald-600" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden>
-                          {icon === "link"      && <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></>}
-                          {icon === "bell"      && <><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></>}
-                          {icon === "wallet"    && <><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h2"/><path d="M2 10h20"/></>}
-                          {icon === "scan-face" && <><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="10" r="3"/><path d="M7 16h.01"/><path d="M17 16h.01"/></>}
-                          {icon === "bolt"      && <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/>}
-                        </svg>
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold text-slate-800">{title}</p>
-                        {operationalChallengesExpanded ? (
-                          <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{sub}</p>
-                        ) : null}
-                      </div>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div className="flex h-full flex-col rounded-3xl border border-emerald-200/80  p-6 shadow-[0_12px_40px_-28px_rgba(5,150,105,0.45)]">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-700 ring-1 ring-emerald-500/25">
+                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
                     </div>
-                  ))}
+                    <h3 className="mt-4 text-lg font-heading-bold tracking-tight text-slate-900">Eliminate Ghost Workers</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                      Aadhaar-linked biometric verification ensures every worker on site is legitimate and verified.
+                    </p>
+                  </div>
+
+                  <div className="flex h-full flex-col rounded-3xl border border-sky-200/80  p-6 shadow-[0_12px_40px_-28px_rgba(14,165,233,0.4)]">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-700 ring-1 ring-sky-500/25">
+                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M4 19h16" />
+                        <path d="M4 19V5" />
+                        <path d="m6 8 4 6 4-3 6 7" />
+                      </svg>
+                    </div>
+                    <h3 className="mt-4 text-lg font-heading-bold tracking-tight text-slate-900">Reduce Cost Leakages</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                      Automated invoice cross-verification typically recovers 10–15% in previously undetected billing errors.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 divide-y divide-slate-200/90 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.28)] sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+                  <div className="pb-6 sm:pb-0 sm:pr-6">
+                    <p className="text-2xl font-heading-bold tracking-tight text-blue-600 sm:text-[1.65rem]">₹2–3 Cr</p>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">Annual savings per 1000 contractors</p>
+                  </div>
+                  <div className="pt-6 sm:pt-0 sm:pl-6">
+                    <p className="text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.65rem]">30–60 Days</p>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">Typical deployment timeframe</p>
+                  </div>
                 </div>
               </motion.div>
-
             </div>
           </div>
         </section>
@@ -711,7 +643,7 @@ export default function Home() {
                 </motion.div>
 
                 <motion.div
-                  className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.18 }}
@@ -751,7 +683,7 @@ export default function Home() {
                           </span>
                         </div>
 
-                        <TiltCard className="mt-4 block">
+                        <TiltCard className="mt-4 block shrink-0">
                           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-[0_22px_48px_-32px_rgba(15,23,42,0.45)]">
                             <Image
                               src={card.imageSrc}
@@ -765,11 +697,11 @@ export default function Home() {
                           </div>
                         </TiltCard>
 
-                        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                        <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
                           {card.description}
                         </p>
 
-                        <div className="mt-5 pt-4 border-t border-slate-200/80">
+                        <div className="mt-auto border-t border-slate-200/80 pt-4">
                           <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold tracking-wide ${card.footerClass}`}>
                             <span className="h-1.5 w-1.5 rounded-full bg-current opacity-80" aria-hidden />
                             {card.footerTag}
@@ -781,7 +713,7 @@ export default function Home() {
                 </motion.div>
               </div>
             </section>
-            <SectionFade><BrandsSlider /></SectionFade>
+            {/* <SectionFade><BrandsSlider /></SectionFade> */}
 
           </div>
         </div>

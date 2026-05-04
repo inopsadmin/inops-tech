@@ -47,22 +47,26 @@ export function SolutionsMegaMenuDesktop({
     >
       <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-200/80 shadow-lg shadow-slate-900/[0.08] ring-1 ring-slate-950/[0.04]">
         <div className="flex flex-col gap-px">
-          {solutionsMegaRows.map((row, rowIndex) => (
+          {solutionsMegaRows.map((row, rowIndex) => {
+            const first = row[0]?.type === "tile" ? row[0] : null;
+            const isEnterpriseRow = first?.title === "Enterprise Solution";
+            return (
             <div
               key={rowIndex}
               className={`grid grid-cols-1 gap-px md:grid-cols-4 ${
-                row[0]?.type === "tile" && (row[0].title === "Enterprise Solution" || row[0].title === "EWA (Earned Wage Access)")
+                first && (first.title === "Enterprise Solution" || first.title === "EWA (Earned Wage Access)")
                   ? "bg-white"
                   : "bg-slate-200/80"
               } ${
-                row[0]?.type === "tile" && row[0].title === "EWA (Earned Wage Access)" ? "-mt-px" : ""
-              }`}
+                first?.title === "EWA (Earned Wage Access)" ? "-mt-px" : ""
+              } ${isEnterpriseRow ? "border-b border-slate-200" : ""}`}
             >
               {row.map((cell, colIndex) => (
                 <MegaCell key={`${rowIndex}-${colIndex}`} cell={cell} onNavigate={onNavigate} />
               ))}
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </motion.div>
@@ -73,7 +77,12 @@ export function SolutionsMegaMenuMobile({ onNavigate }: { onNavigate: () => void
   return (
     <div className="min-w-0 space-y-2 border-t border-gray-100 px-1 pb-3 pt-2">
       {solutionsMegaRows.map((row, rowIndex) => (
-        <div key={rowIndex} className="min-w-0 overflow-hidden rounded-xl border border-gray-200 bg-white">
+        <div
+          key={rowIndex}
+          className={`min-w-0 overflow-hidden rounded-xl border border-gray-200 bg-white ${
+            row[0]?.type === "tile" && row[0].title === "Enterprise Solution" ? "border-b-2 border-b-slate-500" : ""
+          }`}
+        >
           <div className="divide-y divide-gray-100">
             {row
               .filter((c): c is Extract<SolutionsMegaCell, { type: "tile" }> => c.type === "tile")

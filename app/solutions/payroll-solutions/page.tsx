@@ -8,9 +8,7 @@ import { motion } from "framer-motion";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-/** Hero + feature grid — contract workforce / CLMS narrative */
-const clmsHeroImage =
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&q=85";
+const payrollHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.41.37 PM.jpeg";
 
 const comprehensiveControlCards = [
   {
@@ -45,37 +43,43 @@ const comprehensiveControlCards = [
   },
 ] as const;
 
-const whyInopsCards = [
+const painPoints = [
   {
-    title: "Data-Driven Decision Making",
-    description:
-      "Leverage real-time analytics and AI-driven insights to optimize workforce productivity and operational efficiency. AI-driven attendance monitoring, geo-tagging, and facial recognition ensure accurate contractor management.",
-    icon: "chart" as const,
+    title: "Ghost Workers & Time Theft",
+    stat: "~3–5% of spend",
+    description: "Buddy punching and manual attendance fraud.",
   },
   {
-    title: "Security & Compliance First",
-    description:
-      "We ensure high security and compliance with regulatory standards, making workforce tracking seamless while maintaining legal transparency.",
-    icon: "security" as const,
+    title: "Compliance Violations",
+    stat: "₹50K–₹1L per violation",
+    description: "Extra OT violations, blocking, incident management, wage violations.",
   },
   {
-    title: "Scalable & Customizable",
-    description:
-      "Our solutions cater to businesses of all sizes-whether you need on-premise, cloud, or hybrid deployment, InOps adapts to your needs.",
-    icon: "scalable" as const,
+    title: "Invoice Chaos",
+    stat: "25–30% discrepancy rate",
+    description: "Finance spends 80–120 hrs./month reconciling.",
   },
   {
-    title: "Advanced Hardware & Software Integration",
-    description:
-      "Seamlessly integrate our biometric devices, access control, and attendance tracking with HRMS, payroll, and ERP systems.",
-    icon: "integration" as const,
+    title: "System Fragmentation",
+    stat: "Data chaos",
+    description: "Biometric, Excel, SAP—nothing communicates.",
   },
   {
-    title: "End-to-End Compliance Automation",
+    title: "ESI PF Reconciliation & true up",
+    stat: "Manual checks",
     description:
-      "Streamline contractor onboarding, payroll, attendance, and compliance reporting-all in one platform.",
-    icon: "compliance" as const,
+      "Leads to errors and time lost. Excel-based checks create real challenges for compliance.",
   },
+] as const;
+
+/** Row-major 3×2 grid: five pain-point cards + photo in the center (top-middle). */
+const whyInopsGridSlots = [
+  { kind: "pain" as const, painIndex: 0 },
+  { kind: "image" as const },
+  { kind: "pain" as const, painIndex: 1 },
+  { kind: "pain" as const, painIndex: 2 },
+  { kind: "pain" as const, painIndex: 3 },
+  { kind: "pain" as const, painIndex: 4 },
 ] as const;
 
 /** Horizontal “Our Module” carousel — image, title, description per slide */
@@ -323,39 +327,66 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function WhyInopsIcon({ name }: { name: (typeof whyInopsCards)[number]["icon"] }) {
-  const c = "h-7 w-7";
-  if (name === "chart") {
+function WithInOpsBenefitIcon({ variant }: { variant: "ghost" | "invoice" | "visibility" | "compliance" }) {
+  const c = "h-[1.05rem] w-[1.05rem] sm:h-[1.125rem] sm:w-[1.125rem]";
+  if (variant === "ghost") {
     return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 2 2 5-5m2 10H5a2 2 0 01-2-2V5m14 0h4v4m0-4l-7 7" />
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="m17 8 5 5M22 8l-5 5" />
       </svg>
     );
   }
-  if (name === "security") {
+  if (variant === "invoice") {
     return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 12a3 3 0 100-6 3 3 0 000 6zm0 0v2m0 4h.01M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41M12 2v2m0 16v2" />
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2Z" />
+        <path d="M14 2v6h6" />
+        <path d="M8 13h8M8 17h6" />
       </svg>
     );
   }
-  if (name === "scalable") {
+  if (variant === "visibility") {
     return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 16v-2m8-6h-2M6 12H4m12.95 6.95l-1.41-1.41M8.46 8.46L7.05 7.05m9.9 0l-1.41 1.41M8.46 15.54l-1.41 1.41M12 9a3 3 0 100 6 3 3 0 000-6z" />
-      </svg>
-    );
-  }
-  if (name === "integration") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7a3 3 0 116 0m-9 9a3 3 0 116 0m6-9a3 3 0 11-6 0m0 0v6m-3-3h6m-9 6h12" />
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+        <circle cx="12" cy="12" r="3" />
       </svg>
     );
   }
   return (
-    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2Z" />
+      <path d="M14 2v6h6" />
+      <path d="m9 15 2 2 4-4" />
+    </svg>
+  );
+}
+
+function ImpactKpiIcon({ variant }: { variant: "leakage" | "payback" | "savings" }) {
+  const c = "h-5 w-5";
+  if (variant === "leakage") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <rect width="20" height="12" x="2" y="6" rx="2" />
+        <circle cx="12" cy="12" r="2" />
+        <path d="M6 12h.01M18 12h.01" />
+      </svg>
+    );
+  }
+  if (variant === "payback") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 6v6l4 2" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M22 7 13.5 15.5 8.5 10.5 2 17" />
+      <path d="M16 7h6v6" />
     </svg>
   );
 }
@@ -364,60 +395,48 @@ export default function PayrollSolutionsPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — platform solutions, contract workforce governance */}
         <motion.section
-          className="hero-tight border-b border-slate-100 pt-0 lg:pt-10 bg-white"
+          className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <div className="pt-8 lg:pt-0">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-              <motion.nav
-                className="text-sm text-slate-500"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
-                aria-label="Breadcrumb"
-              >
-                {/* <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
-                  Home
-                </Link>
-                <span className="mx-2 text-slate-400">/</span>
-                <span className="font-medium text-slate-900">Payroll Solutions</span> */}
-              </motion.nav>
-            </div>
-
-            <motion.div
-              className="relative mt-6 overflow-hidden rounded-none border border-slate-200/70 sm:mt-8"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.08 }}
-            >
-              <div className="relative min-h-[340px] sm:min-h-[390px] lg:min-h-[430px]">
+          <motion.div
+            className="relative w-full overflow-hidden"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
+          >
+            <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+              {/* Right-half hero background (full width on small screens, then locked to the right on lg) */}
+              <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <Image
-                  src="/image.jpg"
-                  alt="Site supervisor standing in a factory floor"
+                  src={payrollHeroRightBackground}
+                  alt="Payroll and contract workforce operations"
                   fill
-                  className="object-cover object-center"
-                  sizes="100vw"
+                  className="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
                 <div
-                  className=""
+                  className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white to-transparent lg:block"
                   aria-hidden
                 />
-                <div className="relative z-10 max-w-3xl px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-16 ml-10">
+              </div>
+              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+                <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
                   <motion.h1
-                    className="text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[3.2rem]"
+                    className="text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    Turn Compliance Challenges into Opportunities with Automated CLMS and Eliminate Manual Effort
+                    Redefining Contract <br />
+                    Workforce Governance <br />
+                    system
                   </motion.h1>
                   <motion.p
-                    className="mt-6 text-sm text-slate-600 sm:text-base"
+                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
@@ -425,29 +444,70 @@ export default function PayrollSolutionsPage() {
                     One Unified Platform for Complete Control
                   </motion.p>
                   <motion.div
-                    className="mt-7 flex flex-wrap items-center gap-3"
+                    className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                   >
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-blue-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition hover:bg-blue-600"
+                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
                     >
                       Get In Touch
                     </Link>
                     <Link
-                      href="/blog"
-                      className="inline-flex items-center justify-center rounded-full bg-blue-500 px-8 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
                     >
-                      Learn More
+                      Calculate ROI
                     </Link>
                   </motion.div>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
+        </motion.section>
 
-            <div className="mx-auto mt-15 max-w-7xl px-4 pb-10 sm:px-6 sm:pb-12 lg:px-12">
+        {/* <section
+          className="w-full border-b border-slate-200 bg-black"
+          aria-labelledby="clms-hardware-heading"
+        >
+          <div className="grid min-h-0 grid-cols-1 lg:grid-cols-2 lg:min-h-[min(520px,85vh)]">
+            <div className="relative min-h-[260px] w-full bg-slate-200 sm:min-h-[320px] lg:min-h-full">
+              <Image
+                src="/images/payroll-clms-hardware-split.png"
+                alt="Contract worker at a secured turnstile with biometric terminal and access hardware callouts"
+                fill
+                className="object-cover object-[center_40%] lg:object-[center_35%]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16 xl:px-16">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2
+                  id="clms-hardware-heading"
+                  className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-[2.05rem] lg:leading-snug xl:text-[2.25rem]"
+                >
+                  Smart Contract Labour Management With Integrated Hardware
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
+                  Bring software and devices together: face, card, and fingerprint readers, turnstiles, and flap
+                  barriers—wired into one CLMS so attendance is real time, access rules hold at the gate, and your
+                  teams get reports and alerts that keep sites secure and audit ready.
+                </p>
+                <div className="mt-8 h-0.5 w-14 rounded-full bg-blue-500" aria-hidden />
+              </motion.div>
+            </div>
+          </div>
+        </section> */}
+
+        <div className="border-b border-slate-100 bg-white">
+          <div className="mx-auto max-w-7xl px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-8 lg:px-12">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -456,85 +516,57 @@ export default function PayrollSolutionsPage() {
               >
                 <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">Why Inops?</h2>
                 <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {whyInopsCards.slice(0, 1).map((card, i) => (
-                  <motion.div
-                    key={card.title}
-                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.2) }}
-                  >
-                    <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-100">
-                        <WhyInopsIcon name={card.icon} />
-                      </div>
-                      <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.description}</p>
-                    </article>
-                  </motion.div>
-                ))}
-
-                <motion.div
-                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-                >
-                  <div className="relative min-h-[340px] sm:min-h-[390px] lg:min-h-[300px] overflow-hidden rounded-2xl bg-slate-100 transition-transform duration-300 group-hover:-translate-y-1">
-                    <Image
-                      src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
-                      alt="Site supervisor standing with safety gear"
-                      fill
-                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                </motion.div>
-
-                {whyInopsCards.slice(1, 2).map((card, i) => (
-                  <motion.div
-                    key={card.title}
-                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min((i + 2) * 0.05, 0.2) }}
-                  >
-                    <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-100">
-                        <WhyInopsIcon name={card.icon} />
-                      </div>
-                      <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.description}</p>
-                    </article>
-                  </motion.div>
-                ))}
-
-                {whyInopsCards.slice(2).map((card, i) => (
-                  <motion.div
-                    key={card.title}
-                    className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min((i + 3) * 0.05, 0.25) }}
-                  >
-                    <article className="h-full rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-100">
-                        <WhyInopsIcon name={card.icon} />
-                      </div>
-                      <h3 className="mt-5 text-2xl font-bold leading-tight text-slate-900">{card.title}</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.description}</p>
-                    </article>
-                  </motion.div>
-                ))}
+                  {whyInopsGridSlots.map((slot, idx) => {
+                    if (slot.kind === "image") {
+                      return (
+                        <motion.div
+                          key="why-inops-center-photo"
+                          className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
+                          initial={{ opacity: 0, y: 16 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={viewport}
+                          transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.05, 0.25) }}
+                        >
+                          <div className="relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-100 transition-transform duration-300 group-hover:-translate-y-1 sm:min-h-[320px] lg:min-h-[300px]">
+                            <Image
+                              src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
+                              alt="Site supervisor standing with safety gear"
+                              fill
+                              className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                          </div>
+                        </motion.div>
+                      );
+                    }
+                    const card = painPoints[slot.painIndex];
+                    const n = slot.painIndex + 1;
+                    return (
+                      <motion.div
+                        key={card.title}
+                        className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={viewport}
+                        transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.05, 0.25) }}
+                      >
+                        <article className="flex h-full flex-col rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
+                          <div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-base font-bold tabular-nums text-blue-600 transition-colors duration-300 group-hover:bg-blue-100 sm:h-[3.25rem] sm:w-[3.25rem] sm:text-lg">
+                            {n}
+                          </div>
+                          <h3 className="mt-5 text-2xl font-bold leading-snug text-blue-600 sm:text-[1.75rem] lg:text-[1.85rem] lg:leading-tight">
+                            {card.title}
+                          </h3>
+                          <p className="mt-3 text-base font-semibold leading-snug text-slate-900 sm:text-lg">{card.stat}</p>
+                          <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">{card.description}</p>
+                        </article>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </motion.div>
-            </div>
           </div>
-        </motion.section>
+        </div>
 
         {/* Comprehensive Control — CLMS touchpoints
         <section
@@ -613,7 +645,7 @@ export default function PayrollSolutionsPage() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <motion.div
-              className="relative min-h-[280px] bg-slate-900 sm:min-h-[360px] lg:min-h-[min(100vh,520px)]"
+              className="relative min-h-[280px] bg-black sm:min-h-[360px] lg:min-h-[min(100vh,520px)]"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
@@ -624,8 +656,8 @@ export default function PayrollSolutionsPage() {
                 alt="Contract worker using an industrial turnstile with integrated biometric access hardware"
                 fill
                 quality={200}
-                className=" object-center"
-                sizes="(max-width: 1024px) 100vw, 100vw"
+                className=" object-contain"
+                sizes="(max-width: 768px) 100vw, 100vw"
               />
             </motion.div>
             <motion.div
@@ -654,111 +686,251 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
-        {/* Proven Business Impact */}
+        {/* Contractor leakage snapshot — replaces Proven Business Impact */}
         <section
-          className="border-t border-slate-200 py-12 lg:py-16 bg-white"
-          aria-labelledby="proven-impact-heading"
+          className="border-t border-slate-200  py-12 lg:py-16"
+          aria-labelledby="contractor-leakage-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="overflow-hidden rounded-3xl bg-blue-100/90 px-6 py-10 shadow-sm ring-1 ring-blue-200/60 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
-              <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12 lg:items-start">
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase }}
-                >
-                  <h2
-                    id="proven-impact-heading"
-                    className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem]"
-                  >
-                    Proven Business <span className="text-blue-600">Impact</span>
-                  </h2>
-                  <p className="mt-4 text-base leading-relaxed text-slate-700 sm:text-lg">
-                    InOps CLMS isn&apos;t just about management; it&apos;s about measurable financial and operational
-                    excellence.
-                  </p>
-                  <ul className="mt-8 space-y-4">
-                    {[
-                      "90% reduction in manual reconciliation",
-                      "3–5% immediate fraud elimination",
-                      "100% automated audit logging",
-                      "Real-time visibility across all vendors",
-                    ].map((line) => (
-                      <li key={line} className="flex gap-3 text-sm leading-snug text-slate-800 sm:text-base">
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <span className="inline-flex max-w-[95vw] items-center justify-center rounded-full border border-blue-200 bg-white px-4 py-2 text-center text-[10px] font-semibold uppercase leading-snug tracking-wide text-blue-700 shadow-sm sm:text-[11px] sm:tracking-wider">
+                Cost leakage is silent. Savings don&apos;t have to be.
+              </span>
+              <h2
+                id="contractor-leakage-heading"
+                className="mt-6 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.25rem] lg:leading-tight"
+              >
+                Stop Losing{" "}
+                <span className="text-blue-600">Crores</span> in Contractor Leakage
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                Hidden inefficiencies in contractor management can drain{" "}
+                <strong className="font-semibold text-slate-800">8–12%</strong> of your annual spend — without you even
+                knowing.
+              </p>
+            </motion.div>
+
+            {/* Snapshot + losses — equal card heights on large screens */}
+            <div className="relative mt-10 flex flex-col items-stretch gap-6 lg:flex-row lg:items-stretch lg:gap-0">
+              <motion.div
+                className="flex min-h-0 flex-1 flex-col rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-6 shadow-xl ring-1 ring-white/10 sm:p-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase }}
+              >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-300">Your leakage snapshot</p>
+                <p className="mt-1 text-lg font-semibold text-white">Typical Enterprise Scenario</p>
+                <div className="mt-6 flex flex-1 flex-col justify-start space-y-3">
+                  {[
+                    {
+                      label: "Number of Contractors",
+                      value: "1,000",
+                      icon: (
+                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      ),
+                    },
+                    {
+                      label: "Avg Monthly Cost per Contractor",
+                      value: "₹15,000",
+                      icon: (
+                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      ),
+                    },
+                    {
+                      label: "Number of Locations",
+                      value: "6",
+                      icon: (
+                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      ),
+                    },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center gap-3 sm:gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-sky-200">
+                        {row.icon}
+                      </div>
+                      <p className="min-w-0 flex-1 text-sm text-white/85">{row.label}</p>
+                      <div className="shrink-0 rounded-lg bg-sky-400 px-3 py-1.5 text-sm font-bold tabular-nums text-slate-900 shadow-sm">
+                        {row.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-auto flex flex-col gap-1 border-t border-white/15 pt-6 sm:flex-row sm:items-end sm:justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white/60">Annual spend</span>
+                  <span className="text-3xl font-bold tabular-nums text-sky-400 sm:text-4xl">₹18 Cr</span>
+                </div>
+              </motion.div>
+
+              <div
+                className="relative z-10 hidden h-14 w-14 shrink-0 items-center justify-center self-center rounded-full border border-slate-200 bg-white text-blue-600 shadow-lg lg:flex lg:self-center"
+                aria-hidden
+              >
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+
+              <motion.div
+                className="flex min-h-0 flex-1 flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-lg sm:p-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <p className="shrink-0 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-800">Where you lose money</p>
+                <ul className="mt-5 flex flex-1 flex-col space-y-3">
+                  {[
+                    { label: "Ghost Workers (3%)", amount: "₹54 Lakhs", icon: "user-x" as const },
+                    { label: "Billing Errors (2%)", amount: "₹36 Lakhs", icon: "doc" as const },
+                    { label: "OT Fraud (1%)", amount: "₹18 Lakhs", icon: "clock" as const },
+                    { label: "Compliance Penalties", amount: "₹50 Lakhs", icon: "alert" as const },
+                    { label: "Admin Inefficiencies", amount: "₹40 Lakhs", icon: "stack" as const },
+                  ].map((item) => (
+                    <li key={item.label} className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-100 text-rose-600">
+                        {item.icon === "user-x" && (
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21a7 7 0 0114 0M21 12h-4m0 0l2-2m-2 2l2 2" />
+                          </svg>
+                        )}
+                        {item.icon === "doc" && (
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        )}
+                        {item.icon === "clock" && (
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        )}
+                        {item.icon === "alert" && (
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                          </svg>
+                        )}
+                        {item.icon === "stack" && (
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="min-w-0 flex-1 text-sm font-medium text-slate-700">{item.label}</span>
+                      <span className="shrink-0 text-sm font-bold tabular-nums text-slate-900">{item.amount}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto flex flex-col gap-1 rounded-2xl bg-rose-50 px-4 py-4 ring-1 ring-rose-100 sm:flex-row sm:items-center sm:justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wide text-rose-800">Total leakage</span>
+                  <span className="text-xl font-bold tabular-nums text-rose-600 sm:text-2xl">₹1.98 Cr / year</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* With InOps + impact — flex rows, ~60/40, matches reference alignment */}
+            <motion.div
+              className="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-md sm:p-8 lg:p-10"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 }}
+            >
+              <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-0">
+                <div className="flex min-w-0 flex-col lg:flex-[1.2] lg:border-r lg:border-slate-200 lg:pr-8 xl:pr-10">
+                  <h3 className="shrink-0 text-left text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+                    With InOps
+                  </h3>
+                  <div className="mt-5 grid grid-cols-2 gap-3 md:flex md:flex-nowrap md:items-stretch md:gap-3">
+                    {(
+                      [
+                        { line: "Eliminate ghost workers", icon: "ghost" as const },
+                        { line: "99%+ invoice accuracy", icon: "invoice" as const },
+                        { line: "Real-time workforce visibility", icon: "visibility" as const },
+                        { line: "Compliance built-in", icon: "compliance" as const },
+                      ] as const
+                    ).map(({ line, icon }) => (
+                      <div
+                        key={line}
+                        className="flex min-h-[5.5rem] min-w-0 flex-1 flex-col items-center justify-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-2 py-3.5 text-center shadow-sm sm:min-h-[6rem] sm:px-2.5"
+                      >
                         <span
-                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white"
+                          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-100 text-blue-700"
                           aria-hidden
                         >
-                          <CheckIcon className="h-3.5 w-3.5 text-white" />
+                          <WithInOpsBenefitIcon variant={icon} />
                         </span>
-                        {line}
-                      </li>
+                        <span className="text-xs font-medium leading-snug text-slate-900 sm:text-[13px]">{line}</span>
+                      </div>
                     ))}
-                  </ul>
-                </motion.div>
-
-                <motion.div
-                  className="flex flex-col gap-4"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
-                >
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-emerald-200/80 bg-emerald-50/90 p-5 shadow-sm sm:p-6">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600/15 text-emerald-700">
-                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                          />
-                        </svg>
-                      </div>
-                      <h3 className="mt-4 text-base font-bold text-slate-900 sm:text-lg">Eliminate Ghost Workers</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                        Aadhaar-linked biometric verification ensures every worker on site is legitimate and verified.
-                      </p>
-                    </div>
-                    <div className="rounded-2xl border border-blue-200/80 bg-blue-50/90 p-5 shadow-sm sm:p-6">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/15 text-blue-700">
-                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
-                          />
-                        </svg>
-                      </div>
-                      <h3 className="mt-4 text-base font-bold text-slate-900 sm:text-lg">Reduce Cost Leakages</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                        Automated invoice cross-verification typically recovers 10–15% in previously undetected billing
-                        errors.
-                      </p>
-                    </div>
                   </div>
-                  <div className="rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm sm:p-8">
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-0">
-                      <div className="border-b border-slate-200 pb-6 text-center sm:border-b-0 sm:border-r sm:pb-0 sm:pr-6">
-                        <p className="text-2xl font-bold tabular-nums text-blue-600 sm:text-3xl">₹2–3 Cr</p>
-                        <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500 sm:text-sm sm:normal-case sm:tracking-normal">
-                          Annual savings per 1000 contractors
+                </div>
+                <div className="flex min-w-0 flex-col border-t border-slate-200 pt-10 lg:flex-1 lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-10">
+                  <h3 className="shrink-0 text-left text-xs font-bold uppercase tracking-[0.18em] text-slate-400">
+                    The impact
+                  </h3>
+                  <div className="mt-5 flex min-h-0 w-full flex-1 flex-col divide-y divide-slate-200 md:flex-row md:divide-x md:divide-y-0">
+                    {(
+                      [
+                        { k: "Leakage prevented", v: "₹1.98 Cr / year", icon: "leakage" as const },
+                        { k: "Payback period", v: "~3 months", icon: "payback" as const },
+                        { k: "Net annual savings", v: "₹19 Lakhs", icon: "savings" as const },
+                      ] as const
+                    ).map((row) => (
+                      <div
+                        key={row.k}
+                        className="flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center px-3 py-6 text-center lg:px-4"
+                      >
+                        <span
+                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm"
+                          aria-hidden
+                        >
+                          <ImpactKpiIcon variant={row.icon} />
+                        </span>
+                        <p className="mt-3.5 max-w-[14rem] text-[10px] font-semibold uppercase leading-snug tracking-wide text-slate-500 sm:mt-4 sm:text-[11px]">
+                          {row.k}
                         </p>
+                        <p className="mt-2 text-base font-bold tabular-nums text-slate-900 sm:text-lg">{row.v}</p>
                       </div>
-                      <div className="text-center sm:pl-6">
-                        <p className="text-2xl font-bold tabular-nums text-slate-800 sm:text-3xl">30–60 Days</p>
-                        <p className="mt-2 text-xs font-medium uppercase tracking-wide text-slate-500 sm:text-sm sm:normal-case sm:tracking-normal">
-                          Typical deployment timeframe
-                        </p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </div>
+            </motion.div>
+
+            <motion.div
+              className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700"
+              >
+                Calculate your savings
+                <span aria-hidden>→</span>
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-blue-600 bg-white px-6 py-3.5 text-sm font-semibold text-blue-600 shadow-sm transition hover:bg-blue-50"
+              >
+                Book a demo
+                <span aria-hidden>→</span>
+              </Link>
+            </motion.div>
           </div>
         </section>
 

@@ -45,10 +45,14 @@ const resourceRoutes: Record<string, string> = {
   Brochures: "/brochures",
 };
 
+function pathUsesSolidNavBar(path: string) {
+  return path.startsWith("/solutions") || path.startsWith("/about") || path.startsWith("/product");
+}
+
 export default function Navbar() {
   const pathname = usePathname();
   /** White bar + fixed sticky (true after home hero ends, or inner pages after small scroll). */
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(() => pathUsesSolidNavBar(pathname));
   /** Home only: navbar in document flow while hero is on screen — scrolls up with the page. */
   const [navStaticHero, setNavStaticHero] = useState(pathname === "/");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -62,7 +66,7 @@ export default function Navbar() {
   };
 
   const updateNavLayout = useCallback(() => {
-    if (pathname.startsWith("/solutions") || pathname.startsWith("/about")) {
+    if (pathUsesSolidNavBar(pathname)) {
       setScrolled(true);
       setNavStaticHero(false);
       return;

@@ -36,7 +36,7 @@ export default function IndustriesSlider() {
             Industries We Serve
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-gray-600">
-            Trusted across manufacturing, logistics, construction, and more
+            Trusted across manufacturing, electronics, logistics, construction, and more
           </p>
         </div>
       </div>

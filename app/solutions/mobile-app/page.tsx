@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
 const smoothEase = [0.33, 1, 0.68, 1] as const;
+
+const mobileAppHeroImage = "/WhatsApp Image 2026-05-04 at 12.24.06 PM.jpeg";
 const viewport = { once: true, amount: 0.2 };
 
 const featureCards = [
@@ -268,62 +269,85 @@ function ModernTeamIcon({ kind }: { kind: (typeof modernTeamPoints)[number]["ico
 export default function MobileAppPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-gray-900">
-      <section className="relative mt-10 overflow-hidden border-b border-blue-100 from-blue-50 via-white to-blue-50 bg-white">
-        <div className="mx-auto grid min-w-0 max-w-7xl grid-cols-1 items-center gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-4 lg:px-10 lg:py-16 xl:gap-6">
-          <motion.div
-            className="min-w-0 max-w-xl lg:ml-20 lg:max-w-lg xl:max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: smoothEase }}
-          >
-            <span className="inline-flex rounded-full border border-blue-200 bg-blue-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-blue-700">
-             MOBILE BASED ATTENDANCE
-            </span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 max-sm:text-3xl sm:text-6xl">
-              Attendance, Now in{" "}
-              <span className="bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text italic text-transparent">
-                Your Pocket.
-              </span>
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              InOps Mobile App brings attendance, leave actions, and workforce visibility directly to your team. No expensive hardware dependency for day-to-day employee self-service.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="inline-flex items-center rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600"
-              >
-                Request Live Demo
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-600"
-              >
-                Download App
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
-            className="flex w-full min-w-0 justify-center lg:w-auto lg:justify-start lg:pl-2"
-          >
-            <div className="flex w-full max-w-[min(100%,220px)] shrink-0 justify-center sm:max-w-none lg:max-w-none">
+      <motion.section
+        className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.45 }}
+      >
+        <motion.div
+          className="relative w-full overflow-hidden"
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
+        >
+          <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+            <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
               <Image
-                src="/WhatsApp_Image_2026-04-27_at_3.53.34_PM-removebg-preview.png"
-                alt="SmartAttendance mobile app sign in screen"
-                width={780}
-                height={1688}
-                className="h-auto max-h-[360px] w-full object-contain object-bottom drop-shadow-[0_24px_48px_rgba(14,116,144,0.22)] sm:max-h-[400px] sm:w-[210px] lg:mr-20 lg:max-h-[490px] lg:w-[380px]"
-                sizes="(max-width: 640px) 190px, (max-width: 1024px) 210px, 380px"
+                src={mobileAppHeroImage}
+                alt="InOps mobile app for attendance and workforce self-service on the go"
+                fill
+                className="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
+              <div
+                className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white to-transparent lg:block"
+                aria-hidden
+              />
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
+                >
+                  <span className="inline-flex rounded-full border border-blue-200 bg-blue-100/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-blue-700">
+                    Mobile based attendance
+                  </span>
+                </motion.div>
+                <motion.h1
+                  className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
+                >
+                  Attendance, now in <span className="text-blue-600">your pocket</span>
+                </motion.h1>
+                <motion.p
+                  className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
+                >
+                  InOps Mobile App brings attendance, leave actions, and workforce visibility directly to your team—without
+                  expensive hardware for day-to-day employee self-service.
+                </motion.p>
+                <motion.div
+                  className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                >
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
+                  >
+                    Request Live Demo
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
+                  >
+                    Download App
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.section>
 {/* 
       <section className="border-b border-gray-100 py-14 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -344,7 +368,7 @@ export default function MobileAppPage() {
             {featureCards.map((card, idx) => (
               <motion.div
                 key={card.title}
-                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md"
+                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -468,7 +492,7 @@ export default function MobileAppPage() {
               </ul>
               <Link
                 href="/contact"
-                className="mt-7 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600"
+                className="mt-7 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm"
               >
                 Explore Dashboard Features
               </Link>
@@ -699,13 +723,13 @@ export default function MobileAppPage() {
           <div className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/contact"
-              className="inline-flex min-w-[170px] items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-slate-800"
+              className="inline-flex min-w-[170px] items-center justify-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-md"
             >
               Get Started Now
             </Link>
             <Link
               href="/contact"
-              className="inline-flex min-w-[170px] items-center justify-center rounded-xl border border-white/35 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+              className="inline-flex min-w-[170px] items-center justify-center rounded-xl border border-white/35 bg-white/10 px-6 py-3 text-sm font-semibold text-white"
             >
               Schedule Demo
             </Link>

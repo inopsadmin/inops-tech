@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import FourPillarsSection from "@/app/components/FourPillarsSection";
+import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 
 /** Hero visual — industrial equipment / fixed assets (`public/images/masshin.jpg`) */
 const fixedAssetHeroImage = "/images/masshin.jpg";
@@ -33,98 +34,22 @@ export default function FixedAssetManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — platform positioning, copy left + fixed-asset imagery right */}
-        <motion.section
-          className="border-b border-slate-100 bg-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.45 }}
-        >
-          <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-12 lg:pt-12">
-            <motion.nav
-              className="text-sm text-slate-500"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.04 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
-                Home
-              </Link>
-              <span className="mx-2 text-slate-400">/</span>
-              <span className="font-medium text-slate-900">Fixed Asset Management</span>
-            </motion.nav>
-
-            <div className="grid grid-cols-1 items-center gap-10 py-10 lg:grid-cols-2 lg:gap-14 lg:py-14">
-              <div className="text-left">
-                <motion.span
-                  className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: 0.06 }}
-                >
-                  Platform Solutions
-                </motion.span>
-                <motion.h1
-                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
-                >
-                  <span className="block">Comprehensive Workforce</span>
-                  <span className="block">Solutions</span>
-                  <span className="block text-blue-600">for Enterprise Control</span>
-                </motion.h1>
-                <motion.p
-                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
-                >
-                  Our platform brings together identity, compliance, operations, and financial systems into a unified
-                  ecosystem designed for large-scale workforce management.
-                </motion.p>
-                <motion.div
-                  className="mt-8 flex flex-wrap items-center gap-3"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
-                >
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition hover:bg-blue-700"
-                  >
-                    Request a Demo
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:border-slate-400 hover:bg-slate-50"
-                  >
-                    Talk to an Expert
-                  </Link>
-                </motion.div>
-              </div>
-
-              <motion.div
-                className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.08 }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/50">
-                  <Image
-                    src={fixedAssetHeroImage}
-                    alt="Industrial machinery and fixed assets on a manufacturing floor, representing enterprise asset control"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
+        <SolutionLandingHero
+          badge={
+            <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+              Platform Solutions
+            </span>
+          }
+          title={
+            <>
+              Comprehensive workforce solutions for{" "}
+              <span className="text-blue-600">enterprise control</span>
+            </>
+          }
+          subtitle="Our platform brings together identity, compliance, operations, and financial systems into a unified ecosystem designed for large-scale workforce management."
+          imageSrc={fixedAssetHeroImage}
+          imageAlt="Industrial machinery and fixed assets on a manufacturing floor, representing enterprise asset control"
+        />
 
         <FourPillarsSection />
 

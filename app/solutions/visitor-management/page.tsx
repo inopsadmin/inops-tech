@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 
-/** Hero background — `public/images/visitor.jpg` */
-const visitorHeroBg = "/images/visitor.jpg";
+const visitorHeroImage = "/images/visitor.jpg";
 
 /** Scheduled vs walk-up process infographic — `public/images/Visitor-Management-Process.png` */
 const visitorProcessImage = "/images/Visitor-Management-Process.png";
@@ -99,51 +99,12 @@ export default function VisitorManagementPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — visitor.jpg + overlays (CSS background for reliable load) */}
-        <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px] bg-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div
-            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url("${visitorHeroBg}")` }}
-            aria-hidden
-          />
-          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
-          <div
-            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(6,182,212,0.14),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Visitor Management
-            </motion.h1>
-            <motion.nav
-              className="mt-4 text-sm text-white"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="text-white hover:text-white/90 transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-white/80">/</span>
-              <span className="text-blue-400 font-medium">Visitor Management</span>
-            </motion.nav>
-          </div>
-        </motion.section>
+        <SolutionLandingHero
+          title="Visitor management for secure, efficient sites"
+          subtitle="Streamline check-in, badges, host workflows, and real-time visibility across lobbies and restricted zones—integrated with your access stack."
+          imageSrc={visitorHeroImage}
+          imageAlt="Visitor management and secure facility lobby"
+        />
 
         {/* Content – flow diagram left, text right */}
         <section className="mt-10 py-6 lg:py-10 border-t border-gray-200 bg-white">

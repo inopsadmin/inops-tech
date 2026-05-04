@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -10,70 +10,21 @@ const viewport = { once: true, amount: 0.2 };
 export default function EwaPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <section className="mt-10 border-t border-gray-200 py-12 lg:py-16 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-12 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.55, ease: smoothEase }}
-          >
-            <span className="inline-flex rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-semibold text-blue-600">
-              Early wage access
-            </span>
-            <h1 className="mt-4 text-[2.6rem] font-bold leading-[1.02] tracking-tight text-gray-900 sm:text-[4rem] lg:text-[4.4rem]">
-              Instant Access to
-              <br />
-              <span className="bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text italic text-transparent">
-                Earned Wages
-              </span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-[1.1rem]">
-              Enable your workforce to access wages they&apos;ve already earned powered by real-time
-              attendance and payroll data.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="inline-flex h-11 items-center rounded-xl bg-blue-600 px-6 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:scale-95"
-              >
-                Request Demo
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex h-11 items-center rounded-xl border border-gray-300 bg-white px-6 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-md active:scale-95"
-              >
-                See How It Works
-              </Link>
-            </div>
-            {/* <p className="mt-6 text-sm font-medium text-gray-500">No loans. No paperwork. Just earned wage access.</p> */}
-            <div className="mt-6 inline-flex flex-wrap items-center gap-2 rounded-xl border border-orange-200 bg-orange-50 px-4 py-2.5 text-sm font-semibold text-orange-700">
-              <span>1L+ workers on platform</span>
-              <span className="text-orange-400">|</span>
-              <span>3000+ device deployed</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.55, ease: smoothEase, delay: 0.05 }}
-            className="relative overflow-hidden"
-          >
-            <div className="relative aspect-[16/9] w-full">
-              <Image
-                src="/Gemini_Generated_Image_po31j8po31j8po31.png"
-                alt="Early wage access dashboard and mobile screen"
-                fill
-                className=""
-                sizes="(max-width: 1024px) 100vw, 82vw"
-                priority
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <SolutionLandingHero
+        badge={
+          <span className="inline-flex rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-semibold text-blue-600">
+            Early wage access
+          </span>
+        }
+        title={
+          <>
+            Instant access to <span className="text-blue-600">earned wages</span>
+          </>
+        }
+        subtitle="Enable your workforce to access wages they've already earned—powered by real-time attendance and payroll data."
+        imageSrc="/images/solution-hero-clms-worker.png"
+        imageAlt="Workforce on site — earned wage access aligned to verified attendance"
+      />
 
       <section className="py-14 lg:py-18 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">

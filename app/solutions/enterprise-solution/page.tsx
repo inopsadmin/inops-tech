@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -79,118 +80,22 @@ export default function EnterpriseSolutionPage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <section className="mt-10 border-t border-gray-200 py-10 lg:py-12 bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1fr_1.08fr] lg:gap-12 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewport}
-            transition={{ duration: 0.55, ease: smoothEase }}
-          >
-            <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
-              The Future of Operations
-            </span>
-            <h1 className="mt-4 text-[3rem] font-bold leading-[0.98] tracking-tight text-gray-900 sm:text-[4.2rem] lg:text-[3.4rem]">
-              <span>Connected</span>{" "}
-              <span>Operations.</span>
-              <br />
-              <span className="text-blue-500">Intelligent</span>{" "}
-              <span className="text-blue-500">Control.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-[1.05rem] lg:text-[1.15rem]">
-              Manage assets, logistics, and warehouse operations through a unified platform with real-time visibility and AI-driven automation.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="inline-flex h-11 items-center rounded-xl bg-blue-500 px-6 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:scale-95"
-              >
-                Request Demo
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex h-11 items-center rounded-xl border border-gray-300 bg-white px-6 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-400 hover:shadow-md active:scale-95"
-              >
-                Explore Solutions
-              </Link>
-            </div>
-
-            <div className="mt-8 flex items-center gap-3">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((avatar) => (
-                  <span
-                    key={avatar}
-                    className="relative inline-flex h-9 w-9 overflow-hidden rounded-full border-2 border-white shadow-sm"
-                  >
-                    <span className="flex h-full w-full items-center justify-center bg-blue-100 text-xs font-semibold text-blue-600">
-                      T{avatar}
-                    </span>
-                  </span>
-                ))}
-              </div>
-              <p className="text-sm text-gray-500 sm:text-base">
-                Trusted by <span className="font-semibold text-gray-700">500+ enterprise logistics teams</span>
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="rounded-2xl border border-gray-200 bg-white p-4 shadow-[0_18px_45px_-28px_rgba(15,23,42,0.42)] sm:p-5"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            whileHover={hoverLift}
-            viewport={viewport}
-            transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-          >
-            <div className="rounded-xl border border-gray-100 bg-[#fbfdff] p-3.5 sm:p-4">
-              <div className="mb-3.5 grid grid-cols-3 gap-2.5">
-                {[
-                  { value: "428", label: "ACTIVE FLEET" },
-                  { value: "98.2%", label: "ASSET HEALTH" },
-                  { value: "4m 12s", label: "AVG. DELAY" },
-                ].map((item) => (
-                  <div key={item.label} className="rounded-lg border border-gray-200 bg-white p-2.5 sm:p-3">
-                    <p className="text-2xl font-bold leading-none text-gray-900">{item.value}</p>
-                    <p className="mt-1 text-[9px] font-semibold tracking-[0.08em] text-gray-500">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mb-3.5 grid h-36 grid-cols-10 items-end gap-2 rounded-lg border border-gray-100 bg-white px-3 py-2 sm:h-40">
-                {[6, 8, 5, 9, 7, 9, 6, 8, 10, 7].map((h, idx) => (
-                  <span
-                    key={`${h}-${idx}`}
-                    className="rounded-t bg-blue-100/80"
-                    style={{ height: `${h * 12}px` }}
-                  />
-                ))}
-              </div>
-
-              <div className="rounded-lg border border-gray-100 bg-white p-2.5 sm:p-3">
-                <div className="mb-2 flex items-center justify-between text-[10px] font-semibold tracking-[0.06em] text-gray-500">
-                  <span>LIVE OPERATIONS</span>
-                  <span>See All</span>
-                </div>
-                <div className="space-y-1.5 text-xs sm:text-sm">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Route optimization complete - Zone 4</span>
-                    <span className="font-semibold text-green-600">SUCCESS</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-600">Fuel efficiency alert - Unit #402</span>
-                    <span className="font-semibold text-amber-600">WARNING</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-600">New shipment inbound - Site A</span>
-                    <span className="font-semibold text-blue-600">INFO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <SolutionLandingHero
+        badge={
+          <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+            The future of operations
+          </span>
+        }
+        title={
+          <>
+            Connected operations.{" "}
+            <span className="text-blue-600">Intelligent control.</span>
+          </>
+        }
+        subtitle="Manage assets, logistics, and warehouse operations through a unified platform with real-time visibility and AI-driven automation."
+        imageSrc={moduleVisuals.efficiencyGain}
+        imageAlt="Warehouse and logistics operations — enterprise visibility"
+      />
 
       <section className="py-12 lg:py-16 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">

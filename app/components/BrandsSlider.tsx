@@ -1,35 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-const clientLogos = [
-  "/client-5.png",
-  "/client-8.png",
-  "/client-9.svg",
-  "/client2.png",
-  "/client6.png",
-  "/client7.png",
-  "/client10.png",
-  "/client17.png",
-  "/client18.png",
-  "/client19.jpg",
-  "/client20.png",
-  "/client22.png",
-  "/client23.webp",
-  "/client24.png",
-  "/client25.svg",
-  "/client26.png",
-  "/client29.png",
-  "/client30.svg",
-];
-
-function logoAltFromSrc(src: string) {
-  const name = src.split("/").pop() ?? "Client logo";
-  return name
-    .replace(/\.[^.]+$/, "")
-    .replace(/[-_]+/g, " ")
-    .replace(/\b\w/g, (m) => m.toUpperCase());
-}
+import { industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
 
 function LogoCard({ src }: { src: string }) {
   return (
@@ -67,12 +39,12 @@ export default function BrandsSlider() {
 
           <div className="relative flex">
             <div className="flex animate-marquee gap-0 motion-reduce:animate-none">
-              {clientLogos.map((src, i) => (
+              {industryLeaderClientLogos.map((src, i) => (
                 <LogoCard key={`a-${i}`} src={src} />
               ))}
             </div>
             <div className="flex animate-marquee gap-0 motion-reduce:animate-none" aria-hidden>
-              {clientLogos.map((src, i) => (
+              {industryLeaderClientLogos.map((src, i) => (
                 <LogoCard key={`b-${i}`} src={src} />
               ))}
             </div>

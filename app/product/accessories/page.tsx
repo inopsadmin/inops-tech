@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { productPageImagery } from "@/app/lib/serviceImagery";
+import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -106,49 +107,12 @@ export default function AccessoriesPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero – dark background with overlay */}
-        <motion.section
-          className="relative min-h-[320px] flex flex-col items-center justify-center overflow-hidden bg-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gray-900/70" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(6,182,212,0.15),transparent)]" />
-          </div>
-          <div className="relative z-10 text-center px-6">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Accessories
-            </motion.h1>
-            <motion.nav
-              className="mt-4 text-sm text-white/90"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-white/60">/</span>
-              <span className="text-blue-600 font-medium">Accessories</span>
-            </motion.nav>
-          </div>
-        </motion.section>
+        <SolutionLandingHero
+          title="Access control accessories"
+          subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks—everything you need to complete lanes, doors, and secure zones."
+          imageSrc="/images/solution-hero-clms-worker.png"
+          imageAlt="Industrial site operations — access hardware and workforce context"
+        />
 
         {/* Main content – section title + two products */}
         <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
