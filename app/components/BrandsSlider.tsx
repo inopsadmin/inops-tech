@@ -1,18 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
+import { enlargedMarqueeLogoSrcs, industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
 
 function LogoCard({ src }: { src: string }) {
+  const large = enlargedMarqueeLogoSrcs.has(src);
   return (
-    <div className="group relative flex h-20 min-w-[120px] flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:min-w-[150px] sm:px-4">
+    <div
+      className={`group relative flex flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:px-4 ${
+        large ? "h-24 min-w-[150px] sm:min-w-[180px]" : "h-20 min-w-[120px] sm:min-w-[150px]"
+      }`}
+    >
       <Image
         src={src}
         alt={logoAltFromSrc(src)}
-        width={140}
-        height={56}
-        className="h-12 w-auto max-w-[120px] object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-        sizes="140px"
+        width={large ? 200 : 140}
+        height={large ? 80 : 56}
+        className={`w-auto object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 ${
+          large
+            ? "h-14 max-w-[13.5rem] sm:h-16 sm:max-w-[15rem]"
+            : "h-12 max-w-[120px]"
+        }`}
+        sizes={large ? "200px" : "140px"}
         unoptimized={src.endsWith(".svg")}
       />
     </div>

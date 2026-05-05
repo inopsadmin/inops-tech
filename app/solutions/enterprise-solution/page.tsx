@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
@@ -76,6 +77,16 @@ export default function EnterpriseSolutionPage() {
         </svg>
       ),
     },
+  ] as const;
+
+  const enterpriseClientLogos = [
+  
+    { src: "/clients/samsung.svg", alt: "Samsung" },
+    { src: "/clients/ibm.svg", alt: "IBM" },
+    { src: "/clients/volvo.svg", alt: "Volvo" },
+    { src: "/clients/yara.svg", alt: "Yara" },
+    { src: "/clients/dtc.svg", alt: "DTC" },
+    { src: "/clients/sap.svg", alt: "SAP" },
   ] as const;
 
   return (
@@ -378,6 +389,35 @@ export default function EnterpriseSolutionPage() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white pb-10 pt-2 lg:pb-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <motion.div
+            className="rounded-2xl border border-gray-200 bg-white px-5 py-7 shadow-[0_14px_35px_-28px_rgba(15,23,42,0.35)] sm:px-7"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.45, ease: smoothEase }}
+          >
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+              Deployed Across Enterprises
+            </p>
+            <div className="mt-6 grid grid-cols-2 items-center gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+              {enterpriseClientLogos.map((logo) => (
+                <div key={logo.src} className="flex h-12 items-center justify-center opacity-80 transition-opacity duration-200 hover:opacity-100">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={160}
+                    height={46}
+                    className="h-9 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

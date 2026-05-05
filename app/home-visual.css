@@ -1,0 +1,72 @@
+/* Home page only — visual polish (imported from app/page.tsx). Scoped via .home-page */
+
+@keyframes home-blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, -5%) scale(1.06);
+  }
+}
+
+@keyframes home-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes home-grid-pan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__blob,
+  .home-hero__grid-pan,
+  .home-hero__glow-pulse {
+    animation: none !important;
+  }
+}
+
+.home-hero__blob--a {
+  animation: home-blob-drift 24s ease-in-out infinite;
+}
+
+.home-hero__blob--b {
+  animation: home-blob-drift 20s ease-in-out infinite reverse;
+}
+
+.home-hero__glow-pulse {
+  animation: home-glow-pulse 5s ease-in-out infinite;
+}
+
+.home-hero__grid-pan {
+  animation: home-grid-pan 45s linear infinite;
+}
+
+/* Main marketing heading: slightly larger + tracking on wide screens */
+.home-display-heading {
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 1280px) {
+  .home-display-heading {
+    font-size: 2.625rem !important;
+    line-height: 1.12 !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .home-display-heading {
+    font-size: 2.85rem !important;
+  }
+}

@@ -282,7 +282,7 @@ export default function MobileAppPage() {
           transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
         >
           <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-            <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+            <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
               <Image
                 src={mobileAppHeroImage}
                 alt="InOps mobile app for attendance and workforce self-service on the go"
@@ -643,54 +643,62 @@ export default function MobileAppPage() {
         <div className="w-full border-t border-slate-200/90 pb-12 pt-12 lg:pb-16 lg:pt-16">
           <motion.section
             className="overflow-hidden border-y border-slate-800 from-[#0b141f] via-[#101a27] to-[#0b141f] py-12 shadow-2xl shadow-slate-900/40 sm:py-14 lg:py-16 bg-black"
+            aria-labelledby="why-smartattendance-heading"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.55, ease: smoothEase }}
           >
-            <div className="mx-auto grid min-w-0 max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10 lg:px-12">
+            <div className="mx-auto grid min-w-0 max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.22fr)] lg:gap-8 lg:px-12">
               <div className="min-w-0">
-                <h2 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
-                  Why Modern Teams <br /> Choose SmartAttendance
+                <h2
+                  id="why-smartattendance-heading"
+                  className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
+                >
+                  Why Modern Teams <br className="hidden sm:block" /> Choose SmartAttendance
                 </h2>
-                <p className="mt-5 text-base text-slate-300 sm:text-lg">
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
                   Built for speed, accuracy, and enterprise-grade reliability.
                 </p>
-                <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
                   {modernTeamPoints.map((point, idx) => (
                     <motion.article
                       key={point.title}
-                      className="rounded-xl border border-slate-800 bg-slate-900/50 p-4"
+                      className="rounded-xl border border-slate-700/80 bg-slate-900/60 p-4 shadow-sm shadow-black/20 sm:p-5"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.35, ease: smoothEase, delay: idx * 0.05 }}
                     >
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-800">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 ring-1 ring-slate-700/80">
                         <ModernTeamIcon kind={point.icon} />
                       </span>
-                      <h3 className="mt-3 text-lg font-semibold text-white">{point.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-400">{point.description}</p>
+                      <h3 className="mt-3 text-base font-semibold leading-snug text-white sm:text-lg">{point.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{point.description}</p>
                     </motion.article>
                   ))}
                 </div>
               </div>
 
               <motion.div
-                className="relative flex min-h-[200px] items-center justify-center p-4 sm:min-h-[260px] sm:p-6 lg:min-h-[600px] lg:p-8"
+                className="relative flex w-full min-w-0 justify-center lg:justify-end"
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
               >
-                <Image
-                  src="/dsfdf-removebg-preview.png"
-                  alt="SmartAttendance mobile and workforce experience"
-                  width={960}
-                  height={600}
-                  className="relative h-auto max-h-[min(55vh,320px)] w-full max-w-2xl object-contain sm:max-h-[380px] lg:absolute lg:left-1/2 lg:top-1/2 lg:h-[600px] lg:max-h-[600px] lg:w-full lg:-translate-x-1/2 lg:-translate-y-1/2"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                />
+                <figure className="m-0 w-full max-w-[min(100%,620px)] sm:max-w-[min(100%,720px)] lg:max-w-[min(100%,860px)]">
+                  <Image
+                    src="/Gemini_Generated_Image_34d3gr34d3gr34d3-removebg-preview.png"
+                    alt="SmartAttendance mobile and workforce experience — dual phone mockups showing attendance and activity in the app."
+                    width={677}
+                    height={369}
+                    quality={95}
+                    className="h-auto w-full object-contain object-center"
+                    sizes="(max-width: 640px) min(100vw,620px), (max-width: 1024px) min(100vw,720px), 860px"
+                  />
+                  <figcaption className="sr-only">SmartAttendance mobile and workforce experience</figcaption>
+                </figure>
               </motion.div>
             </div>
           </motion.section>

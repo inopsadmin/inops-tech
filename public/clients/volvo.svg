@@ -1,0 +1,7 @@
+<svg width="260" height="80" viewBox="0 0 260 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>Volvo</title>
+  <rect width="260" height="80" rx="12" fill="#FFFFFF"/>
+  <text x="130" y="52" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" letter-spacing="1.5" fill="#1D3557">
+    VOLVO
+  </text>
+</svg>

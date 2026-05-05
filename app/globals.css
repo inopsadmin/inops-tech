@@ -16,6 +16,7 @@
   --inops-blue: #1d5fbf;
   --inops-navy: #0f2f57;
   --inops-slate: #6b7280;
+  --home-nav-offset: 4.5rem;
 }
 
 @theme inline {
@@ -33,6 +34,39 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 16.5px;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --home-nav-offset: 4.9rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --home-nav-offset: 5.2rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 17.5px;
+  }
 }
 
 /* Navbar: `position` set in Navbar.tsx (home hero = static, then fixed + white) */
@@ -47,6 +81,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Site-wide brand canvas inspired by logo palette */
@@ -537,8 +573,16 @@ button, a, [role="button"] {
 
 @media (min-width: 1536px) {
   .max-w-7xl {
-    max-width: min(110rem, calc(100vw - (2 * var(--page-gutter))));
+    max-width: min(118rem, calc(100vw - (2 * var(--page-gutter))));
   }
+}
+
+/* Keep container blocks fluid while respecting page caps */
+.inops-template .mx-auto.max-w-7xl,
+.inops-template .mx-auto.max-w-6xl,
+.inops-template .mx-auto.max-w-5xl,
+.inops-template .mx-auto.max-w-4xl {
+  width: 100%;
 }
 
 /* Static surfaces (no Framer `y` on the same node) — lift + shadow */
@@ -625,17 +669,78 @@ button, a, [role="button"] {
   }
 }
 
+/* ===== Global interaction layer (site-wide micro animations) ===== */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .inops-template a[href],
+  .inops-template button {
+    transition:
+      transform 0.22s cubic-bezier(0.33, 1, 0.68, 1),
+      box-shadow 0.22s cubic-bezier(0.33, 1, 0.68, 1),
+      background-color 0.22s ease,
+      border-color 0.22s ease,
+      color 0.22s ease,
+      opacity 0.22s ease;
+  }
+
+  .inops-template a[href]:hover,
+  .inops-template button:hover {
+    transform: translateY(-1px);
+  }
+
+  .inops-template section article {
+    transition:
+      transform 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+      box-shadow 0.3s cubic-bezier(0.33, 1, 0.68, 1),
+      border-color 0.24s ease;
+  }
+
+  .inops-template section article:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 42px -24px rgb(15 23 42 / 0.28);
+  }
+
+  /* Icon-box hover fill on card hover */
+  .inops-template section article:hover [class*="h-10"][class*="w-10"],
+  .inops-template section article:hover [class*="h-11"][class*="w-11"],
+  .inops-template section article:hover [class*="h-12"][class*="w-12"],
+  .inops-template section article:hover [class*="h-14"][class*="w-14"],
+  .inops-template section article:hover [class*="h-16"][class*="w-16"] {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+  }
+
+  .inops-template section article:hover [class*="h-10"][class*="w-10"] svg,
+  .inops-template section article:hover [class*="h-11"][class*="w-11"] svg,
+  .inops-template section article:hover [class*="h-12"][class*="w-12"] svg,
+  .inops-template section article:hover [class*="h-14"][class*="w-14"] svg,
+  .inops-template section article:hover [class*="h-16"][class*="w-16"] svg {
+    color: #ffffff !important;
+  }
+
+  .inops-template section img {
+    transition:
+      transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+      filter 0.28s ease;
+  }
+
+  .inops-template section article:hover img {
+    transform: scale(1.03);
+    filter: saturate(1.05);
+  }
+}
+
 /* ===== Global page template unification ===== */
 /* #contact / .section-flush-footer: last sections above footer — skip bottom padding to avoid a white gap. */
 .inops-template > div > section:not(.hero-tight):not(#contact):not(.section-flush-footer) {
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
+  padding-top: clamp(2.25rem, 2rem + 0.6vw, 3rem) !important;
+  padding-bottom: clamp(2.25rem, 2rem + 0.6vw, 3rem) !important;
 }
 
 @media (min-width: 1024px) {
   .inops-template > div > section:not(.hero-tight):not(#contact):not(.section-flush-footer) {
-    padding-top: 4rem !important;
-    padding-bottom: 4rem !important;
+    padding-top: clamp(2.75rem, 2.35rem + 0.8vw, 3.5rem) !important;
+    padding-bottom: clamp(2.75rem, 2.35rem + 0.8vw, 3.5rem) !important;
   }
 }
 
@@ -685,15 +790,27 @@ button, a, [role="button"] {
 .inops-template li,
 .inops-template dd,
 .inops-template dt {
-  font-size: 1rem !important;
+  font-size: clamp(0.98rem, 0.94rem + 0.16vw, 1.08rem) !important;
   line-height: 1.65 !important;
 }
 
 .inops-template small,
 .inops-template .text-xs,
 .inops-template .text-sm {
-  font-size: 0.92rem !important;
+  font-size: clamp(0.86rem, 0.83rem + 0.12vw, 0.95rem) !important;
   line-height: 1.5 !important;
+}
+
+/* Media never shrinks awkwardly on wide displays */
+.inops-template img,
+.inops-template video,
+.inops-template svg {
+  max-width: 100%;
+}
+
+.inops-template img,
+.inops-template video {
+  height: auto;
 }
 
 /* Removed broad brand overrides: `[class*="bg-blue-"]` matched hover/tint utilities like

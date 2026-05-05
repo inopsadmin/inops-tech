@@ -140,7 +140,7 @@ export default function TimeAndAttendancePage() {
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-              <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <Image
                   src={timeAttendanceProductImage}
                   alt="CCTV-based attendance and computer vision monitoring on site"
@@ -195,12 +195,6 @@ export default function TimeAndAttendancePage() {
                       className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
                     >
                       Book a Live Demo
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
-                    >
-                      Calculate ROI
                     </Link>
                   </motion.div>
                 </div>
@@ -433,7 +427,7 @@ export default function TimeAndAttendancePage() {
                 ].map((item, i) => (
                   <motion.article
                     key={item.title}
-                    className="relative text-center"
+                    className="group relative text-center"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
@@ -442,7 +436,7 @@ export default function TimeAndAttendancePage() {
                     <span className="absolute left-1/2 top-0 z-10 -translate-x-[34px] -translate-y-2 rounded-md bg-slate-900 px-1.5 py-0.5 text-[11px] font-semibold text-white">
                       {item.step}
                     </span>
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm">
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition-colors duration-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white">
                       {item.icon === "monitor" && (
                         <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <rect x="3" y="4" width="18" height="12" rx="2" />

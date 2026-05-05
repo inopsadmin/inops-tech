@@ -70,7 +70,7 @@ function FooterLink({ href, children, isActive = false }: { href: string; childr
   return (
     <Link
       href={href}
-      className={`text-sm underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline ${
+      className={`text-sm underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline xl:text-[0.96rem] 2xl:text-base ${
         isActive ? "font-medium text-blue-300" : "text-slate-400"
       }`}
     >
@@ -81,7 +81,7 @@ function FooterLink({ href, children, isActive = false }: { href: string; childr
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-label text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{children}</h3>
+    <h3 className="font-label text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 xl:text-xs 2xl:text-[0.82rem]">{children}</h3>
   );
 }
 
@@ -105,8 +105,8 @@ export default function Footer() {
       />
       <div className="pointer-events-none absolute inset-0 noise-overlay opacity-[0.35]" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-12 lg:pt-20 lg:pb-12">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+      <div className="relative mx-auto max-w-7xl px-6 pt-14 pb-10 lg:px-12 lg:pt-18 lg:pb-12 xl:pt-20 2xl:pt-22">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-12 2xl:gap-14">
           {/* Brand */}
           <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-90">
@@ -115,22 +115,22 @@ export default function Footer() {
                 alt="InOps Solutions"
                 width={192}
                 height={60}
-                className="h-12 w-auto object-contain sm:h-[3.25rem]"
+                className="h-12 w-auto object-contain sm:h-[3.25rem] xl:h-14 2xl:h-[3.75rem]"
               />
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400 xl:max-w-md xl:text-[0.98rem] 2xl:text-[1.03rem]">
               Enterprise workforce compliance and hardware—integrated so your teams run operations, not spreadsheets.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-600"
+                className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-600 xl:px-6 xl:py-3 xl:text-[0.96rem] 2xl:text-base"
               >
                 Schedule a demo
               </Link>
               <a
                 href="tel:+918088602602"
-                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white backdrop-blur transition hover:border-white/25 hover:bg-white/10"
+                className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white backdrop-blur transition hover:border-white/25 hover:bg-white/10 xl:px-6 xl:py-3 xl:text-[0.96rem] 2xl:text-base"
               >
                 Call sales
               </a>
@@ -143,21 +143,21 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300 active:scale-95"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-slate-400 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-blue-500/10 hover:text-blue-300 active:scale-95 xl:h-11 xl:w-11 2xl:h-12 2xl:w-12"
                     aria-label={s.label}
                   >
                     <SocialIcon icon={s.icon} />
                   </a>
                 ))}
               </div>
-              <div className="w-full max-w-[220px] shrink-0 sm:max-w-[260px]">
+              <div className="w-full max-w-[220px] shrink-0 sm:max-w-[260px] xl:max-w-[290px] 2xl:max-w-[320px]">
                 <Image
                   src="/images/162d25e8-2734-49f7-a567-df2fc8f37e3d.png"
                   alt="Certifications: ISO 27001, SOC 2 Type 2, GDPR, India data privacy, and Make in India"
                   width={1536}
                   height={1024}
                   sizes="(max-width: 640px) 220px, 260px"
-                  className="h-auto w-full max-h-14 object-contain object-left sm:max-h-16 md:max-h-[4.25rem]"
+                  className="h-auto w-full max-h-14 object-contain object-left sm:max-h-16 md:max-h-[4.25rem] xl:max-h-[4.6rem] 2xl:max-h-[5rem]"
                 />
               </div>
             </div>
@@ -180,8 +180,8 @@ export default function Footer() {
           {/* Contact card */}
           <div className="lg:col-span-4">
             <SectionTitle>Head office</SectionTitle>
-            <div className="mt-5 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-5 shadow-xl shadow-black/20 backdrop-blur-sm">
-              <div className="space-y-4 text-sm text-slate-400">
+            <div className="mt-5 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-5 shadow-xl shadow-black/20 backdrop-blur-sm xl:p-6 2xl:p-7">
+              <div className="space-y-4 text-sm text-slate-400 xl:text-[0.96rem] 2xl:text-base">
                 <div className="flex gap-3">
                   <span className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-500/20 text-blue-300">
                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -230,11 +230,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:text-left">
-          <p className="text-xs text-slate-500">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:text-left xl:mt-14 xl:pt-9">
+          <p className="text-xs text-slate-500 xl:text-sm">
             © {new Date().getFullYear()} InOps Solutions. All rights reserved.
           </p>
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500" aria-label="Footer">
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-500 xl:text-sm" aria-label="Footer">
             <Link href="/blog" className="transition hover:text-slate-300">
               Resources
             </Link>

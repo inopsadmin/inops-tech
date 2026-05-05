@@ -202,7 +202,7 @@ export default function CanteenManagementPage() {
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
           imageAlt="Digital canteen and subsidy operations on an industrial campus"
           sectionClassName="min-h-[380px] sm:min-h-[460px] lg:min-h-[560px]"
-          imageWrapperClassName="absolute top-0 bottom-0 right-0 overflow-hidden w-[min(100%,29rem)] sm:w-[min(100%,34rem)] lg:w-[min(100%,40rem)]"
+          imageWrapperClassName="absolute top-0 bottom-0 right-0 mt-10 overflow-hidden w-[min(100%,29rem)] sm:w-[min(100%,34rem)] lg:w-[min(100%,40rem)]"
           imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 34rem, 40rem"
           imageClassName="object-contain object-[right_center] opacity-[0.82]"
           // imageEdgeFadeClassName="z-[1] bg-[linear-gradient(to_top,rgba(255,255,255,0.44),transparent_44%),linear-gradient(to_bottom,rgba(255,255,255,0.44),transparent_44%),linear-gradient(to_left,rgba(255,255,255,0.4),transparent_38%),linear-gradient(to_right,rgba(255,255,255,0.4),transparent_38%)]"

@@ -72,7 +72,7 @@ const painPoints = [
   },
 ] as const;
 
-/** Row-major 3×2 grid: five pain-point cards + photo in the center (top-middle). */
+/** Row-major 3×2 grid: photo stays top-center between cards 1 and 2. */
 const whyInopsGridSlots = [
   { kind: "pain" as const, painIndex: 0 },
   { kind: "image" as const },
@@ -409,7 +409,7 @@ export default function PayrollSolutionsPage() {
           >
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
               {/* Right-half hero background (full width on small screens, then locked to the right on lg) */}
-              <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <Image
                   src={payrollHeroRightBackground}
                   alt="Payroll and contract workforce operations"
@@ -431,9 +431,8 @@ export default function PayrollSolutionsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    Redefining Contract <br />
-                    Workforce Governance <br />
-                    system
+                    <span className="whitespace-nowrap">Redefining Contract Workforce</span> <br />
+                    Governance system
                   </motion.h1>
                   <motion.p
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
@@ -514,27 +513,34 @@ export default function PayrollSolutionsPage() {
                 viewport={viewport}
                 transition={{ duration: 0.45, ease: smoothEase }}
               >
-                <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">Why Inops?</h2>
-                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Why Inops?</h2>
+                <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
                   {whyInopsGridSlots.map((slot, idx) => {
                     if (slot.kind === "image") {
                       return (
                         <motion.div
-                          key="why-inops-center-photo"
-                          className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
+                          key="why-inops-photo"
+                          className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600/90 via-sky-500/80 to-cyan-500/75 p-[1px] shadow-[0_18px_40px_-24px_rgba(29,95,191,0.35)] transition-all duration-300 ease-out motion-reduce:transition-none hover:-translate-y-1 hover:shadow-[0_28px_56px_-28px_rgba(29,95,191,0.45)] sm:min-h-[240px] lg:min-h-[260px]"
                           initial={{ opacity: 0, y: 16 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={viewport}
                           transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.05, 0.25) }}
                         >
-                          <div className="relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-100 transition-transform duration-300 group-hover:-translate-y-1 sm:min-h-[320px] lg:min-h-[300px]">
-                            <Image
-                              src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
-                              alt="Site supervisor standing with safety gear"
-                              fill
-                              className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
+                          <div className="relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[0.9rem] bg-slate-900 sm:min-h-[240px] lg:min-h-[260px]">
+                            <div className="relative min-h-[200px] flex-1 sm:min-h-[220px]">
+                              <Image
+                                src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
+                                alt="Site supervisor standing with safety gear"
+                                fill
+                                className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                priority={false}
+                              />
+                              <div
+                                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent"
+                                aria-hidden
+                              />
+                            </div>
                           </div>
                         </motion.div>
                       );
@@ -544,21 +550,21 @@ export default function PayrollSolutionsPage() {
                     return (
                       <motion.div
                         key={card.title}
-                        className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
+                        className="group rounded-2xl bg-gradient-to-br from-blue-500/0 via-sky-400/0 to-cyan-400/0 p-px shadow-[0_12px_36px_-28px_rgba(15,23,42,0.2)] transition-all duration-300 ease-out motion-reduce:transition-none hover:-translate-y-1 hover:from-blue-500/35 hover:via-sky-400/20 hover:to-cyan-400/25 hover:shadow-[0_24px_48px_-32px_rgba(29,95,191,0.22)]"
                         initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={viewport}
                         transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.05, 0.25) }}
                       >
-                        <article className="flex h-full flex-col rounded-2xl bg-slate-100 p-6 transition-transform duration-300 group-hover:-translate-y-1 sm:p-7">
-                          <div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-base font-bold tabular-nums text-blue-600 transition-colors duration-300 group-hover:bg-blue-100 sm:h-[3.25rem] sm:w-[3.25rem] sm:text-lg">
+                        <article className="flex h-full min-h-[220px] flex-col rounded-[0.9rem] border border-slate-100/80 bg-gradient-to-b from-white to-slate-50/90 p-6 transition-[transform] duration-300 group-hover:border-transparent sm:min-h-[240px] sm:p-7">
+                          <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-sky-50 text-sm font-bold tabular-nums text-blue-700 shadow-sm ring-1 ring-blue-100/90 transition-all duration-300 group-hover:from-blue-600 group-hover:to-sky-500 group-hover:text-white group-hover:ring-blue-400/40 sm:h-11 sm:w-11 sm:text-base">
                             {n}
                           </div>
-                          <h3 className="mt-5 text-2xl font-bold leading-snug text-blue-600 sm:text-[1.75rem] lg:text-[1.85rem] lg:leading-tight">
+                          <h3 className="mt-4 text-lg font-bold leading-snug text-blue-700 sm:text-xl">
                             {card.title}
                           </h3>
-                          <p className="mt-3 text-base font-semibold leading-snug text-slate-900 sm:text-lg">{card.stat}</p>
-                          <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">{card.description}</p>
+                          <p className="mt-2 text-sm font-semibold leading-snug text-slate-900 sm:text-base">{card.stat}</p>
+                          <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">{card.description}</p>
                         </article>
                       </motion.div>
                     );

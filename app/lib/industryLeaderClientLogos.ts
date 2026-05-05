@@ -2,6 +2,9 @@
  * Client logos used in the “Trusted by industry leaders” marquee (`BrandsSlider`)
  * and the hero “Trusted by leading manufacturing…” strip on the home page.
  */
+/** Marquee slots: PNG brand marks that need larger bounds (e.g. BENTELER, Ashok Leyland). */
+export const enlargedMarqueeLogoSrcs = new Set<string>(["/client6.png", "/client7.png"]);
+
 export const industryLeaderClientLogos = [
   "/client-5.png",
   "/client-8.png",

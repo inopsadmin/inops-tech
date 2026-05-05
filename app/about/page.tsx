@@ -8,8 +8,7 @@ import AnimatedCounter from "../components/AnimatedCounter";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-const aboutHeroOfficeImage =
-  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=85";
+const aboutHeroOfficeImage = "/WhatsApp Image 2026-05-05 at 8.15.34 PM.jpeg";
 
 const aboutHeroStats = [
   {
@@ -244,16 +243,33 @@ export default function AboutPage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — two-column intro + stats strip */}
+        {/* Hero — full-section background cover */}
         <motion.section
-          className="border-b border-slate-100 bg-white"
+          className="relative min-h-[min(92vh,920px)] overflow-hidden border-b border-slate-200/70"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <div className="mx-auto max-w-7xl px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 lg:px-12 lg:pb-14 lg:pt-14">
+          {/* Letterbox behind photo when using object-contain */}
+          <div className="absolute inset-0 bg-slate-200/90" aria-hidden />
+          <Image
+            src={aboutHeroOfficeImage}
+            alt="InOps About Us landing image"
+            fill
+            className="object-contain object-right pt-20"
+            sizes="100vw"
+            priority
+          />
+          {/* Lighter overlays so the photo stays visible; stronger tint only on the left for text contrast */}
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-900/35 to-slate-900/10"
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-slate-950/15 sm:bg-slate-950/10" aria-hidden />
+
+          <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-12 lg:pb-20 lg:pt-16">
             <motion.nav
-              className="text-sm text-slate-500"
+              className="text-sm text-slate-200/85"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
@@ -266,10 +282,9 @@ export default function AboutPage() {
               <span className="font-medium text-slate-900">About us</span> */}
             </motion.nav>
 
-            <div className="mt-8 grid grid-cols-1 items-center gap-10 lg:mt-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
-              <div className="ml-0 lg:ml-10">
+            <div className="mt-8 max-w-3xl lg:mt-10 lg:ml-10">
                 <motion.span
-                  className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800"
+                  className="inline-flex rounded-full border border-blue-200/70 bg-blue-100/90 px-3 py-1 text-xs font-semibold text-blue-800"
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
@@ -277,17 +292,17 @@ export default function AboutPage() {
                   About InOps
                 </motion.span>
                 <motion.h1
-                  className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
                 >
                   Bringing{" "}
-                  <span className="text-blue-600">Control &amp; Transparency</span> to Enterprise
+                  <span className="text-blue-300">Control &amp; Transparency</span> to Enterprise
                   Operations.
                 </motion.h1>
                 <motion.p
-                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
+                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-100/90 sm:text-lg"
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
@@ -296,25 +311,6 @@ export default function AboutPage() {
                   operations. We unify identity, compliance, and financial layers into a single,
                   seamless ecosystem.
                 </motion.p>
-              </div>
-
-              <motion.div
-                className="relative mx-auto w-full max-w-lg lg:ml-auto lg:mr-0 lg:max-w-[34rem]"
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <div className="relative aspect-[5/4] overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-lg shadow-slate-200/60">
-                  <Image
-                    src={aboutHeroOfficeImage}
-                    alt="Modern enterprise office — glass meeting spaces and collaborative workspace"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-              </motion.div>
             </div>
           </div>
 

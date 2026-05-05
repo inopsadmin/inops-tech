@@ -42,7 +42,7 @@ export default function SolutionLandingHero({
   imageSrc = DEFAULT_SOLUTION_HERO_IMAGE,
   imageAlt = "Industrial worker in safety gear at a facility — enterprise workforce operations",
   primaryCta = { label: "Get In Touch", href: "/contact" },
-  secondaryCta = { label: "Calculate ROI", href: "/contact" },
+  secondaryCta,
   sectionClassName,
   imageClassName,
   imageWrapperClassName,
@@ -65,8 +65,8 @@ export default function SolutionLandingHero({
 
   const sectionShell =
     "relative overflow-hidden border-b border-slate-200/80 bg-white";
-  const defaultHeights = "min-h-[320px] sm:min-h-[360px] lg:min-h-[400px]";
-  const imageWrapClass = imageWrapperClassName ?? "absolute inset-0 overflow-hidden";
+  const defaultHeights = "min-h-[20rem] sm:min-h-[22.5rem] lg:min-h-[25rem] xl:min-h-[27rem] 2xl:min-h-[29rem]";
+  const imageWrapClass = imageWrapperClassName ?? "absolute inset-0 mt-10 overflow-hidden";
 
   return (
     <motion.section
@@ -91,7 +91,7 @@ export default function SolutionLandingHero({
       <div className={bgGradientClass} aria-hidden />
       {mobileVeilClass ? <div className={mobileVeilClass} aria-hidden /> : null}
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16 xl:py-18 2xl:py-20">
         {badge ? (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -103,7 +103,7 @@ export default function SolutionLandingHero({
         ) : null}
 
         <motion.h1
-          className={`max-w-2xl text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl sm:leading-tight lg:text-[2.65rem] lg:leading-[1.1] ${badge ? "mt-4 sm:mt-5" : ""}`}
+          className={`max-w-2xl text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl sm:leading-tight lg:text-[2.65rem] lg:leading-[1.1] xl:text-[2.95rem] 2xl:text-[3.2rem] ${badge ? "mt-4 sm:mt-5" : ""}`}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
@@ -112,7 +112,7 @@ export default function SolutionLandingHero({
         </motion.h1>
 
         <motion.p
-          className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+          className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.18rem]"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
@@ -132,12 +132,14 @@ export default function SolutionLandingHero({
           >
             {primaryCta.label}
           </Link>
-          <Link
-            href={secondaryCta.href}
-            className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
-          >
-            {secondaryCta.label}
-          </Link>
+          {secondaryCta ? (
+            <Link
+              href={secondaryCta.href}
+              className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
+            >
+              {secondaryCta.label}
+            </Link>
+          ) : null}
         </motion.div>
       </div>
     </motion.section>

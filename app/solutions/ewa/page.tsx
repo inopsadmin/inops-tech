@@ -22,8 +22,12 @@ export default function EwaPage() {
           </>
         }
         subtitle="Enable your workforce to access wages they've already earned—powered by real-time attendance and payroll data."
-        imageSrc="/images/solution-hero-clms-worker.png"
+        imageSrc="/images/ewa-hero.png"
         imageAlt="Workforce on site — earned wage access aligned to verified attendance"
+        imageWrapperClassName="relative mt-10 h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2"
+        imageClassName="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
+        gradientClassName="pointer-events-none absolute inset-0 bg-gradient-to-r from-white from-0% via-white/[0.98] via-[42%] to-transparent to-[62%] lg:via-[44%] lg:to-[68%]"
+        imageSizes="(max-width: 1024px) 100vw, 50vw"
       />
 
       <section className="py-14 lg:py-18 bg-white">

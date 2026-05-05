@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import "./home-visual.css";
 import HeroBackgroundSlider from "./components/HeroBackgroundSlider";
 import { FadeUp, StaggerContainer, StaggerItem } from "./components/MotionSection";
 import { AnimatedSection, AnimatedHeading, AnimatedParagraph, AnimatedCardGrid, AnimatedCardItem } from "./components/AnimatedSection";
@@ -14,8 +15,21 @@ import BrandsSlider from "./components/BrandsSlider";
 import ContactForm from "./components/ContactForm";
 import TiltCard from "./components/TiltCard";
 import SectionFade from "./components/SectionFade";
-import { industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
+import { enlargedMarqueeLogoSrcs, industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
 import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
+
+const heroLogoVisualScale: Record<string, string> = {
+  "/clients/ashok-leyland.svg": "scale-[0.9]",
+  "/clients/automotive-axle.svg": "scale-[0.92]",
+  "/clients/bfw.svg": "scale-[0.92]",
+  "/clients/bhel.svg": "scale-[0.84]",
+  "/clients/foxconn.svg": "scale-[0.88]",
+  "/clients/hal.svg": "scale-[0.94]",
+  "/clients/midhani.svg": "scale-[0.92]",
+  "/clients/seg.svg": "scale-[0.92]",
+  "/clients/skf.svg": "scale-[0.9]",
+  "/clients/wheels-india.svg": "scale-[0.9]",
+};
 
 const whyCards = [
   {
@@ -125,17 +139,44 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-gray-900 perspective-page">
+    <div className="home-page relative min-h-screen bg-white text-gray-900 perspective-page">
       {/* Hero: on home, navbar is static above this block; after hero, navbar is fixed + white */}
       <SectionFade>
         <section
           id="home-hero"
-          className="relative -mt-[4.5rem] flex min-h-[calc(100svh-1rem)] flex-col items-center justify-center overflow-hidden bg-white pt-[6.25rem] sm:pt-[7rem] noise-overlay"
+          className="relative -mt-[var(--home-nav-offset)] flex min-h-[calc(100svh-1rem)] flex-col items-center justify-center overflow-hidden bg-white pt-[6.25rem] sm:pt-[7rem] noise-overlay"
         >
+          {/* Brand gradient + decorative blobs / grid (non-interactive) */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0c1929]/95 via-[#0f2744]/88 to-[#0d3d5c]/85"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cyan-500/15 via-blue-600/10 to-transparent"
+            aria-hidden
+          />
+          <div
+            className="home-hero__blob home-hero__blob--a pointer-events-none absolute -left-[20%] top-[10%] h-[min(85vw,520px)] w-[min(85vw,520px)] rounded-full bg-cyan-400/25 blur-[100px]"
+            aria-hidden
+          />
+          <div
+            className="home-hero__blob home-hero__blob--b pointer-events-none absolute -right-[15%] bottom-[5%] h-[min(70vw,440px)] w-[min(70vw,440px)] rounded-full bg-blue-500/30 blur-[110px]"
+            aria-hidden
+          />
+          <div
+            className="home-hero__grid-pan pointer-events-none absolute inset-0 opacity-[0.2]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(56,189,248,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(29,95,191,0.1) 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+            aria-hidden
+          />
           <HeroBackgroundSlider onPhaseChange={setHeroDarkPhase} onSlideChange={setActiveHeroIndex} />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/50" aria-hidden />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_20%,rgba(59,130,246,0.12),transparent_55%)]" aria-hidden />
-          <div className="relative z-[1] mx-auto flex min-h-[calc(100svh-4.5rem)] w-full max-w-5xl flex-col items-center justify-center px-5 pb-16 text-center sm:px-8 sm:pb-24 lg:px-12">
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/48" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_95%_65%_at_50%_18%,rgba(56,189,248,0.22),transparent_58%)]" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-blue-900/25 via-transparent to-cyan-500/15" aria-hidden />
+          <div className="relative z-[1] mx-auto flex min-h-[calc(100svh-var(--home-nav-offset))] w-full max-w-5xl flex-col items-center justify-center px-5 pb-16 text-center sm:px-8 sm:pb-24 lg:px-12">
             <motion.div
               className="flex flex-col items-center"
               initial={false}
@@ -168,21 +209,29 @@ export default function Home() {
                     Contract Labour Management
                   </span>
                 </motion.div> */}
-                <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }} transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }} className="mt-7 sm:mt-8">
-                  <h1 className="mx-auto max-w-[min(100%,44rem)] font-sans text-[clamp(1.55rem,5.4vw,2.15rem)] font-heading-bold leading-[1.12] tracking-tight text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.55)] sm:text-3xl sm:leading-[1.12] lg:max-w-[58rem] lg:text-[2.65rem] lg:leading-[1.1] xl:text-[3.1rem] xl:leading-[1.1] antialiased">
+                <motion.div
+                  variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 22 } }}
+                  transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                  className="relative mt-7 sm:mt-8"
+                >
+                  <div
+                    className="home-hero__glow-pulse pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[min(120%,42rem)] -translate-x-1/2 -translate-y-1/2 rounded-[3rem] bg-gradient-to-r from-blue-500/45 via-cyan-400/35 to-blue-600/40 blur-[56px]"
+                    aria-hidden
+                  />
+                  <h1 className="relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-200 bg-clip-text px-2 font-sans text-[clamp(1.55rem,5.4vw,2.15rem)] font-heading-bold leading-[1.12] tracking-tight text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)] sm:text-3xl sm:leading-[1.12] lg:max-w-[58rem] lg:text-[2.65rem] lg:leading-[1.1] xl:text-[3.15rem] xl:leading-[1.08] 2xl:text-[3.35rem] antialiased">
                     {heroSlides[activeHeroIndex]?.title}
                   </h1>
                 </motion.div>
                 
                 <motion.div
-                  variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 14 } }}
-                  transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+                  variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 18 } }}
+                  transition={{ duration: 0.55, ease: [0.33, 1, 0.68, 1], delay: 0.05 }}
                   className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-11 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
                 >
-                  <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div whileHover={{ scale: 1.04, y: -4 }} whileTap={{ scale: 0.98 }}>
                     <Link
                       href="#contact"
-                      className="btn-primary btn-glow inline-flex h-12 w-full items-center justify-center rounded-2xl bg-gradient-to-b from-blue-500 to-blue-600 px-6 text-[15px] font-semibold text-white shadow-[0_12px_40px_-8px_rgba(37,99,235,0.55)] ring-1 ring-white/15 transition hover:from-blue-600 hover:to-blue-700 hover:shadow-[0_16px_48px_-10px_rgba(37,99,235,0.6)] sm:w-auto sm:px-8 sm:text-base"
+                      className="btn-primary btn-glow inline-flex h-12 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 via-blue-600 to-blue-700 px-6 text-[15px] font-semibold text-white shadow-[0_12px_40px_-8px_rgba(37,99,235,0.55)] ring-1 ring-white/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:from-sky-400 hover:via-blue-600 hover:to-blue-800 hover:shadow-[0_20px_50px_-8px_rgba(56,189,248,0.45)] sm:w-auto sm:px-8 sm:text-base"
                     >
                       Get In Touch
                       <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -190,10 +239,10 @@ export default function Home() {
                       </svg>
                     </Link>
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div whileHover={{ scale: 1.04, y: -4 }} whileTap={{ scale: 0.98 }}>
                     <Link
                       href="#solutions"
-                      className="btn-secondary inline-flex h-12 w-full items-center justify-center rounded-2xl border border-white/25 bg-white/[0.08] px-6 text-[15px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] backdrop-blur-md transition hover:border-white/35 hover:bg-white/[0.14] hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] sm:w-auto sm:px-8 sm:text-base"
+                      className="btn-secondary inline-flex h-12 w-full items-center justify-center rounded-2xl border border-cyan-300/35 bg-gradient-to-br from-white/[0.12] to-white/[0.06] px-6 text-[15px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-cyan-200/50 hover:from-white/[0.18] hover:to-cyan-400/10 hover:shadow-[0_12px_40px_-10px_rgba(56,189,248,0.35)] sm:w-auto sm:px-8 sm:text-base"
                     >
                       Our Solutions
                     </Link>
@@ -220,7 +269,7 @@ export default function Home() {
 
       <section
         aria-labelledby="hero-trusted-clients-heading"
-        className="relative overflow-x-hidden border-b border-gray-100 bg-white py-6 sm:py-8 lg:py-10"
+        className="relative overflow-x-hidden border-b border-gray-100 bg-white py-5 sm:py-7 lg:py-9"
       >
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-12">
@@ -233,7 +282,7 @@ export default function Home() {
           >
             <h2
               id="hero-trusted-clients-heading"
-              className="text-base font-heading-bold leading-snug text-slate-900 sm:text-lg lg:text-xl"
+              className="text-base font-heading-bold leading-snug tracking-tight text-slate-900 sm:text-lg lg:text-xl lg:tracking-wide xl:text-2xl"
             >
               Trusted by leading manufacturing &amp; infrastructure companies
             </h2>
@@ -243,7 +292,7 @@ export default function Home() {
             <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
           </motion.div>
           <motion.div
-            className="relative mt-8 overflow-hidden rounded-3xl border border-slate-200/80 bg-white py-6 shadow-depth backdrop-blur"
+            className="relative mt-8 -mx-4 overflow-hidden bg-white py-5 sm:-mx-6 sm:py-6 lg:-mx-12"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
@@ -257,41 +306,79 @@ export default function Home() {
                 role="list"
                 aria-label="Client logos"
               >
-                {industryLeaderClientLogos.map((src, i) => (
-                  <div
-                    key={`hero-logo-a-${i}`}
-                    role="listitem"
-                    className="group relative flex h-20 min-w-[120px] flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:min-w-[150px] sm:px-4"
-                  >
-                    <Image
-                      src={src}
-                      alt={logoAltFromSrc(src)}
-                      width={140}
-                      height={56}
-                      className="h-12 w-auto max-w-[120px] object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-                      sizes="140px"
-                      unoptimized={src.endsWith(".svg")}
-                    />
-                  </div>
-                ))}
+                {industryLeaderClientLogos.map((src, i) => {
+                  const large = enlargedMarqueeLogoSrcs.has(src);
+                  return (
+                    <div
+                      key={`hero-logo-a-${i}`}
+                      role="listitem"
+                      className={`group relative flex flex-shrink-0 items-center justify-center px-3 py-4 transition-all duration-300 hover:-translate-y-1 sm:px-4 ${
+                        large
+                          ? "h-24 min-w-[168px] sm:h-[5.5rem] sm:min-w-[200px]"
+                          : "h-20 min-w-[140px] sm:min-w-[160px]"
+                      }`}
+                    >
+                      <span
+                        className={`flex items-center justify-center ${
+                          large
+                            ? "h-14 w-44 overflow-visible sm:h-16 sm:w-52"
+                            : "h-12 w-36 overflow-hidden sm:h-[3.25rem] sm:w-40"
+                        }`}
+                      >
+                        <Image
+                          src={src}
+                          alt={logoAltFromSrc(src)}
+                          width={large ? 200 : 140}
+                          height={large ? 80 : 56}
+                          className={`object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 ${
+                            large
+                              ? "max-h-[3.75rem] max-w-[12rem] sm:max-h-[4.5rem] sm:max-w-[14.5rem] scale-100"
+                              : `max-h-[2.5rem] max-w-[7.8rem] sm:max-h-[2.8rem] sm:max-w-[8.4rem] ${heroLogoVisualScale[src] ?? "scale-[0.92]"}`
+                          }`}
+                          sizes={large ? "200px" : "140px"}
+                          unoptimized={src.endsWith(".svg")}
+                        />
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
               <div className="flex animate-marquee gap-0 motion-reduce:animate-none" aria-hidden>
-                {industryLeaderClientLogos.map((src, i) => (
-                  <div
-                    key={`hero-logo-b-${i}`}
-                    className="group relative flex h-20 min-w-[120px] flex-shrink-0 items-center justify-center rounded-xl px-3 py-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:min-w-[150px] sm:px-4"
-                  >
-                    <Image
-                      src={src}
-                      alt=""
-                      width={140}
-                      height={56}
-                      className="h-12 w-auto max-w-[120px] object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-                      sizes="140px"
-                      unoptimized={src.endsWith(".svg")}
-                    />
-                  </div>
-                ))}
+                {industryLeaderClientLogos.map((src, i) => {
+                  const large = enlargedMarqueeLogoSrcs.has(src);
+                  return (
+                    <div
+                      key={`hero-logo-b-${i}`}
+                      className={`group relative flex flex-shrink-0 items-center justify-center px-3 py-4 transition-all duration-300 hover:-translate-y-1 sm:px-4 ${
+                        large
+                          ? "h-24 min-w-[168px] sm:h-[5.5rem] sm:min-w-[200px]"
+                          : "h-20 min-w-[140px] sm:min-w-[160px]"
+                      }`}
+                    >
+                      <span
+                        className={`flex items-center justify-center ${
+                          large
+                            ? "h-14 w-44 overflow-visible sm:h-16 sm:w-52"
+                            : "h-12 w-36 overflow-hidden sm:h-[3.25rem] sm:w-40"
+                        }`}
+                      >
+                        <Image
+                          src={src}
+                          alt=""
+                          width={large ? 200 : 140}
+                          height={large ? 80 : 56}
+                          className={`object-contain object-center opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 ${
+                            large
+                              ? "max-h-[3.75rem] max-w-[12rem] sm:max-h-[4.5rem] sm:max-w-[14.5rem] scale-100"
+                              : `max-h-[2.5rem] max-w-[7.8rem] sm:max-h-[2.8rem] sm:max-w-[8.4rem] ${heroLogoVisualScale[src] ?? "scale-[0.92]"}`
+                          }`}
+                          sizes={large ? "200px" : "140px"}
+                          unoptimized={src.endsWith(".svg")}
+                        />
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
@@ -299,7 +386,7 @@ export default function Home() {
       </section>
 
       {/* Why InOps */}
-      <AnimatedSection id="about" className="relative bg-white py-10 lg:py-12">
+      <AnimatedSection id="about" className="relative bg-white py-8 lg:py-11">
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-50" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center">
@@ -318,7 +405,10 @@ export default function Home() {
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
-                <AnimatedHeading as="h2" className="text-3xl font-heading-bold tracking-tight text-gray-900 sm:text-4xl">
+                <AnimatedHeading
+                  as="h2"
+                  className="home-display-heading text-3xl font-heading-bold tracking-tight text-gray-900 sm:text-4xl"
+                >
                   Workforce Governance In One Platform.
                 </AnimatedHeading>
               </motion.div>
@@ -338,9 +428,9 @@ export default function Home() {
           >
             {/* Left: featured */}
             <motion.div
-              className="group relative overflow-hidden rounded-[2rem] border border-gray-200/80 bg-white shadow-sm transition-shadow duration-150 ease-out hover:shadow-[0_18px_46px_-22px_rgba(15,23,42,0.42)]"
-              whileHover={{ y: -6, scale: 1.01 }}
-              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative overflow-hidden rounded-[2rem] border border-gray-200/80 bg-white shadow-sm ring-1 ring-transparent transition-all duration-300 ease-out hover:shadow-[0_22px_55px_-24px_rgba(15,23,42,0.45)] hover:ring-cyan-400/20"
+              whileHover={{ y: -6, scale: 1.03 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               style={{ transformOrigin: "center center" }}
             >
               <div className="pointer-events-none absolute inset-x-8 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-sky-400 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
@@ -428,8 +518,8 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.03 }}
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    className="group relative h-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/80 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.5)] backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-blue-300/80 hover:from-white hover:to-blue-50/40 hover:shadow-[0_0_0_2px_rgba(59,130,246,0.12),0_22px_55px_-26px_rgba(30,64,175,0.35)]"
+                    whileHover={{ y: -6, scale: 1.03 }}
+                    className="group relative h-full overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/80 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.5)] backdrop-blur transition-all duration-300 ease-out hover:border-blue-300/80 hover:from-white hover:to-blue-50/40 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.25),0_26px_60px_-28px_rgba(30,64,175,0.38)]"
                   >
                     <div className="pointer-events-none absolute inset-x-5 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-sky-400 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-blue-100/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -497,7 +587,7 @@ export default function Home() {
 
       {/* Proven business impact — replaces former Solutions / operational challenges block */}
       <SectionFade>
-        <section className="relative overflow-hidden  py-14 lg:py-20">
+        <section className="relative overflow-hidden py-11 lg:py-16">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
@@ -511,9 +601,11 @@ export default function Home() {
                 <span className="inline-flex items-center rounded-full border border-blue-200/80 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700 shadow-sm backdrop-blur">
                   Business impact
                 </span>
-                <h2 className="mt-5 text-3xl font-heading-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
+                <h2 className="home-display-heading mt-5 text-3xl font-heading-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
                   Proven Business{" "}
-                  <span className="text-blue-600">Impact</span>
+                  <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+                    Impact
+                  </span>
                 </h2>
                 <p className="mt-4 max-w-lg text-sm leading-relaxed text-slate-600 sm:text-base">
                   InOps isn&apos;t just about management; it&apos;s about measurable financial and operational excellence.
@@ -545,8 +637,8 @@ export default function Home() {
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
               >
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div className="flex h-full flex-col rounded-3xl border border-emerald-200/80  p-6 shadow-[0_12px_40px_-28px_rgba(5,150,105,0.45)]">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-700 ring-1 ring-emerald-500/25">
+                  <div className="group flex h-full flex-col rounded-3xl border border-emerald-200/80 p-6 shadow-[0_12px_40px_-28px_rgba(5,150,105,0.45)] ring-1 ring-transparent transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-emerald-400/90 hover:shadow-[0_22px_52px_-24px_rgba(5,150,105,0.55)] hover:ring-emerald-400/25">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-700 ring-1 ring-emerald-500/25 transition-all duration-300 ease-out group-hover:bg-emerald-600 group-hover:text-white group-hover:ring-emerald-400/50 group-hover:shadow-md group-hover:shadow-emerald-600/25">
                       <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
                         <path d="m9 12 2 2 4-4" />
@@ -558,8 +650,8 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="flex h-full flex-col rounded-3xl border border-sky-200/80  p-6 shadow-[0_12px_40px_-28px_rgba(14,165,233,0.4)]">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-700 ring-1 ring-sky-500/25">
+                  <div className="group flex h-full flex-col rounded-3xl border border-sky-200/80 p-6 shadow-[0_12px_40px_-28px_rgba(14,165,233,0.4)] ring-1 ring-transparent transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-sky-400/90 hover:shadow-[0_22px_52px_-24px_rgba(14,165,233,0.52)] hover:ring-sky-400/30">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-700 ring-1 ring-sky-500/25 transition-all duration-300 ease-out group-hover:bg-sky-600 group-hover:text-white group-hover:ring-sky-400/50 group-hover:shadow-md group-hover:shadow-sky-600/25">
                       <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <path d="M4 19h16" />
                         <path d="M4 19V5" />
@@ -573,13 +665,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 divide-y divide-slate-200/90 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.28)] sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-                  <div className="pb-6 sm:pb-0 sm:pr-6">
-                    <p className="text-2xl font-heading-bold tracking-tight text-blue-600 sm:text-[1.65rem]">₹2–3 Cr</p>
+                <div className="grid grid-cols-1 divide-y divide-slate-200/90 rounded-3xl border border-slate-200/90 bg-white p-6 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.28)] ring-1 ring-transparent transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 hover:-translate-y-1 hover:scale-[1.02] hover:border-slate-300/95 hover:shadow-[0_24px_56px_-28px_rgba(29,95,191,0.18)] hover:ring-blue-400/15 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+                  <div className="group/stat pb-6 transition-colors duration-300 sm:pb-0 sm:pr-6 sm:hover:bg-blue-50/40">
+                    <p className="text-2xl font-heading-bold tracking-tight text-blue-600 transition duration-300 group-hover/stat:text-blue-700 sm:text-[1.65rem]">₹2–3 Cr</p>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">Annual savings per 1000 contractors</p>
                   </div>
-                  <div className="pt-6 sm:pt-0 sm:pl-6">
-                    <p className="text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-[1.65rem]">30–60 Days</p>
+                  <div className="group/stat pt-6 transition-colors duration-300 sm:pt-0 sm:pl-6 sm:hover:bg-slate-50/80">
+                    <p className="text-2xl font-heading-bold tracking-tight text-slate-900 transition duration-300 group-hover/stat:text-slate-950 sm:text-[1.65rem]">30–60 Days</p>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">Typical deployment timeframe</p>
                   </div>
                 </div>
@@ -592,7 +684,7 @@ export default function Home() {
       {/* Scroll to top */}
       <motion.a
         href="#"
-        className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg transition hover:bg-blue-600 hover:shadow-xl btn-glow"
+        className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-white shadow-lg transition-all duration-300 ease-out hover:-translate-y-0.5 hover:from-blue-600 hover:to-cyan-400 hover:shadow-xl hover:shadow-cyan-500/25 btn-glow"
         aria-label="Scroll to top"
         whileHover={{ scale: 1.1, y: -3 }}
         whileTap={{ scale: 0.95 }}
@@ -634,9 +726,51 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {["Attendance", "Compliance", "Productivity", "Executive KPIs"].map((chip) => (
-                      <span key={chip} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600">
-                        {chip}
+                    {[
+                      {
+                        label: "Attendance",
+                        icon: (
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3M5 11h14M6 5h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        label: "Compliance",
+                        icon: (
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3 5 6v6c0 4 2.6 7.7 7 9 4.4-1.3 7-5 7-9V6l-7-3Z" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        label: "Productivity",
+                        icon: (
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 19h16" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M7 15V9" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 15V6" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 15v-4" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        label: "Executive KPIs",
+                        icon: (
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h6l2-3 4 6 2-3h4" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 5h18" />
+                          </svg>
+                        ),
+                      },
+                    ].map((chip) => (
+                      <span
+                        key={chip.label}
+                        className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold tracking-wide text-slate-600 transition-colors duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white"
+                      >
+                        <span className="text-blue-600 transition-colors duration-200 group-hover:text-white">{chip.icon}</span>
+                        {chip.label}
                       </span>
                     ))}
                   </div>
@@ -660,7 +794,7 @@ export default function Home() {
                         hidden: { opacity: 0, y: 18, scale: 0.99 },
                         visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 145, damping: 22, mass: 0.9 } },
                       }}
-                      whileHover={{ y: -5 }}
+                      whileHover={{ y: -5, scale: 1.03 }}
                       transition={{ type: "spring", stiffness: 240, damping: 22, mass: 0.8 }}
                     >
                       <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${card.glowClass} opacity-25`} aria-hidden />

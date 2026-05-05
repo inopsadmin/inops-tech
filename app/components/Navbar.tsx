@@ -135,9 +135,9 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 1px 3px 0 rgba(0,0,0,0.06)" : "0 0 0 0 transparent",
       }}
       transition={headerTransition}
-      className={`navbar-fixed-header w-full shrink-0 overflow-visible border-b border-transparent px-6 py-3.5 lg:px-12 ${navStaticHero ? "relative" : ""}`}
+      className={`navbar-fixed-header h-[var(--home-nav-offset)] w-full shrink-0 overflow-visible border-b border-transparent px-6 lg:px-12 ${navStaticHero ? "relative" : ""}`}
     >
-      <div className="mx-auto flex min-w-0 max-w-7xl items-center justify-between gap-2">
+      <div className="mx-auto flex h-full min-w-0 max-w-7xl items-center justify-between gap-2 xl:gap-3 2xl:gap-4">
         <motion.div
           className="min-w-0 shrink-0"
           initial={{ opacity: 0, x: -12 }}
@@ -150,13 +150,13 @@ export default function Navbar() {
               alt="InOps Solutions"
               width={140}
               height={40}
-              className={`h-8 w-auto object-contain transition-all duration-300 ${scrolled ? "opacity-90" : "opacity-95 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"}`}
+              className={`h-8 w-auto object-contain transition-all duration-300 xl:h-9 2xl:h-10 ${scrolled ? "opacity-90" : "opacity-95 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"}`}
               priority
             />
           </Link>
         </motion.div>
 
-        <nav className="hidden items-center gap-3 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-3 md:flex xl:gap-4 2xl:gap-5" aria-label="Primary">
           {navItems.map((item, i) =>
             hasSolutionsMega(item) ? (
               <motion.div
@@ -174,7 +174,7 @@ export default function Navbar() {
                   <motion.button
                     type="button"
                     id="nav-solutions-menu-button"
-                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors ${
+                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors xl:px-[1.125rem] xl:py-2.5 xl:text-[1.03rem] 2xl:px-5 2xl:py-3 2xl:text-[1.08rem] ${
                       scrolled ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100" : "text-white hover:text-white/90 hover:bg-white/10"
                     }`}
                     whileHover={{ scale: 1.02 }}
@@ -221,7 +221,7 @@ export default function Navbar() {
                 >
                   <motion.button
                     type="button"
-                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors ${
+                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors xl:px-[1.125rem] xl:py-2.5 xl:text-[1.03rem] 2xl:px-5 2xl:py-3 2xl:text-[1.08rem] ${
                       scrolled ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100" : "text-white hover:text-white/90 hover:bg-white/10"
                     }`}
                     whileHover={{ scale: 1.02 }}
@@ -286,9 +286,9 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.08 + i * linkStagger, ease: "easeOut" }}
               >
-                <Link href={item.href} className="relative block px-4 py-2.5">
+                <Link href={item.href} className="relative block px-4 py-2.5 xl:px-[1.125rem] xl:py-2.5 2xl:px-5 2xl:py-3">
                   <motion.span
-                    className={`relative inline-block text-base font-medium tracking-wide transition-colors ${
+                    className={`relative inline-block text-base font-medium tracking-wide transition-colors xl:text-[1.03rem] 2xl:text-[1.08rem] ${
                       scrolled ? "text-gray-600 hover:text-gray-900" : "text-white hover:text-white/90"
                     }`}
                     whileHover="hover"
@@ -350,7 +350,7 @@ export default function Navbar() {
           </Link>
           <Link href="/contact">
             <motion.span
-              className={`hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold shadow-sm transition-all ${
+              className={`hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold shadow-sm transition-all xl:px-5 xl:py-2.5 xl:text-[0.96rem] 2xl:px-6 2xl:py-3 2xl:text-base ${
                 scrolled ? "bg-blue-500 text-white hover:bg-blue-600 hover:shadow-md" : "border-2 border-white text-white hover:bg-white hover:text-gray-900"
               }`}
               whileHover={{ scale: 1.03 }}
@@ -523,7 +523,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
-    {pathname === "/" && scrolled ? <div className="h-[4.5rem] w-full shrink-0" aria-hidden /> : null}
+    {pathname === "/" && scrolled ? <div className="h-[var(--home-nav-offset)] w-full shrink-0" aria-hidden /> : null}
     </>
   );
 }

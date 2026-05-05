@@ -83,20 +83,20 @@ export default function ConnectedEcosystemSection() {
           viewport={viewport}
           transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
         >
-          <ol className="flex list-none flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-1 sm:gap-y-6 lg:flex-nowrap lg:justify-between lg:gap-x-2">
+          <ol className="flex list-none flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-1 sm:gap-y-6 lg:flex-nowrap lg:items-start lg:justify-between lg:gap-x-2">
             {steps.map((step, index) => (
-              <li key={step.id} className="flex flex-col items-center sm:flex-row sm:items-center">
-                <div className="flex max-w-[11rem] flex-col items-center text-center sm:max-w-[9.5rem] lg:max-w-[10.5rem]">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-blue-200/80 bg-white text-blue-600 sm:h-16 sm:w-16">
+              <li key={step.id} className="flex w-full flex-col items-center sm:w-auto sm:flex-row sm:items-center lg:flex-1 lg:justify-center">
+                <div className="group flex w-[10.5rem] flex-col items-center text-center">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-blue-200/80 bg-white text-blue-600 transition-colors duration-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white sm:h-16 sm:w-16">
                     <FlowIcon name={step.icon} />
                   </div>
-                  <p className="mt-3 text-[10px] font-bold uppercase leading-tight tracking-wide text-slate-800 sm:text-[11px]">
+                  <p className="mt-3 min-h-[2.8rem] text-[10px] font-bold uppercase leading-tight tracking-wide text-slate-800 sm:text-[11px]">
                     {step.label}
                   </p>
                 </div>
                 {index < steps.length - 1 ? (
                   <>
-                    <span className="mt-4 hidden text-slate-300 sm:mt-0 sm:mx-2 sm:inline-flex md:mx-3 lg:mx-4" aria-hidden>
+                    <span className="mt-4 hidden text-slate-300 sm:mt-0 sm:mx-2 sm:inline-flex md:mx-3 lg:mx-3" aria-hidden>
                       <svg className="h-5 w-5 shrink-0 lg:h-6 lg:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>

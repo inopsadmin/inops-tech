@@ -180,7 +180,7 @@ export default function BiometricAccessControlPage() {
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-              <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <Image
                   src={smartAccessShowcaseImage}
                   alt="Enterprise biometric access devices in a modern secure facility"
@@ -203,7 +203,7 @@ export default function BiometricAccessControlPage() {
                   >
                     <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-blue-700 shadow-sm backdrop-blur">
                       <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
-                      AI biometric security
+                      Face based attendance
                     </span>
                   </motion.div>
                   <motion.h1
@@ -235,12 +235,6 @@ export default function BiometricAccessControlPage() {
                     >
                       Request Demo
                     </Link>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
-                    >
-                      Calculate ROI
-                    </Link>
                   </motion.div>
                 </div>
               </div>
@@ -257,7 +251,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">Device Categories</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Device Categories</h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
                 Flexible authentication methods designed for different operational needs.
               </p>
@@ -311,7 +305,7 @@ export default function BiometricAccessControlPage() {
                           </svg>
                         )}
                       </span>
-                      <h3 className="text-xl font-semibold text-blue-600">{card.title}</h3>
+                      <h3 className="text-xl font-semibold text-slate-900">{card.title}</h3>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-gray-500">{card.description}</p>
                   </div>
@@ -330,7 +324,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 Built for Speed, Accuracy, and Reliability
               </h2>
             </motion.div>
@@ -449,11 +443,11 @@ export default function BiometricAccessControlPage() {
                   </svg>
                   Face recognition device
                 </span>
-                <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]">
+                <h2 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[3.05rem] lg:leading-[1.1]">
                   Touchless face recognition for{" "}
                   <span className="text-blue-600">secure &amp; fast access</span>
                 </h2>
-                <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                <p className="mt-4 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
                   Visible light facial recognition with advanced anti-spoofing and high-speed authentication for modern access control.
                 </p>
               </motion.div>
@@ -468,7 +462,7 @@ export default function BiometricAccessControlPage() {
                 <div className="pointer-events-none absolute -right-4 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-blue-200/35 blur-3xl sm:h-80 sm:w-80 lg:-right-8" aria-hidden />
                 <div className="pointer-events-none absolute -left-6 top-8 h-40 w-40 rounded-full bg-sky-100/50 blur-2xl" aria-hidden />
                 <div
-                  className="relative md:absolute md:right-0 md:top-15 border-rounded-xl isolate mx-auto w-full max-w-[15.5rem] sm:max-w-xs md:max-w-sm lg:max-w-md [mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)]"
+                  className="relative md:absolute md:right-0 md:top-15 border-rounded-xl isolate mx-auto w-full max-w-[18rem] sm:max-w-sm md:max-w-md lg:max-w-xl [mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)]"
                 >
                   <Image
                     src={touchlessFaceReaderShowcaseImage}
@@ -476,7 +470,7 @@ export default function BiometricAccessControlPage() {
                     width={720}
                     height={540}
                     className="h-auto w-full object-contain object-center rounded-xl"
-                    sizes="(max-width: 640px) 248px, (max-width: 1024px) 288px, 448px"
+                    sizes="(max-width: 640px) 288px, (max-width: 1024px) 360px, 520px"
                   />
                 </div>
               </motion.div>
@@ -494,8 +488,8 @@ export default function BiometricAccessControlPage() {
                 >
                   <ReaderFeatureGlyph name={item.featureIcon} />
                   <div>
-                    <h3 className="text-base font-bold text-slate-900">{item.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.text}</p>
+                    <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                    <p className="mt-1 text-base leading-relaxed text-slate-600">{item.text}</p>
                   </div>
                 </motion.div>
               ))}
@@ -595,7 +589,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 Seamless System Flow
               </h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
@@ -649,7 +643,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 Deployment Environments
               </h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
@@ -721,7 +715,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 Universal Device Excellence
               </h2>
             </motion.div>
@@ -752,7 +746,7 @@ export default function BiometricAccessControlPage() {
                   viewport={viewport}
                   transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  <h3 className="text-xl font-semibold text-blue-600">• {item.title}</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">• {item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
                 </motion.article>
               ))}
@@ -769,7 +763,7 @@ export default function BiometricAccessControlPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                   Seamlessly Connected to Your Systems
                 </h2>
                 <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">
@@ -798,7 +792,7 @@ export default function BiometricAccessControlPage() {
                         </svg>
                       </span>
                       <div>
-                        <p className="text-base font-semibold text-blue-600">{item.title}</p>
+                        <p className="text-base font-semibold text-slate-900">{item.title}</p>
                         <p className="text-sm text-gray-500">{item.description}</p>
                       </div>
                     </li>
@@ -867,8 +861,8 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-blue-600 sm:text-5xl">
-                Why Choose BioSecure?
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Why Choose InOps?
               </h2>
             </motion.div>
 
@@ -933,7 +927,7 @@ export default function BiometricAccessControlPage() {
                       </svg>
                     )}
                   </span>
-                  <h3 className="mt-3 text-xl font-semibold text-blue-600">{item.title}</h3>
+                  <h3 className="mt-3 text-xl font-semibold text-slate-900">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
                 </motion.article>
               ))}
@@ -977,7 +971,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-blue-600 sm:text-6xl">
+              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl">
                 Upgrade to Intelligent Access
               </h2>
               <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-500 sm:text-2xl">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { siSap, siSnowflake } from "simple-icons";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -263,52 +264,58 @@ function EfficiencyHighlightIcon({ name }: { name: (typeof efficiencyHighlightCa
 }
 
 function EcosystemStackMark({ id }: { id: (typeof ecosystemStackMarks)[number]["id"] }) {
-  const c = "h-8 w-[4.5rem] text-slate-400 sm:h-9 sm:w-[5rem]";
+  const c = "h-10 w-[6rem] sm:h-11 sm:w-[6.8rem] lg:h-12 lg:w-[7.4rem]";
   if (id === "sap") {
     return (
-      <svg className={c} viewBox="0 0 72 32" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden>
-        <path strokeLinecap="round" d="M12 8h18M12 16h24M12 24h14" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M44 6l14 10-14 10V6z" />
+      <svg className={c} viewBox="0 0 24 24" fill="currentColor" aria-hidden style={{ color: `#${siSap.hex}` }}>
+        <path d={siSap.path} />
       </svg>
     );
   }
   if (id === "snowflake") {
     return (
-      <svg className={c} viewBox="0 0 72 32" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden>
-        <path strokeLinecap="round" d="M36 6v20M28 10l16 12M44 10L28 22M31 8l10 16M41 8L31 24" />
+      <svg className={c} viewBox="0 0 24 24" fill="currentColor" aria-hidden style={{ color: `#${siSnowflake.hex}` }}>
+        <path d={siSnowflake.path} />
       </svg>
     );
   }
   if (id === "grid") {
     return (
-      <svg className={c} viewBox="0 0 72 32" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden>
-        <rect x="22" y="8" width="7" height="7" rx="1" />
-        <rect x="32.5" y="8" width="7" height="7" rx="1" />
-        <rect x="22" y="17.5" width="7" height="7" rx="1" />
-        <rect x="32.5" y="17.5" width="7" height="7" rx="1" />
+      <svg className={c} viewBox="0 0 96 32" fill="none" aria-hidden>
+        <rect x="22" y="8" width="7" height="7" rx="1.3" fill="#F25022" />
+        <rect x="31.5" y="8" width="7" height="7" rx="1.3" fill="#7FBA00" />
+        <rect x="22" y="17.5" width="7" height="7" rx="1.3" fill="#00A4EF" />
+        <rect x="31.5" y="17.5" width="7" height="7" rx="1.3" fill="#FFB900" />
+        <text x="48" y="20" fill="#64748B" fontSize="8" fontWeight="700" fontFamily="Arial, sans-serif">
+          365
+        </text>
       </svg>
     );
   }
   if (id === "workday") {
     return (
-      <svg className={c} viewBox="0 0 72 32" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M22 24l8-16 8 16M30 12l8 16" />
+      <svg className={c} viewBox="0 0 96 32" fill="none" aria-hidden>
+        <path d="M25 20 32 9l7 11" stroke="#F38B00" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M22 9.5c2.4-3 5.9-4.5 10-4.5s7.6 1.5 10 4.5" stroke="#F38B00" strokeWidth="2.2" strokeLinecap="round" />
       </svg>
     );
   }
   if (id === "chain") {
     return (
-      <svg className={c} viewBox="0 0 72 32" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden>
-        <circle cx="28" cy="16" r="6" />
-        <circle cx="44" cy="16" r="6" />
-        <path strokeLinecap="round" d="M34 16h4" />
+      <svg className={c} viewBox="0 0 112 32" fill="none" aria-hidden>
+        <circle cx="26" cy="16" r="6" stroke="#C74634" strokeWidth="2.2" />
+        <circle cx="40" cy="16" r="6" stroke="#C74634" strokeWidth="2.2" />
+        <path d="M32 16h2" stroke="#C74634" strokeWidth="2.2" strokeLinecap="round" />
+        <text x="52" y="20" fill="#64748B" fontSize="7.5" fontWeight="700" fontFamily="Arial, sans-serif">
+          NETSUITE
+        </text>
       </svg>
     );
   }
   return (
-    <svg className={c} viewBox="0 0 72 32" fill="none" stroke="currentColor" strokeWidth={1.6} aria-hidden>
-      <circle cx="36" cy="16" r="9" />
-      <path strokeLinecap="round" d="M36 10v12M30 14c2 4 4 6 6 6s4-2 6-6" />
+    <svg className={c} viewBox="0 0 96 32" fill="none" aria-hidden>
+      <circle cx="28" cy="16" r="8" stroke="#1BB8F1" strokeWidth="2.2" />
+      <path d="M28 11v10M23 14.5c1.8 3 3.5 4.5 5 4.5s3.2-1.5 5-4.5" stroke="#1BB8F1" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -330,7 +337,7 @@ export default function LabourManagementPage() {
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-              <div className="relative h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <Image
                   src={labourHeroRightBackground}
                   alt="InOps labour management and HRIS — unified workforce, attendance, and payroll"
@@ -361,9 +368,8 @@ export default function LabourManagementPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    TotalWorkforce <br />
-                    Management. <br />
-                    <span className="text-blue-600">Simplified.</span>
+                    <span className="whitespace-nowrap">Total Workforce Management</span> <br />
+                    <span className="text-blue-600 whitespace-nowrap">Simplified.</span>
                   </motion.h1>
                   <motion.p
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
@@ -385,12 +391,6 @@ export default function LabourManagementPage() {
                       className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
                     >
                       Request a Free Demo
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
-                    >
-                      Calculate ROI
                     </Link>
                   </motion.div>
                 </div>
@@ -688,25 +688,27 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">Ecosystem &amp; Integrations</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 sm:text-[0.95rem]">
+                Ecosystem &amp; Integrations
+              </p>
               <h2
                 id="labour-ecosystem-heading"
-                className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem]"
+                className="mt-3 text-[2rem] font-bold tracking-tight text-slate-900 sm:text-[2.25rem] lg:text-[2.5rem]"
               >
                 Works Seamlessly With Your Stack
               </h2>
             </motion.div>
             <motion.div
-              className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 sm:gap-x-12 lg:gap-x-14"
+              className="mt-11 flex flex-wrap items-center justify-center gap-x-12 gap-y-9 sm:gap-x-14 lg:gap-x-16"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 }}
             >
               {ecosystemStackMarks.map((partner) => (
-                <div key={partner.name} className="flex flex-col items-center gap-2">
+                <div key={partner.name} className="flex flex-col items-center gap-2.5">
                   <EcosystemStackMark id={partner.id} />
-                  <span className="text-center text-[11px] font-medium uppercase tracking-wide text-slate-400">
+                  <span className="text-center text-xs font-medium uppercase tracking-wide text-slate-400 sm:text-[0.84rem]">
                     {partner.name}
                   </span>
                 </div>
@@ -855,7 +857,7 @@ export default function LabourManagementPage() {
                     </svg>
                     <span className="absolute text-xl font-bold tracking-tight text-slate-900">75%</span>
                   </div>
-                  <p className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-[1.65rem]">$452,300</p>
+                  <p className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-[1.65rem]">Rs. 452,300</p>
                   <p className="mt-1 text-center text-xs text-slate-500 sm:text-sm">Total Net Pay Disbursed</p>
                 </div>
                 <button
