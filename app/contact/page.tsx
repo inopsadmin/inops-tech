@@ -1,14 +1,18 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
-
-/** Hero background — `public/images/contact-header.jpg` */
-const contactHeroBg = "/images/contact-header.jpg";
+import { FlyInText } from "@/app/components/FlyInText";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
+
+const contactBanner = {
+  src: "/images/contact-hero.png",
+  alt: "InOps support specialist with headset — friendly, professional customer assistance",
+  tagline: "Sales, support & partnerships — Bengaluru",
+} as const;
 
 const contactInfo = [
   {
@@ -43,152 +47,174 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <>
-      <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — contact-header.jpg + overlays (CSS background for reliable load) */}
-        <motion.section
-          className="relative flex min-h-[340px] flex-col items-center justify-center overflow-hidden sm:min-h-[380px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div
-            className="pointer-events-none absolute inset-0 z-0 bg-slate-900 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url("${contactHeroBg}")` }}
-            aria-hidden
-          />
-          {/* <div className="absolute inset-0 z-[1] bg-gray-900/55" aria-hidden /> */}
-          <div
-            className="absolute inset-0 z-[1] bg-gradient-to-b from-gray-900/50 via-gray-900/65 to-gray-900/80"
-            aria-hidden
-          />
-          <div
-            className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_90%_65%_at_50%_25%,rgba(56,189,248,0.12),transparent)]"
-            aria-hidden
-          />
-          <div className="relative z-10 px-6 text-center">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Contact
-            </motion.h1>
-            <motion.nav
-              className="mt-3 text-sm text-white/90"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-white/60">/</span>
-              <span className="text-blue-300 font-medium">Contact</span>
-            </motion.nav>
-          </div>
-        </motion.section>
+    <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_10%,rgba(57,189,232,0.16),transparent_28%),radial-gradient(circle_at_86%_0%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_56%,#eef4f8_100%)]"
+        aria-hidden
+      />
 
-        {/* Contact info + form + map */}
-        <section className="border-t border-gray-100/80 bg-gradient-to-b from-slate-50/60 to-white py-6 lg:py-10">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            {/* Two columns: contact info (left) + form (right) */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
-              {/* Left: contact info with map pattern background */}
-              <motion.div
-                className="relative rounded-2xl border border-gray-200 bg-gray-50 p-8 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-gray-300 hover:shadow-md lg:p-10"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.75, ease: smoothEase }}
-                whileHover={{ y: -3, transition: { duration: 0.22, ease: smoothEase } }}
-              >
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-[0.03]"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                  }}
+      <section className="relative z-[1] px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-12 lg:pb-16 lg:pt-28">
+        <div className="mx-auto max-w-7xl">
+          <motion.header
+            className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.55, ease: smoothEase }}
+          >
+            <div className="overflow-hidden border-b border-slate-200/90 shadow-[0_28px_80px_-36px_rgba(15,47,87,0.55)]">
+              <div className="relative aspect-[3/1] min-h-[120px] w-full sm:aspect-[16/5] sm:min-h-[140px] lg:min-h-[160px]">
+                <Image
+                  src={contactBanner.src}
+                  alt={contactBanner.alt}
+                  fill
+                  className="object-cover object-[center_22%] sm:object-[center_28%]"
+                  sizes="100vw"
+                  priority
                 />
-                <div className="relative space-y-8">
-                  {contactInfo.map((item, i) => (
-                    <motion.div
-                      key={item.label}
-                      className="group flex gap-4"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={viewport}
-                      transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 * i }}
-                      whileHover={{ x: 4, transition: { duration: 0.2, ease: smoothEase } }}
-                    >
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-500 text-white shadow-md shadow-blue-500/25 transition-transform duration-300 group-hover:scale-105">
+                <div
+                  className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/35 to-slate-950/80"
+                  aria-hidden
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
+                  <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
+                  <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">Contact</h1>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{contactBanner.tagline}</p>
+                </div>
+              </div>
+            </div>
+          </motion.header>
+
+          <div className="mb-8 mt-14 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+                Get in touch
+              </FlyInText>
+              <FlyInText
+                as="h2"
+                direction="left"
+                delay={0.06}
+                className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-[var(--inops-navy)] sm:text-4xl"
+              >
+                We&apos;re ready to help
+              </FlyInText>
+            </div>
+            <FlyInText as="p" direction="up" delay={0.08} className="max-w-lg text-sm leading-7 text-slate-600">
+              Send a message or reach us directly for product demos, implementation questions, and support requests.
+            </FlyInText>
+          </div>
+
+          <div className="grid grid-cols-1 gap-7 lg:grid-cols-[0.9fr_1.1fr]">
+            <motion.div
+              className="relative overflow-hidden rounded-[1.65rem] border border-white bg-white p-6 shadow-[0_18px_55px_-36px_rgba(15,47,87,0.5)] ring-1 ring-slate-900/[0.04] sm:p-7 lg:p-8"
+              initial={{ opacity: 0, x: -36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.65, ease: smoothEase }}
+              whileHover={{ y: -6, transition: { duration: 0.22, ease: smoothEase } }}
+            >
+              <div
+                className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#39bde8]/15 blur-3xl"
+                aria-hidden
+              />
+              <div className="relative space-y-5">
+                {contactInfo.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    className="group rounded-2xl border border-slate-200/80 bg-gradient-to-br from-white to-slate-50/80 p-5 transition hover:border-[var(--inops-blue)]/35 hover:shadow-[0_18px_45px_-32px_rgba(15,47,87,0.65)]"
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 * i }}
+                    whileHover={{ x: 5, transition: { duration: 0.2, ease: smoothEase } }}
+                  >
+                    <div className="flex gap-4">
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[var(--inops-navy)] text-white shadow-lg shadow-slate-900/15 transition group-hover:bg-[var(--inops-blue)] group-hover:shadow-blue-600/25">
                         {item.icon}
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-gray-900">{item.label}</p>
-                        <p className="mt-1 text-gray-600 leading-relaxed">{item.value}</p>
+                        <FlyInText
+                          as="p"
+                          direction="right"
+                          delay={0.05 * i}
+                          className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--inops-blue)]"
+                        >
+                          {item.label.replace(":", "")}
+                        </FlyInText>
+                        <FlyInText as="p" direction="up" delay={0.08 + 0.05 * i} className="mt-2 leading-7 text-slate-600">
+                          {item.value}
+                        </FlyInText>
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-              {/* Right: contact form */}
-              <motion.div
-                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/60 hover:shadow-lg lg:p-10"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.75, ease: smoothEase, delay: 0.1 }}
-                whileHover={{ y: -3, transition: { duration: 0.22, ease: smoothEase } }}
-              >
-                <motion.h2
-                  className="text-xl font-bold text-gray-900 sm:text-2xl"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.2 }}
+            <motion.div
+              className="relative overflow-hidden rounded-[1.65rem] border border-white bg-white p-6 shadow-[0_18px_55px_-36px_rgba(15,47,87,0.5)] ring-1 ring-slate-900/[0.04] sm:p-7 lg:p-8"
+              initial={{ opacity: 0, x: 36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.65, ease: smoothEase, delay: 0.08 }}
+              whileHover={{ y: -6, transition: { duration: 0.22, ease: smoothEase } }}
+            >
+              <div
+                className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[var(--inops-blue)]/10 blur-3xl"
+                aria-hidden
+              />
+              <div className="relative">
+                <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+                  Message us
+                </FlyInText>
+                <FlyInText
+                  as="h3"
+                  direction="left"
+                  delay={0.06}
+                  className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[var(--inops-navy)] sm:text-3xl"
                 >
                   Send us a message
-                </motion.h2>
-                <motion.p
-                  className="mt-2 text-gray-600"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.28 }}
-                >
-                  Whether you need Reliable Access Control Systems, attendance, or payroll support—fill out the form below and we&apos;ll get back to you soon.
-                </motion.p>
-                <ContactForm />
-              </motion.div>
-            </div>
-
-            {/* Embedded map */}
-            <motion.div
-              className="mt-12 overflow-hidden rounded-2xl border border-gray-200 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-gray-300 hover:shadow-md"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.7, ease: smoothEase }}
-              whileHover={{ y: -2, transition: { duration: 0.22, ease: smoothEase } }}
-            >
-              <iframe
-                title="InOps Solutions location - Koramangala, Bengaluru"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.016988!2d77.6242!3d12.9352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15e3e5c14749%3A0x1b7756b2e58d8d8!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1709123456789"
-                width="100%"
-                height="360"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="block w-full"
-              />
+                </FlyInText>
+                <FlyInText as="p" direction="up" delay={0.12} className="mt-3 text-sm leading-7 text-slate-600">
+                  Tell us what you need. Our team will get back with the right next step.
+                </FlyInText>
+                <div className="mt-7">
+                  <ContactForm />
+                </div>
+              </div>
             </motion.div>
           </div>
-        </section>
-      </div>
-    </>
+
+          <motion.div
+            className="mt-10 overflow-hidden rounded-[1.75rem] border border-white bg-white shadow-[0_24px_80px_-48px_rgba(15,47,87,0.55)] ring-1 ring-slate-900/[0.04]"
+            initial={{ opacity: 0, y: 38 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.65, ease: smoothEase }}
+            whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
+          >
+            <div className="border-b border-slate-200/80 bg-gradient-to-r from-white via-slate-50 to-[#eaf7fc] px-6 py-5 sm:px-8">
+              <FlyInText as="p" direction="right" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+                Bengaluru office
+              </FlyInText>
+              <FlyInText as="h3" direction="up" delay={0.06} className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[var(--inops-navy)]">
+                Koramangala Industrial Layout
+              </FlyInText>
+            </div>
+            <iframe
+              title="Office location - Koramangala, Bengaluru"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.016988!2d77.6242!3d12.9352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15e3e5c14749%3A0x1b7756b2e58d8d8!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1709123456789"
+              width="100%"
+              height="390"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block w-full grayscale-[15%] transition duration-500 hover:grayscale-0"
+            />
+          </motion.div>
+        </div>
+      </section>
+    </div>
   );
 }

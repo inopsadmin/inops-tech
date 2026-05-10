@@ -218,13 +218,69 @@ button, a, [role="button"] {
   animation: marquee 50s linear infinite;
 }
 .hover-pause:hover .animate-marquee,
-.hover-pause:hover .animate-marquee-slow {
+.hover-pause:hover .animate-marquee-slow,
+.hover-pause:hover .animate-marquee-industries-track {
   animation-play-state: paused;
+}
+.hover-pause:hover .industry-marquee-item {
+  animation-play-state: paused;
+}
+
+/* Industries ribbon: horizontal loop + staggered per-card “wave” (synced by --industry-stagger) */
+@keyframes marquee-industries-track {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.animate-marquee-industries-track {
+  animation: marquee-industries-track 52s linear infinite;
+}
+
+@keyframes industry-card-ribbon {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.4deg) scale(1);
+    filter: brightness(1) saturate(1);
+  }
+  18% {
+    transform: translateY(-16px) rotate(0.55deg) scale(1.035);
+    filter: brightness(1.06) saturate(1.08);
+  }
+  40% {
+    transform: translateY(8px) rotate(-0.3deg) scale(0.98);
+    filter: brightness(0.97) saturate(1.03);
+  }
+  62% {
+    transform: translateY(-10px) rotate(0.35deg) scale(1.02);
+    filter: brightness(1.03) saturate(1.06);
+  }
+  82% {
+    transform: translateY(4px) rotate(-0.15deg) scale(0.995);
+    filter: brightness(0.99) saturate(1.02);
+  }
+}
+
+.industry-marquee-item {
+  animation: industry-card-ribbon 8.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation-delay: calc(var(--industry-stagger, 0) * -1.12s);
+  will-change: transform, filter;
+}
+
+/* Faster speed only for home trusted-clients strip */
+.hero-trusted-marquee .animate-marquee {
+  animation-duration: 14s;
 }
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-marquee-slow {
     animation: none;
+  }
+  .animate-marquee-industries-track,
+  .industry-marquee-item {
+    animation: none !important;
   }
 }
 
@@ -397,10 +453,52 @@ button, a, [role="button"] {
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
+/* Rotating multi-color border ring (for CTAs / highlight sections) */
+@keyframes inops-rotating-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.inops-rotating-border {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.inops-rotating-border::before {
+  content: "";
+  position: absolute;
+  inset: -70%;
+  background: conic-gradient(
+    from 180deg,
+    #1d5fbf,
+    #39bde8,
+    #22c55e,
+    #f59e0b,
+    #ec4899,
+    #1d5fbf
+  );
+  animation: inops-rotating-border 6s linear infinite;
+}
+.inops-rotating-border::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(1.5rem - 2px);
+  background: #ffffff;
+}
+.inops-rotating-border > * {
+  position: relative;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-reveal-3d,
   .animate-float-3d,
   .animate-glow-pulse {
+    animation: none;
+  }
+  .inops-rotating-border::before {
     animation: none;
   }
 }
@@ -625,9 +723,10 @@ button, a, [role="button"] {
     transform: translate3d(0, 36px, 0);
   }
 
+  /* Use `none` (not translate3d(0,0,0)) so descendants like animated GIFs keep playing after reveal */
   main section.site-reveal-pending.site-reveal-visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: none;
   }
 }
 
@@ -728,6 +827,57 @@ button, a, [role="button"] {
     transform: scale(1.03);
     filter: saturate(1.05);
   }
+
+  /* Command dashboard rows on home — not lift/shadow cards; opt out of global article hover */
+  .inops-template section article.dashboard-feature-row {
+    transition: none !important;
+  }
+
+  .inops-template section article.dashboard-feature-row,
+  .inops-template section article.dashboard-feature-row:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .inops-template section article.dashboard-feature-row:hover img {
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Command dashboard rows: same opt-out outside hover-media so coarse pointers / edge cases never pick up shadow */
+.inops-template section article.dashboard-feature-row,
+.inops-template section article.dashboard-feature-row:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+main section article.dashboard-feature-row img.site-img-hover,
+main section article.dashboard-feature-row img.site-img-hover:hover {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Animated GIF tick in Business impact — no hover/transition layers (breaks GIF playback in some browsers) */
+.inops-template section img.impact-bullet-tick {
+  transition: none !important;
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+  height: 2rem !important;
+  width: 2rem !important;
+  max-height: 2rem !important;
+  max-width: 2rem !important;
+}
+
+main section img.impact-bullet-tick.site-img-hover,
+main section img.impact-bullet-tick.site-img-hover:hover {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
 }
 
 /* ===== Global page template unification ===== */

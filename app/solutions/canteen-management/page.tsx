@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
+import VideoLivePopups from "@/app/components/VideoLivePopups";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -17,42 +19,82 @@ const buttonHover =
 
 /** Scheduled vs walk-up process — `public/images/Visitor-Management-Process (1).png` */
 const visitorManagementProcessImage = "/images/Visitor-Management-Process (1).png";
+const digitalCanteenSubsidyControlVideo = "/Digital_canteen_subsidy_control_202605080015.mp4";
+const visitorDeskLobbyCampusStackVideo = "/Visitor_desk_lobby_campus_stack_202605080018.mp4";
+const visitorManagementSystemVideo = "/genrate_this_image_video_202605080021.mp4";
 
-/** Visily “Real-time Operational Visibility”–style metrics, adapted for canteen. */
+/** Live ops metrics — tones drive premium card styling below. */
+type OperationalMetricTone = "emerald" | "amber" | "sky" | "violet";
+
+const operationalMetricPresentation: Record<
+  OperationalMetricTone,
+  {
+    bar: string;
+    iconTile: string;
+    orb: string;
+    valueClass: string;
+  }
+> = {
+  emerald: {
+    bar: "from-emerald-400 via-teal-400 to-cyan-400",
+    iconTile:
+      "bg-gradient-to-br from-emerald-500/25 to-emerald-600/10 text-emerald-200 ring-emerald-400/25 shadow-[0_12px_40px_-16px_rgba(16,185,129,0.45)]",
+    orb: "bg-emerald-400/25",
+    valueClass: "text-white",
+  },
+  amber: {
+    bar: "from-amber-400 via-orange-400 to-rose-400",
+    iconTile:
+      "bg-gradient-to-br from-amber-500/25 to-orange-600/10 text-amber-100 ring-amber-400/30 shadow-[0_12px_40px_-16px_rgba(245,158,11,0.4)]",
+    orb: "bg-amber-400/20",
+    valueClass: "text-white",
+  },
+  sky: {
+    bar: "from-sky-400 via-blue-500 to-indigo-500",
+    iconTile:
+      "bg-gradient-to-br from-sky-500/30 to-blue-700/15 text-sky-100 ring-sky-400/35 shadow-[0_12px_40px_-16px_rgba(56,189,248,0.45)]",
+    orb: "bg-sky-400/22",
+    valueClass: "text-white",
+  },
+  violet: {
+    bar: "from-violet-400 via-purple-500 to-fuchsia-500",
+    iconTile:
+      "bg-gradient-to-br from-violet-500/25 to-purple-700/15 text-violet-100 ring-violet-400/30 shadow-[0_12px_40px_-16px_rgba(139,92,246,0.4)]",
+    orb: "bg-violet-400/20",
+    valueClass: "text-white",
+  },
+};
+
 const operationalMetrics = [
   {
     label: "Meals verified today",
     value: "1,204",
     hint: "Biometric & rule-based checks",
     icon: "shield" as const,
-    accent: "text-emerald-600",
-    bg: "bg-emerald-50",
+    tone: "emerald" as const,
   },
   {
     label: "Peak canteen utilization",
     value: "88%",
     hint: "Capacity during lunch windows",
     icon: "utensils" as const,
-    accent: "text-orange-600",
-    bg: "bg-orange-50",
+    tone: "amber" as const,
   },
   {
     label: "Subsidy & payroll sync",
     value: "Real-time",
     hint: "Accruals tied to HR / payroll",
     icon: "link" as const,
-    accent: "text-blue-600",
-    bg: "bg-blue-50",
+    tone: "sky" as const,
   },
   {
     label: "Platform uptime",
     value: "99.98%",
     hint: "Mission-critical site operations",
     icon: "clock" as const,
-    accent: "text-blue-600",
-    bg: "bg-blue-50",
+    tone: "violet" as const,
   },
-];
+] as const;
 
 /** Core pillars from Visily “Digital Canteen & Subsidy Control” section. */
 const digitalCanteenPillars = [
@@ -62,26 +104,58 @@ const digitalCanteenPillars = [
   "Contractor vs. employee pricing and entitlements without manual spreadsheets.",
 ];
 
+type HighlightAccent = "sky" | "indigo" | "amber";
+
+const secondaryHighlightStyle: Record<
+  HighlightAccent,
+  { bar: string; iconSurface: string; hoverRing: string; orb: string }
+> = {
+  sky: {
+    bar: "from-sky-400 via-blue-500 to-indigo-500",
+    iconSurface:
+      "bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25 ring-2 ring-white",
+    hoverRing: "hover:border-sky-300/80 hover:shadow-sky-500/10",
+    orb: "bg-sky-400/25",
+  },
+  indigo: {
+    bar: "from-indigo-400 via-violet-500 to-purple-600",
+    iconSurface:
+      "bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25 ring-2 ring-white",
+    hoverRing: "hover:border-indigo-300/70 hover:shadow-indigo-500/10",
+    orb: "bg-violet-400/20",
+  },
+  amber: {
+    bar: "from-amber-400 via-orange-400 to-rose-500",
+    iconSurface:
+      "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/25 ring-2 ring-white",
+    hoverRing: "hover:border-amber-300/80 hover:shadow-amber-500/10",
+    orb: "bg-amber-400/22",
+  },
+};
+
 const secondaryHighlights = [
   {
     title: "Queue & capacity insight",
     description:
-      "Understand dwell times and peak queues so you can staff lanes, stagger breaks, and right-size production.",
+      "See dwell times and peak queues in context so you can staff lanes, stagger breaks, and right-size production before the rush hits.",
     icon: "chart" as const,
+    accent: "sky" as const,
   },
   {
     title: "Ops-friendly tablets",
     description:
-      "Give canteen supervisors a mobile-first view of counts, exceptions, and overrides at the serving line.",
+      "Supervisors get a mobile-first view of live counts, exceptions, and overrides—right at the serving line where decisions matter.",
     icon: "device" as const,
+    accent: "indigo" as const,
   },
   {
     title: "Proactive alerts",
     description:
-      "Flag policy breaches, duplicate scans, and unusual consumption patterns before they become audit issues.",
+      "Surface policy breaches, duplicate scans, and unusual consumption early—before they turn into audit findings or shrinkage.",
     icon: "bell" as const,
+    accent: "amber" as const,
   },
-];
+] as const;
 
 /** Visitor desk / lobby — aligns with combined “canteen & visitor” brochure narrative. */
 const visitorExperiencePillars = [
@@ -97,20 +171,23 @@ const visitorLobbyHighlights = [
     description:
       "Hosts pre-approve visitors, cut desk time, and smooth peak-hour arrivals without extra headcount.",
     icon: "calendar" as const,
+    accent: "sky" as const,
   },
   {
     title: "Badges & access handoff",
     description:
       "Print or digital badges that integrate with turnstiles and access control for the right zones.",
     icon: "badge" as const,
+    accent: "indigo" as const,
   },
   {
     title: "Lobby analytics & reporting",
     description:
       "Traffic patterns, dwell insights, and exports for facilities, security, and compliance reviews.",
     icon: "chart" as const,
+    accent: "amber" as const,
   },
-];
+] as const;
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -120,8 +197,8 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function MetricIcon({ name }: { name: "shield" | "utensils" | "link" | "clock" }) {
-  const c = "h-6 w-6";
+function MetricIcon({ name, className = "h-6 w-6" }: { name: "shield" | "utensils" | "link" | "clock"; className?: string }) {
+  const c = className;
   if (name === "shield") {
     return (
       <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -150,8 +227,14 @@ function MetricIcon({ name }: { name: "shield" | "utensils" | "link" | "clock" }
   );
 }
 
-function HighlightIcon({ name }: { name: "chart" | "device" | "bell" | "calendar" | "badge" }) {
-  const c = "h-6 w-6";
+function HighlightIcon({
+  name,
+  className = "h-6 w-6",
+}: {
+  name: "chart" | "device" | "bell" | "calendar" | "badge";
+  className?: string;
+}) {
+  const c = className;
   if (name === "chart") {
     return (
       <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -193,321 +276,665 @@ export default function CanteenManagementPage() {
       <div className="min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           badge={
-            <span className="inline-flex rounded-full border border-blue-100 bg-blue-50/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
-              Canteen and visitor solutions
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-sm">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+              Canteen &amp; visitor solutions
             </span>
           }
-          title="Manage Visitors and Canteen Operations with Ease"
-          subtitle="Centralize meal issuance, biometric verification, and subsidy rules from the serving line to payroll—aligned with visitor check-in and lobby workflows when you need one campus story."
+          title={
+            <>
+              <span className="block text-slate-900">Canteen, visitors, and subsidies</span>
+              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">unified on one platform.</span>
+            </>
+          }
+          subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll—then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
-          imageAlt="Digital canteen and subsidy operations on an industrial campus"
-          sectionClassName="min-h-[380px] sm:min-h-[460px] lg:min-h-[560px]"
-          imageWrapperClassName="absolute top-0 bottom-0 right-0 mt-10 overflow-hidden w-[min(100%,29rem)] sm:w-[min(100%,34rem)] lg:w-[min(100%,40rem)]"
-          imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 34rem, 40rem"
-          imageClassName="object-contain object-[right_center] opacity-[0.82]"
-          // imageEdgeFadeClassName="z-[1] bg-[linear-gradient(to_top,rgba(255,255,255,0.44),transparent_44%),linear-gradient(to_bottom,rgba(255,255,255,0.44),transparent_44%),linear-gradient(to_left,rgba(255,255,255,0.4),transparent_38%),linear-gradient(to_right,rgba(255,255,255,0.4),transparent_38%)]"
-          gradientClassName="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.78)_11%,rgba(255,255,255,0.35)_20%,rgba(255,255,255,0.12)_28%,transparent_40%)] sm:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.72)_12%,rgba(255,255,255,0.28)_21%,rgba(255,255,255,0.08)_30%,transparent_42%)] lg:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.68)_13%,rgba(255,255,255,0.22)_22%,transparent_38%)]"
-          mobileStackGradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white/15 via-transparent to-white/10 sm:hidden"
-        />
+          imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
+          videoSrc="/genrate_this_part_image_202605080013.mp4"
+          sectionClassName="min-h-[28rem] sm:min-h-[32rem] lg:min-h-[min(36rem,88vh)]"
+          imageWrapperClassName="absolute inset-0 overflow-hidden sm:inset-y-0 sm:bottom-0 sm:left-auto sm:right-0 sm:top-0 sm:w-[min(100%,36rem)] lg:w-[min(100%,44rem)]"
+          imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 34rem, 46rem"
+          imageClassName="object-cover mt-28 object-[center_42%] sm:object-[center_38%] lg:object-[center_35%]"
+          gradientClassName="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.92)_14%,rgba(255,255,255,0.55)_24%,rgba(255,255,255,0.18)_34%,transparent_46%)] sm:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.88)_15%,rgba(255,255,255,0.42)_26%,rgba(255,255,255,0.1)_36%,transparent_48%)] lg:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.82)_16%,rgba(255,255,255,0.32)_28%,transparent_44%)]"
+          mobileStackGradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white via-white/55 to-white/95 sm:hidden"
+          primaryCta={{ label: "Get in touch", href: "/contact" }}
+          secondaryCta={{ label: "How it works", href: "#canteen-realtime-visibility" }}
+          primaryCtaClassName="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_32px_-10px_rgba(15,47,87,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
+          secondaryCtaClassName="inline-flex items-center justify-center rounded-full border border-slate-200/90 bg-white/90 px-7 py-3.5 text-sm font-semibold text-slate-800 shadow-sm backdrop-blur-sm transition-[border-color,background-color,box-shadow] duration-300 hover:border-slate-300 hover:bg-white hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
+          livePopups={[
+            {
+              position: "top-left",
+              className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-20 xl:-left-10",
+              label: "Live",
+              title: "Meal verified",
+              accent: "emerald",
+              // className: "z-[5]",
+            },
+            {
+              position: "bottom-right",
+              label: "Visitor",
+              title: "Lobby checked-in",
+              className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-20 xl:-right-2",
+              variant: "icon",
+              icon: "id",
+              accent: "blue",
+              // className: "z-[5]",
+            },
+          ]}
+        >
+       
+        </SolutionLandingHero>
 
-        {/* Operational metrics – Visily “Real-time visibility” strip */}
-        <section className="mt-10 border-b border-slate-200 py-10 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Operational metrics — premium live-ops band */}
+        <section
+          id="canteen-realtime-visibility"
+          aria-labelledby="canteen-ops-visibility-heading"
+          className="relative scroll-mt-24 overflow-hidden border-t border-white/10 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 text-white sm:py-20 lg:py-24"
+        >
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute -left-28 top-0 h-[22rem] w-[22rem] rounded-full bg-emerald-500/12 blur-[100px]" />
+            <div className="absolute -right-24 top-1/3 h-[26rem] w-[26rem] rounded-full bg-sky-500/10 blur-[110px]" />
+            <div className="absolute bottom-0 left-1/2 h-72 w-[min(90%,56rem)] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-[90px]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(56,189,248,0.14),transparent_52%)]" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.div
-              className="mx-auto max-w-2xl text-center"
-              initial={{ opacity: 0, y: 14 }}
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
+              transition={{ duration: 0.55, ease: smoothEase }}
             >
-              <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Real-time canteen visibility</h2>
-              <p className="mt-3 text-slate-600">
-                Monitor utilization, verified meals, and subsidy health across sites without waiting for month-end spreadsheets.
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Live signal board</p>
+              <h2
+                id="canteen-ops-visibility-heading"
+                className="mt-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.35rem] lg:leading-[1.15]"
+              >
+                <span className="text-white">Real-time </span>
+                <span className="font-semibold text-slate-300">
+                  canteen visibility
+                </span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+                Monitor utilization, verified meals, and subsidy health across every site—without waiting on month-end
+                spreadsheets or stitched exports.
               </p>
             </motion.div>
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {operationalMetrics.map((m, i) => (
-                <motion.div
-                  key={m.label}
-                  className={`flex flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-sm ${interactiveSurfaceHover}`}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
-                >
-                  <div className={`mb-4 flex h-11 w-11 items-center justify-center rounded-xl ${m.bg} ${m.accent}`}>
-                    <MetricIcon name={m.icon} />
-                  </div>
-                  <div className="text-2xl font-bold tabular-nums tracking-tight text-slate-900">{m.value}</div>
-                  <div className="mt-1 text-sm font-semibold text-slate-800">{m.label}</div>
-                  <p className="mt-2 text-sm leading-snug text-slate-500">{m.hint}</p>
-                </motion.div>
-              ))}
+
+            <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+              {operationalMetrics.map((m, i) => {
+                const tone = operationalMetricPresentation[m.tone];
+                return (
+                  <motion.article
+                    key={m.label}
+                    className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/55 p-6 shadow-[0_28px_70px_-34px_rgba(0,0,0,0.75)] backdrop-blur-md ring-1 ring-white/[0.06] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1.5 hover:border-white/18 hover:shadow-[0_36px_80px_-36px_rgba(15,23,42,0.95)]"
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: Math.min(i * 0.08, 0.24) }}
+                  >
+                    <div
+                      className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden"
+                      aria-hidden
+                    >
+                      <div
+                        className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none ${tone.bar}`}
+                      />
+                    </div>
+                    <div
+                      className={`pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100 ${tone.orb}`}
+                      aria-hidden
+                    />
+
+                    <div className="flex items-start justify-between gap-3">
+                      <div
+                        className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 ${tone.iconTile}`}
+                      >
+                        <MetricIcon name={m.icon} />
+                      </div>
+                      <span className="rounded-full bg-white/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 ring-1 ring-white/10">
+                        Live
+                      </span>
+                    </div>
+
+                    <p
+                      className={`relative mt-8 text-[1.65rem] font-bold tabular-nums leading-none tracking-tight sm:text-[1.85rem] ${tone.valueClass}`}
+                    >
+                      {m.value}
+                    </p>
+                    <p className="relative mt-3 text-sm font-semibold leading-snug text-white">{m.label}</p>
+                    <p className="relative mt-2 text-sm leading-relaxed text-slate-400">{m.hint}</p>
+                  </motion.article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* Digital Canteen & Subsidy Control – Visily feature block (image + checklist) */}
-        <section className="border-b border-slate-200 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        {/* Digital Canteen & Subsidy Control — equal-height columns: stretch grid + flex column */}
+        <section
+          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-white py-14 lg:py-20"
+          aria-labelledby="digital-canteen-heading"
+        >
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute -left-28 top-24 h-64 w-64 rounded-full bg-sky-200/35 blur-[90px]" />
+            <div className="absolute -right-20 bottom-16 h-72 w-72 rounded-full bg-blue-100/45 blur-[100px]" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-14 xl:gap-16">
               <motion.div
-                className={`relative order-2 overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-lg lg:order-1 ${interactiveSurfaceHover}`}
+                className="relative order-2 flex lg:order-1 lg:h-full lg:min-h-0 lg:items-center"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
-                <div className="relative aspect-[4/3] w-full bg-slate-100">
-                  <Image
-                    src="/images/cmsy.jpg"
-                    alt="InOps digital canteen dashboard: biometric meal verification, subsidy and payroll-linked rules, inventory signals, and contractor vs employee entitlements"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
+                <div
+                  className={`relative w-full rounded-[1.35rem]  p-2 shadow-[0_32px_85px_-42px_rgba(15,23,42,0.32)] ring-1 ring-slate-900/[0.05] ${interactiveSurfaceHover}`}
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-900/5 ">
+                    <video
+                      className="absolute inset-0 h-full w-full rounded-2xl mt-12 object-cover object-top"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster="/images/cmsy.jpg"
+                      aria-label="Digital canteen dashboard — biometric meal verification, subsidy and payroll-linked rules, inventory signals, and contractor vs employee entitlements"
+                    >
+                      <source src={digitalCanteenSubsidyControlVideo} type="video/mp4" />
+                    </video>
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tr from-slate-900/[0.07] via-transparent to-transparent"
+                      aria-hidden
+                    />
+                    <VideoLivePopups
+                      popups={[
+                        {
+                          position: "top-left",
+                          label: "Live",
+                          title: "Meal verified",
+                          className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-0 xl:-left-0",
+                          accent: "emerald",
+                        },
+                        {
+                          position: "bottom-right",
+                          label: "Subsidy",
+                          title: "Auto-applied",
+                          subtitle: "Synced to payroll",
+                          className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2",
+                          variant: "icon",
+                          icon: "meal",
+                          accent: "amber",
+                        },
+                      ]}
+                    />
+                  </div>
                 </div>
               </motion.div>
+
               <motion.div
-                className="order-1 lg:order-2"
+                className="order-1 flex flex-col lg:order-2 lg:h-full lg:min-h-0 lg:justify-between lg:gap-6"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700" aria-hidden>
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </div>
-                <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl lg:text-4xl">
-                  Digital canteen &amp; subsidy control
-                </h2>
-                <p className="mt-4 text-slate-600 leading-relaxed">
-                  Replace informal registers and brittle Excel rules with biometric meal counts, live subsidies, and inventory signals your procurement team can trust.
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {digitalCanteenPillars.map((line) => (
-                    <li key={line} className="flex gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
-                        <CheckIcon className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-slate-700 leading-relaxed">{line}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="group mt-8 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors duration-300 hover:text-[#00AAFF]"
-                >
-                  Learn more
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
+                <div className="shrink-0">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+                    Serving line to ledger
                   </span>
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </section>
 
-        {/* Secondary highlights – queue, mobile ops, alerts */}
-        <section className="border-b border-slate-200 py-10 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              {secondaryHighlights.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className={`group rounded-2xl border border-slate-200/90 bg-slate-50/30 p-6 ${interactiveSurfaceHover}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.06 }}
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
-                    <HighlightIcon name={item.icon} />
-                  </div>
-                  <h3 className="mt-4 font-bold text-slate-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+                  <h2
+                    id="digital-canteen-heading"
+                    className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.12]"
+                  >
+                    Digital canteen &amp;{" "}
+                    <span className="font-semibold text-[color:var(--inops-blue)]">
+                      subsidy control
+                    </span>
+                  </h2>
 
-        {/* Visitor desk & lobby — brochure “canteen + visitor” pairing */}
-        <section id="visitor-desk" className="border-b border-slate-200 py-12 lg:py-16 scroll-mt-20 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase }}
-              >
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-700" aria-hidden>
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
+                  <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                    Replace informal registers and brittle Excel rules with biometric meal counts, live subsidies, and
+                    inventory signals your procurement team can trust.
+                  </p>
                 </div>
-                <h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-3xl lg:text-4xl">
-                  Visitor desk &amp; lobby on the same campus stack
-                </h2>
-                <p className="mt-4 text-slate-600 leading-relaxed">
-                  The combined facility story does not stop at the serving line. Layer visitor workflows next to canteen and attendance so security, HR, and front desk share consistent data instead of parallel spreadsheets.
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {visitorExperiencePillars.map((line) => (
-                    <li key={line} className="flex gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
-                        <CheckIcon className="h-3.5 w-3.5" />
+
+                <ul className="mt-8 flex flex-col gap-3 lg:mt-0 lg:min-h-0 lg:flex-1 lg:justify-center lg:gap-3">
+                  {digitalCanteenPillars.map((line) => (
+                    <li
+                      key={line}
+                      className="group/line flex gap-3 rounded-xl border border-slate-200/90 bg-white/90 p-3.5 shadow-[0_14px_40px_-28px_rgba(15,23,42,0.18)] ring-1 ring-slate-900/[0.03] transition-[border-color,box-shadow] duration-300 hover:border-[color:var(--inops-blue)]/30 hover:shadow-[0_18px_44px_-28px_rgba(29,95,191,0.14)] sm:p-4"
+                    >
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--inops-blue)] to-sky-600 text-white shadow-md shadow-blue-900/15 ring-2 ring-white">
+                        <CheckIcon className="h-4 w-4" />
                       </span>
-                      <span className="text-slate-700 leading-relaxed">{line}</span>
+                      <span className="text-[15px] leading-relaxed text-slate-700">{line}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 space-y-3">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Visitor Management System</p>
+
+                <div className="mt-10 flex shrink-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-0">
                   <Link
                     href="/contact"
-                    className={`inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-blue-700 ${buttonHover}`}
+                    className="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-10px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_36px_-12px_rgba(15,47,87,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
                   >
-                    Get started
+                    Talk to our team
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--inops-blue)] transition-colors duration-300 hover:text-[color:var(--inops-navy)]"
+                  >
+                    Learn more
+                    <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
                   </Link>
                 </div>
               </motion.div>
-              <motion.div
-                className={`relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-lg ${interactiveSurfaceHover}`}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-              >
-                <div className="relative aspect-[4/3] w-full bg-slate-100">
-                  <Image
-                    src="/images/visitor.jpg"
-                    alt="Visitor management and lobby reception"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              {visitorLobbyHighlights.map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  className={`group rounded-2xl border border-slate-200/90 bg-slate-50/40 p-6 ${interactiveSurfaceHover}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.06 }}
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
-                    <HighlightIcon name={item.icon} />
-                  </div>
-                  <h3 className="mt-4 font-bold text-slate-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                </motion.div>
-              ))}
             </div>
           </div>
         </section>
 
-        {/* Visitor Management System — overview + process diagram */}
-        <section className="border-t border-slate-200 py-10 lg:py-14 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div
-              className="mx-auto max-w-3xl lg:max-w-6xl"
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2 className="text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Visitor Management System
-              </h2>
-              <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 sm:w-20" aria-hidden />
-              <p className="mt-6 text-base leading-relaxed text-center text-slate-600 sm:text-lg">
-                InOps Company&apos;s Visitor Management System offers a holistic solution to visitor tracking and security,
-                empowering organizations to create safe and welcoming environments for employees, guests, and clients alike.
-                With its advanced features and corresponding benefits, our system sets the standard for modern visitor
-                management practices, delivering unparalleled efficiency, security, and peace of mind. Experience the future
-                of visitor management with InOps Company today.
-              </p>
-            </motion.div>
-            <motion.div
-              className={`relative mt-10 overflow-hidden rounded-2xl  p-3 sm:p-5 lg:mt-12`}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
-            >
-              <Image
-                src={visitorManagementProcessImage}
-                alt="Visitor management process: tracking, security, and workflow overview"
-                width={1230}
-                height={650}
-                className="h-auto w-full object-contain"
-                sizes="(max-width: 1024px) 100vw, 1200px"
-              />
-            </motion.div>
+        {/* Secondary highlights — queue, mobile ops, alerts */}
+        <section
+          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/40 to-white py-14 lg:py-20"
+          aria-labelledby="canteen-ops-highlights-heading"
+        >
+          <div className="pointer-events-none absolute inset-0 opacity-[0.35]" aria-hidden>
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v60M0 30h60' stroke='%2394a3b8' stroke-opacity='0.07' stroke-width='1'/%3E%3C/svg%3E")`,
+              }}
+            />
           </div>
-        </section>
 
-        {/* CTA band — light banner aligned with hero (sky, dark type, white buttons) */}
-        <section className="border-t border-blue-300/40 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-5xl px-6 text-center lg:px-8">
-            <motion.h2
-              className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.95rem] lg:leading-snug"
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <motion.div
+              className="mx-auto max-w-2xl text-center lg:max-w-3xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              Ready to modernize canteen, visitor desk, and site policy?
-            </motion.h2>
-            <motion.p
-              className="mx-auto mt-5 max-w-4xl text-base leading-relaxed text-slate-600 sm:text-lg"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-            >
-              Help manufacturing, IT parks, and infrastructure campuses tighten subsidy accuracy, serving-line discipline, and lobby visibility—teams often recover meaningful leakage once biometrics, payroll linkage, and visitor workflows share one platform.
-            </motion.p>
-            <motion.div
-              className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.1 }}
-            >
-              <Link
-                href="/contact"
-                className={`inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:bg-blue-50 hover:ring-[#00AAFF]/35 ${buttonHover}`}
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--inops-blue)]">
+                Frontline operations
+              </p>
+              <h2
+                id="canteen-ops-highlights-heading"
+                className="mt-4 text-balance text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem]"
               >
-                Request a demo
-              </Link>
-              <Link
-                href="/contact"
-                className={`inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-md shadow-slate-900/5 ring-1 ring-slate-200/80 hover:ring-[#00AAFF]/30 ${buttonHover}`}
-              >
-                Talk to a specialist
-              </Link>
+                Insight at the{" "}
+                <span className="font-semibold text-[color:var(--inops-blue)]">
+                  serving line
+                </span>
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Capacity, devices, and alerts tuned for busy canteens—so supervisors act on facts, not guesswork.
+              </p>
             </motion.div>
-            <motion.p
-              className="mt-8 text-sm text-slate-600"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.4, delay: 0.12 }}
-            >
-              No credit card required · Personalized walkthrough · Typical session under 15 minutes
-            </motion.p>
+
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7 lg:mt-14 lg:gap-8">
+              {secondaryHighlights.map((item, i) => {
+                const style = secondaryHighlightStyle[item.accent];
+                return (
+                  <motion.article
+                    key={item.title}
+                    className={`group/card relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 shadow-[0_22px_56px_-36px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_64px_-40px_rgba(15,23,42,0.28)] ${style.hoverRing}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(i * 0.08, 0.2) }}
+                  >
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden" aria-hidden>
+                      <div
+                        className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover/card:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none ${style.bar}`}
+                      />
+                    </div>
+                    <div
+                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover/card:opacity-100 ${style.orb}`}
+                      aria-hidden
+                    />
+
+                    <div className="relative flex items-start justify-between gap-3">
+                      <div
+                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 ease-out group-hover/card:scale-105 ${style.iconSurface}`}
+                      >
+                        <HighlightIcon name={item.icon} className="h-6 w-6" />
+                      </div>
+                      <span className="rounded-full bg-slate-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500 ring-1 ring-slate-200/90">
+                        {i === 0 ? "Capacity" : i === 1 ? "Mobility" : "Risk"}
+                      </span>
+                    </div>
+
+                    <h3 className="relative mt-5 text-lg font-bold leading-snug tracking-tight text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                      {item.description}
+                    </p>
+                  </motion.article>
+                );
+              })}
+            </div>
           </div>
         </section>
+
+        {/* Visitor desk & lobby — equal-height split + premium cards */}
+        <section
+          id="visitor-desk"
+          className="relative scroll-mt-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-14 lg:py-20"
+          aria-labelledby="visitor-desk-heading"
+        >
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-indigo-100/40 blur-[100px]" />
+            <div className="absolute bottom-12 left-10 h-64 w-64 rounded-full bg-sky-100/50 blur-[90px]" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-14 xl:gap-16">
+              <motion.div
+                className="flex flex-col lg:h-full lg:min-h-0 lg:justify-between lg:gap-6"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase }}
+              >
+                <div className="shrink-0">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+                    Lobby &amp; access
+                  </span>
+
+                  <h2
+                    id="visitor-desk-heading"
+                    className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.12]"
+                  >
+                    Visitor desk &amp; lobby on the{" "}
+                    <span className="font-semibold text-[color:var(--inops-blue)]">
+                      same campus stack
+                    </span>
+                  </h2>
+
+                  <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-lg">
+                    The facility story doesn&apos;t stop at the serving line. Layer visitor workflows beside canteen and
+                    attendance so security, HR, and the front desk pull from one trail—not parallel spreadsheets.
+                  </p>
+                </div>
+
+                <ul className="mt-8 flex flex-col gap-3 lg:mt-0 lg:min-h-0 lg:flex-1 lg:justify-center lg:gap-3">
+                  {visitorExperiencePillars.map((line) => (
+                    <li
+                      key={line}
+                      className="group/vli relative overflow-hidden rounded-xl border border-slate-200/90 bg-white/90 p-3.5 shadow-[0_14px_40px_-28px_rgba(15,23,42,0.18)] ring-1 ring-slate-900/[0.03] transition-[border-color,box-shadow] duration-300 hover:border-[color:var(--inops-blue)]/30 hover:shadow-[0_18px_44px_-28px_rgba(29,95,191,0.14)] sm:p-4"
+                    >
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden" aria-hidden>
+                        <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-[color:var(--inops-blue)] via-sky-500 to-cyan-400 opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover/vli:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none" />
+                      </div>
+                      <div className="relative flex gap-3">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--inops-blue)] to-sky-600 text-white shadow-md shadow-blue-900/15 ring-2 ring-white">
+                          <CheckIcon className="h-4 w-4" />
+                        </span>
+                        <span className="text-[15px] leading-relaxed text-slate-700">{line}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-10 shrink-0 space-y-4 lg:mt-0">
+                  {/* <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                    Visitor Management System
+                  </p> */}
+                  <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-10px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_36px_-12px_rgba(15,47,87,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
+                    >
+                      Get started
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[color:var(--inops-blue)] transition-colors duration-300 hover:text-[color:var(--inops-navy)]"
+                    >
+                      Talk to visitor ops
+                      <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative flex lg:h-full lg:min-h-0 lg:items-center"
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <div
+                  className={`relative w-full rounded-[1.35rem] border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/90 p-2 shadow-[0_32px_85px_-42px_rgba(15,23,42,0.32)] ring-1 ring-slate-900/[0.05] ${interactiveSurfaceHover}`}
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-900/5 ring-1 ring-slate-200/80">
+                    <video
+                      className="absolute inset-0 h-full w-full rounded-2xl pt-13 object-cover object-center"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster="/images/visitor.jpg"
+                      aria-label="Visitor management and lobby reception"
+                    >
+                      <source src={visitorDeskLobbyCampusStackVideo} type="video/mp4" />
+                    </video>
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-tl from-slate-900/[0.08] via-transparent to-transparent"
+                      aria-hidden
+                    />
+                    <VideoLivePopups
+                      popups={[
+                        {
+                          position: "top-left",
+                          label: "Live",
+                          className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-0 xl:-left-0",
+                          title: "Visitor logged",
+                          accent: "emerald",
+                        },
+                        {
+                          position: "bottom-right",
+                          label: "Badge",
+                          title: "Host notified",
+                          className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2",
+                          variant: "icon",
+                          icon: "id",
+                          accent: "blue",
+                        },
+                      ]}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7 lg:mt-16 lg:gap-8">
+              {visitorLobbyHighlights.map((item, i) => {
+                const style = secondaryHighlightStyle[item.accent];
+                return (
+                  <motion.article
+                    key={item.title}
+                    className={`group/vcard relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 shadow-[0_22px_56px_-36px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_64px_-40px_rgba(15,23,42,0.28)] ${style.hoverRing}`}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(i * 0.08, 0.2) }}
+                  >
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden" aria-hidden>
+                      <div
+                        className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover/vcard:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none ${style.bar}`}
+                      />
+                    </div>
+                    <div
+                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover/vcard:opacity-100 ${style.orb}`}
+                      aria-hidden
+                    />
+                    <div
+                      className={`relative flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-300 group-hover/vcard:scale-105 ${style.iconSurface}`}
+                    >
+                      <HighlightIcon name={item.icon} className="h-6 w-6" />
+                    </div>
+                    <h3 className="relative mt-5 text-lg font-bold leading-snug text-slate-900">{item.title}</h3>
+                    <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                      {item.description}
+                    </p>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Visitor Management System — one-row layout on lg: copy + chips | process video */}
+        <section
+          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-12 lg:py-16"
+          aria-labelledby="vms-overview-heading"
+        >
+          <div className="pointer-events-none absolute inset-0 opacity-[0.45]" aria-hidden>
+            <div className="absolute left-1/2 top-0 h-[24rem] w-[min(100%,42rem)] -translate-x-1/2 rounded-full bg-blue-100/40 blur-[100px]" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12 xl:gap-14">
+              <motion.div
+                className="min-w-0 flex-1 lg:max-w-[min(100%,28rem)] xl:max-w-md"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--inops-blue)]">
+                  Visitor Management System
+                </p>
+                <h2
+                  id="vms-overview-heading"
+                  className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[1.85rem] lg:leading-snug xl:text-[2rem]"
+                >
+                  From invite to{" "}
+                  <span className="font-semibold text-[color:var(--inops-blue)]">
+                    lobby exit
+                  </span>
+                </h2>
+                <div
+                  className="mt-4 h-1 w-14 rounded-full bg-gradient-to-r from-[color:var(--inops-blue)] via-sky-500 to-cyan-400 shadow-sm shadow-sky-500/20"
+                  aria-hidden
+                />
+
+                <div className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                  <p>
+                    Pre-registration, desk check-in, badges, and host alerts roll into{" "}
+                    <span className="font-medium text-slate-800">one audit-ready trail</span>—not parallel visitor logs.
+                  </p>
+                  <p>
+                    See who&apos;s on-site by zone, enforce access in real time, and export evidence when security or
+                    compliance needs proof.
+                  </p>
+                </div>
+
+                {/* Single horizontal row: three pillars (scroll on very narrow screens) */}
+                <ul className="mt-8 flex snap-x snap-mandatory gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-3 lg:mt-9 lg:flex-nowrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+                  {(
+                    [
+                      { k: "Trail", d: "Pre-auth → desk → badge" },
+                      { k: "Roster", d: "On-site by zone" },
+                      { k: "Exports", d: "Audit-ready proof" },
+                    ] as const
+                  ).map((chip) => (
+                    <li
+                      key={chip.k}
+                      className="min-w-[7.25rem] shrink-0 snap-start rounded-xl border border-slate-200/90 bg-white/95 px-2.5 py-2.5 text-center shadow-[0_12px_36px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.04] sm:min-w-0 sm:flex-1 sm:px-3 sm:py-3"
+                    >
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-[color:var(--inops-blue)] sm:text-xs">
+                        {chip.k}
+                      </span>
+                      <span className="mt-1 block text-[11px] leading-snug text-slate-600 sm:text-xs">{chip.d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                className="min-w-0 flex-1"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
+              >
+                <div className="rounded-[1.25rem] border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/90 p-2 shadow-[0_28px_80px_-40px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.05]">
+                  <div className="relative aspect-[1230/650] w-full overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
+                    <video
+                      className="absolute inset-0 h-full w-full object-contain object-center"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster={visitorManagementProcessImage}
+                      aria-label="Visitor management process — scheduled and walk-up flows, QR, badges, and records"
+                    >
+                      <source src={visitorManagementSystemVideo} type="video/mp4" />
+                    </video>
+                    <div
+                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-slate-900/[0.07] via-transparent to-transparent"
+                      aria-hidden
+                    />
+                    <VideoLivePopups
+                      popups={[
+                        {
+                          position: "top-left",
+                          label: "Live",
+                          title: "Process running",
+                          className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-0 xl:-left-0",
+                          accent: "emerald",
+                        },
+                        {
+                          position: "bottom-right",
+                          label: "Workflow",
+                          title: "Scheduled & walk-up",
+                          className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2",
+                          // subtitle: "QR → badge → records",
+                          variant: "icon",
+                          icon: "qr",
+                          accent: "blue",
+                        },
+                      ]}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <SolutionPageClosingCta
+          headingId="canteen-final-cta-heading"
+          heading="Ready to unify canteen, lobby, and policy?"
+          description={
+            <>
+              Plants, IT parks, and infrastructure campuses run tighter when subsidies, serving lines, and visitor flows
+              share one stack—biometrics and payroll-linked rules next to lobby workflows, so leakage and exceptions show
+              up while they’re still fixable.
+            </>
+          }
+          primaryLabel="Request a demo"
+          secondaryLabel="Talk to a specialist"
+          footnote="No credit card to start · Tailored walkthrough · ~15 min session"
+        />
       </div>
     </>
   );

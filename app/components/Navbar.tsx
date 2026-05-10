@@ -46,7 +46,14 @@ const resourceRoutes: Record<string, string> = {
 };
 
 function pathUsesSolidNavBar(path: string) {
-  return path.startsWith("/solutions") || path.startsWith("/about") || path.startsWith("/product");
+  return (
+    path.startsWith("/solutions") ||
+    path.startsWith("/about") ||
+    path.startsWith("/product") ||
+    path.startsWith("/blog") ||
+    path.startsWith("/brochures") ||
+    path.startsWith("/contact")
+  );
 }
 
 export default function Navbar() {

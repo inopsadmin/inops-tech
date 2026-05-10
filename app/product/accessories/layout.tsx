@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = routeMetadata({
   title: "Accessories | InOps Solutions",
   description:
-    "Access control accessories — wireless exit button, exit push button, and add-ons for request-to-exit and integrated security systems from InOps.",
+    "Access control accessories — wireless exit button, exit push button, and add-ons for request-to-exit and integrated security systems.",
   path: "/product/accessories",
   extraKeywords: ["exit button access control", "RTE button India", "proximity card accessories"],
 });

@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { moduleCarouselImages } from "@/app/lib/serviceImagery";
+import { moduleCarouselHoverImages, moduleCarouselImages } from "@/app/lib/serviceImagery";
+import { AnimatePresence, motion } from "framer-motion";
 
 const CARD_WIDTH = 320;
 const CARD_GAP = 0;
@@ -64,21 +65,54 @@ function ModuleCard({
   title,
   description,
   imageUrl,
+  hoverImageUrl,
 }: {
   title: string;
   description: string;
   imageUrl: string;
+  hoverImageUrl: string;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const activeImageUrl = isHovered ? hoverImageUrl : imageUrl;
+
   return (
-    <div className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden bg-slate-800 shadow-md shadow-slate-900/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/20">
-      <Image
-        src={imageUrl}
-        alt={title}
-        fill
-        className="object-cover object-center transition duration-500 group-hover:scale-105"
-        sizes="320px"
-        unoptimized
+    <div
+      className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden bg-slate-800 shadow-md shadow-slate-900/10 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/20"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+    >
+      <AnimatePresence initial={false} mode="wait">
+        <motion.div
+          key={activeImageUrl}
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.06, filter: "blur(10px)" }}
+          animate={{ opacity: 1, scale: isHovered ? 1.08 : 1.02, filter: "blur(0px)" }}
+          exit={{ opacity: 0, scale: 0.98, filter: "blur(12px)" }}
+          transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+        >
+          <Image
+            src={activeImageUrl}
+            alt={title}
+            fill
+            className="object-cover object-center"
+            sizes="320px"
+            unoptimized
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Rounded blur "glass card" effect on hover */}
+      <div
+        className="pointer-events-none absolute inset-3 rounded-3xl bg-white/10 opacity-0 backdrop-blur-md ring-1 ring-white/20 transition-all duration-300 group-hover:opacity-100 group-hover:backdrop-blur-xl"
+        aria-hidden
       />
+      <div
+        className="pointer-events-none absolute inset-3 rounded-3xl opacity-0 shadow-[0_18px_60px_-24px_rgba(56,189,248,0.55)] transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden
+      />
+
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/88 via-black/35 to-transparent transition-opacity duration-300 group-hover:from-black/92" aria-hidden />
       <div className="absolute inset-x-0 bottom-0 p-4 pt-12 sm:pt-14">
         <h3 className="text-sm font-heading leading-tight text-white drop-shadow-sm sm:text-base">{title}</h3>
@@ -92,6 +126,15 @@ function ModuleCard({
 
 export default function ModulesSlider() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const modulesWithHover = useMemo(() => {
+    const base = moduleCarouselImages;
+    const hover = moduleCarouselHoverImages;
+    return modules.map((mod, idx) => ({
+      ...mod,
+      imageUrl: base[idx] ?? mod.imageUrl,
+      hoverImageUrl: hover[idx] ?? base[idx] ?? mod.imageUrl,
+    }));
+  }, []);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -155,12 +198,13 @@ export default function ModulesSlider() {
               </button>
 
               <div ref={scrollRef} className="flex gap-0 overflow-x-auto scroll-smooth py-2 pl-1 pr-1 sm:pl-2 sm:pr-2 scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-                {modules.map((mod, i) => (
+                {modulesWithHover.map((mod, i) => (
                   <ModuleCard
                     key={`${mod.title}-${i}`}
                     title={mod.title}
                     description={mod.description}
                     imageUrl={mod.imageUrl}
+                    hoverImageUrl={mod.hoverImageUrl}
                   />
                 ))}
               </div>

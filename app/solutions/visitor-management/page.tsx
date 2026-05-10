@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
 const visitorHeroImage = "/images/visitor.jpg";
 
@@ -198,7 +198,10 @@ export default function VisitorManagementPage() {
                   Visitor Management
                 </h2>
                 <p className="mt-6 w-full max-w-none text-lg leading-relaxed text-gray-600 sm:text-xl lg:text-xl lg:leading-relaxed">
-                  Welcome to the future of visitor management with InOps Company&apos;s innovative Visitor Management System. Designed to revolutionize how organizations handle visitor tracking and security, our system offers a comprehensive suite of features tailored to meet the unique needs of modern businesses. Let&apos;s explore the eight key features and their corresponding benefits:
+                  Welcome to the future of visitor management with an innovative Visitor Management System. Designed to
+                  revolutionize how organizations handle visitor tracking and security, our system offers a comprehensive
+                  suite of features tailored to meet the unique needs of modern businesses. Let&apos;s explore the eight key
+                  features and their corresponding benefits:
                 </p>
               </motion.div>
             </div>
@@ -261,7 +264,8 @@ export default function VisitorManagementPage() {
                   aria-hidden
                 />
                 <p className="mx-auto mt-6 text-gray-600 leading-relaxed text-base sm:text-lg lg:mx-0 lg:max-w-none">
-                  InOps Company&apos;s Visitor Management System is a holistic solution for tracking and securing every visit. From streamlined check-in to real-time monitoring, we deliver efficiency and peace of mind. Experience the future of visitor management today.
+                  Visitor Management is a holistic solution for tracking and securing every visit. From streamlined check-in to
+                  real-time monitoring, we deliver efficiency and peace of mind. Experience the future of visitor management today.
                 </p>
               </motion.div>
               <motion.div
@@ -320,70 +324,13 @@ export default function VisitorManagementPage() {
           </div>
         </section>
 
-        {/* Empowering Smarter Workplaces + phone mockup */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 lg:items-center">
-              <motion.div
-                className="lg:pr-8"
-                initial={{ opacity: 0, x: -24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase }}
-              >
-                <h2 className="text-2xl font-bold text-blue-400 sm:text-3xl">
-                  Empowering Smarter Workplaces Across all Industries
-                </h2>
-                <p className="mt-6 text-gray-600 leading-relaxed text-base sm:text-lg">
-                  InOps Tech empowers smarter workplaces across diverse industries by providing innovative technology solutions tailored to optimize efficiency, collaboration, and productivity.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-blue-600"
-                >
-                  Get Started
-                </Link>
-              </motion.div>
-              <motion.div
-                className="flex justify-center lg:justify-end"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-              >
-                <div className="relative w-full max-w-[280px] rounded-[2.5rem] border-[10px] border-gray-200 bg-gray-50 p-2 shadow-2xl">
-                  <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-gray-50" aria-hidden />
-                  <div className="overflow-hidden rounded-[1.5rem] bg-gray-50 border border-gray-200">
-                    <div className="bg-gray-200/80 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
-                      <span className="font-semibold text-gray-900 text-sm">My Attendance</span>
-                    </div>
-                    <div className="flex gap-2 px-3 py-2 border-b border-gray-200">
-                      <span className="text-xs font-medium text-blue-400 py-1 px-2 rounded bg-blue-500/20">week</span>
-                      <span className="text-xs text-gray-400 py-1 px-2">month</span>
-                    </div>
-                    <div className="px-3 py-2 text-xs text-gray-400 text-center">15-Jan-2026 - 18-Jan-2026</div>
-                    <div className="px-3 pb-2 space-y-1.5">
-                      {[
-                        { label: "ARRIVAL", time: "09:00", color: "bg-emerald-500" },
-                        { label: "MEETING", time: "09:40", color: "bg-blue-500" },
-                        { label: "LUNCH", time: "13:00", color: "bg-amber-500" },
-                        { label: "WORKING", time: "14:00", color: "bg-blue-500" },
-                        { label: "LEAVING", time: "18:00", color: "bg-rose-500" },
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs">
-                          <span className={`w-1.5 h-6 rounded-full ${item.color}`} aria-hidden />
-                          <span className="text-gray-400">{item.label}</span>
-                          <span className="text-gray-600 ml-auto">{item.time}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="p-3 border-t border-gray-200 text-center text-sm text-gray-400">Total Hours 08:43</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <SolutionPageClosingCta
+          headingId="visitor-management-final-cta-heading"
+          heading="Empowering smarter workplaces across all industries"
+          description="Innovative technology empowers smarter workplaces across diverse industries—with solutions tailored to optimize efficiency, collaboration, and productivity."
+          primaryLabel="Get Started"
+          secondaryLabel="Contact sales team"
+        />
       </div>
     </>
   );

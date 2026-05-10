@@ -4,8 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import VideoLivePopups, { type VideoLivePopupItem } from "./VideoLivePopups";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
+
+/** Pull `rounded-*` onto the inner clip layer so the outer shell can stay overflow-visible for popups. */
+const ROUNDED_TOKEN = /\brounded(?:-[#\w\[\]%,.]+)*\b/g;
+
+function stripOverflowHidden(className: string): string {
+  return className
+    .replace(/\boverflow-hidden\b/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+function mediaClipInnerClass(full: string): string {
+  const rounded = full.match(ROUNDED_TOKEN)?.join(" ") ?? "";
+  return ["absolute inset-0 overflow-hidden", rounded].filter(Boolean).join(" ");
+}
 
 /** Industrial / workforce hero visual — matches solution landing reference. */
 export const DEFAULT_SOLUTION_HERO_IMAGE =
@@ -15,10 +31,17 @@ export type SolutionLandingHeroProps = {
   title: ReactNode;
   subtitle: ReactNode;
   badge?: ReactNode;
+  /** Rendered below primary/secondary CTAs (e.g. trust badges, micro-stats). */
+  children?: ReactNode;
   imageSrc?: string;
   imageAlt?: string;
+  videoSrc?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  /** Overrides default primary button styles (Tailwind classes). */
+  primaryCtaClassName?: string;
+  /** Overrides default secondary button styles when `secondaryCta` is set. */
+  secondaryCtaClassName?: string;
   /** Appended to the section (e.g. taller min-height for imagery-heavy heroes). */
   sectionClassName?: string;
   /** Overrides default `object-*` on the background image. */
@@ -33,7 +56,21 @@ export type SolutionLandingHeroProps = {
   mobileStackGradientClassName?: string | null;
   /** Drawn above the photo and below the text scrim — e.g. corner / edge opacity fades. */
   imageEdgeFadeClassName?: string;
+  /** Floating "Live" status tiles to overlay on the video. Defaults to a single
+   *  "Live · Detection running" tile when `videoSrc` is provided. Pass `null` to
+   *  hide the default tile, or an array to fully customise. */
+  livePopups?: VideoLivePopupItem[] | null;
 };
+
+const defaultHeroPopups: VideoLivePopupItem[] = [
+  {
+    position: "top-right",
+    
+    label: "Live",
+    title: "Detection running",
+    accent: "emerald",
+  },
+];
 
 export default function SolutionLandingHero({
   title,
@@ -41,8 +78,12 @@ export default function SolutionLandingHero({
   badge,
   imageSrc = DEFAULT_SOLUTION_HERO_IMAGE,
   imageAlt = "Industrial worker in safety gear at a facility — enterprise workforce operations",
+  videoSrc,
   primaryCta = { label: "Get In Touch", href: "/contact" },
   secondaryCta,
+  children,
+  primaryCtaClassName,
+  secondaryCtaClassName,
   sectionClassName,
   imageClassName,
   imageWrapperClassName,
@@ -50,7 +91,16 @@ export default function SolutionLandingHero({
   gradientClassName,
   mobileStackGradientClassName,
   imageEdgeFadeClassName,
+  livePopups,
 }: SolutionLandingHeroProps) {
+  const popupsToRender =
+    livePopups === null
+      ? null
+      : livePopups && livePopups.length > 0
+        ? livePopups
+        : videoSrc
+          ? defaultHeroPopups
+          : null;
   const bgImageClass =
     imageClassName ??
     "object-cover object-[center_30%] sm:object-[center_25%] lg:object-[center_20%]";
@@ -63,10 +113,13 @@ export default function SolutionLandingHero({
       : mobileStackGradientClassName ??
         "pointer-events-none absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-white/30 sm:hidden";
 
+  /** `overflow-visible` so corner `livePopups` with negative offsets are not clipped; media stays clipped by inner shell. */
   const sectionShell =
-    "relative overflow-hidden border-b border-slate-200/80 bg-white";
+    "relative overflow-visible border-b border-slate-200/80 bg-white";
   const defaultHeights = "min-h-[20rem] sm:min-h-[22.5rem] lg:min-h-[25rem] xl:min-h-[27rem] 2xl:min-h-[29rem]";
   const imageWrapClass = imageWrapperClassName ?? "absolute inset-0 mt-10 overflow-hidden";
+  const hadOverflowHidden = /\boverflow-hidden\b/.test(imageWrapClass);
+  const mediaShellClass = hadOverflowHidden ? stripOverflowHidden(imageWrapClass) : imageWrapClass;
 
   return (
     <motion.section
@@ -75,21 +128,70 @@ export default function SolutionLandingHero({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.45 }}
     >
-      <div className={imageWrapClass}>
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className={bgImageClass}
-          sizes={imageSizes ?? "100vw"}
-          priority
-        />
+      <div className={`${mediaShellClass} z-0`}>
+        {hadOverflowHidden ? (
+          <div className={mediaClipInnerClass(imageWrapClass)}>
+            {videoSrc ? (
+              <video
+                className={`absolute inset-0 h-full w-full ${bgImageClass}`}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={imageSrc}
+                aria-label={typeof imageAlt === "string" ? imageAlt : "Solution hero video"}
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+            ) : (
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                className={bgImageClass}
+                sizes={imageSizes ?? "100vw"}
+                priority
+              />
+            )}
+          </div>
+        ) : videoSrc ? (
+          <video
+            className={`absolute inset-0 h-full w-full ${bgImageClass}`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={imageSrc}
+            aria-label={typeof imageAlt === "string" ? imageAlt : "Solution hero video"}
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className={bgImageClass}
+            sizes={imageSizes ?? "100vw"}
+            priority
+          />
+        )}
       </div>
       {imageEdgeFadeClassName ? (
-        <div className={`pointer-events-none absolute inset-0 ${imageEdgeFadeClassName}`} aria-hidden />
+        <div
+          className={`pointer-events-none absolute inset-0 z-[1] ${imageEdgeFadeClassName}`}
+          aria-hidden
+        />
       ) : null}
-      <div className={bgGradientClass} aria-hidden />
-      {mobileVeilClass ? <div className={mobileVeilClass} aria-hidden /> : null}
+      <div className={`${bgGradientClass} z-[1]`} aria-hidden />
+      {mobileVeilClass ? <div className={`${mobileVeilClass} z-[1]`} aria-hidden /> : null}
+      {popupsToRender ? (
+        <div className={`${mediaShellClass} pointer-events-none z-[5]`}>
+          <VideoLivePopups popups={popupsToRender} />
+        </div>
+      ) : null}
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16 xl:py-18 2xl:py-20">
         {badge ? (
@@ -128,19 +230,26 @@ export default function SolutionLandingHero({
         >
           <Link
             href={primaryCta.href}
-            className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
+            className={
+              primaryCtaClassName ??
+              "inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
+            }
           >
             {primaryCta.label}
           </Link>
           {secondaryCta ? (
             <Link
               href={secondaryCta.href}
-              className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
+              className={
+                secondaryCtaClassName ??
+                "inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
+              }
             >
               {secondaryCta.label}
             </Link>
           ) : null}
         </motion.div>
+        {children}
       </div>
     </motion.section>
   );

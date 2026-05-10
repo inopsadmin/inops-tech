@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { productPageImagery } from "@/app/lib/serviceImagery";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -41,7 +42,7 @@ const accessories = [
     name: "Wireless Exit Button",
     model: "WS3X3",
     description:
-      "InOps Touchless request-to-exit (RTE) switch or motion sensor exit switch, is a device used in access control systems to allow individuals to exit a secured area without physically touching a switch or button.",
+      "Touchless request-to-exit (RTE) switch or motion sensor exit switch, used in access control systems to allow individuals to exit a secured area without physically touching a switch or button.",
     imageUrl: productPageImagery.accessoryExit,
     imageAlt: "Wireless Exit Button - touchless request-to-exit switch",
     imageClassName: "object-contain object-center p-6",
@@ -50,7 +51,7 @@ const accessories = [
     name: "Exit Push Button",
     model: "PB3X3",
     description: [
-      "InOps' specially designed push button used on doors, gates or anywhere there is the access control system. Wide range of options such as push button size, color exists.",
+      "Our specially designed push button for doors, gates, or anywhere there is an access control system. Wide range of options including push button size and color.",
       "This request to exit (REx) device allows you to open a locked door to exit without needing credentials.",
     ],
     imageUrl: "/images/Exit-Push-300x300.png",
@@ -64,7 +65,7 @@ const fpSensorAndRfCards = [
     title: "FP Sensor",
     subtitle: "Fingerprint Sensor",
     description:
-      "InOps' fingerprint sensors integrates to enhance security and provide a convenient and reliable method for allowing or denying entry to secure areas. Access control systems with fingerprint sensors are widely used in various environments, including offices, government facilities, healthcare facilities, data centers, and more.",
+      "Fingerprint sensors integrate with your system to enhance security and provide a convenient, reliable method for allowing or denying entry to secure areas. Access control with fingerprint sensors is widely used in offices, government facilities, healthcare facilities, data centers, and more.",
     imageUrl: productPageImagery.fingerprintSensor,
     imageAlt: "Fingerprint sensor device for access control",
   },
@@ -268,6 +269,14 @@ export default function AccessoriesPage() {
             </div>
           </div>
         </section>
+
+        <SolutionPageClosingCta
+          headingId="accessories-final-cta-heading"
+          heading="Complete your access install with the right accessories"
+          description="From exit buttons to maglocks, we help you spec hardware that matches your lanes, doors, and safety requirements."
+          primaryLabel="Enquire now"
+          secondaryLabel="Talk to sales"
+        />
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = routeMetadata({
   title: "Biometric Access Control | InOps Solutions",
   description:
-    "Face reader, fingerprint reader, and card reader systems for enterprise access control. Secure gates, turnstiles, and critical zones with InOps biometrics — India.",
+    "Face reader, fingerprint reader, and card reader systems for enterprise access control. Secure gates, turnstiles, and critical zones with enterprise-grade biometrics in India.",
   path: "/product/biometric-access-control",
   extraKeywords: ["face recognition access control", "fingerprint reader India", "card reader attendance"],
 });

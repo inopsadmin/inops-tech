@@ -62,6 +62,29 @@ export const moduleCarouselImages = [
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85",
 ] as const;
 
+/**
+ * Paired hover imagery for `moduleCarouselImages`.
+ * Same order, but each image is a different (related) scene for the same module.
+ */
+export const moduleCarouselHoverImages = [
+  // Time, Attendance & Leave
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=85",
+  // KYE — Employee verification
+  "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=85",
+  // Visitor Management
+  "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=85",
+  // Contractor & Payroll
+  "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=900&q=85",
+  // Compliance & Reporting
+  "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=900&q=85",
+  // Access Control & Security
+  "https://images.unsplash.com/photo-1557597774-9d16d2f8c8f9?auto=format&fit=crop&w=900&q=85",
+  // Shift & Roster Management
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=85",
+  // Analytics & Dashboards
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=85",
+] as const;
+
 export const featuresSliderImages = {
   clms: "/WhatsApp Image 2026-04-20 at 3.24.40 PM.jpeg",
   visibility: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",

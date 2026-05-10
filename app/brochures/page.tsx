@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FlyInText } from "@/app/components/FlyInText";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.15 };
@@ -12,153 +13,256 @@ const brochures = [
     title: "Biometric Access Control",
     description: "Overview of our biometric access control solutions, features, and benefits for secure facility management.",
     category: "Product",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=85",
+    accent: "Security",
   },
   {
     title: "Time & Attendance",
     description: "Streamline workforce management with our time and attendance solutions. Key features and integration options.",
     category: "Solutions",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85",
+    accent: "Workforce",
   },
   {
     title: "Visitor Management System",
     description: "Complete guide to our visitor management system: check-in, badges, reporting, and security integration.",
     category: "Solutions",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85",
+    accent: "Front desk",
   },
   {
     title: "Canteen Management",
     description: "Transform your workplace dining with our canteen management system. Menus, payments, and analytics.",
     category: "Solutions",
-    image: "https://images.unsplash.com/photo-1567521464027-f127ff144326?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=85",
+    accent: "Experience",
   },
   {
     title: "Payroll Solutions",
     description: "End-to-end payroll processing, tax compliance, and employee self-service. Features and benefits.",
     category: "Solutions",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=85",
+    accent: "Finance",
   },
   {
     title: "Fixed Asset Management",
     description: "Track, maintain, and report on fixed assets. Asset register, depreciation, and lifecycle management.",
     category: "Solutions",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85",
+    accent: "Operations",
   },
-];
+] as const;
+
+const brochureBanner = {
+  src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920&q=85",
+  alt: "Professional desk with laptop and business documents for solution collateral",
+  tagline: "Product & solution PDFs for your evaluation teams",
+} as const;
+
+function DownloadIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4-4 4m0 0-4-4m4 4V4"
+      />
+    </svg>
+  );
+}
+
+function ArrowRightIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
+    </svg>
+  );
+}
 
 export default function BrochuresPage() {
   return (
-    <>
-      <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero */}
-        <motion.section
-          className="relative min-h-[280px] flex flex-col items-center justify-center overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gray-900/70" />
-          </div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(59,130,246,0.12),transparent)]" />
-          <div className="relative z-10 text-center px-6">
-            <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
-            >
-              Brochures
-            </motion.h1>
-            <motion.nav
-              className="mt-3 text-sm text-white/90"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.25 }}
-              aria-label="Breadcrumb"
-            >
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span className="mx-2 text-white/60">/</span>
-              <span className="text-blue-300 font-medium">Brochures</span>
-            </motion.nav>
-          </div>
-        </motion.section>
+    <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_10%,rgba(57,189,232,0.16),transparent_28%),radial-gradient(circle_at_86%_0%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_56%,#eef4f8_100%)]"
+        aria-hidden
+      />
 
-        {/* Intro */}
-        <section className="py-6 lg:py-8 bg-gray-50 border-t border-gray-200">
-          <div className="mx-auto max-w-3xl px-6 lg:px-12 text-center">
-            <motion.p
-              className="text-gray-600 leading-relaxed text-base sm:text-lg"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              Download our brochures to explore InOps products and solutions in detail. From access control and biometrics to visitor management and payroll, find the information you need.
-            </motion.p>
-          </div>
-        </section>
+      <section className="relative z-[1] px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-12 lg:pb-16 lg:pt-28">
+        <div className="mx-auto max-w-7xl">
+          <motion.header
+            className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.55, ease: smoothEase }}
+          >
+            <div className="overflow-hidden border-b border-slate-200/90 shadow-[0_28px_80px_-36px_rgba(15,47,87,0.55)]">
+              <div className="relative aspect-[3/1] min-h-[120px] w-full sm:aspect-[16/5] sm:min-h-[140px] lg:min-h-[160px]">
+                <Image
+                  src={brochureBanner.src}
+                  alt={brochureBanner.alt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="100vw"
+                  priority
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/35 to-slate-950/80"
+                  aria-hidden
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
+                  <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
+                  <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">Brochures</h1>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{brochureBanner.tagline}</p>
+                </div>
+              </div>
+            </div>
+          </motion.header>
 
-        {/* Brochures grid */}
-        <section className="border-t border-gray-100/80 bg-white py-6 lg:py-9">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
-              {brochures.map((brochure, i) => (
-                <motion.article
-                  key={brochure.title}
-                  className="group flex flex-col rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden transition-all hover:shadow-lg hover:border-blue-200"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 * i }}
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-100">
-                    <Image
-                      src={brochure.image}
-                      alt=""
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="rounded-full bg-blue-500 px-2.5 py-0.5 text-xs font-medium text-white">
-                        {brochure.category}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h2 className="text-lg font-bold leading-tight text-gray-900 sm:text-xl">
-                      {brochure.title}
-                    </h2>
-                    <p className="mt-3 flex-1 text-sm text-gray-600 leading-relaxed line-clamp-3">
-                      {brochure.description}
-                    </p>
+          <div className="mb-8 mt-14 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+                Download center
+              </FlyInText>
+              <FlyInText
+                as="h2"
+                direction="left"
+                delay={0.06}
+                className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-[var(--inops-navy)] sm:text-4xl"
+              >
+                Choose your brochure
+              </FlyInText>
+            </div>
+            <FlyInText as="p" direction="up" delay={0.08} className="max-w-lg text-sm leading-7 text-slate-600">
+              Sharp, easy-to-scan resources for teams evaluating InOps products and workforce workflows.
+            </FlyInText>
+          </div>
+
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            {brochures.map((brochure, i) => (
+              <motion.article
+                key={brochure.title}
+                className="group relative flex h-full flex-col overflow-hidden rounded-[1.65rem] border border-white bg-white shadow-[0_18px_55px_-36px_rgba(15,47,87,0.5)] ring-1 ring-slate-900/[0.04] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_70px_-40px_rgba(15,47,87,0.58)]"
+                initial={{ opacity: 0, y: 36 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -8, scale: 1.01 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 * i }}
+              >
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={brochure.image}
+                    alt={`${brochure.title} brochure preview`}
+                    fill
+                    className="object-cover transition duration-700 group-hover:scale-[1.06]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--inops-navy)]/65 via-transparent to-[#39bde8]/10 opacity-80 transition group-hover:opacity-65" />
+                  <span className="absolute left-4 top-4 rounded-full border border-white/30 bg-white/95 px-3 py-1 text-xs font-semibold text-[var(--inops-navy)] backdrop-blur-sm">
+                    {brochure.category}
+                  </span>
+                  <span className="absolute bottom-4 right-4 rounded-full bg-[#061428]/75 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                    {brochure.accent}
+                  </span>
+                </div>
+
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <FlyInText
+                    as="p"
+                    direction="right"
+                    delay={0.04 + i * 0.04}
+                    className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--inops-blue)]"
+                  >
+                    Resource 0{i + 1}
+                  </FlyInText>
+                  <FlyInText
+                    as="h3"
+                    direction="up"
+                    delay={0.08 + i * 0.04}
+                    className="mt-3 text-xl font-semibold leading-snug tracking-[-0.025em] text-[var(--inops-navy)]"
+                  >
+                    {brochure.title}
+                  </FlyInText>
+                  <FlyInText
+                    as="p"
+                    direction="up"
+                    delay={0.12 + i * 0.04}
+                    className="mt-3 flex-1 text-sm leading-7 text-slate-600 line-clamp-3"
+                  >
+                    {brochure.description}
+                  </FlyInText>
+                  <FlyInText as="div" direction="up" delay={0.16 + i * 0.04} className="mt-6">
                     <a
                       href="#"
-                      className="mt-5 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--inops-navy)] px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-slate-900/15 transition hover:bg-[var(--inops-blue)] hover:shadow-blue-600/25"
                     >
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
+                      <DownloadIcon className="h-4 w-4" />
                       Download PDF
                     </a>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+                  </FlyInText>
+                </div>
+              </motion.article>
+            ))}
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+
+      <section className="relative px-4 pb-20 pt-2 sm:px-6 lg:px-12">
+        <motion.div
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/15 bg-[var(--inops-navy)] px-8 py-12 shadow-[0_35px_90px_-45px_rgba(6,20,40,0.9)] sm:px-12 lg:py-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.55, ease: smoothEase }}
+        >
+          <div
+            className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-[#39bde8]/25 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -bottom-20 -left-12 h-56 w-56 rounded-full bg-[var(--inops-blue)]/40 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:42px_42px]"
+            aria-hidden
+          />
+          <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+            <div className="max-w-2xl">
+              <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[#7dd3fc]">
+                Need the right material?
+              </FlyInText>
+              <FlyInText
+                as="h2"
+                direction="left"
+                delay={0.06}
+                className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl"
+              >
+                Talk to InOps before rollout
+              </FlyInText>
+              <FlyInText as="p" direction="up" delay={0.12} className="mt-4 text-base leading-8 text-slate-300">
+                Get the right brochure and solution walkthrough for your sites, users, compliance needs, and integrations.
+              </FlyInText>
+            </div>
+            <FlyInText as="div" direction="up" delay={0.16} className="flex flex-col gap-4 sm:flex-row lg:justify-end">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[var(--inops-navy)] shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-100"
+              >
+                Contact us
+                <ArrowRightIcon className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:bg-white/10 hover:text-white"
+              >
+                Explore solutions
+              </Link>
+            </FlyInText>
+          </div>
+        </motion.div>
+      </section>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 export const metadata: Metadata = {
   ...routeMetadata({
     title: "All pages (internal) | InOps Solutions",
-    description: "Internal index of InOps website routes for navigation. Not intended for search indexing.",
+    description: "Internal index of website routes for navigation. Not intended for search indexing.",
     path: "/all-pages",
     extraKeywords: [],
   }),

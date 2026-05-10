@@ -3,10 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FlyInText } from "@/app/components/FlyInText";
+import TrustStripMetric from "@/app/components/TrustStripMetric";
 import SolutionModulePanel from "@/app/components/SolutionModulePanel";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
+import VideoLivePopups from "@/app/components/VideoLivePopups";
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
+const timeAttendanceProductVideo = "/genrate_this_image_video_202605072329.mp4";
 const optiCamSolutionImage =
   "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.png";
+const optiCamSolutionVideo = "/GENRATE_THIS_IMAGE_VIDEO_202605072332.mp4";
 
 const authAccessGalleryImages = [
   {
@@ -123,72 +129,244 @@ function ServiceIcon({ icon, className }: { icon: string; className?: string }) 
   );
 }
 
+function DeploymentCycleIcon({ name, className }: { name: "monitor" | "enroll" | "ai" | "log" | "sync"; className?: string }) {
+  const stroke = "currentColor";
+  const teal = "#20c6c3";
+  const c = className ?? "h-8 w-8";
+
+  if (name === "monitor") {
+    return (
+      <svg className={c} viewBox="0 0 64 64" fill="none" aria-hidden>
+        <rect x="10" y="14" width="44" height="30" rx="3.5" stroke={stroke} strokeWidth="4" />
+        <path d="M24 52h16" stroke={stroke} strokeWidth="4" strokeLinecap="round" />
+        <path d="M32 44v8" stroke={stroke} strokeWidth="4" strokeLinecap="round" />
+        <path d="M20 20c0 0 7-10 16-10s16 10 16 10" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.9" />
+        <path d="M22 38c0 0 4 6 10 6" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.9" />
+      </svg>
+    );
+  }
+
+  if (name === "enroll") {
+    return (
+      <svg className={c} viewBox="0 0 64 64" fill="none" aria-hidden>
+        <circle cx="28" cy="28" r="16" stroke={stroke} strokeWidth="4" />
+        <path d="M40 40l10 10" stroke={stroke} strokeWidth="4" strokeLinecap="round" />
+        <path d="M18 36v-8h5v8h6v-14h5v14h6v-10h5v10" stroke={teal} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.95" />
+      </svg>
+    );
+  }
+
+  if (name === "ai") {
+    return (
+      <svg className={c} viewBox="0 0 64 64" fill="none" aria-hidden>
+        <rect x="20" y="22" width="24" height="20" rx="6" stroke={stroke} strokeWidth="4" />
+        <path d="M32 18v4M32 42v4M16 32h4M44 32h4" stroke={stroke} strokeWidth="4" strokeLinecap="round" />
+        <path d="M24 32h16" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.95" />
+        <path d="M22 14l6 6M42 14l-6 6M22 50l6-6M42 50l-6-6" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.65" />
+      </svg>
+    );
+  }
+
+  if (name === "log") {
+    return (
+      <svg className={c} viewBox="0 0 64 64" fill="none" aria-hidden>
+        <ellipse cx="32" cy="18" rx="18" ry="8" stroke={stroke} strokeWidth="4" />
+        <path d="M14 18v18c0 4.4 8.1 8 18 8s18-3.6 18-8V18" stroke={stroke} strokeWidth="4" />
+        <path d="M14 28c0 4.4 8.1 8 18 8s18-3.6 18-8" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.85" />
+        <path d="M14 38c0 4.4 8.1 8 18 8s18-3.6 18-8" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.55" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className={c} viewBox="0 0 64 64" fill="none" aria-hidden>
+      <circle cx="32" cy="32" r="22" stroke={stroke} strokeWidth="4" />
+      <path d="M22 33l6 6 14-16" stroke={stroke} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M44 20c2 2 4 6 4 12" stroke={teal} strokeWidth="6" strokeLinecap="round" opacity="0.9" />
+    </svg>
+  );
+}
+
+function ComparisonRowIcon({ name, className }: { name: string; className?: string }) {
+  const c = className ?? "h-5 w-5";
+  const common = {
+    className: c,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  switch (name) {
+    case "wallet":
+      return (
+        <svg {...common}>
+          <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h11A2.5 2.5 0 0 1 19 7.5V8H5.5A2.5 2.5 0 0 1 3 5.5" />
+          <rect x="3" y="8" width="18" height="11" rx="2.5" />
+          <path d="M16 13.5h2.5" />
+        </svg>
+      );
+    case "rocket":
+      return (
+        <svg {...common}>
+          <path d="M5 15c-1 3 0 5 0 5s2 1 5 0" />
+          <path d="M14.5 4.5c4 0 5 1 5 5 0 5-4 8-7 9l-3-3c1-3 4-7 9-7Z" />
+          <circle cx="14" cy="10" r="1.5" />
+          <path d="M9.5 14.5l-2.5 2.5" />
+        </svg>
+      );
+    case "smile":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9 14c.7 1 1.8 1.5 3 1.5s2.3-.5 3-1.5" />
+          <path d="M9 9.5h.01" />
+          <path d="M15 9.5h.01" />
+        </svg>
+      );
+    case "infinity":
+      return (
+        <svg {...common}>
+          <path d="M6.5 8c-2.5 0-4 1.8-4 4s1.5 4 4 4c2 0 3-1.5 5.5-4s3.5-4 5.5-4c2.5 0 4 1.8 4 4s-1.5 4-4 4c-2 0-3-1.5-5.5-4s-3.5-4-5.5-4Z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+const comparisonRows = [
+  {
+    feature: "Setup Cost",
+    icon: "wallet",
+    traditional: "₹5,000+ per device",
+    opticam: "₹0 (Existing Hardware)",
+    highlight: "Reuse CCTV",
+  },
+  {
+    feature: "Deployment Speed",
+    icon: "rocket",
+    traditional: "2–4 Weeks (Wiring & Installation)",
+    opticam: "48 Hours (Software Config)",
+    highlight: "10× faster",
+  },
+  {
+    feature: "User Experience",
+    icon: "smile",
+    traditional: "Queues & Physical Contact",
+    opticam: "Zero Contact · Natural Walk-through",
+    highlight: "Touchless",
+  },
+  {
+    feature: "Scalability",
+    icon: "infinity",
+    traditional: "Linear Cost per Location",
+    opticam: "Infinite Cloud Scaling",
+    highlight: "Multi-site ready",
+  },
+] as const;
+
+const trustStripMetrics = [
+  { value: "45%", label: "Lower hardware TCO" },
+  { value: "100%", label: "Buddy-punch reduction" },
+  { value: "SOC2", label: "Enterprise-ready security" },
+  { value: "99%", label: "Employee satisfaction" },
+] as const;
+
 export default function TimeAndAttendancePage() {
   return (
     <>
       <div className="min-h-screen bg-white text-gray-900">
         <motion.section
-          className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
+          className="w-full border-b border-slate-200/80 bg-white pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <motion.div
-            className="relative w-full overflow-hidden"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
-          >
+          <div className="relative w-full overflow-hidden">
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
               <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
-                <Image
-                  src={timeAttendanceProductImage}
-                  alt="CCTV-based attendance and computer vision monitoring on site"
-                  fill
-                  className="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
+                <video
+                  className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster={timeAttendanceProductImage}
+                  aria-label="CCTV-based attendance and computer vision monitoring on site"
+                >
+                  <source src={timeAttendanceProductVideo} type="video/mp4" />
+                </video>
                 <div
                   className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white to-transparent lg:block"
                   aria-hidden
                 />
+                <VideoLivePopups
+                  popups={[
+                    {
+                      position: "top-right",
+                      label: "Live",
+                      title: "CCTV stream active",
+                      accent: "emerald",
+                      className: "!top-0 sm:!top-0 lg:!-top-2 sm:-translate-x-20 lg:-translate-x-128",
+                    },
+                    {
+                      position: "bottom-right",
+                      label: "Detected",
+                      title: "Face matched",
+                      className: "!bottom-3 !right-2 sm:!bottom-5 sm:!right-4 lg:!bottom-10 lg:!right-0",
+                      variant: "icon",
+                      icon: "scan",
+                      accent: "blue",
+                    },
+                  ]}
+                />
               </div>
-              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
                 <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
+                  <FlyInText
+                    as="span"
+                    trigger="mount"
+                    direction="down"
+                    delay={0}
+                    duration={0.55}
+                    className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/85 px-3.5 py-1.5 text-xs font-semibold text-blue-700 shadow-sm backdrop-blur"
                   >
-                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/85 px-3.5 py-1.5 text-xs font-semibold text-blue-700 shadow-sm backdrop-blur">
-                      <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
-                      CCTV based attendance solution
-                    </span>
-                  </motion.div>
-                  <motion.h1
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                    CCTV based attendance solution
+                  </FlyInText>
+                  <FlyInText
+                    as="h1"
+                    trigger="mount"
+                    direction="left"
+                    delay={0.08}
+                    duration={0.68}
                     className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
                     Attendance without devices,{" "}
-                    <span className="text-[color:var(--inops-blue)]">powered by AI</span>
-                  </motion.h1>
-                  <motion.p
+                    <span className="text-blue-800">powered by AI</span>
+                  </FlyInText>
+                  <FlyInText
+                    as="p"
+                    trigger="mount"
+                    direction="up"
+                    delay={0.16}
+                    duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                   >
                     Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer
                     vision. No queues, no contact, no excuses.
-                  </motion.p>
-                  <motion.div
+                  </FlyInText>
+                  <FlyInText
+                    as="div"
+                    trigger="mount"
+                    direction="up"
+                    delay={0.24}
+                    duration={0.58}
                     className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                   >
                     <Link
                       href="/contact"
@@ -196,164 +374,299 @@ export default function TimeAndAttendancePage() {
                     >
                       Book a Live Demo
                     </Link>
-                  </motion.div>
+                  </FlyInText>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </motion.section>
 
-        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
+        <section className="border-b border-slate-200 bg-white py-10 sm:py-12 lg:py-14">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.div
-              className="max-w-3xl"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2 className="text-3xl font-bold tracking-tight text-[color:var(--inops-blue)] sm:text-5xl">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-16">
+              {trustStripMetrics.map((m, i) => (
+                <TrustStripMetric key={m.label} value={m.value} label={m.label} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-white py-14 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.35]" aria-hidden />
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="max-w-3xl">
+              <FlyInText as="h2" direction="up" duration={0.65} className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
                 The Hidden Cost of Traditional Biometrics
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-slate-500 sm:text-xl">
+              </FlyInText>
+              <FlyInText as="p" direction="up" delay={0.06} duration={0.6} className="mt-4 text-sm leading-relaxed text-slate-500 sm:text-xl">
                 Legacy hardware systems are failing modern enterprises with hidden costs and systemic inefficiencies.
-              </p>
-            </motion.div>
+              </FlyInText>
+            </div>
 
             <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
               {[
                 {
                   title: "Endless Queues",
-                  description: "Employees spend average 8 minutes daily waiting at biometric checkpoints during peak hours.",
-                  icon: "clock",
+                  description:
+                    "Employees spend average 8 minutes daily waiting at biometric checkpoints during peak hours.",
+                  icon: "clock" as const,
+                  chip: "Throughput",
+                  metric: "~8 min",
+                  accentBar: "from-rose-500 via-orange-400 to-amber-300",
+                  iconWrap:
+                    "bg-rose-50 text-rose-600 ring-rose-500/20 group-hover:bg-rose-500 group-hover:text-white group-hover:ring-rose-400/40",
+                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(244,63,94,0.35)]",
                 },
                 {
                   title: "Buddy Punching",
-                  description: "Time theft through shared cards or fingerprints costs businesses up to 2% of annual payroll.",
-                  icon: "users",
+                  description:
+                    "Time theft through shared cards or fingerprints costs businesses up to 2% of annual payroll.",
+                  icon: "users" as const,
+                  chip: "Payroll risk",
+                  metric: "Up to 2%",
+                  accentBar: "from-violet-500 via-fuchsia-500 to-pink-400",
+                  iconWrap:
+                    "bg-violet-50 text-violet-600 ring-violet-500/20 group-hover:bg-violet-600 group-hover:text-white group-hover:ring-violet-400/40",
+                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.35)]",
                 },
                 {
                   title: "High Capex",
-                  description: "Proprietary hardware devices require frequent maintenance, licenses, and replacement.",
-                  icon: "briefcase",
+                  description:
+                    "Proprietary hardware devices require frequent maintenance, licenses, and replacement.",
+                  icon: "briefcase" as const,
+                  chip: "Cost stack",
+                  metric: "Capex + Opex",
+                  accentBar: "from-amber-500 via-orange-500 to-red-400",
+                  iconWrap:
+                    "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
+                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.38)]",
                 },
                 {
                   title: "Data Gaps",
-                  description: "Multi-location enterprises struggle with fragmented data and delayed sync between sites.",
-                  icon: "globe",
+                  description:
+                    "Multi-location enterprises struggle with fragmented data and delayed sync between sites.",
+                  icon: "globe" as const,
+                  chip: "Visibility",
+                  metric: "Delayed sync",
+                  accentBar: "from-sky-500 via-cyan-400 to-teal-400",
+                  iconWrap:
+                    "bg-sky-50 text-sky-600 ring-sky-500/20 group-hover:bg-sky-500 group-hover:text-white group-hover:ring-sky-400/40",
+                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
                 },
               ].map((item, i) => (
                 <motion.article
                   key={item.title}
-                  className="rounded-2xl bg-transparent p-1"
+                  className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_12px_40px_-28px_rgba(15,23,42,0.22)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-slate-300/90 ${item.hoverGlow}`}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
                 >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-400">
-                    {item.icon === "clock" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 7v5l3 2" />
-                      </svg>
-                    )}
-                    {item.icon === "users" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="9" cy="8" r="3" />
-                        <circle cx="17" cy="9" r="2" />
-                        <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                        <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                      </svg>
-                    )}
-                    {item.icon === "briefcase" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <rect x="3" y="7" width="18" height="12" rx="2" />
-                        <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
-                      </svg>
-                    )}
-                    {item.icon === "globe" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
-                      </svg>
-                    )}
-                  </span>
-                  <h3 className="mt-5 text-3xl font-semibold text-slate-900">{item.title}</h3>
-                  <p className="mt-3 text-lg leading-relaxed text-slate-500">{item.description}</p>
+                  <div className={`h-1 w-full bg-gradient-to-r ${item.accentBar}`} aria-hidden />
+                  <div className="flex flex-1 flex-col p-6 pt-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <span
+                        className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 transition-all duration-300 ${item.iconWrap}`}
+                      >
+                        {item.icon === "clock" && (
+                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M12 7v5l3 2" />
+                          </svg>
+                        )}
+                        {item.icon === "users" && (
+                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <circle cx="9" cy="8" r="3" />
+                            <circle cx="17" cy="9" r="2" />
+                            <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                            <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                          </svg>
+                        )}
+                        {item.icon === "briefcase" && (
+                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <rect x="3" y="7" width="18" height="12" rx="2" />
+                            <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
+                          </svg>
+                        )}
+                        {item.icon === "globe" && (
+                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                          </svg>
+                        )}
+                      </span>
+                      <div className="flex flex-col items-end gap-1.5 text-right">
+                        <span className="rounded-full border border-slate-200/90 bg-slate-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-600">
+                          {item.chip}
+                        </span>
+                        <span className="text-xs font-semibold tabular-nums text-slate-900">{item.metric}</span>
+                      </div>
+                    </div>
+
+                    <FlyInText
+                      as="h3"
+                      direction="up"
+                      delay={i * 0.05}
+                      duration={0.58}
+                      className="mt-5 text-lg font-bold leading-snug tracking-tight text-slate-900 sm:text-xl"
+                    >
+                      {item.title}
+                    </FlyInText>
+                    <FlyInText
+                      as="p"
+                      direction="up"
+                      delay={i * 0.05 + 0.05}
+                      duration={0.55}
+                      className="mt-3 flex-1 text-sm leading-relaxed text-slate-600"
+                    >
+                      {item.description}
+                    </FlyInText>
+                  </div>
                 </motion.article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 py-14 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.25]" aria-hidden />
+          <div
+            className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/15 via-sky-400/10 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-gradient-to-tr from-cyan-400/15 via-emerald-300/10 to-transparent blur-3xl"
+            aria-hidden
+          />
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
               <motion.div
-                className="relative overflow-hidden"
+                className="relative order-2 lg:order-1"
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl ml-20">
-                  <Image
-                    src={optiCamSolutionImage}
-                    alt="OptiCam attendance dashboard on a tablet-style interface"
-                    fill
-                    className="object-contain object-left"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                <div className="relative aspect-[16/10] mt-25 w-full overflow-visible rounded-3xl border border-slate-200/90 bg-white shadow-[0_30px_70px_-32px_rgba(15,23,42,0.32)]">
+                  <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                    <video
+                      className="absolute inset-0 h-full w-full object-contain"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster={optiCamSolutionImage}
+                      aria-label="OptiCam attendance dashboard"
+                    >
+                      <source src={optiCamSolutionVideo} type="video/mp4" />
+                    </video>
+                    <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/40" aria-hidden />
+                  </div>
+
+                  <VideoLivePopups
+                    popups={[
+                      {
+                        position: "top-left",
+                        label: "Live",
+                        title: "Detection running",
+                        accent: "emerald",
+                        className: "sm:!-top-10 sm:!-left-8 lg:top-10 lg:-left-6",
+                      },
+                      {
+                        position: "bottom-right",
+                        label: "Match accuracy",
+                        title: "99.6% on enrolled staff",
+                        variant: "icon",
+                        icon: "check",
+                        accent: "emerald",
+                        className: "sm:!-bottom-12 sm:!-right-4 lg:!-bottom-10 lg:!-right-6",
+                        delay: 0.32,
+                      },
+                    ]}
                   />
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
-              >
-                <h2 className="text-3xl font-bold tracking-tight text-[color:var(--inops-blue)] sm:text-5xl">
-                  The OptiCam Solution
-                </h2>
+              <div className="order-1 lg:order-2">
+                <FlyInText
+                  as="span"
+                  direction="up"
+                  duration={0.55}
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600" aria-hidden />
+                  Our solution
+                </FlyInText>
 
-                <div className="mt-6 space-y-6">
+                <FlyInText
+                  as="h2"
+                  direction="right"
+                  duration={0.68}
+                  delay={0.06}
+                  className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[2.65rem] lg:leading-tight"
+                >
+                  The{" "}
+                  <span className="text-blue-800">OptiCam</span> Solution
+                </FlyInText>
+
+                <FlyInText
+                  as="p"
+                  direction="up"
+                  delay={0.1}
+                  duration={0.6}
+                  className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-lg"
+                >
+                  A computer-vision platform that turns the cameras you already own into a touchless, accurate, and instantly scalable workforce identity layer.
+                </FlyInText>
+
+                <div className="mt-7 space-y-5">
                   {[
                     {
                       title: "Existing IP Cameras",
                       description:
                         "No new hardware required. OptiCam integrates directly with your existing CCTV network via ONVIF/RTSP.",
-                      icon: "camera",
+                      icon: "camera" as const,
+                      iconWrap: "bg-blue-50 text-blue-600",
                     },
                     {
                       title: "Real-Time Detection",
                       description:
                         "AI detects faces as they walk through entrances. No stopping, no touching, just natural movement.",
-                      icon: "bolt",
+                      icon: "bolt" as const,
+                      iconWrap: "bg-amber-50 text-amber-600",
                     },
                     {
                       title: "Centralized Control",
                       description:
                         "Manage attendance across 100+ locations from a single cloud-based dashboard with instant HRMS sync.",
-                      icon: "grid",
+                      icon: "grid" as const,
+                      iconWrap: "bg-emerald-50 text-emerald-600",
                     },
-                  ].map((item) => (
-                    <div key={item.title} className="flex items-start gap-4">
-                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-700">
+                  ].map((item, bi) => (
+                    <motion.div
+                      key={item.title}
+                      className="flex items-start gap-4"
+                      initial={{ opacity: 0, x: 16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={viewport}
+                      transition={{ duration: 0.45, ease: smoothEase, delay: bi * 0.07 }}
+                    >
+                      <span className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${item.iconWrap}`}>
                         {item.icon === "camera" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                             <path d="M4 7h4l2-2h4l2 2h4v12H4z" />
                             <circle cx="12" cy="13" r="3" />
                           </svg>
                         )}
                         {item.icon === "bolt" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                             <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
                           </svg>
                         )}
                         {item.icon === "grid" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                             <rect x="4" y="4" width="6" height="6" />
                             <rect x="14" y="4" width="6" height="6" />
                             <rect x="4" y="14" width="6" height="6" />
@@ -361,317 +674,729 @@ export default function TimeAndAttendancePage() {
                           </svg>
                         )}
                       </span>
-                      <div>
-                        <h3 className="text-2xl font-semibold text-slate-900">{item.title}</h3>
-                        <p className="mt-2 text-lg leading-relaxed text-slate-500">{item.description}</p>
+
+                      <div className="min-w-0 flex-1">
+                        <FlyInText
+                          as="h3"
+                          direction="left"
+                          delay={bi * 0.06}
+                          duration={0.55}
+                          className="text-base font-bold tracking-tight text-slate-900 sm:text-lg"
+                        >
+                          {item.title}
+                        </FlyInText>
+                        <FlyInText
+                          as="p"
+                          direction="up"
+                          delay={bi * 0.06 + 0.05}
+                          duration={0.55}
+                          className="mt-1.5 text-sm leading-relaxed text-slate-600"
+                        >
+                          {item.description}
+                        </FlyInText>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.div
-              className="mx-auto max-w-3xl text-center"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Seamless Deployment Cycle
-              </h2>
-              <p className="mt-4 text-lg font-medium text-[color:var(--inops-blue)] sm:text-xl">
-                Go from zero to fully automated attendance in less than 48 hours.
-              </p>
-            </motion.div>
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-white via-slate-50/40 to-white py-10 lg:py-14">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.3]" aria-hidden />
+          <div
+            className="pointer-events-none absolute -left-24 top-16 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500/15 via-sky-400/10 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-24 bottom-6 h-64 w-64 rounded-full bg-gradient-to-tr from-cyan-400/15 via-emerald-300/10 to-transparent blur-3xl"
+            aria-hidden
+          />
 
-            <div className="relative mt-10">
-              <div className="pointer-events-none absolute left-0 right-0 top-[38px] hidden h-px bg-slate-200 md:block" aria-hidden />
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3 xl:grid-cols-5 xl:gap-4">
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <FlyInText
+                as="span"
+                direction="up"
+                duration={0.55}
+                className="inline-flex items-center gap-2 rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-700"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-600" aria-hidden />
+                How it deploys
+              </FlyInText>
+              <FlyInText as="h2" direction="up" duration={0.65} delay={0.06} className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                Seamless <span className="text-blue-800">Deployment Cycle</span>
+              </FlyInText>
+              <FlyInText as="p" direction="up" delay={0.1} duration={0.6} className="mt-3 text-base text-slate-600 sm:text-lg">
+                Go from zero to fully automated attendance in less than{" "}
+                <span className="font-semibold text-blue-800">48 hours</span>.
+              </FlyInText>
+            </div>
+
+            <div className="relative mt-8">
+              <div
+                className="pointer-events-none absolute left-[8%] right-[8%] top-[80px] hidden h-[3px] rounded-full bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-cyan-500/0 xl:block"
+                aria-hidden
+              />
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-4">
                 {[
                   {
                     step: "01",
                     title: "Connect Cameras",
                     description: "Plug in your RTSP feeds into the OptiCam cloud portal.",
-                    icon: "monitor",
+                    icon: "monitor" as const,
+                    accentText: "text-blue-600",
+                    accentRing: "ring-blue-500/20",
+                    accentBg: "bg-blue-50",
+                    accentBar: "from-blue-500 to-sky-400",
+                    accentHover:
+                      "group-hover:border-blue-500 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-sky-500 group-hover:text-white",
+                    cardHover: "hover:shadow-[0_24px_56px_-28px_rgba(37,99,235,0.45)]",
+                    nodeBg: "bg-blue-500",
                   },
                   {
                     step: "02",
                     title: "Enroll Staff",
                     description: "Bulk upload employee photos or sync with existing HR records.",
-                    icon: "users",
+                    icon: "users" as const,
+                    accentText: "text-violet-600",
+                    accentRing: "ring-violet-500/20",
+                    accentBg: "bg-violet-50",
+                    accentBar: "from-violet-500 to-fuchsia-500",
+                    accentHover:
+                      "group-hover:border-violet-500 group-hover:bg-gradient-to-br group-hover:from-violet-600 group-hover:to-fuchsia-500 group-hover:text-white",
+                    cardHover: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.45)]",
+                    nodeBg: "bg-violet-500",
                   },
                   {
                     step: "03",
                     title: "AI Detection",
                     description: "Edge-compute nodes identify faces with sub-second latency.",
-                    icon: "chip",
+                    icon: "chip" as const,
+                    accentText: "text-amber-600",
+                    accentRing: "ring-amber-500/20",
+                    accentBg: "bg-amber-50",
+                    accentBar: "from-amber-500 to-orange-500",
+                    accentHover:
+                      "group-hover:border-amber-500 group-hover:bg-gradient-to-br group-hover:from-amber-500 group-hover:to-orange-500 group-hover:text-white",
+                    cardHover: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.45)]",
+                    nodeBg: "bg-amber-500",
                   },
                   {
                     step: "04",
                     title: "Log Attendance",
                     description: "Encrypted logs are generated automatically for each entry.",
-                    icon: "database",
+                    icon: "database" as const,
+                    accentText: "text-emerald-600",
+                    accentRing: "ring-emerald-500/20",
+                    accentBg: "bg-emerald-50",
+                    accentBar: "from-emerald-500 to-teal-500",
+                    accentHover:
+                      "group-hover:border-emerald-500 group-hover:bg-gradient-to-br group-hover:from-emerald-600 group-hover:to-teal-500 group-hover:text-white",
+                    cardHover: "hover:shadow-[0_24px_56px_-28px_rgba(16,185,129,0.45)]",
+                    nodeBg: "bg-emerald-500",
                   },
                   {
                     step: "05",
                     title: "HRMS Sync",
                     description: "Data is pushed to SAP, Workday, or your custom ERP system.",
-                    icon: "check",
+                    icon: "check" as const,
+                    accentText: "text-cyan-600",
+                    accentRing: "ring-cyan-500/20",
+                    accentBg: "bg-cyan-50",
+                    accentBar: "from-cyan-500 to-blue-500",
+                    accentHover:
+                      "group-hover:border-cyan-500 group-hover:bg-gradient-to-br group-hover:from-cyan-600 group-hover:to-blue-500 group-hover:text-white",
+                    cardHover: "hover:shadow-[0_24px_56px_-28px_rgba(6,182,212,0.45)]",
+                    nodeBg: "bg-cyan-500",
                   },
                 ].map((item, i) => (
                   <motion.article
                     key={item.title}
-                    className="group relative text-center"
-                    initial={{ opacity: 0, y: 16 }}
+                    className={`group relative flex h-full flex-col rounded-3xl border border-slate-200/90 bg-white p-5 shadow-[0_12px_40px_-28px_rgba(15,23,42,0.22)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-slate-300/90 ${item.cardHover}`}
+                    initial={{ opacity: 0, y: 18 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.06 }}
                   >
-                    <span className="absolute left-1/2 top-0 z-10 -translate-x-[34px] -translate-y-2 rounded-md bg-slate-900 px-1.5 py-0.5 text-[11px] font-semibold text-white">
+                    <span
+                      className={`pointer-events-none absolute right-4 top-3 text-3xl font-black leading-none tracking-tight text-slate-100 transition-colors duration-300 group-hover:text-slate-200`}
+                      aria-hidden
+                    >
                       {item.step}
                     </span>
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition-colors duration-200 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white">
-                      {item.icon === "monitor" && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <rect x="3" y="4" width="18" height="12" rx="2" />
-                          <path d="M8 20h8M12 16v4" />
-                        </svg>
-                      )}
-                      {item.icon === "users" && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <circle cx="9" cy="8" r="3" />
-                          <circle cx="17" cy="9" r="2" />
-                          <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                          <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                        </svg>
-                      )}
-                      {item.icon === "chip" && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <rect x="7" y="7" width="10" height="10" rx="1.5" />
-                          <path d="M4 9h3M4 15h3M17 9h3M17 15h3M9 4v3M15 4v3M9 17v3M15 17v3" />
-                        </svg>
-                      )}
-                      {item.icon === "database" && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <ellipse cx="12" cy="6" rx="7" ry="3" />
-                          <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
-                        </svg>
-                      )}
-                      {item.icon === "check" && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <circle cx="12" cy="12" r="9" />
-                          <path d="M8.5 12.5l2.5 2.5 4.5-5" />
-                        </svg>
-                      )}
+
+                    <span
+                      className={`pointer-events-none absolute left-1/2 top-[80px] hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ${item.nodeBg} ring-4 ring-white xl:block`}
+                      aria-hidden
+                    />
+
+                    <div className="relative flex flex-1 flex-col items-center text-center">
+                      <span
+                        className={`inline-flex h-5 items-center justify-center rounded-full bg-gradient-to-br ${item.accentBar} px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-sm`}
+                      >
+                        Step {item.step}
+                      </span>
+
+                      <div
+                        className={`mt-3.5 flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 ${item.accentBg} ${item.accentText} shadow-sm transition-all duration-300 ${item.accentHover}`}
+                      >
+                        {item.icon === "monitor" && <DeploymentCycleIcon name="monitor" className="h-7 w-7" />}
+                        {item.icon === "users" && <DeploymentCycleIcon name="enroll" className="h-7 w-7" />}
+                        {item.icon === "chip" && <DeploymentCycleIcon name="ai" className="h-7 w-7" />}
+                        {item.icon === "database" && <DeploymentCycleIcon name="log" className="h-7 w-7" />}
+                        {item.icon === "check" && <DeploymentCycleIcon name="sync" className="h-7 w-7" />}
+                      </div>
+
+                      <FlyInText
+                        as="h3"
+                        direction="up"
+                        delay={i * 0.05}
+                        duration={0.55}
+                        className="mt-3.5 text-base font-bold leading-snug tracking-tight text-slate-900 sm:text-lg"
+                      >
+                        {item.title}
+                      </FlyInText>
+
+                      <FlyInText
+                        as="p"
+                        direction="up"
+                        delay={i * 0.05 + 0.04}
+                        duration={0.52}
+                        className="mt-1.5 flex-1 text-[13px] leading-relaxed text-slate-600"
+                      >
+                        {item.description}
+                      </FlyInText>
                     </div>
-                    <h3 className="mt-4 text-2xl font-semibold text-slate-900">{item.title}</h3>
-                    <p className="mt-2 text-lg leading-relaxed text-slate-500">{item.description}</p>
                   </motion.article>
                 ))}
               </div>
             </div>
+
+            {/* <FlyInText
+              as="div"
+              direction="up"
+              duration={0.6}
+              delay={0.1}
+              className="mx-auto mt-12 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-4 rounded-2xl border border-slate-200/80 bg-white/80 px-6 py-4 text-sm text-slate-600 shadow-sm backdrop-blur"
+            >
+              <span className="inline-flex items-center gap-2">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+                  </svg>
+                </span>
+                <span>
+                  Total go-live: <span className="font-semibold text-slate-900">≤ 48 hours</span>
+                </span>
+              </span>
+              <span className="hidden h-4 w-px bg-slate-200 sm:inline-block" aria-hidden />
+              <span className="inline-flex items-center gap-2">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </span>
+                <span>
+                  No new hardware <span className="font-semibold text-slate-900">required</span>
+                </span>
+              </span>
+              <span className="hidden h-4 w-px bg-slate-200 sm:inline-block" aria-hidden />
+              <span className="inline-flex items-center gap-2">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-violet-50 text-violet-600">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                  </svg>
+                </span>
+                <span>
+                  Encrypted, <span className="font-semibold text-slate-900">SOC2-ready</span>
+                </span>
+              </span>
+            </FlyInText> */}
           </div>
         </section>
 
-        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.div
-              className="mx-auto max-w-3xl text-center"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                The Standard for Modern Enterprise
-              </h2>
-              <p className="mt-4 text-lg text-slate-500 sm:text-xl">
-                Why the world&apos;s most innovative offices are switching to OptiCam.
-              </p>
-            </motion.div>
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 py-14 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.25]" aria-hidden />
+          <div
+            className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-gradient-to-br from-rose-400/15 via-orange-300/10 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-gradient-to-tr from-blue-500/15 via-cyan-400/10 to-transparent blur-3xl"
+            aria-hidden
+          />
 
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="mx-auto max-w-3xl text-center">
+              <FlyInText
+                as="span"
+                direction="up"
+                duration={0.55}
+                className="inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-violet-50/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-700"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-600" aria-hidden />
+                Why switch
+              </FlyInText>
+              <FlyInText
+                as="h2"
+                direction="up"
+                duration={0.65}
+                delay={0.06}
+                className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+              >
+                The Standard for <span className="text-blue-800">Modern Enterprise</span>
+              </FlyInText>
+              <FlyInText
+                as="p"
+                direction="up"
+                delay={0.1}
+                duration={0.6}
+                className="mt-3 text-base text-slate-600 sm:text-lg"
+              >
+                Why the world&apos;s most innovative offices are switching to OptiCam.
+              </FlyInText>
+            </div>
+
+            {/* Mobile: VS-style stacked cards */}
+            <div className="mt-10 space-y-4 md:hidden">
+              {comparisonRows.map((row, i) => (
+                <motion.div
+                  key={row.feature}
+                  className="overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_12px_36px_-26px_rgba(15,23,42,0.25)]"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
+                >
+                  <div className="flex items-center gap-3 border-b border-slate-100 px-5 py-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
+                      <ComparisonRowIcon name={row.icon} className="h-5 w-5" />
+                    </span>
+                    <p className="text-sm font-bold text-slate-900">{row.feature}</p>
+                  </div>
+                  <div className="grid grid-cols-1 divide-y divide-slate-100">
+                    <div className="flex items-start gap-3 px-5 py-3.5">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600 ring-1 ring-rose-500/20">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                          <path d="M18 6 6 18" />
+                          <path d="m6 6 12 12" />
+                        </svg>
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-700">Traditional</p>
+                        <p className="mt-0.5 text-sm leading-snug text-slate-700">{row.traditional}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 bg-blue-50/40 px-5 py-3.5">
+                      <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                          <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">OptiCam AI</p>
+                        <p className="mt-0.5 text-sm font-semibold leading-snug text-slate-900">{row.opticam}</p>
+                        <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20">
+                          {row.highlight}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Desktop: premium VS table */}
             <motion.div
-              className="mt-8 overflow-hidden rounded-2xl border border-slate-200"
+              className="relative mt-12 hidden overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_30px_70px_-32px_rgba(15,23,42,0.32)] md:block"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 }}
             >
-              <div className="grid grid-cols-3 border-b border-slate-200 bg-slate-50">
-                <div className="px-4 py-4 text-left text-sm font-semibold text-slate-700 sm:px-6 sm:text-base">Feature</div>
-                <div className="px-4 py-4 text-left text-sm font-semibold italic text-slate-500 sm:px-6 sm:text-base">Traditional Biometrics</div>
-                <div className="px-4 py-4 text-left text-sm font-semibold text-slate-800 sm:px-6 sm:text-base">OptiCam AI</div>
+              {/* "Recommended" ribbon over OptiCam column */}
+              <div className="pointer-events-none absolute right-6 top-0 z-10 hidden lg:block">
+                <span className="inline-flex items-center gap-1.5 rounded-b-xl bg-gradient-to-br from-emerald-500 to-teal-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-md">
+                  <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M12 2 15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6Z" />
+                  </svg>
+                  Recommended
+                </span>
               </div>
 
-              {[
-                {
-                  feature: "Setup Cost",
-                  traditional: "5,000+ per device",
-                  opticam: "0 (Existing Hardware)",
-                },
-                {
-                  feature: "Deployment Speed",
-                  traditional: "2-4 Weeks (Wiring/Installation)",
-                  opticam: "48 Hours (Software Config)",
-                },
-                {
-                  feature: "User Experience",
-                  traditional: "Queues & Physical Contact",
-                  opticam: "Zero Contact / Natural Walk",
-                },
-                {
-                  feature: "Scalability",
-                  traditional: "Linear Cost per Location",
-                  opticam: "Infinite Cloud Scaling",
-                },
-              ].map((row, idx) => (
-                <div key={row.feature} className={`grid grid-cols-3 ${idx !== 3 ? "border-b border-slate-200" : ""}`}>
-                  <div className="px-4 py-4 text-sm font-semibold text-slate-800 sm:px-6 sm:text-base">{row.feature}</div>
-                  <div className="px-4 py-4 text-sm text-slate-600 sm:px-6 sm:text-base">{row.traditional}</div>
-                  <div className="bg-slate-50/70 px-4 py-4 text-sm font-semibold text-slate-800 sm:px-6 sm:text-base">{row.opticam}</div>
+              {/* Header */}
+              <div className="grid grid-cols-[1.1fr_1fr_1.1fr] border-b border-slate-200 bg-gradient-to-r from-slate-50 via-white to-slate-50">
+                <div className="flex items-center gap-2 px-6 py-5 text-left">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Feature</span>
+                </div>
+                <div className="flex items-center justify-between gap-3 border-l border-slate-200 px-6 py-5">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-600">Yesterday</p>
+                    <p className="mt-0.5 text-sm font-bold text-slate-700">Traditional Biometrics</p>
+                  </div>
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500 ring-1 ring-rose-500/20">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M18 6 6 18" />
+                      <path d="m6 6 12 12" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between gap-3 border-l border-slate-200 bg-gradient-to-br from-blue-50/80 via-white to-emerald-50/40 px-6 py-5">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">Today</p>
+                    <p className="mt-0.5 text-sm font-bold text-slate-900">OptiCam AI</p>
+                  </div>
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              {/* Rows */}
+              {comparisonRows.map((row, idx) => (
+                <div
+                  key={row.feature}
+                  className={`group grid grid-cols-[1.1fr_1fr_1.1fr] transition-colors duration-200 hover:bg-slate-50/40 ${
+                    idx !== comparisonRows.length - 1 ? "border-b border-slate-200/80" : ""
+                  }`}
+                >
+                  <div className="flex items-center gap-3 px-6 py-5">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700 ring-1 ring-slate-200/80 transition-colors duration-300 group-hover:bg-slate-900 group-hover:text-white group-hover:ring-slate-900/30">
+                      <ComparisonRowIcon name={row.icon} className="h-5 w-5" />
+                    </span>
+                    <p className="text-sm font-bold tracking-tight text-slate-900">{row.feature}</p>
+                  </div>
+
+                  <div className="flex items-center gap-3 border-l border-slate-200/80 px-6 py-5">
+                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-600 ring-1 ring-rose-500/20">
+                      <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                      </svg>
+                    </span>
+                    <p className="text-sm leading-snug text-slate-600">{row.traditional}</p>
+                  </div>
+
+                  <div className="relative flex items-center justify-between gap-3 border-l border-slate-200/80 bg-blue-50/30 px-6 py-5">
+                    <span
+                      className="pointer-events-none absolute inset-y-0 left-0 w-[3px] bg-gradient-to-b from-blue-500 via-cyan-400 to-emerald-400"
+                      aria-hidden
+                    />
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
+                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                          <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                      </span>
+                      <p className="text-sm font-semibold tracking-tight text-slate-900">{row.opticam}</p>
+                    </div>
+                    <span className="hidden shrink-0 items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20 lg:inline-flex">
+                      {row.highlight}
+                    </span>
+                  </div>
                 </div>
               ))}
+
+              {/* Footer summary */}
+              <div className="grid grid-cols-[1.1fr_1fr_1.1fr] border-t border-slate-200 bg-gradient-to-r from-slate-50 via-white to-blue-50/40">
+                <div className="flex items-center gap-2 px-6 py-4">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Summary</span>
+                </div>
+                <div className="flex items-center gap-2 border-l border-slate-200 px-6 py-4">
+                  <span className="inline-flex h-2 w-2 rounded-full bg-rose-500" aria-hidden />
+                  <p className="text-xs font-medium text-slate-600">High capex, low agility</p>
+                </div>
+                <div className="flex items-center gap-2 border-l border-slate-200 bg-blue-50/30 px-6 py-4">
+                  <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                  <p className="text-xs font-semibold text-slate-900">Lower TCO · Faster rollout · Cloud-native</p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        <section className="border-t border-slate-800 from-[#0e1016] via-[#12141b] to-[#0e1016] py-12 lg:py-16 bg-black">
-          <h2 className="text-3xl text-center font-bold tracking-tight text-white sm:text-5xl mb-5">
-            Measurable ROI for Your Infrastructure
-          </h2>
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-10">
+        <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-[#0a0c12] via-[#0e1016] to-[#0a0c12] py-14 lg:py-20">
+          <div
+            className="pointer-events-none absolute -left-32 top-12 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/20 via-blue-500/12 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-32 bottom-10 h-96 w-96 rounded-full bg-gradient-to-tr from-violet-500/20 via-fuchsia-500/12 to-transparent blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+            aria-hidden
+          />
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <FlyInText
+                as="span"
+                direction="up"
+                duration={0.55}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 backdrop-blur"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden />
+                Measurable outcomes
+              </FlyInText>
+              <FlyInText
+                as="h2"
+                direction="up"
+                duration={0.7}
+                delay={0.06}
+                className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-[2.65rem] lg:leading-tight"
+              >
+                Measurable ROI for your{" "}
+                <span className="text-slate-200">infrastructure</span>
+              </FlyInText>
+              <FlyInText
+                as="p"
+                direction="up"
+                delay={0.1}
+                duration={0.6}
+                className="mt-3 text-base leading-relaxed text-slate-400 sm:text-lg"
+              >
+                Hard numbers, not promises — what enterprises see after switching to OptiCam.
+              </FlyInText>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr] lg:items-stretch lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                {/* <h2 className="text-3xl text-center font-bold tracking-tight text-white sm:text-5xl">
-                  Measurable ROI for Your Infrastructure
-                </h2> */}
-                <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="grid h-full grid-cols-1 gap-3 sm:grid-cols-2">
                   {[
-                    { value: "45%", label: "Reduction in Hardware TCO", icon: "trend" },
-                    { value: "100%", label: "Elimination of Buddy Punching", icon: "chart" },
-                    { value: "SOC2", label: "Enterprise Data Security", icon: "shield" },
-                    { value: "99%", label: "Employee Satisfaction Rate", icon: "users" },
+                    {
+                      value: "45%",
+                      label: "Reduction in Hardware TCO",
+                      detail: "Drop the cost of biometric devices, cabling, and support contracts.",
+                      icon: "trend" as const,
+                      accentBar: "from-cyan-400 to-sky-500",
+                      iconWrap: "bg-cyan-500/15 text-cyan-300 ring-cyan-400/30",
+                      hoverGlow: "hover:shadow-[0_24px_60px_-26px_rgba(34,211,238,0.55)]",
+                      hoverBg: "from-cyan-500/20 via-sky-500/10 to-transparent",
+                      trendChip: "Lower",
+                      trendChipColor: "text-cyan-300 bg-cyan-500/10 ring-cyan-400/20",
+                    },
+                    {
+                      value: "100%",
+                      label: "Elimination of Buddy Punching",
+                      detail: "Face-verified entry makes shared cards or proxy clock-ins impossible.",
+                      icon: "chart" as const,
+                      accentBar: "from-rose-400 to-fuchsia-500",
+                      iconWrap: "bg-rose-500/15 text-rose-300 ring-rose-400/30",
+                      hoverGlow: "hover:shadow-[0_24px_60px_-26px_rgba(244,63,94,0.55)]",
+                      hoverBg: "from-rose-500/20 via-fuchsia-500/10 to-transparent",
+                      trendChip: "Risk gone",
+                      trendChipColor: "text-rose-300 bg-rose-500/10 ring-rose-400/20",
+                    },
+                    {
+                      value: "SOC2",
+                      label: "Enterprise Data Security",
+                      detail: "Audited controls, encryption at rest & in transit, full event log.",
+                      icon: "shield" as const,
+                      accentBar: "from-emerald-400 to-teal-500",
+                      iconWrap: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/30",
+                      hoverGlow: "hover:shadow-[0_24px_60px_-26px_rgba(16,185,129,0.55)]",
+                      hoverBg: "from-emerald-500/20 via-teal-500/10 to-transparent",
+                      trendChip: "Audited",
+                      trendChipColor: "text-emerald-300 bg-emerald-500/10 ring-emerald-400/20",
+                    },
+                    {
+                      value: "99%",
+                      label: "Employee Satisfaction Rate",
+                      detail: "Walk-through entry — no queues, no fingerprints, no friction.",
+                      icon: "users" as const,
+                      accentBar: "from-violet-400 to-indigo-500",
+                      iconWrap: "bg-violet-500/15 text-violet-300 ring-violet-400/30",
+                      hoverGlow: "hover:shadow-[0_24px_60px_-26px_rgba(139,92,246,0.55)]",
+                      hoverBg: "from-violet-500/20 via-indigo-500/10 to-transparent",
+                      trendChip: "Loved",
+                      trendChipColor: "text-violet-300 bg-violet-500/10 ring-violet-400/20",
+                    },
                   ].map((item, idx) => (
                     <motion.article
                       key={item.value + item.label}
-                      className="rounded-xl border border-slate-700 bg-slate-800/65 p-5"
+                      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-700/80 bg-slate-900/60 backdrop-blur transition-all duration-300 ease-out hover:-translate-y-1 hover:border-slate-500/80 ${item.hoverGlow}`}
                       initial={{ opacity: 0, y: 12 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
                     >
-                      <span className="inline-flex h-8 w-8 items-center justify-center text-slate-300">
-                        {item.icon === "trend" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <path d="M4 16l6-6 4 4 6-6" />
-                            <path d="M14 8h6v6" />
-                          </svg>
-                        )}
-                        {item.icon === "chart" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
-                          </svg>
-                        )}
-                        {item.icon === "shield" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
-                          </svg>
-                        )}
-                        {item.icon === "users" && (
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <circle cx="9" cy="8" r="3" />
-                            <circle cx="17" cy="9" r="2" />
-                            <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                            <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                          </svg>
-                        )}
-                      </span>
-                      <p className="mt-3 text-4xl font-bold text-white">{item.value}</p>
-                      <p className="mt-1 text-lg text-slate-400">{item.label}</p>
+                      <div className={`h-1 w-full bg-gradient-to-r ${item.accentBar}`} aria-hidden />
+
+                      <div
+                        className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-gradient-to-br ${item.hoverBg}`}
+                        aria-hidden
+                      />
+
+                      <div className="relative flex flex-1 flex-col p-5">
+                        <div className="flex items-start justify-between gap-2">
+                          <span className={`inline-flex h-9 w-9 items-center justify-center rounded-xl ring-1 ${item.iconWrap}`}>
+                            {item.icon === "trend" && (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                                <path d="M4 16l6-6 4 4 6-6" />
+                                <path d="M14 8h6v6" />
+                              </svg>
+                            )}
+                            {item.icon === "chart" && (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                                <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
+                              </svg>
+                            )}
+                            {item.icon === "shield" && (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                                <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                                <path d="m9 12 2 2 4-4" />
+                              </svg>
+                            )}
+                            {item.icon === "users" && (
+                              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                                <circle cx="9" cy="8" r="3" />
+                                <circle cx="17" cy="9" r="2" />
+                                <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                                <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                              </svg>
+                            )}
+                          </span>
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide ring-1 ${item.trendChipColor}`}>
+                            {item.trendChip}
+                          </span>
+                        </div>
+
+                        <p className="mt-3.5 text-[1.75rem] font-bold leading-none tracking-tight tabular-nums text-white drop-shadow-sm sm:text-[2rem]">
+                          {item.value}
+                        </p>
+                        <p className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-100">{item.label}</p>
+                        <p className="mt-1 text-[12px] leading-snug text-slate-400">{item.detail}</p>
+                      </div>
                     </motion.article>
                   ))}
                 </div>
               </motion.div>
 
               <motion.div
-                className="min-w-0 rounded-2xl border border-slate-300 bg-white p-6 shadow-xl mt-7"
+                className="relative flex min-w-0 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_30px_70px_-32px_rgba(15,23,42,0.5)] sm:p-6 lg:mt-0"
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.07 }}
               >
-                <h3 className="text-3xl font-bold text-slate-900">Enterprise Deployment Readiness</h3>
-                <ul className="mt-5 space-y-8">
+                <div
+                  className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-blue-500/15 via-cyan-400/10 to-transparent blur-3xl"
+                  aria-hidden
+                />
+
+                <span className="relative inline-flex w-fit items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/80 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600" aria-hidden />
+                  Ready for production
+                </span>
+
+                <FlyInText
+                  as="h3"
+                  direction="left"
+                  duration={0.65}
+                  className="relative mt-3 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"
+                >
+                  Enterprise <span className="text-blue-800">Deployment Readiness</span>
+                </FlyInText>
+                <p className="relative mt-1.5 text-[13px] leading-relaxed text-slate-600">
+                  OptiCam ships secure-by-default with the integrations and codecs your IT team already trusts.
+                </p>
+
+                <ul className="relative mt-4 space-y-2">
                   {[
-                    "Supports H.264, H.265, and MJPEG video codecs.",
-                    "GDPR & PDPA compliant data anonymization.",
-                    "Native integration with SAP, Workday, and Oracle.",
-                  ].map((line) => (
-                    <li key={line} className="flex items-start gap-3 text-lg text-slate-600">
-                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500">
-                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                          <path d="M6 12l4 4 8-8" />
+                    {
+                      title: "Universal codec support",
+                      detail: "Works with H.264, H.265, and MJPEG video streams over ONVIF/RTSP.",
+                      iconColor: "bg-blue-600",
+                    },
+                    {
+                      title: "Privacy-first by design",
+                      detail: "GDPR & PDPA-compliant data anonymization with role-based access.",
+                      iconColor: "bg-violet-600",
+                    },
+                    {
+                      title: "Native enterprise integrations",
+                      detail: "Push attendance directly to SAP, Workday, Oracle, or your custom ERP.",
+                      iconColor: "bg-emerald-600",
+                    },
+                  ].map((item) => (
+                    <li
+                      key={item.title}
+                      className="group/row flex items-start gap-2.5 rounded-xl border border-slate-200/70 bg-white px-3 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50/80 hover:shadow-[0_14px_36px_-26px_rgba(15,23,42,0.25)]"
+                    >
+                      <span
+                        className={`mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${item.iconColor} text-white shadow-sm`}
+                      >
+                        <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                          <path d="M20 6 9 17l-5-5" />
                         </svg>
                       </span>
-                      <span>{line}</span>
+                      <div className="leading-snug">
+                        <p className="text-[13px] font-semibold text-slate-900">{item.title}</p>
+                        <p className="mt-0.5 text-[12px] text-slate-600">{item.detail}</p>
+                      </div>
                     </li>
                   ))}
                 </ul>
 
+                <div className="relative mt-4 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-4">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Compliance</span>
+                  {["SOC2", "GDPR", "PDPA", "ISO 27001"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700"
+                    >
+                      <svg className="h-2.5 w-2.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
                 <Link
                   href="/contact"
-                  className="mt-7 inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--inops-navy)]"
+                  className="relative mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[color:var(--inops-blue)] px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_32px_-12px_rgba(29,95,191,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_18px_44px_-16px_rgba(29,95,191,0.65)]"
                 >
                   Request Implementation Plan
+                  <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M5 12h14" />
+                    <path d="m13 6 6 6-6 6" />
+                  </svg>
                 </Link>
               </motion.div>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-gray-100 py-12 lg:py-16 bg-white">
-          <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[color:var(--inops-blue)] sm:text-6xl">
-                Upgrade your attendance system without changing your infrastructure.
-              </h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 sm:text-2xl">
-                Stop investing in plastic boxes and start investing in intelligence. Experience the future of workforce operations with OptiCam today.
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-w-[200px] items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[color:var(--inops-navy)]"
-                >
-                  Start Free Trial
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex min-w-[200px] items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
-                >
-                  Talk to an Expert
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        <SolutionPageClosingCta
+          headingId="time-attendance-final-cta-heading"
+          heading={
+            <>
+              Upgrade your attendance system{" "}
+              <span className="font-semibold text-sky-100">without changing your infrastructure</span>.
+            </>
+          }
+          description="Stop investing in plastic boxes and start investing in intelligence. Experience the future of workforce operations with OptiCam today."
+          primaryLabel="Start Free Trial"
+          secondaryLabel="Talk to an Expert"
+          footnote="No credit card needed · Setup in under 48 hours · Cancel anytime"
+        />
 
       </div>
     </>

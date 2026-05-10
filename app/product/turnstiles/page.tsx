@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -113,7 +114,8 @@ export default function TurnstilesPage() {
                   Tripod Turnstiles
                 </h2>
                 <p className="mt-6 max-w-none text-gray-600 leading-relaxed text-base sm:text-xl">
-                  InOps&apos; single-lane turnstile series designed for smooth and silent operation and draws very little power. It is made of stainless steel which makes it highly durable. It is compact and designed to operate in small workspaces.
+                  Our single-lane turnstile series is designed for smooth, silent operation with very low power draw. It is
+                  made of stainless steel for high durability and is compact for small workspaces.
                 </p>
               </motion.div>
             </div>
@@ -233,6 +235,14 @@ export default function TurnstilesPage() {
 
         {/* Why Choose Us */}
         <WhyChooseUsSection />
+
+        <SolutionPageClosingCta
+          headingId="turnstiles-final-cta-heading"
+          heading="Ready to secure high-throughput entry lanes?"
+          description="Talk with our team about stainless turnstiles, integrated readers, and deployment patterns that fit your gates and compliance needs."
+          primaryLabel="Request a quote"
+          secondaryLabel="Contact sales"
+        />
       </div>
     </>
   );

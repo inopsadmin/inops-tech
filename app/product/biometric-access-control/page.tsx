@@ -3,11 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
+import VideoLivePopups from "@/app/components/VideoLivePopups";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
 const smartAccessShowcaseImage =
   "/WhatsApp Image 2026-04-29 at 3.18.32 PM.jpeg";
+const smartAccessShowcaseVideo = "/genrate_image_in_video_202605080051.mp4";
 const deviceCategoryCards = [
   {
     title: "Face Recognition",
@@ -40,6 +43,7 @@ const deviceCategoryCards = [
 ] as const;
 
 const touchlessFaceReaderShowcaseImage = "/images/Screenshot 2026-05-04 220326.png";
+const touchlessFaceReaderShowcaseVideo = "/genrate_this_image_in_video_202605080054.mp4";
 
 const readerSpecHighlights = [
   { title: "Ultra-fast recognition", text: "Recognition speed ≤ 1 second with high accuracy.", featureIcon: "bolt" as const },
@@ -65,6 +69,14 @@ const readerAdvancedCapabilities = [
   "Geo-fenced mobile app integration",
   "Custom firmware support",
   "CCTV system integration",
+] as const;
+
+const systemFlowSteps = [
+  { step: "01", title: "User Authentication", gradient: "from-sky-500 to-blue-600" },
+  { step: "02", title: "Identity Verification", gradient: "from-blue-600 to-indigo-600" },
+  { step: "03", title: "Access Granted", gradient: "from-indigo-600 to-violet-600" },
+  { step: "04", title: "Synced to System", gradient: "from-violet-600 to-purple-600" },
+  { step: "05", title: "Reporting & Dashboard", gradient: "from-emerald-500 to-teal-600" },
 ] as const;
 
 function ReaderFeatureGlyph({ name }: { name: (typeof readerSpecHighlights)[number]["featureIcon"] }) {
@@ -168,54 +180,95 @@ export default function BiometricAccessControlPage() {
     <>
       <div className="min-h-screen bg-white text-gray-900">
         <motion.section
-          className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
+          className="relative w-full overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-sky-50/35 pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-sky-300/[0.18] blur-3xl" />
+            <div className="absolute -right-16 top-1/3 h-64 w-64 rounded-full bg-blue-400/[0.12] blur-3xl" />
+            <div className="absolute bottom-0 left-1/2 h-px w-[min(90%,56rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-slate-200/70 to-transparent" />
+          </div>
+
           <motion.div
             className="relative w-full overflow-hidden"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
-            <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
-                <Image
-                  src={smartAccessShowcaseImage}
-                  alt="Enterprise biometric access devices in a modern secure facility"
-                  fill
-                  className="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-                <div
-                  className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white to-transparent lg:block"
-                  aria-hidden
+            <div className="relative min-h-[340px] w-full sm:min-h-[390px] lg:min-h-[430px]">
+              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-1/2">
+                <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-blue-500/15 to-indigo-600/20 blur-2xl lg:block lg:rounded-l-[2rem] lg:rounded-r-none" aria-hidden />
+                <div className="relative h-full overflow-hidden lg:h-full lg:rounded-l-[2rem]">
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover mt-20 object-[center_35%] sm:object-center lg:object-[center_40%]"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster={smartAccessShowcaseImage}
+                    aria-label="Enterprise biometric access devices in a modern secure facility"
+                  >
+                    <source src={smartAccessShowcaseVideo} type="video/mp4" />
+                  </video>
+                  <div
+                    className="pointer-events-none absolute inset-y-0 left-0 hidden w-8 bg-gradient-to-r from-white via-white/80 to-transparent sm:w-12 lg:block lg:w-32 lg:from-white lg:via-white/90"
+                    aria-hidden
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/[0.06] to-transparent lg:hidden" aria-hidden />
+                </div>
+                <VideoLivePopups
+                  popups={[
+                    {
+                      position: "top-left",
+                      label: "Live",
+                      className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-7 xl:-left-15",
+                      title: "Access secured",
+                      accent: "emerald",
+                    },
+                    {
+                      position: "bottom-right",
+                      className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2",
+                      label: "Verified",
+                      title: "Face + fingerprint",
+                      subtitle: "Anti-spoof active",
+                      variant: "icon",
+                      icon: "fingerprint",
+                      accent: "blue",
+                    },
+                  ]}
                 />
               </div>
               <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-                <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
+                <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-8">
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
                   >
-                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-blue-700 shadow-sm backdrop-blur">
-                      <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                    <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-blue-800 shadow-md shadow-blue-500/5 ring-1 ring-blue-500/10 backdrop-blur-md">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" aria-hidden />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.7)]" aria-hidden />
+                      </span>
                       Face based attendance
                     </span>
                   </motion.div>
                   <motion.h1
-                    className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                    className="mt-5 text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:mt-6 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    Smart access. <span className="text-blue-700">Secure workforce.</span>
+                    Smart access.{" "}
+                    <span className="font-semibold text-[color:var(--inops-blue)]">
+                      Secure workforce.
+                    </span>
                   </motion.h1>
                   <motion.p
-                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                    className="mt-5 max-w-xl text-[15px] leading-relaxed text-slate-600 sm:text-base lg:text-[1.0625rem]"
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
@@ -224,16 +277,26 @@ export default function BiometricAccessControlPage() {
                     workforce management across industrial environments.
                   </motion.p>
                   <motion.div
-                    className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
+                    className="mt-8 sm:mt-9"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                   >
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
+                      className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 ring-1 ring-white/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                     >
                       Request Demo
+                      <svg
+                        className="h-4 w-4 transition group-hover:translate-x-0.5"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden
+                      >
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
                     </Link>
                   </motion.div>
                 </div>
@@ -315,8 +378,13 @@ export default function BiometricAccessControlPage() {
           </div>
         </section> */}
 
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-slate-50/95 via-white to-white py-12 lg:py-16">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-sky-400/[0.11] blur-3xl" />
+            <div className="absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-indigo-400/[0.09] blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-4xl text-center"
               initial={{ opacity: 0, y: 16 }}
@@ -324,56 +392,82 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Built for Speed, Accuracy, and Reliability
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm shadow-blue-500/5 ring-1 ring-blue-500/10 backdrop-blur-sm">
+                Platform strengths
+              </span>
+              <h2 className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-[3rem] lg:leading-[1.1]">
+                <span className="text-slate-900">
+                  Built for Speed, Accuracy, and Reliability
+                </span>
               </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                Enterprise-grade biometrics tuned for throughput, trust, and uptime on the ground.
+              </p>
             </motion.div>
 
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-3 lg:gap-7">
               {[
                 {
                   title: "Fast Face Recognition",
                   description: "Proprietary algorithms deliver sub-second authentication for seamless movement.",
                   icon: "face",
+                  tile: "from-sky-500 to-blue-600",
+                  glow: "from-sky-400 to-blue-500",
                 },
                 {
                   title: "Multi-mode Authentication",
                   description: "Support for face, fingerprint, RFID, QR, and PIN in a single unified system.",
                   icon: "grid",
+                  tile: "from-indigo-500 to-violet-600",
+                  glow: "from-indigo-400 to-violet-500",
                 },
                 {
                   title: "Anti-spoofing Tech",
                   description: "Liveness detection prevents unauthorized access via photos or 3D masks.",
                   icon: "shield",
+                  tile: "from-emerald-500 to-teal-600",
+                  glow: "from-emerald-400 to-teal-500",
                 },
                 {
                   title: "High User Capacity",
                   description: "Storage for up to 100,000 users and millions of transaction logs locally.",
                   icon: "users",
+                  tile: "from-violet-500 to-purple-600",
+                  glow: "from-violet-400 to-purple-500",
                 },
                 {
                   title: "Intuitive UI",
                   description: "Crisp touchscreen interfaces with multi-language support and visual feedback.",
                   icon: "monitor",
+                  tile: "from-cyan-500 to-blue-600",
+                  glow: "from-cyan-400 to-blue-500",
                 },
                 {
                   title: "Extreme Durability",
                   description: "Operational in low-light, high-humidity, and industrial dust environments.",
                   icon: "chart",
+                  tile: "from-amber-500 to-orange-600",
+                  glow: "from-amber-400 to-orange-500",
                 },
               ].map((item, idx) => (
                 <motion.article
                   key={item.title}
-                  className="rounded-xl border border-gray-200 bg-gray-50 p-4"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200/85 bg-white/90 p-5 shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200/90 hover:shadow-xl hover:shadow-blue-500/10 sm:p-6"
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                  transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  <div className="flex items-start gap-3">
-                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-600">
+                  <div
+                    className={`pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gradient-to-br ${item.glow} opacity-0 blur-2xl transition duration-500 group-hover:opacity-25`}
+                    aria-hidden
+                  />
+                  <div className="relative flex flex-col gap-4">
+                    <span
+                      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.tile} text-white shadow-lg shadow-slate-900/15 ring-2 ring-white`}
+                    >
                       {item.icon === "face" && (
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <rect x="4" y="4" width="16" height="16" rx="3" />
                           <circle cx="9" cy="10" r="1" />
                           <circle cx="15" cy="10" r="1" />
@@ -381,7 +475,7 @@ export default function BiometricAccessControlPage() {
                         </svg>
                       )}
                       {item.icon === "grid" && (
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <rect x="4" y="4" width="6" height="6" />
                           <rect x="14" y="4" width="6" height="6" />
                           <rect x="4" y="14" width="6" height="6" />
@@ -389,12 +483,12 @@ export default function BiometricAccessControlPage() {
                         </svg>
                       )}
                       {item.icon === "shield" && (
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
                         </svg>
                       )}
                       {item.icon === "users" && (
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <circle cx="9" cy="8" r="3" />
                           <circle cx="17" cy="9" r="2" />
                           <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
@@ -402,20 +496,20 @@ export default function BiometricAccessControlPage() {
                         </svg>
                       )}
                       {item.icon === "monitor" && (
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <rect x="3" y="4" width="18" height="12" rx="2" />
                           <path d="M8 20h8M12 16v4" />
                         </svg>
                       )}
                       {item.icon === "chart" && (
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                           <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
                         </svg>
                       )}
                     </span>
                     <div>
-                      <h3 className="text-lg font-semibold text-blue-600">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-gray-500">{item.description}</p>
+                      <h3 className="text-lg font-semibold leading-snug text-slate-900">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                     </div>
                   </div>
                 </motion.article>
@@ -464,14 +558,39 @@ export default function BiometricAccessControlPage() {
                 <div
                   className="relative md:absolute md:right-0 md:top-15 border-rounded-xl isolate mx-auto w-full max-w-[18rem] sm:max-w-sm md:max-w-md lg:max-w-xl [mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)]"
                 >
-                  <Image
-                    src={touchlessFaceReaderShowcaseImage}
-                    alt="Touchless face recognition terminal on display with secure access branding"
-                    width={720}
-                    height={540}
-                    className="h-auto w-full object-contain object-center rounded-xl"
-                    sizes="(max-width: 640px) 288px, (max-width: 1024px) 360px, 520px"
-                  />
+                  <div className="relative aspect-[720/540] w-full overflow-hidden rounded-xl">
+                    <video
+                      className="absolute inset-0 h-full w-[80%] top-20 left-90 -translate-x-1/3 rounded-2xl object-contain object-center"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster={touchlessFaceReaderShowcaseImage}
+                      aria-label="Touchless face recognition terminal on display with secure access branding"
+                    >
+                      <source src={touchlessFaceReaderShowcaseVideo} type="video/mp4" />
+                    </video>
+                    <VideoLivePopups
+                      popups={[
+                        // {
+                        //   position: "top-left",
+                        //   label: "Live",
+                        //   title: "Face matched",
+                        //   accent: "emerald",
+                        // },
+                        {
+                          position: "bottom-right",
+                          label: "Anti-spoof",
+                          title: "Visible-light scan",
+                          className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-10 xl:-right-2",
+                          variant: "icon",
+                          icon: "shield",
+                          accent: "blue",
+                        },
+                      ]}
+                    />
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -489,7 +608,7 @@ export default function BiometricAccessControlPage() {
                   <ReaderFeatureGlyph name={item.featureIcon} />
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
-                    <p className="mt-1 text-base leading-relaxed text-slate-600">{item.text}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.text}</p>
                   </div>
                 </motion.div>
               ))}
@@ -580,8 +699,13 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-white via-slate-50/60 to-sky-50/35 py-12 lg:py-16">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute left-[20%] top-24 h-56 w-56 rounded-full bg-blue-400/[0.09] blur-3xl" />
+            <div className="absolute bottom-16 right-[15%] h-64 w-64 rounded-full bg-indigo-400/[0.08] blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
               initial={{ opacity: 0, y: 16 }}
@@ -589,44 +713,80 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Seamless System Flow
+              <span className="inline-flex rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm ring-1 ring-blue-500/10 backdrop-blur-sm">
+                End-to-end flow
+              </span>
+              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-[3rem] lg:leading-[1.08]">
+                <span className="text-slate-900">
+                  Seamless System Flow
+                </span>
               </h2>
-              <p className="mt-3 text-base text-gray-500 sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
                 Integrated authentication that bridges hardware and workforce management software.
               </p>
             </motion.div>
 
             <motion.div
-              className="relative mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-7"
-              initial={{ opacity: 0, y: 14 }}
+              className="relative mt-10 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white/90 p-6 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.12)] ring-1 ring-white backdrop-blur-md sm:p-8 lg:mt-12 lg:p-10"
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 }}
             >
-              <div className="pointer-events-none absolute left-0 right-0 top-[58px] hidden h-px bg-gray-200 md:block" aria-hidden />
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-5 md:gap-4">
-                {[
-                  { step: "01", title: "User Authentication" },
-                  { step: "02", title: "Identity Verification" },
-                  { step: "03", title: "Access Granted" },
-                  { step: "04", title: "Synced to System" },
-                  { step: "05", title: "Reporting & Dashboard" },
-                ].map((item, idx) => (
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(56,189,248,0.04)_0%,transparent_45%,rgba(99,102,241,0.05)_100%)]" aria-hidden />
+
+              <div className="relative hidden lg:block">
+                <div
+                  className="pointer-events-none absolute left-[6%] right-[6%] top-[1.85rem] z-0 h-[3px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-emerald-500 opacity-55"
+                  aria-hidden
+                />
+                <div className="relative z-10 grid grid-cols-5 gap-4">
+                  {systemFlowSteps.map((item, idx) => (
+                    <motion.div
+                      key={item.step}
+                      className="flex flex-col items-center text-center"
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={viewport}
+                      transition={{ duration: 0.38, ease: smoothEase, delay: idx * 0.06 }}
+                    >
+                      <span
+                        className={`inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${item.gradient} text-sm font-bold tabular-nums text-white shadow-lg shadow-slate-900/15 ring-4 ring-white`}
+                      >
+                        {item.step}
+                      </span>
+                      <p className="mt-5 max-w-[9.5rem] text-sm font-semibold leading-snug text-slate-900">{item.title}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative space-y-0 lg:hidden">
+                {systemFlowSteps.map((item, idx) => (
                   <motion.div
                     key={item.step}
-                    className="relative text-center"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    className="relative flex gap-4 last:pb-0"
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={viewport}
-                    transition={{ duration: 0.35, ease: smoothEase, delay: idx * 0.05 }}
+                    transition={{ duration: 0.38, ease: smoothEase, delay: idx * 0.05 }}
                   >
-                    <span className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-400 bg-white text-sm font-semibold text-gray-800">
-                      {item.step}
-                    </span>
-                    <p className="mx-auto mt-3 max-w-[120px] text-sm font-semibold leading-snug text-gray-700">
-                      {item.title}
-                    </p>
+                    <div className="flex w-14 shrink-0 flex-col items-center">
+                      <span
+                        className={`relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${item.gradient} text-xs font-bold tabular-nums text-white shadow-md ring-4 ring-white`}
+                      >
+                        {item.step}
+                      </span>
+                      {idx < systemFlowSteps.length - 1 ? (
+                        <div
+                          className="mt-1 min-h-[2.25rem] w-[3px] flex-1 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-violet-500 opacity-70"
+                          aria-hidden
+                        />
+                      ) : null}
+                    </div>
+                    <div className="min-w-0 pb-8 pt-1">
+                      <p className="text-base font-semibold leading-snug text-slate-900">{item.title}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -706,8 +866,11 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-white via-slate-50/50 to-white py-12 lg:py-16">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute right-[12%] top-20 h-56 w-56 rounded-full bg-blue-400/[0.08] blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="max-w-4xl"
               initial={{ opacity: 0, y: 16 }}
@@ -715,85 +878,117 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Universal Device Excellence
+              <span className="inline-flex rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm ring-1 ring-slate-900/5 backdrop-blur-sm">
+                Hardware DNA
+              </span>
+              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-[3rem] lg:leading-[1.08]">
+                <span className="text-slate-900">
+                  Universal Device Excellence
+                </span>
               </h2>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+                Built for harsh floors, heavy traffic, and always-on operations—without sacrificing precision.
+              </p>
             </motion.div>
 
-            <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
               {[
                 {
                   title: "Rugged Industrial Design",
                   description:
                     "Encased in aircraft-grade aluminum and impact-resistant glass, our devices are IP65 rated for dust and humidity protection.",
+                  gradient: "from-slate-600 to-slate-800",
                 },
                 {
                   title: "High-Speed Processing",
                   description:
                     "Equipped with dedicated NPU (Neural Processing Unit) cores for lightning-fast biometric template matching.",
+                  gradient: "from-blue-600 to-indigo-700",
                 },
                 {
                   title: "Enterprise Capacity",
                   description:
                     "Designed for massive deployments, managing distributed data across thousands of devices from a central hub.",
+                  gradient: "from-violet-600 to-purple-700",
                 },
               ].map((item, idx) => (
                 <motion.article
                   key={item.title}
-                  className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200/85 bg-white/95 p-6 shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200/90 hover:shadow-xl"
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                  transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.06 }}
                 >
-                  <h3 className="text-xl font-semibold text-slate-900">• {item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
+                  <div
+                    className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br ${item.gradient} opacity-[0.08] blur-2xl transition duration-500 group-hover:opacity-[0.14]`}
+                    aria-hidden
+                  />
+                  <div className={`mb-4 inline-flex h-1.5 w-14 rounded-full bg-gradient-to-r ${item.gradient}`} aria-hidden />
+                  <h3 className="text-lg font-semibold leading-snug text-slate-900 sm:text-xl">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
                 </motion.article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-sky-50/40 via-white to-white py-12 lg:py-16">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute -left-16 bottom-24 h-72 w-72 rounded-full bg-indigo-400/[0.09] blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14">
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                  Seamlessly Connected to Your Systems
+                <span className="inline-flex rounded-full border border-blue-200/90 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
+                  Integrations
+                </span>
+                <h2 className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]">
+                  Seamlessly Connected to{" "}
+                  <span className="font-semibold text-[color:var(--inops-blue)]">Your Systems</span>
                 </h2>
-                <p className="mt-4 max-w-xl text-lg leading-relaxed text-gray-600">
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
                   Modern APIs and native integrations ensure your data moves where you need it, when you need it.
                 </p>
 
-                <ul className="mt-6 space-y-4">
+                <ul className="mt-8 space-y-4">
                   {[
                     {
                       title: "API-Based Integration",
                       description: "RESTful APIs for custom software hooks.",
+                      accent: "from-sky-500 to-blue-600",
                     },
                     {
                       title: "Real-time Data Sync",
                       description: "Zero-latency updates for immediate attendance visibility.",
+                      accent: "from-indigo-500 to-violet-600",
                     },
                     {
                       title: "Centralized Dashboard",
                       description: "Manage all hardware globally from a single browser interface.",
+                      accent: "from-emerald-500 to-teal-600",
                     },
                   ].map((item) => (
-                    <li key={item.title} className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 text-gray-500">
-                        <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+                    <li
+                      key={item.title}
+                      className="flex gap-4 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-white backdrop-blur-sm transition hover:border-blue-200/90 hover:shadow-md"
+                    >
+                      <span
+                        className={`mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.accent} text-white shadow-md ring-2 ring-white`}
+                        aria-hidden
+                      >
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
                           <path d="M6 12l4 4 8-8" />
                         </svg>
                       </span>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-base font-semibold text-slate-900">{item.title}</p>
-                        <p className="text-sm text-gray-500">{item.description}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
                       </div>
                     </li>
                   ))}
@@ -801,59 +996,82 @@ export default function BiometricAccessControlPage() {
               </motion.div>
 
               <motion.div
-                className="rounded-xl border border-gray-200 bg-gray-50 p-5 shadow-sm"
+                className="relative overflow-hidden mt-40 rounded-[1.75rem] border border-slate-200/90 bg-white/90 p-6 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.14)] ring-1 ring-white backdrop-blur-md sm:p-8"
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="relative grid grid-cols-2 gap-3">
-                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
-                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="3" y="4" width="18" height="12" rx="2" />
-                        <path d="M8 20h8M12 16v4" />
-                      </svg>
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(59,130,246,0.06)_0%,transparent_55%)]" aria-hidden />
+                <p className="relative text-center text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Data fabric</p>
+                <div className="relative mt-6 grid grid-cols-2 gap-3">
+                  {[
+                    {
+                      label: "DEVICES",
+                      gradient: "from-sky-500 to-blue-600",
+                      icon: (
+                        <>
+                          <rect x="3" y="4" width="18" height="12" rx="2" />
+                          <path d="M8 20h8M12 16v4" />
+                        </>
+                      ),
+                    },
+                    {
+                      label: "ATTENDANCE",
+                      gradient: "from-indigo-500 to-violet-600",
+                      icon: (
+                        <>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M12 7v5l3 2" />
+                        </>
+                      ),
+                    },
+                    {
+                      label: "HRMS/PAYROLL",
+                      gradient: "from-violet-500 to-purple-600",
+                      icon: (
+                        <>
+                          <rect x="3" y="6" width="18" height="12" rx="2" />
+                          <path d="M3 10h18" />
+                        </>
+                      ),
+                    },
+                    {
+                      label: "REPORTS",
+                      gradient: "from-emerald-500 to-teal-600",
+                      icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
+                    },
+                  ].map((node) => (
+                    <div
+                      key={node.label}
+                      className="relative rounded-xl border border-slate-200/80 bg-gradient-to-b from-white to-slate-50/90 px-4 py-5 text-center shadow-sm ring-1 ring-white transition hover:border-blue-200/90 hover:shadow-md"
+                    >
+                      <span
+                        className={`mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${node.gradient} text-white shadow-lg ring-2 ring-white`}
+                        aria-hidden
+                      >
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          {node.icon}
+                        </svg>
+                      </span>
+                      <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-600">{node.label}</p>
+                    </div>
+                  ))}
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+                    <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 opacity-25 blur-xl" aria-hidden />
+                    <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700 text-lg font-bold text-white shadow-xl shadow-indigo-500/40 ring-4 ring-white">
+                      →
                     </span>
-                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">DEVICES</p>
                   </div>
-                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
-                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 7v5l3 2" />
-                      </svg>
-                    </span>
-                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">ATTENDANCE</p>
-                  </div>
-                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
-                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="3" y="6" width="18" height="12" rx="2" />
-                        <path d="M3 10h18" />
-                      </svg>
-                    </span>
-                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">HRMS/PAYROLL</p>
-                  </div>
-                  <div className="rounded-lg border border-gray-200 bg-white p-5 text-center">
-                    <span className="mx-auto inline-flex h-8 w-8 items-center justify-center text-gray-600" aria-hidden>
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
-                      </svg>
-                    </span>
-                    <p className="mt-1 text-xs font-bold tracking-wide text-gray-500">REPORTS</p>
-                  </div>
-                  <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-blue-600 text-white shadow-md">
-                    →
-                  </span>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
-          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <section className="relative overflow-hidden border-t border-slate-200/90 bg-white py-12 lg:py-16">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.06),transparent)]" aria-hidden />
+          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
               initial={{ opacity: 0, y: 16 }}
@@ -861,47 +1079,60 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Why Choose InOps?
+              <span className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
+                Why InOps
+              </span>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
+                <span className="text-slate-900">Why Choose InOps?</span>
               </h2>
             </motion.div>
 
-            <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
               {[
                 {
                   title: "Improved Security",
                   description:
                     "Eliminate buddy punching and unauthorized access with ironclad biometric verification.",
                   icon: "shield",
+                  gradient: "from-emerald-500 to-teal-600",
                 },
                 {
                   title: "Accurate Tracking",
                   description:
                     "Capture precise time-stamps down to the second for fair and accurate payroll processing.",
                   icon: "clock",
+                  gradient: "from-sky-500 to-blue-600",
                 },
                 {
                   title: "Reduced Manual Work",
                   description:
                     "Automate the entire logging process, freeing up HR teams for more strategic initiatives.",
                   icon: "bolt",
+                  gradient: "from-amber-500 to-orange-600",
                 },
                 {
                   title: "Global Scalability",
                   description:
                     "Easily deploy across multiple locations and manage everything via a centralized cloud hub.",
                   icon: "users",
+                  gradient: "from-violet-500 to-indigo-600",
                 },
               ].map((item, idx) => (
                 <motion.article
                   key={item.title}
-                  className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200/85 bg-white/95 p-6 shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200/90 hover:shadow-xl"
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
-                  transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                  transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.05 }}
                 >
-                  <span className="inline-flex h-8 w-8 items-center justify-center text-gray-600">
+                  <div
+                    className={`pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${item.gradient} opacity-[0.1] blur-2xl transition duration-500 group-hover:opacity-[0.18]`}
+                    aria-hidden
+                  />
+                  <span
+                    className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} text-white shadow-lg ring-2 ring-white`}
+                  >
                     {item.icon === "shield" && (
                       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                         <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
@@ -927,96 +1158,58 @@ export default function BiometricAccessControlPage() {
                       </svg>
                     )}
                   </span>
-                  <h3 className="mt-3 text-xl font-semibold text-slate-900">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.description}</p>
+                  <h3 className="relative mt-4 text-lg font-semibold text-slate-900">{item.title}</h3>
+                  <p className="relative mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                 </motion.article>
               ))}
             </div>
 
             <motion.div
-              className="mt-10 overflow-hidden rounded-2xl border border-slate-700 bg-gradient-to-r from-[#101724] to-[#0c111b] p-7 sm:p-9"
+              className="relative mt-14 overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-slate-950 via-[#0f172a] to-blue-950 p-8 shadow-[0_32px_64px_-28px_rgba(15,23,42,0.6)] ring-1 ring-white/10 sm:p-10"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
             >
-              <h3 className="text-3xl font-bold text-white sm:text-4xl">Designed for Every Environment</h3>
-              <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              <div className="pointer-events-none absolute -right-20 top-0 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl" aria-hidden />
+              <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-indigo-600/25 blur-3xl" aria-hidden />
+              <h3 className="relative text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">Designed for Every Environment</h3>
+              <p className="relative mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg">
                 From climate-controlled executive offices to the dusty floors of manufacturing plants, our hardware is engineered to perform without compromise.
               </p>
 
-              <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {["Corporate Offices", "Industrial Plants", "Large Warehouses"].map((label) => (
-                  <div key={label} className="rounded-lg border border-slate-700 bg-slate-900/35 px-4 py-3 text-center text-sm font-semibold text-slate-100">
+              <div className="relative mt-8 flex flex-wrap gap-2.5 sm:gap-3">
+                {[
+                  "Corporate Offices",
+                  "Industrial Plants",
+                  "Large Warehouses",
+                  "Indoor & Outdoor Support",
+                  "Multi-location Networking",
+                  "Battery Backup Ready",
+                ].map((label) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-xs font-semibold text-slate-100 shadow-sm backdrop-blur-sm transition hover:border-sky-400/40 hover:bg-white/[0.1] sm:text-sm"
+                  >
                     {label}
-                  </div>
-                ))}
-              </div>
-              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {["Indoor & Outdoor Support", "Multi-location Networking", "Battery Backup Ready"].map((label) => (
-                  <div key={label} className="rounded-lg border border-slate-700 bg-slate-900/35 px-4 py-3 text-center text-sm font-semibold text-slate-100">
-                    {label}
-                  </div>
+                  </span>
                 ))}
               </div>
             </motion.div>
           </div>
         </section>
 
-        <section className="border-t border-gray-200 py-10 lg:py-14 bg-white">
-          <div className="mx-auto max-w-5xl px-6 text-center lg:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl">
-                Upgrade to Intelligent Access
-              </h2>
-              <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-500 sm:text-2xl">
-                Choose the right combination of biometric devices based on your unique operational needs. Our experts are ready to help you design the perfect system.
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
-                >
-                  Request a Demo
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex min-w-[220px] items-center justify-center rounded-xl border border-blue-200 bg-blue-50 px-6 py-3 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-100"
-                >
-                  Talk to an Expert
-                </Link>
-              </div>
-
-              {/* <div className="mt-10 flex items-center justify-center gap-3">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map((avatar) => (
-                    <span
-                      key={avatar}
-                      className="relative inline-flex h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm"
-                    >
-                      <Image
-                        src="/images/image.png"
-                        alt="Prashanth K."
-                        fill
-                        className="object-cover"
-                        sizes="40px"
-                      />
-                    </span>
-                  ))}
-                </div>
-                <p className="text-sm text-gray-500 sm:text-base">
-                  Join <span className="font-semibold text-gray-700">2,500+ enterprises</span> who trust BioSecure.
-                </p>
-              </div> */}
-            </motion.div>
-          </div>
-        </section>
+        <SolutionPageClosingCta
+          headingId="biometric-access-final-cta-heading"
+          heading={
+            <>
+              Upgrade to <span className="font-semibold text-sky-100">intelligent access</span>
+            </>
+          }
+          description="Choose the right combination of biometric devices based on your unique operational needs. Our experts are ready to help you design the perfect system."
+          primaryLabel="Request a Demo"
+          secondaryLabel="Talk to an Expert"
+        />
 
       </div>
     </>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import FourPillarsSection from "@/app/components/FourPillarsSection";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
+import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
 /** Hero visual — industrial equipment / fixed assets (`public/images/masshin.jpg`) */
 const fixedAssetHeroImage = "/images/masshin.jpg";
@@ -73,8 +74,8 @@ export default function FixedAssetManagementPage() {
                   One Unified Ecosystem
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Most enterprises struggle with fragmented data across HR, Finance, and Security. InOps bridges these
-                  silos by creating a single source of truth for every contract worker.
+                  Most enterprises struggle with fragmented data across HR, Finance, and Security. This platform bridges
+                  these silos by creating a single source of truth for every contract worker.
                 </p>
                 <ul className="mt-8 space-y-4">
                   {unifiedEcosystemBullets.map((line) => (
@@ -114,7 +115,7 @@ export default function FixedAssetManagementPage() {
                   <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 py-10 sm:px-10 sm:py-12">
                     <div className="relative w-full max-w-[340px] rounded-xl border-[10px] border-slate-700 bg-slate-800 shadow-2xl shadow-slate-900/40 sm:max-w-[380px]">
                       <div className="rounded-b-md bg-white px-4 pb-4 pt-3 sm:px-5 sm:pt-4">
-                        <p className="text-center text-xs font-bold text-slate-800 sm:text-sm">InOps Workforce Analytics</p>
+                        <p className="text-center text-xs font-bold text-slate-800 sm:text-sm">Workforce Analytics</p>
                         <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4">
                           <div className="flex flex-col items-center justify-center rounded-lg bg-slate-50 py-4 ring-1 ring-slate-100">
                             <div className="relative h-16 w-16">
@@ -166,7 +167,7 @@ export default function FixedAssetManagementPage() {
                       </div>
                     </div>
                     <div className="absolute bottom-5 left-5 z-20 max-w-[240px] rounded-lg bg-blue-600 px-4 py-3 text-xs font-semibold leading-snug text-white shadow-lg sm:bottom-8 sm:left-8 sm:max-w-[260px] sm:text-sm">
-                      15% Average cost savings for enterprises using the unified InOps layer.
+                      15% Average cost savings for enterprises using the unified platform layer.
                     </div>
                   </div>
                 </div>
@@ -175,49 +176,12 @@ export default function FixedAssetManagementPage() {
           </div>
         </section>
 
-        {/* CTA — workforce operations */}
-        <section className="mt-10 border-t border-slate-200/80 px-4 pb-16 pt-2 sm:px-6 lg:px-12 lg:pb-20 bg-white">
-          <div className="mx-auto max-w-7xl">
-            <motion.div
-              className="relative overflow-hidden rounded-3xl bg-blue-600 px-6 py-12 text-center shadow-lg shadow-blue-900/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.55, ease: smoothEase }}
-            >
-              <div
-                className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-blue-800/35"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-blue-500/40"
-                aria-hidden
-              />
-              <div className="relative z-10 mx-auto max-w-3xl">
-                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[2rem]">
-                  Ready to take control of your workforce operations?
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg">
-                  Join 25+ leading enterprises that have optimized their contract labor governance with InOps.
-                </p>
-                <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-slate-50"
-                  >
-                    Request a Custom Demo
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-xl border-2 border-white bg-transparent px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-white/10"
-                  >
-                    Contact Sales Team
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+        <SolutionPageClosingCta
+          heading="Ready to take control of your workforce operations?"
+          description="Join 25+ leading enterprises that have optimized their contract labor governance on this platform."
+          primaryLabel="Request a Custom Demo"
+          secondaryLabel="Contact Sales Team"
+        />
       </div>
     </>
   );

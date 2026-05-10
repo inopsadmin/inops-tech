@@ -1,67 +1,49 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import AnimatedCounter from "../components/AnimatedCounter";
+import CollaborateCtaBand from "../components/CollaborateCtaBand";
+import VideoLivePopups from "@/app/components/VideoLivePopups";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
+const visionMissionStagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.11, delayChildren: 0.06 },
+  },
+} as const;
+
+const visionMissionFadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.48, ease: smoothEase },
+  },
+} as const;
+
+const visionMissionCards = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.14, delayChildren: 0.12 },
+  },
+} as const;
+
+const visionMissionCardItem = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.52, ease: smoothEase },
+  },
+} as const;
+
+const cardHoverLift = { y: -6, transition: { duration: 0.28, ease: smoothEase } } as const;
+
 const aboutHeroOfficeImage = "/WhatsApp Image 2026-05-05 at 8.15.34 PM.jpeg";
-
-const aboutHeroStats = [
-  {
-    value: "1L+",
-    label: "Verified workers",
-    icon: "users" as const,
-  },
-  {
-    value: "25+",
-    label: "Enterprise clients",
-    icon: "building" as const,
-  },
-  {
-    value: "3000+",
-    label: "Devices deployed",
-    icon: "chip" as const,
-  },
-  {
-    value: "₹5 Cr+",
-    label: "Enterprise revenue",
-    icon: "trend" as const,
-  },
-];
-
-function AboutHeroStatIcon({ name }: { name: (typeof aboutHeroStats)[number]["icon"] }) {
-  const c = "h-7 w-7 text-white/95";
-  if (name === "users") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M17 20v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M13 7a4 4 0 11-8 0 4 4 0 018 0zm6 6v2M21 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    );
-  }
-  if (name === "building") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    );
-  }
-  if (name === "chip") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-    </svg>
-  );
-}
 
 const cultureCards: { title: string; imageSrc: string }[] = [
   { title: "Face Recognition System", imageSrc: "/images/7a6a2a07-b8a7-48d1-ac83-4201e948805e.png" },
@@ -174,6 +156,37 @@ const evolutionMilestones: EvolutionMilestone[] = [
   },
 ];
 
+const impactStatItems = [
+  {
+    value: 3000,
+    suffix: "+",
+    label: "Hardware Managed",
+    stripe: "from-sky-400 via-blue-500 to-indigo-600",
+    wash: "from-sky-400/[0.08] via-white to-white",
+  },
+  {
+    value: 75,
+    suffix: "+",
+    label: "Plants Covered",
+    stripe: "from-emerald-400 via-teal-500 to-cyan-600",
+    wash: "from-emerald-400/[0.07] via-white to-white",
+  },
+  {
+    value: 25,
+    suffix: "+",
+    label: "Manufacturing Enterprises",
+    stripe: "from-amber-400 via-orange-500 to-rose-600",
+    wash: "from-amber-400/[0.06] via-white to-white",
+  },
+  {
+    value: 1,
+    suffix: "L+",
+    label: "Workers on Platform",
+    stripe: "from-violet-400 via-fuchsia-500 to-indigo-600",
+    wash: "from-violet-400/[0.08] via-white to-white",
+  },
+] as const;
+
 function EvolutionTimelineIcon({ name }: { name: EvolutionMilestone["icon"] }) {
   const c = "h-5 w-5";
   if (name === "grid") {
@@ -218,19 +231,13 @@ function EvolutionTimelineIcon({ name }: { name: EvolutionMilestone["icon"] }) {
   );
 }
 
-const techIcons = [
-  { name: "Cloud", path: "M3 15a4 4 0 004 4h10a4 4 0 004-4V9a4 4 0 00-4-4H7a4 4 0 00-4 4v6zm0 0h4v4" },
-  { name: "Gear", path: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" },
-  { name: "Server", path: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" },
-  { name: "Lock", path: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" },
-  { name: "Chart", path: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-  { name: "Document", path: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-  { name: "Wifi", path: "M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" },
-  { name: "Device", path: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" },
-];
-
 export default function AboutPage() {
   const [expertiseIndex, setExpertiseIndex] = useState(0);
+  const evolutionRailRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: evolutionRailProgress } = useScroll({
+    target: evolutionRailRef,
+    offset: ["start 85%", "end 25%"],
+  });
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -242,78 +249,91 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
-        {/* Hero — full-section background cover */}
+      <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_8%,rgba(57,189,232,0.16),transparent_26%),radial-gradient(circle_at_88%_5%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_48%,#eef4f8_100%)]"
+          aria-hidden
+        />
+        {/* Hero — split layout like solutions/time-and-attendance: copy left, media right + live tiles */}
         <motion.section
-          className="relative min-h-[min(92vh,920px)] overflow-hidden border-b border-slate-200/70"
+          className="w-full overflow-x-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#f7fbfd] via-[#f4f9fc] to-[#eef4f8] pt-6 sm:pt-8 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          {/* Letterbox behind photo when using object-contain */}
-          <div className="absolute inset-0 bg-slate-200/90" aria-hidden />
-          <Image
-            src={aboutHeroOfficeImage}
-            alt="InOps About Us landing image"
-            fill
-            className="object-contain object-right pt-20"
-            sizes="100vw"
-            priority
-          />
-          {/* Lighter overlays so the photo stays visible; stronger tint only on the left for text contrast */}
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-900/35 to-slate-900/10"
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-slate-950/15 sm:bg-slate-950/10" aria-hidden />
+          <div className="relative w-full">
+            <div className="relative min-h-[280px] w-full bg-transparent sm:min-h-[340px] lg:flex lg:min-h-[400px] lg:items-stretch">
+              <div className="relative mt-5 h-48 w-full sm:mt-7 sm:h-56 lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0">
+                <Image
+                  src={aboutHeroOfficeImage}
+                  alt="About Us - team and workforce operations landing image"
+                  fill
+                  className="object-cover object-[center_35%] sm:object-[center_30%] lg:object-[center_40%]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div
+                  className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-[#f6fbfd] to-transparent sm:w-28 lg:block"
+                  aria-hidden
+                />
+                <VideoLivePopups
+                  popups={[
+                    {
+                      position: "top-left",
+                      animateOnMount: true,
+                      label: "Trust",
+                      title: "1L+ verified workers on platform",
+                      accent: "emerald",
+                      className: "!top-2 !-left-2 sm:!top-4 sm:!-left-4 lg:!top-8 lg:!-left-45",
+                    },
+                    {
+                      position: "bottom-right",
+                      animateOnMount: true,
+                      label: "Enterprise",
+                      title: "25+ active client programs",
+                      variant: "icon",
+                      icon: "chart",
+                      accent: "blue",
+                      className: "!bottom-3 !right-2 sm:!bottom-5 sm:!right-4 lg:!-bottom-4 lg:!right-0",
+                    },
+                  ]}
+                />
+              </div>
 
-          <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-12 lg:pb-20 lg:pt-16">
-            <motion.nav
-              className="text-sm text-slate-200/85"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-              aria-label="Breadcrumb"
-            >
-              {/* <Link href="/" className="text-slate-600 transition-colors hover:text-blue-600">
-                Home
-              </Link>
-              <span className="mx-2 text-slate-400">/</span>
-              <span className="font-medium text-slate-900">About us</span> */}
-            </motion.nav>
-
-            <div className="mt-8 max-w-3xl lg:mt-10 lg:ml-10">
-                <motion.span
-                  className="inline-flex rounded-full border border-blue-200/70 bg-blue-100/90 px-3 py-1 text-xs font-semibold text-blue-800"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-                >
-                  About InOps
-                </motion.span>
-                <motion.h1
-                  className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
-                >
-                  Bringing{" "}
-                  <span className="text-blue-300">Control &amp; Transparency</span> to Enterprise
-                  Operations.
-                </motion.h1>
-                <motion.p
-                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-100/90 sm:text-lg"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
-                >
-                  InOps is a workforce technology platform built to optimize enterprise workforce
-                  operations. We unify identity, compliance, and financial layers into a single,
-                  seamless ecosystem.
-                </motion.p>
+              <div className="relative z-10 mx-auto flex max-w-7xl flex-1 flex-col justify-center px-4 sm:px-6 lg:px-12 lg:order-1 lg:w-1/2">
+                <div className="max-w-3xl px-0 py-8 sm:py-10 lg:max-w-xl lg:py-14 lg:pr-8">
+                  <motion.span
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm backdrop-blur-sm"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+                  >
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                    About InOps
+                  </motion.span>
+                  <motion.h1
+                    className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
+                  >
+                    Bringing{" "}
+                    <span className="font-semibold text-[color:var(--inops-blue)]">Control &amp; Transparency</span> to
+                    Enterprise Operations.
+                  </motion.h1>
+                  <motion.p
+                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
+                  >
+                    A workforce technology platform built to optimize enterprise workforce operations. We unify identity,
+                    compliance, and financial layers into a single, seamless ecosystem.
+                  </motion.p>
+                </div>
+              </div>
             </div>
           </div>
-
         </motion.section>
 
         {/* Company story */}
@@ -345,59 +365,143 @@ export default function AboutPage() {
           </div>
         </section> */}
 
-        {/* Full-stack governance — leadership message */}
+        {/* Impact — stats — soft lift above shell */}
         <section
-          className="border-t border-slate-100 bg-white pb-14 lg:pb-20"
-          aria-labelledby="governance-platform-heading"
+          className="relative border-t border-slate-200/80 bg-white/45 py-16 lg:py-24 backdrop-blur-[1px]"
+          aria-labelledby="impact-stats-heading"
         >
-          <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-12">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
             <motion.div
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="mx-auto max-w-[36rem] text-center"
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.55, ease: smoothEase }}
+              transition={{ duration: 0.5, ease: smoothEase }}
             >
-              {/* <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                Leadership perspective
-              </p> */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.26em] text-slate-600 shadow-sm backdrop-blur-sm">
+                <span className="h-2 w-8 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+                At a glance
+              </span>
               <h2
-                id="governance-platform-heading"
-                className="mx-auto mt-4 max-w-5xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-800 sm:text-5xl lg:text-[3.5rem]"
+                id="impact-stats-heading"
+                className="mt-6 text-2xl font-semibold tracking-[-0.02em] text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
               >
-                A Full-Stack Workforce Governance <br /> Platform
+                Trusted where{" "}
+                <span className="font-semibold text-[color:var(--inops-blue)]">enterprise operations</span> run at scale
               </h2>
-              <p className="mx-auto mt-8 max-w-3xl text-[1.05rem] leading-relaxed text-slate-500 sm:text-[1.08rem]">
-                Starting with identity and access control systems, InOps has evolved into a comprehensive system
-                enabling enterprises to manage contract labor at scale with real-time visibility and compliance
-                assurance.
+              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+                Hardware deployments, manufacturing locations, client organizations, and verified workers—consolidated on
+                one operational foundation.
               </p>
+            </motion.div>
 
-              <div className="mt-10 flex items-center justify-center gap-3 sm:mt-12">
-                <div className="relative h-14 w-14 overflow-hidden rounded-full bg-slate-200">
-                  <Image
-                    src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
-                    alt="Satish Sinha, Founder, InOps"
-                    fill
-                    className="object-cover object-top"
-                    sizes="56px"
-                  />
-                </div>
-                <div className="text-left">
-                  <p className="text-[1.95rem] font-bold tracking-tight text-slate-800 sm:text-[2.05rem]">Satish Sinha</p>
-                  <p className=" text-center text-[1.45rem] font-medium text-slate-500 sm:text-[1.52rem]">Founder</p>
+            <motion.div
+              className="mx-auto mt-12 max-w-5xl lg:mt-14"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.52, ease: smoothEase, delay: 0.05 }}
+            >
+              <div className="rounded-[1.15rem] bg-gradient-to-br from-sky-200/40 via-white/90 to-violet-200/35 p-[1px] shadow-[0_8px_40px_-20px_rgba(59,130,246,0.25)]">
+                <div className="overflow-hidden rounded-[1.1rem] border border-white/80 bg-white/95 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.95)] backdrop-blur-[2px]">
+                  <div className="grid grid-cols-2 divide-x divide-y divide-slate-100/90 lg:grid-cols-4 lg:divide-y-0">
+                    {impactStatItems.map((stat) => (
+                      <div
+                        key={stat.label}
+                        className={`relative flex flex-col items-center justify-center bg-gradient-to-b px-4 py-9 text-center sm:px-8 sm:py-11 lg:py-12 ${stat.wash}`}
+                      >
+                        <div
+                          className={`absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${stat.stripe}`}
+                          aria-hidden
+                        />
+                        <span
+                          className={`mb-4 inline-flex h-2 w-2 rounded-full bg-gradient-to-r shadow-sm ${stat.stripe}`}
+                          aria-hidden
+                        />
+                        <AnimatedCounter
+                          value={stat.value}
+                          suffix={stat.suffix}
+                          duration={1.35}
+                          className="block text-[1.75rem] font-semibold tabular-nums tracking-[-0.04em] text-slate-900 sm:text-[2rem] lg:text-[2.125rem]"
+                        />
+                        <p className="mt-3 max-w-[11rem] text-[10px] font-medium uppercase leading-snug tracking-[0.2em] text-slate-600 sm:text-[11px] sm:tracking-[0.22em]">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Our Evolution — vertical timeline */}
+        {/* Full-stack governance — split: narrative + founder */}
         <section
-          className="border-t border-slate-200/80 bg-white py-14 lg:py-20"
+          className="relative border-t border-slate-200/80 bg-white/45 py-14 lg:py-20 backdrop-blur-[1px]"
+          aria-labelledby="governance-platform-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+              <motion.div
+                className="lg:col-span-7"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.52, ease: smoothEase }}
+              >
+                <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-700">
+                  Who we are
+                </span>
+                <h2
+                  id="governance-platform-heading"
+                  className="mt-4 text-3xl font-semibold leading-[1.12] tracking-[-0.03em] text-[var(--inops-navy)] sm:text-4xl lg:text-[2.65rem]"
+                >
+                  A full-stack workforce governance platform
+                </h2>
+                <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]">
+                  Starting with identity and access control, we evolved into a comprehensive system that helps enterprises
+                  manage contract labour at scale—with real-time visibility, compliance assurance, and one connected data layer.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 to-white p-6 shadow-[0_22px_65px_-48px_rgba(15,47,87,0.45)] ring-1 ring-slate-900/[0.04] sm:p-8 lg:col-span-5"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.52, ease: smoothEase, delay: 0.06 }}
+              >
+                <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#39bde8]/14 blur-3xl" aria-hidden />
+                <div className="relative flex flex-col items-center gap-5 sm:flex-row sm:items-start">
+                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-slate-200 shadow-md ring-4 ring-white sm:h-[5.25rem] sm:w-[5.25rem]">
+                    <Image
+                      src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
+                      alt="Satish Sinha, Founder"
+                      fill
+                      className="object-cover object-top"
+                      sizes="84px"
+                    />
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Satish Sinha</p>
+                    <p className="mt-0.5 text-sm font-medium text-slate-500">Founder</p>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                      Building long-term partnerships with enterprises that depend on reliable workforce operations every single day.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Evolution — vertical timeline (inherits page shell bg + gradients) */}
+        <section
+          className="relative border-y border-slate-200/80 bg-transparent py-14 lg:py-20"
           aria-labelledby="our-evolution-heading"
         >
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
             <motion.div
               className="mx-auto max-w-2xl text-center"
               initial={{ opacity: 0, y: 16 }}
@@ -405,32 +509,47 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
+              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+                Timeline
+              </div>
               <h2
                 id="our-evolution-heading"
-                className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+                className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]"
               >
                 Our Evolution
               </h2>
-              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
                 A decade of engineering excellence and workforce transformation.
               </p>
+              <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
             </motion.div>
 
-            <div className="relative mx-auto mt-14 max-w-4xl">
+            <div ref={evolutionRailRef} className="relative mx-auto mt-14 max-w-4xl">
               {/* Center rail (desktop) */}
               <div
-                className="absolute left-8 top-2 bottom-2 hidden w-px bg-slate-300 md:left-1/2 md:block md:-translate-x-1/2"
+                className="absolute left-8 top-2 bottom-2 z-0 hidden w-[4px] rounded-full bg-gradient-to-b from-slate-200 via-slate-300 to-slate-200 opacity-90 shadow-[0_0_0_1px_rgba(148,163,184,0.25)] md:left-1/2 md:block md:-translate-x-1/2"
+                aria-hidden
+              />
+              <motion.div
+                className="absolute left-8 top-2 bottom-2 z-[1] hidden w-[4px] origin-top rounded-full bg-gradient-to-b from-blue-600 via-sky-500 to-cyan-400 md:left-1/2 md:block md:-translate-x-1/2"
+                style={{ scaleY: evolutionRailProgress }}
                 aria-hidden
               />
               {/* Mobile line */}
-              <div className="absolute left-8 top-2 bottom-2 w-px bg-slate-300 md:hidden" aria-hidden />
+              <div className="absolute left-8 top-2 bottom-2 z-0 w-[4px] rounded-full bg-gradient-to-b from-slate-200 via-slate-300 to-slate-200 opacity-90 shadow-[0_0_0_1px_rgba(148,163,184,0.25)] md:hidden" aria-hidden />
+              <motion.div
+                className="absolute left-8 top-2 bottom-2 z-[1] w-[4px] origin-top rounded-full bg-gradient-to-b from-blue-600 via-sky-500 to-cyan-400 md:hidden"
+                style={{ scaleY: evolutionRailProgress }}
+                aria-hidden
+              />
 
-              <ul className="relative space-y-10 sm:space-y-12">
+              <ul className="relative z-10 space-y-10 sm:space-y-12">
                 {evolutionMilestones.map((m, i) => (
                   <li key={m.year} className="relative">
                     {/* Node on the line */}
                     <div
-                      className="absolute left-8 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-2 border-blue-500 bg-white text-blue-600 shadow-md md:left-1/2"
+                      className="absolute left-8 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-2xl border border-slate-200 bg-white text-[color:var(--inops-blue)] shadow-[0_16px_40px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/80 md:left-1/2"
                       aria-hidden
                     >
                       <EvolutionTimelineIcon name={m.icon} />
@@ -449,14 +568,14 @@ export default function AboutPage() {
                         <>
                           <div className="md:col-start-1 md:row-start-1 md:pr-10 md:text-right">
                             <div
-                              className={`rounded-2xl border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg ${
+                              className={`rounded-3xl border p-6 shadow-[0_18px_55px_-36px_rgba(15,47,87,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_70px_-40px_rgba(15,47,87,0.55)] ${
                                 m.highlight
-                                  ? "border-blue-200/80 bg-blue-50/90"
+                                  ? "border-slate-200/90 bg-white/90 ring-1 ring-slate-200/80 backdrop-blur"
                                   : "border-slate-200/90 bg-white"
                               }`}
                             >
-                              <div className="flex flex-wrap items-baseline gap-2 md:justify-end">
-                                <span className="text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">
+                              <div className="flex flex-wrap items-center gap-2 md:justify-end">
+                                <span className="inline-flex items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-sm font-semibold text-white shadow-sm">
                                   {m.year}
                                 </span>
                                 {m.badge ? (
@@ -478,14 +597,14 @@ export default function AboutPage() {
                           <div className="hidden md:col-start-1 md:block" aria-hidden />
                           <div className="md:col-start-2 md:row-start-1 md:pl-10">
                             <div
-                              className={`rounded-2xl border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg ${
+                              className={`rounded-3xl border p-6 shadow-[0_18px_55px_-36px_rgba(15,47,87,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_32px_70px_-40px_rgba(15,47,87,0.55)] ${
                                 m.highlight
-                                  ? "border-blue-200/80 bg-blue-50/90"
+                                  ? "border-slate-200/90 bg-white/90 ring-1 ring-slate-200/80 backdrop-blur"
                                   : "border-slate-200/90 bg-white"
                               }`}
                             >
-                              <div className="flex flex-wrap items-baseline gap-2">
-                                <span className="text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="inline-flex items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-sm font-semibold text-white shadow-sm">
                                   {m.year}
                                 </span>
                                 {m.badge ? (
@@ -511,13 +630,13 @@ export default function AboutPage() {
         </section>
 
         {/* Product Range — premium marquee strip */}
-        <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-white py-12 lg:py-14">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/65 to-transparent" aria-hidden />
+        <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-white/70 py-12 backdrop-blur lg:py-14">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/65 to-transparent" aria-hidden />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.5),transparent_40%,rgba(255,255,255,0.35))]" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <div className="text-center">
               <motion.span
-                className="inline-flex items-center rounded-full border border-blue-200/80 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700/90 shadow-[0_8px_24px_-18px_rgba(30,64,175,0.75)] backdrop-blur"
+                className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur"
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -532,7 +651,7 @@ export default function AboutPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-               Product Range
+                Product Range
               </motion.h2>
               <motion.p
                 className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base"
@@ -576,7 +695,7 @@ export default function AboutPage() {
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-75" aria-hidden />
                   <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-60" aria-hidden />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200/90">Product</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">Product</p>
                     <h3 className="mt-1 text-base font-semibold leading-snug text-white sm:text-xl">{card.title}</h3>
                   </div>
                 </div>
@@ -585,174 +704,184 @@ export default function AboutPage() {
           </motion.div>
         </section>
 
-        {/* Stats + Vision + Mission + CTA */}
-        <section className="relative border-t border-slate-100/80 bg-white py-14 lg:py-16">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/70 to-transparent" aria-hidden />
+        {/* Vision + Mission + CTA */}
+        <section className="relative overflow-hidden border-t border-slate-200/80 bg-transparent py-16 lg:py-24">
+          <motion.div
+            className="pointer-events-none absolute left-1/2 top-8 h-48 w-[min(100%,42rem)] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.12),transparent_72%)]"
+            aria-hidden
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={viewport}
+            transition={{ duration: 1, ease: smoothEase }}
+          />
+          <motion.div
+            className="pointer-events-none absolute bottom-0 right-[12%] h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl"
+            aria-hidden
+            animate={{ opacity: [0.35, 0.55, 0.35], scale: [1, 1.06, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          />
+
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
-              className="mx-auto mb-9 max-w-3xl text-center"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={visionMissionStagger}
+              initial="hidden"
+              whileInView="visible"
               viewport={viewport}
-              transition={{ duration: 0.55, ease: smoothEase }}
+              className="mx-auto max-w-3xl text-center"
             >
-              <div className="inline-flex items-center rounded-full border border-blue-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 shadow-[0_10px_26px_-20px_rgba(37,99,235,0.9)] backdrop-blur">
-                Impact at Scale
-              </div>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-                Trusted by teams running critical workforce operations
-              </h3>
-            </motion.div>
-            <motion.div
-              className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase }}
-            >
-              {[
-                { value: 3000, suffix: "+", label: "Hardware Managed" },
-                { value: 75, suffix: "+", label: "Plants Covered" },
-                { value: 25, suffix: "+", label: "Manufacturing Enterprises" },
-                { value: 1, suffix: "L+", label: "Workers on Platform" },
-              ].map((stat) => (
-                <div key={stat.label} className="group relative overflow-hidden rounded-2xl border border-white/65 bg-white/80 px-4 py-5 text-center shadow-[0_26px_60px_-40px_rgba(15,23,42,0.5)] ring-1 ring-slate-200/60 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1.5px_rgba(56,189,248,0.95),0_0_0_3px_rgba(99,102,241,0.55),0_0_0_5px_rgba(16,185,129,0.38),0_34px_70px_-42px_rgba(30,64,175,0.45)] sm:px-5 sm:py-6">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(56,189,248,0.18),transparent_40%),radial-gradient(circle_at_80%_85%,rgba(99,102,241,0.12),transparent_42%)]" aria-hidden />
-                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/0 via-blue-400/0 to-emerald-400/0 opacity-0 transition-opacity duration-300 group-hover:from-blue-400/20 group-hover:via-blue-400/16 group-hover:to-emerald-400/20 group-hover:opacity-100" aria-hidden />
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent opacity-80" aria-hidden />
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    duration={1.25}
-                    className="relative text-[1.95rem] font-heading-bold tracking-tight text-slate-900 sm:text-[2.1rem]"
-                  />
-                  <div className="relative mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-600 sm:text-xs">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+              <motion.span
+                variants={visionMissionFadeUp}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm backdrop-blur-sm"
+              >
+                <motion.span
+                  className="relative flex h-2 w-2"
+                  animate={{ scale: [1, 1.15, 1] }}
+                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                  aria-hidden
+                >
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400/50 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--inops-blue)]" />
+                </motion.span>
+                Purpose
+              </motion.span>
+              <motion.h3
+                variants={visionMissionFadeUp}
+                className="mt-5 text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.03em] text-slate-900 sm:text-3xl lg:text-[2.25rem]"
+              >
+                Vision and{" "}
+                <span className="font-semibold text-[color:var(--inops-blue)]">mission</span>
+              </motion.h3>
+              <motion.div variants={visionMissionFadeUp} className="mx-auto mt-4 max-w-xl">
+                <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
+                  What we are building—and how we show up for enterprises and workers.
+                </p>
+                <motion.div
+                  className="mx-auto mt-6 h-1 w-14 rounded-full bg-[color:var(--inops-blue)]"
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  whileInView={{ scaleX: 1, opacity: 1 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.65, ease: smoothEase, delay: 0.35 }}
+                  style={{ originX: 0.5 }}
+                  aria-hidden
+                />
+              </motion.div>
             </motion.div>
 
             <motion.div
-              className="mt-11 grid grid-cols-1 gap-5 lg:grid-cols-2"
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-7"
+              variants={visionMissionCards}
+              initial="hidden"
+              whileInView="visible"
               viewport={viewport}
-              transition={{ duration: 0.65, ease: smoothEase, delay: 0.05 }}
             >
-              <div className="group relative overflow-hidden rounded-3xl border border-blue-100/90 bg-white p-7 shadow-[0_24px_60px_-36px_rgba(30,64,175,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(59,130,246,0.95),0_0_0_3px_rgba(56,189,248,0.5),0_0_0_5px_rgba(99,102,241,0.35),0_30px_70px_-38px_rgba(30,64,175,0.42)]">
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(59,130,246,0.09),transparent_45%)]" aria-hidden />
-                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/0 via-blue-400/0 to-blue-400/0 opacity-0 transition-opacity duration-300 group-hover:from-blue-400/16 group-hover:via-blue-400/14 group-hover:to-blue-400/16 group-hover:opacity-100" aria-hidden />
-                <div className="relative inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700 shadow-sm">
-                  Vision
+              <motion.article
+                variants={visionMissionCardItem}
+                whileHover={cardHoverLift}
+                className="group relative overflow-hidden rounded-2xl border border-slate-200/90 border-l-[3px] border-l-[color:var(--inops-blue)] bg-white/50 px-6 py-7 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] backdrop-blur-[2px] transition-[box-shadow,border-color] duration-300 hover:border-slate-300 hover:shadow-[0_24px_56px_-36px_rgba(15,23,42,0.14)] sm:px-8 sm:py-8"
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden
+                >
+                  <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-sky-400/15 blur-2xl" />
                 </div>
-                <p className="relative mt-4 text-sm leading-relaxed text-slate-700 sm:text-base lg:text-[1.02rem]">
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden
+                />
+                <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-600">Vision</p>
+                <p className="relative mt-4 text-[15px] leading-[1.65] text-slate-700 sm:text-base">
                   To build the most trusted workforce ecosystem—where work, identity, and financial access seamlessly come together.
                 </p>
-              </div>
-
-              <div className="group relative overflow-hidden rounded-3xl border border-emerald-100/90 bg-white p-7 shadow-[0_24px_60px_-38px_rgba(5,150,105,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1.5px_rgba(16,185,129,0.95),0_0_0_3px_rgba(34,197,94,0.45),0_0_0_5px_rgba(6,182,212,0.35),0_30px_70px_-40px_rgba(5,150,105,0.4)]">
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(16,185,129,0.08),transparent_45%)]" aria-hidden />
-                <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-emerald-400/0 via-blue-400/0 to-green-400/0 opacity-0 transition-opacity duration-300 group-hover:from-emerald-400/16 group-hover:via-blue-400/14 group-hover:to-green-400/16 group-hover:opacity-100" aria-hidden />
-                <div className="relative inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-700 shadow-sm">
-                  Mission
+              </motion.article>
+              <motion.article
+                variants={visionMissionCardItem}
+                whileHover={cardHoverLift}
+                className="group relative overflow-hidden rounded-2xl border border-slate-200/90 border-l-[3px] border-l-emerald-600 bg-white/50 px-6 py-7 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] backdrop-blur-[2px] transition-[box-shadow,border-color] duration-300 hover:border-emerald-200 hover:shadow-[0_24px_56px_-36px_rgba(16,185,129,0.18)] sm:px-8 sm:py-8"
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden
+                >
+                  <div className="absolute -left-10 -bottom-10 h-36 w-36 rounded-full bg-emerald-400/15 blur-2xl" />
                 </div>
-                <p className="relative mt-4 text-sm leading-relaxed text-slate-700 sm:text-base lg:text-[1.02rem]">
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden
+                />
+                <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-600">Mission</p>
+                <p className="relative mt-4 text-[15px] leading-[1.65] text-slate-700 sm:text-base">
                   To help enterprises digitize and control workforce operations through unified governance and verified data, and extend this foundation to enable earned wage access and a curated marketplace of financial and worker-focused services.
                 </p>
-              </div>
+              </motion.article>
             </motion.div>
 
             <motion.div
-              className="mt-12"
-              initial={{ opacity: 0, y: 18 }}
+              className="mt-12 lg:mt-14"
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
             >
-              <div className="rounded-3xl bg-gradient-to-r from-blue-500 via-blue-500 to-blue-600 p-[1.5px] shadow-[0_30px_90px_-52px_rgba(29,78,216,0.75)]">
-                <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1.5px)] bg-white">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_18%,rgba(56,189,248,0.2),transparent_40%),radial-gradient(circle_at_88%_78%,rgba(99,102,241,0.16),transparent_42%)]" aria-hidden />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-white/85" aria-hidden />
-                  <div className="relative flex flex-col items-center justify-center gap-5 px-6 py-8 text-center sm:px-10 sm:py-10">
-                    <div className="max-w-2xl">
-                      <div className="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl">
-                        Ready to collaborate or learn more?
-                      </div>
-                      <div className="mt-2 text-base leading-relaxed text-slate-600 sm:text-lg">
-                        Reach out to us and let’s create impactful solutions together.
-                      </div>
-                    </div>
-                    <div className="mt-1 flex flex-wrap items-center justify-center gap-3">
-                      <Link
-                        href="/#contact"
-                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_14px_35px_-20px_rgba(37,99,235,0.95)] transition hover:from-blue-700 hover:to-blue-700"
-                      >
-                        Book a Demo
-                      </Link>
-                      <a
-                        href="tel:08027745220"
-                        className="inline-flex items-center justify-center rounded-xl border border-slate-300/80 bg-white/90 px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-white"
-                      >
-                        Get a Call Back
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CollaborateCtaBand />
             </motion.div>
           </div>
         </section>
 
-        {/* Why Choose Us: tech tree visual + Expertise card (flush to site footer; global section padding skipped) */}
-        <section className="section-flush-footer border-t border-gray-100/80 bg-white pb-0 pt-4 lg:pb-0 lg:pt-6">
+        {/* Expertise — section intro, then visuals + carousel */}
+        <section
+          className="section-flush-footer relative border-t border-slate-200/80 bg-slate-50/90 pb-8 pt-14 lg:pb-10 lg:pt-20"
+          aria-labelledby="why-choose-heading"
+        >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.div
+              className="mx-auto mb-10 max-w-3xl border-b border-slate-200/90 pb-10 text-center lg:mb-12 lg:pb-12"
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
+              transition={{ duration: 0.48, ease: smoothEase }}
             >
-              Why Choose Us
-            </motion.h2>
-            <motion.div
-              className="mx-auto mt-1.5 h-1 w-16 rounded-full bg-gradient-to-r from-blue-500 to-blue-600"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase }}
-            />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600">Expertise</span>
+              <h2
+                id="why-choose-heading"
+                className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
+              >
+                Why choose us
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+              <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                Workforce systems, biometrics, cloud, and compliance—engineered for enterprise scale and audit-ready
+                operations.
+              </p>
+            </motion.div>
 
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:items-center lg:gap-5 xl:gap-6">
-              {/* Left: illustrative image */}
+            <div className="grid grid-cols-1 gap-6 sm:gap-7 lg:grid-cols-12 lg:items-stretch lg:gap-8 xl:gap-10">
               <motion.div
-                className="relative overflow-hidden rounded-2xl bg-white lg:col-span-6"
-                initial={{ opacity: 0, x: -40 }}
+                className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_20px_60px_-40px_rgba(15,47,87,0.35)] lg:col-span-6"
+                initial={{ opacity: 0, x: -28 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.7, ease: smoothEase }}
+                transition={{ duration: 0.65, ease: smoothEase }}
               >
-                <div className="relative min-h-[23rem] w-full sm:min-h-[28rem] lg:min-h-[34rem]">
+                <div className="relative min-h-[20rem] w-full sm:min-h-[26rem] lg:min-h-[32rem]">
                   <Image
                     src="/t2-removed.png"
                     alt="Why choose us visual"
                     fill
-                    className="object-contain object-center px-4 pt-4sm:p-6"
+                    className="object-contain object-center px-4 pt-4 sm:p-6"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                   />
                 </div>
               </motion.div>
 
-              {/* Right: Expertise card with slider */}
               <motion.div
-                className="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-7 lg:col-span-6 lg:min-h-[34rem] lg:p-8"
-                initial={{ opacity: 0, x: 40 }}
+                className="relative flex min-h-[20rem] overflow-hidden rounded-[1.75rem] border border-white bg-white/95 p-6 shadow-[0_24px_80px_-48px_rgba(15,47,87,0.45)] ring-1 ring-slate-900/[0.05] backdrop-blur sm:p-7 lg:col-span-6 lg:min-h-[32rem] lg:p-8"
+                initial={{ opacity: 0, x: 28 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
-                transition={{ duration: 0.7, ease: smoothEase }}
+                transition={{ duration: 0.65, ease: smoothEase }}
               >
-                <div className="mx-auto flex min-h-[18rem] max-w-xl flex-col items-center justify-center text-center sm:min-h-[20rem] lg:min-h-[22rem]">
+                <div className="mx-auto flex w-full min-h-[16rem] max-w-xl flex-col items-center justify-center text-center sm:min-h-[18rem] lg:min-h-[20rem] lg:pt-2">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={expertiseIndex}
@@ -760,12 +889,12 @@ export default function AboutPage() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -12 }}
                       transition={{ duration: 0.3, ease: smoothEase }}
-                      className="flex flex-col items-center"
+                      className="flex flex-col items-center px-1"
                     >
-                      <h4 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                      <h4 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl lg:text-[1.65rem]">
                         {expertiseSlides[expertiseIndex].title}
                       </h4>
-                      <p className="mt-4 max-w-[32rem] text-base leading-relaxed text-gray-600 sm:text-lg">
+                      <p className="mt-4 max-w-[32rem] text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]">
                         {expertiseSlides[expertiseIndex].text}
                       </p>
                     </motion.div>
@@ -777,9 +906,10 @@ export default function AboutPage() {
                     {expertiseSlides.map((_, i) => (
                       <button
                         key={i}
+                        type="button"
                         onClick={() => setExpertiseIndex(i)}
                         className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                          i === expertiseIndex ? "scale-110 bg-blue-600" : "bg-slate-300 hover:bg-slate-400"
+                          i === expertiseIndex ? "scale-110 bg-[color:var(--inops-blue)]" : "bg-slate-300 hover:bg-slate-400"
                         }`}
                         aria-label={`Go to slide ${i + 1}`}
                       />
@@ -789,18 +919,22 @@ export default function AboutPage() {
 
                 <div className="absolute bottom-5 left-5 flex gap-1.5">
                   <button
+                    type="button"
                     onClick={() => setExpertiseIndex((prev) => (prev === 0 ? expertiseSlides.length - 1 : prev - 1))}
-                    className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-300 text-gray-600 transition hover:border-gray-400 hover:bg-white active:scale-95"
-                    aria-label="Previous"
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 transition hover:border-slate-400 hover:bg-white active:scale-95"
+                    aria-label="Previous expertise slide"
                   >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <button
-                    onClick={() => setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))}
-                    className="flex h-9 w-9 items-center justify-center rounded-md border border-gray-300 text-gray-600 transition hover:border-gray-400 hover:bg-white active:scale-95"
-                    aria-label="Next"
+                    type="button"
+                    onClick={() =>
+                      setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))
+                    }
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 transition hover:border-slate-400 hover:bg-white active:scale-95"
+                    aria-label="Next expertise slide"
                   >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

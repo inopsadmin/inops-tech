@@ -19,7 +19,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Workforce Governance Solution",
       description: "End-to-end platform for workforce governance, time, and attendance.",
-      href: "/solutions/time-and-attendance",
+      href: "/solutions/payroll-solutions",
     },
     {
       type: "tile",
@@ -46,7 +46,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Identity & Face Solution",
       description: "Mobile and hardware identity for attendance, access, and verification.",
-      href: "/solutions/time-and-attendance",
+      href: "/solutions/mobile-app",
     },
     {
       type: "tile",
@@ -100,25 +100,25 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Enterprise Solution",
       description: "Enterprise-wide visibility for assets and operations.",
-      href: "/solutions/enterprise-solution",
+      href: "/solutions/enterprise-solution#asset-management",
     },
     {
       type: "tile",
       title: "Asset Management",
       description: "End-to-end asset lifecycle tracking with intelligent maintenance scheduling.",
-      href: "/solutions/enterprise-solution",
+      href: "/solutions/enterprise-solution#asset-management",
     },
     {
       type: "tile",
       title: "Route Optimization",
       description: "AI-powered route planning with live fleet tracking to reduce fuel and transit time.",
-      href: "/solutions/enterprise-solution",
+      href: "/solutions/enterprise-solution#route-optimization",
     },
     {
       type: "tile",
       title: "Warehouse Management",
       description: "Advanced inventory control with smart slotting and real-time stock visibility.",
-      href: "/solutions/enterprise-solution",
+      href: "/solutions/enterprise-solution#warehouse-management",
     },
   ],
   [

@@ -5,15 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const solutions = [
-  { label: "Workforce Governance Solution", href: "/solutions/time-and-attendance" },
+  { label: "Workforce Governance Solution", href: "/solutions/payroll-solutions" },
   { label: "Contract Employee Governance System", href: "/solutions/payroll-solutions" },
   { label: "HR Information System", href: "/solutions/labourmanagement" },
   { label: "Canteen & Visitor Management", href: "/solutions/canteen-management" },
-  { label: "Identity & Face Solution", href: "/solutions/time-and-attendance" },
+  { label: "Identity & Face Solution", href: "/solutions/mobile-app" },
   { label: "Mobile App", href: "/solutions/mobile-app" },
   { label: "CCTV Attendance", href: "/solutions/time-and-attendance" },
   { label: "Face Reader", href: "/product/biometric-access-control" },
-  { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
+  { label: "Enterprise Solution", href: "/solutions/enterprise-solution#asset-management" },
   { label: "EWA (Earned Wage Access)", href: "/solutions/ewa" },
 ];
 

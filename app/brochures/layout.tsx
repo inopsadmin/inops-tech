@@ -4,9 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = routeMetadata({
   title: "Brochures | InOps Solutions",
   description:
-    "Download InOps brochures for biometric access control, turnstiles, visitor management, canteen, payroll, and workforce compliance — PDF resources.",
+    "Download brochures for biometric access control, turnstiles, visitor management, canteen, payroll, and workforce compliance — PDF resources.",
   path: "/brochures",
-  extraKeywords: ["InOps PDF brochure", "workforce software datasheet", "CLMS brochure download"],
+  extraKeywords: ["workforce PDF brochure", "workforce software datasheet", "CLMS brochure download"],
 });
 
 export default function BrochuresLayout({ children }: { children: React.ReactNode }) {
