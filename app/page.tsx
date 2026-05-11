@@ -185,7 +185,7 @@ export default function Home() {
   const activeHeroSolutionHref =
     heroSolutionHrefByTitle[heroSlides[activeHeroIndex]?.title ?? ""] ?? "/solutions/labourmanagement";
   return (
-    <div className="home-page relative min-h-screen bg-white text-gray-900 perspective-page">
+    <div className="home-page home-section-gap relative min-h-screen bg-white text-gray-900 perspective-page">
       {/* Hero: on home, navbar is static above this block; after hero, navbar is fixed + white */}
       <SectionFade>
         <section
@@ -264,7 +264,7 @@ export default function Home() {
                     className="home-hero__glow-pulse pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[min(120%,42rem)] -translate-x-1/2 -translate-y-1/2 rounded-[3rem] bg-gradient-to-r from-blue-500/45 via-cyan-400/35 to-blue-600/40 blur-[56px]"
                     aria-hidden
                   />
-                  <h1 className="relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-sans text-[clamp(1.55rem,5.2vw,2.1rem)] font-heading-bold leading-[1.12] tracking-tight text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:text-3xl sm:leading-[1.12] lg:max-w-[58rem] lg:text-[2.6rem] lg:leading-[1.1] xl:text-[3.05rem] xl:leading-[1.08] 2xl:text-[3.25rem] antialiased">
+                  <h1 className="home-display-heading relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased">
                     {heroSlides[activeHeroIndex]?.title}
                   </h1>
                 </motion.div>
@@ -324,7 +324,7 @@ export default function Home() {
               as="h2"
               id="hero-trusted-clients-heading"
               direction="up"
-              className="text-base font-heading-bold leading-snug tracking-tight text-slate-900 sm:text-lg lg:text-xl lg:tracking-wide xl:text-2xl"
+              className="font-heading-bold tracking-tight text-slate-900 lg:tracking-wide"
             >
               Trusted by leading manufacturing &amp; infrastructure companies
             </FlyInText>
@@ -481,10 +481,7 @@ export default function Home() {
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
-                <AnimatedHeading
-                  as="h2"
-                  className="home-display-heading text-3xl font-heading-bold tracking-tight text-gray-900 sm:text-4xl"
-                >
+                <AnimatedHeading as="h2" className="home-display-heading text-gray-900">
                   Contract workforce governance
                 </AnimatedHeading>
               </motion.div>
@@ -559,7 +556,7 @@ export default function Home() {
                           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-label tracking-wide text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
                             Contract workforce governance
                           </div>
-                          <h3 className="mt-4 text-xl font-heading-bold leading-tight tracking-tight text-gray-900 transition-colors duration-150 ease-out sm:text-2xl">
+                          <h3 className="mt-4 text-gray-900 transition-colors duration-150 ease-out">
                             {selectedWhyCard.title}
                           </h3>
                           <p className="mt-3 text-sm font-body leading-relaxed text-gray-600 transition-colors duration-150 ease-out group-hover:text-gray-700 sm:text-[15px]">
@@ -680,7 +677,7 @@ export default function Home() {
               >
                 Command dashboards
               </FlyInText>
-              <FlyInText as="h2" direction="up" delay={0.05} className="mt-2 text-2xl font-heading-bold tracking-tight text-slate-900 sm:text-3xl">
+              <FlyInText as="h2" direction="up" delay={0.05} className="mt-2 text-slate-900">
                 One view for managers, leadership, and HR
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.1} className="mt-2 text-sm text-slate-600 sm:text-base">
@@ -701,7 +698,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-8 lg:gap-12">
+            <div className="flex flex-col gap-14 lg:gap-20 xl:gap-24">
               {dashboardCards.map((card, cardIndex) => {
                 const textFirst = cardIndex === 1;
 
@@ -749,7 +746,7 @@ export default function Home() {
                 const textBlock = (
                   <div className="flex min-w-0 flex-col justify-center md:flex-1 md:max-w-[50%]">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                      <FlyInText as="h3" direction={textFirst ? "right" : "left"} className="text-lg font-heading-bold text-slate-900 sm:text-xl">
+                      <FlyInText as="h3" direction={textFirst ? "right" : "left"} className="text-slate-900">
                         {card.title}
                       </FlyInText>
                       <FlyInText
@@ -776,7 +773,7 @@ export default function Home() {
                   <article
                     key={card.title}
                     data-no-site-hover
-                    className="dashboard-feature-row flex flex-col gap-6 rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.22)] md:flex-row md:items-center md:gap-8 lg:gap-12"
+                    className="dashboard-feature-row flex flex-col gap-8 rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.22)] md:flex-row md:items-center md:gap-10 lg:gap-16 lg:p-8"
                   >
                     {textFirst ? (
                       <>

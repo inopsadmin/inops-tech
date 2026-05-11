@@ -34,7 +34,7 @@ export default function AllPages() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/40 px-4 py-8 text-gray-900 sm:px-6 sm:py-10">
       <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200/80 bg-white/90 p-6 shadow-sm shadow-blue-900/5 backdrop-blur-sm sm:p-8">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">All Pages</h1>
+        <h1 className="text-gray-900">All Pages</h1>
         <p className="mt-2 text-sm text-gray-600 sm:text-base">Quick links to every page on the site.</p>
 
         <section className="mt-8 space-y-5">

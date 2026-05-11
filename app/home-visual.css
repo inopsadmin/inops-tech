@@ -53,20 +53,18 @@
   animation: home-grid-pan 45s linear infinite;
 }
 
-/* Main marketing heading: slightly larger + tracking on wide screens */
+/* Optional accent: letter-spacing only (sizes come from globals.css `.inops-template h*`). */
 .home-display-heading {
   letter-spacing: -0.03em;
 }
 
-@media (min-width: 1280px) {
-  .home-display-heading {
-    font-size: 2.625rem !important;
-    line-height: 1.12 !important;
-  }
+/* Give each home section more breathing room without changing shared page templates. */
+.home-section-gap > :not(:first-child) {
+  margin-top: clamp(1.75rem, 1.2rem + 2vw, 3.5rem);
 }
 
-@media (min-width: 1536px) {
-  .home-display-heading {
-    font-size: 2.85rem !important;
+@media (min-width: 1024px) {
+  .home-section-gap > :not(:first-child) {
+    margin-top: clamp(2.5rem, 1.7rem + 2.4vw, 4.75rem);
   }
 }

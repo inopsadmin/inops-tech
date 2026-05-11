@@ -98,7 +98,7 @@ function ServiceIcon({ icon }: { icon: string }) {
 export default function VisitorManagementPage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           title="Visitor management for secure, efficient sites"
           subtitle="Streamline check-in, badges, host workflows, and real-time visibility across lobbies and restricted zones—integrated with your access stack."
@@ -194,7 +194,7 @@ export default function VisitorManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                <h2 className="text-gray-900">
                   Visitor Management
                 </h2>
                 <p className="mt-6 w-full max-w-none text-lg leading-relaxed text-gray-600 sm:text-xl lg:text-xl lg:leading-relaxed">
@@ -211,8 +211,7 @@ export default function VisitorManagementPage() {
         {/* Features & Benefits */}
         <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-center text-2xl font-bold text-gray-900 sm:text-3xl"
+            <motion.h2 className="text-center text-gray-900"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -256,7 +255,7 @@ export default function VisitorManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                <h2 className="text-gray-900">
                   Visitor Management System
                 </h2>
                 <div
@@ -293,8 +292,7 @@ export default function VisitorManagementPage() {
         {/* Powerful Services for Your Business */}
         <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <motion.h2
-              className="text-2xl font-bold text-gray-900 sm:text-3xl"
+            <motion.h2 className="text-gray-900"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}

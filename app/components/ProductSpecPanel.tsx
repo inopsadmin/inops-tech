@@ -36,7 +36,7 @@ export default function ProductSpecPanel({
             />
           </div>
           <div className="flex flex-col justify-center">
-            <h2 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">{title}</h2>
+            <h2 className="text-slate-900">{title}</h2>
             {subtitle ? <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">{subtitle}</p> : null}
             <dl className="mt-8 space-y-0 divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white px-4 py-2 shadow-sm">
               {specs.map((row) => (

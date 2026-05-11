@@ -178,7 +178,7 @@ function ReaderSpecColumnGlyph({ name }: { name: (typeof readerSpecificationColu
 export default function BiometricAccessControlPage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
           className="relative w-full overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-sky-50/35 pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
@@ -256,8 +256,7 @@ export default function BiometricAccessControlPage() {
                       Face based attendance
                     </span>
                   </motion.div>
-                  <motion.h1
-                    className="mt-5 text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:mt-6 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+                  <motion.h1 className="mt-5 text-slate-900 sm:mt-6"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
@@ -314,7 +313,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Device Categories</h2>
+              <h2 className="text-slate-900">Device Categories</h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
                 Flexible authentication methods designed for different operational needs.
               </p>
@@ -368,7 +367,7 @@ export default function BiometricAccessControlPage() {
                           </svg>
                         )}
                       </span>
-                      <h3 className="text-xl font-semibold text-slate-900">{card.title}</h3>
+                      <h3 className="text-slate-900">{card.title}</h3>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-gray-500">{card.description}</p>
                   </div>
@@ -395,7 +394,7 @@ export default function BiometricAccessControlPage() {
               <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm shadow-blue-500/5 ring-1 ring-blue-500/10 backdrop-blur-sm">
                 Platform strengths
               </span>
-              <h2 className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-[3rem] lg:leading-[1.1]">
+              <h2 className="mt-4 text-slate-900">
                 <span className="text-slate-900">
                   Built for Speed, Accuracy, and Reliability
                 </span>
@@ -508,7 +507,7 @@ export default function BiometricAccessControlPage() {
                       )}
                     </span>
                     <div>
-                      <h3 className="text-lg font-semibold leading-snug text-slate-900">{item.title}</h3>
+                      <h3 className="text-slate-900">{item.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                     </div>
                   </div>
@@ -537,7 +536,7 @@ export default function BiometricAccessControlPage() {
                   </svg>
                   Face recognition device
                 </span>
-                <h2 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-[3.05rem] lg:leading-[1.1]">
+                <h2 className="mt-5 text-slate-900">
                   Touchless face recognition for{" "}
                   <span className="text-blue-600">secure &amp; fast access</span>
                 </h2>
@@ -547,20 +546,26 @@ export default function BiometricAccessControlPage() {
               </motion.div>
 
               <motion.div
-                className="relative mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none"
+                className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.05 }}
               >
-                <div className="pointer-events-none absolute -right-4 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-blue-200/35 blur-3xl sm:h-80 sm:w-80 lg:-right-8" aria-hidden />
-                <div className="pointer-events-none absolute -left-6 top-8 h-40 w-40 rounded-full bg-sky-100/50 blur-2xl" aria-hidden />
                 <div
-                  className="relative md:absolute md:right-0 md:top-15 border-rounded-xl isolate mx-auto w-full max-w-[18rem] sm:max-w-sm md:max-w-md lg:max-w-xl [mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_92%_92%_at_50%_50%,#000_52%,transparent_100%)]"
-                >
-                  <div className="relative aspect-[720/540] w-full overflow-hidden rounded-xl">
+                  className="pointer-events-none absolute -right-8 top-10 h-72 w-72 rounded-full bg-blue-200/35 blur-3xl sm:h-80 sm:w-80"
+                  aria-hidden
+                />
+                <div
+                  className="pointer-events-none absolute -left-8 bottom-6 h-44 w-44 rounded-full bg-sky-100/55 blur-2xl"
+                  aria-hidden
+                />
+
+                <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_30px_80px_-44px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/5">
+                  <div className="pointer-events-none absolute inset-x-8 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-sky-400 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
+                  <div className="relative aspect-[16/11] w-full bg-gradient-to-br from-slate-50 via-white to-sky-50/40">
                     <video
-                      className="absolute inset-0 h-full w-[80%] top-20 left-90 -translate-x-1/3 rounded-2xl object-contain object-center"
+                      className="absolute inset-0 h-full w-full object-contain p-5 sm:p-7"
                       autoPlay
                       muted
                       loop
@@ -571,19 +576,15 @@ export default function BiometricAccessControlPage() {
                     >
                       <source src={touchlessFaceReaderShowcaseVideo} type="video/mp4" />
                     </video>
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_55%_45%,rgba(59,130,246,0.14),transparent_60%)]" aria-hidden />
                     <VideoLivePopups
                       popups={[
-                        // {
-                        //   position: "top-left",
-                        //   label: "Live",
-                        //   title: "Face matched",
-                        //   accent: "emerald",
-                        // },
                         {
                           position: "bottom-right",
                           label: "Anti-spoof",
                           title: "Visible-light scan",
-                          className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-10 xl:-right-2",
+                          className:
+                            "bottom-8 right-8 sm:bottom-10 sm:right-10 lg:bottom-12 lg:right-12 xl:bottom-10 xl:right-10",
                           variant: "icon",
                           icon: "shield",
                           accent: "blue",
@@ -595,11 +596,11 @@ export default function BiometricAccessControlPage() {
               </motion.div>
             </div>
 
-            <div className="mt-14 grid w-full grid-cols-1 gap-y-8 md:ml-0 md:mr-auto md:w-max md:max-w-full md:grid-cols-2 md:gap-x-6 md:justify-items-start lg:gap-x-8">
+            <div className="mt-12 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
               {readerSpecHighlights.map((item, idx) => (
                 <motion.div
                   key={item.title}
-                  className="flex gap-4"
+                  className="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm shadow-slate-900/[0.04] transition-colors duration-300 hover:border-slate-300/80"
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
@@ -607,7 +608,7 @@ export default function BiometricAccessControlPage() {
                 >
                   <ReaderFeatureGlyph name={item.featureIcon} />
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                    <h3 className="text-slate-900">{item.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.text}</p>
                   </div>
                 </motion.div>
@@ -629,7 +630,7 @@ export default function BiometricAccessControlPage() {
                       <path d="M6 12h12" />
                     </svg>
                   </span>
-                  <h3 className="text-base font-bold uppercase tracking-[0.12em] text-blue-600 sm:text-lg">Specifications</h3>
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">Specifications</p>
                 </div>
                 <dl className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
                   {readerSpecificationColumns.map((row) => (
@@ -656,7 +657,7 @@ export default function BiometricAccessControlPage() {
                       <path d="M9 12l2 2 4-4" />
                     </svg>
                   </span>
-                  <h3 className="text-base font-bold uppercase tracking-[0.12em] text-white sm:text-lg">Advanced capabilities</h3>
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-white">Advanced capabilities</p>
                 </div>
                 <ul className="mt-6 space-y-4 text-sm leading-relaxed text-slate-200">
                   {readerAdvancedCapabilities.map((line) => (
@@ -716,10 +717,8 @@ export default function BiometricAccessControlPage() {
               <span className="inline-flex rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm ring-1 ring-blue-500/10 backdrop-blur-sm">
                 End-to-end flow
               </span>
-              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-[3rem] lg:leading-[1.08]">
-                <span className="text-slate-900">
-                  Seamless System Flow
-                </span>
+              <h2 className="mt-4">
+                <span className="text-slate-900">Seamless System Flow</span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
                 Integrated authentication that bridges hardware and workforce management software.
@@ -803,9 +802,7 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Deployment Environments
-              </h2>
+              <h2 className="text-slate-900">Deployment Environments</h2>
               <p className="mt-3 text-base text-gray-500 sm:text-lg">
                 Scalable solutions for every sector.
               </p>
@@ -857,7 +854,7 @@ export default function BiometricAccessControlPage() {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" aria-hidden />
                   <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                    <h3 className="text-2xl font-semibold text-white">{card.title}</h3>
+                    <h3 className="text-white">{card.title}</h3>
                     <p className="mt-1 text-sm text-white/85">{card.subtitle}</p>
                   </div>
                 </motion.article>
@@ -881,10 +878,8 @@ export default function BiometricAccessControlPage() {
               <span className="inline-flex rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm ring-1 ring-slate-900/5 backdrop-blur-sm">
                 Hardware DNA
               </span>
-              <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-[3rem] lg:leading-[1.08]">
-                <span className="text-slate-900">
-                  Universal Device Excellence
-                </span>
+              <h2 className="mt-4">
+                <span className="text-slate-900">Universal Device Excellence</span>
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Built for harsh floors, heavy traffic, and always-on operations—without sacrificing precision.
@@ -925,7 +920,7 @@ export default function BiometricAccessControlPage() {
                     aria-hidden
                   />
                   <div className={`mb-4 inline-flex h-1.5 w-14 rounded-full bg-gradient-to-r ${item.gradient}`} aria-hidden />
-                  <h3 className="text-lg font-semibold leading-snug text-slate-900 sm:text-xl">{item.title}</h3>
+                  <h3 className="text-slate-900">{item.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
                 </motion.article>
               ))}
@@ -948,7 +943,7 @@ export default function BiometricAccessControlPage() {
                 <span className="inline-flex rounded-full border border-blue-200/90 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
                   Integrations
                 </span>
-                <h2 className="mt-4 text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]">
+                <h2 className="mt-4 text-slate-900">
                   Seamlessly Connected to{" "}
                   <span className="font-semibold text-[color:var(--inops-blue)]">Your Systems</span>
                 </h2>
@@ -1082,7 +1077,7 @@ export default function BiometricAccessControlPage() {
               <span className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
                 Why InOps
               </span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
+              <h2 className="mt-4">
                 <span className="text-slate-900">Why Choose InOps?</span>
               </h2>
             </motion.div>
@@ -1158,7 +1153,7 @@ export default function BiometricAccessControlPage() {
                       </svg>
                     )}
                   </span>
-                  <h3 className="relative mt-4 text-lg font-semibold text-slate-900">{item.title}</h3>
+                  <h3 className="relative mt-4 text-slate-900">{item.title}</h3>
                   <p className="relative mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                 </motion.article>
               ))}
@@ -1173,7 +1168,7 @@ export default function BiometricAccessControlPage() {
             >
               <div className="pointer-events-none absolute -right-20 top-0 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl" aria-hidden />
               <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-indigo-600/25 blur-3xl" aria-hidden />
-              <h3 className="relative text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">Designed for Every Environment</h3>
+              <h3 className="relative text-white">Designed for Every Environment</h3>
               <p className="relative mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg">
                 From climate-controlled executive offices to the dusty floors of manufacturing plants, our hardware is engineered to perform without compromise.
               </p>

@@ -278,12 +278,12 @@ const ecosystemStackMarks = [
   { name: "ServiceNow", id: "orbit" as const },
 ] as const;
 
-/** Top-edge hover sweep (L→R), applied via explicit strip inside card */
-const painPointToneSweep: Record<(typeof painPointCards)[number]["tone"], string> = {
-  rose: "bg-gradient-to-r from-rose-500 via-rose-400 to-orange-400",
-  amber: "bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400",
-  violet: "bg-gradient-to-r from-violet-500 via-violet-400 to-fuchsia-400",
-  indigo: "bg-gradient-to-r from-indigo-500 via-indigo-400 to-sky-500",
+/** Top-edge hover sweep (L→R) — gradient strip on ::before */
+const painPointToneTopStrip: Record<(typeof painPointCards)[number]["tone"], string> = {
+  rose: "before:bg-gradient-to-r before:from-rose-500 before:via-rose-400 before:to-pink-400",
+  amber: "before:bg-gradient-to-r before:from-amber-500 before:via-orange-400 before:to-amber-300",
+  violet: "before:bg-gradient-to-r before:from-violet-500 before:via-purple-400 before:to-fuchsia-400",
+  indigo: "before:bg-gradient-to-r before:from-indigo-500 before:via-blue-500 before:to-sky-400",
 };
 
 const painPointToneIconSurface: Record<(typeof painPointCards)[number]["tone"], string> = {
@@ -518,7 +518,7 @@ function LabourHeroDecor() {
 export default function LabourManagementPage() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
           className="relative w-full border-b border-slate-100 bg-white pt-6 sm:pt-8 lg:pt-10"
           initial={{ opacity: 0 }}
@@ -601,7 +601,7 @@ export default function LabourManagementPage() {
                     direction="left"
                     delay={0.06}
                     duration={0.68}
-                    className="mt-4 flex flex-col gap-1 text-[1.65rem] font-bold leading-[1.15] tracking-tight text-slate-900 sm:mt-5 sm:gap-1.5 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]"
+                    className="mt-4 flex flex-col gap-1 text-slate-900 sm:mt-5 sm:gap-1.5"
                   >
                     <span className="text-slate-900 whitespace-nowrap">
                       Total Workforce  <br /> Management                     <span className="text-[color:var(--inops-blue)]">Simplified.</span>
@@ -668,10 +668,7 @@ export default function LabourManagementPage() {
               <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm backdrop-blur-sm">
                 The hidden cost
               </span>
-              <h2
-                id="labour-pain-points-heading"
-                className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.15]"
-              >
+              <h2 id="labour-pain-points-heading" className="mt-5 text-balance text-slate-900">
                 <span className="block sm:inline">Disconnected Systems.</span>{" "}
                 <span className="block sm:inline">Manual Work.</span>{" "}
                 <span className="mt-1 block font-semibold text-rose-900 sm:mt-0 sm:inline">
@@ -688,7 +685,7 @@ export default function LabourManagementPage() {
               {painPointCards.map((card, i) => (
                 <motion.article
                   key={card.title}
-                  className="group relative flex min-h-[220px] flex-col rounded-[1.35rem] border border-slate-200/75 bg-white/95 p-6 shadow-[0_22px_56px_-32px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] sm:min-h-[240px] sm:p-7"
+                  className={`group relative flex min-h-[220px] flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/75 bg-white/95 p-6 shadow-[0_22px_56px_-32px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-[3px] before:origin-left before:scale-x-0 before:transition-transform before:duration-700 before:ease-[cubic-bezier(0.33,1,0.68,1)] before:content-[''] group-hover:before:scale-x-100 sm:min-h-[240px] sm:p-7 ${painPointToneTopStrip[card.tone]}`}
                   initial={{ opacity: 0, y: 22 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
@@ -699,14 +696,6 @@ export default function LabourManagementPage() {
                     transition: { duration: 0.32, ease: smoothEase },
                   }}
                 >
-                  <div
-                    className="pointer-events-none absolute inset-x-0 top-0 z-[25] h-[3px] overflow-hidden rounded-t-[1.35rem]"
-                    aria-hidden
-                  >
-                    <div
-                      className={`h-full w-full origin-left scale-x-0 rounded-t-[1.35rem] transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100 ${painPointToneSweep[card.tone]}`}
-                    />
-                  </div>
                   <div
                     className="pointer-events-none absolute -right-12 -top-12 z-0 h-36 w-36 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
                     aria-hidden
@@ -734,7 +723,7 @@ export default function LabourManagementPage() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <h3 className="relative mt-5 text-lg font-bold leading-snug tracking-tight text-slate-900">{card.title}</h3>
+                  <h3 className="relative mt-5 text-slate-900">{card.title}</h3>
                   <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
                     {card.description}
                   </p>
@@ -772,10 +761,7 @@ export default function LabourManagementPage() {
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400 shadow-lg shadow-slate-950/30 backdrop-blur-sm">
                 Unified platform
               </span>
-              <h2
-                id="labour-platform-control-heading"
-                className="mt-5 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.6rem] lg:leading-tight"
-              >
+              <h2 id="labour-platform-control-heading" className="mt-5 text-balance text-white">
                 One Platform.{" "}
                 <span className="font-semibold text-slate-300">
                   Complete Workforce Control.
@@ -856,9 +842,7 @@ export default function LabourManagementPage() {
                           {card.badge}
                         </span>
                       ) : null}
-                      <h3
-                        className={`font-bold tracking-tight text-slate-900 ${isLead ? "text-xl sm:text-2xl" : isWide ? "text-xl sm:text-2xl lg:text-3xl" : "text-lg sm:text-xl"}`}
-                      >
+                      <h3 className="font-bold tracking-tight text-slate-900">
                         {card.title}
                       </h3>
                       <p
@@ -895,10 +879,7 @@ export default function LabourManagementPage() {
               <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm backdrop-blur-sm">
                 End-to-end flow
               </span>
-              <h2
-                id="labour-workflow-steps-heading"
-                className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.55rem] lg:leading-tight"
-              >
+              <h2 id="labour-workflow-steps-heading" className="mt-5 text-balance text-slate-900">
                 <span className="text-slate-900">Simple.</span>{" "}
                 <span className="font-semibold text-[color:var(--inops-blue)]">
                   Automated.
@@ -946,7 +927,7 @@ export default function LabourManagementPage() {
                         aria-hidden
                       />
                     </div>
-                    <h3 className="mt-7 text-lg font-bold tracking-tight text-slate-900 xl:text-xl">{step.title}</h3>
+                    <h3 className="mt-7 text-slate-900">{step.title}</h3>
                     <p className="mt-3 max-w-[240px] text-sm leading-relaxed text-slate-600 xl:max-w-[260px] xl:text-[15px]">
                       {step.description}
                     </p>
@@ -982,7 +963,7 @@ export default function LabourManagementPage() {
                       ) : null}
                     </div>
                     <div className="min-w-0 flex-1 pb-12 pt-1 last:pb-0 sm:pt-2">
-                      <h3 className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">{step.title}</h3>
+                      <h3 className="text-slate-900">{step.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">{step.description}</p>
                     </div>
                   </motion.li>
@@ -1003,10 +984,7 @@ export default function LabourManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2
-                  id="labour-efficiency-heading"
-                  className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
-                >
+                <h2 id="labour-efficiency-heading" className="text-slate-900">
                   Built for{" "}
                   <span className="text-[color:var(--inops-blue)]">Efficiency</span> and Control
                 </h2>
@@ -1072,7 +1050,7 @@ export default function LabourManagementPage() {
                     >
                       <EfficiencyHighlightIcon name={card.icon} className="h-7 w-7 text-current" />
                     </span>
-                    <h3 className="relative z-10 mt-5 text-lg font-bold tracking-tight text-slate-900">{card.title}</h3>
+                    <h3 className="relative z-10 mt-5 text-slate-900">{card.title}</h3>
                     <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
                       {card.description}
                     </p>
@@ -1104,10 +1082,7 @@ export default function LabourManagementPage() {
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Proof points</p>
-                <h2
-                  id="labour-business-impact-heading"
-                  className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl"
-                >
+                <h2 id="labour-business-impact-heading" className="mt-3">
                   See the{" "}
                   <span className="font-semibold text-slate-300">
                     Business Impact
@@ -1252,10 +1227,7 @@ export default function LabourManagementPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_8px_rgba(29,95,191,0.8)]" />
                 Product preview
               </span>
-              <h2
-                id="labour-simplicity-heading"
-                className="mt-5 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.35rem] lg:leading-[1.15]"
-              >
+              <h2 id="labour-simplicity-heading" className="mt-5 text-slate-900">
                 Designed for{" "}
                 <span className="font-semibold text-[color:var(--inops-blue)]">
                   Simplicity
@@ -1285,7 +1257,7 @@ export default function LabourManagementPage() {
                 <div className="relative flex items-start justify-between gap-3">
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">People</p>
-                    <h3 className="mt-1 text-base font-bold tracking-tight text-slate-900">Employee Directory</h3>
+                    <h3 className="mt-1 text-slate-900">Employee Directory</h3>
                   </div>
                   <span className="flex shrink-0 items-center gap-2 rounded-full border border-emerald-200/60 bg-emerald-50/90 px-2.5 py-1 shadow-sm ring-1 ring-emerald-500/10 backdrop-blur-sm">
                     <span className="relative flex h-2 w-2">
@@ -1364,7 +1336,7 @@ export default function LabourManagementPage() {
                 <div className="pointer-events-none absolute -left-16 bottom-8 h-44 w-44 rounded-full bg-gradient-to-tr from-emerald-400/25 to-transparent blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
                 <div className="relative">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">Time</p>
-                  <h3 className="mt-1 text-base font-bold tracking-tight text-slate-900">Attendance Logs</h3>
+                  <h3 className="mt-1 text-slate-900">Attendance Logs</h3>
                 </div>
                 <div className="relative mt-7 overflow-hidden rounded-xl border border-slate-200/70 bg-white shadow-[inset_0_2px_12px_rgba(248,250,252,0.9),0_1px_0_rgba(255,255,255,0.9)] ring-1 ring-slate-100/80">
                   <table className="w-full min-w-[260px] text-left text-sm">
@@ -1428,7 +1400,7 @@ export default function LabourManagementPage() {
                 <div className="pointer-events-none absolute -right-16 top-28 h-44 w-44 rounded-full bg-gradient-to-bl from-blue-500/25 via-indigo-500/10 to-transparent blur-3xl" aria-hidden />
                 <div className="relative">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">Payroll</p>
-                  <h3 className="mt-1 text-base font-bold tracking-tight text-slate-900">Payroll Summary</h3>
+                  <h3 className="mt-1 text-slate-900">Payroll Summary</h3>
                 </div>
                 <div className="relative mt-6 flex flex-1 flex-col items-center">
                   <div className="relative flex h-[10rem] w-[10rem] items-center justify-center">

@@ -34,7 +34,7 @@ function CheckIcon({ className }: { className?: string }) {
 export default function FixedAssetManagementPage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           badge={
             <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
@@ -67,10 +67,7 @@ export default function FixedAssetManagementPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <h2
-                  id="unified-ecosystem-heading"
-                  className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
-                >
+                <h2 id="unified-ecosystem-heading" className="text-slate-900">
                   One Unified Ecosystem
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">

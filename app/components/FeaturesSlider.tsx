@@ -38,7 +38,7 @@ export default function FeaturesSlider() {
         <div className="group overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/80 hover:shadow-xl hover:shadow-blue-900/10">
           <div className="grid grid-cols-1 items-stretch gap-0 md:grid-cols-[minmax(0,1fr)_minmax(0,46%)] lg:grid-cols-[minmax(0,1fr)_minmax(0,44%)]">
             <div className="p-8 lg:p-12">
-              <FlyInText as="h2" direction="left" className="text-2xl font-bold text-gray-900 lg:text-3xl">
+              <FlyInText as="h2" direction="left" className="text-gray-900">
                 {slide.title}
               </FlyInText>
 
@@ -90,7 +90,7 @@ export default function FeaturesSlider() {
                     popups={[
                       {
                         position: "top-left",
-                        className: "!top-0 sm:!top-10 lg:!-top-15 !left-0 sm:!left-10 lg:!-left-5",
+                        className: "!top-0 sm:!top-10 lg:!-top-18 !left-0 sm:!left-10 lg:!-left-5",
                         label: "Live",
                         title: "Platform online",
                         accent: "emerald",

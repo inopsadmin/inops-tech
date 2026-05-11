@@ -252,7 +252,7 @@ export default function EwaPage() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
       <SolutionLandingHero
         badge={
           <span className="inline-flex rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-semibold text-blue-600">
@@ -313,10 +313,7 @@ export default function EwaPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm backdrop-blur-sm">
               The cost of waiting
             </span>
-            <h2
-              id="ewa-cost-of-waiting-heading"
-              className="mt-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
-            >
+            <h2 id="ewa-cost-of-waiting-heading" className="mt-6 text-gray-900">
               The financial gap in{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 workforce operations
@@ -369,7 +366,7 @@ export default function EwaPage() {
                         <span className="text-slate-300">#</span>
                         {item.step}
                       </p>
-                      <h3 className="mt-1 text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">
+                      <h3 className="mt-1 text-slate-900">
                         {item.title}
                       </h3>
                     </div>
@@ -411,7 +408,7 @@ export default function EwaPage() {
             <span className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 shadow-sm backdrop-blur-sm">
               The platform
             </span>
-            <h2 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.5rem] lg:leading-[1.15]">
+            <h2 className="mt-6 text-slate-900">
               A smarter way to access{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 earned wages
@@ -503,7 +500,7 @@ export default function EwaPage() {
                       {item.tag}
                     </span>
                   </div>
-                  <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-900 sm:text-[1.35rem] sm:leading-snug">
+                  <h3 className="mt-6 text-slate-900">
                     {item.title}
                   </h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.98rem]">
@@ -548,10 +545,7 @@ export default function EwaPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
               How it works
             </span>
-            <h2
-              id="ewa-how-it-works-heading"
-              className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.5rem] lg:leading-[1.08]"
-            >
+            <h2 id="ewa-how-it-works-heading" className="mt-5 text-white">
               Five steps.{" "}
               <span className="font-semibold text-slate-300">
                 Zero payroll friction.
@@ -678,10 +672,7 @@ export default function EwaPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500 shadow-sm backdrop-blur-sm">
               Integration stack
             </span>
-            <h2
-              id="ewa-ecosystem-heading"
-              className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.45rem] lg:leading-[1.1]"
-            >
+            <h2 id="ewa-ecosystem-heading" className="mt-5 text-slate-900">
               Powered by a{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 connected ecosystem
@@ -719,7 +710,7 @@ export default function EwaPage() {
                         {item.icon}
                       </div>
                       <div className="min-w-0 flex-1 pt-0.5">
-                        <h3 className="text-lg font-semibold leading-snug tracking-tight text-slate-900 sm:text-xl">
+                        <h3 className="text-slate-900">
                           {item.title}
                         </h3>
                       </div>
@@ -867,10 +858,7 @@ export default function EwaPage() {
               viewport={viewport}
               variants={verifiedRightVariants}
             >
-              <motion.h2
-                variants={verifiedFadeUp}
-                className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-              >
+              <motion.h2 variants={verifiedFadeUp} className="text-gray-900">
                 Built on Verified Workforce Data
               </motion.h2>
               <motion.p
@@ -916,7 +904,7 @@ export default function EwaPage() {
                       </svg>
                     </motion.span>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 sm:text-2xl">{item.title}</h3>
+                      <h3 className="text-gray-900">{item.title}</h3>
                       <p className="mt-1 text-sm text-gray-500 sm:text-base">{item.description}</p>
                     </div>
                   </motion.div>
@@ -966,7 +954,7 @@ export default function EwaPage() {
                   <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
                     {column.badge}
                   </span>
-                  <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                  <h2 className="mt-4 text-gray-900">
                     {column.title}
                   </h2>
 
@@ -1005,10 +993,7 @@ export default function EwaPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-slate-50/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600 shadow-sm">
               Results
             </span>
-            <h2
-              id="ewa-impact-heading"
-              className="mt-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.55rem] lg:leading-[1.08]"
-            >
+            <h2 id="ewa-impact-heading" className="mt-5 text-gray-900">
               Impact Across the{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 Organization
@@ -1059,7 +1044,7 @@ export default function EwaPage() {
                       {item.value}
                     </p>
 
-                    <h3 className="relative mt-2 text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">
+                    <h3 className="relative mt-2 text-slate-900">
                       {item.label}
                     </h3>
                     <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">

@@ -29,7 +29,7 @@ export default function BusinessImpactSection() {
                 <span className="h-1.5 w-1.5 rounded-full bg-blue-600" aria-hidden />
                 Business impact
               </span>
-              <h2 className="home-display-heading mt-5 text-3xl font-heading-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-tight">
+              <h2 className="home-display-heading mt-5 text-slate-900">
                 Proven Business{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Impact</span>
               </h2>
@@ -45,7 +45,7 @@ export default function BusinessImpactSection() {
                 ].map((line) => (
                   <li
                     key={line}
-                    className="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-3 shadow-[0_10px_24px_-22px_rgba(15,23,42,0.28)] backdrop-blur"
+                    className="flex items-start gap-3 rounded-2xl px-4 py-3"
                   >
                     <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white shadow-sm" aria-hidden>
                       <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">

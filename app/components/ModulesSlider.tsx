@@ -167,9 +167,7 @@ export default function ModulesSlider() {
             <span className="section-badge border-blue-200 bg-blue-50 text-blue-600">
               Solutions
             </span>
-            <h2 className="mt-4 text-2xl font-bold tracking-tight text-blue-600 sm:text-3xl">
-              Our Modules
-            </h2>
+            <h2 className="mt-4 text-blue-600">Our Modules</h2>
             <p className="mt-3 max-w-sm text-slate-600 mx-auto lg:mx-0 text-sm leading-relaxed sm:text-[15px]">
               Each module maps to a real operations job—time capture, gates, visitors, payroll, and compliance—with plain-language detail on every card.
             </p>

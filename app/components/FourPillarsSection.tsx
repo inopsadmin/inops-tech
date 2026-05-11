@@ -225,7 +225,7 @@ export default function FourPillarsSection() {
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-100 text-violet-700 ring-1 ring-violet-200/80">
                 <PillarCardMainIcon name={pillar.pillarIcon} />
               </div>
-              <h3 className="mt-5 pr-24 text-xl font-bold text-slate-900 sm:pr-28">{pillar.title}</h3>
+              <h3 className="mt-5 pr-24 text-slate-900 sm:pr-28">{pillar.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">{pillar.description}</p>
               <ul className="mt-6 flex flex-col gap-4 border-t border-slate-100 pt-6">
                 {pillar.features.map((f) => (

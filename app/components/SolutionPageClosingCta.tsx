@@ -33,41 +33,38 @@ export default function SolutionPageClosingCta({
   embedded = false,
 }: SolutionPageClosingCtaProps) {
   const secondaryClassName =
-    "inline-flex items-center justify-center rounded-xl border-2 border-white bg-transparent px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-white/10";
+    "inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-white/18";
 
   const secondaryIsSpecialProtocol =
     secondaryHref.startsWith("tel:") || secondaryHref.startsWith("mailto:");
 
   const ctaCard = (
     <motion.div
-      className="relative overflow-hidden rounded-3xl bg-blue-600 px-6 py-12 text-center shadow-lg shadow-blue-900/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
+      className="solution-cta relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-400 via-blue-500 to-cyan-400 px-6 py-12 text-center shadow-lg shadow-sky-500/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
       transition={{ duration: 0.55, ease: smoothEase }}
     >
       <div
-        className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-blue-800/35"
+        className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-white/18"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-blue-500/40"
+        className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-white/16"
         aria-hidden
       />
       <div className="relative z-10 mx-auto max-w-3xl">
-        <h2
-          id={headingId}
-          className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[2rem]"
-        >
+        <h2 id={headingId} className="solution-cta__heading tracking-tight text-white">
           {heading}
         </h2>
-        <div className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-blue-100 sm:text-lg">
+        <div className="solution-cta__desc mx-auto mt-4 max-w-2xl leading-relaxed text-blue-50">
           {description}
         </div>
         <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-md transition hover:bg-slate-50"
+            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-md transition hover:bg-blue-50"
           >
             {primaryLabel}
           </Link>
@@ -82,7 +79,7 @@ export default function SolutionPageClosingCta({
           )}
         </div>
         {footnote ? (
-          <p className="mt-8 text-sm leading-relaxed text-blue-100/95">{footnote}</p>
+          <p className="mt-8 text-sm leading-relaxed text-blue-50/95">{footnote}</p>
         ) : null}
       </div>
     </motion.div>

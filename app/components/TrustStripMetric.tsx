@@ -11,7 +11,7 @@ type TrustStripMetricProps = {
 };
 
 const metricClassName =
-  "text-[clamp(2.05rem,5.25vw,3.35rem)] font-bold leading-none tracking-tight text-[color:var(--inops-blue)] tabular-nums";
+  "text-[clamp(1.35rem,3.4vw,2.1rem)] font-bold leading-none tracking-tight text-[color:var(--inops-blue)] tabular-nums";
 
 export default function TrustStripMetric({ value, label, index }: TrustStripMetricProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ export default function TrustStripMetric({ value, label, index }: TrustStripMetr
           <span className={metricClassName}>{value}</span>
         )}
       </p>
-      <p className="mt-3 max-w-[13rem] text-sm font-normal leading-snug text-slate-600 sm:mt-3.5 sm:max-w-none sm:text-base">
+      <p className="mt-2 max-w-[13rem] text-xs font-normal leading-snug text-slate-600 sm:mt-2.5 sm:max-w-none sm:text-sm">
         {label}
       </p>
     </motion.div>

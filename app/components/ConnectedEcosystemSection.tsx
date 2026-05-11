@@ -46,7 +46,7 @@ export default function ConnectedEcosystemSection() {
             as="h2"
             id="connected-ecosystem-heading"
             direction="up"
-            className="text-2xl font-heading-bold tracking-tight text-gray-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
+            className="text-gray-900"
           >
             Not Just Tools. A Connected Ecosystem.
           </FlyInText>

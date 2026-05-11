@@ -216,7 +216,7 @@ function WhyInopsMosaicPainCard({
           <PainPointLeadIcon name={card.icon} className="h-5 w-5" />
         </span>
       </div>
-      <h3 className="relative mt-5 text-base font-bold leading-snug text-slate-900 sm:text-lg">{card.title}</h3>
+      <h3 className="relative mt-5 text-slate-900">{card.title}</h3>
       <span className="relative mt-2.5 inline-flex w-fit rounded-full border border-sky-200/90 bg-gradient-to-r from-sky-50/90 to-indigo-50/80 px-3 py-1 text-xs font-bold tabular-nums text-slate-800 shadow-sm ring-1 ring-sky-100/80">
         {card.stat}
       </span>
@@ -312,7 +312,7 @@ const ourModulesSlides = [
 function OurModulesCarousel() {
   return (
     <section
-      className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white pt-8 pb-14 lg:pt-10 lg:pb-16"
+      className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white !mt-0 pt-5 pb-14 sm:pt-6 lg:pt-7 lg:pb-16"
       aria-labelledby="our-modules-heading"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden />
@@ -350,11 +350,7 @@ function OurModulesCarousel() {
             </motion.span>
             Capability map
           </motion.span>
-          <motion.h2
-            id="our-modules-heading"
-            variants={ourModulesHeaderItem}
-            className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl"
-          >
+          <motion.h2 id="our-modules-heading" variants={ourModulesHeaderItem} className="mt-5">
             <span className="text-slate-900">
               Our{" "}
             </span>
@@ -439,7 +435,7 @@ function OurModulesCarousel() {
                   <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-slate-900/25 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-[0.85]" />
                 </div>
                 <div className="relative flex min-h-[11rem] flex-1 flex-col px-5 pb-5 pt-5 text-center sm:px-6">
-                  <h3 className="text-base font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-slate-950 sm:text-[1.05rem]">
+                  <h3 className="text-slate-900 transition-colors duration-300 group-hover:text-slate-950">
                     {slide.title}
                   </h3>
                   <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
@@ -617,7 +613,7 @@ function AccessGovernanceVisual() {
 export default function PayrollSolutionsPage() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
           className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
@@ -693,7 +689,7 @@ export default function PayrollSolutionsPage() {
                       direction="left"
                       delay={0.06}
                       duration={0.68}
-                      className="mt-4 whitespace-nowrap text-xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl md:text-4xl lg:mt-5 lg:text-[2.65rem] lg:leading-[1.12]"
+                      className="mt-4 whitespace-nowrap text-slate-900 lg:mt-5"
                     >
                       Unified{" "}
                       <span className="text-blue-800">payroll</span> & contract <br /> workforce governance
@@ -804,10 +800,7 @@ export default function PayrollSolutionsPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.65)]" aria-hidden />
                 Operational gaps
               </span>
-              <h2
-                id="why-inops-heading"
-                className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.1]"
-              >
+              <h2 id="why-inops-heading" className="mt-6 text-slate-900">
                 Why Inops?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -906,7 +899,7 @@ export default function PayrollSolutionsPage() {
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100/80">
                       <ComprehensiveControlIcon name={card.icon} />
                     </div>
-                    <h3 className="mt-4 text-lg font-bold text-slate-900">{card.title}</h3>
+                    <h3 className="mt-4 text-slate-900">{card.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
                   </div>
                 </motion.div>
@@ -919,7 +912,7 @@ export default function PayrollSolutionsPage() {
                 viewport={viewport}
                 transition={{ duration: 0.45, ease: smoothEase, delay: 0.15 }}
               >
-                <h3 className="text-lg font-bold text-slate-900">Need Custom Integration?</h3>
+                <h3 className="text-slate-900">Need Custom Integration?</h3>
                 <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-600">
                   We sync with SAP, Oracle, and legacy ERP systems.
                 </p>
@@ -948,10 +941,7 @@ export default function PayrollSolutionsPage() {
               <AccessGovernanceVisual />
             </div>
             <div className="flex flex-col justify-center bg-black px-6 py-12 sm:px-10 sm:py-14 lg:min-h-[min(100vh,520px)] lg:px-14 lg:py-16">
-              <h2
-                id="access-governance-heading"
-                className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-[2.125rem] lg:leading-snug"
-              >
+              <h2 id="access-governance-heading" className="text-white">
                 Real-Time Entry, Exit &amp; Access Governance
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-white/88 sm:text-sm">
@@ -983,7 +973,7 @@ export default function PayrollSolutionsPage() {
 
         {/* Contractor leakage + ROI — premium layout */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 py-16 lg:py-24"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 !mt-0 pt-10 pb-16 sm:pt-12 lg:pt-14 lg:pb-24"
           aria-labelledby="contractor-leakage-heading"
         >
           <div
@@ -1006,10 +996,7 @@ export default function PayrollSolutionsPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.7)]" aria-hidden />
                 Cost leakage is silent. Savings don&apos;t have to be.
               </span>
-              <h2
-                id="contractor-leakage-heading"
-                className="mt-7 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
-              >
+              <h2 id="contractor-leakage-heading" className="mt-7 text-slate-900">
                 Stop Losing{" "}
                 <span className="font-semibold text-[color:var(--inops-blue)]">Crores</span>{" "}
                 in Contractor Leakage
@@ -1195,15 +1182,19 @@ export default function PayrollSolutionsPage() {
                   ))}
                 </ul>
                 <motion.div
-                  className="mt-8 flex flex-col gap-2 rounded-2xl bg-gradient-to-br from-rose-600 via-rose-600 to-red-700 px-5 py-5 text-white shadow-lg shadow-rose-900/25 sm:flex-row sm:items-center sm:justify-between"
+                  className="group mt-8 flex cursor-default flex-col gap-2 rounded-2xl bg-gradient-to-br from-rose-400 via-rose-400 to-rose-500 px-5 py-5 text-white shadow-lg shadow-rose-500/20 transition-[background-image,box-shadow] duration-300 ease-out hover:from-rose-600 hover:via-rose-600 hover:to-red-700 hover:shadow-rose-900/30 sm:flex-row sm:items-center sm:justify-between"
                   initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ duration: 0.45, ease: smoothEase }}
                   whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
                 >
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/85">Total leakage</span>
-                  <span className="text-2xl font-bold tabular-nums tracking-tight sm:text-3xl">₹1.98 Cr / year</span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/95 transition-colors duration-300 group-hover:text-white">
+                    Total leakage
+                  </span>
+                  <span className="text-2xl font-bold tabular-nums tracking-tight text-white transition-colors duration-300 group-hover:text-white sm:text-3xl">
+                    ₹1.98 Cr / year
+                  </span>
                 </motion.div>
               </motion.div>
             </div>
@@ -1230,7 +1221,7 @@ export default function PayrollSolutionsPage() {
                       </svg>
                     </span>
                     <div>
-                      <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">With the platform</h3>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">With the platform</p>
                       <p className="mt-0.5 text-sm text-slate-600">What changes when CLMS runs your contractor layer</p>
                     </div>
                   </div>

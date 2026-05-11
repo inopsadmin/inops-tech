@@ -17,6 +17,12 @@
   --inops-navy: #0f2f57;
   --inops-slate: #6b7280;
   --home-nav-offset: 4.5rem;
+  --premium-card-radius: 1.5rem;
+  --premium-icon-radius: 0.9rem;
+  --premium-shadow: 0 16px 44px -30px rgb(15 23 42 / 0.34);
+  --premium-shadow-hover: 0 22px 54px -34px rgb(15 23 42 / 0.38);
+  --premium-border: #dbe5f0;
+  --premium-icon-bg: #eef6ff;
 }
 
 @theme inline {
@@ -83,6 +89,11 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Match body font everywhere main content is rendered (same family as layout Geist). */
+.inops-template {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
 /* Site-wide brand canvas inspired by logo palette */
@@ -951,6 +962,24 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   line-height: 1.5 !important;
 }
 
+/* Utility: force smaller copy where global p sizing is too large */
+.inops-template .ta-small-desc {
+  font-size: 0.7rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Closing CTA: keep heading + subheading consistent across pages */
+.inops-template .solution-cta__heading {
+  font-size: clamp(1.6rem, 1.4rem + 0.8vw, 2.15rem) !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
+}
+
+.inops-template .solution-cta__desc {
+  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem) !important;
+  line-height: 1.6 !important;
+}
+
 /* Media never shrinks awkwardly on wide displays */
 .inops-template img,
 .inops-template video,
@@ -961,6 +990,86 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 .inops-template img,
 .inops-template video {
   height: auto;
+}
+
+/* More breathing room between sections on long-form pages. */
+.solution-product-section-gap > section:not(:first-of-type) {
+  margin-top: clamp(2.75rem, 1.9rem + 3vw, 5rem);
+}
+
+@media (min-width: 1024px) {
+  .solution-product-section-gap > section:not(:first-of-type) {
+    margin-top: clamp(4rem, 2.75rem + 3.5vw, 7rem);
+  }
+}
+
+/* ===== Premium consistency pass: cards, icons, shadows, restrained effects ===== */
+.inops-template :is(.animate-glow-pulse, .animate-float, .animate-float-slow, .animate-float-3d) {
+  animation: none !important;
+}
+
+.inops-template :is(.btn-glow, .btn-glow:hover, .btn-3d, .btn-3d:hover, .btn-3d:active) {
+  transform: none;
+  box-shadow: 0 14px 30px -22px rgb(15 23 42 / 0.36) !important;
+}
+
+.inops-template :is(.gradient-text, h1 [class*="bg-gradient"], h2 [class*="bg-gradient"], h3 [class*="bg-gradient"]) {
+  background: none !important;
+  color: var(--inops-blue) !important;
+  -webkit-text-fill-color: currentColor;
+}
+
+.inops-template :is(.shine-hover)::after,
+.inops-template :is(.inops-rotating-border)::before {
+  display: none !important;
+}
+
+.inops-template :is([class*="blur-2xl"], [class*="blur-3xl"], [class*="blur-[56px]"], [class*="blur-[100px]"], [class*="blur-[110px]"]) {
+  opacity: 0.16 !important;
+  filter: blur(42px) !important;
+}
+
+.inops-template :is(.card-3d, .card-hover-lift, article[class*="rounded"], div[class*="rounded"][class*="border"], div[class*="rounded"][class*="shadow"]) {
+  border-radius: var(--premium-card-radius) !important;
+  border-color: var(--premium-border) !important;
+  box-shadow: var(--premium-shadow) !important;
+  transition:
+    transform 0.24s cubic-bezier(0.33, 1, 0.68, 1),
+    box-shadow 0.24s cubic-bezier(0.33, 1, 0.68, 1),
+    border-color 0.2s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .inops-template :is(.card-3d, .card-hover-lift, article[class*="rounded"], div[class*="rounded"][class*="border"], div[class*="rounded"][class*="shadow"]):hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--premium-shadow-hover) !important;
+    border-color: color-mix(in srgb, var(--inops-blue) 18%, var(--premium-border)) !important;
+  }
+}
+
+.inops-template :is(svg)[fill="none"] {
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.inops-template :is(div, span)[class*="rounded"][class*="text-"]:has(> svg),
+.inops-template :is(div, span)[class*="rounded"][class*="ring"]:has(> svg) {
+  border-radius: var(--premium-icon-radius) !important;
+  background: var(--premium-icon-bg) !important;
+  color: var(--inops-blue) !important;
+  border: 1px solid color-mix(in srgb, var(--inops-blue) 14%, #ffffff) !important;
+  box-shadow: none !important;
+}
+
+.inops-template :is(div, span)[class*="rounded"][class*="text-"]:has(> svg) > svg,
+.inops-template :is(div, span)[class*="rounded"][class*="ring"]:has(> svg) > svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.inops-template :is([class*="shadow-blue"], [class*="shadow-sky"], [class*="shadow-cyan"], [class*="shadow-emerald"], [class*="shadow-indigo"], [class*="shadow-violet"], [class*="shadow-purple"], [class*="shadow-rose"], [class*="shadow-amber"]) {
+  box-shadow: var(--premium-shadow) !important;
 }
 
 /* Removed broad brand overrides: `[class*="bg-blue-"]` matched hover/tint utilities like

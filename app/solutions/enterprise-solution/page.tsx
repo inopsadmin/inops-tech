@@ -227,7 +227,7 @@ export default function EnterpriseSolutionPage() {
   ] as const;
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
       <SolutionLandingHero
         badge={
           <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
@@ -293,10 +293,7 @@ export default function EnterpriseSolutionPage() {
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" aria-hidden />
               Three pillars
             </span>
-            <h2
-              id="core-modules-heading"
-              className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.55rem] lg:leading-[1.1]"
-            >
+            <h2 id="core-modules-heading" className="mt-6 text-slate-900">
               Core operational{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 modules
@@ -355,7 +352,7 @@ export default function EnterpriseSolutionPage() {
                     </span>
                   </div>
 
-                  <h3 className="relative mt-5 text-[1.45rem] font-bold leading-snug tracking-tight text-slate-900 sm:text-[1.6rem]">
+                  <h3 className="relative mt-5 text-slate-900">
                     {module.title}
                   </h3>
                   <p className="relative mt-3 flex-1 text-base leading-relaxed text-slate-600 sm:text-[1.05rem]">
@@ -759,10 +756,7 @@ export default function EnterpriseSolutionPage() {
             <span className="inline-flex items-center rounded-full border border-slate-200/90 bg-slate-50/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600 shadow-sm">
               End-to-end flow
             </span>
-            <h2
-              id="unified-platform-flow-heading"
-              className="mt-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.1]"
-            >
+            <h2 id="unified-platform-flow-heading" className="mt-5 text-gray-900">
               Unified Platform{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 Flow
@@ -901,10 +895,7 @@ export default function EnterpriseSolutionPage() {
                 </span>
                 Enterprise platform
               </span>
-              <h2
-                id="nexus-platform-capabilities-heading"
-                className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-[1.1]"
-              >
+              <h2 id="nexus-platform-capabilities-heading" className="mt-6">
                 Platform capabilities for{" "}
                 <span className="font-semibold text-slate-300">
                   resilience at scale
@@ -1014,7 +1005,7 @@ export default function EnterpriseSolutionPage() {
                   >
                     {item.icon}
                   </div>
-                  <h3 className="relative mt-4 text-lg font-semibold tracking-tight text-white sm:text-xl">
+                  <h3 className="relative mt-4 text-white">
                     {item.title}
                   </h3>
                   <p className="relative mt-2 text-sm leading-relaxed text-slate-400 sm:text-[0.97rem]">
@@ -1059,10 +1050,7 @@ export default function EnterpriseSolutionPage() {
             <span className="inline-flex items-center rounded-full border border-slate-200/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.12)] backdrop-blur-sm">
               Outcomes
             </span>
-            <h2
-              id="nexus-operational-benefits-heading"
-              className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.1]"
-            >
+            <h2 id="nexus-operational-benefits-heading" className="mt-6 text-slate-900">
               Operational benefits you can{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 font-semibold text-[color:var(--inops-blue)]">
@@ -1172,7 +1160,7 @@ export default function EnterpriseSolutionPage() {
                     <p className="relative mt-5 text-5xl font-black tracking-tight text-slate-900">
                       {item.value}
                     </p>
-                    <h3 className="relative mt-2 text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
+                    <h3 className="relative mt-2 text-slate-900">
                       {item.label}
                     </h3>
                     <p className="relative mt-2 text-sm leading-relaxed text-slate-600 sm:text-[0.97rem]">
@@ -1194,7 +1182,7 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h2 className="text-gray-900">
               Built for Every Industry
             </h2>
           </motion.div>
@@ -1270,7 +1258,7 @@ export default function EnterpriseSolutionPage() {
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur">
                       {card.icon}
                     </span>
-                    <h3 className="mt-3 text-3xl font-semibold text-white drop-shadow-sm sm:text-[2rem]">
+                    <h3 className="mt-3 text-white drop-shadow-sm">
                       {card.title}
                     </h3>
                   </div>

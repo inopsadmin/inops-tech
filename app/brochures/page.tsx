@@ -113,7 +113,7 @@ export default function BrochuresPage() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
                   <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
-                  <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">Brochures</h1>
+                  <h1 className="mt-4 text-white">Brochures</h1>
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{brochureBanner.tagline}</p>
                 </div>
               </div>
@@ -125,12 +125,7 @@ export default function BrochuresPage() {
               <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
                 Download center
               </FlyInText>
-              <FlyInText
-                as="h2"
-                direction="left"
-                delay={0.06}
-                className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-[var(--inops-navy)] sm:text-4xl"
-              >
+              <FlyInText as="h2" direction="left" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
                 Choose your brochure
               </FlyInText>
             </div>
@@ -176,12 +171,7 @@ export default function BrochuresPage() {
                   >
                     Resource 0{i + 1}
                   </FlyInText>
-                  <FlyInText
-                    as="h3"
-                    direction="up"
-                    delay={0.08 + i * 0.04}
-                    className="mt-3 text-xl font-semibold leading-snug tracking-[-0.025em] text-[var(--inops-navy)]"
-                  >
+                  <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-3 text-[var(--inops-navy)]">
                     {brochure.title}
                   </FlyInText>
                   <FlyInText
@@ -233,12 +223,7 @@ export default function BrochuresPage() {
               <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[#7dd3fc]">
                 Need the right material?
               </FlyInText>
-              <FlyInText
-                as="h2"
-                direction="left"
-                delay={0.06}
-                className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl"
-              >
+              <FlyInText as="h2" direction="left" delay={0.06} className="mt-4 text-white">
                 Talk to InOps before rollout
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.12} className="mt-4 text-base leading-8 text-slate-300">

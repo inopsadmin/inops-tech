@@ -107,7 +107,7 @@ const electroMagneticLocks = [
 export default function AccessoriesPage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           title="Access control accessories"
           subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks—everything you need to complete lanes, doors, and secure zones."
@@ -148,7 +148,7 @@ export default function AccessoriesPage() {
                     />
                   </div>
                   <div className={cardBody}>
-                    <h3 className="text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">{product.name}</h3>
+                    <h3 className="text-slate-900">{product.name}</h3>
                     <span className="mt-2 inline-flex w-fit rounded-md bg-blue-50 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700 ring-1 ring-inset ring-blue-600/15">
                       {product.model}
                     </span>
@@ -203,7 +203,7 @@ export default function AccessoriesPage() {
                     />
                   </div>
                   <div className={cardBody}>
-                    <h3 className="text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">{product.title}</h3>
+                    <h3 className="text-slate-900">{product.title}</h3>
                     <p className="mt-2 text-sm font-medium text-blue-600">{product.subtitle}</p>
                     <p className="mt-4 text-sm leading-relaxed text-slate-600">{product.description}</p>
                     <CardEnquireLink />

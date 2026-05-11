@@ -351,7 +351,7 @@ function ModernTeamIcon({
 
 export default function MobileAppPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white text-gray-900">
+    <div className="solution-product-section-gap min-h-screen overflow-x-hidden bg-white text-gray-900">
       <motion.section
         className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
         initial={{ opacity: 0 }}
@@ -415,8 +415,7 @@ export default function MobileAppPage() {
                     Mobile attendance
                   </span>
                 </motion.div>
-                <motion.h1
-                  className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                <motion.h1 className="mt-4 text-slate-900 sm:mt-5"
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
@@ -466,7 +465,7 @@ export default function MobileAppPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">Built for field teams and enterprise operations</h2>
+            <h2 className="text-slate-900">Built for field teams and enterprise operations</h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
               The Mobile App helps teams manage day-to-day attendance workflows from anywhere while keeping HR and payroll systems synchronized. It is designed for scale, simplicity, and transparent employee communication.
             </p>
@@ -482,7 +481,7 @@ export default function MobileAppPage() {
                 viewport={viewport}
                 transition={{ duration: 0.45, ease: smoothEase, delay: idx * 0.04 }}
               >
-                <h3 className="text-base font-semibold text-slate-900">{card.title}</h3>
+                <h3 className="text-slate-900">{card.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
               </motion.div>
             ))}
@@ -507,10 +506,7 @@ export default function MobileAppPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--inops-blue)]">
               Mobile attendance
             </p>
-            <h2
-              id="accurate-tracking-heading"
-              className="mt-4 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.12]"
-            >
+            <h2 id="accurate-tracking-heading" className="mt-4 text-balance text-slate-900">
               Everything you need for{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 accurate tracking
@@ -555,7 +551,7 @@ export default function MobileAppPage() {
                       <FeatureIcon kind={feature.icon} />
                     </span>
                   </div>
-                  <h3 className="relative mt-5 text-lg font-bold leading-snug tracking-tight text-slate-900">
+                  <h3 className="relative mt-5 text-slate-900">
                     {feature.title}
                   </h3>
                   <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
@@ -578,10 +574,7 @@ export default function MobileAppPage() {
             transition={{ duration: 0.5, ease: smoothEase }}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--inops-blue)]">How it flows</p>
-            <h2
-              id="workflow-heading"
-              className="mt-4 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.12]"
-            >
+            <h2 id="workflow-heading" className="mt-4 text-balance text-slate-900">
               Seamless from{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 start to finish
@@ -623,7 +616,7 @@ export default function MobileAppPage() {
                     >
                       <WorkflowStepIcon kind={step.icon} />
                     </div>
-                    <h3 className="mt-4 text-sm font-bold leading-tight text-slate-900 xl:text-base">{step.title}</h3>
+                    <h3 className="mt-4 text-slate-900">{step.title}</h3>
                     <p className="mt-2 text-xs leading-snug text-slate-600 xl:text-[13px]">{step.description}</p>
                   </motion.li>
                 );
@@ -662,7 +655,7 @@ export default function MobileAppPage() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                       Step {String(idx + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900">{step.title}</h3>
+                    <h3 className="text-slate-900">{step.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-slate-600">{step.description}</p>
                   </div>
                 </motion.li>
@@ -694,7 +687,7 @@ export default function MobileAppPage() {
                   </span>
                   For Supervisors
                 </span>
-                <h2 className="mt-5 max-w-xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-900 max-sm:text-3xl sm:text-5xl">
+                <h2 className="mt-5 max-w-xl text-slate-900">
                   <span className="text-slate-900">
                     Full Control Over Your Workforce
                   </span>
@@ -824,7 +817,7 @@ export default function MobileAppPage() {
 
                     <div className="flex min-h-0 flex-col rounded-2xl border border-slate-200/70 bg-gradient-to-b from-slate-50/50 to-white/90 p-4 shadow-inner shadow-slate-900/[0.02]">
                       <div className="mb-4 flex items-center justify-between gap-2">
-                        <h3 className="text-sm font-semibold text-slate-900">Real-time Activity</h3>
+                        <h3 className="text-slate-900">Real-time Activity</h3>
                         <span className="text-xs font-semibold text-indigo-600 underline decoration-indigo-300 underline-offset-4">
                           View Reports
                         </span>
@@ -888,7 +881,7 @@ export default function MobileAppPage() {
               <span className="inline-flex rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700 shadow-sm shadow-blue-500/5 backdrop-blur-sm ring-1 ring-blue-500/10">
                 Ecosystem
               </span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+              <h2 className="mt-4 text-slate-900">
                 <span className="text-slate-900">
                   Plug &amp; Play Integrations
                 </span>
@@ -1050,7 +1043,7 @@ export default function MobileAppPage() {
                     className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 text-center shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-slate-300/90 hover:shadow-lg"
                   >
                     <div className={`mx-auto mb-4 h-1 w-12 rounded-full bg-gradient-to-r ${accents[idx]}`} aria-hidden />
-                    <h3 className="text-xl font-semibold tracking-tight text-slate-900">{item.title}</h3>
+                    <h3 className="text-slate-900">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                   </motion.div>
                 );
@@ -1081,10 +1074,7 @@ export default function MobileAppPage() {
                   <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)]" aria-hidden />
                   Operations-ready
                 </span>
-                <h2
-                  id="why-smartattendance-heading"
-                  className="mt-5 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.85rem] lg:leading-[1.08]"
-                >
+                <h2 id="why-smartattendance-heading" className="mt-5">
                   <span className="text-white">
                     Why Modern Teams <br className="hidden sm:block" /> Choose SmartAttendance
                   </span>
@@ -1135,7 +1125,7 @@ export default function MobileAppPage() {
                         >
                           <ModernTeamIcon kind={point.icon} className="h-5 w-5 text-white" />
                         </span>
-                        <h3 className="relative mt-4 text-base font-semibold leading-snug text-white sm:text-[1.05rem]">{point.title}</h3>
+                        <h3 className="relative mt-4 text-white">{point.title}</h3>
                         <p className="relative mt-2 text-sm leading-relaxed text-slate-400">{point.description}</p>
                       </motion.article>
                     );

@@ -73,7 +73,7 @@ function CheckIcon({ className }: { className?: string }) {
 export default function TurnstilesPage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           title="Turnstiles for high-throughput, secure entry"
           subtitle="Stainless steel lanes with integrated readers—built for industrial, commercial, and campus gates with dependable throughput and clear access signals."
@@ -110,7 +110,7 @@ export default function TurnstilesPage() {
                 viewport={viewport}
                 transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
               >
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-5xl">
+                <h2 className="text-gray-900">
                   Tripod Turnstiles
                 </h2>
                 <p className="mt-6 max-w-none text-gray-600 leading-relaxed text-base sm:text-xl">
@@ -326,7 +326,7 @@ function WhyChooseUsSection() {
                   exit={{ opacity: 0, x: -12 }}
                   transition={{ duration: 0.3, ease: smoothEase }}
                 >
-                  <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                  <h3 className="text-gray-900">
                     {slides[slideIndex].title}
                   </h3>
                   <p className="mt-3 max-w-none text-base leading-relaxed text-gray-600 sm:mt-4 sm:text-lg lg:text-xl lg:leading-relaxed">

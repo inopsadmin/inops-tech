@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
  *
  * Usage:
  * <AnimatedSection className="py-16">
- *   <AnimatedHeading as="h2" className="text-3xl font-bold">Title</AnimatedHeading>
+ *   <AnimatedHeading as="h2" className="text-slate-900">Title</AnimatedHeading>
  *   <AnimatedParagraph className="mt-4 text-slate-600">Subtitle</AnimatedParagraph>
  *   <AnimatedCardGrid className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
  *     <AnimatedCardItem direction="left" className="...">Card 1</AnimatedCardItem>

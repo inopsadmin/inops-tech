@@ -5,14 +5,14 @@
 
 export const heroSlides = [
   {
-    src: "/WhatsApp Image 2026-05-04 at 11.55.38 AM.jpeg",
-    alt: "Business team reviewing workforce governance dashboards on screens",
+    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=3200&q=90",
+    alt: "Operations team at computers in a modern enterprise control room reviewing workforce management analytics",
     title: "Single Source of Truth for Workforce Governance",
    
   },
   {
-    src: "/WhatsApp Image 2026-05-04 at 11.55.24 AM.jpeg",
-    alt: "Face recognition across mobile, CCTV, and on-ground workforce devices",
+    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=3200&q=90",
+    alt: "Professional security surveillance and face recognition technology — AI-powered biometric access control across CCTV and mobile devices",
     title: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
     
   },
@@ -41,13 +41,13 @@ export const heroTrustedManufacturingClients: { name: string; logoSrc: string }[
   { name: "Foxconn", logoSrc: "/clients/foxconn.svg" },
 ];
 
-/** Order matches `whyCards` in `app/page.tsx` — [0] Face, [1] Workforce, [3] Enterprise, [4] Featured, [5] EWA */
+/** Order matches `whyCards` in `app/page.tsx` — [0] Identity, [1] HRIS, [2] Enterprise visibility, [3] Logistics, [4] EWA (hero matches /solutions/ewa), [5] spare */
 export const whySectionCardImages = [
   "/WhatsApp Image 2026-05-04 at 12.13.21 PM.jpeg",
   "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=85",
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=85",
-  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85",
   "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1400&q=85",
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85",
+  "/images/ewa-hero.png",
   "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=85",
 ] as const;
 

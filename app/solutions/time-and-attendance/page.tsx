@@ -278,7 +278,7 @@ const trustStripMetrics = [
 export default function TimeAndAttendancePage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
           className="w-full border-b border-slate-200/80 bg-white pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
@@ -311,7 +311,7 @@ export default function TimeAndAttendancePage() {
                       label: "Live",
                       title: "CCTV stream active",
                       accent: "emerald",
-                      className: "!top-0 sm:!top-0 lg:!-top-2 sm:-translate-x-20 lg:-translate-x-128",
+                      className: "!top-0 sm:!top-0 lg:!-top-2 sm:-translate-x-20 lg:-translate-x-28",
                     },
                     {
                       position: "bottom-right",
@@ -344,7 +344,7 @@ export default function TimeAndAttendancePage() {
                     direction="left"
                     delay={0.08}
                     duration={0.68}
-                    className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                    className="mt-4 text-slate-900 sm:mt-5"
                   >
                     Attendance without devices,{" "}
                     <span className="text-blue-800">powered by AI</span>
@@ -381,9 +381,9 @@ export default function TimeAndAttendancePage() {
           </div>
         </motion.section>
 
-        <section className="border-b border-slate-200 bg-white py-10 sm:py-12 lg:py-14">
+        <section className="border-b border-slate-200 bg-white !mt-0 py-6 sm:py-8 lg:py-9">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-16">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 lg:gap-x-16 lg:gap-y-8">
               {trustStripMetrics.map((m, i) => (
                 <TrustStripMetric key={m.label} value={m.value} label={m.label} index={i} />
               ))}
@@ -391,11 +391,11 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-slate-200/70 bg-white py-14 lg:py-20">
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-white !mt-0 pt-8 pb-12 sm:pt-9 sm:pb-14 lg:pt-10 lg:pb-16">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.35]" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <div className="max-w-3xl">
-              <FlyInText as="h2" direction="up" duration={0.65} className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <FlyInText as="h2" direction="up" duration={0.65} className="text-slate-900 mt-10">
                 The Hidden Cost of Traditional Biometrics
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.06} duration={0.6} className="mt-4 text-sm leading-relaxed text-slate-500 sm:text-xl">
@@ -517,7 +517,7 @@ export default function TimeAndAttendancePage() {
                       direction="up"
                       delay={i * 0.05 + 0.05}
                       duration={0.55}
-                      className="mt-3 flex-1 text-sm leading-relaxed text-slate-600"
+                      className="mt-3 flex-1 text-xs leading-relaxed text-slate-600"
                     >
                       {item.description}
                     </FlyInText>
@@ -605,7 +605,7 @@ export default function TimeAndAttendancePage() {
                   direction="right"
                   duration={0.68}
                   delay={0.06}
-                  className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[2.65rem] lg:leading-tight"
+                  className="mt-4 text-slate-900"
                 >
                   The{" "}
                   <span className="text-blue-800">OptiCam</span> Solution
@@ -725,7 +725,7 @@ export default function TimeAndAttendancePage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-600" aria-hidden />
                 How it deploys
               </FlyInText>
-              <FlyInText as="h2" direction="up" duration={0.65} delay={0.06} className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <FlyInText as="h2" direction="up" duration={0.65} delay={0.06} className="mt-4 text-slate-900">
                 Seamless <span className="text-blue-800">Deployment Cycle</span>
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.1} duration={0.6} className="mt-3 text-base text-slate-600 sm:text-lg">
@@ -864,7 +864,7 @@ export default function TimeAndAttendancePage() {
                         direction="up"
                         delay={i * 0.05 + 0.04}
                         duration={0.52}
-                        className="mt-1.5 flex-1 text-[13px] leading-relaxed text-slate-600"
+                        className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-600"
                       >
                         {item.description}
                       </FlyInText>
@@ -944,7 +944,7 @@ export default function TimeAndAttendancePage() {
                 direction="up"
                 duration={0.65}
                 delay={0.06}
-                className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl"
+                className="mt-4 text-slate-900"
               >
                 The Standard for <span className="text-blue-800">Modern Enterprise</span>
               </FlyInText>
@@ -1154,7 +1154,7 @@ export default function TimeAndAttendancePage() {
                 direction="up"
                 duration={0.7}
                 delay={0.06}
-                className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-[2.65rem] lg:leading-tight"
+                className="mt-4 text-white"
               >
                 Measurable ROI for your{" "}
                 <span className="text-slate-200">infrastructure</span>

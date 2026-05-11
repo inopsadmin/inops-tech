@@ -205,7 +205,7 @@ export default function SolutionLandingHero({
         ) : null}
 
         <motion.h1
-          className={`max-w-2xl text-3xl font-bold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl sm:leading-tight lg:text-[2.65rem] lg:leading-[1.1] xl:text-[2.95rem] 2xl:text-[3.2rem] ${badge ? "mt-4 sm:mt-5" : ""}`}
+          className={`max-w-2xl tracking-tight text-slate-900 ${badge ? "mt-4 sm:mt-5" : ""}`}
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
@@ -214,7 +214,7 @@ export default function SolutionLandingHero({
         </motion.h1>
 
         <motion.p
-          className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem] xl:text-[1.12rem] 2xl:text-[1.18rem]"
+          className="mt-5 max-w-xl text-slate-600"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}

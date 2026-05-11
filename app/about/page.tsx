@@ -249,7 +249,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
+      <div className="solution-product-section-gap relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_8%,rgba(57,189,232,0.16),transparent_26%),radial-gradient(circle_at_88%_5%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_48%,#eef4f8_100%)]"
           aria-hidden
@@ -311,8 +311,7 @@ export default function AboutPage() {
                     <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
                     About InOps
                   </motion.span>
-                  <motion.h1
-                    className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:mt-5 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]"
+                  <motion.h1 className="mt-4 text-slate-900 sm:mt-5"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
@@ -382,10 +381,7 @@ export default function AboutPage() {
                 <span className="h-2 w-8 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                 At a glance
               </span>
-              <h2
-                id="impact-stats-heading"
-                className="mt-6 text-2xl font-semibold tracking-[-0.02em] text-slate-900 sm:text-3xl lg:text-[2rem] lg:leading-snug"
-              >
+              <h2 id="impact-stats-heading" className="mt-6 text-slate-900">
                 Trusted where{" "}
                 <span className="font-semibold text-[color:var(--inops-blue)]">enterprise operations</span> run at scale
               </h2>
@@ -453,10 +449,7 @@ export default function AboutPage() {
                 <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-700">
                   Who we are
                 </span>
-                <h2
-                  id="governance-platform-heading"
-                  className="mt-4 text-3xl font-semibold leading-[1.12] tracking-[-0.03em] text-[var(--inops-navy)] sm:text-4xl lg:text-[2.65rem]"
-                >
+                <h2 id="governance-platform-heading" className="mt-4 text-[var(--inops-navy)]">
                   A full-stack workforce governance platform
                 </h2>
                 <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]">
@@ -484,7 +477,7 @@ export default function AboutPage() {
                     />
                   </div>
                   <div className="text-center sm:text-left">
-                    <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">Satish Sinha</p>
+                    <p className="font-bold text-slate-900">Satish Sinha</p>
                     <p className="mt-0.5 text-sm font-medium text-slate-500">Founder</p>
                     <p className="mt-4 text-sm leading-relaxed text-slate-600">
                       Building long-term partnerships with enterprises that depend on reliable workforce operations every single day.
@@ -513,10 +506,7 @@ export default function AboutPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                 Timeline
               </div>
-              <h2
-                id="our-evolution-heading"
-                className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem]"
-              >
+              <h2 id="our-evolution-heading" className="mt-4 text-slate-900">
                 Our Evolution
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
@@ -584,7 +574,7 @@ export default function AboutPage() {
                                   </span>
                                 ) : null}
                               </div>
-                              <h3 className="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{m.title}</h3>
+                              <h3 className="mt-2 text-slate-900">{m.title}</h3>
                               <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
                                 {m.description}
                               </p>
@@ -613,7 +603,7 @@ export default function AboutPage() {
                                   </span>
                                 ) : null}
                               </div>
-                              <h3 className="mt-2 text-lg font-bold text-slate-900 sm:text-xl">{m.title}</h3>
+                              <h3 className="mt-2 text-slate-900">{m.title}</h3>
                               <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
                                 {m.description}
                               </p>
@@ -696,7 +686,7 @@ export default function AboutPage() {
                   <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-60" aria-hidden />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">Product</p>
-                    <h3 className="mt-1 text-base font-semibold leading-snug text-white sm:text-xl">{card.title}</h3>
+                    <h3 className="mt-1 text-white">{card.title}</h3>
                   </div>
                 </div>
               ))}
@@ -744,10 +734,7 @@ export default function AboutPage() {
                 </motion.span>
                 Purpose
               </motion.span>
-              <motion.h3
-                variants={visionMissionFadeUp}
-                className="mt-5 text-[1.65rem] font-semibold leading-[1.15] tracking-[-0.03em] text-slate-900 sm:text-3xl lg:text-[2.25rem]"
-              >
+              <motion.h3 variants={visionMissionFadeUp} className="mt-5 text-slate-900">
                 Vision and{" "}
                 <span className="font-semibold text-[color:var(--inops-blue)]">mission</span>
               </motion.h3>
@@ -817,7 +804,7 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div
-              className="mt-12 lg:mt-14"
+              className="mt-12 lg:mt-35"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -830,22 +817,24 @@ export default function AboutPage() {
 
         {/* Expertise — section intro, then visuals + carousel */}
         <section
-          className="section-flush-footer relative border-t border-slate-200/80 bg-slate-50/90 pb-8 pt-14 lg:pb-10 lg:pt-20"
+          className="section-flush-footer relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-sky-50/55 to-white pb-0 pt-16 lg:pb-0 lg:pt-24"
           aria-labelledby="why-choose-heading"
         >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="pointer-events-none absolute -left-24 top-20 h-80 w-80 rounded-full bg-blue-100/70 blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -right-28 bottom-16 h-80 w-80 rounded-full bg-sky-100/80 blur-3xl" aria-hidden />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
-              className="mx-auto mb-10 max-w-3xl border-b border-slate-200/90 pb-10 text-center lg:mb-12 lg:pb-12"
+              className="mx-auto mb-12 max-w-3xl text-center lg:mb-14"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.48, ease: smoothEase }}
             >
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600">Expertise</span>
-              <h2
-                id="why-choose-heading"
-                className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
-              >
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-700 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-cyan)]" aria-hidden />
+                Expertise
+              </span>
+              <h2 id="why-choose-heading" className="mt-3 text-slate-900">
                 Why choose us
               </h2>
               <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
@@ -855,33 +844,40 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 gap-6 sm:gap-7 lg:grid-cols-12 lg:items-stretch lg:gap-8 xl:gap-10">
+            <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-[2rem] border border-white bg-white/90 shadow-[0_30px_90px_-52px_rgba(15,47,87,0.5)] ring-1 ring-slate-900/[0.05] lg:grid-cols-12 lg:items-stretch">
               <motion.div
-                className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_20px_60px_-40px_rgba(15,47,87,0.35)] lg:col-span-6"
+                className="group relative overflow-hidden bg-gradient-to-br from-white via-sky-50/70 to-white lg:col-span-6"
                 initial={{ opacity: 0, x: -28 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.65, ease: smoothEase }}
               >
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_34%_12%,rgba(57,189,232,0.16),transparent_34%)]" aria-hidden />
                 <div className="relative min-h-[20rem] w-full sm:min-h-[26rem] lg:min-h-[32rem]">
                   <Image
                     src="/t2-removed.png"
                     alt="Why choose us visual"
                     fill
-                    className="object-contain object-center px-4 pt-4 sm:p-6"
+                    className="object-contain object-center px-6 pt-6 drop-shadow-[0_24px_36px_rgba(29,95,191,0.16)] transition-transform duration-500 group-hover:scale-[1.025] sm:p-8"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                   />
+                  <div className="pointer-events-none absolute inset-x-6 bottom-5 flex items-center justify-between rounded-full border border-white/80 bg-white/85 px-4 py-2 text-xs font-semibold text-slate-600 shadow-[0_16px_36px_-28px_rgba(15,23,42,0.45)] backdrop-blur">
+                    <span>Unified expertise stack</span>
+                    <span className="text-blue-700">Enterprise ready</span>
+                  </div>
                 </div>
               </motion.div>
 
               <motion.div
-                className="relative flex min-h-[20rem] overflow-hidden rounded-[1.75rem] border border-white bg-white/95 p-6 shadow-[0_24px_80px_-48px_rgba(15,47,87,0.45)] ring-1 ring-slate-900/[0.05] backdrop-blur sm:p-7 lg:col-span-6 lg:min-h-[32rem] lg:p-8"
+                className="relative flex min-h-[20rem] overflow-hidden border-t border-slate-100 bg-white/95 p-6 backdrop-blur sm:p-7 lg:col-span-6 lg:min-h-[32rem] lg:border-l lg:border-t-0 lg:p-8"
                 initial={{ opacity: 0, x: 28 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.65, ease: smoothEase }}
               >
-                <div className="mx-auto flex w-full min-h-[16rem] max-w-xl flex-col items-center justify-center text-center sm:min-h-[18rem] lg:min-h-[20rem] lg:pt-2">
+                <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/80 to-transparent lg:hidden" aria-hidden />
+                <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-100/80 blur-3xl" aria-hidden />
+                <div className="relative mx-auto flex w-full min-h-[16rem] max-w-xl flex-col items-center justify-center text-center sm:min-h-[18rem] lg:min-h-[20rem] lg:pt-2">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={expertiseIndex}
@@ -891,25 +887,41 @@ export default function AboutPage() {
                       transition={{ duration: 0.3, ease: smoothEase }}
                       className="flex flex-col items-center px-1"
                     >
-                      <h4 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl lg:text-[1.65rem]">
+                      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-700 shadow-sm">
+                        <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6v12m6-6H6" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5v-9Z" />
+                        </svg>
+                      </div>
+                      <span className="mb-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600">
+                        Core capability {String(expertiseIndex + 1).padStart(2, "0")}
+                      </span>
+                      <h4 className="text-slate-950">
                         {expertiseSlides[expertiseIndex].title}
                       </h4>
                       <p className="mt-4 max-w-[32rem] text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]">
                         {expertiseSlides[expertiseIndex].text}
                       </p>
+                      <div className="mt-7 flex flex-wrap justify-center gap-2">
+                        {["Enterprise scale", "Audit-ready", "Integrated delivery"].map((label) => (
+                          <span key={label} className="rounded-full border border-blue-100 bg-blue-50/70 px-3 py-1 text-xs font-semibold text-blue-700">
+                            {label}
+                          </span>
+                        ))}
+                      </div>
                     </motion.div>
                   </AnimatePresence>
                 </div>
 
-                <div className="absolute inset-x-0 bottom-6 flex items-center justify-center">
-                  <div className="flex gap-2.5">
+                <div className="absolute inset-x-0 bottom-7 flex items-center justify-center">
+                  <div className="flex rounded-full border border-slate-200 bg-white/90 px-3 py-2 shadow-sm backdrop-blur">
                     {expertiseSlides.map((_, i) => (
                       <button
                         key={i}
                         type="button"
                         onClick={() => setExpertiseIndex(i)}
-                        className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                          i === expertiseIndex ? "scale-110 bg-[color:var(--inops-blue)]" : "bg-slate-300 hover:bg-slate-400"
+                        className={`mx-1 h-2.5 rounded-full transition-all ${
+                          i === expertiseIndex ? "w-7 bg-[color:var(--inops-blue)]" : "w-2.5 bg-slate-300 hover:bg-slate-400"
                         }`}
                         aria-label={`Go to slide ${i + 1}`}
                       />
@@ -917,11 +929,11 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="absolute bottom-5 left-5 flex gap-1.5">
+                <div className="absolute bottom-6 left-6 flex gap-2">
                   <button
                     type="button"
                     onClick={() => setExpertiseIndex((prev) => (prev === 0 ? expertiseSlides.length - 1 : prev - 1))}
-                    className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 transition hover:border-slate-400 hover:bg-white active:scale-95"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700 active:scale-95"
                     aria-label="Previous expertise slide"
                   >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -933,7 +945,7 @@ export default function AboutPage() {
                     onClick={() =>
                       setExpertiseIndex((prev) => (prev === expertiseSlides.length - 1 ? 0 : prev + 1))
                     }
-                    className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-slate-600 transition hover:border-slate-400 hover:bg-white active:scale-95"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700 active:scale-95"
                     aria-label="Next expertise slide"
                   >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -273,7 +273,7 @@ function HighlightIcon({
 export default function CanteenManagementPage() {
   return (
     <>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           badge={
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-sm">
@@ -347,10 +347,7 @@ export default function CanteenManagementPage() {
               transition={{ duration: 0.55, ease: smoothEase }}
             >
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Live signal board</p>
-              <h2
-                id="canteen-ops-visibility-heading"
-                className="mt-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.35rem] lg:leading-[1.15]"
-              >
+              <h2 id="canteen-ops-visibility-heading" className="mt-4 text-balance">
                 <span className="text-white">Real-time </span>
                 <span className="font-semibold text-slate-300">
                   canteen visibility
@@ -489,10 +486,7 @@ export default function CanteenManagementPage() {
                     Serving line to ledger
                   </span>
 
-                  <h2
-                    id="digital-canteen-heading"
-                    className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.12]"
-                  >
+                  <h2 id="digital-canteen-heading" className="mt-5 text-balance text-slate-900">
                     Digital canteen &amp;{" "}
                     <span className="font-semibold text-[color:var(--inops-blue)]">
                       subsidy control
@@ -613,7 +607,7 @@ export default function CanteenManagementPage() {
                       </span>
                     </div>
 
-                    <h3 className="relative mt-5 text-lg font-bold leading-snug tracking-tight text-slate-900">
+                    <h3 className="relative mt-5 text-slate-900">
                       {item.title}
                     </h3>
                     <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
@@ -652,10 +646,7 @@ export default function CanteenManagementPage() {
                     Lobby &amp; access
                   </span>
 
-                  <h2
-                    id="visitor-desk-heading"
-                    className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.35rem] lg:leading-[1.12]"
-                  >
+                  <h2 id="visitor-desk-heading" className="mt-5 text-balance text-slate-900">
                     Visitor desk &amp; lobby on the{" "}
                     <span className="font-semibold text-[color:var(--inops-blue)]">
                       same campus stack
@@ -789,7 +780,7 @@ export default function CanteenManagementPage() {
                     >
                       <HighlightIcon name={item.icon} className="h-6 w-6" />
                     </div>
-                    <h3 className="relative mt-5 text-lg font-bold leading-snug text-slate-900">{item.title}</h3>
+                    <h3 className="relative mt-5 text-slate-900">{item.title}</h3>
                     <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
                       {item.description}
                     </p>

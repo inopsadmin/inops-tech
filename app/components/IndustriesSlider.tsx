@@ -18,7 +18,7 @@ function IndustryCard({ name, imageUrl }: { name: string; imageUrl: string }) {
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-4">
-        <h3 className="text-lg font-heading text-white drop-shadow-md">{name}</h3>
+        <h3 className="font-heading text-white drop-shadow-md">{name}</h3>
       </div>
     </div>
   );
@@ -32,9 +32,7 @@ export default function IndustriesSlider() {
           <span className="section-badge border-blue-200 bg-blue-50 text-blue-600">
             Industries
           </span>
-          <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">
-            Industries We Serve
-          </h2>
+          <h2 className="mt-4 text-center text-blue-600">Industries We Serve</h2>
           <p className="mx-auto mt-3 max-w-xl text-gray-600">
             Trusted across manufacturing, electronics, logistics, construction, and more
           </p>

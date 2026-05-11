@@ -78,7 +78,7 @@ export default function ContactPage() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
                   <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
-                  <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">Contact</h1>
+                  <h1 className="mt-4 text-white">Contact</h1>
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{contactBanner.tagline}</p>
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
                 as="h2"
                 direction="left"
                 delay={0.06}
-                className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-[var(--inops-navy)] sm:text-4xl"
+                className="mt-3 text-[var(--inops-navy)]"
               >
                 We&apos;re ready to help
               </FlyInText>
@@ -167,12 +167,7 @@ export default function ContactPage() {
                 <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
                   Message us
                 </FlyInText>
-                <FlyInText
-                  as="h3"
-                  direction="left"
-                  delay={0.06}
-                  className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[var(--inops-navy)] sm:text-3xl"
-                >
+                <FlyInText as="h3" direction="left" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
                   Send us a message
                 </FlyInText>
                 <FlyInText as="p" direction="up" delay={0.12} className="mt-3 text-sm leading-7 text-slate-600">
@@ -197,7 +192,7 @@ export default function ContactPage() {
               <FlyInText as="p" direction="right" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
                 Bengaluru office
               </FlyInText>
-              <FlyInText as="h3" direction="up" delay={0.06} className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[var(--inops-navy)]">
+              <FlyInText as="h3" direction="up" delay={0.06} className="mt-2 text-[var(--inops-navy)]">
                 Koramangala Industrial Layout
               </FlyInText>
             </div>

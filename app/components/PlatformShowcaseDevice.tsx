@@ -146,7 +146,7 @@ export default function PlatformShowcaseDevice() {
                   <FlyInText as="p" direction="left" className="text-[10px] font-bold tracking-[0.12em] text-slate-400 sm:text-[11px]">
                     Contract workforce governance
                   </FlyInText>
-                  <FlyInText as="h3" direction="up" delay={0.05} className="mt-3 text-xl font-heading-bold leading-snug tracking-tight text-slate-900 sm:text-2xl">
+                  <FlyInText as="h3" direction="up" delay={0.05} className="mt-3 text-slate-900">
                     {slide.title}
                   </FlyInText>
                   <FlyInText as="p" direction="up" delay={0.1} className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-[15px]">

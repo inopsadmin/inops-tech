@@ -57,7 +57,7 @@ function TextBlock({
 }: BaseProps & { textRef: React.RefObject<HTMLDivElement | null> }) {
   return (
     <div ref={textRef} className="min-w-0">
-      <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">{title}</h2>
+      <h2 className="text-gray-900">{title}</h2>
       <div className={`mt-2 h-0.5 w-14 rounded-full ${accentBarClassName}`} aria-hidden />
       <p className="mt-5 text-base leading-relaxed text-gray-600 sm:text-lg">{intro}</p>
       <ul className="mt-5 list-none space-y-2.5">

@@ -118,7 +118,7 @@ export default function BlogPage() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
                   <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
-                  <h1 className="mt-4 text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">Blog</h1>
+                  <h1 className="mt-4 text-white">Blog</h1>
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{blogBanner.tagline}</p>
                 </div>
               </div>
@@ -136,12 +136,7 @@ export default function BlogPage() {
               <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
                 Featured story
               </FlyInText>
-              <FlyInText
-                as="h2"
-                direction="left"
-                delay={0.06}
-                className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-[var(--inops-navy)] sm:text-4xl"
-              >
+              <FlyInText as="h2" direction="left" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
                 Start with the signal
               </FlyInText>
             </div>
@@ -203,12 +198,7 @@ export default function BlogPage() {
                   <span>{featured.readMinutes} min read</span>
                 </FlyInText>
 
-                <FlyInText
-                  as="h3"
-                  direction="left"
-                  delay={0.08}
-                  className="mt-5 text-3xl font-semibold leading-tight tracking-[-0.035em] text-[var(--inops-navy)] sm:text-[2.15rem]"
-                >
+                <FlyInText as="h3" direction="left" delay={0.08} className="mt-5 text-[var(--inops-navy)]">
                   <Link href="#" className="transition-colors hover:text-[var(--inops-blue)]">
                     {featured.title}
                   </Link>
@@ -249,12 +239,7 @@ export default function BlogPage() {
             <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
               More articles
             </FlyInText>
-            <FlyInText
-              as="h2"
-              direction="up"
-              delay={0.06}
-              className="mt-3 text-3xl font-semibold tracking-[-0.035em] text-[var(--inops-navy)] sm:text-4xl"
-            >
+            <FlyInText as="h2" direction="up" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
               Latest from the journal
             </FlyInText>
             <FlyInText as="p" direction="up" delay={0.12} className="mt-4 leading-7 text-slate-600">
@@ -302,12 +287,7 @@ export default function BlogPage() {
                     </span>
                     <span>{post.readMinutes} min read</span>
                   </FlyInText>
-                  <FlyInText
-                    as="h3"
-                    direction="up"
-                    delay={0.08 + i * 0.04}
-                    className="mt-4 text-xl font-semibold leading-snug tracking-[-0.025em] text-[var(--inops-navy)]"
-                  >
+                  <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-4 text-[var(--inops-navy)]">
                     <Link href="#" className="transition-colors hover:text-[var(--inops-blue)]">
                       {post.title}
                     </Link>
@@ -357,12 +337,7 @@ export default function BlogPage() {
               <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[#7dd3fc]">
                 Need an operator view?
               </FlyInText>
-              <FlyInText
-                as="h2"
-                direction="left"
-                delay={0.06}
-                className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl"
-              >
+              <FlyInText as="h2" direction="left" delay={0.06} className="mt-4 text-white">
                 Bring clarity to your workforce stack
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.12} className="mt-4 text-base leading-8 text-slate-300">
