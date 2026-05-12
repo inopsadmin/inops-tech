@@ -9,7 +9,7 @@ export const SITE_TAGLINE =
   "CLMS, workforce compliance, biometrics, and access control for industrial and enterprise sites in India.";
 
 export const DEFAULT_DESCRIPTION =
-  "Enterprise workforce management and authentication for industrial environments—biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, access control, and visitor management. Based in Koramangala, Bengaluru.";
+  "Enterprise workforce management and authentication for industrial environments, biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, access control, and visitor management. Based in Koramangala, Bengaluru.";
 
 export const CONTACT_EMAIL = "contact@inops.tech";
 

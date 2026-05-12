@@ -18,7 +18,7 @@ export default function BusinessImpactSection() {
         />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-x-6 lg:gap-y-10 xl:gap-x-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function BusinessImpactSection() {
             </motion.div>
 
             <motion.div
-              className="grid gap-4 mt-17"
+              className="grid gap-4 lg:mt-0"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}

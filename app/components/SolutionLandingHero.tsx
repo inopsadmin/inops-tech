@@ -23,7 +23,7 @@ function mediaClipInnerClass(full: string): string {
   return ["absolute inset-0 overflow-hidden", rounded].filter(Boolean).join(" ");
 }
 
-/** Industrial / workforce hero visual — matches solution landing reference. */
+/** Industrial / workforce hero visual ,  matches solution landing reference. */
 export const DEFAULT_SOLUTION_HERO_IMAGE =
   "https://images.unsplash.com/photo-1504917595217-d4dc17ebe806?w=1800&q=85";
 
@@ -54,7 +54,7 @@ export type SolutionLandingHeroProps = {
   gradientClassName?: string;
   /** Mobile-only stack gradient; pass `""` to omit. Defaults to a light top/bottom veil. */
   mobileStackGradientClassName?: string | null;
-  /** Drawn above the photo and below the text scrim — e.g. corner / edge opacity fades. */
+  /** Drawn above the photo and below the text scrim ,  e.g. corner / edge opacity fades. */
   imageEdgeFadeClassName?: string;
   /** Floating "Live" status tiles to overlay on the video. Defaults to a single
    *  "Live · Detection running" tile when `videoSrc` is provided. Pass `null` to
@@ -77,7 +77,7 @@ export default function SolutionLandingHero({
   subtitle,
   badge,
   imageSrc = DEFAULT_SOLUTION_HERO_IMAGE,
-  imageAlt = "Industrial worker in safety gear at a facility — enterprise workforce operations",
+  imageAlt = "Industrial worker in safety gear at a facility ,  enterprise workforce operations",
   videoSrc,
   primaryCta = { label: "Get In Touch", href: "/contact" },
   secondaryCta,

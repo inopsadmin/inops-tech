@@ -158,7 +158,7 @@ export default function EnterpriseSolutionPage() {
       tag: "Capital & uptime",
       title: "Asset Management",
       description:
-        "Full lifecycle visibility—from procurement to retirement—with utilization, maintenance, and compliance aligned across every site.",
+        "Full lifecycle visibility, from procurement to retirement, with utilization, maintenance, and compliance aligned across every site.",
       href: "#asset-management",
       borderGradient: "from-blue-600 via-indigo-500 to-violet-600",
       topBarGradient: "from-blue-500 via-indigo-500 to-sky-400",
@@ -177,7 +177,7 @@ export default function EnterpriseSolutionPage() {
       tag: "Fleet & miles",
       title: "Route Optimization",
       description:
-        "Dispatch and paths that respond to traffic, SLAs, and capacity in real time—fewer empty miles, less idle time, lower fuel spend.",
+        "Dispatch and paths that respond to traffic, SLAs, and capacity in real time, fewer empty miles, less idle time, lower fuel spend.",
       href: "#route-optimization",
       borderGradient: "from-cyan-500 via-teal-500 to-emerald-600",
       topBarGradient: "from-cyan-400 via-teal-500 to-emerald-500",
@@ -199,7 +199,7 @@ export default function EnterpriseSolutionPage() {
       tag: "Throughput",
       title: "Warehouse Management",
       description:
-        "Inventory, slotting, and flows tuned for velocity—accurate stock and smarter space use without slowing pick, pack, or ship.",
+        "Inventory, slotting, and flows tuned for velocity, accurate stock and smarter space use without slowing pick, pack, or ship.",
       href: "#warehouse-management",
       borderGradient: "from-violet-600 via-fuchsia-500 to-indigo-600",
       topBarGradient: "from-violet-500 via-purple-500 to-fuchsia-500",
@@ -242,7 +242,7 @@ export default function EnterpriseSolutionPage() {
         }
         subtitle="Manage assets, logistics, and warehouse operations through a unified platform with real-time visibility and AI-driven automation."
         videoSrc="/videos/Enterprise_Solutions_digitizing_202605062212.mp4"
-        imageAlt="Warehouse and logistics operations — enterprise visibility"
+        imageAlt="Warehouse and logistics operations ,  enterprise visibility"
         livePopups={[
           {
             position: "top-left",
@@ -300,7 +300,7 @@ export default function EnterpriseSolutionPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Asset intelligence, fleet routing, and warehouse execution—three connected surfaces that
+              Asset intelligence, fleet routing, and warehouse execution, three connected surfaces that
               share data so enterprise ops stay aligned from yard to shelf.
             </p>
           </motion.div>
@@ -902,7 +902,7 @@ export default function EnterpriseSolutionPage() {
                 </span>
               </h2>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-400 sm:text-lg">
-                Built for multi-site complexity—single pane of glass, consistent governance, and
+                Built for multi-site complexity, single pane of glass, consistent governance, and
                 integrations that keep pace with how large operators actually run day to day.
               </p>
               <Link
@@ -957,7 +957,7 @@ export default function EnterpriseSolutionPage() {
                 },
                 {
                   title: "Real-time Insights",
-                  subtitle: "Live telemetry and alerts—not yesterday's batch report.",
+                  subtitle: "Live telemetry and alerts, not yesterday's batch report.",
                   span: "lg:col-span-5",
                   glow: "from-violet-500/30 via-fuchsia-500/10 to-transparent",
                   iconWrap: "from-violet-400/30 to-fuchsia-600/15 text-violet-200 ring-violet-400/25",
@@ -1064,7 +1064,7 @@ export default function EnterpriseSolutionPage() {
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
               Benchmark-style deltas teams report after wiring NexusOps across assets, logistics, and
-              fulfillment—fewer blind spots, faster cycles, sharper calls on the floor.
+              fulfillment, fewer blind spots, faster cycles, sharper calls on the floor.
             </p>
           </motion.div>
 
@@ -1123,7 +1123,7 @@ export default function EnterpriseSolutionPage() {
                 {
                   value: "99%",
                   label: "Decision Precision",
-                  description: "Fewer fire drills—operators align on one trusted operational picture.",
+                  description: "Fewer fire drills, operators align on one trusted operational picture.",
                   ring: "from-violet-400 via-purple-500 to-fuchsia-600",
                   iconTint: "from-violet-500/15 to-fuchsia-600/10 text-violet-800 ring-violet-200/70",
                   icon: (

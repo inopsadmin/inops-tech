@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = routeMetadata({
   title: "Brochures | InOps Solutions",
   description:
-    "Download brochures for biometric access control, turnstiles, visitor management, canteen, payroll, and workforce compliance — PDF resources.",
+    "Download brochures for biometric access control, turnstiles, visitor management, canteen, payroll, and workforce compliance ,  PDF resources.",
   path: "/brochures",
   extraKeywords: ["workforce PDF brochure", "workforce software datasheet", "CLMS brochure download"],
 });

@@ -43,7 +43,7 @@ export type FlyInTextProps = {
   children: React.ReactNode;
   /**
    * `view` (default): animate when the element scrolls into view.
-   * `mount`: animate on first paint — use for above-the-fold copy on page load.
+   * `mount`: animate on first paint ,  use for above-the-fold copy on page load.
    */
   trigger?: "view" | "mount";
 };

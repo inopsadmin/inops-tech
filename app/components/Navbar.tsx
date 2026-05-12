@@ -60,7 +60,7 @@ export default function Navbar() {
   const pathname = usePathname();
   /** White bar + fixed sticky (true after home hero ends, or inner pages after small scroll). */
   const [scrolled, setScrolled] = useState(() => pathUsesSolidNavBar(pathname));
-  /** Home only: navbar in document flow while hero is on screen — scrolls up with the page. */
+  /** Home only: navbar in document flow while hero is on screen ,  scrolls up with the page. */
   const [navStaticHero, setNavStaticHero] = useState(pathname === "/");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);

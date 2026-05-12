@@ -7,7 +7,7 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
 const visitorHeroImage = "/images/visitor.jpg";
 
-/** Scheduled vs walk-up process infographic — `public/images/Visitor-Management-Process.png` */
+/** Scheduled vs walk-up process infographic ,  `public/images/Visitor-Management-Process.png` */
 const visitorProcessImage = "/images/Visitor-Management-Process.png";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -101,7 +101,7 @@ export default function VisitorManagementPage() {
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           title="Visitor management for secure, efficient sites"
-          subtitle="Streamline check-in, badges, host workflows, and real-time visibility across lobbies and restricted zones—integrated with your access stack."
+          subtitle="Streamline check-in, badges, host workflows, and real-time visibility across lobbies and restricted zones, integrated with your access stack."
           imageSrc={visitorHeroImage}
           imageAlt="Visitor management and secure facility lobby"
         />
@@ -244,7 +244,7 @@ export default function VisitorManagementPage() {
           </div>
         </section>
 
-        {/* Visitor Management System — intro + process infographic (row: text left, graphic right) */}
+        {/* Visitor Management System ,  intro + process infographic (row: text left, graphic right) */}
         <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
@@ -325,7 +325,7 @@ export default function VisitorManagementPage() {
         <SolutionPageClosingCta
           headingId="visitor-management-final-cta-heading"
           heading="Empowering smarter workplaces across all industries"
-          description="Innovative technology empowers smarter workplaces across diverse industries—with solutions tailored to optimize efficiency, collaboration, and productivity."
+          description="Innovative technology empowers smarter workplaces across diverse industries, with solutions tailored to optimize efficiency, collaboration, and productivity."
           primaryLabel="Get Started"
           secondaryLabel="Contact sales team"
         />

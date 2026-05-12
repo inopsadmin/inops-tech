@@ -12,7 +12,7 @@ export const heroSlides = [
   },
   {
     src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=3200&q=90",
-    alt: "Professional security surveillance and face recognition technology — AI-powered biometric access control across CCTV and mobile devices",
+    alt: "Professional security surveillance and face recognition technology ,  AI-powered biometric access control across CCTV and mobile devices",
     title: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
     
   },
@@ -41,7 +41,7 @@ export const heroTrustedManufacturingClients: { name: string; logoSrc: string }[
   { name: "Foxconn", logoSrc: "/clients/foxconn.svg" },
 ];
 
-/** Order matches `whyCards` in `app/page.tsx` — [0] Identity, [1] HRIS, [2] Enterprise visibility, [3] Logistics, [4] EWA (hero matches /solutions/ewa), [5] spare */
+/** Order matches `whyCards` in `app/page.tsx`: [0] Identity, [1] HRIS, [2] Contract workforce governance, [3] Logistics, [4] EWA, [5] spare */
 export const whySectionCardImages = [
   "/WhatsApp Image 2026-05-04 at 12.13.21 PM.jpeg",
   "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=85",
@@ -69,7 +69,7 @@ export const moduleCarouselImages = [
 export const moduleCarouselHoverImages = [
   // Time, Attendance & Leave
   "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=85",
-  // KYE — Employee verification
+  // KYE ,  Employee verification
   "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=85",
   // Visitor Management
   "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=85",

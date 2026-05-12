@@ -65,7 +65,7 @@ const posts = [
 
 const blogBanner = {
   src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85",
-  alt: "Editorial workspace — professional typing on a laptop for journal content",
+  alt: "Editorial workspace ,  professional typing on a laptop for journal content",
   tagline: "Insights on workforce security, identity, and operations",
 } as const;
 

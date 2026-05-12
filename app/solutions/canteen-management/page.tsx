@@ -17,13 +17,13 @@ const interactiveSurfaceHover =
 const buttonHover =
   "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg";
 
-/** Scheduled vs walk-up process — `public/images/Visitor-Management-Process (1).png` */
+/** Scheduled vs walk-up process ,  `public/images/Visitor-Management-Process (1).png` */
 const visitorManagementProcessImage = "/images/Visitor-Management-Process (1).png";
 const digitalCanteenSubsidyControlVideo = "/Digital_canteen_subsidy_control_202605080015.mp4";
 const visitorDeskLobbyCampusStackVideo = "/Visitor_desk_lobby_campus_stack_202605080018.mp4";
 const visitorManagementSystemVideo = "/genrate_this_image_video_202605080021.mp4";
 
-/** Live ops metrics — tones drive premium card styling below. */
+/** Live ops metrics ,  tones drive premium card styling below. */
 type OperationalMetricTone = "emerald" | "amber" | "sky" | "violet";
 
 const operationalMetricPresentation: Record<
@@ -144,25 +144,25 @@ const secondaryHighlights = [
   {
     title: "Ops-friendly tablets",
     description:
-      "Supervisors get a mobile-first view of live counts, exceptions, and overrides—right at the serving line where decisions matter.",
+      "Supervisors get a mobile-first view of live counts, exceptions, and overrides, right at the serving line where decisions matter.",
     icon: "device" as const,
     accent: "indigo" as const,
   },
   {
     title: "Proactive alerts",
     description:
-      "Surface policy breaches, duplicate scans, and unusual consumption early—before they turn into audit findings or shrinkage.",
+      "Surface policy breaches, duplicate scans, and unusual consumption early, before they turn into audit findings or shrinkage.",
     icon: "bell" as const,
     accent: "amber" as const,
   },
 ] as const;
 
-/** Visitor desk / lobby — aligns with combined “canteen & visitor” brochure narrative. */
+/** Visitor desk / lobby ,  aligns with combined “canteen & visitor” brochure narrative. */
 const visitorExperiencePillars = [
   "Faster lobby flows with pre-registration, host notification, and clear visitor badges.",
   "Real-time visibility of who is on-site, with exportable trails for audits and incidents.",
   "Tie visitor passes to access rules so guests and contractors only reach approved zones.",
-  "Shares policy context with canteen identity—workforce, visitors, and subsidies stay consistent.",
+  "Shares policy context with canteen identity, workforce, visitors, and subsidies stay consistent.",
 ];
 
 const visitorLobbyHighlights = [
@@ -287,7 +287,7 @@ export default function CanteenManagementPage() {
               <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">unified on one platform.</span>
             </>
           }
-          subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll—then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
+          subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll, then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
           imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
           videoSrc="/genrate_this_part_image_202605080013.mp4"
@@ -325,7 +325,7 @@ export default function CanteenManagementPage() {
        
         </SolutionLandingHero>
 
-        {/* Operational metrics — premium live-ops band */}
+        {/* Operational metrics ,  premium live-ops band */}
         <section
           id="canteen-realtime-visibility"
           aria-labelledby="canteen-ops-visibility-heading"
@@ -354,7 +354,7 @@ export default function CanteenManagementPage() {
                 </span>
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
-                Monitor utilization, verified meals, and subsidy health across every site—without waiting on month-end
+                Monitor utilization, verified meals, and subsidy health across every site, without waiting on month-end
                 spreadsheets or stitched exports.
               </p>
             </motion.div>
@@ -409,7 +409,7 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Digital Canteen & Subsidy Control — equal-height columns: stretch grid + flex column */}
+        {/* Digital Canteen & Subsidy Control ,  equal-height columns: stretch grid + flex column */}
         <section
           className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-white py-14 lg:py-20"
           aria-labelledby="digital-canteen-heading"
@@ -440,7 +440,7 @@ export default function CanteenManagementPage() {
                       playsInline
                       preload="metadata"
                       poster="/images/cmsy.jpg"
-                      aria-label="Digital canteen dashboard — biometric meal verification, subsidy and payroll-linked rules, inventory signals, and contractor vs employee entitlements"
+                      aria-label="Digital canteen dashboard ,  biometric meal verification, subsidy and payroll-linked rules, inventory signals, and contractor vs employee entitlements"
                     >
                       <source src={digitalCanteenSubsidyControlVideo} type="video/mp4" />
                     </video>
@@ -535,7 +535,7 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Secondary highlights — queue, mobile ops, alerts */}
+        {/* Secondary highlights ,  queue, mobile ops, alerts */}
         <section
           className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/40 to-white py-14 lg:py-20"
           aria-labelledby="canteen-ops-highlights-heading"
@@ -570,7 +570,7 @@ export default function CanteenManagementPage() {
                 </span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                Capacity, devices, and alerts tuned for busy canteens—so supervisors act on facts, not guesswork.
+                Capacity, devices, and alerts tuned for busy canteens, so supervisors act on facts, not guesswork.
               </p>
             </motion.div>
 
@@ -620,7 +620,7 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Visitor desk & lobby — equal-height split + premium cards */}
+        {/* Visitor desk & lobby ,  equal-height split + premium cards */}
         <section
           id="visitor-desk"
           className="relative scroll-mt-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-14 lg:py-20"
@@ -655,7 +655,7 @@ export default function CanteenManagementPage() {
 
                   <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-lg">
                     The facility story doesn&apos;t stop at the serving line. Layer visitor workflows beside canteen and
-                    attendance so security, HR, and the front desk pull from one trail—not parallel spreadsheets.
+                    attendance so security, HR, and the front desk pull from one trail, not parallel spreadsheets.
                   </p>
                 </div>
 
@@ -791,7 +791,7 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
-        {/* Visitor Management System — one-row layout on lg: copy + chips | process video */}
+        {/* Visitor Management System ,  one-row layout on lg: copy + chips | process video */}
         <section
           className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-12 lg:py-16"
           aria-labelledby="vms-overview-heading"
@@ -829,7 +829,7 @@ export default function CanteenManagementPage() {
                 <div className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 sm:text-base">
                   <p>
                     Pre-registration, desk check-in, badges, and host alerts roll into{" "}
-                    <span className="font-medium text-slate-800">one audit-ready trail</span>—not parallel visitor logs.
+                    <span className="font-medium text-slate-800">one audit-ready trail</span>, not parallel visitor logs.
                   </p>
                   <p>
                     See who&apos;s on-site by zone, enforce access in real time, and export evidence when security or
@@ -876,7 +876,7 @@ export default function CanteenManagementPage() {
                       playsInline
                       preload="metadata"
                       poster={visitorManagementProcessImage}
-                      aria-label="Visitor management process — scheduled and walk-up flows, QR, badges, and records"
+                      aria-label="Visitor management process ,  scheduled and walk-up flows, QR, badges, and records"
                     >
                       <source src={visitorManagementSystemVideo} type="video/mp4" />
                     </video>
@@ -918,7 +918,7 @@ export default function CanteenManagementPage() {
           description={
             <>
               Plants, IT parks, and infrastructure campuses run tighter when subsidies, serving lines, and visitor flows
-              share one stack—biometrics and payroll-linked rules next to lobby workflows, so leakage and exceptions show
+              share one stack, biometrics and payroll-linked rules next to lobby workflows, so leakage and exceptions show
               up while they’re still fixable.
             </>
           }

@@ -119,7 +119,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400 xl:max-w-md xl:text-[0.98rem] 2xl:text-[1.03rem]">
-              Enterprise workforce compliance and hardware—integrated so your teams run operations, not spreadsheets.
+              Enterprise workforce compliance and hardware, integrated so your teams run operations, not spreadsheets.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link

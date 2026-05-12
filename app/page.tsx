@@ -117,7 +117,8 @@ const dashboardCards: DashboardCard[] = [
 const heroSolutionHrefByTitle: Record<string, string> = {
   "Building Financial Resilience for the Workforce": "/solutions/ewa",
   "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices": "/solutions/mobile-app",
-  "Single Source of Truth for Workforce Governance": "/solutions/labourmanagement",
+  /** Matches homepage “Contract workforce governance” → payroll / CLMS governance page */
+  "Single Source of Truth for Workforce Governance": "/solutions/payroll-solutions",
 };
 
 type WhyCard = {
@@ -138,16 +139,16 @@ const whyCards: WhyCard[] = [
   },
   {
     title: "HRIS",
-    badge: "Workforce system",
+    badge: "HR platform",
     imageUrl: whySectionCardImages[1],
     text: "Centralise attendance, shifts, compliance, and reporting so operations stays audit-ready without spreadsheets.",
     icon: "gear",
   },
   {
-    title: "Enterprise-grade visibility",
-    badge: "Dashboards",
+    title: "Contract workforce governance",
+    badge: "Workforce system",
     imageUrl: whySectionCardImages[2],
-    text: "Real-time dashboards for plant, HR, and leadership—so every team sees the same source of truth.",
+    text: "Real-time dashboards for plant, HR, and leadership, so every team sees the same source of truth.",
     icon: "chart",
   },
   {
@@ -183,7 +184,7 @@ export default function Home() {
   };
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const activeHeroSolutionHref =
-    heroSolutionHrefByTitle[heroSlides[activeHeroIndex]?.title ?? ""] ?? "/solutions/labourmanagement";
+    heroSolutionHrefByTitle[heroSlides[activeHeroIndex]?.title ?? ""] ?? "/solutions/payroll-solutions";
   return (
     <div className="home-page home-section-gap relative min-h-screen bg-white text-gray-900 perspective-page">
       {/* Hero: on home, navbar is static above this block; after hero, navbar is fixed + white */}
@@ -482,12 +483,12 @@ export default function Home() {
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <AnimatedHeading as="h2" className="home-display-heading text-gray-900">
-                  Contract workforce governance
+                  Workforce governance
                 </AnimatedHeading>
               </motion.div>
             </motion.div>
             <AnimatedParagraph className="mx-auto mt-6 max-w-2xl font-body text-gray-600">
-              Built for factories and industrial sites: one platform for visibility, compliance, and secure access—so operations teams spend less time on paperwork and more time running the floor.
+              Built for factories and industrial sites: one platform for visibility, compliance, and secure access, so operations teams spend less time on paperwork and more time running the floor.
             </AnimatedParagraph>
           </div>
 
@@ -553,8 +554,8 @@ export default function Home() {
 
                       <div className="relative flex flex-col justify-between p-6 transition-colors duration-150 ease-out sm:p-8">
                         <div>
-                          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-label tracking-wide text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
-                            Contract workforce governance
+                          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-label uppercase tracking-wide text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
+                            {selectedWhyCard.badge ?? "Capability"}
                           </div>
                           <h3 className="mt-4 text-gray-900 transition-colors duration-150 ease-out">
                             {selectedWhyCard.title}
@@ -663,7 +664,7 @@ export default function Home() {
 
       <BusinessImpactSection />
 
-      {/* Feature cards — blog-post style (per reference image) */}
+      {/* Feature cards ,  blog-post style (per reference image) */}
 
       {/* Feature cards + logo strip (single bordered container) */}
       <SectionFade>
@@ -673,7 +674,7 @@ export default function Home() {
               <FlyInText
                 as="p"
                 direction="left"
-                className="inline-flex w-fit items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-sm"
+                className="inline-flex w-fit items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-sm"
               >
                 Command dashboards
               </FlyInText>
@@ -762,7 +763,7 @@ export default function Home() {
                       {card.description}
                     </FlyInText>
                     <FlyInText as="div" direction="up" delay={0.12} className="mt-4">
-                      <span className="inline-flex items-center rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-sm">
+                      <span className="inline-flex items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
                         {card.footerTag}
                       </span>
                     </FlyInText>

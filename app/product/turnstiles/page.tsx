@@ -10,7 +10,7 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-/** Hero background — `public/images/Turnstiles2.jpg` */
+/** Hero background ,  `public/images/Turnstiles2.jpg` */
 const turnstilesHeroBg = "/images/Turnstiles2.jpg";
 
 const productSpecs = [
@@ -76,7 +76,7 @@ export default function TurnstilesPage() {
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           title="Turnstiles for high-throughput, secure entry"
-          subtitle="Stainless steel lanes with integrated readers—built for industrial, commercial, and campus gates with dependable throughput and clear access signals."
+          subtitle="Stainless steel lanes with integrated readers, built for industrial, commercial, and campus gates with dependable throughput and clear access signals."
           imageSrc={turnstilesHeroBg}
           imageAlt="Security turnstile lanes at a facility entrance"
         />
@@ -146,7 +146,7 @@ export default function TurnstilesPage() {
           </div>
         </section>
 
-        {/* Features + specifications — side by side from lg */}
+        {/* Features + specifications ,  side by side from lg */}
         <section className="border-t border-slate-200/80 from-slate-50 via-white to-slate-50 py-10 lg:py-14 bg-white">
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-14">

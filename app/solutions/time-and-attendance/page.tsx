@@ -1166,7 +1166,7 @@ export default function TimeAndAttendancePage() {
                 duration={0.6}
                 className="mt-3 text-base leading-relaxed text-slate-400 sm:text-lg"
               >
-                Hard numbers, not promises — what enterprises see after switching to OptiCam.
+                Hard numbers, not promises ,  what enterprises see after switching to OptiCam.
               </FlyInText>
             </div>
 
@@ -1218,7 +1218,7 @@ export default function TimeAndAttendancePage() {
                     {
                       value: "99%",
                       label: "Employee Satisfaction Rate",
-                      detail: "Walk-through entry — no queues, no fingerprints, no friction.",
+                      detail: "Walk-through entry ,  no queues, no fingerprints, no friction.",
                       icon: "users" as const,
                       accentBar: "from-violet-400 to-indigo-500",
                       iconWrap: "bg-violet-500/15 text-violet-300 ring-violet-400/30",

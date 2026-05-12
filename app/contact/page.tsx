@@ -10,8 +10,8 @@ const viewport = { once: true, amount: 0.2 };
 
 const contactBanner = {
   src: "/images/contact-hero.png",
-  alt: "InOps support specialist with headset — friendly, professional customer assistance",
-  tagline: "Sales, support & partnerships — Bengaluru",
+  alt: "InOps support specialist with headset ,  friendly, professional customer assistance",
+  tagline: "Sales, support & partnerships ,  Bengaluru",
 } as const;
 
 const contactInfo = [

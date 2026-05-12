@@ -882,7 +882,7 @@ export default function BiometricAccessControlPage() {
                 <span className="text-slate-900">Universal Device Excellence</span>
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Built for harsh floors, heavy traffic, and always-on operations—without sacrificing precision.
+                Built for harsh floors, heavy traffic, and always-on operations, without sacrificing precision.
               </p>
             </motion.div>
 

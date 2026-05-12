@@ -7,7 +7,7 @@ import FourPillarsSection from "@/app/components/FourPillarsSection";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
-/** Hero visual — industrial equipment / fixed assets (`public/images/masshin.jpg`) */
+/** Hero visual ,  industrial equipment / fixed assets (`public/images/masshin.jpg`) */
 const fixedAssetHeroImage = "/images/masshin.jpg";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;

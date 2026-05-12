@@ -17,7 +17,7 @@ export type SolutionPageClosingCtaProps = {
   primaryHref?: string;
   secondaryHref?: string;
   footnote?: ReactNode;
-  /** Only the blue card — no outer white band (use when a parent section already provides layout). */
+  /** Only the blue card ,  no outer white band (use when a parent section already provides layout). */
   embedded?: boolean;
 };
 
@@ -40,7 +40,7 @@ export default function SolutionPageClosingCta({
 
   const ctaCard = (
     <motion.div
-      className="solution-cta relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-400 via-blue-500 to-cyan-400 px-6 py-12 text-center shadow-lg shadow-sky-500/10 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
+      className="solution-cta relative overflow-hidden rounded-3xl bg-gradient-to-br from-[color:var(--inops-blue)] via-blue-700 to-[color:var(--inops-navy)] px-6 py-12 text-center shadow-lg shadow-blue-900/25 sm:px-10 sm:py-14 lg:px-16 lg:py-16"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
@@ -64,7 +64,7 @@ export default function SolutionPageClosingCta({
         <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-md transition hover:bg-blue-50"
+            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[color:var(--inops-blue)] shadow-md transition hover:bg-blue-50"
           >
             {primaryLabel}
           </Link>

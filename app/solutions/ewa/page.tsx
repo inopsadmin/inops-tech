@@ -84,7 +84,7 @@ const ewaCostOfWaitingChallenges = [
     step: "01",
     title: "Wages locked",
     description:
-      "Earnings sit behind fixed 30-day cycles — everyday essentials wait while liquidity stays out of reach.",
+      "Earnings sit behind fixed 30-day cycles ,  everyday essentials wait while liquidity stays out of reach.",
     rail: "from-blue-500 via-blue-400 to-indigo-600",
     watermark: "text-blue-100/90 group-hover:text-blue-100",
     iconWrap: "from-blue-100 to-indigo-50 text-blue-700 ring-blue-200/80",
@@ -113,7 +113,7 @@ const ewaCostOfWaitingChallenges = [
     step: "03",
     title: "Informal borrowing",
     description:
-      "Local lenders and ad-hoc debt erode focus and trust — performance and attendance suffer in silence.",
+      "Local lenders and ad-hoc debt erode focus and trust ,  performance and attendance suffer in silence.",
     rail: "from-fuchsia-500 via-violet-400 to-indigo-600",
     watermark: "text-fuchsia-100/90 group-hover:text-fuchsia-100",
     iconWrap: "from-fuchsia-100 to-violet-50 text-violet-900 ring-fuchsia-200/70",
@@ -128,7 +128,7 @@ const ewaCostOfWaitingChallenges = [
     step: "04",
     title: "High attrition",
     description:
-      "Financial stress drives turnover and endless salary-advance requests — a hidden tax on operations.",
+      "Financial stress drives turnover and endless salary-advance requests ,  a hidden tax on operations.",
     rail: "from-sky-500 via-cyan-400 to-blue-600",
     watermark: "text-sky-100/90 group-hover:text-sky-100",
     iconWrap: "from-sky-100 to-cyan-50 text-sky-900 ring-sky-200/70",
@@ -264,10 +264,10 @@ export default function EwaPage() {
             Instant access to <span className="text-blue-600">earned wages</span>
           </>
         }
-        subtitle="Enable your workforce to access wages they've already earned—powered by real-time attendance and payroll data."
+        subtitle="Enable your workforce to access wages they've already earned, powered by real-time attendance and payroll data."
         videoSrc="/videos/genrate_this_image_in_video_202605080131.mp4"
         imageSrc="/images/ewa-hero.png"
-        imageAlt="Workforce on site — earned wage access aligned to verified attendance"
+        imageAlt="Workforce on site ,  earned wage access aligned to verified attendance"
         imageWrapperClassName="relative mt-25 rounded-2xl  h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2"
         imageClassName="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
         gradientClassName="pointer-events-none absolute inset-0 bg-gradient-to-r from-white from-0% via-white/[0.98] via-[42%] to-transparent to-[62%] lg:via-[44%] lg:to-[68%]"
@@ -320,7 +320,7 @@ export default function EwaPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg">
-              Rigid monthly payroll cycles strain workers who need liquidity between paydays — and
+              Rigid monthly payroll cycles strain workers who need liquidity between paydays ,  and
               consume HR with advances, exceptions, and churn that could be prevented.
             </p>
           </motion.div>
@@ -415,7 +415,7 @@ export default function EwaPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              A data-driven layer inside your workforce stack — unlock liquidity for employees with
+              A data-driven layer inside your workforce stack ,  unlock liquidity for employees with
               controls and reconciliation built for payroll, not patchwork spreadsheets.
             </p>
           </motion.div>
@@ -432,7 +432,7 @@ export default function EwaPage() {
                   tag: "Live ledger",
                   title: "Real-time wage visibility",
                   description:
-                    "After every shift, workers see earnings update in one clear view — motivation and trust stay tied to work performed, not guesswork.",
+                    "After every shift, workers see earnings update in one clear view ,  motivation and trust stay tied to work performed, not guesswork.",
                   accentBar: "from-blue-500 to-indigo-500",
                   iconBg: "from-blue-600 to-indigo-600 shadow-blue-500/25",
                   icon: (
@@ -448,7 +448,7 @@ export default function EwaPage() {
                   tag: "Always on",
                   title: "On-demand access",
                   description:
-                    "Withdraw a governed share of already-earned pay anytime — mobile-first flows that feel as simple as checking a bank balance.",
+                    "Withdraw a governed share of already-earned pay anytime ,  mobile-first flows that feel as simple as checking a bank balance.",
                   accentBar: "from-sky-400 to-blue-500",
                   iconBg: "from-sky-500 to-blue-600 shadow-sky-500/25",
                   icon: (
@@ -462,7 +462,7 @@ export default function EwaPage() {
                   tag: "Payroll-safe",
                   title: "Payroll-integrated system",
                   description:
-                    "Withdrawals reconcile automatically against your run — HR skips manual tallying, exceptions shrink, and month-end stays predictable.",
+                    "Withdrawals reconcile automatically against your run ,  HR skips manual tallying, exceptions shrink, and month-end stays predictable.",
                   accentBar: "from-amber-400 to-orange-500",
                   iconBg: "from-amber-500 to-orange-600 shadow-amber-500/25",
                   icon: (
@@ -582,7 +582,7 @@ export default function EwaPage() {
             </div>
           </motion.div>
 
-          {/* Mobile — vertical rail */}
+          {/* Mobile ,  vertical rail */}
           <div className="relative mt-12 md:hidden">
             <div
               className="pointer-events-none absolute left-[22px] top-3 bottom-3 w-px bg-gradient-to-b from-blue-500/50 via-slate-600/70 to-slate-700/30"
@@ -611,7 +611,7 @@ export default function EwaPage() {
             </ol>
           </div>
 
-          {/* md+ — pipeline cards */}
+          {/* md+ ,  pipeline cards */}
           <div className="relative mt-14 hidden md:block">
             <div
               className="pointer-events-none absolute left-[4%] right-[4%] top-[22px] hidden h-px bg-gradient-to-r from-transparent via-blue-400/35 to-transparent lg:block"

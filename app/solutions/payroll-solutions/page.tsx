@@ -68,7 +68,7 @@ const comprehensiveControlCards = [
   {
     title: "Invoice Reconciliation",
     description:
-      "Match contractor invoices to verified headcount and hours—spot leakage before it hits the finance close.",
+      "Match contractor invoices to verified headcount and hours, spot leakage before it hits the finance close.",
     icon: "invoice" as const,
   },
   {
@@ -84,14 +84,14 @@ const painPoints = [
     title: "Ghost workers & time theft",
     stat: "~3–5% of spend",
     description:
-      "Buddy punching and proxy clock-ins hide real headcount—clean attendance data never reaches payroll.",
+      "Buddy punching and proxy clock-ins hide real headcount, clean attendance data never reaches payroll.",
     icon: "users" as const,
   },
   {
     title: "Compliance violations",
     stat: "₹50K–₹1L per violation",
     description:
-      "OT, wage, and incident gaps surface after the fact—audits and disputes land on your desk.",
+      "OT, wage, and incident gaps surface after the fact, audits and disputes land on your desk.",
     icon: "shield" as const,
   },
   {
@@ -105,14 +105,14 @@ const painPoints = [
     title: "System fragmentation",
     stat: "Data chaos",
     description:
-      "Biometrics, spreadsheets, and ERP live in silos—nothing reconciles without manual stitching.",
+      "Biometrics, spreadsheets, and ERP live in silos, nothing reconciles without manual stitching.",
     icon: "layers" as const,
   },
   {
     title: "ESI / PF reconciliation & true-up",
     stat: "Manual checks",
     description:
-      "Spreadsheet-driven statutory checks miss deltas until filings—errors compound across branches.",
+      "Spreadsheet-driven statutory checks miss deltas until filings, errors compound across branches.",
     icon: "statutory" as const,
   },
 ] as const;
@@ -225,7 +225,7 @@ function WhyInopsMosaicPainCard({
   );
 }
 
-/** Horizontal “Our Module” carousel — image, title, description per slide */
+/** Horizontal “Our Module” carousel ,  image, title, description per slide */
 const ourModulesSlides = [
   {
     title: "Time Attendance and Leave",
@@ -360,7 +360,7 @@ function OurModulesCarousel() {
           </motion.h2>
           <motion.div variants={ourModulesHeaderItem} className="mx-auto mt-4 max-w-xl">
             <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
-              End-to-end payroll and workforce capabilities—pick what you need, everything stays connected.
+              End-to-end payroll and workforce capabilities, pick what you need, everything stays connected.
             </p>
             <motion.div
               className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500"
@@ -407,7 +407,7 @@ function OurModulesCarousel() {
                   aria-hidden
                 />
                 <div className="relative aspect-[5/3] w-full overflow-hidden bg-slate-100">
-                  {/* Base image — subtle zoom; stays visible under the reveal */}
+                  {/* Base image ,  subtle zoom; stays visible under the reveal */}
                   <Image
                     src={slide.image}
                     alt=""
@@ -415,7 +415,7 @@ function OurModulesCarousel() {
                     className="object-cover object-center transition-[transform] duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-[1.06] motion-reduce:group-hover:scale-100"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   />
-                  {/* Hover image — iris reveal from center (reduced motion: simple fade) */}
+                  {/* Hover image ,  iris reveal from center (reduced motion: simple fade) */}
                   <div
                     className="absolute inset-0 z-[1] [clip-path:circle(0%_at_50%_50%)] transition-[clip-path] duration-[650ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:[clip-path:circle(145%_at_50%_50%)] motion-reduce:[clip-path:none] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:group-hover:opacity-100"
                   >
@@ -427,7 +427,7 @@ function OurModulesCarousel() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     />
                   </div>
-                  {/* Specular sweep — reads as a quick “flash” while the iris opens */}
+                  {/* Specular sweep ,  reads as a quick “flash” while the iris opens */}
                   <div
                     className="pointer-events-none absolute inset-0 z-[2] translate-x-[-120%] skew-x-[-12deg] bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-x-[120%] group-hover:opacity-100 motion-reduce:hidden"
                     aria-hidden
@@ -615,7 +615,7 @@ export default function PayrollSolutionsPage() {
     <MotionConfig reducedMotion="user">
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
-          className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
+          className="mt-5 w-full border-b border-slate-100 bg-white pt-10 sm:pt-12 lg:pt-14"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
@@ -670,7 +670,7 @@ export default function PayrollSolutionsPage() {
                 />
               </div>
               <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-                <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
+                <div className="max-w-3xl px-2 py-8 pb-6 sm:px-4 sm:py-10 sm:pb-8 lg:max-w-xl lg:pt-14 lg:pb-7 lg:pr-6">
                   <FlyInText
                     as="span"
                     trigger="mount"
@@ -704,7 +704,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
                   >
-                    Attendance, statutory compliance, and payouts on one platform—from gate logs to finance close.
+                    Attendance, statutory compliance, and payouts on one platform, from gate logs to finance close.
                   </FlyInText>
 
                   <FlyInText
@@ -767,7 +767,7 @@ export default function PayrollSolutionsPage() {
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
                   Bring software and devices together: face, card, and fingerprint readers, turnstiles, and flap
-                  barriers—wired into one CLMS so attendance is real time, access rules hold at the gate, and your
+                  barriers, wired into one CLMS so attendance is real time, access rules hold at the gate, and your
                   teams get reports and alerts that keep sites secure and audit ready.
                 </p>
                 <div className="mt-8 h-0.5 w-14 rounded-full bg-blue-500" aria-hidden />
@@ -778,7 +778,7 @@ export default function PayrollSolutionsPage() {
 
         <section
           id="why-inops"
-          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50/40"
+          className="relative !mt-8 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50/40 sm:!mt-10 lg:!mt-10"
           aria-labelledby="why-inops-heading"
         >
           <div
@@ -788,7 +788,7 @@ export default function PayrollSolutionsPage() {
           <div className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-sky-400/15 blur-3xl" aria-hidden />
           <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-indigo-400/12 blur-3xl" aria-hidden />
 
-          <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-14 sm:px-6 lg:px-12 lg:pb-12 lg:pt-16">
+          <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-12 lg:pb-12 lg:pt-11">
             <motion.div
               className="mx-auto max-w-2xl text-center lg:max-w-3xl"
               initial={{ opacity: 0, y: 14 }}
@@ -804,7 +804,7 @@ export default function PayrollSolutionsPage() {
                 Why Inops?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Where contract payroll breaks today—and what teams fix first when they standardize on one platform.
+                Where contract payroll breaks today, and what teams fix first when they standardize on one platform.
               </p>
             </motion.div>
 
@@ -846,7 +846,7 @@ export default function PayrollSolutionsPage() {
                             Field reality
                           </span>
                           <p className="mt-3 text-base font-semibold leading-snug text-white drop-shadow-md sm:text-[1.05rem]">
-                            Gate data and payroll runs rarely match—until systems align.
+                            Gate data and payroll runs rarely match, until systems align.
                           </p>
                         </figcaption>
                       </div>
@@ -861,7 +861,7 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
-        {/* Comprehensive Control — CLMS touchpoints
+        {/* Comprehensive Control ,  CLMS touchpoints
         <section
           className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
           aria-labelledby="comprehensive-control-heading"
@@ -946,9 +946,9 @@ export default function PayrollSolutionsPage() {
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-white/88 sm:text-sm">
                 Manage your contract workforce efficiently with our software that seamlessly integrates with biometric
-                hardware—including face, card, and fingerprint readers. The system works effortlessly with access control
+                hardware, including face, card, and fingerprint readers. The system works effortlessly with access control
                 solutions like turnstiles and flap barriers to ensure only authorized personnel enter your premises.
-                Track real-time attendance, manage shifts, and generate contractor-wise reports—all from a single
+                Track real-time attendance, manage shifts, and generate contractor-wise reports, all from a single
                 platform. Get automated alerts for early exits, overstays, and unauthorized access, enhancing both
                 security and compliance.
               </p>
@@ -971,7 +971,7 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
-        {/* Contractor leakage + ROI — premium layout */}
+        {/* Contractor leakage + ROI ,  premium layout */}
         <section
           className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 !mt-0 pt-10 pb-16 sm:pt-12 lg:pt-14 lg:pb-24"
           aria-labelledby="contractor-leakage-heading"
@@ -1003,7 +1003,7 @@ export default function PayrollSolutionsPage() {
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Hidden inefficiencies in contractor management can drain{" "}
-                <strong className="font-semibold text-slate-800">8–12%</strong> of your annual spend — without you even
+                <strong className="font-semibold text-slate-800">8–12%</strong> of your annual spend ,  without you even
                 knowing.
               </p>
             </motion.div>

@@ -14,11 +14,11 @@ const modules = [
   {
     title: "Time, Attendance & Leave",
     description:
-      "Record clock-in and clock-out, approve leave, and see daily attendance in one place—so payroll and compliance stay accurate.",
+      "Record clock-in and clock-out, approve leave, and see daily attendance in one place, so payroll and compliance stay accurate.",
     imageUrl: moduleCarouselImages[0],
   },
   {
-    title: "KYE — Employee verification",
+    title: "KYE ,  Employee verification",
     description:
       "Know Your Employee (KYE): verify IDs and documents digitally, store contractor records safely, and pull reports when you need proof for audits.",
     imageUrl: moduleCarouselImages[1],
@@ -26,7 +26,7 @@ const modules = [
   {
     title: "Visitor Management",
     description:
-      "Register visitors, issue passes, and track who is on site—replacing messy paper registers with a clear, searchable log.",
+      "Register visitors, issue passes, and track who is on site, replacing messy paper registers with a clear, searchable log.",
     imageUrl: moduleCarouselImages[2],
   },
   {
@@ -38,7 +38,7 @@ const modules = [
   {
     title: "Compliance & Reporting",
     description:
-      "Auto-build PF, ESIC, and labour-law reports with supporting data—less spreadsheet work and calmer inspection days.",
+      "Auto-build PF, ESIC, and labour-law reports with supporting data, less spreadsheet work and calmer inspection days.",
     imageUrl: moduleCarouselImages[4],
   },
   {
@@ -50,13 +50,13 @@ const modules = [
   {
     title: "Shift & Roster Management",
     description:
-      "Plan who works which shift, fill gaps, and track overtime—so floors are staffed correctly without last-minute confusion.",
+      "Plan who works which shift, fill gaps, and track overtime, so floors are staffed correctly without last-minute confusion.",
     imageUrl: moduleCarouselImages[6],
   },
   {
     title: "Analytics & Dashboards",
     description:
-      "See attendance, cost, and compliance trends on simple dashboards—spot problems early instead of after month-end.",
+      "See attendance, cost, and compliance trends on simple dashboards, spot problems early instead of after month-end.",
     imageUrl: moduleCarouselImages[7],
   },
 ];
@@ -169,7 +169,7 @@ export default function ModulesSlider() {
             </span>
             <h2 className="mt-4 text-blue-600">Our Modules</h2>
             <p className="mt-3 max-w-sm text-slate-600 mx-auto lg:mx-0 text-sm leading-relaxed sm:text-[15px]">
-              Each module maps to a real operations job—time capture, gates, visitors, payroll, and compliance—with plain-language detail on every card.
+              Each module maps to a real operations job, time capture, gates, visitors, payroll, and compliance, with plain-language detail on every card.
             </p>
             <div className="mt-4 h-0.5 w-12 rounded-full bg-blue-600" />
             <a

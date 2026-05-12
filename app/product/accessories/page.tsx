@@ -110,9 +110,9 @@ export default function AccessoriesPage() {
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           title="Access control accessories"
-          subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks—everything you need to complete lanes, doors, and secure zones."
+          subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks, everything you need to complete lanes, doors, and secure zones."
           imageSrc="/images/solution-hero-clms-worker.png"
-          imageAlt="Industrial site operations — access hardware and workforce context"
+          imageAlt="Industrial site operations ,  access hardware and workforce context"
         />
 
         {/* Main content – section title + two products */}

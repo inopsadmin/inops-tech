@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: ogImage, alt: `${SITE_NAME} — enterprise workforce and access solutions` }],
+    images: [{ url: ogImage, alt: `${SITE_NAME} ,  enterprise workforce and access solutions` }],
   },
   twitter: {
     card: "summary_large_image",

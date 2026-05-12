@@ -93,7 +93,7 @@ const accurateTrackingFeatures = [
   {
     title: "Face Recognition",
     description:
-      "Selfie check-ins with liveness and anti-spoofing so the right person is at the right place—without shared PINs or proxy cards.",
+      "Selfie check-ins with liveness and anti-spoofing so the right person is at the right place, without shared PINs or proxy cards.",
     icon: "face" as const,
     tone: "sky" as const,
   },
@@ -114,14 +114,14 @@ const accurateTrackingFeatures = [
   {
     title: "Employee Directory",
     description:
-      "Roles, departments, cost centers, and rosters in one directory—so attendance rules and approvals stay consistent.",
+      "Roles, departments, cost centers, and rosters in one directory, so attendance rules and approvals stay consistent.",
     icon: "users" as const,
     tone: "violet" as const,
   },
   {
     title: "Secure Cloud Storage",
     description:
-      "Encrypted logs and media retained for audits—with retention windows that fit your policy, not a spreadsheet export.",
+      "Encrypted logs and media retained for audits, with retention windows that fit your policy, not a spreadsheet export.",
     icon: "cloud" as const,
     tone: "cyan" as const,
   },
@@ -137,7 +137,7 @@ const accurateTrackingFeatures = [
 const workflowSteps = [
   {
     title: "Open App",
-    description: "Employee opens the app on-site—identity and policy context load automatically.",
+    description: "Employee opens the app on-site, identity and policy context load automatically.",
     icon: "open" as const,
     tone: "sky" as const,
   },
@@ -428,7 +428,7 @@ export default function MobileAppPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                 >
-                  Punch in, submit leave, and see who is on shift—from the phone your people already carry. Give
+                  Punch in, submit leave, and see who is on shift, from the phone your people already carry. Give
                   employees simple self-service without buying extra hardware for everyday tasks.
                 </motion.p>
                 <motion.div
@@ -517,7 +517,7 @@ export default function MobileAppPage() {
               aria-hidden
             />
             <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Cut time theft and spreadsheet rework—face proof, contactless punches, offline resilience, and guardrails
+              Cut time theft and spreadsheet rework, face proof, contactless punches, offline resilience, and guardrails
               your auditors can follow.
             </p>
           </motion.div>
@@ -585,7 +585,7 @@ export default function MobileAppPage() {
               aria-hidden
             />
             <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Employees punch in fast; supervisors see truth in real time—without chasing spreadsheets or reconciling
+              Employees punch in fast; supervisors see truth in real time, without chasing spreadsheets or reconciling
               yesterday&apos;s exports.
             </p>
           </motion.div>
@@ -1157,7 +1157,7 @@ export default function MobileAppPage() {
                           playsInline
                           preload="metadata"
                           poster="/Gemini_Generated_Image_34d3gr34d3gr34d3-removebg-preview.png"
-                          aria-label="SmartAttendance mobile and workforce experience — dual phone mockups showing attendance and activity in the app."
+                          aria-label="SmartAttendance mobile and workforce experience ,  dual phone mockups showing attendance and activity in the app."
                         >
                           <source src={smartAttendanceWhySectionVideo} type="video/mp4" />
                         </video>

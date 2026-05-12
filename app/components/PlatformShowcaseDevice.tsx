@@ -38,7 +38,7 @@ export default function PlatformShowcaseDevice() {
         aria-hidden
       />
 
-      {/* Device chrome — tablet frame with InOps branding */}
+      {/* Device chrome ,  tablet frame with InOps branding */}
       <div className="relative rounded-[1.45rem] border border-slate-600/40 bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 p-[9px] shadow-[0_32px_80px_-20px_rgba(15,23,42,0.72),inset_0_1px_0_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(255,255,255,0.06)] sm:rounded-[1.75rem] sm:p-[11px] md:p-3">
         <div className="flex items-center justify-between gap-3 px-1 pb-2 pt-1 sm:px-1.5 sm:pb-2.5 sm:pt-1.5">
           <div className="flex min-w-0 flex-1 items-center pl-0.5 sm:pl-1">
@@ -65,7 +65,7 @@ export default function PlatformShowcaseDevice() {
         </div>
 
         <div className="overflow-hidden rounded-[1.05rem] border border-slate-950/50 bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)] sm:rounded-[1.2rem]">
-          {/* Tab bar — BeeForce-style */}
+          {/* Tab bar ,  BeeForce-style */}
           <div
             className="border-b border-slate-200/90 bg-gradient-to-b from-slate-50 to-white px-2 pt-2 sm:px-3"
             role="tablist"
@@ -144,7 +144,7 @@ export default function PlatformShowcaseDevice() {
               <div className="flex flex-col justify-between gap-6 border-t border-slate-100 bg-white p-5 sm:p-6 md:border-l md:border-t-0 lg:p-8">
                 <div>
                   <FlyInText as="p" direction="left" className="text-[10px] font-bold tracking-[0.12em] text-slate-400 sm:text-[11px]">
-                    Contract workforce governance
+                    {slide.badge}
                   </FlyInText>
                   <FlyInText as="h3" direction="up" delay={0.05} className="mt-3 text-slate-900">
                     {slide.title}

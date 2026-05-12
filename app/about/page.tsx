@@ -9,22 +9,6 @@ import VideoLivePopups from "@/app/components/VideoLivePopups";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-const visionMissionStagger = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.11, delayChildren: 0.06 },
-  },
-} as const;
-
-const visionMissionFadeUp = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.48, ease: smoothEase },
-  },
-} as const;
-
 const visionMissionCards = {
   hidden: {},
   visible: {
@@ -254,7 +238,7 @@ export default function AboutPage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_8%,rgba(57,189,232,0.16),transparent_26%),radial-gradient(circle_at_88%_5%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_48%,#eef4f8_100%)]"
           aria-hidden
         />
-        {/* Hero — split layout like solutions/time-and-attendance: copy left, media right + live tiles */}
+        {/* Hero ,  split layout like solutions/time-and-attendance: copy left, media right + live tiles */}
         <motion.section
           className="w-full overflow-x-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#f7fbfd] via-[#f4f9fc] to-[#eef4f8] pt-6 sm:pt-8 lg:pt-10"
           initial={{ opacity: 0 }}
@@ -364,7 +348,7 @@ export default function AboutPage() {
           </div>
         </section> */}
 
-        {/* Impact — stats — soft lift above shell */}
+        {/* Impact ,  stats ,  soft lift above shell */}
         <section
           className="relative border-t border-slate-200/80 bg-white/45 py-16 lg:py-24 backdrop-blur-[1px]"
           aria-labelledby="impact-stats-heading"
@@ -386,7 +370,7 @@ export default function AboutPage() {
                 <span className="font-semibold text-[color:var(--inops-blue)]">enterprise operations</span> run at scale
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                Hardware deployments, manufacturing locations, client organizations, and verified workers—consolidated on
+                Hardware deployments, manufacturing locations, client organizations, and verified workers, consolidated on
                 one operational foundation.
               </p>
             </motion.div>
@@ -432,64 +416,60 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Full-stack governance — split: narrative + founder */}
+        {/* Who we are — centered narrative + CEO (reference layout) */}
         <section
-          className="relative border-t border-slate-200/80 bg-white/45 py-14 lg:py-20 backdrop-blur-[1px]"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-[#f7fafc] via-[#fbfdfe] to-[#f7fafc] py-16 lg:py-24"
           aria-labelledby="governance-platform-heading"
         >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
-              <motion.div
-                className="lg:col-span-7"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.52, ease: smoothEase }}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(29,95,191,0.055),transparent_58%),radial-gradient(circle_at_100%_60%,rgba(56,189,248,0.06),transparent_42%),radial-gradient(circle_at_0%_70%,rgba(29,95,191,0.035),transparent_45%)]"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.52, ease: smoothEase }}
+            >
+              <h2
+                id="governance-platform-heading"
+                className="mx-auto max-w-[22rem] text-[1.65rem] font-bold leading-[1.15] tracking-tight text-slate-950 sm:max-w-none sm:text-3xl md:text-[2rem] md:leading-[1.12] lg:text-[2.35rem]"
               >
-                <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-700">
-                  Who we are
-                </span>
-                <h2 id="governance-platform-heading" className="mt-4 text-[var(--inops-navy)]">
-                  A full-stack workforce governance platform
-                </h2>
-                <p className="mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]">
-                  Starting with identity and access control, we evolved into a comprehensive system that helps enterprises
-                  manage contract labour at scale—with real-time visibility, compliance assurance, and one connected data layer.
-                </p>
-              </motion.div>
+                <span className="block">A Full-Stack Workforce Governance</span>
+                <span className="block">Platform</span>
+              </h2>
+              <p className="mx-auto mt-8 max-w-xl text-[0.9375rem] leading-relaxed text-slate-600 sm:mt-9 sm:text-base lg:max-w-2xl lg:text-[1.0625rem] lg:leading-[1.7]">
+                Starting with identity and access control systems, InOps has evolved into a comprehensive system enabling
+                enterprises to manage contract labor at scale with real-time visibility and compliance assurance.
+              </p>
+            </motion.div>
 
-              <motion.div
-                className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-gradient-to-br from-slate-50 to-white p-6 shadow-[0_22px_65px_-48px_rgba(15,47,87,0.45)] ring-1 ring-slate-900/[0.04] sm:p-8 lg:col-span-5"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.52, ease: smoothEase, delay: 0.06 }}
-              >
-                <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#39bde8]/14 blur-3xl" aria-hidden />
-                <div className="relative flex flex-col items-center gap-5 sm:flex-row sm:items-start">
-                  <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-slate-200 shadow-md ring-4 ring-white sm:h-[5.25rem] sm:w-[5.25rem]">
-                    <Image
-                      src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
-                      alt="Satish Sinha, Founder"
-                      fill
-                      className="object-cover object-top"
-                      sizes="84px"
-                    />
-                  </div>
-                  <div className="text-center sm:text-left">
-                    <p className="font-bold text-slate-900">Satish Sinha</p>
-                    <p className="mt-0.5 text-sm font-medium text-slate-500">Founder</p>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                      Building long-term partnerships with enterprises that depend on reliable workforce operations every single day.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              className="mx-auto mt-12 flex max-w-md flex-row items-center justify-center gap-4 sm:mt-14 sm:gap-5"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+            >
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-slate-200 ring-2 ring-white shadow-md sm:h-16 sm:w-16">
+                <Image
+                  src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
+                  alt="Portrait of Prashanth K."
+                  fill
+                  className="object-cover object-top"
+                  sizes="64px"
+                />
+              </div>
+              <div className="min-w-0 text-left">
+                <p className="text-[0.9375rem] font-bold tracking-tight text-slate-950 sm:text-base">Prashanth K.</p>
+                <p className="mt-0.5 text-sm font-normal text-slate-500 sm:text-[0.9375rem]">Chief Executive Officer</p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Our Evolution — vertical timeline (inherits page shell bg + gradients) */}
+        {/* Our Evolution ,  vertical timeline (inherits page shell bg + gradients) */}
         <section
           className="relative border-y border-slate-200/80 bg-transparent py-14 lg:py-20"
           aria-labelledby="our-evolution-heading"
@@ -619,7 +599,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Product Range — premium marquee strip */}
+        {/* Product Range ,  premium marquee strip */}
         <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-white/70 py-12 backdrop-blur lg:py-14">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/65 to-transparent" aria-hidden />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.5),transparent_40%,rgba(255,255,255,0.35))]" aria-hidden />
@@ -695,7 +675,10 @@ export default function AboutPage() {
         </section>
 
         {/* Vision + Mission + CTA */}
-        <section className="relative overflow-hidden border-t border-slate-200/80 bg-transparent py-16 lg:py-24">
+        <section
+          className="relative overflow-hidden border-t border-slate-200/80 bg-transparent py-16 lg:py-24"
+          aria-label="Vision and mission"
+        >
           <motion.div
             className="pointer-events-none absolute left-1/2 top-8 h-48 w-[min(100%,42rem)] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.12),transparent_72%)]"
             aria-hidden
@@ -713,49 +696,7 @@ export default function AboutPage() {
 
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
-              variants={visionMissionStagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewport}
-              className="mx-auto max-w-3xl text-center"
-            >
-              <motion.span
-                variants={visionMissionFadeUp}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm backdrop-blur-sm"
-              >
-                <motion.span
-                  className="relative flex h-2 w-2"
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                  aria-hidden
-                >
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400/50 opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--inops-blue)]" />
-                </motion.span>
-                Purpose
-              </motion.span>
-              <motion.h3 variants={visionMissionFadeUp} className="mt-5 text-slate-900">
-                Vision and{" "}
-                <span className="font-semibold text-[color:var(--inops-blue)]">mission</span>
-              </motion.h3>
-              <motion.div variants={visionMissionFadeUp} className="mx-auto mt-4 max-w-xl">
-                <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
-                  What we are building—and how we show up for enterprises and workers.
-                </p>
-                <motion.div
-                  className="mx-auto mt-6 h-1 w-14 rounded-full bg-[color:var(--inops-blue)]"
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  whileInView={{ scaleX: 1, opacity: 1 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.65, ease: smoothEase, delay: 0.35 }}
-                  style={{ originX: 0.5 }}
-                  aria-hidden
-                />
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-7"
+              className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-7"
               variants={visionMissionCards}
               initial="hidden"
               whileInView="visible"
@@ -778,7 +719,7 @@ export default function AboutPage() {
                 />
                 <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-600">Vision</p>
                 <p className="relative mt-4 text-[15px] leading-[1.65] text-slate-700 sm:text-base">
-                  To build the most trusted workforce ecosystem—where work, identity, and financial access seamlessly come together.
+                  To build the most trusted workforce ecosystem, where work, identity, and financial access seamlessly come together.
                 </p>
               </motion.article>
               <motion.article
@@ -815,7 +756,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Expertise — section intro, then visuals + carousel */}
+        {/* Expertise ,  section intro, then visuals + carousel */}
         <section
           className="section-flush-footer relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-sky-50/55 to-white pb-0 pt-16 lg:pb-0 lg:pt-24"
           aria-labelledby="why-choose-heading"
@@ -839,7 +780,7 @@ export default function AboutPage() {
               </h2>
               <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
               <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                Workforce systems, biometrics, cloud, and compliance—engineered for enterprise scale and audit-ready
+                Workforce systems, biometrics, cloud, and compliance, engineered for enterprise scale and audit-ready
                 operations.
               </p>
             </motion.div>
@@ -1014,7 +955,7 @@ export default function AboutPage() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.16 }}
               >
-                We provide premium customer support and affordable programs to roll out CLMS, attendance, and access—site by site, at your pace.
+                We provide premium customer support and affordable programs to roll out CLMS, attendance, and access, site by site, at your pace.
               </motion.p>
 
               <motion.div

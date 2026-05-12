@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = routeMetadata({
   title: "Fixed Asset Management | InOps Solutions",
   description:
-    "Track, maintain, and audit fixed assets across locations — depreciation visibility, custody, and maintenance workflows with fixed asset management.",
+    "Track, maintain, and audit fixed assets across locations ,  depreciation visibility, custody, and maintenance workflows with fixed asset management.",
   path: "/solutions/fixed-asset-management",
   extraKeywords: ["fixed asset tracking India", "asset register software", "FAM enterprise"],
 });

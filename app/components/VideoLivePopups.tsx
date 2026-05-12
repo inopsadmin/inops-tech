@@ -236,7 +236,7 @@ export type VideoLivePopupsProps = {
  * each time they enter the viewport, then settle into their absolute position.
  *
  * Place as a **sibling** of the media layer (not inside `overflow-hidden`), inside a
- * `relative` wrapper that matches the video aspect box — otherwise corner popups get clipped.
+ * `relative` wrapper that matches the video aspect box ,  otherwise corner popups get clipped.
  */
 export default function VideoLivePopups({ popups }: VideoLivePopupsProps) {
   return (

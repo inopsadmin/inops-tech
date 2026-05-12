@@ -8,31 +8,31 @@ const steps = [
     id: "entry",
     label: "Worker Entry",
     imageSrc: "/ecosystem-icons/worker-entry.png",
-    imageAlt: "Notebook and pencil — worker entry and records",
+    imageAlt: "Notebook and pencil ,  worker entry and records",
   },
   {
     id: "attendance",
     label: "Attendance Capture",
     imageSrc: "/ecosystem-icons/attendance-capture.png",
-    imageAlt: "Checklist — attendance capture",
+    imageAlt: "Checklist ,  attendance capture",
   },
   {
     id: "workforce",
     label: "Workforce System",
     imageSrc: "/ecosystem-icons/workforce-system.png",
-    imageAlt: "Team at workstations — workforce system",
+    imageAlt: "Team at workstations ,  workforce system",
   },
   {
     id: "compliance",
     label: "Compliance & Payroll",
     imageSrc: "/ecosystem-icons/compliance-payroll.png",
-    imageAlt: "Handshake — compliance and payroll",
+    imageAlt: "Handshake ,  compliance and payroll",
   },
   {
     id: "finance",
     label: "Ops & Finance",
     imageSrc: "/ecosystem-icons/ops-finance.png",
-    imageAlt: "Growth chart — operations and finance",
+    imageAlt: "Growth chart ,  operations and finance",
   },
 ] as const;
 
