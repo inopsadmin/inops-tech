@@ -92,9 +92,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className="overflow-x-hidden" suppressHydrationWarning>
+    <html lang="en-IN" className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden`} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col overflow-x-hidden bg-white text-gray-900 antialiased`}
+        className="flex min-h-screen flex-col overflow-x-hidden bg-white font-sans text-gray-900 antialiased"
         suppressHydrationWarning
       >
         <OrganizationJsonLd />
@@ -107,7 +107,7 @@ export default function RootLayout({
               <div className="brand-shape brand-shape--bottom-left" />
             </div>
             <Navbar />
-            <main className="inops-template relative z-[1] min-w-0 flex-1">
+            <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans">
               {children}
               <ScrollRevealEnhancer />
             </main>

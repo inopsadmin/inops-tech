@@ -107,7 +107,7 @@ export default function VisitorManagementPage() {
         />
 
         {/* Content – flow diagram left, text right */}
-        <section className="mt-10 py-6 lg:py-10 border-t border-gray-200 bg-white">
+        <section className="mt-8 py-5 lg:py-8 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center lg:gap-8 xl:gap-10">
               {/* Left – visitor flow diagram: person at kiosk + connected nodes */}
@@ -209,7 +209,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Features & Benefits */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
+        <section className="py-5 lg:py-8 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2 className="text-center text-gray-900"
               initial={{ opacity: 0, y: 16 }}
@@ -245,7 +245,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Visitor Management System ,  intro + process infographic (row: text left, graphic right) */}
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
+        <section className="border-t border-gray-200 py-6 lg:py-10 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
               <motion.div
@@ -290,7 +290,7 @@ export default function VisitorManagementPage() {
         </section>
 
         {/* Powerful Services for Your Business */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
+        <section className="py-5 lg:py-8 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2 className="text-gray-900"
               initial={{ opacity: 0, y: 16 }}

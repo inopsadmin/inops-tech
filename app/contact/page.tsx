@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
 import { FlyInText } from "@/app/components/FlyInText";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -14,10 +15,16 @@ const contactBanner = {
   tagline: "Sales, support & partnerships ,  Bengaluru",
 } as const;
 
-const contactInfo = [
+const contactInfo: {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+  valueClass?: string;
+}[] = [
   {
     label: "Location:",
     value: "No.18, 4th 'C' Cross, 1st Main Rd, Koramangala Industrial Layout, 5th Block, Bengaluru, Karnataka 560095.",
+    valueClass: "!text-black",
     icon: (
       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -77,9 +84,9 @@ export default function ContactPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
+                  <p className={inopsUi.heroKicker}>InOps</p>
                   <h1 className="mt-4 text-white">Contact</h1>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{contactBanner.tagline}</p>
+                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{contactBanner.tagline}</p>
                 </div>
               </div>
             </div>
@@ -87,19 +94,19 @@ export default function ContactPage() {
 
           <div className="mb-8 mt-14 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+              <FlyInText as="p" direction="down" className={inopsUi.eyebrowBrand}>
                 Get in touch
               </FlyInText>
               <FlyInText
                 as="h2"
                 direction="left"
                 delay={0.06}
-                className="mt-3 text-[var(--inops-navy)]"
+                className={`mt-3 ${inopsUi.sectionHeading} !text-black`}
               >
                 We&apos;re ready to help
               </FlyInText>
             </div>
-            <FlyInText as="p" direction="up" delay={0.08} className="max-w-lg text-sm leading-7 text-slate-600">
+            <FlyInText as="p" direction="up" delay={0.08} className={`max-w-lg ${inopsUi.lead}`}>
               Send a message or reach us directly for product demos, implementation questions, and support requests.
             </FlyInText>
           </div>
@@ -133,15 +140,10 @@ export default function ContactPage() {
                         {item.icon}
                       </div>
                       <div>
-                        <FlyInText
-                          as="p"
-                          direction="right"
-                          delay={0.05 * i}
-                          className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--inops-blue)]"
-                        >
+                        <FlyInText as="p" direction="right" delay={0.05 * i} className={inopsUi.eyebrowBrand}>
                           {item.label.replace(":", "")}
                         </FlyInText>
-                        <FlyInText as="p" direction="up" delay={0.08 + 0.05 * i} className="mt-2 leading-7 text-slate-600">
+                        <FlyInText as="p" direction="up" delay={0.08 + 0.05 * i} className={`mt-2 ${inopsUi.lead} ${item.valueClass ?? ""}`}>
                           {item.value}
                         </FlyInText>
                       </div>
@@ -164,13 +166,13 @@ export default function ContactPage() {
                 aria-hidden
               />
               <div className="relative">
-                <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+                <FlyInText as="p" direction="down" className={inopsUi.eyebrowBrand}>
                   Message us
                 </FlyInText>
-                <FlyInText as="h3" direction="left" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
+                <FlyInText as="h3" direction="left" delay={0.06} className={`mt-3 ${inopsUi.sectionHeading}`}>
                   Send us a message
                 </FlyInText>
-                <FlyInText as="p" direction="up" delay={0.12} className="mt-3 text-sm leading-7 text-slate-600">
+                <FlyInText as="p" direction="up" delay={0.12} className={`mt-3 ${inopsUi.lead}`}>
                   Tell us what you need. Our team will get back with the right next step.
                 </FlyInText>
                 <div className="mt-7">
@@ -189,10 +191,10 @@ export default function ContactPage() {
             whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
           >
             <div className="border-b border-slate-200/80 bg-gradient-to-r from-white via-slate-50 to-[#eaf7fc] px-6 py-5 sm:px-8">
-              <FlyInText as="p" direction="right" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+              <FlyInText as="p" direction="right" className={inopsUi.eyebrowBrand}>
                 Bengaluru office
               </FlyInText>
-              <FlyInText as="h3" direction="up" delay={0.06} className="mt-2 text-[var(--inops-navy)]">
+              <FlyInText as="h3" direction="up" delay={0.06} className={`mt-2 ${inopsUi.sectionHeading} !text-black`}>
                 Koramangala Industrial Layout
               </FlyInText>
             </div>

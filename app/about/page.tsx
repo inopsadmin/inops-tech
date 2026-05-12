@@ -6,8 +6,14 @@ import { motion, AnimatePresence, useScroll } from "framer-motion";
 import AnimatedCounter from "../components/AnimatedCounter";
 import CollaborateCtaBand from "../components/CollaborateCtaBand";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import SolutionHeroWaveDecor from "../components/SolutionHeroWaveDecor";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
+
+/** Same flat canvas as the page shell — sections below hero */
+const aboutSectionBg = "bg-[#eef4f8]";
+
+const aboutHeroBg = "bg-white";
 
 const visionMissionCards = {
   hidden: {},
@@ -28,6 +34,24 @@ const visionMissionCardItem = {
 const cardHoverLift = { y: -6, transition: { duration: 0.28, ease: smoothEase } } as const;
 
 const aboutHeroOfficeImage = "/WhatsApp Image 2026-05-05 at 8.15.34 PM.jpeg";
+
+/** Unified kicker / heading / body on light sections (About). */
+const aboutKickerStyle = {
+  color: "var(--inops-blue)",
+  backgroundColor: "var(--brand-light)",
+  borderColor: "color-mix(in srgb, var(--inops-blue) 38%, #e2e8f0)",
+} as const;
+
+const aboutKickerClass =
+  "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] shadow-sm ring-1 ring-[color:var(--inops-blue)]/15 backdrop-blur-sm";
+
+const aboutH2 = "home-display-heading font-heading-bold text-slate-900";
+
+const aboutH3 = "font-heading-bold text-slate-900";
+
+const aboutLead = "text-base leading-relaxed text-slate-600";
+
+const aboutLabelUpper = "text-xs font-medium uppercase tracking-widest text-slate-600";
 
 const cultureCards: { title: string; imageSrc: string }[] = [
   { title: "Face Recognition System", imageSrc: "/images/7a6a2a07-b8a7-48d1-ac83-4201e948805e.png" },
@@ -233,19 +257,16 @@ export default function AboutPage() {
 
   return (
     <>
-      <div className="solution-product-section-gap relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_8%,rgba(57,189,232,0.16),transparent_26%),radial-gradient(circle_at_88%_5%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_48%,#eef4f8_100%)]"
-          aria-hidden
-        />
+      <div className="about-page-section-gap relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
         {/* Hero ,  split layout like solutions/time-and-attendance: copy left, media right + live tiles */}
         <motion.section
-          className="w-full overflow-x-hidden border-b border-slate-200/80 bg-gradient-to-b from-[#f7fbfd] via-[#f4f9fc] to-[#eef4f8] pt-6 sm:pt-8 lg:pt-10"
+          className={`relative z-[1] w-full overflow-x-hidden border-b border-slate-200/80 ${aboutHeroBg} pt-6 sm:pt-8 lg:pt-10`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <div className="relative w-full">
+          <SolutionHeroWaveDecor className="z-[1]" />
+          <div className="relative z-[2] w-full">
             <div className="relative min-h-[280px] w-full bg-transparent sm:min-h-[340px] lg:flex lg:min-h-[400px] lg:items-stretch">
               <div className="relative mt-5 h-48 w-full sm:mt-7 sm:h-56 lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0">
                 <Image
@@ -257,7 +278,7 @@ export default function AboutPage() {
                   priority
                 />
                 <div
-                  className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-[#f6fbfd] to-transparent sm:w-28 lg:block"
+                  className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white via-white/95 to-transparent sm:w-28 lg:block"
                   aria-hidden
                 />
                 <VideoLivePopups
@@ -268,7 +289,7 @@ export default function AboutPage() {
                       label: "Trust",
                       title: "1L+ verified workers on platform",
                       accent: "emerald",
-                      className: "!top-2 !-left-2 sm:!top-4 sm:!-left-4 lg:!top-8 lg:!-left-45",
+                      className: "!top-2 !-left-2 sm:!top-4 sm:!-left-4 lg:!top-8 lg:!-left-25",
                     },
                     {
                       position: "bottom-right",
@@ -285,27 +306,29 @@ export default function AboutPage() {
               </div>
 
               <div className="relative z-10 mx-auto flex max-w-7xl flex-1 flex-col justify-center px-4 sm:px-6 lg:px-12 lg:order-1 lg:w-1/2">
-                <div className="max-w-3xl px-0 py-8 sm:py-10 lg:max-w-xl lg:py-14 lg:pr-8">
+                <div className="max-w-3xl px-0 py-6 sm:py-8 lg:max-w-xl lg:py-10 lg:pr-8 ml-[5%]">
                   <motion.span
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm backdrop-blur-sm"
+                    className={aboutKickerClass}
+                    style={aboutKickerStyle}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
                   >
-                    <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                     About InOps
                   </motion.span>
-                  <motion.h1 className="mt-4 text-slate-900 sm:mt-5"
+                  <motion.h1
+                    className="home-display-heading mt-4 font-heading-bold text-slate-900 sm:mt-5"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
                   >
                     Bringing{" "}
-                    <span className="font-semibold text-[color:var(--inops-blue)]">Control &amp; Transparency</span> to
-                    Enterprise Operations.
+                    <span className="text-[color:var(--inops-blue)]">Control &amp; Transparency</span> to Enterprise
+                    Operations.
                   </motion.h1>
                   <motion.p
-                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                    className={`${aboutLead} mt-4 max-w-xl`}
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
@@ -350,33 +373,36 @@ export default function AboutPage() {
 
         {/* Impact ,  stats ,  soft lift above shell */}
         <section
-          className="relative border-t border-slate-200/80 bg-white/45 py-16 lg:py-24 backdrop-blur-[1px]"
+          className={`relative border-t border-slate-200/80 ${aboutSectionBg} py-10 lg:py-16`}
           aria-labelledby="impact-stats-heading"
         >
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
             <motion.div
-              className="mx-auto max-w-[36rem] text-center"
+              className="mx-auto w-full max-w-[min(100%,52rem)] text-center"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.26em] text-slate-600 shadow-sm backdrop-blur-sm">
-                <span className="h-2 w-8 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+              <span className={aboutKickerClass} style={aboutKickerStyle}>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                 At a glance
               </span>
-              <h2 id="impact-stats-heading" className="mt-6 text-slate-900">
-                Trusted where{" "}
-                <span className="font-semibold text-[color:var(--inops-blue)]">enterprise operations</span> run at scale
+              <h2
+                id="impact-stats-heading"
+                className={`${aboutH2} mt-4 text-center !whitespace-nowrap !text-[clamp(0.72rem,3.5vw,2.2rem)] !leading-tight`}
+              >
+                Trusted where enterprise operations run at scale
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                Hardware deployments, manufacturing locations, client organizations, and verified workers, consolidated on
-                one operational foundation.
+              <p className={`${aboutLead} mx-auto mt-4 max-w-3xl text-balance`}>
+                Hardware deployments, manufacturing locations, client organizations, and verified workers,
+                <br aria-hidden />
+                consolidated on one operational foundation.
               </p>
             </motion.div>
 
             <motion.div
-              className="mx-auto mt-12 max-w-5xl lg:mt-14"
+              className="mx-auto mt-8 max-w-5xl lg:mt-10"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -402,9 +428,9 @@ export default function AboutPage() {
                           value={stat.value}
                           suffix={stat.suffix}
                           duration={1.35}
-                          className="block text-[1.75rem] font-semibold tabular-nums tracking-[-0.04em] text-slate-900 sm:text-[2rem] lg:text-[2.125rem]"
+                          className="block text-[1.75rem] font-heading-bold tabular-nums tracking-tight text-slate-900 sm:text-[2rem] lg:text-[2.125rem]"
                         />
-                        <p className="mt-3 max-w-[11rem] text-[10px] font-medium uppercase leading-snug tracking-[0.2em] text-slate-600 sm:text-[11px] sm:tracking-[0.22em]">
+                        <p className={`${aboutLabelUpper} mt-3 max-w-[11rem] leading-snug`}>
                           {stat.label}
                         </p>
                       </div>
@@ -418,13 +444,9 @@ export default function AboutPage() {
 
         {/* Who we are — centered narrative + CEO (reference layout) */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-[#f7fafc] via-[#fbfdfe] to-[#f7fafc] py-16 lg:py-24"
+          className={`relative overflow-hidden border-t border-slate-200/80 ${aboutSectionBg} py-10 lg:py-16`}
           aria-labelledby="governance-platform-heading"
         >
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(29,95,191,0.055),transparent_58%),radial-gradient(circle_at_100%_60%,rgba(56,189,248,0.06),transparent_42%),radial-gradient(circle_at_0%_70%,rgba(29,95,191,0.035),transparent_45%)]"
-            aria-hidden
-          />
           <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -432,21 +454,18 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.52, ease: smoothEase }}
             >
-              <h2
-                id="governance-platform-heading"
-                className="mx-auto max-w-[22rem] text-[1.65rem] font-bold leading-[1.15] tracking-tight text-slate-950 sm:max-w-none sm:text-3xl md:text-[2rem] md:leading-[1.12] lg:text-[2.35rem]"
-              >
+              <h2 id="governance-platform-heading" className={`${aboutH2} mx-auto mt-4 max-w-[22rem] sm:max-w-none`}>
                 <span className="block">A Full-Stack Workforce Governance</span>
                 <span className="block">Platform</span>
               </h2>
-              <p className="mx-auto mt-8 max-w-xl text-[0.9375rem] leading-relaxed text-slate-600 sm:mt-9 sm:text-base lg:max-w-2xl lg:text-[1.0625rem] lg:leading-[1.7]">
+              <p className={`${aboutLead} mx-auto mt-4 max-w-xl lg:max-w-2xl`}>
                 Starting with identity and access control systems, InOps has evolved into a comprehensive system enabling
                 enterprises to manage contract labor at scale with real-time visibility and compliance assurance.
               </p>
             </motion.div>
 
             <motion.div
-              className="mx-auto mt-12 flex max-w-md flex-row items-center justify-center gap-4 sm:mt-14 sm:gap-5"
+              className="mx-auto mt-8 flex max-w-md flex-row items-center justify-center gap-4 sm:mt-10 sm:gap-5"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -462,8 +481,8 @@ export default function AboutPage() {
                 />
               </div>
               <div className="min-w-0 text-left">
-                <p className="text-[0.9375rem] font-bold tracking-tight text-slate-950 sm:text-base">Prashanth K.</p>
-                <p className="mt-0.5 text-sm font-normal text-slate-500 sm:text-[0.9375rem]">Chief Executive Officer</p>
+                <p className="text-base font-heading-bold tracking-tight text-slate-900">Prashanth K.</p>
+                <p className={`${aboutLead} mt-0.5 text-sm`}>Chief Executive Officer</p>
               </div>
             </motion.div>
           </div>
@@ -471,7 +490,7 @@ export default function AboutPage() {
 
         {/* Our Evolution ,  vertical timeline (inherits page shell bg + gradients) */}
         <section
-          className="relative border-y border-slate-200/80 bg-transparent py-14 lg:py-20"
+          className={`relative border-y border-slate-200/80 ${aboutSectionBg} py-9 lg:py-14`}
           aria-labelledby="our-evolution-heading"
         >
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
@@ -482,20 +501,20 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+              <div className={`${aboutKickerClass} mx-auto`} style={aboutKickerStyle}>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                 Timeline
               </div>
-              <h2 id="our-evolution-heading" className="mt-4 text-slate-900">
+              <h2 id="our-evolution-heading" className={`${aboutH2} mt-4`}>
                 Our Evolution
               </h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+              <p className={`${aboutLead} mx-auto mt-4 max-w-xl`}>
                 A decade of engineering excellence and workforce transformation.
               </p>
-              <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+              <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
             </motion.div>
 
-            <div ref={evolutionRailRef} className="relative mx-auto mt-14 max-w-4xl">
+            <div ref={evolutionRailRef} className="relative mx-auto mt-10 max-w-4xl">
               {/* Center rail (desktop) */}
               <div
                 className="absolute left-8 top-2 bottom-2 z-0 hidden w-[4px] rounded-full bg-gradient-to-b from-slate-200 via-slate-300 to-slate-200 opacity-90 shadow-[0_0_0_1px_rgba(148,163,184,0.25)] md:left-1/2 md:block md:-translate-x-1/2"
@@ -554,8 +573,8 @@ export default function AboutPage() {
                                   </span>
                                 ) : null}
                               </div>
-                              <h3 className="mt-2 text-slate-900">{m.title}</h3>
-                              <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                              <h3 className={`mt-2 ${aboutH3}`}>{m.title}</h3>
+                              <p className={`mt-2 ${aboutLead}`}>
                                 {m.description}
                               </p>
                             </div>
@@ -583,8 +602,8 @@ export default function AboutPage() {
                                   </span>
                                 ) : null}
                               </div>
-                              <h3 className="mt-2 text-slate-900">{m.title}</h3>
-                              <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                              <h3 className={`mt-2 ${aboutH3}`}>{m.title}</h3>
+                              <p className={`mt-2 ${aboutLead}`}>
                                 {m.description}
                               </p>
                             </div>
@@ -600,22 +619,22 @@ export default function AboutPage() {
         </section>
 
         {/* Product Range ,  premium marquee strip */}
-        <section className="relative overflow-x-hidden border-t border-slate-200/70 bg-white/70 py-12 backdrop-blur lg:py-14">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300/65 to-transparent" aria-hidden />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.5),transparent_40%,rgba(255,255,255,0.35))]" aria-hidden />
+        <section className={`relative overflow-x-hidden border-t border-slate-200/70 ${aboutSectionBg} py-8 lg:py-11`}>
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <div className="text-center">
               <motion.span
-                className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-700 shadow-sm backdrop-blur"
+                className={`${aboutKickerClass} mx-auto`}
+                style={aboutKickerStyle}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.45, ease: smoothEase }}
               >
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                 Product Showcase
               </motion.span>
               <motion.h2
-                className="mt-3 text-center text-[2rem] font-heading-bold tracking-tight text-slate-900 sm:text-[2.35rem]"
+                className={`${aboutH2} mt-4 text-center`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -624,7 +643,7 @@ export default function AboutPage() {
                 Product Range
               </motion.h2>
               <motion.p
-                className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base"
+                className={`${aboutLead} mx-auto mt-4 max-w-2xl`}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -665,8 +684,8 @@ export default function AboutPage() {
                   <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-75" aria-hidden />
                   <div className="pointer-events-none absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent opacity-60" aria-hidden />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">Product</p>
-                    <h3 className="mt-1 text-white">{card.title}</h3>
+                    <p className={`${aboutLabelUpper} tracking-[0.18em] text-slate-300`}>Product</p>
+                    <h3 className="mt-1 text-base font-heading-bold text-white">{card.title}</h3>
                   </div>
                 </div>
               ))}
@@ -674,27 +693,13 @@ export default function AboutPage() {
           </motion.div>
         </section>
 
-        {/* Vision + Mission + CTA */}
-        <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-transparent py-16 lg:py-24"
-          aria-label="Vision and mission"
-        >
-          <motion.div
-            className="pointer-events-none absolute left-1/2 top-8 h-48 w-[min(100%,42rem)] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.12),transparent_72%)]"
+        {/* Vision + Mission + CTA — solid top rule: slate-200 on #eef4f8 is nearly invisible */}
+        <section className={`relative overflow-hidden ${aboutSectionBg}`} aria-label="Vision and mission">
+          <div
+            className="h-[2px] w-full bg-gradient-to-r from-transparent via-slate-500/55 to-transparent shadow-[0_1px_0_rgb(255_255_255_/_.85)]"
             aria-hidden
-            initial={{ opacity: 0, scale: 0.92 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewport}
-            transition={{ duration: 1, ease: smoothEase }}
           />
-          <motion.div
-            className="pointer-events-none absolute bottom-0 right-[12%] h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl"
-            aria-hidden
-            animate={{ opacity: [0.35, 0.55, 0.35], scale: [1, 1.06, 1] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="relative mx-auto max-w-7xl px-6 py-10 lg:px-12 lg:py-16">
             <motion.div
               className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-7"
               variants={visionMissionCards}
@@ -705,7 +710,7 @@ export default function AboutPage() {
               <motion.article
                 variants={visionMissionCardItem}
                 whileHover={cardHoverLift}
-                className="group relative overflow-hidden rounded-2xl border border-slate-200/90 border-l-[3px] border-l-[color:var(--inops-blue)] bg-white/50 px-6 py-7 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] backdrop-blur-[2px] transition-[box-shadow,border-color] duration-300 hover:border-slate-300 hover:shadow-[0_24px_56px_-36px_rgba(15,23,42,0.14)] sm:px-8 sm:py-8"
+                className="inops-skip-premium-card group relative box-border overflow-hidden rounded-2xl border-r border-b border-slate-300 bg-white/50 px-6 py-7 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] backdrop-blur-[2px] transition-[box-shadow,border-color] duration-300 border-t-[4px] border-t-[#1d5fbf] hover:border-r-slate-400 hover:border-b-slate-400 hover:shadow-[0_24px_56px_-36px_rgba(15,23,42,0.14)] sm:px-8 sm:py-8"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -717,15 +722,15 @@ export default function AboutPage() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden
                 />
-                <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-600">Vision</p>
-                <p className="relative mt-4 text-[15px] leading-[1.65] text-slate-700 sm:text-base">
+                <p className={`relative text-slate-900 font-heading-bold ${aboutLabelUpper} tracking-[0.22em]`}>Vision</p>
+                <p className={`relative mt-4 text-sm ${aboutLead}`}>
                   To build the most trusted workforce ecosystem, where work, identity, and financial access seamlessly come together.
                 </p>
               </motion.article>
               <motion.article
                 variants={visionMissionCardItem}
                 whileHover={cardHoverLift}
-                className="group relative overflow-hidden rounded-2xl border border-slate-200/90 border-l-[3px] border-l-emerald-600 bg-white/50 px-6 py-7 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] backdrop-blur-[2px] transition-[box-shadow,border-color] duration-300 hover:border-emerald-200 hover:shadow-[0_24px_56px_-36px_rgba(16,185,129,0.18)] sm:px-8 sm:py-8"
+                className="inops-skip-premium-card group relative box-border overflow-hidden rounded-2xl border-r border-b border-slate-300 bg-white/50 px-6 py-7 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] backdrop-blur-[2px] transition-[box-shadow,border-color] duration-300 border-t-[4px] border-t-[#059669] hover:border-r-emerald-300 hover:border-b-emerald-300 hover:shadow-[0_24px_56px_-36px_rgba(16,185,129,0.18)] sm:px-8 sm:py-8"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -737,15 +742,15 @@ export default function AboutPage() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden
                 />
-                <p className="relative text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-600">Mission</p>
-                <p className="relative mt-4 text-[15px] leading-[1.65] text-slate-700 sm:text-base">
+                <p className={`relative text-slate-900 font-heading-bold ${aboutLabelUpper} tracking-[0.22em]`}>Mission</p>
+                <p className={`relative mt-4  text-sm ${aboutLead}`}>
                   To help enterprises digitize and control workforce operations through unified governance and verified data, and extend this foundation to enable earned wage access and a curated marketplace of financial and worker-focused services.
                 </p>
               </motion.article>
             </motion.div>
 
             <motion.div
-              className="mt-12 lg:mt-35"
+              className="mt-8 lg:mt-10"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -758,28 +763,26 @@ export default function AboutPage() {
 
         {/* Expertise ,  section intro, then visuals + carousel */}
         <section
-          className="section-flush-footer relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-sky-50/55 to-white pb-0 pt-16 lg:pb-0 lg:pt-24"
+          className={`section-flush-footer relative overflow-hidden border-t border-slate-200/80 ${aboutSectionBg} pb-0 pt-10 lg:pb-0 lg:pt-16`}
           aria-labelledby="why-choose-heading"
         >
-          <div className="pointer-events-none absolute -left-24 top-20 h-80 w-80 rounded-full bg-blue-100/70 blur-3xl" aria-hidden />
-          <div className="pointer-events-none absolute -right-28 bottom-16 h-80 w-80 rounded-full bg-sky-100/80 blur-3xl" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
-              className="mx-auto mb-12 max-w-3xl text-center lg:mb-14"
+              className="mx-auto mb-8 max-w-3xl text-center lg:mb-10"
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.48, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-700 shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-cyan)]" aria-hidden />
+              <span className={aboutKickerClass} style={aboutKickerStyle}>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                 Expertise
               </span>
-              <h2 id="why-choose-heading" className="mt-3 text-slate-900">
+              <h2 id="why-choose-heading" className={`${aboutH2} mt-4`}>
                 Why choose us
               </h2>
               <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+              <p className={`${aboutLead} mx-auto mt-4 max-w-2xl`}>
                 Workforce systems, biometrics, cloud, and compliance, engineered for enterprise scale and audit-ready
                 operations.
               </p>
@@ -834,13 +837,11 @@ export default function AboutPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5v-9Z" />
                         </svg>
                       </div>
-                      <span className="mb-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600">
+                      <span className={`${aboutLabelUpper} mb-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 tracking-[0.18em]`}>
                         Core capability {String(expertiseIndex + 1).padStart(2, "0")}
                       </span>
-                      <h4 className="text-slate-950">
-                        {expertiseSlides[expertiseIndex].title}
-                      </h4>
-                      <p className="mt-4 max-w-[32rem] text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]">
+                      <h4 className={`${aboutH3}`}>{expertiseSlides[expertiseIndex].title}</h4>
+                      <p className={`mt-4 max-w-[32rem] ${aboutLead}`}>
                         {expertiseSlides[expertiseIndex].text}
                       </p>
                       <div className="mt-7 flex flex-wrap justify-center gap-2">

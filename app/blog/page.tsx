@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.12 };
@@ -117,9 +118,9 @@ export default function BlogPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
+                  <p className={inopsUi.heroKicker}>InOps</p>
                   <h1 className="mt-4 text-white">Blog</h1>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{blogBanner.tagline}</p>
+                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{blogBanner.tagline}</p>
                 </div>
               </div>
             </div>
@@ -133,14 +134,14 @@ export default function BlogPage() {
             transition={{ duration: 0.5, ease: smoothEase }}
           >
             <div>
-              <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+              <FlyInText as="p" direction="down" className={inopsUi.eyebrowBrand}>
                 Featured story
               </FlyInText>
-              <FlyInText as="h2" direction="left" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
+              <FlyInText as="h2" direction="left" delay={0.06} className={`mt-3 ${inopsUi.sectionHeading} !text-black`}>
                 Start with the signal
               </FlyInText>
             </div>
-            <FlyInText as="p" direction="up" delay={0.08} className="max-w-lg text-sm leading-7 text-slate-600">
+            <FlyInText as="p" direction="up" delay={0.08} className={`max-w-lg ${inopsUi.lead}`}>
               Our editor&apos;s pick on what is changing across physical security, identity, and connected access.
             </FlyInText>
           </motion.div>
@@ -239,7 +240,7 @@ export default function BlogPage() {
             <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
               More articles
             </FlyInText>
-            <FlyInText as="h2" direction="up" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
+            <FlyInText as="h2" direction="up" delay={0.06} className="mt-3 !text-black">
               Latest from the journal
             </FlyInText>
             <FlyInText as="p" direction="up" delay={0.12} className="mt-4 leading-7 text-slate-600">

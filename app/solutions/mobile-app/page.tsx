@@ -5,6 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
 const mobileAppHeroImage = "/WhatsApp Image 2026-05-04 at 12.24.06 PM.jpeg";
@@ -41,56 +44,52 @@ const featureCards = [
 
 type AccurateTrackingTone = "sky" | "indigo" | "emerald" | "violet" | "cyan" | "amber";
 
-const accurateTrackingPresentation: Record<
+/** Time & attendance “Hidden Cost” card tokens */
+const accurateTrackingThroughputByTone: Record<
   AccurateTrackingTone,
-  { bar: string; iconSurface: string; orb: string; hoverRing: string }
+  { accentBar: string; iconWrap: string; hoverGlow: string }
 > = {
   sky: {
-    bar: "from-sky-400 via-blue-500 to-indigo-500",
-    iconSurface:
-      "bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25 ring-2 ring-white",
-    orb: "bg-sky-400/25",
-    hoverRing: "hover:border-sky-200/90 hover:shadow-sky-500/8",
+    accentBar: "from-sky-500 via-cyan-400 to-teal-400",
+    iconWrap:
+      "bg-sky-50 text-sky-600 ring-sky-500/20 group-hover:bg-sky-500 group-hover:text-white group-hover:ring-sky-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
   },
   indigo: {
-    bar: "from-indigo-400 via-violet-500 to-purple-600",
-    iconSurface:
-      "bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25 ring-2 ring-white",
-    orb: "bg-indigo-400/22",
-    hoverRing: "hover:border-indigo-200/90 hover:shadow-indigo-500/8",
+    accentBar: "from-indigo-500 via-violet-500 to-purple-400",
+    iconWrap:
+      "bg-indigo-50 text-indigo-600 ring-indigo-500/20 group-hover:bg-indigo-600 group-hover:text-white group-hover:ring-indigo-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(99,102,241,0.32)]",
   },
   emerald: {
-    bar: "from-emerald-400 via-teal-500 to-cyan-500",
-    iconSurface:
-      "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25 ring-2 ring-white",
-    orb: "bg-emerald-400/22",
-    hoverRing: "hover:border-emerald-200/90 hover:shadow-emerald-500/8",
+    accentBar: "from-emerald-500 via-teal-400 to-cyan-400",
+    iconWrap:
+      "bg-emerald-50 text-emerald-600 ring-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white group-hover:ring-emerald-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(16,185,129,0.32)]",
   },
   violet: {
-    bar: "from-violet-400 via-purple-500 to-fuchsia-500",
-    iconSurface:
-      "bg-gradient-to-br from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/25 ring-2 ring-white",
-    orb: "bg-violet-400/20",
-    hoverRing: "hover:border-violet-200/90 hover:shadow-violet-500/8",
+    accentBar: "from-violet-500 via-fuchsia-500 to-pink-400",
+    iconWrap:
+      "bg-violet-50 text-violet-600 ring-violet-500/20 group-hover:bg-violet-600 group-hover:text-white group-hover:ring-violet-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.35)]",
   },
   cyan: {
-    bar: "from-cyan-400 via-sky-500 to-blue-600",
-    iconSurface:
-      "bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 ring-2 ring-white",
-    orb: "bg-cyan-400/22",
-    hoverRing: "hover:border-cyan-200/90 hover:shadow-cyan-500/8",
+    accentBar: "from-cyan-500 via-sky-400 to-blue-500",
+    iconWrap:
+      "bg-cyan-50 text-cyan-600 ring-cyan-500/20 group-hover:bg-cyan-500 group-hover:text-white group-hover:ring-cyan-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(6,182,212,0.32)]",
   },
   amber: {
-    bar: "from-amber-400 via-orange-500 to-rose-500",
-    iconSurface:
-      "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/25 ring-2 ring-white",
-    orb: "bg-amber-400/22",
-    hoverRing: "hover:border-amber-200/90 hover:shadow-amber-500/8",
+    accentBar: "from-amber-500 via-orange-500 to-red-400",
+    iconWrap:
+      "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.36)]",
   },
 };
 
 const accurateTrackingFeatures = [
   {
+    pillar: "Identity" as const,
     title: "Face Recognition",
     description:
       "Selfie check-ins with liveness and anti-spoofing so the right person is at the right place, without shared PINs or proxy cards.",
@@ -98,6 +97,7 @@ const accurateTrackingFeatures = [
     tone: "sky" as const,
   },
   {
+    pillar: "Contactless" as const,
     title: "Contactless Attendance",
     description:
       "No extra hardware: people clock in on their own phones with QR, deep links, or geofenced zones you define.",
@@ -105,6 +105,7 @@ const accurateTrackingFeatures = [
     tone: "indigo" as const,
   },
   {
+    pillar: "Resilience" as const,
     title: "Offline Sync",
     description:
       "Punches and proof are stored on-device when the network drops, then sync to the cloud automatically when you’re back online.",
@@ -112,6 +113,7 @@ const accurateTrackingFeatures = [
     tone: "emerald" as const,
   },
   {
+    pillar: "Directory" as const,
     title: "Employee Directory",
     description:
       "Roles, departments, cost centers, and rosters in one directory, so attendance rules and approvals stay consistent.",
@@ -119,6 +121,7 @@ const accurateTrackingFeatures = [
     tone: "violet" as const,
   },
   {
+    pillar: "Archive" as const,
     title: "Secure Cloud Storage",
     description:
       "Encrypted logs and media retained for audits, with retention windows that fit your policy, not a spreadsheet export.",
@@ -126,6 +129,7 @@ const accurateTrackingFeatures = [
     tone: "cyan" as const,
   },
   {
+    pillar: "Trust" as const,
     title: "Fraud Prevention",
     description:
       "Rules and anomaly signals surface buddy punching, GPS spoofing, and repeat exceptions before payroll closes.",
@@ -167,20 +171,92 @@ const workflowSteps = [
   },
 ] as const;
 
+const workflowCircleStyles: Record<
+  (typeof workflowSteps)[number]["tone"],
+  { gradient: string; shadow: string }
+> = {
+  sky: {
+    gradient: "from-sky-400 via-sky-500 to-blue-600",
+    shadow: "shadow-[0_12px_28px_-6px_rgba(14,165,233,0.45)]",
+  },
+  indigo: {
+    gradient: "from-indigo-500 via-blue-600 to-indigo-700",
+    shadow: "shadow-[0_12px_28px_-6px_rgba(99,102,241,0.45)]",
+  },
+  emerald: {
+    gradient: "from-emerald-400 via-teal-500 to-emerald-600",
+    shadow: "shadow-[0_12px_28px_-6px_rgba(20,184,166,0.45)]",
+  },
+  violet: {
+    gradient: "from-violet-500 via-purple-500 to-fuchsia-600",
+    shadow: "shadow-[0_12px_28px_-6px_rgba(168,85,247,0.45)]",
+  },
+  cyan: {
+    gradient: "from-cyan-400 via-sky-500 to-blue-600",
+    shadow: "shadow-[0_12px_28px_-6px_rgba(6,182,212,0.45)]",
+  },
+};
+
 const integrationBenefits = [
   {
     title: "No Manual Entry",
     description: "Data flows automatically without spreadsheets.",
+    tone: "blue" as const,
+    label: "Automation",
+    icon: "flow" as const,
   },
   {
     title: "Real-time Sync",
     description: "Changes reflect in HR systems instantly.",
+    tone: "violet" as const,
+    label: "Live pipeline",
+    icon: "sync" as const,
   },
   {
     title: "Centralized Data",
     description: "One source of truth for all locations.",
+    tone: "emerald" as const,
+    label: "Single record",
+    icon: "layers" as const,
   },
 ] as const;
+
+const integrationBenefitPresentation: Record<
+  (typeof integrationBenefits)[number]["tone"],
+  {
+    rail: string;
+    iconTile: string;
+    iconFg: string;
+    outerGlow: string;
+    wash: string;
+    border: string;
+  }
+> = {
+  blue: {
+    rail: "from-sky-400 via-blue-500 to-indigo-600",
+    iconTile: "from-sky-500 to-blue-700 shadow-lg shadow-sky-600/25",
+    iconFg: "text-cyan-500",
+    outerGlow: "from-sky-400/20 via-blue-500/10 to-transparent",
+    wash: "from-white via-sky-50/40 to-white",
+    border: "border-slate-200/70 hover:border-sky-200/90",
+  },
+  violet: {
+    rail: "from-violet-400 via-purple-500 to-indigo-600",
+    iconTile: "from-violet-500 to-indigo-700 shadow-lg shadow-violet-600/25",
+    iconFg: "text-fuchsia-500",
+    outerGlow: "from-violet-400/18 via-purple-500/8 to-transparent",
+    wash: "from-white via-violet-50/35 to-white",
+    border: "border-slate-200/70 hover:border-violet-200/90",
+  },
+  emerald: {
+    rail: "from-emerald-400 via-teal-500 to-cyan-600",
+    iconTile: "from-emerald-500 to-teal-700 shadow-lg shadow-emerald-600/25",
+    iconFg: "text-lime-500",
+    outerGlow: "from-emerald-400/18 via-teal-500/8 to-transparent",
+    wash: "from-white via-emerald-50/35 to-white",
+    border: "border-slate-200/70 hover:border-emerald-200/90",
+  },
+};
 
 const modernTeamPoints = [
   {
@@ -207,7 +283,7 @@ const modernTeamPoints = [
 
 function FeatureIcon({
   kind,
-  className = "h-5 w-5 text-white",
+  className = "h-5 w-5 text-slate-900",
 }: {
   kind: (typeof accurateTrackingFeatures)[number]["icon"];
   className?: string;
@@ -264,57 +340,9 @@ function FeatureIcon({
   );
 }
 
-function WorkflowStepIcon({
-  kind,
-  className = "h-5 w-5 text-white",
-}: {
-  kind: (typeof workflowSteps)[number]["icon"];
-  className?: string;
-}) {
-  const cls = className;
-  if (kind === "open") {
-    return (
-      <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-        <rect x="7" y="3" width="10" height="18" rx="2" />
-        <path d="M11 18h2" />
-      </svg>
-    );
-  }
-  if (kind === "scan") {
-    return (
-      <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-        <path d="M4 8V6a2 2 0 012-2h2M20 8V6a2 2 0 00-2-2h-2M4 16v2a2 2 0 002 2h2M20 16v2a2 2 0 01-2 2h-2" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    );
-  }
-  if (kind === "captured") {
-    return (
-      <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    );
-  }
-  if (kind === "sync") {
-    return (
-      <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-        <path d="M4 12a8 8 0 0113.7-5.6L20 9" />
-        <path d="M20 12a8 8 0 01-13.7 5.6L4 15" />
-        <path d="M20 9h-3V6M4 15h3v3" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <path d="M4 19h16M6 16V8M12 16V5M18 16v-6" />
-    </svg>
-  );
-}
-
 function ModernTeamIcon({
   kind,
-  className = "h-4 w-4 text-blue-400",
+  className = "h-5 w-5 text-slate-900",
 }: {
   kind: (typeof modernTeamPoints)[number]["icon"];
   className?: string;
@@ -349,11 +377,74 @@ function ModernTeamIcon({
   );
 }
 
+function IntegrationBenefitIcon({
+  kind,
+  className = "h-5 w-5",
+  iconClassName = "text-white",
+}: {
+  kind: (typeof integrationBenefits)[number]["icon"];
+  className?: string;
+  iconClassName?: string;
+}) {
+  const svgCls =
+    `block shrink-0 overflow-visible drop-shadow-[0_1px_0_rgba(0,0,0,0.2)] ${iconClassName} ${className}`.trim();
+  if (kind === "flow") {
+    return (
+      <svg className={svgCls} viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path
+          d="M4 17V7M4 17h16M8 11l3-3 3 2 6-6"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+  if (kind === "sync") {
+    return (
+      <svg className={svgCls} viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path
+          d="M4 12a8 8 0 0113.66-5.66l.34.33M20 12a8 8 0 01-13.66 5.66l-.34-.33"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <path d="M20 9v3h-3M4 15v-3h3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={svgCls} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12.83 2.18a2 2 0 00-1.66 0L2.6 6.08a1 1 0 000 1.83l8.57 3.9a2 2 0 001.66 0l8.57-3.9a1 1 0 000-1.83L12.83 2.18z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2 12.08l8.58 3.91a2 2 0 001.66 0L21 12.08"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M2 17.08l8.58 3.91a2 2 0 001.66 0L21 17.08"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function MobileAppPage() {
   return (
     <div className="solution-product-section-gap min-h-screen overflow-x-hidden bg-white text-gray-900">
       <motion.section
-        className="w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
+        className="relative w-full border-b border-slate-100 bg-white pt-8 sm:pt-10 lg:pt-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.45 }}
@@ -365,7 +456,8 @@ export default function MobileAppPage() {
           transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
         >
           <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-            <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+            <SolutionHeroWaveDecor className="z-[1] pt-3 sm:pt-4 lg:pt-5" />
+            <div className="relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
               <video
                 className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
                 autoPlay
@@ -456,7 +548,7 @@ export default function MobileAppPage() {
         </motion.div>
       </motion.section>
 {/* 
-      <section className="border-b border-gray-100 py-14 lg:py-16 bg-white">
+      <section className="border-b border-gray-100 py-10 lg:py-14 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="max-w-3xl"
@@ -489,7 +581,7 @@ export default function MobileAppPage() {
         </div>
       </section> */}
 
-      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-white pb-0 pt-16 lg:pt-24">
+      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-white pb-0 pt-12 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 opacity-[0.5]" aria-hidden>
           <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-sky-200/40 blur-[100px]" />
           <div className="absolute -right-32 bottom-40 h-80 w-80 rounded-full bg-indigo-100/45 blur-[110px]" />
@@ -522,83 +614,72 @@ export default function MobileAppPage() {
             </p>
           </motion.div>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:mt-14 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-7">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:mt-14 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-7">
             {accurateTrackingFeatures.map((feature, idx) => {
-              const style = accurateTrackingPresentation[feature.tone];
+              const t = accurateTrackingThroughputByTone[feature.tone];
+              const metric = String(idx + 1).padStart(2, "0");
+              const chip = idx === 0 ? feature.pillar : "App";
               return (
-                <motion.article
+                <ThroughputMetricCard
                   key={feature.title}
-                  className={`group/at relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 p-6 shadow-[0_22px_56px_-36px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_64px_-40px_rgba(15,23,42,0.22)] ${style.hoverRing}`}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.06, 0.24) }}
-                >
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden" aria-hidden>
-                    <div
-                      className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover/at:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none ${style.bar}`}
-                    />
-                  </div>
-                  <div
-                    className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover/at:opacity-100 ${style.orb}`}
-                    aria-hidden
-                  />
-
-                  <div className="relative flex items-start justify-between gap-3">
-                    <span
-                      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 group-hover/at:scale-105 ${style.iconSurface}`}
-                    >
-                      <FeatureIcon kind={feature.icon} />
-                    </span>
-                  </div>
-                  <h3 className="relative mt-5 text-slate-900">
-                    {feature.title}
-                  </h3>
-                  <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                    {feature.description}
-                  </p>
-                </motion.article>
+                  title={feature.title}
+                  description={feature.description}
+                  chip={chip}
+                  metric={metric}
+                  accentBar={t.accentBar}
+                  iconWrap={t.iconWrap}
+                  hoverGlow={t.hoverGlow}
+                  index={idx}
+                  icon={<FeatureIcon kind={feature.icon} className="h-6 w-6 text-current" />}
+                />
               );
             })}
           </div>
         </div>
 
-        <div className="relative mx-auto max-w-7xl border-t border-slate-200/90 px-4 pb-16 pt-14 sm:px-6 lg:px-12 lg:pb-20 lg:pt-20">
+        <div className="relative mx-auto max-w-7xl overflow-hidden border-t border-slate-200/90 px-4 pb-16 pt-14 sm:px-6 lg:px-12 lg:pb-20 lg:pt-20">
           <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-slate-200/90 to-transparent lg:inset-x-12" aria-hidden />
+          <div className="pointer-events-none absolute -left-24 top-32 h-72 w-72 rounded-full bg-sky-400/15 blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -right-20 top-48 h-64 w-64 rounded-full bg-violet-400/15 blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute left-1/3 bottom-0 h-48 w-96 -translate-x-1/2 rounded-full bg-emerald-400/10 blur-3xl" aria-hidden />
 
           <motion.div
-            className="mx-auto max-w-3xl text-center lg:max-w-4xl"
+            className="relative z-[1] mx-auto max-w-3xl text-center lg:max-w-4xl"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--inops-blue)]">How it flows</p>
-            <h2 id="workflow-heading" className="mt-4 text-balance text-slate-900">
-              Seamless from{" "}
-              <span className="font-semibold text-[color:var(--inops-blue)]">
-                start to finish
-              </span>
+            <span className="inline-flex items-center rounded-full border border-slate-200/90 bg-slate-50/90 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 shadow-sm ring-1 ring-slate-900/[0.04]">
+              End to end flow
+            </span>
+            <h2 id="workflow-heading" className="mt-5 text-balance text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.12]">
+              Simple.{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+                Verified.
+              </span>{" "}
+              Everywhere.
             </h2>
             <div
-              className="mx-auto mt-5 h-1 w-14 rounded-full bg-gradient-to-r from-[color:var(--inops-blue)] via-sky-500 to-cyan-400 opacity-90 shadow-sm shadow-sky-500/25 sm:w-16"
+              className="mx-auto mt-5 h-1 w-16 rounded-full bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-400 opacity-90 shadow-sm shadow-sky-500/20 sm:w-20"
               aria-hidden
             />
             <p className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Employees punch in fast; supervisors see truth in real time, without chasing spreadsheets or reconciling
-              yesterday&apos;s exports.
+              A five-step path from the first tap to live roster visibility—designed to run{" "}
+              <span className="font-semibold text-slate-800">without manual rework.</span>
             </p>
           </motion.div>
 
-          {/* lg+: horizontal pipeline */}
-          <div className="relative mx-auto mt-14 hidden lg:mt-16 lg:block lg:max-w-6xl xl:max-w-7xl">
+          {/* lg+: colorful numbered circles + neutral connector (reference-style pipeline) */}
+          <div className="relative z-[1] mx-auto mt-16 hidden lg:mt-20 lg:block lg:max-w-6xl xl:max-w-7xl">
             <div
-              className="pointer-events-none absolute left-[9%] right-[9%] top-[2.125rem] z-0 h-[5px] rounded-full bg-gradient-to-r from-sky-400 via-blue-500 via-indigo-500 to-cyan-400 opacity-[0.38] shadow-[0_0_24px_rgba(56,189,248,0.25)]"
+              className="pointer-events-none absolute left-[10%] right-[10%] top-[1.75rem] z-0 h-px bg-slate-200"
               aria-hidden
             />
-            <ol className="relative z-10 grid grid-cols-5 gap-3 xl:gap-5">
+            <ol className="relative z-[1] grid list-none grid-cols-5 gap-2 p-0 xl:gap-5">
               {workflowSteps.map((step, idx) => {
-                const style = accurateTrackingPresentation[step.tone];
+                const stepLabel = String(idx + 1).padStart(2, "0");
+                const ring = workflowCircleStyles[step.tone];
                 return (
                   <motion.li
                     key={step.title}
@@ -606,57 +687,55 @@ export default function MobileAppPage() {
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.06, 0.24) }}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.06, 0.28) }}
                   >
-                    <span className="mb-2 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 shadow-sm ring-1 ring-slate-200/90">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
                     <div
-                      className={`relative flex h-[3.5rem] w-[3.5rem] shrink-0 items-center justify-center rounded-2xl shadow-lg ring-4 ring-white transition-transform duration-300 hover:scale-105 ${style.iconSurface}`}
+                      className={`relative z-[1] flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br font-sans text-lg font-bold tabular-nums text-white ring-[5px] ring-white ${ring.gradient} ${ring.shadow} transition-transform duration-300 ease-out hover:scale-105 hover:brightness-105`}
                     >
-                      <WorkflowStepIcon kind={step.icon} />
+                      {stepLabel}
                     </div>
-                    <h3 className="mt-4 text-slate-900">{step.title}</h3>
-                    <p className="mt-2 text-xs leading-snug text-slate-600 xl:text-[13px]">{step.description}</p>
+                    <h3 className="mt-6 text-lg font-bold leading-snug tracking-tight text-slate-900 xl:text-xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2.5 max-w-[13.5rem] text-pretty text-sm leading-relaxed text-slate-600 xl:max-w-[14.5rem] xl:text-[15px] xl:leading-relaxed">
+                      {step.description}
+                    </p>
                   </motion.li>
                 );
               })}
             </ol>
           </div>
 
-          {/* Mobile / tablet: vertical timeline */}
-          <ol className="relative mx-auto mt-12 max-w-lg lg:hidden">
+          {/* Mobile / tablet: vertical pipeline with matching colorful nodes */}
+          <ol className="relative z-[1] mx-auto mt-12 max-w-lg list-none space-y-0 p-0 lg:hidden">
             {workflowSteps.map((step, idx) => {
               const isLast = idx === workflowSteps.length - 1;
-              const style = accurateTrackingPresentation[step.tone];
+              const stepLabel = String(idx + 1).padStart(2, "0");
+              const ring = workflowCircleStyles[step.tone];
               return (
                 <motion.li
                   key={step.title}
-                  className="relative flex gap-4 pb-10 last:pb-0"
+                  className="relative flex gap-4 pb-8 last:pb-0 sm:gap-5 sm:pb-10"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(idx * 0.05, 0.2) }}
                 >
-                  <div className="flex w-[3.25rem] shrink-0 flex-col items-center">
+                  <div className="flex w-14 shrink-0 flex-col items-center sm:w-16">
                     <div
-                      className={`relative z-[1] flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-2xl shadow-lg ring-2 ring-white ${style.iconSurface}`}
+                      className={`relative z-[1] flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br text-sm font-bold tabular-nums text-white ring-4 ring-white shadow-md sm:h-14 sm:w-14 sm:text-base ${ring.gradient} ${ring.shadow}`}
                     >
-                      <WorkflowStepIcon kind={step.icon} />
+                      {stepLabel}
                     </div>
                     {!isLast ? (
-                      <div
-                        className="mt-1 min-h-[2.75rem] w-[3px] flex-1 rounded-full bg-gradient-to-b from-sky-400 via-indigo-400 to-violet-500 opacity-70"
-                        aria-hidden
-                      />
+                      <div className="mt-1 flex flex-1 flex-col items-center pt-0.5" aria-hidden>
+                        <div className="h-full min-h-[2.25rem] w-px grow bg-slate-200 sm:min-h-[2.75rem]" />
+                      </div>
                     ) : null}
                   </div>
-                  <div className="min-w-0 pb-1 pt-0.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      Step {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-slate-900">{step.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{step.description}</p>
+                  <div className="min-w-0 pb-0.5 pt-1">
+                    <h3 className="text-base font-bold leading-snug text-slate-900 sm:text-lg">{step.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600 sm:text-[15px]">{step.description}</p>
                   </div>
                 </motion.li>
               );
@@ -718,10 +797,7 @@ export default function MobileAppPage() {
                     </motion.li>
                   ))}
                 </ul>
-                <Link
-                  href="/contact"
-                  className="group mt-9 inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 ring-1 ring-white/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                >
+                <Link href="/contact" className={`${inopsUi.btnPrimary} group mt-9 gap-2 shadow-lg`}>
                   Explore Dashboard Features
                   <svg
                     className="h-4 w-4 transition group-hover:translate-x-0.5"
@@ -966,7 +1042,7 @@ export default function MobileAppPage() {
                         <path d="M7 18a4 4 0 010-8 5 5 0 019.7 1A3.5 3.5 0 0117 18H7z" />
                         <path d="M12 12v5M10 15l2 2 2-2" />
                       </svg>
-                      <span className="relative z-[1] mt-1.5 text-[10px] font-bold tracking-[0.2em] text-white/95">CORE CLOUD</span>
+                      <span className="relative z-[1] mt-1.5 text-[10px] font-bold tracking-[0.2em] text-blue/95">CORE CLOUD</span>
                     </motion.div>
                   </div>
 
@@ -1026,35 +1102,77 @@ export default function MobileAppPage() {
               </div>
             </motion.div>
 
-            <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6 lg:mt-16">
-              {integrationBenefits.map((item, idx) => {
-                const accents = [
-                  "from-blue-500 to-indigo-600",
-                  "from-violet-500 to-purple-600",
-                  "from-emerald-500 to-teal-600",
-                ] as const;
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.45, ease: smoothEase, delay: idx * 0.06 }}
-                    className="group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 text-center shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-slate-300/90 hover:shadow-lg"
-                  >
-                    <div className={`mx-auto mb-4 h-1 w-12 rounded-full bg-gradient-to-r ${accents[idx]}`} aria-hidden />
-                    <h3 className="text-slate-900">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                  </motion.div>
-                );
-              })}
+            <div className="relative mx-auto mt-16 max-w-6xl lg:mt-20">
+              <div
+                className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-slate-200/40 via-transparent to-slate-200/30 blur-xl sm:-inset-4"
+                aria-hidden
+              />
+              <div className="relative rounded-[1.65rem] border border-slate-200/60 bg-slate-50/40 p-1.5 shadow-inner shadow-slate-900/[0.04] ring-1 ring-white/80 sm:rounded-[1.85rem] sm:p-2">
+                <ul className="grid list-none grid-cols-1 gap-1.5 p-0 sm:grid-cols-3 sm:gap-2">
+                  {integrationBenefits.map((item, idx) => {
+                    const pres = integrationBenefitPresentation[item.tone];
+                    const step = String(idx + 1).padStart(2, "0");
+                    return (
+                      <motion.li
+                        key={item.title}
+                        initial={{ opacity: 0, y: 18 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={viewport}
+                        transition={{ duration: 0.5, ease: smoothEase, delay: idx * 0.08 }}
+                        className="group relative min-h-0"
+                      >
+                        <div
+                          className={`pointer-events-none absolute -inset-px rounded-[1.35rem] bg-gradient-to-br opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-100 ${pres.outerGlow}`}
+                          aria-hidden
+                        />
+                        <div
+                          className={`relative flex h-full min-h-[11.5rem] flex-col overflow-hidden rounded-[1.35rem] border bg-gradient-to-b px-5 pb-6 pt-5 text-left shadow-[0_20px_50px_-38px_rgba(15,23,42,0.12)] transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] sm:min-h-[12.5rem] sm:px-6 sm:pb-7 sm:pt-6 ${pres.border} ${pres.wash} hover:-translate-y-0.5 hover:shadow-[0_28px_56px_-36px_rgba(15,23,42,0.14)]`}
+                        >
+                          <div
+                            className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r opacity-95 ${pres.rail}`}
+                            aria-hidden
+                          />
+                          <div className="flex items-start justify-between gap-3">
+                            <span className="font-mono text-[11px] font-medium tabular-nums tracking-widest text-slate-400">
+                              {step}
+                            </span>
+                            <div
+                              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ring-2 ring-white/90 ${pres.iconTile}`}
+                              aria-hidden
+                            >
+                              <IntegrationBenefitIcon
+                                kind={item.icon}
+                                iconClassName={pres.iconFg}
+                                className="h-5 w-5"
+                              />
+                            </div>
+                          </div>
+                          <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                            {item.label}
+                          </p>
+                          <h3 className="mt-2 text-[1.05rem] font-semibold leading-snug tracking-[-0.02em] text-slate-900 sm:text-lg">
+                            {item.title}
+                          </h3>
+                          <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px] sm:leading-relaxed">
+                            {item.description}
+                          </p>
+                          <div
+                            className={`pointer-events-none absolute -bottom-8 right-0 h-24 w-24 rounded-full bg-gradient-to-br opacity-[0.12] blur-2xl transition-opacity duration-500 group-hover:opacity-[0.2] ${pres.rail}`}
+                            aria-hidden
+                          />
+                        </div>
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="w-full border-t border-slate-200/90 pb-12 pt-12 lg:pb-16 lg:pt-16">
           <motion.section
-            className="relative overflow-hidden border-y border-white/[0.06] bg-gradient-to-b from-[#010409] via-[#0b1220] to-[#020617] py-14 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.85)] sm:py-16 lg:py-20"
+            className="relative overflow-hidden border-y border-white/[0.06] bg-gradient-to-b from-[#010409] via-[#0b1220] to-[#020617] py-10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.85)] sm:py-14 lg:py-16"
             aria-labelledby="why-smartattendance-heading"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1068,41 +1186,43 @@ export default function MobileAppPage() {
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(56,189,248,0.08),transparent)]" />
             </div>
 
-            <div className="relative mx-auto grid min-w-0 max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-14 lg:px-12">
-              <div className="min-w-0">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 shadow-lg shadow-black/30 backdrop-blur-md ring-1 ring-white/5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)]" aria-hidden />
-                  Operations-ready
-                </span>
-                <h2 id="why-smartattendance-heading" className="mt-5">
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <div className="mx-auto max-w-3xl text-center sm:max-w-4xl">
+                <div className="flex justify-center">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 shadow-lg shadow-black/30 backdrop-blur-md ring-1 ring-white/5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.8)]" aria-hidden />
+                    Operations-ready
+                  </span>
+                </div>
+                <h2 id="why-smartattendance-heading" className="mt-5 text-balance text-center">
                   <span className="text-white">
-                    Why Modern Teams <br className="hidden sm:block" /> Choose SmartAttendance
+                    Why Modern Teams Choose SmartAttendance
                   </span>
                 </h2>
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
+                <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-slate-400 sm:text-lg">
                   Built for speed, accuracy, and enterprise-grade reliability.
                 </p>
-                <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
-                  {modernTeamPoints.map((point, idx) => {
+              </div>
+
+              <div className="relative mt-12 grid min-w-0 grid-cols-1 items-start gap-12 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-14">
+                <div className="min-w-0">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
+                    {modernTeamPoints.map((point, idx) => {
                     const accents = [
                       {
                         tile: "from-sky-500 to-blue-600",
-                        ring: "ring-sky-400/25",
                         hoverBorder: "hover:border-sky-400/35",
                       },
                       {
                         tile: "from-violet-500 to-indigo-600",
-                        ring: "ring-violet-400/25",
                         hoverBorder: "hover:border-violet-400/35",
                       },
                       {
                         tile: "from-emerald-500 to-teal-600",
-                        ring: "ring-emerald-400/25",
                         hoverBorder: "hover:border-emerald-400/35",
                       },
                       {
                         tile: "from-amber-500 to-orange-600",
-                        ring: "ring-amber-400/25",
                         hoverBorder: "hover:border-amber-400/35",
                       },
                     ] as const;
@@ -1121,31 +1241,31 @@ export default function MobileAppPage() {
                           aria-hidden
                         />
                         <span
-                          className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${a.tile} text-white shadow-lg ${a.ring} ring-2 ring-white/10`}
+                          className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl border-2 border-white/35 bg-gradient-to-br ${a.tile} shadow-lg`}
                         >
-                          <ModernTeamIcon kind={point.icon} className="h-5 w-5 text-white" />
+                          <ModernTeamIcon kind={point.icon} className="h-5 w-5 text-white drop-shadow-sm" />
                         </span>
                         <h3 className="relative mt-4 text-white">{point.title}</h3>
                         <p className="relative mt-2 text-sm leading-relaxed text-slate-400">{point.description}</p>
                       </motion.article>
                     );
                   })}
+                  </div>
                 </div>
-              </div>
 
               <motion.div
-                className="relative flex w-full min-w-0 justify-center mt-60 lg:justify-end"
+                className="relative flex w-full min-w-0 justify-center mt-10 sm:mt-12 lg:mt-0"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.1 }}
               >
-                <div className="relative w-full max-w-[min(100%,620px)] sm:max-w-[min(100%,720px)] lg:max-w-[min(100%,880px)]">
+                <div className="relative mt-13 w-full max-w-[min(100%,620px)] sm:max-w-[min(100%,720px)] lg:max-w-[min(100%,880px)]">
                   <div
                     className="pointer-events-none absolute -inset-6 rounded-[2.25rem] bg-gradient-to-br from-sky-500/25 via-indigo-500/15 to-violet-600/20 blur-3xl"
                     aria-hidden
                   />
-                  <div className="relative rounded-[1.85rem] border border-white/[0.12] bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-[10px] shadow-[0_32px_64px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.06] backdrop-blur-sm">
+                  <div className="relative mt-0 rounded-[1.85rem] border border-white/[0.12] bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-[10px] shadow-[0_32px_64px_-24px_rgba(0,0,0,0.75)] ring-1 ring-white/[0.06] backdrop-blur-sm">
                     <div className="pointer-events-none absolute inset-0 rounded-[1.6rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.12)_0%,transparent_45%,transparent_100%)] opacity-50" aria-hidden />
                     <figure className="relative m-0 overflow-hidden rounded-[1.45rem] ring-1 ring-black/40">
                       <div className="relative aspect-[677/369] w-full overflow-hidden bg-[#050a14]">
@@ -1185,11 +1305,12 @@ export default function MobileAppPage() {
                       <figcaption className="sr-only">SmartAttendance mobile and workforce experience</figcaption>
                     </figure>
                   </div>
-                  <p className="mt-4 text-center text-[11px] font-medium tracking-wide text-slate-500 lg:text-left">
+                  <p className="mt-4 text-center text-[11px] font-medium tracking-wide text-slate-500">
                     Product UI preview · illustrative sample data
                   </p>
                 </div>
               </motion.div>
+              </div>
             </div>
           </motion.section>
         </div>

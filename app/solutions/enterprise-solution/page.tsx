@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { FlyInText } from "@/app/components/FlyInText";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -49,7 +50,10 @@ const nexusUnifiedFlowSteps = [
   {
     stage: "Ingestion",
     title: "Assets & Inventory",
-    iconGlow: "from-blue-500 to-indigo-600 shadow-blue-500/30",
+    frame: "from-sky-300 via-blue-500 to-indigo-600 shadow-[0_12px_36px_-12px_rgba(59,130,246,0.45)]",
+    stageGradient: "from-blue-600 via-indigo-600 to-violet-700",
+    iconGlow:
+      "from-sky-400 via-blue-600 to-indigo-700 shadow-[0_8px_28px_-6px_rgba(37,99,235,0.55)] ring-2 ring-white/70",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <ellipse cx="12" cy="6" rx="5" ry="2.5" />
@@ -61,7 +65,10 @@ const nexusUnifiedFlowSteps = [
   {
     stage: "Sync",
     title: "Real-Time Tracking",
-    iconGlow: "from-sky-500 to-cyan-600 shadow-sky-500/25",
+    frame: "from-cyan-300 via-sky-500 to-blue-600 shadow-[0_12px_36px_-12px_rgba(6,182,212,0.42)]",
+    stageGradient: "from-cyan-600 via-sky-600 to-blue-700",
+    iconGlow:
+      "from-cyan-400 via-sky-500 to-blue-700 shadow-[0_8px_28px_-6px_rgba(14,165,233,0.5)] ring-2 ring-white/70",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <circle cx="12" cy="12" r="8" />
@@ -74,7 +81,10 @@ const nexusUnifiedFlowSteps = [
   {
     stage: "Compute",
     title: "Optimization Engine",
-    iconGlow: "from-violet-500 to-indigo-600 shadow-violet-500/25",
+    frame: "from-fuchsia-400 via-violet-500 to-indigo-600 shadow-[0_12px_36px_-12px_rgba(139,92,246,0.45)]",
+    stageGradient: "from-violet-600 via-fuchsia-600 to-indigo-700",
+    iconGlow:
+      "from-fuchsia-500 via-violet-600 to-indigo-700 shadow-[0_8px_28px_-6px_rgba(124,58,237,0.5)] ring-2 ring-white/70",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <path d="m13 2-7 10h5l-1 10 8-12h-5l0-8Z" />
@@ -84,7 +94,10 @@ const nexusUnifiedFlowSteps = [
   {
     stage: "Control",
     title: "Unified Dashboard",
-    iconGlow: "from-indigo-500 to-blue-700 shadow-indigo-500/25",
+    frame: "from-indigo-300 via-blue-500 to-cyan-500 shadow-[0_12px_36px_-12px_rgba(99,102,241,0.42)]",
+    stageGradient: "from-indigo-600 via-blue-600 to-cyan-700",
+    iconGlow:
+      "from-indigo-500 via-blue-600 to-cyan-600 shadow-[0_8px_28px_-6px_rgba(79,70,229,0.48)] ring-2 ring-white/70",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <rect x="4" y="4" width="6" height="6" rx="1.5" />
@@ -97,7 +110,10 @@ const nexusUnifiedFlowSteps = [
   {
     stage: "Insight",
     title: "Actionable Reports",
-    iconGlow: "from-emerald-500 to-teal-600 shadow-emerald-500/25",
+    frame: "from-emerald-300 via-teal-500 to-cyan-500 shadow-[0_12px_36px_-12px_rgba(16,185,129,0.45)]",
+    stageGradient: "from-emerald-600 via-teal-600 to-cyan-700",
+    iconGlow:
+      "from-emerald-400 via-teal-500 to-cyan-600 shadow-[0_8px_28px_-6px_rgba(20,184,166,0.5)] ring-2 ring-white/70",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <path d="M4 19h16" />
@@ -108,6 +124,8 @@ const nexusUnifiedFlowSteps = [
     ),
   },
 ] as const;
+
+const nexusFlowConnectorChevronClass = ["text-sky-500", "text-violet-500", "text-indigo-500", "text-teal-500"] as const;
 
 export default function EnterpriseSolutionPage() {
   const pathname = usePathname();
@@ -127,7 +145,14 @@ export default function EnterpriseSolutionPage() {
       });
     };
 
-    window.setTimeout(scrollToHashTarget, 0);
+    const id = window.location.hash.slice(1);
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    if (id) {
+      window.requestAnimationFrame(() => {
+        scrollToHashTarget();
+      });
+    }
+
     window.addEventListener("hashchange", scrollToHashTarget);
     return () => window.removeEventListener("hashchange", scrollToHashTarget);
   }, [pathname]);
@@ -165,7 +190,7 @@ export default function EnterpriseSolutionPage() {
       iconWrap:
         "from-blue-600 via-blue-500 to-indigo-600 shadow-[0_10px_28px_-10px_rgba(37,99,235,0.55)] ring-1 ring-white/25",
       icon: (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
           <path d="m12 3 7 4v10l-7 4-7-4V7l7-4Z" />
           <path d="m12 3 7 4-7 4-7-4" />
           <path d="M12 11v10" />
@@ -184,7 +209,7 @@ export default function EnterpriseSolutionPage() {
       iconWrap:
         "from-sky-500 via-cyan-500 to-teal-600 shadow-[0_10px_28px_-10px_rgba(14,165,233,0.45)] ring-1 ring-white/25",
       icon: (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
           <path d="M6 6h12" />
           <path d="M6 12h8" />
           <path d="M6 18h12" />
@@ -206,7 +231,7 @@ export default function EnterpriseSolutionPage() {
       iconWrap:
         "from-violet-600 via-indigo-600 to-blue-700 shadow-[0_10px_28px_-10px_rgba(109,40,217,0.45)] ring-1 ring-white/25",
       icon: (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
           <rect x="5" y="4" width="14" height="16" rx="2" />
           <path d="M8 8h8" />
           <path d="M8 12h8" />
@@ -265,7 +290,7 @@ export default function EnterpriseSolutionPage() {
       />
 
       <section
-        className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/90 via-white to-blue-50/25 py-14 lg:py-20"
+        className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/90 via-white to-blue-50/25 py-10 lg:py-16"
         aria-labelledby="core-modules-heading"
       >
         <div
@@ -306,14 +331,14 @@ export default function EnterpriseSolutionPage() {
           </motion.div>
 
           <motion.div
-            className="relative mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-5 lg:gap-7"
+            className="relative mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-4 lg:gap-5"
             variants={modulesGridContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
           >
             <div
-              className="pointer-events-none absolute left-[16%] right-[16%] top-10 hidden h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent md:block"
+              className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent md:block"
               aria-hidden
             />
 
@@ -322,20 +347,18 @@ export default function EnterpriseSolutionPage() {
                 key={module.title}
                 variants={modulesCard}
                 whileHover={hoverLift}
-                className={`rounded-[1.35rem] bg-gradient-to-br p-[1px] shadow-[0_24px_56px_-34px_rgba(15,23,42,0.18)] ${module.borderGradient}`}
+                className={`rounded-2xl bg-gradient-to-br p-px shadow-[0_18px_44px_-28px_rgba(15,23,42,0.14)] ${module.borderGradient}`}
               >
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.3rem] border border-white/70 bg-white/95 p-7 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-sm sm:p-8">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-[0.95rem] border border-white/70 bg-white/95 p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-sm sm:rounded-[1rem] sm:p-6">
                   <div
-                    className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[3px] overflow-hidden rounded-t-[1.25rem]"
+                    className="pointer-events-none absolute inset-x-0 top-0 z-10 h-1 overflow-hidden rounded-t-[0.9rem] sm:rounded-t-[0.95rem]"
                     aria-hidden
                   >
-                    <div
-                      className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100 ${module.topBarGradient}`}
-                    />
+                    <div className={`h-full w-full bg-gradient-to-r ${module.topBarGradient}`} />
                   </div>
 
                   <span
-                    className="pointer-events-none absolute -right-1 top-4 font-mono text-[4.5rem] font-black leading-none tracking-tighter text-slate-100 sm:right-2 sm:top-5 sm:text-[5rem]"
+                    className={`pointer-events-none absolute -right-0.5 top-3 bg-gradient-to-r bg-clip-text font-mono text-[3.25rem] font-black leading-none tracking-tighter text-transparent opacity-[0.72] sm:right-1 sm:top-4 sm:text-[3.5rem] sm:opacity-[0.78] ${module.topBarGradient}`}
                     aria-hidden
                   >
                     {module.step}
@@ -343,29 +366,29 @@ export default function EnterpriseSolutionPage() {
 
                   <div className="relative flex flex-wrap items-center gap-2">
                     <div
-                      className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-white ${module.iconWrap}`}
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br text-white ${module.iconWrap}`}
                     >
                       {module.icon}
                     </div>
-                    <span className="rounded-full border border-slate-200/90 bg-slate-50/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <span className="rounded-full border border-slate-200/90 bg-slate-50/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
                       {module.tag}
                     </span>
                   </div>
 
-                  <h3 className="relative mt-5 text-slate-900">
+                  <h3 className="relative mt-4 text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
                     {module.title}
                   </h3>
-                  <p className="relative mt-3 flex-1 text-base leading-relaxed text-slate-600 sm:text-[1.05rem]">
+                  <p className="relative mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem]">
                     {module.description}
                   </p>
 
                   <Link
                     href={module.href}
-                    className="relative mt-8 inline-flex items-center gap-2 self-start rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_28px_-12px_rgba(15,23,42,0.45)] transition-all duration-200 hover:-translate-y-0.5 hover:from-slate-800 hover:to-slate-700 hover:shadow-[0_14px_36px_-14px_rgba(59,130,246,0.35)] active:scale-[0.98] group/link"
+                    className="relative mt-6 inline-flex items-center gap-1.5 self-start rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-[0_8px_22px_-10px_rgba(37,99,235,0.45)] transition-all duration-200 hover:-translate-y-0.5 hover:from-blue-700 hover:to-indigo-700 hover:shadow-[0_12px_28px_-12px_rgba(37,99,235,0.4)] active:scale-[0.98] group/link"
                   >
                     Explore module
                     <svg
-                      className="h-4 w-4 transition-transform duration-200 group-hover/link:translate-x-0.5"
+                      className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -384,7 +407,7 @@ export default function EnterpriseSolutionPage() {
 
       <section
         id="asset-management"
-        className="scroll-mt-24 bg-white py-12 lg:py-16 lg:scroll-mt-28"
+        className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
@@ -495,7 +518,7 @@ export default function EnterpriseSolutionPage() {
 
       <section
         id="route-optimization"
-        className="scroll-mt-24 bg-white py-12 lg:py-16 lg:scroll-mt-28"
+        className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
@@ -511,8 +534,7 @@ export default function EnterpriseSolutionPage() {
                 style={{ backgroundImage: `url(${moduleVisuals.efficiencyGain})` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/45 via-slate-900/20 to-transparent" aria-hidden />
-                <div className="relative aspect-[16/9] p-4 sm:p-6">
-                  <div className="h-full w-full rounded-xl border border-white/20 bg-white/5 backdrop-blur-[1px]" />
+                <div className="relative aspect-[16/9]">
                   <FlyInText
                     direction="up"
                     delay={0.12}
@@ -607,7 +629,7 @@ export default function EnterpriseSolutionPage() {
 
       <section
         id="warehouse-management"
-        className="scroll-mt-24 bg-white py-12 lg:py-16 lg:scroll-mt-28"
+        className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
@@ -715,7 +737,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-10 pt-2 lg:pb-12">
+      <section className="bg-white pb-8 pt-2 lg:pb-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="rounded-2xl border border-gray-200 bg-white px-5 py-7 shadow-[0_14px_35px_-28px_rgba(15,23,42,0.35)] sm:px-7"
@@ -744,8 +766,28 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="py-14 lg:py-18 bg-white" aria-labelledby="unified-platform-flow-heading">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <section
+        className="relative overflow-hidden py-10 lg:py-14"
+        aria-labelledby="unified-platform-flow-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-50/95 via-white to-sky-50/40"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-blue-400/20 blur-[100px]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -right-24 top-1/3 h-80 w-80 rounded-full bg-violet-400/18 blur-[110px]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-[min(90%,48rem)] -translate-x-1/2 rounded-full bg-emerald-300/15 blur-[90px]"
+          aria-hidden
+        />
+
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             className="mx-auto max-w-3xl text-center lg:max-w-4xl"
             initial={{ opacity: 0, y: 16 }}
@@ -753,12 +795,13 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center rounded-full border border-slate-200/90 bg-slate-50/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600 shadow-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-gradient-to-r from-white via-sky-50/90 to-indigo-50/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm shadow-sky-500/10 ring-1 ring-sky-200/60">
+              <span className="h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500" aria-hidden />
               End-to-end flow
             </span>
             <h2 id="unified-platform-flow-heading" className="mt-5 text-gray-900">
               Unified Platform{" "}
-              <span className="font-semibold text-[color:var(--inops-blue)]">
+              <span className="bg-gradient-to-r from-[color:var(--inops-blue)] via-sky-500 to-emerald-600 bg-clip-text font-semibold text-transparent">
                 Flow
               </span>
             </h2>
@@ -776,7 +819,11 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
           >
             <div
-              className="pointer-events-none absolute left-[4%] right-[4%] top-[2.125rem] h-[3px] rounded-full bg-gradient-to-r from-blue-100 via-indigo-200 to-emerald-100 opacity-90"
+              className="pointer-events-none absolute left-[3%] right-[3%] top-[2.125rem] h-1 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 via-violet-500 via-indigo-500 via-amber-400 to-emerald-500 opacity-[0.85] shadow-[0_2px_16px_-2px_rgba(59,130,246,0.35)]"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute left-[3%] right-[3%] top-[2.35rem] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent"
               aria-hidden
             />
 
@@ -787,14 +834,18 @@ export default function EnterpriseSolutionPage() {
                     variants={platformFlowItem}
                     className="group relative z-[1] flex min-w-0 flex-1 flex-col items-center px-1 text-center sm:px-2"
                   >
-                    <div className="mx-auto rounded-2xl bg-gradient-to-br from-white to-slate-50 p-[3px] shadow-[0_12px_32px_-18px_rgba(15,23,42,0.2)] ring-1 ring-slate-200/70 transition-transform duration-300 group-hover:-translate-y-1">
+                    <div
+                      className={`mx-auto rounded-2xl bg-gradient-to-br p-[3px] transition-[transform,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:shadow-lg ${step.frame}`}
+                    >
                       <div
                         className={`flex h-[3.75rem] w-[3.75rem] items-center justify-center rounded-[0.85rem] bg-gradient-to-br text-white ${step.iconGlow}`}
                       >
                         {step.icon}
                       </div>
                     </div>
-                    <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 sm:text-[11px]">
+                    <p
+                      className={`mt-5 bg-gradient-to-r bg-clip-text text-[10px] font-bold uppercase tracking-[0.2em] text-transparent sm:text-[11px] ${step.stageGradient}`}
+                    >
                       {step.stage}
                     </p>
                     <p className="mt-1.5 text-xs font-semibold leading-snug text-slate-900 sm:text-sm lg:text-base">
@@ -805,10 +856,10 @@ export default function EnterpriseSolutionPage() {
                   {index < nexusUnifiedFlowSteps.length - 1 ? (
                     <motion.div
                       variants={platformFlowItem}
-                      className="hidden shrink-0 self-start pt-[2.75rem] text-slate-500 lg:flex lg:w-6 lg:items-center lg:justify-center"
+                      className={`hidden shrink-0 self-start pt-[2.75rem] lg:flex lg:w-6 lg:items-center lg:justify-center ${nexusFlowConnectorChevronClass[index] ?? "text-slate-400"}`}
                       aria-hidden
                     >
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <svg className="h-5 w-5 drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="m9 6 6 6-6 6" />
                       </svg>
                     </motion.div>
@@ -829,15 +880,23 @@ export default function EnterpriseSolutionPage() {
               <motion.article
                 key={step.title}
                 variants={platformFlowItem}
-                className="flex items-start gap-4 rounded-2xl border border-slate-200/90 bg-white p-4 shadow-[0_8px_28px_-22px_rgba(15,23,42,0.12)] ring-1 ring-slate-900/[0.02] transition-shadow duration-300 hover:shadow-[0_14px_36px_-24px_rgba(59,130,246,0.12)]"
+                className="relative flex items-start gap-4 overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-4 shadow-[0_8px_28px_-22px_rgba(15,23,42,0.12)] ring-1 ring-slate-900/[0.02] transition-shadow duration-300 hover:shadow-[0_14px_36px_-24px_rgba(59,130,246,0.18)]"
               >
                 <div
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white ${step.iconGlow}`}
+                  className={`pointer-events-none absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r opacity-95 ${step.frame}`}
+                  aria-hidden
+                />
+                <div
+                  className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white ${step.iconGlow}`}
                 >
                   {step.icon}
                 </div>
-                <div className="min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">{step.stage}</p>
+                <div className="relative min-w-0 pt-0.5">
+                  <p
+                    className={`inline-block bg-gradient-to-r bg-clip-text text-[10px] font-bold uppercase tracking-[0.18em] text-transparent ${step.stageGradient}`}
+                  >
+                    {step.stage}
+                  </p>
                   <p className="mt-1 text-sm font-semibold text-slate-900">{step.title}</p>
                 </div>
               </motion.article>
@@ -851,7 +910,7 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
           >
-            <span className="inline-flex max-w-xl text-center rounded-full border border-indigo-100 bg-gradient-to-r from-slate-50 to-blue-50/70 px-6 py-2.5 text-sm font-medium leading-snug text-slate-600 shadow-sm">
+            <span className="inline-flex max-w-xl rounded-full border border-indigo-200/80 bg-gradient-to-r from-sky-50 via-indigo-50/90 to-emerald-50/80 px-6 py-2.5 text-center text-sm font-medium leading-snug text-slate-700 shadow-md shadow-indigo-500/10 ring-1 ring-sky-100/80">
               All operations connected through a single intelligent system
             </span>
           </motion.div>
@@ -859,7 +918,7 @@ export default function EnterpriseSolutionPage() {
       </section>
 
       <section
-        className="relative overflow-hidden border-b border-white/10 bg-slate-950 py-16 text-white lg:py-24"
+        className="relative overflow-hidden border-b border-white/10 bg-slate-950 py-12 text-white lg:py-20"
         aria-labelledby="nexus-platform-capabilities-heading"
       >
         <div
@@ -880,110 +939,127 @@ export default function EnterpriseSolutionPage() {
         />
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-end lg:gap-14">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-start lg:gap-x-12">
             <motion.div
-              className="lg:pb-2"
+              className="self-start lg:max-w-xl lg:pt-0"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
               transition={{ duration: 0.55, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
+              <div className="rounded-2xl  p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md sm:p-7">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 backdrop-blur-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
+                  </span>
+                  Enterprise platform
                 </span>
-                Enterprise platform
-              </span>
-              <h2 id="nexus-platform-capabilities-heading" className="mt-6">
-                Platform capabilities for{" "}
-                <span className="font-semibold text-slate-300">
-                  resilience at scale
-                </span>
-              </h2>
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-400 sm:text-lg">
-                Built for multi-site complexity, single pane of glass, consistent governance, and
-                integrations that keep pace with how large operators actually run day to day.
-              </p>
-              <Link
-                href="/contact"
-                className="group mt-9 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_40px_-12px_rgba(59,130,246,0.65)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_48px_-14px_rgba(99,102,241,0.55)] active:scale-[0.98]"
-              >
-                Plan a capability review
-                <svg
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  aria-hidden
-                >
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
+                <h2 id="nexus-platform-capabilities-heading" className="mt-6">
+                  Platform capabilities for{" "}
+                  <span className="font-semibold text-slate-300">
+                    resilience at scale
+                  </span>
+                </h2>
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-400 sm:text-lg">
+                  Built for multi-site complexity, single pane of glass, consistent governance, and
+                  integrations that keep pace with how large operators actually run day to day.
+                </p>
+                <Link href="/contact" className={`${inopsUi.btnPrimary} group mt-8 gap-2 shadow-lg`}>
+                  Plan a capability review
+                  <svg
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden
+                  >
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </Link>
+              </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:gap-4">
-              {[
-                {
-                  title: "Centralized Dashboard",
-                  subtitle: "One command center for every site, role, and SLA.",
-                  span: "lg:col-span-7",
-                  glow: "from-sky-500/30 via-blue-500/10 to-transparent",
-                  iconWrap: "from-sky-400/25 to-blue-600/20 text-sky-200 ring-sky-400/25",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <rect x="4" y="4" width="6" height="6" rx="1.5" />
-                      <rect x="14" y="4" width="6" height="6" rx="1.5" />
-                      <rect x="4" y="14" width="6" height="6" rx="1.5" />
-                      <rect x="14" y="14" width="6" height="6" rx="1.5" />
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Multi-location Support",
-                  subtitle: "Roll out visibility and policy across regions without silos.",
-                  span: "lg:col-span-5",
-                  glow: "from-cyan-500/25 via-teal-500/10 to-transparent",
-                  iconWrap: "from-cyan-400/25 to-teal-600/15 text-cyan-200 ring-cyan-400/20",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <circle cx="12" cy="12" r="8" />
-                      <path d="M4 12h16" />
-                      <path d="M12 4a12 12 0 0 1 0 16" />
-                      <path d="M12 4a12 12 0 0 0 0 16" />
-                    </svg>
-                  ),
-                },
-                {
-                  title: "Real-time Insights",
-                  subtitle: "Live telemetry and alerts, not yesterday's batch report.",
-                  span: "lg:col-span-5",
-                  glow: "from-violet-500/30 via-fuchsia-500/10 to-transparent",
-                  iconWrap: "from-violet-400/30 to-fuchsia-600/15 text-violet-200 ring-violet-400/25",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <path d="m13 2-7 10h5l-1 10 8-12h-5l0-8Z" />
-                    </svg>
-                  ),
-                },
-                {
-                  title: "System Integrations",
-                  subtitle: "API-first hooks into ERP, WMS, HRIS, and custom stacks.",
-                  span: "lg:col-span-7",
-                  glow: "from-amber-500/20 via-orange-500/10 to-transparent",
-                  iconWrap: "from-amber-400/20 to-orange-600/15 text-amber-200 ring-amber-400/20",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <circle cx="12" cy="12" r="3" />
-                      <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.03.03a2 2 0 1 1-2.83 2.83l-.03-.03A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1V21a2 2 0 1 1-4 0v-.05a1.7 1.7 0 0 0-.4-1 1.7 1.7 0 0 0-1-.55 1.7 1.7 0 0 0-1.87.34l-.03.03a2 2 0 1 1-2.83-2.83l.03-.03A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1-.4H3a2 2 0 1 1 0-4h.05a1.7 1.7 0 0 0 1-.4 1.7 1.7 0 0 0 .55-1 1.7 1.7 0 0 0-.34-1.87l-.03-.03a2 2 0 1 1 2.83-2.83l.03.03A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1V3a2 2 0 1 1 4 0v.05a1.7 1.7 0 0 0 .4 1 1.7 1.7 0 0 0 1 .55 1.7 1.7 0 0 0 1.87-.34l.03-.03a2 2 0 1 1 2.83 2.83l-.03.03A1.7 1.7 0 0 0 19.4 9c.24.3.42.64.52 1 .1.35.08.73-.02 1.08a1.7 1.7 0 0 0 .5 1.92" />
-                    </svg>
-                  ),
-                },
-              ].map((item, index) => (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-4">
+              {(
+                [
+                  {
+                    title: "Centralized Dashboard",
+                    subtitle: "One command center for every site, role, and SLA.",
+                    span: "lg:col-span-7",
+                    glow: "from-sky-400/35 via-blue-500/20 to-transparent",
+                    topBar: "from-sky-400 via-blue-500 to-indigo-500",
+                    cardSurface:
+                      "border-sky-400/35 bg-gradient-to-br from-sky-500/[0.14] via-blue-600/[0.06] to-indigo-900/[0.12] hover:border-sky-300/50 hover:shadow-[0_24px_56px_-24px_rgba(56,189,248,0.35)]",
+                    stepGradient: "from-sky-200 via-blue-200 to-cyan-200",
+                    iconSolid: "from-sky-500 to-indigo-600 text-white ring-2 ring-sky-300/35 shadow-sky-500/30",
+                    icon: (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <rect x="4" y="4" width="6" height="6" rx="1.5" />
+                        <rect x="14" y="4" width="6" height="6" rx="1.5" />
+                        <rect x="4" y="14" width="6" height="6" rx="1.5" />
+                        <rect x="14" y="14" width="6" height="6" rx="1.5" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "Multi-location Support",
+                    subtitle: "Roll out visibility and policy across regions without silos.",
+                    span: "lg:col-span-5",
+                    glow: "from-cyan-400/35 via-teal-500/20 to-transparent",
+                    topBar: "from-cyan-400 via-teal-500 to-emerald-500",
+                    cardSurface:
+                      "border-cyan-400/35 bg-gradient-to-br from-cyan-500/[0.13] via-teal-600/[0.06] to-emerald-900/[0.1] hover:border-cyan-300/50 hover:shadow-[0_24px_56px_-24px_rgba(34,211,238,0.32)]",
+                    stepGradient: "from-cyan-200 via-teal-200 to-emerald-200",
+                    iconSolid: "from-cyan-500 to-teal-600 text-white ring-2 ring-cyan-300/35 shadow-cyan-500/30",
+                    icon: (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <circle cx="12" cy="12" r="8" />
+                        <path d="M4 12h16" />
+                        <path d="M12 4a12 12 0 0 1 0 16" />
+                        <path d="M12 4a12 12 0 0 0 0 16" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "Real-time Insights",
+                    subtitle: "Live telemetry and alerts, not yesterday's batch report.",
+                    span: "lg:col-span-5",
+                    glow: "from-violet-400/35 via-fuchsia-500/20 to-transparent",
+                    topBar: "from-violet-400 via-fuchsia-500 to-pink-500",
+                    cardSurface:
+                      "border-fuchsia-400/35 bg-gradient-to-br from-violet-500/[0.14] via-fuchsia-600/[0.07] to-indigo-900/[0.1] hover:border-fuchsia-300/50 hover:shadow-[0_24px_56px_-24px_rgba(217,70,239,0.32)]",
+                    stepGradient: "from-violet-200 via-fuchsia-200 to-pink-200",
+                    iconSolid: "from-violet-500 to-fuchsia-600 text-white ring-2 ring-violet-300/35 shadow-fuchsia-500/25",
+                    icon: (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <path d="m13 2-7 10h5l-1 10 8-12h-5l0-8Z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    title: "System Integrations",
+                    subtitle: "API-first hooks into ERP, WMS, HRIS, and custom stacks.",
+                    span: "lg:col-span-7",
+                    glow: "from-amber-400/35 via-orange-500/20 to-transparent",
+                    topBar: "from-amber-400 via-orange-500 to-rose-500",
+                    cardSurface:
+                      "border-amber-400/35 bg-gradient-to-br from-amber-500/[0.13] via-orange-600/[0.06] to-rose-900/[0.1] hover:border-amber-300/50 hover:shadow-[0_24px_56px_-24px_rgba(251,191,36,0.28)]",
+                    stepGradient: "from-amber-200 via-orange-200 to-rose-200",
+                    iconSolid: "from-amber-500 to-orange-600 text-white ring-2 ring-amber-300/35 shadow-amber-500/25",
+                    icon: (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.03.03a2 2 0 1 1-2.83 2.83l-.03-.03A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1V21a2 2 0 1 1-4 0v-.05a1.7 1.7 0 0 0-.4-1 1.7 1.7 0 0 0-1-.55 1.7 1.7 0 0 0-1.87.34l-.03.03a2 2 0 1 1-2.83-2.83l.03-.03A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1-.4H3a2 2 0 1 1 0-4h.05a1.7 1.7 0 0 0 1-.4 1.7 1.7 0 0 0 .55-1 1.7 1.7 0 0 0-.34-1.87l-.03-.03a2 2 0 1 1 2.83-2.83l.03.03A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1V3a2 2 0 1 1 4 0v.05a1.7 1.7 0 0 0 .4 1 1.7 1.7 0 0 0 1 .55 1.7 1.7 0 0 0 1.87-.34l.03-.03a2 2 0 1 1 2.83 2.83l-.03.03A1.7 1.7 0 0 0 19.4 9c.24.3.42.64.52 1 .1.35.08.73-.02 1.08a1.7 1.7 0 0 0 .5 1.92" />
+                      </svg>
+                    ),
+                  },
+                ] as const
+              ).map((item, index) => (
                 <motion.article
                   key={item.title}
-                  className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur-md transition-[box-shadow,transform] duration-300 hover:border-white/20 hover:shadow-[0_24px_64px_-28px_rgba(59,130,246,0.35)] sm:p-6 ${item.span}`}
+                  className={`group relative overflow-hidden rounded-2xl border p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:p-6 ${item.cardSurface} ${item.span}`}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   whileHover={hoverLift}
@@ -991,24 +1067,28 @@ export default function EnterpriseSolutionPage() {
                   transition={{ duration: 0.45, ease: smoothEase, delay: index * 0.05 }}
                 >
                   <div
-                    className={`pointer-events-none absolute -right-8 -top-10 h-36 w-36 rounded-full bg-gradient-to-br ${item.glow} blur-2xl`}
+                    className={`pointer-events-none absolute inset-x-0 top-0 z-10 h-1 bg-gradient-to-r ${item.topBar}`}
+                    aria-hidden
+                  />
+                  <div
+                    className={`pointer-events-none absolute -right-8 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${item.glow} blur-2xl`}
                     aria-hidden
                   />
                   <span
-                    className="pointer-events-none absolute right-4 top-3 font-mono text-5xl font-black tabular-nums leading-none text-white/[0.06]"
+                    className={`pointer-events-none absolute right-3 top-2.5 bg-gradient-to-r bg-clip-text font-mono text-5xl font-black tabular-nums leading-none text-transparent opacity-[0.85] sm:right-4 sm:top-3 ${item.stepGradient}`}
                     aria-hidden
                   >
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div
-                    className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg ring-1 ${item.iconWrap}`}
+                    className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg ${item.iconSolid}`}
                   >
                     {item.icon}
                   </div>
                   <h3 className="relative mt-4 text-white">
                     {item.title}
                   </h3>
-                  <p className="relative mt-2 text-sm leading-relaxed text-slate-400 sm:text-[0.97rem]">
+                  <p className="relative mt-2 text-sm leading-relaxed text-slate-300 sm:text-[0.97rem]">
                     {item.subtitle}
                   </p>
                 </motion.article>
@@ -1019,7 +1099,7 @@ export default function EnterpriseSolutionPage() {
       </section>
 
       <section
-        className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50/80 py-16 lg:py-24"
+        className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50/80 py-12 lg:py-20"
         aria-labelledby="nexus-operational-benefits-heading"
       >
         <div
@@ -1081,6 +1161,7 @@ export default function EnterpriseSolutionPage() {
                   label: "Asset Utilization",
                   description: "Raise yield from fleets and fixed assets with utilization intelligence.",
                   ring: "from-emerald-400 via-teal-500 to-cyan-600",
+                  numberGradient: "from-emerald-600 via-teal-600 to-cyan-700",
                   iconTint: "from-emerald-500/15 to-teal-600/10 text-emerald-700 ring-emerald-200/60",
                   icon: (
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -1096,6 +1177,7 @@ export default function EnterpriseSolutionPage() {
                   label: "Logistics Costs",
                   description: "Less fuel burn, detention, and dead miles through smarter routing and yards.",
                   ring: "from-amber-400 via-orange-500 to-rose-600",
+                  numberGradient: "from-amber-600 via-orange-600 to-rose-700",
                   iconTint: "from-amber-500/15 to-orange-600/10 text-amber-800 ring-amber-200/70",
                   icon: (
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -1112,6 +1194,7 @@ export default function EnterpriseSolutionPage() {
                   label: "Cycle Times",
                   description: "Shorter dock-to-door lead time with orchestrated handoffs.",
                   ring: "from-sky-400 via-blue-500 to-indigo-600",
+                  numberGradient: "from-sky-600 via-blue-600 to-indigo-700",
                   iconTint: "from-sky-500/15 to-indigo-600/10 text-blue-800 ring-sky-200/70",
                   icon: (
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -1125,6 +1208,7 @@ export default function EnterpriseSolutionPage() {
                   label: "Decision Precision",
                   description: "Fewer fire drills, operators align on one trusted operational picture.",
                   ring: "from-violet-400 via-purple-500 to-fuchsia-600",
+                  numberGradient: "from-violet-600 via-purple-600 to-fuchsia-700",
                   iconTint: "from-violet-500/15 to-fuchsia-600/10 text-violet-800 ring-violet-200/70",
                   icon: (
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
@@ -1147,25 +1231,27 @@ export default function EnterpriseSolutionPage() {
                     whileHover={hoverLift}
                   >
                     <span
-                      className="pointer-events-none absolute -left-1 top-6 font-mono text-[4.5rem] font-black leading-none tracking-tighter text-slate-100"
+                      className={`pointer-events-none absolute left-0 top-5 z-0 bg-gradient-to-br bg-clip-text font-mono text-[3.5rem] font-black tabular-nums leading-none tracking-tighter text-transparent opacity-[0.88] sm:left-0.5 sm:top-6 sm:text-[4.25rem] sm:opacity-95 ${item.numberGradient}`}
                       aria-hidden
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <div
-                      className={`relative mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br shadow-sm ring-1 ${item.iconTint}`}
-                    >
-                      {item.icon}
+                    <div className="relative z-10">
+                      <div
+                        className={`relative mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br shadow-sm ring-1 ${item.iconTint}`}
+                      >
+                        {item.icon}
+                      </div>
+                      <p className="relative mt-5 text-5xl font-black tracking-tight text-slate-900">
+                        {item.value}
+                      </p>
+                      <h3 className="relative mt-2 text-slate-900">
+                        {item.label}
+                      </h3>
+                      <p className="relative mt-2 text-sm leading-relaxed text-slate-600 sm:text-[0.97rem]">
+                        {item.description}
+                      </p>
                     </div>
-                    <p className="relative mt-5 text-5xl font-black tracking-tight text-slate-900">
-                      {item.value}
-                    </p>
-                    <h3 className="relative mt-2 text-slate-900">
-                      {item.label}
-                    </h3>
-                    <p className="relative mt-2 text-sm leading-relaxed text-slate-600 sm:text-[0.97rem]">
-                      {item.description}
-                    </p>
                   </motion.article>
                 </motion.div>
               ))}
@@ -1174,7 +1260,7 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
-      <section className="py-14 lg:py-18 bg-white">
+      <section className="py-10 lg:py-14 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 14 }}

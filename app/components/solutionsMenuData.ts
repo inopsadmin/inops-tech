@@ -100,7 +100,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Enterprise Solution",
       description: "Enterprise-wide visibility for assets and operations.",
-      href: "/solutions/enterprise-solution#asset-management",
+      href: "/solutions/enterprise-solution",
     },
     {
       type: "tile",

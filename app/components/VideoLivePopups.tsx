@@ -196,11 +196,12 @@ const iconPaths: Record<IconKey, ReactNode> = {
 
 type PositionKey = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 
+/** Single inset at all breakpoints so tiles stay visually anchored to the frame on resize. */
 const positionMap: Record<PositionKey, string> = {
-  "top-left": "top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8",
-  "top-right": "top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8",
-  "bottom-left": "bottom-4 left-4 sm:bottom-6 sm:left-6 lg:bottom-8 lg:left-8",
-  "bottom-right": "bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8",
+  "top-left": "top-3 left-3",
+  "top-right": "top-3 right-3",
+  "bottom-left": "bottom-3 left-3",
+  "bottom-right": "bottom-3 right-3",
 };
 
 export type VideoLivePopupItem = {

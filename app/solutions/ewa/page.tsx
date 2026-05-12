@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
+import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -81,59 +82,67 @@ const costWaitingCard = {
 
 const ewaCostOfWaitingChallenges = [
   {
-    step: "01",
+    chip: "Liquidity",
+    metric: "01",
     title: "Wages locked",
     description:
       "Earnings sit behind fixed 30-day cycles ,  everyday essentials wait while liquidity stays out of reach.",
-    rail: "from-blue-500 via-blue-400 to-indigo-600",
-    watermark: "text-blue-100/90 group-hover:text-blue-100",
-    iconWrap: "from-blue-100 to-indigo-50 text-blue-700 ring-blue-200/80",
+    accentBar: "from-blue-500 via-indigo-500 to-cyan-500",
+    iconWrap:
+      "bg-blue-50 text-blue-600 ring-blue-500/20 group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(59,130,246,0.3)]",
     icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <circle cx="12" cy="12" r="8" />
         <path d="M12 8v5l3 2" />
       </svg>
     ),
   },
   {
-    step: "02",
+    chip: "Shock",
+    metric: "02",
     title: "Emergency pressure",
     description:
       "Medical bills and urgent repairs push people toward high-interest credit when savings aren’t enough.",
-    rail: "from-amber-500 via-orange-400 to-rose-500",
-    watermark: "text-amber-100/90 group-hover:text-amber-100",
-    iconWrap: "from-amber-100 to-orange-50 text-amber-900 ring-amber-200/80",
+    accentBar: "from-amber-500 via-orange-500 to-rose-600",
+    iconWrap:
+      "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.34)]",
     icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <path d="m13 2-7 10h5l-1 10 8-12h-5l0-8Z" />
       </svg>
     ),
   },
   {
-    step: "03",
+    chip: "Informal debt",
+    metric: "03",
     title: "Informal borrowing",
     description:
       "Local lenders and ad-hoc debt erode focus and trust ,  performance and attendance suffer in silence.",
-    rail: "from-fuchsia-500 via-violet-400 to-indigo-600",
-    watermark: "text-fuchsia-100/90 group-hover:text-fuchsia-100",
-    iconWrap: "from-fuchsia-100 to-violet-50 text-violet-900 ring-fuchsia-200/70",
+    accentBar: "from-fuchsia-500 via-violet-500 to-indigo-600",
+    iconWrap:
+      "bg-fuchsia-50 text-fuchsia-700 ring-fuchsia-500/20 group-hover:bg-fuchsia-600 group-hover:text-white group-hover:ring-fuchsia-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(192,38,211,0.28)]",
     icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <path d="M5 15l4-4 3 3 7-7" />
         <path d="M19 10V6h-4" />
       </svg>
     ),
   },
   {
-    step: "04",
+    chip: "Retention",
+    metric: "04",
     title: "High attrition",
     description:
       "Financial stress drives turnover and endless salary-advance requests ,  a hidden tax on operations.",
-    rail: "from-sky-500 via-cyan-400 to-blue-600",
-    watermark: "text-sky-100/90 group-hover:text-sky-100",
-    iconWrap: "from-sky-100 to-cyan-50 text-sky-900 ring-sky-200/70",
+    accentBar: "from-sky-500 via-cyan-500 to-blue-700",
+    iconWrap:
+      "bg-sky-50 text-sky-600 ring-sky-500/20 group-hover:bg-sky-500 group-hover:text-white group-hover:ring-sky-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.3)]",
     icon: (
-      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <circle cx="9" cy="8" r="3" />
         <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
         <path d="M16 9h5" />
@@ -154,6 +163,11 @@ const ewaHowItWorksSteps = [
 const ewaEcosystemIntegrations = [
   {
     title: "Workforce Platform (CLMS)",
+    topBar: "from-blue-600 via-indigo-500 to-cyan-500",
+    cardSurface:
+      "border-blue-200/70 bg-gradient-to-br from-blue-50/95 via-white to-indigo-50/50 shadow-[0_14px_44px_-30px_rgba(37,99,235,0.16)] ring-1 ring-blue-500/[0.08] hover:border-blue-300/85 hover:shadow-[0_24px_52px_-28px_rgba(59,130,246,0.28)]",
+    iconBg: "from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/35 ring-2 ring-white/50",
+    orb: "from-blue-500/35 to-indigo-600/20",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <circle cx="9" cy="8" r="3" />
@@ -165,6 +179,11 @@ const ewaEcosystemIntegrations = [
   },
   {
     title: "Worker Mobile App",
+    topBar: "from-sky-500 via-cyan-500 to-teal-500",
+    cardSurface:
+      "border-sky-200/70 bg-gradient-to-br from-sky-50/95 via-white to-cyan-50/45 shadow-[0_14px_44px_-30px_rgba(14,165,233,0.14)] ring-1 ring-sky-500/[0.08] hover:border-sky-300/85 hover:shadow-[0_24px_52px_-28px_rgba(6,182,212,0.22)]",
+    iconBg: "from-sky-500 to-cyan-600 text-white shadow-lg shadow-cyan-600/30 ring-2 ring-white/50",
+    orb: "from-cyan-400/30 to-teal-500/18",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <rect x="7" y="3" width="10" height="18" rx="2" />
@@ -174,6 +193,11 @@ const ewaEcosystemIntegrations = [
   },
   {
     title: "NBFC / Banking Partner",
+    topBar: "from-emerald-500 via-teal-500 to-green-600",
+    cardSurface:
+      "border-emerald-200/70 bg-gradient-to-br from-emerald-50/95 via-white to-teal-50/40 shadow-[0_14px_44px_-30px_rgba(16,185,129,0.12)] ring-1 ring-emerald-500/[0.08] hover:border-emerald-300/85 hover:shadow-[0_24px_52px_-28px_rgba(20,184,166,0.22)]",
+    iconBg: "from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-600/30 ring-2 ring-white/50",
+    orb: "from-emerald-400/28 to-teal-600/18",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <path d="m3 9 9-5 9 5" />
@@ -184,6 +208,11 @@ const ewaEcosystemIntegrations = [
   },
   {
     title: "Payroll System",
+    topBar: "from-violet-500 via-fuchsia-500 to-rose-500",
+    cardSurface:
+      "border-violet-200/65 bg-gradient-to-br from-violet-50/90 via-white to-fuchsia-50/40 shadow-[0_14px_44px_-30px_rgba(139,92,246,0.12)] ring-1 ring-violet-500/[0.08] hover:border-violet-300/85 hover:shadow-[0_24px_52px_-28px_rgba(192,38,211,0.2)]",
+    iconBg: "from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-600/28 ring-2 ring-white/50",
+    orb: "from-fuchsia-400/25 to-violet-600/18",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
         <rect x="3" y="6" width="18" height="12" rx="2" />
@@ -199,7 +228,12 @@ const ewaImpactMetrics = [
     value: "40%",
     label: "Stability",
     description: "Reduction in workforce churn rate across all departments.",
-    iconTint: "from-blue-500/25 to-indigo-600/15 text-blue-700 ring-blue-200/70",
+    topBar: "from-blue-600 via-indigo-500 to-violet-500",
+    cardSurface:
+      "border-blue-200/75 bg-gradient-to-br from-blue-50/90 via-white to-indigo-50/40 ring-1 ring-blue-500/[0.07] hover:border-blue-300/90 hover:shadow-[0_26px_56px_-28px_rgba(59,130,246,0.26)]",
+    valueGradient: "from-blue-700 via-indigo-600 to-violet-600",
+    orb: "from-blue-500/30 to-indigo-500/15",
+    iconBg: "from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/32 ring-2 ring-white/45",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} aria-hidden>
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -213,7 +247,12 @@ const ewaImpactMetrics = [
     value: "15%",
     label: "Productivity",
     description: "Increase in shift fulfillment and overtime willingness.",
-    iconTint: "from-sky-500/25 to-cyan-600/15 text-sky-800 ring-sky-200/70",
+    topBar: "from-sky-500 via-cyan-500 to-teal-500",
+    cardSurface:
+      "border-cyan-200/70 bg-gradient-to-br from-sky-50/90 via-white to-teal-50/38 ring-1 ring-cyan-500/[0.07] hover:border-cyan-300/90 hover:shadow-[0_26px_56px_-28px_rgba(6,182,212,0.24)]",
+    valueGradient: "from-sky-600 via-cyan-600 to-teal-600",
+    orb: "from-cyan-400/28 to-teal-500/14",
+    iconBg: "from-sky-500 to-cyan-600 text-white shadow-lg shadow-cyan-600/28 ring-2 ring-white/45",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} aria-hidden>
         <path d="M23 6l-9.5 9.5-5-5L1 18" />
@@ -225,7 +264,12 @@ const ewaImpactMetrics = [
     value: "Zero",
     label: "Risk",
     description: "Platform handles all disbursement and collection risks.",
-    iconTint: "from-amber-500/25 to-orange-600/15 text-amber-900 ring-amber-200/70",
+    topBar: "from-amber-500 via-orange-500 to-rose-600",
+    cardSurface:
+      "border-amber-200/70 bg-gradient-to-br from-amber-50/92 via-white to-orange-50/35 ring-1 ring-amber-500/[0.07] hover:border-amber-300/90 hover:shadow-[0_26px_56px_-28px_rgba(245,158,11,0.22)]",
+    valueGradient: "from-amber-600 via-orange-600 to-rose-700",
+    orb: "from-amber-400/28 to-orange-500/14",
+    iconBg: "from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-600/28 ring-2 ring-white/45",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} aria-hidden>
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
@@ -237,7 +281,12 @@ const ewaImpactMetrics = [
     value: "Scale",
     label: "Financial Inclusion",
     description: "Bring enterprise-grade banking to your unbanked staff.",
-    iconTint: "from-violet-500/25 to-indigo-600/15 text-violet-800 ring-violet-200/70",
+    topBar: "from-violet-500 via-fuchsia-500 to-indigo-600",
+    cardSurface:
+      "border-violet-200/70 bg-gradient-to-br from-violet-50/90 via-white to-fuchsia-50/35 ring-1 ring-violet-500/[0.07] hover:border-violet-300/90 hover:shadow-[0_26px_56px_-28px_rgba(139,92,246,0.22)]",
+    valueGradient: "from-violet-600 via-fuchsia-600 to-indigo-700",
+    orb: "from-fuchsia-400/25 to-violet-600/16",
+    iconBg: "from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-600/28 ring-2 ring-white/45",
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} aria-hidden>
         <circle cx="12" cy="12" r="10" />
@@ -294,7 +343,7 @@ export default function EwaPage() {
       />
 
       <section
-        className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/40 to-white py-16 lg:py-24"
+        className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/40 to-white py-12 lg:py-20"
         aria-labelledby="ewa-cost-of-waiting-heading"
       >
         <div
@@ -332,62 +381,32 @@ export default function EwaPage() {
             />
 
             <motion.div
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-5"
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6"
               variants={costWaitingContainer}
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
             >
               {ewaCostOfWaitingChallenges.map((item) => (
-                <motion.article
+                <ThroughputMetricCard
                   key={item.title}
-                  variants={costWaitingCard}
-                  className="group relative flex min-h-[14rem] flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 py-6 pl-6 pr-5 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.12)] ring-1 ring-slate-900/[0.03] backdrop-blur-[2px] transition-[transform,box-shadow,border-color] duration-300 sm:min-h-[15rem] sm:pl-7 sm:pr-6 sm:py-7 hover:-translate-y-1.5 hover:border-slate-300/90 hover:shadow-[0_22px_48px_-28px_rgba(59,130,246,0.18)]"
-                >
-                  <span
-                    className={`pointer-events-none absolute right-1 top-1 font-mono text-[4.25rem] font-black leading-none tracking-tighter transition-colors duration-300 sm:right-2 sm:top-2 sm:text-[5rem] ${item.watermark}`}
-                    aria-hidden
-                  >
-                    {item.step}
-                  </span>
-                  <div
-                    className={`pointer-events-none absolute inset-y-5 left-0 w-1 rounded-full bg-gradient-to-b ${item.rail}`}
-                    aria-hidden
-                  />
-
-                  <div className="relative z-10 flex items-start gap-3">
-                    <div
-                      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-sm ring-1 ${item.iconWrap}`}
-                    >
-                      {item.icon}
-                    </div>
-                    <div className="min-w-0 flex-1 pt-0.5">
-                      <p className="font-mono text-[11px] font-bold tracking-widest text-slate-400">
-                        <span className="text-slate-300">#</span>
-                        {item.step}
-                      </p>
-                      <h3 className="mt-1 text-slate-900">
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="relative z-10 mt-4 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.97rem] sm:leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  <div
-                    className="pointer-events-none absolute inset-x-5 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    aria-hidden
-                  />
-                </motion.article>
+                  motionVariants={costWaitingCard}
+                  title={item.title}
+                  description={item.description}
+                  chip={item.chip}
+                  metric={item.metric}
+                  accentBar={item.accentBar}
+                  iconWrap={item.iconWrap}
+                  hoverGlow={item.hoverGlow}
+                  icon={item.icon}
+                />
               ))}
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white py-16 lg:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white py-12 lg:py-20">
         <div
           className="pointer-events-none absolute -top-24 left-1/2 h-[28rem] w-[min(80rem,100vw)] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.09),transparent_68%)]"
           aria-hidden
@@ -426,89 +445,117 @@ export default function EwaPage() {
               aria-hidden
             />
 
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-              {[
-                {
-                  tag: "Live ledger",
-                  title: "Real-time wage visibility",
-                  description:
-                    "After every shift, workers see earnings update in one clear view ,  motivation and trust stay tied to work performed, not guesswork.",
-                  accentBar: "from-blue-500 to-indigo-500",
-                  iconBg: "from-blue-600 to-indigo-600 shadow-blue-500/25",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <path d="M4 19h16" />
-                      <path d="M8 16V9" />
-                      <path d="M12 16V6" />
-                      <path d="M16 16v-4" />
-                    </svg>
-                  ),
-                },
-                {
-                  tag: "Always on",
-                  title: "On-demand access",
-                  description:
-                    "Withdraw a governed share of already-earned pay anytime ,  mobile-first flows that feel as simple as checking a bank balance.",
-                  accentBar: "from-sky-400 to-blue-500",
-                  iconBg: "from-sky-500 to-blue-600 shadow-sky-500/25",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <rect x="7" y="3" width="10" height="18" rx="2" />
-                      <path d="M11 18h2" />
-                    </svg>
-                  ),
-                },
-                {
-                  tag: "Payroll-safe",
-                  title: "Payroll-integrated system",
-                  description:
-                    "Withdrawals reconcile automatically against your run ,  HR skips manual tallying, exceptions shrink, and month-end stays predictable.",
-                  accentBar: "from-amber-400 to-orange-500",
-                  iconBg: "from-amber-500 to-orange-600 shadow-amber-500/25",
-                  icon: (
-                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-                      <ellipse cx="12" cy="6" rx="5" ry="2.5" />
-                      <path d="M7 6v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V6" />
-                      <path d="M7 10v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4" />
-                    </svg>
-                  ),
-                },
-              ].map((item, index) => (
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+              {(
+                [
+                  {
+                    tag: "Live ledger",
+                    title: "Real-time wage visibility",
+                    description:
+                      "After every shift, workers see earnings update in one clear view ,  motivation and trust stay tied to work performed, not guesswork.",
+                    topBar: "from-blue-600 via-indigo-500 to-cyan-500",
+                    cardSurface:
+                      "border-blue-200/65 bg-gradient-to-br from-blue-50/85 via-white to-indigo-50/40 shadow-[0_14px_44px_-30px_rgba(37,99,235,0.18)] ring-1 ring-blue-500/[0.08] hover:border-blue-300/80 hover:shadow-[0_26px_56px_-30px_rgba(59,130,246,0.28)]",
+                    iconBg: "from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 ring-2 ring-white/50",
+                    tagTone: "border border-blue-200/90 bg-gradient-to-r from-blue-50 to-indigo-50/80 text-blue-800 ring-1 ring-blue-500/10",
+                    stackGradient: "from-blue-600 via-indigo-600 to-cyan-600",
+                    footerTint: "border-blue-100/90",
+                    icon: (
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <path d="M4 19h16" />
+                        <path d="M8 16V9" />
+                        <path d="M12 16V6" />
+                        <path d="M16 16v-4" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    tag: "Always on",
+                    title: "On-demand access",
+                    description:
+                      "Withdraw a governed share of already-earned pay anytime ,  mobile-first flows that feel as simple as checking a bank balance.",
+                    topBar: "from-sky-500 via-blue-500 to-indigo-600",
+                    cardSurface:
+                      "border-sky-200/65 bg-gradient-to-br from-sky-50/85 via-white to-blue-50/35 shadow-[0_14px_44px_-30px_rgba(14,165,233,0.16)] ring-1 ring-sky-500/[0.08] hover:border-sky-300/80 hover:shadow-[0_26px_56px_-30px_rgba(14,165,233,0.22)]",
+                    iconBg: "from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-600/28 ring-2 ring-white/50",
+                    tagTone: "border border-sky-200/90 bg-gradient-to-r from-sky-50 to-blue-50/80 text-sky-900 ring-1 ring-sky-500/10",
+                    stackGradient: "from-sky-600 via-blue-600 to-indigo-700",
+                    footerTint: "border-sky-100/90",
+                    icon: (
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <rect x="7" y="3" width="10" height="18" rx="2" />
+                        <path d="M11 18h2" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    tag: "Payroll-safe",
+                    title: "Payroll-integrated system",
+                    description:
+                      "Withdrawals reconcile automatically against your run ,  HR skips manual tallying, exceptions shrink, and month-end stays predictable.",
+                    topBar: "from-amber-500 via-orange-500 to-rose-600",
+                    cardSurface:
+                      "border-amber-200/65 bg-gradient-to-br from-amber-50/90 via-white to-orange-50/35 shadow-[0_14px_44px_-30px_rgba(245,158,11,0.14)] ring-1 ring-amber-500/[0.08] hover:border-amber-300/80 hover:shadow-[0_26px_56px_-30px_rgba(245,158,11,0.2)]",
+                    iconBg: "from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-600/28 ring-2 ring-white/50",
+                    tagTone: "border border-amber-200/90 bg-gradient-to-r from-amber-50 to-orange-50/80 text-amber-950 ring-1 ring-amber-500/10",
+                    stackGradient: "from-amber-600 via-orange-600 to-rose-700",
+                    footerTint: "border-amber-100/90",
+                    icon: (
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                        <ellipse cx="12" cy="6" rx="5" ry="2.5" />
+                        <path d="M7 6v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V6" />
+                        <path d="M7 10v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4" />
+                      </svg>
+                    ),
+                  },
+                ] as const
+              ).map((item, index) => (
                 <motion.article
                   key={item.title}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-7 shadow-[0_12px_40px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.04] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(59,130,246,0.22)]"
+                  className={`group relative flex flex-col overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 sm:p-6 ${item.cardSurface}`}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: index * 0.06 }}
                 >
                   <div
-                    className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[3px] overflow-hidden rounded-t-2xl"
+                    className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br opacity-30 blur-3xl transition-opacity duration-300 group-hover:opacity-[0.42] ${item.topBar}`}
                     aria-hidden
-                  >
+                  />
+                  <div
+                    className={`pointer-events-none absolute inset-x-0 top-0 z-[2] h-1 rounded-t-2xl bg-gradient-to-r shadow-sm ${item.topBar}`}
+                    aria-hidden
+                  />
+                  <div className="relative z-10 flex items-center justify-between gap-2.5">
                     <div
-                      className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r ${item.accentBar} transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100`}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div
-                      className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.iconBg} text-white shadow-lg`}
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${item.iconBg}`}
                     >
                       {item.icon}
                     </div>
-                    <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    <span
+                      className={`rounded-full px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] shadow-sm backdrop-blur-[2px] ${item.tagTone}`}
+                    >
                       {item.tag}
                     </span>
                   </div>
-                  <h3 className="mt-6 text-slate-900">
+                  <h3 className="relative z-10 mt-4 text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
                     {item.title}
                   </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.98rem]">
+                  <p className="relative z-10 mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem]">
                     {item.description}
                   </p>
-                  <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="h-1 w-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" aria-hidden />
-                    <span>Built into your stack</span>
+                  <div
+                    className={`relative z-10 mt-5 flex items-center gap-2 border-t pt-3.5 ${item.footerTint}`}
+                  >
+                    <span
+                      className={`h-0.5 w-8 shrink-0 rounded-full bg-gradient-to-r ${item.topBar}`}
+                      aria-hidden
+                    />
+                    <span
+                      className={`bg-gradient-to-r bg-clip-text text-[10px] font-semibold uppercase tracking-[0.12em] text-transparent sm:text-xs ${item.stackGradient}`}
+                    >
+                      Built into your stack
+                    </span>
                   </div>
                 </motion.article>
               ))}
@@ -518,7 +565,7 @@ export default function EwaPage() {
       </section>
 
       <section
-        className="relative overflow-hidden border-y border-white/[0.06] bg-slate-950 py-16 lg:py-24"
+        className="relative overflow-hidden border-y border-white/[0.06] bg-slate-950 py-12 lg:py-20"
         aria-labelledby="ewa-how-it-works-heading"
       >
         <div
@@ -645,7 +692,7 @@ export default function EwaPage() {
       </section>
 
       <section
-        className="relative overflow-hidden border-y border-slate-200/70 bg-gradient-to-b from-slate-50/95 via-white to-white py-16 lg:py-24"
+        className="relative overflow-hidden border-y border-slate-200/70 bg-gradient-to-b from-slate-50/95 via-white to-white py-12 lg:py-20"
         aria-labelledby="ewa-ecosystem-heading"
       >
         <div
@@ -698,21 +745,25 @@ export default function EwaPage() {
                   viewport={viewport}
                   transition={{ duration: 0.45, ease: smoothEase, delay: index * 0.06 }}
                 >
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 shadow-[0_14px_44px_-32px_rgba(15,23,42,0.22)] ring-1 ring-slate-900/[0.03] backdrop-blur-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-blue-300/60 hover:shadow-[0_22px_50px_-28px_rgba(59,130,246,0.22)]">
+                  <article
+                    className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 backdrop-blur-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 ${item.cardSurface}`}
+                  >
                     <div
-                      className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[3px] overflow-hidden rounded-t-2xl"
+                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-gradient-to-br opacity-40 blur-3xl transition-opacity duration-300 group-hover:opacity-70 ${item.orb}`}
                       aria-hidden
-                    >
-                      <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-500 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100" />
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/25 ring-1 ring-blue-500/20 transition-transform duration-300 group-hover:scale-[1.03]">
+                    />
+                    <div
+                      className={`pointer-events-none absolute inset-x-0 top-0 z-[2] h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${item.topBar}`}
+                      aria-hidden
+                    />
+                    <div className="relative z-10 flex items-start gap-4">
+                      <div
+                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br transition-transform duration-300 group-hover:scale-[1.05] ${item.iconBg}`}
+                      >
                         {item.icon}
                       </div>
                       <div className="min-w-0 flex-1 pt-0.5">
-                        <h3 className="text-slate-900">
-                          {item.title}
-                        </h3>
+                        <h3 className="font-semibold tracking-tight text-slate-900">{item.title}</h3>
                       </div>
                     </div>
                   </article>
@@ -723,7 +774,7 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="py-14 lg:py-18 bg-white">
+      <section className="py-10 lg:py-14 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
             <motion.div
@@ -787,14 +838,14 @@ export default function EwaPage() {
                 viewport={viewport}
               >
                 {[
-                  { label: "Attendance Sync", value: "99.9%", valueClass: "bg-blue-500 text-white" },
-                  { label: "Identity Check", value: "Verified", valueClass: "bg-slate-600 text-slate-100" },
-                  { label: "Disbursement Speed", value: "< 2m", valueClass: "bg-blue-500 text-white" },
+                  { label: "Attendance Sync", value: "99.9%", valueClass: "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30" },
+                  { label: "Identity Check", value: "Verified", valueClass: "bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-600/25" },
+                  { label: "Disbursement Speed", value: "< 2m", valueClass: "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-600/28" },
                 ].map((row) => (
                   <motion.div
                     key={row.label}
                     variants={verifiedStatRow}
-                    className="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 transition-colors duration-300 hover:border-slate-600 hover:bg-slate-800"
+                    className="flex items-center justify-between rounded-xl border border-slate-600/90 bg-gradient-to-r from-slate-800/95 to-slate-800/70 px-4 py-3 shadow-inner shadow-black/20 transition-[border-color,box-shadow] duration-300 hover:border-cyan-500/25 hover:shadow-[0_0_24px_-8px_rgba(34,211,238,0.15)]"
                   >
                     <span className="text-sm font-medium text-slate-100">{row.label}</span>
                     <motion.span
@@ -869,33 +920,59 @@ export default function EwaPage() {
                 performed.
               </motion.p>
 
-              <motion.div className="mt-8 space-y-5" variants={verifiedListParent}>
-                {[
-                  {
-                    title: "Attendance-based wage calculation",
-                    description: "Directly linked to biometric clock-ins for 100% accuracy.",
-                  },
-                  {
-                    title: "Real-time income visibility",
-                    description: "Dynamic ledger updates as shifts are completed.",
-                  },
-                  {
-                    title: "Identity-backed verification",
-                    description: "Secure KYC ensures funds always reach the right recipient.",
-                  },
-                  {
-                    title: "Behavior-based eligibility",
-                    description: "Intelligent limits based on historical attendance patterns.",
-                  },
-                ].map((item) => (
+              <motion.div className="mt-8 space-y-4" variants={verifiedListParent}>
+                {(
+                  [
+                    {
+                      title: "Attendance-based wage calculation",
+                      description: "Directly linked to biometric clock-ins for 100% accuracy.",
+                      topBar: "from-blue-600 via-indigo-500 to-cyan-500",
+                      surface:
+                        "border-blue-200/65 bg-gradient-to-br from-blue-50/70 via-white to-indigo-50/35 shadow-[0_12px_36px_-28px_rgba(37,99,235,0.18)] ring-1 ring-blue-500/[0.06]",
+                      iconWrap:
+                        "bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/25 ring-2 ring-white/60",
+                    },
+                    {
+                      title: "Real-time income visibility",
+                      description: "Dynamic ledger updates as shifts are completed.",
+                      topBar: "from-sky-500 via-cyan-500 to-teal-500",
+                      surface:
+                        "border-sky-200/65 bg-gradient-to-br from-sky-50/75 via-white to-cyan-50/35 shadow-[0_12px_36px_-28px_rgba(14,165,233,0.16)] ring-1 ring-sky-500/[0.06]",
+                      iconWrap:
+                        "bg-gradient-to-br from-sky-500 to-cyan-600 text-white shadow-md shadow-cyan-600/22 ring-2 ring-white/60",
+                    },
+                    {
+                      title: "Identity-backed verification",
+                      description: "Secure KYC ensures funds always reach the right recipient.",
+                      topBar: "from-violet-600 via-fuchsia-500 to-pink-500",
+                      surface:
+                        "border-violet-200/60 bg-gradient-to-br from-violet-50/75 via-white to-fuchsia-50/30 shadow-[0_12px_36px_-28px_rgba(139,92,246,0.14)] ring-1 ring-violet-500/[0.06]",
+                      iconWrap:
+                        "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-600/25 ring-2 ring-white/60",
+                    },
+                    {
+                      title: "Behavior-based eligibility",
+                      description: "Intelligent limits based on historical attendance patterns.",
+                      topBar: "from-amber-500 via-orange-500 to-rose-600",
+                      surface:
+                        "border-amber-200/65 bg-gradient-to-br from-amber-50/80 via-white to-orange-50/32 shadow-[0_12px_36px_-28px_rgba(245,158,11,0.14)] ring-1 ring-amber-500/[0.06]",
+                      iconWrap:
+                        "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-600/22 ring-2 ring-white/60",
+                    },
+                  ] as const
+                ).map((item) => (
                   <motion.div
                     key={item.title}
                     variants={verifiedListItem}
-                    className="group flex items-start gap-3 rounded-xl border border-transparent px-1 py-0.5 transition-colors duration-300 hover:border-slate-200/90 hover:bg-slate-50/80"
+                    className={`group relative flex items-start gap-3 overflow-hidden rounded-xl border p-4 transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-30px_rgba(15,23,42,0.12)] ${item.surface}`}
                   >
+                    <div
+                      className={`pointer-events-none absolute inset-x-0 top-0 z-[1] h-1 rounded-t-xl bg-gradient-to-r ${item.topBar}`}
+                      aria-hidden
+                    />
                     <motion.span
-                      className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-500 ring-1 ring-blue-100/80 transition-colors group-hover:bg-blue-100 group-hover:ring-blue-200/90"
-                      whileHover={reduceMotion ? undefined : { scale: 1.08 }}
+                      className={`relative z-[2] mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${item.iconWrap}`}
+                      whileHover={reduceMotion ? undefined : { scale: 1.06 }}
                       transition={{ type: "spring", stiffness: 380, damping: 18 }}
                     >
                       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} aria-hidden>
@@ -903,9 +980,9 @@ export default function EwaPage() {
                         <path d="m9.5 12 1.7 1.7 3.3-3.4" />
                       </svg>
                     </motion.span>
-                    <div>
-                      <h3 className="text-gray-900">{item.title}</h3>
-                      <p className="mt-1 text-sm text-gray-500 sm:text-base">{item.description}</p>
+                    <div className="relative z-[2] min-w-0">
+                      <h3 className="font-semibold tracking-tight text-slate-900">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">{item.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -915,59 +992,103 @@ export default function EwaPage() {
         </div>
       </section>
 
-      <section className="py-14 lg:py-18 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_16px_36px_-28px_rgba(15,23,42,0.25)]">
-            <div className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
-              {[
-                {
-                  badge: "For Workers",
-                  title: "Empowerment & Wellness",
-                  cardClass: "bg-white",
-                  points: [
-                    "Instant access to earned wages 24/7",
-                    "Zero dependence on high-interest credit",
-                    "Significant reduction in financial stress",
-                    "Improved dignity and financial control",
-                  ],
-                },
-                {
-                  badge: "For Employers",
-                  title: "Retention & Efficiency",
-                  cardClass: "bg-[#f7f6ff]",
-                  points: [
-                    "Drastic reduction in salary advance requests",
-                    "Up to 40% improvement in worker retention",
-                    "No financial liability or capital expenditure",
-                    "Fully automated compliance and accounting",
-                  ],
-                },
-              ].map((column, index) => (
+      <section className="relative overflow-hidden py-10 lg:py-14">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_20%_30%,rgba(16,185,129,0.08),transparent_55%),radial-gradient(ellipse_70%_45%_at_85%_70%,rgba(139,92,246,0.08),transparent_50%)]"
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 shadow-[0_20px_50px_-32px_rgba(15,23,42,0.28)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm">
+            <div className="grid grid-cols-1 divide-y divide-slate-200/80 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+              {(
+                [
+                  {
+                    badge: "For Workers",
+                    title: "Empowerment & Wellness",
+                    topBar: "from-emerald-500 via-teal-500 to-cyan-500",
+                    cardClass:
+                      "bg-gradient-to-br from-emerald-50/90 via-white to-cyan-50/40 ring-1 ring-emerald-500/[0.06]",
+                    badgeClass:
+                      "border border-emerald-200/90 bg-gradient-to-r from-emerald-50 to-teal-50/90 text-emerald-900 shadow-sm ring-1 ring-emerald-500/10",
+                    titleAccent: "from-emerald-700 via-teal-600 to-cyan-600",
+                    rowBorder: "border-emerald-100/80",
+                    checkStyles: [
+                      "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-600/25",
+                      "bg-gradient-to-br from-teal-500 to-cyan-600 text-white shadow-md shadow-teal-600/25",
+                      "bg-gradient-to-br from-cyan-500 to-sky-600 text-white shadow-md shadow-cyan-600/25",
+                      "bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-md shadow-sky-600/25",
+                    ],
+                    points: [
+                      "Instant access to earned wages 24/7",
+                      "Zero dependence on high-interest credit",
+                      "Significant reduction in financial stress",
+                      "Improved dignity and financial control",
+                    ],
+                  },
+                  {
+                    badge: "For Employers",
+                    title: "Retention & Efficiency",
+                    topBar: "from-violet-600 via-fuchsia-500 to-amber-500",
+                    cardClass:
+                      "bg-gradient-to-br from-violet-50/90 via-white to-amber-50/35 ring-1 ring-violet-500/[0.06]",
+                    badgeClass:
+                      "border border-violet-200/90 bg-gradient-to-r from-violet-50 to-fuchsia-50/90 text-violet-950 shadow-sm ring-1 ring-violet-500/10",
+                    titleAccent: "from-violet-700 via-fuchsia-600 to-amber-600",
+                    rowBorder: "border-violet-100/80",
+                    checkStyles: [
+                      "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-600/25",
+                      "bg-gradient-to-br from-fuchsia-500 to-pink-600 text-white shadow-md shadow-fuchsia-600/25",
+                      "bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-md shadow-indigo-600/25",
+                      "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-600/25",
+                    ],
+                    points: [
+                      "Drastic reduction in salary advance requests",
+                      "Up to 40% improvement in worker retention",
+                      "No financial liability or capital expenditure",
+                      "Fully automated compliance and accounting",
+                    ],
+                  },
+                ] as const
+              ).map((column, index) => (
                 <motion.article
                   key={column.title}
-                  className={`${column.cardClass} p-7 sm:p-8`}
+                  className={`relative overflow-hidden p-7 sm:p-8 ${column.cardClass}`}
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={viewport}
                   transition={{ duration: 0.42, ease: smoothEase, delay: index * 0.05 }}
                 >
-                  <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+                  <div
+                    className={`pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${column.topBar}`}
+                    aria-hidden
+                  />
+                  <span
+                    className={`relative mt-1 inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${column.badgeClass}`}
+                  >
                     {column.badge}
                   </span>
-                  <h2 className="mt-4 text-gray-900">
-                    {column.title}
+                  <h2 className="relative mt-4 text-slate-900">
+                    <span
+                      className={`bg-gradient-to-r bg-clip-text text-transparent ${column.titleAccent}`}
+                    >
+                      {column.title}
+                    </span>
                   </h2>
 
-                  <ul className="mt-7 space-y-0">
-                    {column.points.map((point) => (
-                      <li key={point} className="flex items-center gap-3 border-t border-gray-200 py-3.5">
-                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full text-gray-500">
-                          <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
-                            <circle cx="10" cy="10" r="7.2" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="m7.2 10.1 1.9 1.9 3.8-3.8" />
+                  <ul className="relative mt-7 space-y-0">
+                    {column.points.map((point, pi) => (
+                      <li
+                        key={point}
+                        className={`flex items-center gap-3 border-t py-3.5 first:border-t-0 first:pt-0 ${column.rowBorder}`}
+                      >
+                        <span
+                          className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ring-2 ring-white/80 ${column.checkStyles[pi]}`}
+                        >
+                          <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m5.5 10.2 2.8 2.8 6.2-6.2" />
                           </svg>
                         </span>
-                        <span className="text-sm font-medium text-gray-700 sm:text-base">{point}</span>
+                        <span className="text-sm font-medium leading-snug text-slate-800 sm:text-base">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -979,7 +1100,7 @@ export default function EwaPage() {
       </section>
 
       <section
-        className="relative overflow-hidden border-t border-slate-100 bg-white py-16 lg:py-24"
+        className="relative overflow-hidden border-t border-slate-100 bg-white py-12 lg:py-20"
         aria-labelledby="ewa-impact-heading"
       >
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
@@ -990,7 +1111,7 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-slate-50/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600 shadow-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-gradient-to-r from-blue-50/95 via-indigo-50/80 to-violet-50/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
               Results
             </span>
             <h2 id="ewa-impact-heading" className="mt-5 text-gray-900">
@@ -1018,36 +1139,34 @@ export default function EwaPage() {
             >
               {ewaImpactMetrics.map((item) => (
                 <motion.li key={item.label} variants={impactMetricsCard} className="relative">
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-[0_12px_40px_-30px_rgba(15,23,42,0.14)] ring-1 ring-slate-900/[0.03] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1.5 hover:border-blue-200/90 hover:shadow-[0_24px_52px_-28px_rgba(59,130,246,0.22)] sm:p-7">
+                  <article
+                    className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1.5 sm:p-7 ${item.cardSurface}`}
+                  >
                     <div
-                      className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-gradient-to-br from-blue-400/20 to-indigo-500/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                      className={`pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-gradient-to-br opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${item.orb}`}
                       aria-hidden
                     />
                     <div
-                      className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[3px] overflow-hidden rounded-t-2xl"
+                      className={`pointer-events-none absolute inset-x-0 top-0 z-[2] h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${item.topBar}`}
                       aria-hidden
-                    >
-                      <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-500 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100" />
-                    </div>
+                    />
 
-                    <div className="relative flex items-start justify-between gap-3">
+                    <div className="relative z-10 flex items-start justify-between gap-3">
                       <span
-                        className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-sm ring-1 ${item.iconTint}`}
+                        className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br shadow-md transition-transform duration-300 group-hover:scale-[1.05] ${item.iconBg}`}
                       >
                         {item.icon}
                       </span>
                     </div>
 
                     <p
-                      className={`relative mt-6 font-bold tabular-nums tracking-tight text-slate-900 ${item.value === "Scale" ? "text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-none" : "text-4xl sm:text-5xl lg:text-[3.15rem] lg:leading-none"}`}
+                      className={`relative z-10 mt-6 bg-gradient-to-br bg-clip-text font-bold tabular-nums tracking-tight text-transparent ${item.valueGradient} ${item.value === "Scale" ? "text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-none" : "text-4xl sm:text-5xl lg:text-[3.15rem] lg:leading-none"}`}
                     >
                       {item.value}
                     </p>
 
-                    <h3 className="relative mt-2 text-slate-900">
-                      {item.label}
-                    </h3>
-                    <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">
+                    <h3 className="relative z-10 mt-2 font-semibold tracking-tight text-slate-900">{item.label}</h3>
+                    <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">
                       {item.description}
                     </p>
                   </article>

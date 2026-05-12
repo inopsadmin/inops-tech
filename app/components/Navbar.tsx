@@ -142,7 +142,7 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 1px 3px 0 rgba(0,0,0,0.06)" : "0 0 0 0 transparent",
       }}
       transition={headerTransition}
-      className={`navbar-fixed-header h-[var(--home-nav-offset)] w-full shrink-0 overflow-visible border-b border-transparent px-6 lg:px-12 ${navStaticHero ? "relative" : ""}`}
+      className={`navbar-fixed-header h-[var(--home-nav-offset)] w-full shrink-0 overflow-visible border-b border-transparent px-6 font-sans lg:px-12 ${navStaticHero ? "relative" : ""}`}
     >
       <div className="mx-auto flex h-full min-w-0 max-w-7xl items-center justify-between gap-2 xl:gap-3 2xl:gap-4">
         <motion.div

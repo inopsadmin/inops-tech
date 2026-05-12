@@ -13,7 +13,7 @@ const solutions = [
   { label: "Mobile App", href: "/solutions/mobile-app" },
   { label: "CCTV Attendance", href: "/solutions/time-and-attendance" },
   { label: "Face Reader", href: "/product/biometric-access-control" },
-  { label: "Enterprise Solution", href: "/solutions/enterprise-solution#asset-management" },
+  { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
   { label: "EWA (Earned Wage Access)", href: "/solutions/ewa" },
 ];
 
@@ -92,7 +92,7 @@ export default function Footer() {
     solutionItems.find((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))?.label ?? null;
 
   return (
-    <footer className="relative mt-auto overflow-hidden border-t border-white/[0.08] bg-gradient-to-b from-slate-950 via-slate-950 to-black text-slate-300">
+    <footer className="relative mt-auto overflow-hidden border-t border-white/[0.08] bg-gradient-to-b from-slate-950 via-slate-950 to-black font-sans text-slate-300">
       {/* Accent + grid */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.18),transparent)]" aria-hidden />
       <div
@@ -189,7 +189,7 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </span>
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed text-black">
                     No.18, 4th &apos;C&apos; Cross, 1st Main Rd, Koramangala Industrial Layout, 5th Block, Bengaluru, Karnataka 560095
                   </p>
                 </div>

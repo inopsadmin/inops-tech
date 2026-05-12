@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -106,35 +108,33 @@ const digitalCanteenPillars = [
 
 type HighlightAccent = "sky" | "indigo" | "amber";
 
-const secondaryHighlightStyle: Record<
+const canteenThroughputByAccent: Record<
   HighlightAccent,
-  { bar: string; iconSurface: string; hoverRing: string; orb: string }
+  { accentBar: string; iconWrap: string; hoverGlow: string }
 > = {
   sky: {
-    bar: "from-sky-400 via-blue-500 to-indigo-500",
-    iconSurface:
-      "bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25 ring-2 ring-white",
-    hoverRing: "hover:border-sky-300/80 hover:shadow-sky-500/10",
-    orb: "bg-sky-400/25",
+    accentBar: "from-sky-500 via-cyan-400 to-teal-400",
+    iconWrap:
+      "bg-sky-50 text-sky-600 ring-sky-500/20 group-hover:bg-sky-500 group-hover:text-white group-hover:ring-sky-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
   },
   indigo: {
-    bar: "from-indigo-400 via-violet-500 to-purple-600",
-    iconSurface:
-      "bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25 ring-2 ring-white",
-    hoverRing: "hover:border-indigo-300/70 hover:shadow-indigo-500/10",
-    orb: "bg-violet-400/20",
+    accentBar: "from-indigo-500 via-violet-500 to-purple-400",
+    iconWrap:
+      "bg-indigo-50 text-indigo-600 ring-indigo-500/20 group-hover:bg-indigo-600 group-hover:text-white group-hover:ring-indigo-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(99,102,241,0.32)]",
   },
   amber: {
-    bar: "from-amber-400 via-orange-400 to-rose-500",
-    iconSurface:
-      "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/25 ring-2 ring-white",
-    hoverRing: "hover:border-amber-300/80 hover:shadow-amber-500/10",
-    orb: "bg-amber-400/22",
+    accentBar: "from-amber-500 via-orange-500 to-red-400",
+    iconWrap:
+      "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.38)]",
   },
 };
 
 const secondaryHighlights = [
   {
+    pillar: "Capacity" as const,
     title: "Queue & capacity insight",
     description:
       "See dwell times and peak queues in context so you can staff lanes, stagger breaks, and right-size production before the rush hits.",
@@ -142,6 +142,7 @@ const secondaryHighlights = [
     accent: "sky" as const,
   },
   {
+    pillar: "Mobility" as const,
     title: "Ops-friendly tablets",
     description:
       "Supervisors get a mobile-first view of live counts, exceptions, and overrides, right at the serving line where decisions matter.",
@@ -149,6 +150,7 @@ const secondaryHighlights = [
     accent: "indigo" as const,
   },
   {
+    pillar: "Risk" as const,
     title: "Proactive alerts",
     description:
       "Surface policy breaches, duplicate scans, and unusual consumption early, before they turn into audit findings or shrinkage.",
@@ -167,6 +169,7 @@ const visitorExperiencePillars = [
 
 const visitorLobbyHighlights = [
   {
+    pillar: "Scheduling" as const,
     title: "Pre-registration & host workflows",
     description:
       "Hosts pre-approve visitors, cut desk time, and smooth peak-hour arrivals without extra headcount.",
@@ -174,6 +177,7 @@ const visitorLobbyHighlights = [
     accent: "sky" as const,
   },
   {
+    pillar: "Access" as const,
     title: "Badges & access handoff",
     description:
       "Print or digital badges that integrate with turnstiles and access control for the right zones.",
@@ -181,6 +185,7 @@ const visitorLobbyHighlights = [
     accent: "indigo" as const,
   },
   {
+    pillar: "Analytics" as const,
     title: "Lobby analytics & reporting",
     description:
       "Traffic patterns, dwell insights, and exports for facilities, security, and compliance reviews.",
@@ -288,6 +293,7 @@ export default function CanteenManagementPage() {
             </>
           }
           subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll, then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
+          subtitleClassName="text-[11px] leading-relaxed text-slate-600 sm:text-[15px]"
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
           imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
           videoSrc="/genrate_this_part_image_202605080013.mp4"
@@ -299,8 +305,6 @@ export default function CanteenManagementPage() {
           mobileStackGradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white via-white/55 to-white/95 sm:hidden"
           primaryCta={{ label: "Get in touch", href: "/contact" }}
           secondaryCta={{ label: "How it works", href: "#canteen-realtime-visibility" }}
-          primaryCtaClassName="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_32px_-10px_rgba(15,47,87,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
-          secondaryCtaClassName="inline-flex items-center justify-center rounded-full border border-slate-200/90 bg-white/90 px-7 py-3.5 text-sm font-semibold text-slate-800 shadow-sm backdrop-blur-sm transition-[border-color,background-color,box-shadow] duration-300 hover:border-slate-300 hover:bg-white hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
           livePopups={[
             {
               position: "top-left",
@@ -329,7 +333,7 @@ export default function CanteenManagementPage() {
         <section
           id="canteen-realtime-visibility"
           aria-labelledby="canteen-ops-visibility-heading"
-          className="relative scroll-mt-24 overflow-hidden border-t border-white/10 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 text-white sm:py-20 lg:py-24"
+          className="relative scroll-mt-24 overflow-hidden border-t border-white/10 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-12 text-white sm:py-16 lg:py-20 solution-section-flush-after-hero"
         >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             <div className="absolute -left-28 top-0 h-[22rem] w-[22rem] rounded-full bg-emerald-500/12 blur-[100px]" />
@@ -411,7 +415,7 @@ export default function CanteenManagementPage() {
 
         {/* Digital Canteen & Subsidy Control ,  equal-height columns: stretch grid + flex column */}
         <section
-          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-white py-14 lg:py-20"
+          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50/95 via-white to-white py-10 lg:py-16"
           aria-labelledby="digital-canteen-heading"
         >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -514,10 +518,7 @@ export default function CanteenManagementPage() {
                 </ul>
 
                 <div className="mt-10 flex shrink-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-0">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-10px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_36px_-12px_rgba(15,47,87,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
-                  >
+                  <Link href="/contact" className={inopsUi.btnPrimary}>
                     Talk to our team
                   </Link>
                   <Link
@@ -537,7 +538,7 @@ export default function CanteenManagementPage() {
 
         {/* Secondary highlights ,  queue, mobile ops, alerts */}
         <section
-          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/40 to-white py-14 lg:py-20"
+          className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/40 to-white py-10 lg:py-16"
           aria-labelledby="canteen-ops-highlights-heading"
         >
           <div className="pointer-events-none absolute inset-0 opacity-[0.35]" aria-hidden>
@@ -576,44 +577,20 @@ export default function CanteenManagementPage() {
 
             <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7 lg:mt-14 lg:gap-8">
               {secondaryHighlights.map((item, i) => {
-                const style = secondaryHighlightStyle[item.accent];
+                const t = canteenThroughputByAccent[item.accent];
                 return (
-                  <motion.article
+                  <ThroughputMetricCard
                     key={item.title}
-                    className={`group/card relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 shadow-[0_22px_56px_-36px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_64px_-40px_rgba(15,23,42,0.28)] ${style.hoverRing}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(i * 0.08, 0.2) }}
-                  >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden" aria-hidden>
-                      <div
-                        className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover/card:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none ${style.bar}`}
-                      />
-                    </div>
-                    <div
-                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover/card:opacity-100 ${style.orb}`}
-                      aria-hidden
-                    />
-
-                    <div className="relative flex items-start justify-between gap-3">
-                      <div
-                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 ease-out group-hover/card:scale-105 ${style.iconSurface}`}
-                      >
-                        <HighlightIcon name={item.icon} className="h-6 w-6" />
-                      </div>
-                      <span className="rounded-full bg-slate-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500 ring-1 ring-slate-200/90">
-                        {i === 0 ? "Capacity" : i === 1 ? "Mobility" : "Risk"}
-                      </span>
-                    </div>
-
-                    <h3 className="relative mt-5 text-slate-900">
-                      {item.title}
-                    </h3>
-                    <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                      {item.description}
-                    </p>
-                  </motion.article>
+                    title={item.title}
+                    description={item.description}
+                    chip={item.pillar}
+                    metric={String(i + 1).padStart(2, "0")}
+                    accentBar={t.accentBar}
+                    iconWrap={t.iconWrap}
+                    hoverGlow={t.hoverGlow}
+                    index={i}
+                    icon={<HighlightIcon name={item.icon} className="h-6 w-6 text-current" />}
+                  />
                 );
               })}
             </div>
@@ -623,7 +600,7 @@ export default function CanteenManagementPage() {
         {/* Visitor desk & lobby ,  equal-height split + premium cards */}
         <section
           id="visitor-desk"
-          className="relative scroll-mt-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-14 lg:py-20"
+          className="relative scroll-mt-24 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-10 lg:py-16"
           aria-labelledby="visitor-desk-heading"
         >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -683,10 +660,7 @@ export default function CanteenManagementPage() {
                     Visitor Management System
                   </p> */}
                   <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-10px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_36px_-12px_rgba(15,47,87,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
-                    >
+                    <Link href="/contact" className={inopsUi.btnPrimary}>
                       Get started
                     </Link>
                     <Link
@@ -756,35 +730,20 @@ export default function CanteenManagementPage() {
 
             <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7 lg:mt-16 lg:gap-8">
               {visitorLobbyHighlights.map((item, i) => {
-                const style = secondaryHighlightStyle[item.accent];
+                const t = canteenThroughputByAccent[item.accent];
                 return (
-                  <motion.article
+                  <ThroughputMetricCard
                     key={item.title}
-                    className={`group/vcard relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-6 shadow-[0_22px_56px_-36px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-[0_28px_64px_-40px_rgba(15,23,42,0.28)] ${style.hoverRing}`}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(i * 0.08, 0.2) }}
-                  >
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] overflow-hidden" aria-hidden>
-                      <div
-                        className={`h-full w-full origin-left scale-x-0 bg-gradient-to-r opacity-95 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover/vcard:scale-x-100 motion-reduce:scale-x-100 motion-reduce:transition-none ${style.bar}`}
-                      />
-                    </div>
-                    <div
-                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover/vcard:opacity-100 ${style.orb}`}
-                      aria-hidden
-                    />
-                    <div
-                      className={`relative flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-300 group-hover/vcard:scale-105 ${style.iconSurface}`}
-                    >
-                      <HighlightIcon name={item.icon} className="h-6 w-6" />
-                    </div>
-                    <h3 className="relative mt-5 text-slate-900">{item.title}</h3>
-                    <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                      {item.description}
-                    </p>
-                  </motion.article>
+                    title={item.title}
+                    description={item.description}
+                    chip={item.pillar}
+                    metric={String(i + 1).padStart(2, "0")}
+                    accentBar={t.accentBar}
+                    iconWrap={t.iconWrap}
+                    hoverGlow={t.hoverGlow}
+                    index={i}
+                    icon={<HighlightIcon name={item.icon} className="h-6 w-6 text-current" />}
+                  />
                 );
               })}
             </div>
@@ -793,7 +752,7 @@ export default function CanteenManagementPage() {
 
         {/* Visitor Management System ,  one-row layout on lg: copy + chips | process video */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-12 lg:py-16"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/35 to-white py-10 lg:py-12"
           aria-labelledby="vms-overview-heading"
         >
           <div className="pointer-events-none absolute inset-0 opacity-[0.45]" aria-hidden>
@@ -826,12 +785,12 @@ export default function CanteenManagementPage() {
                   aria-hidden
                 />
 
-                <div className="mt-6 space-y-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-                  <p>
+                <div className="mt-6 space-y-3">
+                  <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
                     Pre-registration, desk check-in, badges, and host alerts roll into{" "}
                     <span className="font-medium text-slate-800">one audit-ready trail</span>, not parallel visitor logs.
                   </p>
-                  <p>
+                  <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
                     See who&apos;s on-site by zone, enforce access in real time, and export evidence when security or
                     compliance needs proof.
                   </p>
@@ -841,19 +800,37 @@ export default function CanteenManagementPage() {
                 <ul className="mt-8 flex snap-x snap-mandatory gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-3 lg:mt-9 lg:flex-nowrap lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
                   {(
                     [
-                      { k: "Trail", d: "Pre-auth → desk → badge" },
-                      { k: "Roster", d: "On-site by zone" },
-                      { k: "Exports", d: "Audit-ready proof" },
+                      {
+                        k: "Trail",
+                        d: "Pre-auth → desk → badge",
+                        topBar: "from-blue-600 via-sky-500 to-indigo-500",
+                      },
+                      {
+                        k: "Roster",
+                        d: "On-site by zone",
+                        topBar: "from-violet-600 via-fuchsia-500 to-pink-500",
+                      },
+                      {
+                        k: "Exports",
+                        d: "Audit-ready proof",
+                        topBar: "from-emerald-500 via-teal-500 to-cyan-500",
+                      },
                     ] as const
                   ).map((chip) => (
                     <li
                       key={chip.k}
-                      className="min-w-[7.25rem] shrink-0 snap-start rounded-xl border border-slate-200/90 bg-white/95 px-2.5 py-2.5 text-center shadow-[0_12px_36px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.04] sm:min-w-0 sm:flex-1 sm:px-3 sm:py-3"
+                      className="relative min-w-[7.25rem] shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200/90 bg-white/95 text-center shadow-[0_12px_36px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.04] sm:min-w-0 sm:flex-1"
                     >
-                      <span className="text-[10px] font-bold uppercase tracking-wide text-[color:var(--inops-blue)] sm:text-xs">
-                        {chip.k}
-                      </span>
-                      <span className="mt-1 block text-[11px] leading-snug text-slate-600 sm:text-xs">{chip.d}</span>
+                      <div
+                        className={`pointer-events-none absolute inset-x-0 top-0 z-[1] h-1.5 rounded-t-xl bg-gradient-to-r shadow-sm ${chip.topBar}`}
+                        aria-hidden
+                      />
+                      <div className="relative z-[2] px-2.5 pb-2.5 pt-3.5 sm:px-3 sm:pb-3 sm:pt-4">
+                        <span className="text-[10px] font-bold uppercase tracking-wide text-[color:var(--inops-blue)] sm:text-xs">
+                          {chip.k}
+                        </span>
+                        <span className="mt-1 block text-[11px] leading-snug text-slate-600 sm:text-xs">{chip.d}</span>
+                      </div>
                     </li>
                   ))}
                 </ul>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const mainPages = [
   { label: "Home", href: "/" },
@@ -34,12 +35,12 @@ export default function AllPages() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/40 px-4 py-8 text-gray-900 sm:px-6 sm:py-10">
       <div className="mx-auto max-w-2xl rounded-2xl border border-gray-200/80 bg-white/90 p-6 shadow-sm shadow-blue-900/5 backdrop-blur-sm sm:p-8">
-        <h1 className="text-gray-900">All Pages</h1>
-        <p className="mt-2 text-sm text-gray-600 sm:text-base">Quick links to every page on the site.</p>
+        <h1 className={inopsUi.sectionHeading}>All Pages</h1>
+        <p className={`mt-2 ${inopsUi.lead}`}>Quick links to every page on the site.</p>
 
         <section className="mt-8 space-y-5">
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-600">Main</h2>
+            <h2 className={inopsUi.eyebrowBrand}>Main</h2>
             <ul className="mt-2.5 space-y-1.5">
               {mainPages.map((p) => (
                 <li key={p.href}>
@@ -52,7 +53,7 @@ export default function AllPages() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-600">Product</h2>
+            <h2 className={inopsUi.eyebrowBrand}>Product</h2>
             <ul className="mt-2.5 space-y-1.5">
               {productPages.map((p) => (
                 <li key={p.href}>
@@ -65,7 +66,7 @@ export default function AllPages() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-600">Solutions</h2>
+            <h2 className={inopsUi.eyebrowBrand}>Solutions</h2>
             <ul className="mt-2.5 space-y-1.5">
               {solutionPages.map((p) => (
                 <li key={p.href}>
@@ -78,7 +79,7 @@ export default function AllPages() {
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-600">Resources</h2>
+            <h2 className={inopsUi.eyebrowBrand}>Resources</h2>
             <ul className="mt-2.5 space-y-1.5">
               {resourcePages.map((p) => (
                 <li key={p.href}>

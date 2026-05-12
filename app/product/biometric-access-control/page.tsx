@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
@@ -45,15 +47,219 @@ const deviceCategoryCards = [
 const touchlessFaceReaderShowcaseImage = "/images/Screenshot 2026-05-04 220326.png";
 const touchlessFaceReaderShowcaseVideo = "/genrate_this_image_in_video_202605080054.mp4";
 
-const readerSpecHighlights = [
-  { title: "Ultra-fast recognition", text: "Recognition speed ≤ 1 second with high accuracy.", featureIcon: "bolt" as const },
-  { title: "Smart fill light", text: "Adaptive brightness for low-light environments.", featureIcon: "bulb" as const },
-  { title: "Advanced anti-spoofing", text: "Detects photo, video, and 3D mask attacks.", featureIcon: "shield" as const },
-  { title: "Multi-card support", text: "Supports 125 kHz EM card and 13.56 MHz IC card.", featureIcon: "idcard" as const },
-  { title: "Wide pose angle", text: "Accurate recognition up to 15° face angle.", featureIcon: "faceframe" as const },
-  { title: "Multiple auth modes", text: "Face / card / password / fingerprint.", featureIcon: "fingerprint" as const },
-  { title: "Flexible connectivity", text: "TCP/IP, WiFi, Wiegand, and RS485.", featureIcon: "wifi" as const },
+/** “Platform strengths” — same card language as solution pain/insight tiles */
+const biometricPlatformStrengthCards = [
+  {
+    title: "Fast Face Recognition",
+    description: "Proprietary algorithms deliver sub-second authentication for seamless movement.",
+    icon: "face" as const,
+    tone: "sky" as const,
+    tag: "Speed",
+  },
+  {
+    title: "Multi-mode Authentication",
+    description: "Support for face, fingerprint, RFID, QR, and PIN in a single unified system.",
+    icon: "grid" as const,
+    tone: "indigo" as const,
+    tag: "Flexibility",
+  },
+  {
+    title: "Anti-spoofing Tech",
+    description: "Liveness detection prevents unauthorized access via photos or 3D masks.",
+    icon: "shieldCheck" as const,
+    tone: "emerald" as const,
+    tag: "Trust",
+  },
+  {
+    title: "High User Capacity",
+    description: "Storage for up to 100,000 users and millions of transaction logs locally.",
+    icon: "users" as const,
+    tone: "violet" as const,
+    tag: "Scale",
+  },
+  {
+    title: "Intuitive UI",
+    description: "Crisp touchscreen interfaces with multi-language support and visual feedback.",
+    icon: "monitor" as const,
+    tone: "cyan" as const,
+    tag: "Experience",
+  },
+  {
+    title: "Extreme Durability",
+    description: "Operational in low-light, high-humidity, and industrial dust environments.",
+    icon: "layers" as const,
+    tone: "amber" as const,
+    tag: "Industrial",
+  },
 ] as const;
+
+type BiometricStrengthTone = (typeof biometricPlatformStrengthCards)[number]["tone"];
+type BiometricStrengthIcon = (typeof biometricPlatformStrengthCards)[number]["icon"];
+
+const biometricStrengthThroughput: Record<
+  BiometricStrengthTone,
+  { accentBar: string; iconWrap: string; hoverGlow: string }
+> = {
+  sky: {
+    accentBar: "from-sky-500 via-cyan-400 to-teal-400",
+    iconWrap:
+      "bg-sky-50 text-sky-600 ring-sky-500/20 group-hover:bg-sky-500 group-hover:text-white group-hover:ring-sky-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
+  },
+  indigo: {
+    accentBar: "from-indigo-500 via-violet-500 to-purple-400",
+    iconWrap:
+      "bg-indigo-50 text-indigo-600 ring-indigo-500/20 group-hover:bg-indigo-600 group-hover:text-white group-hover:ring-indigo-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(99,102,241,0.32)]",
+  },
+  emerald: {
+    accentBar: "from-emerald-500 via-teal-400 to-cyan-400",
+    iconWrap:
+      "bg-emerald-50 text-emerald-600 ring-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white group-hover:ring-emerald-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(16,185,129,0.32)]",
+  },
+  violet: {
+    accentBar: "from-violet-500 via-fuchsia-500 to-pink-400",
+    iconWrap:
+      "bg-violet-50 text-violet-600 ring-violet-500/20 group-hover:bg-violet-600 group-hover:text-white group-hover:ring-violet-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.35)]",
+  },
+  cyan: {
+    accentBar: "from-cyan-500 via-sky-400 to-blue-500",
+    iconWrap:
+      "bg-cyan-50 text-cyan-600 ring-cyan-500/20 group-hover:bg-cyan-500 group-hover:text-white group-hover:ring-cyan-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(6,182,212,0.32)]",
+  },
+  amber: {
+    accentBar: "from-amber-500 via-orange-500 to-red-400",
+    iconWrap:
+      "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.38)]",
+  },
+};
+
+function BiometricPlatformStrengthGlyph({ name, className }: { name: BiometricStrengthIcon; className: string }) {
+  const c = `h-6 w-6 ${className}`;
+  if (name === "face") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    );
+  }
+  if (name === "grid") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+      </svg>
+    );
+  }
+  if (name === "shieldCheck") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    );
+  }
+  if (name === "users") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+      </svg>
+    );
+  }
+  if (name === "monitor") {
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+    </svg>
+  );
+}
+
+type ReaderFeatureIcon = "bolt" | "bulb" | "shield" | "idcard" | "faceframe" | "fingerprint" | "wifi";
+type ReaderFeatureAccent = "amber" | "violet" | "emerald" | "indigo" | "fuchsia" | "cyan";
+
+const readerFeatureAccentVisual: Record<
+  ReaderFeatureAccent,
+  { card: string; miniCell: string; topBar: string; orb: string; iconShell: string }
+> = {
+  amber: {
+    card: "border-amber-200/45 bg-gradient-to-br from-amber-50/95 via-white to-orange-50/35 shadow-[0_22px_56px_-32px_rgba(245,158,11,0.45)] ring-1 ring-amber-400/15 hover:ring-amber-400/30 hover:shadow-[0_28px_64px_-28px_rgba(245,158,11,0.4)]",
+    miniCell:
+      "border-amber-200/40 bg-gradient-to-br from-amber-50/80 via-white to-orange-50/15 shadow-[0_14px_40px_-22px_rgba(245,158,11,0.35)] ring-1 ring-amber-400/12 hover:-translate-y-0.5 hover:ring-amber-300/28 hover:shadow-[0_18px_44px_-18px_rgba(245,158,11,0.28)] transition-all duration-300",
+    topBar: "from-amber-400 via-orange-500 to-rose-500",
+    orb: "bg-amber-400/25",
+    iconShell:
+      "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-600/35 ring-2 ring-white/25",
+  },
+  violet: {
+    card: "border-violet-200/45 bg-gradient-to-br from-violet-50/95 via-white to-fuchsia-50/30 shadow-[0_22px_56px_-32px_rgba(139,92,246,0.38)] ring-1 ring-violet-400/15 hover:ring-violet-400/30 hover:shadow-[0_28px_64px_-28px_rgba(139,92,246,0.35)]",
+    miniCell:
+      "border-violet-200/40 bg-gradient-to-br from-violet-50/80 via-white to-fuchsia-50/15 shadow-[0_14px_40px_-22px_rgba(139,92,246,0.3)] ring-1 ring-violet-400/12 hover:-translate-y-0.5 hover:ring-violet-300/28 hover:shadow-[0_18px_44px_-18px_rgba(139,92,246,0.26)] transition-all duration-300",
+    topBar: "from-violet-400 via-fuchsia-500 to-pink-500",
+    orb: "bg-violet-400/22",
+    iconShell:
+      "bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-lg shadow-violet-600/35 ring-2 ring-white/25",
+  },
+  emerald: {
+    card: "border-emerald-200/45 bg-gradient-to-br from-emerald-50/95 via-white to-teal-50/35 shadow-[0_22px_56px_-32px_rgba(16,185,129,0.38)] ring-1 ring-emerald-400/15 hover:ring-emerald-400/30 hover:shadow-[0_28px_64px_-28px_rgba(16,185,129,0.35)]",
+    miniCell:
+      "border-emerald-200/40 bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/15 shadow-[0_14px_40px_-22px_rgba(16,185,129,0.3)] ring-1 ring-emerald-400/12 hover:-translate-y-0.5 hover:ring-emerald-300/28 hover:shadow-[0_18px_44px_-18px_rgba(16,185,129,0.26)] transition-all duration-300",
+    topBar: "from-emerald-400 via-teal-500 to-cyan-500",
+    orb: "bg-emerald-400/22",
+    iconShell:
+      "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-600/35 ring-2 ring-white/25",
+  },
+  indigo: {
+    card: "border-indigo-200/45 bg-gradient-to-br from-indigo-50/95 via-white to-sky-50/30 shadow-[0_22px_56px_-32px_rgba(99,102,241,0.38)] ring-1 ring-indigo-400/15 hover:ring-indigo-400/30 hover:shadow-[0_28px_64px_-28px_rgba(99,102,241,0.35)]",
+    miniCell:
+      "border-indigo-200/40 bg-gradient-to-br from-indigo-50/80 via-white to-sky-50/15 shadow-[0_14px_40px_-22px_rgba(99,102,241,0.3)] ring-1 ring-indigo-400/12 hover:-translate-y-0.5 hover:ring-indigo-300/28 hover:shadow-[0_18px_44px_-18px_rgba(99,102,241,0.26)] transition-all duration-300",
+    topBar: "from-indigo-400 via-blue-500 to-sky-500",
+    orb: "bg-indigo-400/22",
+    iconShell:
+      "bg-gradient-to-br from-indigo-500 to-blue-600 text-white shadow-lg shadow-indigo-600/35 ring-2 ring-white/25",
+  },
+  fuchsia: {
+    card: "border-fuchsia-200/45 bg-gradient-to-br from-fuchsia-50/95 via-white to-rose-50/30 shadow-[0_22px_56px_-32px_rgba(217,70,239,0.35)] ring-1 ring-fuchsia-400/15 hover:ring-fuchsia-400/30 hover:shadow-[0_28px_64px_-28px_rgba(217,70,239,0.32)]",
+    miniCell:
+      "border-fuchsia-200/40 bg-gradient-to-br from-fuchsia-50/80 via-white to-rose-50/15 shadow-[0_14px_40px_-22px_rgba(217,70,239,0.28)] ring-1 ring-fuchsia-400/12 hover:-translate-y-0.5 hover:ring-fuchsia-300/28 hover:shadow-[0_18px_44px_-18px_rgba(217,70,239,0.24)] transition-all duration-300",
+    topBar: "from-fuchsia-400 via-rose-500 to-orange-400",
+    orb: "bg-fuchsia-400/20",
+    iconShell:
+      "bg-gradient-to-br from-fuchsia-500 to-rose-600 text-white shadow-lg shadow-fuchsia-600/35 ring-2 ring-white/25",
+  },
+  cyan: {
+    card: "border-cyan-200/45 bg-gradient-to-br from-cyan-50/95 via-white to-sky-50/40 shadow-[0_22px_56px_-32px_rgba(6,182,212,0.38)] ring-1 ring-cyan-400/15 hover:ring-cyan-400/30 hover:shadow-[0_28px_64px_-28px_rgba(6,182,212,0.35)]",
+    miniCell:
+      "border-cyan-200/40 bg-gradient-to-br from-cyan-50/80 via-white to-sky-50/20 shadow-[0_14px_40px_-22px_rgba(6,182,212,0.3)] ring-1 ring-cyan-400/12 hover:-translate-y-0.5 hover:ring-cyan-300/28 hover:shadow-[0_18px_44px_-18px_rgba(6,182,212,0.26)] transition-all duration-300",
+    topBar: "from-cyan-400 via-sky-500 to-blue-600",
+    orb: "bg-cyan-400/22",
+    iconShell:
+      "bg-gradient-to-br from-cyan-500 to-sky-600 text-white shadow-lg shadow-cyan-600/35 ring-2 ring-white/25",
+  },
+};
+
+const readerSpecHighlights: {
+  title: string;
+  text: string;
+  featureIcon: ReaderFeatureIcon;
+  accent: ReaderFeatureAccent;
+}[] = [
+  { title: "Ultra-fast recognition", text: "Recognition speed ≤ 1 second with high accuracy.", featureIcon: "bolt", accent: "amber" },
+  { title: "Smart fill light", text: "Adaptive brightness for low-light environments.", featureIcon: "bulb", accent: "violet" },
+  { title: "Advanced anti-spoofing", text: "Detects photo, video, and 3D mask attacks.", featureIcon: "shield", accent: "emerald" },
+  { title: "Multi-card support", text: "Supports 125 kHz EM card and 13.56 MHz IC card.", featureIcon: "idcard", accent: "indigo" },
+  { title: "Multiple auth modes", text: "Face / card / password / fingerprint.", featureIcon: "fingerprint", accent: "fuchsia" },
+  { title: "Flexible connectivity", text: "TCP/IP, WiFi, Wiegand, and RS485.", featureIcon: "wifi", accent: "cyan" },
+];
 
 const readerSpecificationColumns = [
   { label: "Display", value: '2.8" / 5" / 7" touch options', specIcon: "monitor" as const },
@@ -79,12 +285,11 @@ const systemFlowSteps = [
   { step: "05", title: "Reporting & Dashboard", gradient: "from-emerald-500 to-teal-600" },
 ] as const;
 
-function ReaderFeatureGlyph({ name }: { name: (typeof readerSpecHighlights)[number]["featureIcon"] }) {
-  const ring =
-    "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-blue-200 bg-white text-blue-600 shadow-sm";
-  const c = "h-5 w-5";
+function ReaderFeatureGlyph({ name, accent }: { name: ReaderFeatureIcon; accent: ReaderFeatureAccent }) {
+  const shell = `inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${readerFeatureAccentVisual[accent].iconShell}`;
+  const c = "h-6 w-6";
   return (
-    <span className={ring} aria-hidden>
+    <span className={shell} aria-hidden>
       {name === "bolt" && (
         <svg className={c} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
@@ -198,7 +403,8 @@ export default function BiometricAccessControlPage() {
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
             <div className="relative min-h-[340px] w-full sm:min-h-[390px] lg:min-h-[430px]">
-              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-1/2">
+              <SolutionHeroWaveDecor className="z-[1]" />
+              <div className="relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-1/2">
                 <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-blue-500/15 to-indigo-600/20 blur-2xl lg:block lg:rounded-l-[2rem] lg:rounded-r-none" aria-hidden />
                 <div className="relative h-full overflow-hidden lg:h-full lg:rounded-l-[2rem]">
                   <video
@@ -283,7 +489,7 @@ export default function BiometricAccessControlPage() {
                   >
                     <Link
                       href="/contact"
-                      className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 ring-1 ring-white/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      className="group inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-600/30 transition hover:bg-blue-700 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                     >
                       Request Demo
                       <svg
@@ -377,7 +583,11 @@ export default function BiometricAccessControlPage() {
           </div>
         </section> */}
 
-        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-slate-50/95 via-white to-white py-12 lg:py-16">
+        <section
+          id="biometric-platform-strengths"
+          className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-slate-50/95 via-white to-white py-10 lg:py-12"
+          aria-labelledby="biometric-platform-strengths-heading"
+        >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-sky-400/[0.11] blur-3xl" />
             <div className="absolute -right-20 bottom-10 h-64 w-64 rounded-full bg-indigo-400/[0.09] blur-3xl" />
@@ -394,132 +604,40 @@ export default function BiometricAccessControlPage() {
               <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm shadow-blue-500/5 ring-1 ring-blue-500/10 backdrop-blur-sm">
                 Platform strengths
               </span>
-              <h2 className="mt-4 text-slate-900">
-                <span className="text-slate-900">
-                  Built for Speed, Accuracy, and Reliability
-                </span>
+              <h2 id="biometric-platform-strengths-heading" className="mt-4 text-balance text-slate-900">
+                Built for speed, accuracy, and reliability
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
                 Enterprise-grade biometrics tuned for throughput, trust, and uptime on the ground.
               </p>
             </motion.div>
 
-            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-3 lg:gap-7">
-              {[
-                {
-                  title: "Fast Face Recognition",
-                  description: "Proprietary algorithms deliver sub-second authentication for seamless movement.",
-                  icon: "face",
-                  tile: "from-sky-500 to-blue-600",
-                  glow: "from-sky-400 to-blue-500",
-                },
-                {
-                  title: "Multi-mode Authentication",
-                  description: "Support for face, fingerprint, RFID, QR, and PIN in a single unified system.",
-                  icon: "grid",
-                  tile: "from-indigo-500 to-violet-600",
-                  glow: "from-indigo-400 to-violet-500",
-                },
-                {
-                  title: "Anti-spoofing Tech",
-                  description: "Liveness detection prevents unauthorized access via photos or 3D masks.",
-                  icon: "shield",
-                  tile: "from-emerald-500 to-teal-600",
-                  glow: "from-emerald-400 to-teal-500",
-                },
-                {
-                  title: "High User Capacity",
-                  description: "Storage for up to 100,000 users and millions of transaction logs locally.",
-                  icon: "users",
-                  tile: "from-violet-500 to-purple-600",
-                  glow: "from-violet-400 to-purple-500",
-                },
-                {
-                  title: "Intuitive UI",
-                  description: "Crisp touchscreen interfaces with multi-language support and visual feedback.",
-                  icon: "monitor",
-                  tile: "from-cyan-500 to-blue-600",
-                  glow: "from-cyan-400 to-blue-500",
-                },
-                {
-                  title: "Extreme Durability",
-                  description: "Operational in low-light, high-humidity, and industrial dust environments.",
-                  icon: "chart",
-                  tile: "from-amber-500 to-orange-600",
-                  glow: "from-amber-400 to-orange-500",
-                },
-              ].map((item, idx) => (
-                <motion.article
-                  key={item.title}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200/85 bg-white/90 p-5 shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200/90 hover:shadow-xl hover:shadow-blue-500/10 sm:p-6"
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.05 }}
-                >
-                  <div
-                    className={`pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gradient-to-br ${item.glow} opacity-0 blur-2xl transition duration-500 group-hover:opacity-25`}
-                    aria-hidden
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-3 lg:gap-6">
+              {biometricPlatformStrengthCards.map((card, i) => {
+                const t = biometricStrengthThroughput[card.tone];
+                const step = String(i + 1).padStart(2, "0");
+                return (
+                  <ThroughputMetricCard
+                    key={card.title}
+                    title={card.title}
+                    description={card.description}
+                    chip={card.tag}
+                    metric={step}
+                    accentBar={t.accentBar}
+                    iconWrap={t.iconWrap}
+                    hoverGlow={t.hoverGlow}
+                    index={i}
+                    icon={<BiometricPlatformStrengthGlyph name={card.icon} className="text-current" />}
                   />
-                  <div className="relative flex flex-col gap-4">
-                    <span
-                      className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.tile} text-white shadow-lg shadow-slate-900/15 ring-2 ring-white`}
-                    >
-                      {item.icon === "face" && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <rect x="4" y="4" width="16" height="16" rx="3" />
-                          <circle cx="9" cy="10" r="1" />
-                          <circle cx="15" cy="10" r="1" />
-                          <path d="M8 15c1.1.9 2.3 1.2 4 1.2s2.9-.3 4-1.2" />
-                        </svg>
-                      )}
-                      {item.icon === "grid" && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <rect x="4" y="4" width="6" height="6" />
-                          <rect x="14" y="4" width="6" height="6" />
-                          <rect x="4" y="14" width="6" height="6" />
-                          <rect x="14" y="14" width="6" height="6" />
-                        </svg>
-                      )}
-                      {item.icon === "shield" && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
-                        </svg>
-                      )}
-                      {item.icon === "users" && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <circle cx="9" cy="8" r="3" />
-                          <circle cx="17" cy="9" r="2" />
-                          <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                          <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                        </svg>
-                      )}
-                      {item.icon === "monitor" && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <rect x="3" y="4" width="18" height="12" rx="2" />
-                          <path d="M8 20h8M12 16v4" />
-                        </svg>
-                      )}
-                      {item.icon === "chart" && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                          <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />
-                        </svg>
-                      )}
-                    </span>
-                    <div>
-                      <h3 className="text-slate-900">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
 
         <section
           id="reader-specs"
-          className="border-t  border-gray-200 py-12 lg:py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50/40"
+          className="border-t  border-gray-200 py-10 lg:py-16 bg-gradient-to-b from-slate-50 via-white to-slate-50/40"
         >
           <div className="mx-auto max-w-7xl px-6 lg:px-12 ">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
@@ -597,22 +715,41 @@ export default function BiometricAccessControlPage() {
             </div>
 
             <div className="mt-12 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
-              {readerSpecHighlights.map((item, idx) => (
-                <motion.div
-                  key={item.title}
-                  className="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm shadow-slate-900/[0.04] transition-colors duration-300 hover:border-slate-300/80"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.35, ease: smoothEase, delay: idx * 0.04 }}
-                >
-                  <ReaderFeatureGlyph name={item.featureIcon} />
-                  <div>
-                    <h3 className="text-slate-900">{item.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.text}</p>
-                  </div>
-                </motion.div>
-              ))}
+              {readerSpecHighlights.map((item, idx) => {
+                const visual = readerFeatureAccentVisual[item.accent];
+                return (
+                  <motion.div
+                    key={item.title}
+                    className={`group relative overflow-hidden rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-0.5 ${visual.card}`}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.4, ease: smoothEase, delay: idx * 0.05 }}
+                  >
+                    <div
+                      className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${visual.topBar}`}
+                      aria-hidden
+                    />
+                    <div
+                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full blur-3xl ${visual.orb}`}
+                      aria-hidden
+                    />
+                    <div
+                      className={`pointer-events-none absolute -bottom-10 -left-8 h-28 w-28 rounded-full blur-2xl opacity-60 ${visual.orb}`}
+                      aria-hidden
+                    />
+                    <div className="relative flex gap-4">
+                      <ReaderFeatureGlyph name={item.featureIcon} accent={item.accent} />
+                      <div className="min-w-0 pt-0.5">
+                        <h3 className="text-[0.95rem] font-semibold leading-snug tracking-tight text-slate-900 sm:text-base">
+                          {item.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-600/95">{item.text}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
             <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-8">
@@ -700,7 +837,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-white via-slate-50/60 to-sky-50/35 py-12 lg:py-16">
+        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-white via-slate-50/60 to-sky-50/35 py-10 lg:py-12">
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             <div className="absolute left-[20%] top-24 h-56 w-56 rounded-full bg-blue-400/[0.09] blur-3xl" />
             <div className="absolute bottom-16 right-[15%] h-64 w-64 rounded-full bg-indigo-400/[0.08] blur-3xl" />
@@ -793,7 +930,7 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 py-8 lg:py-12 bg-white">
+        <section className="border-t border-gray-200 py-6 lg:py-10 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -863,9 +1000,11 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-white via-slate-50/50 to-white py-12 lg:py-16">
+        <section className="relative overflow-hidden border-t border-indigo-200/40 bg-gradient-to-b from-white via-violet-50/25 to-cyan-50/30 py-12 lg:py-16">
           <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <div className="absolute right-[12%] top-20 h-56 w-56 rounded-full bg-blue-400/[0.08] blur-3xl" />
+            <div className="absolute right-[8%] top-16 h-72 w-72 rounded-full bg-violet-400/[0.12] blur-3xl" />
+            <div className="absolute bottom-10 left-[5%] h-64 w-64 rounded-full bg-cyan-400/[0.1] blur-3xl" />
+            <div className="absolute left-1/2 top-1/3 h-px w-[min(90%,48rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-200/50 to-transparent" />
           </div>
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
@@ -875,106 +1014,114 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex rounded-full border border-slate-200/90 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm ring-1 ring-slate-900/5 backdrop-blur-sm">
-                Hardware DNA
+              <span className="inline-flex rounded-full border border-violet-200/70 bg-gradient-to-r from-white via-violet-50/80 to-indigo-50/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] shadow-sm ring-1 ring-violet-500/15 backdrop-blur-sm">
+                <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 bg-clip-text text-transparent">Hardware DNA</span>
               </span>
-              <h2 className="mt-4">
-                <span className="text-slate-900">Universal Device Excellence</span>
+              <h2 className="mt-5 text-slate-900">
+                <span className="bg-gradient-to-r from-slate-900 via-indigo-800 to-violet-800 bg-clip-text text-transparent">Universal Device Excellence</span>
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Built for harsh floors, heavy traffic, and always-on operations, without sacrificing precision.
               </p>
             </motion.div>
 
-            <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-              {[
-                {
-                  title: "Rugged Industrial Design",
-                  description:
-                    "Encased in aircraft-grade aluminum and impact-resistant glass, our devices are IP65 rated for dust and humidity protection.",
-                  gradient: "from-slate-600 to-slate-800",
-                },
-                {
-                  title: "High-Speed Processing",
-                  description:
-                    "Equipped with dedicated NPU (Neural Processing Unit) cores for lightning-fast biometric template matching.",
-                  gradient: "from-blue-600 to-indigo-700",
-                },
-                {
-                  title: "Enterprise Capacity",
-                  description:
-                    "Designed for massive deployments, managing distributed data across thousands of devices from a central hub.",
-                  gradient: "from-violet-600 to-purple-700",
-                },
-              ].map((item, idx) => (
-                <motion.article
-                  key={item.title}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200/85 bg-white/95 p-6 shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200/90 hover:shadow-xl"
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.06 }}
-                >
-                  <div
-                    className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br ${item.gradient} opacity-[0.08] blur-2xl transition duration-500 group-hover:opacity-[0.14]`}
-                    aria-hidden
-                  />
-                  <div className={`mb-4 inline-flex h-1.5 w-14 rounded-full bg-gradient-to-r ${item.gradient}`} aria-hidden />
-                  <h3 className="text-slate-900">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                </motion.article>
-              ))}
+            <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+              {(
+                [
+                  {
+                    title: "Rugged Industrial Design",
+                    description:
+                      "Encased in aircraft-grade aluminum and impact-resistant glass, our devices are IP65 rated for dust and humidity protection.",
+                    accent: "amber" as const,
+                  },
+                  {
+                    title: "High-Speed Processing",
+                    description:
+                      "Equipped with dedicated NPU (Neural Processing Unit) cores for lightning-fast biometric template matching.",
+                    accent: "cyan" as const,
+                  },
+                  {
+                    title: "Enterprise Capacity",
+                    description:
+                      "Designed for massive deployments, managing distributed data across thousands of devices from a central hub.",
+                    accent: "violet" as const,
+                  },
+                ] as const
+              ).map((item, idx) => {
+                const v = readerFeatureAccentVisual[item.accent];
+                return (
+                  <motion.article
+                    key={item.title}
+                    className={`group relative overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 ${v.card}`}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.06 }}
+                  >
+                    <div
+                      className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${v.topBar}`}
+                      aria-hidden
+                    />
+                    <div
+                      className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full blur-3xl ${v.orb}`}
+                      aria-hidden
+                    />
+                    <div
+                      className={`pointer-events-none absolute -bottom-10 -left-8 h-28 w-28 rounded-full blur-2xl opacity-70 ${v.orb}`}
+                      aria-hidden
+                    />
+                    <h3 className="relative text-base font-semibold tracking-tight text-slate-900 sm:text-lg">{item.title}</h3>
+                    <p className="relative mt-3 text-sm leading-relaxed text-slate-600/95">{item.description}</p>
+                  </motion.article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-slate-200/90 bg-gradient-to-b from-sky-50/40 via-white to-white py-12 lg:py-16">
+        <section className="relative overflow-hidden border-t border-cyan-200/35 bg-gradient-to-b from-sky-50/50 via-white to-indigo-50/40 py-12 lg:py-16">
           <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <div className="absolute -left-16 bottom-24 h-72 w-72 rounded-full bg-indigo-400/[0.09] blur-3xl" />
+            <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-indigo-400/[0.12] blur-3xl" />
+            <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-cyan-400/[0.11] blur-3xl" />
+            <div className="absolute right-1/4 top-1/2 h-48 w-48 rounded-full bg-fuchsia-400/[0.08] blur-3xl" />
           </div>
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14">
+            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
-                <span className="inline-flex rounded-full border border-blue-200/90 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
-                  Integrations
+                <span className="inline-flex rounded-full border border-cyan-200/70 bg-gradient-to-r from-white to-sky-50 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] shadow-sm ring-1 ring-cyan-500/15">
+                  <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">Integrations</span>
                 </span>
-                <h2 className="mt-4 text-slate-900">
+                <h2 className="mt-5 text-slate-900">
                   Seamlessly Connected to{" "}
-                  <span className="font-semibold text-[color:var(--inops-blue)]">Your Systems</span>
+                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text font-semibold text-transparent">Your Systems</span>
                 </h2>
                 <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
                   Modern APIs and native integrations ensure your data moves where you need it, when you need it.
                 </p>
 
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-8 list-none space-y-4 p-0">
                   {[
                     {
                       title: "API-Based Integration",
                       description: "RESTful APIs for custom software hooks.",
-                      accent: "from-sky-500 to-blue-600",
                     },
                     {
                       title: "Real-time Data Sync",
                       description: "Zero-latency updates for immediate attendance visibility.",
-                      accent: "from-indigo-500 to-violet-600",
                     },
                     {
                       title: "Centralized Dashboard",
                       description: "Manage all hardware globally from a single browser interface.",
-                      accent: "from-emerald-500 to-teal-600",
                     },
                   ].map((item) => (
-                    <li
-                      key={item.title}
-                      className="flex gap-4 rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-sm ring-1 ring-white backdrop-blur-sm transition hover:border-blue-200/90 hover:shadow-md"
-                    >
+                    <li key={item.title} className="flex gap-4 py-2">
                       <span
-                        className={`mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.accent} text-white shadow-md ring-2 ring-white`}
+                        className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-blue-600"
                         aria-hidden
                       >
                         <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
@@ -991,70 +1138,92 @@ export default function BiometricAccessControlPage() {
               </motion.div>
 
               <motion.div
-                className="relative overflow-hidden mt-40 rounded-[1.75rem] border border-slate-200/90 bg-white/90 p-6 shadow-[0_24px_48px_-28px_rgba(15,23,42,0.14)] ring-1 ring-white backdrop-blur-md sm:p-8"
+                className="relative mt-10 overflow-hidden rounded-[1.75rem] border border-indigo-200/40 bg-gradient-to-br from-white via-slate-50/50 to-sky-50/60 p-6 shadow-[0_28px_70px_-40px_rgba(79,70,229,0.3)] ring-1 ring-indigo-500/10 backdrop-blur-md sm:p-8 lg:mt-30"
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(145deg,rgba(59,130,246,0.06)_0%,transparent_55%)]" aria-hidden />
-                <p className="relative text-center text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Data fabric</p>
-                <div className="relative mt-6 grid grid-cols-2 gap-3">
-                  {[
-                    {
-                      label: "DEVICES",
-                      gradient: "from-sky-500 to-blue-600",
-                      icon: (
-                        <>
-                          <rect x="3" y="4" width="18" height="12" rx="2" />
-                          <path d="M8 20h8M12 16v4" />
-                        </>
-                      ),
-                    },
-                    {
-                      label: "ATTENDANCE",
-                      gradient: "from-indigo-500 to-violet-600",
-                      icon: (
-                        <>
-                          <circle cx="12" cy="12" r="9" />
-                          <path d="M12 7v5l3 2" />
-                        </>
-                      ),
-                    },
-                    {
-                      label: "HRMS/PAYROLL",
-                      gradient: "from-violet-500 to-purple-600",
-                      icon: (
-                        <>
-                          <rect x="3" y="6" width="18" height="12" rx="2" />
-                          <path d="M3 10h18" />
-                        </>
-                      ),
-                    },
-                    {
-                      label: "REPORTS",
-                      gradient: "from-emerald-500 to-teal-600",
-                      icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
-                    },
-                  ].map((node) => (
-                    <div
-                      key={node.label}
-                      className="relative rounded-xl border border-slate-200/80 bg-gradient-to-b from-white to-slate-50/90 px-4 py-5 text-center shadow-sm ring-1 ring-white transition hover:border-blue-200/90 hover:shadow-md"
-                    >
-                      <span
-                        className={`mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${node.gradient} text-white shadow-lg ring-2 ring-white`}
-                        aria-hidden
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyan-400 via-indigo-500 to-fuchsia-500 opacity-95"
+                  aria-hidden
+                />
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(59,130,246,0.07)_0%,transparent_50%,rgba(139,92,246,0.06)_100%)]" aria-hidden />
+                <p className="relative text-center text-[11px] font-bold uppercase tracking-[0.22em] text-transparent bg-gradient-to-r from-slate-500 via-indigo-500 to-violet-500 bg-clip-text">
+                  Data fabric
+                </p>
+                <div className="relative mt-7 grid grid-cols-2 gap-3">
+                  {(
+                    [
+                      {
+                        label: "DEVICES",
+                        accent: "cyan" as const,
+                        icon: (
+                          <>
+                            <rect x="3" y="4" width="18" height="12" rx="2" />
+                            <path d="M8 20h8M12 16v4" />
+                          </>
+                        ),
+                      },
+                      {
+                        label: "ATTENDANCE",
+                        accent: "indigo" as const,
+                        icon: (
+                          <>
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="M12 7v5l3 2" />
+                          </>
+                        ),
+                      },
+                      {
+                        label: "HRMS/PAYROLL",
+                        accent: "fuchsia" as const,
+                        icon: (
+                          <>
+                            <rect x="3" y="6" width="18" height="12" rx="2" />
+                            <path d="M3 10h18" />
+                          </>
+                        ),
+                      },
+                      {
+                        label: "REPORTS",
+                        accent: "emerald" as const,
+                        icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
+                      },
+                    ] as const
+                  ).map((node) => {
+                    const v = readerFeatureAccentVisual[node.accent];
+                    return (
+                      <div
+                        key={node.label}
+                        className={`group relative overflow-hidden rounded-xl border p-4 text-center transition-all duration-300 hover:-translate-y-0.5 ${v.miniCell}`}
                       >
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          {node.icon}
-                        </svg>
-                      </span>
-                      <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-600">{node.label}</p>
-                    </div>
-                  ))}
+                        <div
+                          className={`pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r ${v.topBar}`}
+                          aria-hidden
+                        />
+                        <div
+                          className={`pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full blur-xl ${v.orb}`}
+                          aria-hidden
+                        />
+                        <span
+                          className={`relative mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl ${v.iconShell}`}
+                          aria-hidden
+                        >
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            {node.icon}
+                          </svg>
+                        </span>
+                        <p className="relative mt-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600 sm:text-[11px]">{node.label}</p>
+                      </div>
+                    );
+                  })}
                   <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                    <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 opacity-25 blur-xl" aria-hidden />
-                    <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700 text-lg font-bold text-white shadow-xl shadow-indigo-500/40 ring-4 ring-white">
+                    <span
+                      className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500 via-indigo-600 to-fuchsia-600 opacity-35 blur-xl"
+                      aria-hidden
+                    />
+                    <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 via-indigo-600 to-violet-700 text-lg font-bold text-white shadow-xl shadow-indigo-500/45 ring-4 ring-white/90">
                       →
                     </span>
                   </div>
@@ -1064,8 +1233,12 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-slate-200/90 bg-white py-12 lg:py-16">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.06),transparent)]" aria-hidden />
+        <section className="relative overflow-hidden border-t border-violet-200/35 bg-gradient-to-b from-fuchsia-50/20 via-white to-emerald-50/25 py-12 lg:py-16">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute left-1/2 top-0 h-[420px] w-[min(100%,56rem)] -translate-x-1/2 bg-[radial-gradient(ellipse_70%_55%_at_50%_0%,rgba(99,102,241,0.12),transparent_65%)]" />
+            <div className="absolute bottom-0 right-[10%] h-56 w-56 rounded-full bg-emerald-400/[0.1] blur-3xl" />
+            <div className="absolute bottom-20 left-[8%] h-48 w-48 rounded-full bg-amber-400/[0.09] blur-3xl" />
+          </div>
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -1074,89 +1247,96 @@ export default function BiometricAccessControlPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
-                Why InOps
+              <span className="inline-flex rounded-full border border-emerald-200/70 bg-gradient-to-r from-white to-emerald-50/80 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] shadow-sm ring-1 ring-emerald-500/15">
+                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Why InOps</span>
               </span>
-              <h2 className="mt-4">
-                <span className="text-slate-900">Why Choose InOps?</span>
+              <h2 className="mt-5">
+                <span className="bg-gradient-to-r from-slate-900 via-indigo-800 to-violet-800 bg-clip-text text-transparent">Why Choose InOps?</span>
               </h2>
             </motion.div>
 
-            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
-              {[
-                {
-                  title: "Improved Security",
-                  description:
-                    "Eliminate buddy punching and unauthorized access with ironclad biometric verification.",
-                  icon: "shield",
-                  gradient: "from-emerald-500 to-teal-600",
-                },
-                {
-                  title: "Accurate Tracking",
-                  description:
-                    "Capture precise time-stamps down to the second for fair and accurate payroll processing.",
-                  icon: "clock",
-                  gradient: "from-sky-500 to-blue-600",
-                },
-                {
-                  title: "Reduced Manual Work",
-                  description:
-                    "Automate the entire logging process, freeing up HR teams for more strategic initiatives.",
-                  icon: "bolt",
-                  gradient: "from-amber-500 to-orange-600",
-                },
-                {
-                  title: "Global Scalability",
-                  description:
-                    "Easily deploy across multiple locations and manage everything via a centralized cloud hub.",
-                  icon: "users",
-                  gradient: "from-violet-500 to-indigo-600",
-                },
-              ].map((item, idx) => (
-                <motion.article
-                  key={item.title}
-                  className="group relative overflow-hidden rounded-2xl border border-slate-200/85 bg-white/95 p-6 shadow-md shadow-slate-900/[0.04] ring-1 ring-white backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-blue-200/90 hover:shadow-xl"
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.05 }}
-                >
-                  <div
-                    className={`pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${item.gradient} opacity-[0.1] blur-2xl transition duration-500 group-hover:opacity-[0.18]`}
-                    aria-hidden
-                  />
-                  <span
-                    className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${item.gradient} text-white shadow-lg ring-2 ring-white`}
+            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
+              {(
+                [
+                  {
+                    title: "Improved Security",
+                    description:
+                      "Eliminate buddy punching and unauthorized access with ironclad biometric verification.",
+                    icon: "shield" as const,
+                    accent: "emerald" as const,
+                  },
+                  {
+                    title: "Accurate Tracking",
+                    description:
+                      "Capture precise time-stamps down to the second for fair and accurate payroll processing.",
+                    icon: "clock" as const,
+                    accent: "cyan" as const,
+                  },
+                  {
+                    title: "Reduced Manual Work",
+                    description:
+                      "Automate the entire logging process, freeing up HR teams for more strategic initiatives.",
+                    icon: "bolt" as const,
+                    accent: "amber" as const,
+                  },
+                  {
+                    title: "Global Scalability",
+                    description:
+                      "Easily deploy across multiple locations and manage everything via a centralized cloud hub.",
+                    icon: "users" as const,
+                    accent: "violet" as const,
+                  },
+                ] as const
+              ).map((item, idx) => {
+                const v = readerFeatureAccentVisual[item.accent];
+                return (
+                  <motion.article
+                    key={item.title}
+                    className={`group relative overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 ${v.card}`}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.42, ease: smoothEase, delay: idx * 0.05 }}
                   >
-                    {item.icon === "shield" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
-                      </svg>
-                    )}
-                    {item.icon === "clock" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 7v5l3 2" />
-                      </svg>
-                    )}
-                    {item.icon === "bolt" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
-                      </svg>
-                    )}
-                    {item.icon === "users" && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="9" cy="8" r="3" />
-                        <circle cx="17" cy="9" r="2" />
-                        <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                        <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                      </svg>
-                    )}
-                  </span>
-                  <h3 className="relative mt-4 text-slate-900">{item.title}</h3>
-                  <p className="relative mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                </motion.article>
-              ))}
+                    <div
+                      className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${v.topBar}`}
+                      aria-hidden
+                    />
+                    <div
+                      className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-3xl ${v.orb}`}
+                      aria-hidden
+                    />
+                    <span className={`relative inline-flex h-11 w-11 items-center justify-center rounded-xl ${v.iconShell}`}>
+                      {item.icon === "shield" && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" />
+                        </svg>
+                      )}
+                      {item.icon === "clock" && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                      )}
+                      {item.icon === "bolt" && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+                        </svg>
+                      )}
+                      {item.icon === "users" && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                          <circle cx="9" cy="8" r="3" />
+                          <circle cx="17" cy="9" r="2" />
+                          <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                          <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                        </svg>
+                      )}
+                    </span>
+                    <h3 className="relative mt-4 text-base font-semibold tracking-tight text-slate-900">{item.title}</h3>
+                    <p className="relative mt-2 text-sm leading-relaxed text-slate-600/95">{item.description}</p>
+                  </motion.article>
+                );
+              })}
             </div>
 
             <motion.div

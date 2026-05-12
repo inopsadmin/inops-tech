@@ -16,6 +16,7 @@ import CollaborateCtaBand from "./components/CollaborateCtaBand";
 import VideoLivePopups, { type VideoLivePopupItem } from "./components/VideoLivePopups";
 import { enlargedMarqueeLogoSrcs, industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
 import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const heroLogoVisualScale: Record<string, string> = {
   "/clients/ashok-leyland.svg": "scale-[0.9]",
@@ -54,12 +55,11 @@ const dashboardCards: DashboardCard[] = [
     badgeClass: "border-blue-200 bg-blue-50 text-blue-700",
     footerTag: "Unified command center",
     livePopups: [
-      { position: "top-left", label: "Live", title: "Team activity", className: "!top-2 !-left-2 sm:!top-4 sm:!-left-4 lg:!-top-10 lg:!-left-10", accent: "emerald" },
+      { position: "top-left", label: "Live", title: "Team activity", accent: "emerald" },
       {
         position: "bottom-right",
         label: "Synced",
         title: "Attendance updated",
-        className: "!bottom-3 !right-2 sm:!bottom-5 sm:!right-4 lg:!-bottom-0 lg:!right-0",
         variant: "icon",
         icon: "check",
         accent: "blue",
@@ -77,12 +77,11 @@ const dashboardCards: DashboardCard[] = [
     badgeClass: "border-violet-200 bg-violet-50 text-violet-700",
     footerTag: "Executive command center",
     livePopups: [
-      { position: "top-right", label: "Live", title: "Cross-site KPIs", className: "!top-2 !right-2 sm:!top-4 sm:!right-4 lg:!-top-10 lg:!-right-10", accent: "violet" },
+      { position: "top-right", label: "Live", title: "Cross-site KPIs", accent: "violet" },
       {
         position: "bottom-left",
         label: "Insight",
         title: "Productivity +12%",
-        className: "!bottom-3 !left-2 sm:!bottom-5 sm:!left-4 lg:!-bottom-0 lg:!left-0",
         variant: "icon",
         icon: "chart",
         accent: "blue",
@@ -100,12 +99,11 @@ const dashboardCards: DashboardCard[] = [
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
     footerTag: "People operations control",
     livePopups: [
-      { position: "top-left", label: "Live", title: "People ops", className: "!top-2 !-left-2 sm:!top-4 sm:!-left-4 lg:!-top-10 lg:!-left-10", accent: "emerald" },
+      { position: "top-left", label: "Live", title: "People ops", accent: "emerald" },
       {
         position: "bottom-right",
         label: "Audit",
         title: "Compliance OK",
-        className: "!bottom-3 !right-2 sm:!bottom-5 sm:!right-4 lg:!-bottom-0 lg:!right-0",
         variant: "icon",
         icon: "shield",
         accent: "emerald",
@@ -278,7 +276,7 @@ export default function Home() {
                   <motion.div whileHover={{ scale: 1.04, y: -4 }} whileTap={{ scale: 0.98 }}>
                     <Link
                       href="/contact"
-                      className="btn-primary btn-glow inline-flex h-12 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 via-blue-600 to-blue-700 px-6 text-[15px] font-semibold text-white shadow-[0_12px_40px_-8px_rgba(37,99,235,0.55)] ring-1 ring-white/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:from-sky-400 hover:via-blue-600 hover:to-blue-800 hover:shadow-[0_20px_50px_-8px_rgba(56,189,248,0.45)] sm:w-auto sm:px-8 sm:text-base"
+                      className={`${inopsUi.btnPrimary} w-full shadow-lg shadow-blue-900/25 sm:w-auto`}
                     >
                       Get In Touch
                       <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,7 +287,7 @@ export default function Home() {
                   <motion.div whileHover={{ scale: 1.04, y: -4 }} whileTap={{ scale: 0.98 }}>
                     <Link
                       href={activeHeroSolutionHref}
-                      className="btn-secondary inline-flex h-12 w-full items-center justify-center rounded-2xl border border-cyan-300/35 bg-gradient-to-br from-white/[0.12] to-white/[0.06] px-6 text-[15px] font-semibold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-cyan-200/50 hover:from-white/[0.18] hover:to-cyan-400/10 hover:shadow-[0_12px_40px_-10px_rgba(56,189,248,0.35)] sm:w-auto sm:px-8 sm:text-base"
+                      className={`${inopsUi.btnGhostDark} w-full sm:w-auto`}
                     >
                       Our Solutions
                     </Link>
@@ -316,7 +314,7 @@ export default function Home() {
 
       <section
         aria-labelledby="hero-trusted-clients-heading"
-        className="relative overflow-x-hidden border-b border-gray-100 bg-white py-5 sm:py-7 lg:py-9"
+        className="relative overflow-x-hidden border-b border-gray-100 bg-white pt-4 pb-1.5 sm:pt-5 sm:pb-2 lg:pt-6 lg:pb-2.5"
       >
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-12">
@@ -332,7 +330,7 @@ export default function Home() {
             <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
           </div>
           <motion.div
-            className="hero-trusted-marquee relative mt-8 -mx-4 overflow-hidden bg-white py-5 sm:-mx-6 sm:py-6 lg:-mx-12"
+            className="hero-trusted-marquee relative mt-5 -mx-4 overflow-hidden bg-white pt-3 pb-2 sm:-mx-6 sm:pt-4 sm:pb-2 lg:-mx-12"
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
@@ -462,8 +460,8 @@ export default function Home() {
       </AnimatedSection> */}
 
 
- {/* Why InOps */}
- <AnimatedSection id="about" className="relative bg-slate-50/60 py-12 lg:py-16">
+  {/* Why InOps */}
+  <AnimatedSection id="about" className="relative bg-slate-50/60 py-12 lg:py-16">
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-35" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center">
@@ -653,6 +651,8 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+
+
       {/* Product story: capabilities → connected stack → who it serves → outcomes → deep dive */}
       <SectionFade className="border-t border-gray-100">
         <FeaturesSlider />
@@ -668,9 +668,9 @@ export default function Home() {
 
       {/* Feature cards + logo strip (single bordered container) */}
       <SectionFade>
-        <section className="border-t border-slate-100 bg-slate-50/50 py-12 lg:py-16">
+        <section className="border-t border-slate-100 bg-slate-50/50 py-8 lg:py-11">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="mb-10 max-w-2xl lg:mb-12">
+            <div className="mb-7 max-w-2xl lg:mb-9">
               <FlyInText
                 as="p"
                 direction="left"
@@ -699,7 +699,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-14 lg:gap-20 xl:gap-24">
+            <div className="flex flex-col gap-10 lg:gap-14 xl:gap-16">
               {dashboardCards.map((card, cardIndex) => {
                 const textFirst = cardIndex === 1;
 
@@ -796,7 +796,7 @@ export default function Home() {
       </SectionFade>
       {/* <SectionFade><BrandsSlider /></SectionFade> */}
 
-      <SectionFade className="relative bg-white pb-8 pt-10 lg:pb-10 lg:pt-14">
+      <SectionFade className="relative bg-white pb-6 pt-8 lg:pb-8 lg:pt-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <CollaborateCtaBand />
         </div>

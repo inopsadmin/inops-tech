@@ -23,6 +23,9 @@
   --premium-shadow-hover: 0 22px 54px -34px rgb(15 23 42 / 0.38);
   --premium-border: #dbe5f0;
   --premium-icon-bg: #eef6ff;
+  /** Same stack as section titles (e.g. “Designed for Simplicity”) — Geist-first everywhere */
+  --font-inops-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 
 @theme inline {
@@ -33,7 +36,7 @@
   --color-brand: var(--brand);
   --color-brand-light: var(--brand-light);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inops-sans);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -43,6 +46,8 @@ html {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  font-family: var(--font-inops-sans);
+  text-rendering: optimizeLegibility;
 }
 
 @media (min-width: 1280px) {
@@ -86,19 +91,26 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-inops-sans);
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Match body font everywhere main content is rendered (same family as layout Geist). */
 .inops-template {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-inops-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Site-wide brand canvas inspired by logo palette */
+/* Navbar, main, footer: one stack + smoothing (inherits from body; reinforces any third-party resets). */
 .site-shell {
   isolation: isolate;
+  font-family: var(--font-inops-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .brand-shape-canvas {
@@ -172,6 +184,9 @@ body {
 
 /* Typography: specific font weights (InOps-style) */
 .font-heading {
+  font-weight: 600;
+}
+.font-heading-semibold {
   font-weight: 600;
 }
 .font-heading-bold {
@@ -914,10 +929,21 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   background-color: #f8fafc !important;
 }
 
+/* Display / section titles: shared tracking (use with h1–h2 or large custom titles). */
+.home-display-heading {
+  letter-spacing: -0.03em;
+}
+
 /* Keep heading hierarchy visually consistent across templates */
 .inops-template h1,
 .inops-template h2 {
   letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.inops-template h1.home-display-heading,
+.inops-template h2.home-display-heading {
+  letter-spacing: -0.03em;
 }
 
 /* ===== Site-wide typography uniformity ===== */
@@ -992,14 +1018,41 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   height: auto;
 }
 
-/* More breathing room between sections on long-form pages. */
+/* Vertical rhythm between sections on solution / product long-form pages (tighter than before). */
 .solution-product-section-gap > section:not(:first-of-type) {
-  margin-top: clamp(2.75rem, 1.9rem + 3vw, 5rem);
+  margin-top: clamp(1.35rem, 0.85rem + 1.6vw, 2.75rem);
 }
 
 @media (min-width: 1024px) {
   .solution-product-section-gap > section:not(:first-of-type) {
-    margin-top: clamp(4rem, 2.75rem + 3.5vw, 7rem);
+    margin-top: clamp(1.65rem, 1rem + 1.9vw, 3.25rem);
+  }
+}
+
+/** Pull a section up to the hero (removes default inter-section gap for that pair only). */
+.solution-product-section-gap > section.solution-section-flush-after-hero {
+  margin-top: 0 !important;
+}
+
+/* About page: tighter vertical rhythm between sections */
+.about-page-section-gap > section:not(:first-of-type) {
+  margin-top: clamp(1.25rem, 0.75rem + 1.4vw, 2.25rem);
+}
+
+@media (min-width: 1024px) {
+  .about-page-section-gap > section:not(:first-of-type) {
+    margin-top: clamp(1.5rem, 1rem + 1.6vw, 2.75rem);
+  }
+}
+
+/* Payroll solutions: same tighter rhythm as About */
+.payroll-solutions-section-gap > section:not(:first-of-type) {
+  margin-top: clamp(1.25rem, 0.75rem + 1.4vw, 2.25rem);
+}
+
+@media (min-width: 1024px) {
+  .payroll-solutions-section-gap > section:not(:first-of-type) {
+    margin-top: clamp(1.5rem, 1rem + 1.6vw, 2.75rem);
   }
 }
 
@@ -1029,7 +1082,13 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   filter: blur(42px) !important;
 }
 
-.inops-template :is(.card-3d, .card-hover-lift, article[class*="rounded"], div[class*="rounded"][class*="border"], div[class*="rounded"][class*="shadow"]) {
+.inops-template :is(
+    .card-3d,
+    .card-hover-lift,
+    article[class*="rounded"]:not(.inops-skip-premium-card),
+    div[class*="rounded"][class*="border"]:not(.inops-skip-premium-card),
+    div[class*="rounded"][class*="shadow"]:not(.inops-skip-premium-card)
+  ) {
   border-radius: var(--premium-card-radius) !important;
   border-color: var(--premium-border) !important;
   box-shadow: var(--premium-shadow) !important;
@@ -1040,7 +1099,13 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .inops-template :is(.card-3d, .card-hover-lift, article[class*="rounded"], div[class*="rounded"][class*="border"], div[class*="rounded"][class*="shadow"]):hover {
+  .inops-template :is(
+      .card-3d,
+      .card-hover-lift,
+      article[class*="rounded"]:not(.inops-skip-premium-card),
+      div[class*="rounded"][class*="border"]:not(.inops-skip-premium-card),
+      div[class*="rounded"][class*="shadow"]:not(.inops-skip-premium-card)
+    ):hover {
     transform: translateY(-3px) !important;
     box-shadow: var(--premium-shadow-hover) !important;
     border-color: color-mix(in srgb, var(--inops-blue) 18%, var(--premium-border)) !important;
@@ -1074,3 +1139,163 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
 /* Removed broad brand overrides: `[class*="bg-blue-"]` matched hover/tint utilities like
    `hover:bg-blue-50` and `to-blue-50/40`, forcing solid var(--brand) across entire cards. */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   InOps UI system — shared typography & buttons (use via `app/lib/inopsUi.ts`)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.inops-ui-eyebrow {
+  font-size: clamp(0.6875rem, 0.64rem + 0.14vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.inops-ui-eyebrow--brand {
+  color: var(--inops-blue);
+}
+
+.inops-ui-lead {
+  font-size: clamp(0.98rem, 0.94rem + 0.14vw, 1.08rem) !important;
+  line-height: 1.65 !important;
+  color: #475569;
+}
+
+.inops-ui-body-muted {
+  color: #475569;
+}
+
+.inops-ui-section-heading {
+  color: var(--inops-navy);
+}
+
+.inops-ui-hero-kicker {
+  font-size: clamp(0.875rem, 0.82rem + 0.12vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+}
+
+.inops-ui-hero-banner-desc {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 42rem;
+  font-size: clamp(0.875rem, 0.82rem + 0.12vw, 0.95rem) !important;
+  line-height: 1.65 !important;
+  color: rgb(255 255 255 / 0.88);
+}
+
+/* ─── Buttons: one pill system site-wide ─── */
+.inops-ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  font-size: clamp(0.875rem, 0.82rem + 0.1vw, 0.9375rem);
+  padding: 0.875rem 1.75rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.inops-ui-btn--primary {
+  background-color: var(--inops-blue);
+  color: #ffffff;
+  box-shadow: 0 8px 24px -8px rgba(29, 95, 191, 0.48);
+}
+
+.inops-ui-btn--primary:hover {
+  background-color: var(--inops-navy);
+  box-shadow: 0 14px 32px -10px rgba(15, 47, 87, 0.42);
+}
+
+.inops-ui-btn--primary:focus-visible {
+  outline: 2px solid var(--inops-blue);
+  outline-offset: 2px;
+}
+
+.inops-ui-btn--secondary {
+  background-color: #ffffff;
+  color: #1e293b;
+  border-color: #cbd5e1;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.06);
+}
+
+.inops-ui-btn--secondary:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+.inops-ui-btn--secondary:focus-visible {
+  outline: 2px solid var(--inops-blue);
+  outline-offset: 2px;
+}
+
+.inops-ui-btn--ghost-dark {
+  background-color: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.38);
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.12);
+}
+
+.inops-ui-btn--ghost-dark:hover {
+  background-color: rgb(255 255 255 / 0.14);
+  border-color: rgb(255 255 255 / 0.52);
+}
+
+.inops-ui-btn--ghost-dark:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 0.65);
+  outline-offset: 2px;
+}
+
+.inops-ui-btn--on-dark-primary {
+  background-color: #ffffff;
+  color: var(--inops-blue);
+  box-shadow: 0 4px 14px rgb(15 23 42 / 0.12);
+}
+
+.inops-ui-btn--on-dark-primary:hover {
+  background-color: #eff6ff;
+}
+
+.inops-ui-btn--on-dark-primary:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.inops-ui-btn--on-dark-secondary {
+  background-color: rgb(255 255 255 / 0.1);
+  border-color: rgb(255 255 255 / 0.78);
+  color: #ffffff;
+}
+
+.inops-ui-btn--on-dark-secondary:hover {
+  background-color: rgb(255 255 255 / 0.18);
+}
+
+.inops-ui-btn--on-dark-secondary:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 0.65);
+  outline-offset: 2px;
+}
+
+.inops-ui-btn--full {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inops-ui-btn {
+    transition-duration: 0.01ms;
+  }
+}

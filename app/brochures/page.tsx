@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.15 };
@@ -112,9 +113,9 @@ export default function BrochuresPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className="text-sm font-semibold tracking-wide text-white drop-shadow-md sm:text-base">InOps</p>
+                  <p className={inopsUi.heroKicker}>InOps</p>
                   <h1 className="mt-4 text-white">Brochures</h1>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/88">{brochureBanner.tagline}</p>
+                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{brochureBanner.tagline}</p>
                 </div>
               </div>
             </div>
@@ -122,14 +123,14 @@ export default function BrochuresPage() {
 
           <div className="mb-8 mt-14 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <FlyInText as="p" direction="down" className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--inops-blue)]">
+              <FlyInText as="p" direction="down" className={inopsUi.eyebrowBrand}>
                 Download center
               </FlyInText>
-              <FlyInText as="h2" direction="left" delay={0.06} className="mt-3 text-[var(--inops-navy)]">
+              <FlyInText as="h2" direction="left" delay={0.06} className={`mt-3 ${inopsUi.sectionHeading} !text-black`}>
                 Choose your brochure
               </FlyInText>
             </div>
-            <FlyInText as="p" direction="up" delay={0.08} className="max-w-lg text-sm leading-7 text-slate-600">
+            <FlyInText as="p" direction="up" delay={0.08} className={`max-w-lg ${inopsUi.lead}`}>
               Sharp, easy-to-scan resources for teams evaluating InOps products and workforce workflows.
             </FlyInText>
           </div>

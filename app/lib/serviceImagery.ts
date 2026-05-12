@@ -11,10 +11,9 @@ export const heroSlides = [
    
   },
   {
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=3200&q=90",
-    alt: "Professional security surveillance and face recognition technology ,  AI-powered biometric access control across CCTV and mobile devices",
+    src: "/WhatsApp Image 2026-05-04 at 11.55.24 AM.jpeg",
+    alt: "Face recognition and biometric access across mobile, CCTV, and on-ground devices in enterprise operations",
     title: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
-    
   },
   {
     src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=3200&q=85",

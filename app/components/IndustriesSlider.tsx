@@ -26,13 +26,20 @@ function IndustryCard({ name, imageUrl }: { name: string; imageUrl: string }) {
 
 export default function IndustriesSlider() {
   return (
-    <section className="relative overflow-x-hidden py-8 lg:py-10 bg-white">
+    <section className="relative overflow-x-hidden py-6 lg:py-8 bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         <div className="text-center">
-          <span className="section-badge border-blue-200 bg-blue-50 text-blue-600">
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-[0.9rem] py-[0.35rem] text-[0.6875rem] font-semibold uppercase tracking-[0.12em] shadow-sm ring-1 ring-[color:var(--inops-blue)]/12"
+            style={{
+              color: "var(--inops-blue)",
+              backgroundColor: "var(--brand-light)",
+              borderColor: "color-mix(in srgb, var(--inops-blue) 38%, #e2e8f0)",
+            }}
+          >
             Industries
           </span>
-          <h2 className="mt-4 text-center text-blue-600">Industries We Serve</h2>
+          <h2 className="mt-4 text-center text-black">Industries We Serve</h2>
           <p className="mx-auto mt-3 max-w-xl text-gray-600">
             Trusted across manufacturing, electronics, logistics, construction, and more
           </p>

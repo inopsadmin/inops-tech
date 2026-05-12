@@ -116,7 +116,7 @@ export default function AccessoriesPage() {
         />
 
         {/* Main content – section title + two products */}
-        <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
+        <section className="border-t border-slate-200/80 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
@@ -168,7 +168,7 @@ export default function AccessoriesPage() {
         </section>
 
         {/* FP Sensor & RF Cards */}
-        <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
+        <section className="border-t border-slate-200/80 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"
@@ -215,7 +215,7 @@ export default function AccessoriesPage() {
         </section>
 
         {/* Electro-Magnetic Locks – SL-600 & DL-600 */}
-        <section className="border-t border-slate-200/80 py-10 lg:py-14 bg-white">
+        <section className="border-t border-slate-200/80 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <motion.h2
               className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"

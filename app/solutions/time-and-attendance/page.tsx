@@ -8,6 +8,8 @@ import TrustStripMetric from "@/app/components/TrustStripMetric";
 import SolutionModulePanel from "@/app/components/SolutionModulePanel";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
 const timeAttendanceProductVideo = "/genrate_this_image_video_202605072329.mp4";
 const optiCamSolutionImage =
@@ -280,14 +282,15 @@ export default function TimeAndAttendancePage() {
     <>
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
-          className="w-full border-b border-slate-200/80 bg-white pt-8 sm:pt-10 lg:pt-10"
+          className="relative w-full border-b border-slate-200/80 bg-white pt-8 sm:pt-10 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
           <div className="relative w-full overflow-hidden">
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
-              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <SolutionHeroWaveDecor className="z-[1]" />
+              <div className="relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
                   autoPlay
@@ -381,7 +384,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </motion.section>
 
-        <section className="border-b border-slate-200 bg-white !mt-0 py-6 sm:py-8 lg:py-9">
+        <section className="border-b border-slate-200 bg-white !mt-0 py-5 sm:py-7 lg:py-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-8 lg:gap-x-16 lg:gap-y-8">
               {trustStripMetrics.map((m, i) => (
@@ -391,7 +394,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-slate-200/70 bg-white !mt-0 pt-8 pb-12 sm:pt-9 sm:pb-14 lg:pt-10 lg:pb-16">
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-white !mt-0 pt-6 pb-10 sm:pt-8 sm:pb-12 lg:pt-8 lg:pb-14">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.35]" aria-hidden />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
             <div className="max-w-3xl">
@@ -454,81 +457,48 @@ export default function TimeAndAttendancePage() {
                   hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
                 },
               ].map((item, i) => (
-                <motion.article
+                <ThroughputMetricCard
                   key={item.title}
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_12px_40px_-28px_rgba(15,23,42,0.22)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-slate-300/90 ${item.hoverGlow}`}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: i * 0.05 }}
-                >
-                  <div className={`h-1 w-full bg-gradient-to-r ${item.accentBar}`} aria-hidden />
-                  <div className="flex flex-1 flex-col p-6 pt-5">
-                    <div className="flex items-start justify-between gap-3">
-                      <span
-                        className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 transition-all duration-300 ${item.iconWrap}`}
-                      >
-                        {item.icon === "clock" && (
-                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 7v5l3 2" />
-                          </svg>
-                        )}
-                        {item.icon === "users" && (
-                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <circle cx="9" cy="8" r="3" />
-                            <circle cx="17" cy="9" r="2" />
-                            <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                            <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                          </svg>
-                        )}
-                        {item.icon === "briefcase" && (
-                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <rect x="3" y="7" width="18" height="12" rx="2" />
-                            <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
-                          </svg>
-                        )}
-                        {item.icon === "globe" && (
-                          <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
-                          </svg>
-                        )}
-                      </span>
-                      <div className="flex flex-col items-end gap-1.5 text-right">
-                        <span className="rounded-full border border-slate-200/90 bg-slate-50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-600">
-                          {item.chip}
-                        </span>
-                        <span className="text-xs font-semibold tabular-nums text-slate-900">{item.metric}</span>
-                      </div>
-                    </div>
-
-                    <FlyInText
-                      as="h3"
-                      direction="up"
-                      delay={i * 0.05}
-                      duration={0.58}
-                      className="mt-5 text-lg font-bold leading-snug tracking-tight text-slate-900 sm:text-xl"
-                    >
-                      {item.title}
-                    </FlyInText>
-                    <FlyInText
-                      as="p"
-                      direction="up"
-                      delay={i * 0.05 + 0.05}
-                      duration={0.55}
-                      className="mt-3 flex-1 text-xs leading-relaxed text-slate-600"
-                    >
-                      {item.description}
-                    </FlyInText>
-                  </div>
-                </motion.article>
+                  title={item.title}
+                  description={item.description}
+                  chip={item.chip}
+                  metric={item.metric}
+                  accentBar={item.accentBar}
+                  iconWrap={item.iconWrap}
+                  hoverGlow={item.hoverGlow}
+                  index={i}
+                  icon={
+                    item.icon === "clock" ? (
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </svg>
+                    ) : item.icon === "users" ? (
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="9" cy="8" r="3" />
+                        <circle cx="17" cy="9" r="2" />
+                        <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                        <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                      </svg>
+                    ) : item.icon === "briefcase" ? (
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <rect x="3" y="7" width="18" height="12" rx="2" />
+                        <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
+                      </svg>
+                    ) : (
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                      </svg>
+                    )
+                  }
+                />
               ))}
             </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 py-14 lg:py-20">
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 py-10 lg:py-16">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.25]" aria-hidden />
           <div
             className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/15 via-sky-400/10 to-transparent blur-3xl"
@@ -703,7 +673,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-white via-slate-50/40 to-white py-10 lg:py-14">
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-white via-slate-50/40 to-white py-8 lg:py-12">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.3]" aria-hidden />
           <div
             className="pointer-events-none absolute -left-24 top-16 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500/15 via-sky-400/10 to-transparent blur-3xl"
@@ -917,7 +887,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 py-14 lg:py-20">
+        <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-slate-50/70 via-white to-slate-50/40 py-10 lg:py-16">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-[0.25]" aria-hidden />
           <div
             className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-gradient-to-br from-rose-400/15 via-orange-300/10 to-transparent blur-3xl"
@@ -1119,7 +1089,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-[#0a0c12] via-[#0e1016] to-[#0a0c12] py-14 lg:py-20">
+        <section className="relative overflow-hidden border-b border-slate-800 bg-gradient-to-b from-[#0a0c12] via-[#0e1016] to-[#0a0c12] py-10 lg:py-16">
           <div
             className="pointer-events-none absolute -left-32 top-12 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-500/20 via-blue-500/12 to-transparent blur-3xl"
             aria-hidden

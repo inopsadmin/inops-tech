@@ -7,6 +7,9 @@ import { siSap, siSnowflake } from "simple-icons";
 import ConnectedEcosystemSection from "@/app/components/ConnectedEcosystemSection";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -14,34 +17,30 @@ const viewport = { once: true, amount: 0.2 };
 const labourHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.24.11 PM.jpeg";
 const labourHeroRightVideo = "/genrate_this_image_video_202605080007.mp4";
 
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
-
 const painPointCards = [
   {
+    pillar: "Fragmentation" as const,
     icon: "database" as const,
     title: "Data Silos",
     description: "Employee records scattered across dozens of spreadsheets and old systems.",
     tone: "rose" as const,
   },
   {
+    pillar: "Spend risk" as const,
     icon: "alert" as const,
     title: "Payroll Leakage",
     description: "Manual attendance leads to significant overpayment and clerical errors.",
     tone: "amber" as const,
   },
   {
+    pillar: "Blind spots" as const,
     icon: "grid" as const,
     title: "No Visibility",
     description: "Lack of real-time reporting makes strategic workforce decisions impossible.",
     tone: "violet" as const,
   },
   {
+    pillar: "Regulatory" as const,
     icon: "shieldCheck" as const,
     title: "Compliance Risk",
     description: "Staying up-to-date with changing labor laws and tax regulations is a nightmare.",
@@ -160,60 +159,267 @@ const workflowRailToNext: Record<WorkflowAccent, string> = {
   violet: "from-violet-400 to-transparent",
 };
 
-const efficiencyBenefitBullets = [
-  "Real-time visibility into workforce trends and costs",
-  "99%+ accuracy in complex multi-country payroll",
-  "Reduce manual admin effort by up to 70%",
-  "Built-in compliance monitoring for local labor laws",
-  "Scalable infrastructure that grows with your business",
+/** Brochure CTA — reference panel blue */
+const LABOUR_BROCHURE_BLUE = "#006699";
+
+const labourEfficiencyShowcaseCards = [
+  {
+    id: "mobileApp" as const,
+    title: "Mobile App",
+    description: "Mobile App is optimized to provide quick & easy access.",
+    iconColor: "#808080",
+  },
+  {
+    id: "employeeDatabase" as const,
+    title: "Employee Database",
+    description: "Get the entire information about the employee in one go.",
+    iconColor: "#0066CC",
+  },
+  {
+    id: "payroll" as const,
+    title: "Payroll",
+    description: "Have a complete command over the payroll.",
+    iconColor: "#22AA44",
+  },
+  {
+    id: "timeAttendance" as const,
+    title: "Time & Attendance",
+    description: "The most comprehensive time-tracking Software.",
+    iconColor: "#FF9800",
+  },
+  {
+    id: "leaveManagement" as const,
+    title: "Leave Management",
+    description: "Manage all your leaves under one umbrella.",
+    iconColor: "#0066CC",
+  },
+  {
+    id: "claimReimbursement" as const,
+    title: "Claim & Reimbursement",
+    description: "Track your Claim & Reimbursement hassle-free.",
+    iconColor: "#9C27B0",
+  },
+  {
+    id: "loansAdvance" as const,
+    title: "Loans & Advance",
+    description: "Get Instant Information about all your loans & advances.",
+    iconColor: "#FF9800",
+  },
+  {
+    id: "tdsTaxPlanner" as const,
+    title: "TDS & Tax Planner",
+    description: "Salary TDS calculations simplified.",
+    iconColor: "#0066CC",
+  },
+  {
+    id: "exitManagement" as const,
+    title: "Exit Management",
+    description: "It have the information needed to manage employee exits effectively.",
+    iconColor: "#E53935",
+  },
+  {
+    id: "travelManagement" as const,
+    title: "Travel Management",
+    description: "Time-efficient travel expense handling.",
+    iconColor: "#0066CC",
+  },
+  {
+    id: "employeeSelfService" as const,
+    title: "Employee Self Service",
+    description: "A dynamic Employee Self Service Management.",
+    iconColor: "#0066CC",
+  },
+  {
+    id: "timeSheet" as const,
+    title: "Time Sheet",
+    description: "Control labor costs & working hours of employees.",
+    iconColor: "#22AA44",
+  },
+  {
+    id: "recruitment" as const,
+    title: "Recruitment",
+    description: "Recruiting has never been this easy.",
+    iconColor: "#FF9800",
+  },
+  {
+    id: "performancePms" as const,
+    title: "Performance (PMS)",
+    description: "Boost your employee's performance with 360-degree appraisal.",
+    iconColor: "#E53935",
+  },
+  {
+    id: "training" as const,
+    title: "Training",
+    description: "Equip your employees with skills that drive business success.",
+    iconColor: "#FF9800",
+  },
 ] as const;
 
-const efficiencyHighlightCards = [
-  {
-    icon: "trendUp" as const,
-    title: "Fast Setup",
-    description: "Go live in as little as 14 days with our migration tools.",
-    accent: "blue" as const,
-    staggerClass: "" as const,
-  },
-  {
-    icon: "cloud" as const,
-    title: "Cloud-Native",
-    description: "Access your data securely from anywhere, anytime.",
-    accent: "cyan" as const,
-    staggerClass: "lg:translate-y-6" as const,
-  },
-  {
-    icon: "shieldCheck" as const,
-    title: "Enterprise Grade",
-    description: "SOC2 Type II & GDPR compliant.",
-    accent: "indigo" as const,
-    staggerClass: "lg:translate-y-2" as const,
-  },
-  {
-    icon: "userBadge" as const,
-    title: "Employee First",
-    description: "Mobile app with 4.9/5 user rating.",
-    accent: "violet" as const,
-    staggerClass: "lg:translate-y-8" as const,
-  },
-] as const;
+type LabourShowcaseId = (typeof labourEfficiencyShowcaseCards)[number]["id"];
 
-type EfficiencyHighlightAccent = (typeof efficiencyHighlightCards)[number]["accent"];
-
-const efficiencyHighlightTopBar: Record<EfficiencyHighlightAccent, string> = {
-  blue: "before:bg-gradient-to-r before:from-blue-500 before:via-indigo-500 before:to-blue-600",
-  cyan: "before:bg-gradient-to-r before:from-cyan-400 before:via-sky-500 before:to-blue-600",
-  indigo: "before:bg-gradient-to-r before:from-indigo-500 before:via-violet-500 before:to-indigo-600",
-  violet: "before:bg-gradient-to-r before:from-violet-500 before:via-fuchsia-500 before:to-purple-600",
+/** Gradient top accent for each efficiency showcase card */
+const labourShowcaseCardTopBar: Record<LabourShowcaseId, string> = {
+  mobileApp: "from-slate-500 via-slate-400 to-zinc-400",
+  employeeDatabase: "from-blue-600 via-sky-500 to-cyan-500",
+  payroll: "from-emerald-600 via-teal-500 to-green-500",
+  timeAttendance: "from-amber-500 via-orange-500 to-rose-500",
+  leaveManagement: "from-sky-500 via-blue-500 to-indigo-600",
+  claimReimbursement: "from-violet-600 via-fuchsia-500 to-pink-500",
+  loansAdvance: "from-orange-500 via-amber-500 to-yellow-400",
+  tdsTaxPlanner: "from-indigo-600 via-blue-600 to-sky-500",
+  exitManagement: "from-rose-600 via-red-500 to-orange-600",
+  travelManagement: "from-cyan-500 via-teal-500 to-emerald-600",
+  employeeSelfService: "from-blue-500 via-indigo-500 to-violet-600",
+  timeSheet: "from-green-600 via-emerald-500 to-teal-500",
+  recruitment: "from-orange-500 via-rose-500 to-fuchsia-600",
+  performancePms: "from-rose-500 via-fuchsia-600 to-purple-700",
+  training: "from-violet-500 via-indigo-600 to-blue-700",
 };
 
-const efficiencyHighlightIconTile: Record<EfficiencyHighlightAccent, string> = {
-  blue: "bg-gradient-to-br from-blue-500/14 via-white to-white text-blue-600 ring-blue-200/85 shadow-blue-500/10",
-  cyan: "bg-gradient-to-br from-cyan-500/14 via-white to-white text-cyan-600 ring-cyan-200/85 shadow-cyan-500/10",
-  indigo: "bg-gradient-to-br from-indigo-500/14 via-white to-white text-indigo-600 ring-indigo-200/85 shadow-indigo-500/10",
-  violet: "bg-gradient-to-br from-violet-500/14 via-white to-white text-violet-600 ring-violet-200/85 shadow-violet-500/10",
-};
+function LabourEfficiencyShowcaseIcon({ id, className = "h-10 w-10" }: { id: LabourShowcaseId; className?: string }) {
+  const stroke = {
+    className,
+    fill: "none" as const,
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  switch (id) {
+    case "mobileApp":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <rect x="7" y="3" width="10" height="18" rx="2" />
+          <path d="M10 18h4" />
+        </svg>
+      );
+    case "employeeDatabase":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <ellipse cx="12" cy="6" rx="7" ry="2.5" />
+          <path d="M5 6v4c0 1.5 3 2.5 7 2.5s7-1 7-2.5V6" />
+          <path d="M5 10v4c0 1.5 3 2.5 7 2.5s7-1 7-2.5v-4" />
+          <path d="M5 14v4c0 1.5 3 2.5 7 2.5s7-1 7-2.5v-4" />
+        </svg>
+      );
+    case "payroll":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M4 8a3 3 0 013-3h10a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V8z" />
+          <path d="M8 12h8M8 16h5" />
+        </svg>
+      );
+    case "timeAttendance":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v6l4 2" />
+        </svg>
+      );
+    case "leaveManagement":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M5 4h10v16H5z" />
+          <path d="M9 12h10l2 2v6H9z" />
+          <path d="M17 14l3 3m0 0l-3 3m3-3H14" />
+        </svg>
+      );
+    case "claimReimbursement":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M7 4h10v16H7z" />
+          <path d="M9 8h6M9 12h4" />
+          <path d="M14 18c1.5 0 3-.8 3-2s-1.5-2-3-2-3 .8-3 2 1.5 2 3 2z" />
+        </svg>
+      );
+    case "loansAdvance":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <rect x="4" y="6" width="16" height="12" rx="2" />
+          <path d="M8 10h8M8 14h6" />
+          <circle cx="17" cy="9" r="1.5" fill="currentColor" stroke="none" />
+        </svg>
+      );
+    case "tdsTaxPlanner":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden className={stroke.className}>
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth={2} />
+          <text
+            x="12"
+            y="15.5"
+            textAnchor="middle"
+            fontSize="11"
+            fontWeight={700}
+            fill="currentColor"
+            stroke="none"
+            fontFamily="system-ui, sans-serif"
+          >
+            %
+          </text>
+        </svg>
+      );
+    case "exitManagement":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M6 4h9v16H6z" />
+          <path d="M14 12h6m0 0l-2.5 2.5M20 12l-2.5-2.5" />
+        </svg>
+      );
+    case "travelManagement":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M5 14l2-7h10l2 7M7 14h10v3H7zM9 17v2h6v-2" />
+          <circle cx="8" cy="18" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="16" cy="18" r="1.5" fill="currentColor" stroke="none" />
+        </svg>
+      );
+    case "employeeSelfService":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <circle cx="12" cy="10" r="3" />
+          <path d="M8 18c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5" />
+        </svg>
+      );
+    case "timeSheet":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M8 6h10a2 2 0 012 2v11H8V6z" />
+          <path d="M8 6V5a2 2 0 012-2h4a2 2 0 012 2v1" />
+          <circle cx="15" cy="11" r="3.5" />
+          <path d="M15 9.5V11l1 1" strokeWidth={1.5} />
+        </svg>
+      );
+    case "recruitment":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <circle cx="8" cy="9" r="2.5" />
+          <circle cx="16" cy="9" r="2.5" />
+          <circle cx="12" cy="7" r="2.5" />
+          <path d="M5 18c.6-2 2.8-3.5 5.5-3.5S17 16 17.5 18" />
+        </svg>
+      );
+    case "performancePms":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <path d="M6 18V10M12 18V6M18 18v-5" strokeWidth={2.5} />
+          <path d="M4 20h16" />
+        </svg>
+      );
+    case "training":
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
+          <circle cx="9" cy="10" r="2.5" />
+          <circle cx="15" cy="10" r="2.5" />
+          <path d="M5 17c0-1.8 2-3 4-3s3 .5 4 1.5c1-1 2.5-1.5 4-1.5s4 1.2 4 3" />
+          <circle cx="18" cy="6" r="2" />
+          <path d="M18 4.5v3M16.5 6h3" strokeWidth={1.5} />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 const businessImpactStats = [
   { value: "90%", label: "Reduction in payroll errors", badge: "+25% Accuracy", accent: "sky" as const },
@@ -261,33 +467,34 @@ const ecosystemStackMarks = [
   { name: "ServiceNow", id: "orbit" as const },
 ] as const;
 
-/** Top-edge hover sweep (L→R) ,  gradient strip on ::before */
-const painPointToneTopStrip: Record<(typeof painPointCards)[number]["tone"], string> = {
-  rose: "before:bg-gradient-to-r before:from-rose-500 before:via-rose-400 before:to-pink-400",
-  amber: "before:bg-gradient-to-r before:from-amber-500 before:via-orange-400 before:to-amber-300",
-  violet: "before:bg-gradient-to-r before:from-violet-500 before:via-purple-400 before:to-fuchsia-400",
-  indigo: "before:bg-gradient-to-r before:from-indigo-500 before:via-blue-500 before:to-sky-400",
-};
+/** Pain cards ,  time-and-attendance “Hidden Cost” tile layout */
+type PainPointTone = (typeof painPointCards)[number]["tone"];
 
-const painPointToneIconSurface: Record<(typeof painPointCards)[number]["tone"], string> = {
-  rose: "bg-gradient-to-br from-rose-500/[0.14] via-white to-white ring-rose-200/85",
-  amber: "bg-gradient-to-br from-amber-500/[0.14] via-white to-white ring-amber-200/85",
-  violet: "bg-gradient-to-br from-violet-500/[0.14] via-white to-white ring-violet-200/85",
-  indigo: "bg-gradient-to-br from-indigo-500/[0.14] via-white to-white ring-indigo-200/85",
-};
-
-const painPointToneIconColor: Record<(typeof painPointCards)[number]["tone"], string> = {
-  rose: "text-rose-600",
-  amber: "text-amber-600",
-  violet: "text-violet-600",
-  indigo: "text-indigo-600",
-};
-
-const painPointToneIconHover: Record<(typeof painPointCards)[number]["tone"], string> = {
-  rose: "hover:text-rose-700 hover:ring-rose-300/90",
-  amber: "hover:text-amber-700 hover:ring-amber-300/90",
-  violet: "hover:text-violet-700 hover:ring-violet-300/90",
-  indigo: "hover:text-indigo-700 hover:ring-indigo-300/90",
+const painThroughputByTone: Record<PainPointTone, { accentBar: string; iconWrap: string; hoverGlow: string }> = {
+  rose: {
+    accentBar: "from-rose-500 via-orange-400 to-amber-300",
+    iconWrap:
+      "bg-rose-50 text-rose-600 ring-rose-500/20 group-hover:bg-rose-500 group-hover:text-white group-hover:ring-rose-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(244,63,94,0.35)]",
+  },
+  amber: {
+    accentBar: "from-amber-500 via-orange-500 to-red-400",
+    iconWrap:
+      "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.38)]",
+  },
+  violet: {
+    accentBar: "from-violet-500 via-fuchsia-500 to-pink-400",
+    iconWrap:
+      "bg-violet-50 text-violet-600 ring-violet-500/20 group-hover:bg-violet-600 group-hover:text-white group-hover:ring-violet-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.35)]",
+  },
+  indigo: {
+    accentBar: "from-indigo-500 via-blue-500 to-cyan-400",
+    iconWrap:
+      "bg-indigo-50 text-indigo-600 ring-indigo-500/20 group-hover:bg-indigo-600 group-hover:text-white group-hover:ring-indigo-400/40",
+    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(99,102,241,0.32)]",
+  },
 };
 
 function PainPointIcon({ name, className }: { name: (typeof painPointCards)[number]["icon"]; className: string }) {
@@ -371,43 +578,6 @@ function PlatformControlIcon({
   );
 }
 
-function EfficiencyHighlightIcon({
-  name,
-  className = "h-7 w-7 text-current",
-}: {
-  name: (typeof efficiencyHighlightCards)[number]["icon"];
-  className?: string;
-}) {
-  const c = className;
-  if (name === "trendUp") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    );
-  }
-  if (name === "cloud") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-      </svg>
-    );
-  }
-  if (name === "shieldCheck") {
-    return (
-      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    );
-  }
-  return (
-    <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7a2 2 0 100-4 2 2 0 000 4z" />
-    </svg>
-  );
-}
-
 function EcosystemStackMark({ id }: { id: (typeof ecosystemStackMarks)[number]["id"] }) {
   const c = "h-10 w-[6rem] sm:h-11 sm:w-[6.8rem] lg:h-12 lg:w-[7.4rem]";
   if (id === "sap") {
@@ -465,50 +635,17 @@ function EcosystemStackMark({ id }: { id: (typeof ecosystemStackMarks)[number]["
   );
 }
 
-function LabourHeroDecor() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      <div className="absolute -left-[20%] top-0 h-[min(520px,85vw)] w-[min(680px,120vw)] rounded-full bg-gradient-to-br from-sky-100/90 via-blue-50/50 to-transparent blur-3xl" />
-      <div className="absolute -right-[10%] top-[15%] h-[min(380px,70vw)] w-[min(520px,90vw)] rounded-full bg-gradient-to-bl from-indigo-100/35 via-transparent to-transparent blur-3xl" />
-      <svg
-        className="absolute bottom-0 left-0 right-0 h-20 w-full text-sky-200/45 sm:h-28"
-        viewBox="0 0 1440 100"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill="currentColor"
-          d="M0 80 C 180 40 360 100 540 70 C 720 40 900 95 1080 65 C 1260 35 1380 55 1440 45 L 1440 100 L 0 100 Z"
-        />
-      </svg>
-      <svg
-        className="absolute bottom-2 left-0 right-0 h-16 w-full text-blue-100/50 sm:h-24"
-        viewBox="0 0 1440 90"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill="currentColor"
-          d="M0 70 C 220 95 440 35 660 60 C 880 85 1100 30 1320 55 C 1380 62 1410 58 1440 52 L 1440 90 L 0 90 Z"
-        />
-      </svg>
-    </div>
-  );
-}
-
 export default function LabourManagementPage() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
-          className="relative w-full border-b border-slate-100 bg-white pt-6 sm:pt-8 lg:pt-10"
+          className="relative w-full border-b border-slate-200/85 bg-white pt-6 sm:pt-8 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          <LabourHeroDecor />
+          <SolutionHeroWaveDecor />
           <motion.div
             className="relative w-full overflow-hidden"
             initial={{ opacity: 0, y: 18 }}
@@ -536,7 +673,7 @@ export default function LabourManagementPage() {
                     aria-hidden
                   />
                   <div
-                    className="pointer-events-none absolute inset-y-0 left-0 hidden w-28 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-32 lg:block lg:w-44 xl:w-52"
+                    className="pointer-events-none absolute inset-y-0 left-0 hidden w-28 bg-gradient-to-r from-white via-white/93 to-transparent sm:w-32 lg:block lg:w-44 xl:w-52"
                     aria-hidden
                   />
                 </div>
@@ -614,10 +751,7 @@ export default function LabourManagementPage() {
                     className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
                   >
                     <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_32px_-10px_rgba(15,47,87,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
-                      >
+                      <Link href="/contact" className={inopsUi.btnPrimary}>
                         Request a Free Demo
                       </Link>
                     </motion.div>
@@ -628,11 +762,14 @@ export default function LabourManagementPage() {
           </motion.div>
         </motion.section>
 
-        <ConnectedEcosystemSection />
+        {/* <ConnectedEcosystemSection /> */}
+
+     
+
 
         {/* Pain points ,  disconnected systems */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50 py-16 sm:py-20 lg:py-24"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50 py-12 sm:py-16 lg:py-20"
           aria-labelledby="labour-pain-points-heading"
         >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -649,13 +786,13 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm backdrop-blur-sm">
                 The hidden cost
               </span>
               <h2 id="labour-pain-points-heading" className="mt-5 text-balance text-slate-900">
                 <span className="block sm:inline">Disconnected Systems.</span>{" "}
                 <span className="block sm:inline">Manual Work.</span>{" "}
-                <span className="mt-1 block font-semibold text-rose-900 sm:mt-0 sm:inline">
+                <span className="mt-1 block font-semibold text-blue-700 sm:mt-0 sm:inline">
                   Costly Errors.
                 </span>
               </h2>
@@ -665,220 +802,173 @@ export default function LabourManagementPage() {
               </p>
             </motion.div>
 
-            <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-7">
-              {painPointCards.map((card, i) => (
-                <motion.article
-                  key={card.title}
-                  className={`group relative flex min-h-[220px] flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/75 bg-white/95 p-6 shadow-[0_22px_56px_-32px_rgba(15,23,42,0.2)] ring-1 ring-slate-900/[0.04] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-[3px] before:origin-left before:scale-x-0 before:transition-transform before:duration-700 before:ease-[cubic-bezier(0.33,1,0.68,1)] before:content-[''] group-hover:before:scale-x-100 sm:min-h-[240px] sm:p-7 ${painPointToneTopStrip[card.tone]}`}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(i * 0.07, 0.24) }}
-                  whileHover={{
-                    y: -8,
-                    boxShadow: "0 32px 70px -36px rgba(15, 23, 42, 0.26)",
-                    transition: { duration: 0.32, ease: smoothEase },
-                  }}
-                >
-                  <div
-                    className="pointer-events-none absolute -right-12 -top-12 z-0 h-36 w-36 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-                    aria-hidden
-                    style={{
-                      background:
-                        card.tone === "rose"
-                          ? "radial-gradient(circle, rgba(244,63,94,0.12) 0%, transparent 70%)"
-                          : card.tone === "amber"
-                            ? "radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%)"
-                            : card.tone === "violet"
-                              ? "radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)"
-                              : "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)",
-                    }}
+            <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+              {painPointCards.map((card, i) => {
+                const t = painThroughputByTone[card.tone];
+                return (
+                  <ThroughputMetricCard
+                    key={card.title}
+                    title={card.title}
+                    description={card.description}
+                    chip={card.pillar}
+                    metric={String(i + 1).padStart(2, "0")}
+                    accentBar={t.accentBar}
+                    iconWrap={t.iconWrap}
+                    hoverGlow={t.hoverGlow}
+                    index={i}
+                    icon={<PainPointIcon name={card.icon} className="text-current" />}
                   />
-                  <div className="relative z-[2] flex items-start justify-between gap-3">
-                    <span
-                      className={`relative inline-flex h-14 w-14 shrink-0 cursor-default items-center justify-center rounded-2xl ring-1 ${painPointToneIconSurface[card.tone]} ${painPointToneIconColor[card.tone]} ${painPointToneIconHover[card.tone]} shadow-sm transition-[transform,box-shadow,color] duration-300 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-[1.06] group-hover:shadow-[0_12px_28px_-14px_rgba(15,23,42,0.28)] group-hover:ring-2`}
-                    >
-                      <PainPointIcon name={card.icon} className="text-current" />
-                    </span>
-                    <span
-                      className="rounded-full border border-slate-200/90 bg-slate-50/90 px-2.5 py-1 text-[11px] font-bold tabular-nums text-slate-500 ring-1 ring-slate-100"
-                      aria-hidden
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3 className="relative mt-5 text-slate-900">{card.title}</h3>
-                  <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                    {card.description}
-                  </p>
-                </motion.article>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* One platform — square feature grid (reference: centered icon / title / body) */}
+      
+
+       {/* End-to-end flow — four-step pipeline (Capture → Track → Pay → Insights) */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 py-16 sm:py-20 lg:py-24"
-          aria-labelledby="labour-platform-control-heading"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50 py-12 sm:py-16 lg:py-20"
+          aria-labelledby="labour-e2e-flow-heading"
         >
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <div className="absolute left-1/2 top-0 h-64 w-[min(90%,48rem)] -translate-x-1/2 rounded-full bg-blue-50/40 blur-3xl" />
+          </div>
+
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
             <motion.div
               className="mx-auto max-w-3xl text-center lg:max-w-4xl"
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
-              transition={{ duration: 0.55, ease: smoothEase }}
+              transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm ring-1 ring-slate-900/5">
-                Unified platform
+              <span className="inline-flex items-center rounded-full border border-blue-300/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm backdrop-blur-sm">
+                End to end flow
               </span>
-              <h2 id="labour-platform-control-heading" className="mt-5 text-balance text-slate-900">
-                One Platform.{" "}
-                <span className="font-semibold text-[color:var(--inops-blue)]">Complete Workforce Control.</span>
+              <h2 id="labour-e2e-flow-heading" className="mt-5 text-balance text-slate-900">
+                Simple.{" "}
+                <span className="font-semibold text-[color:var(--inops-blue)]">Automated.</span>{" "}
+                Accurate.
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                Everything you need to hire, manage, and pay your team in record time, modules that connect out of the
-                box, not another pile of integrations.
+                A four-step pipeline from first record to payroll insight—designed to run{" "}
+                <span className="font-semibold text-slate-800">without manual rework.</span>
               </p>
             </motion.div>
 
-            <div className="mx-auto mt-10 grid max-w-6xl grid-cols-2 justify-items-center gap-5 sm:mt-11 sm:gap-6 lg:grid-cols-3 lg:gap-6">
-              {platformControlCards.map((card, i) => (
-                <motion.article
-                  key={card.title}
-                  className="group mx-auto flex aspect-[5/6] w-full max-w-[15.5rem] min-h-0 flex-col items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white px-5 py-5 text-center shadow-[0_10px_40px_-18px_rgba(15,23,42,0.12)] transition-[box-shadow,transform] hover:-translate-y-1 hover:shadow-[0_16px_44px_-18px_rgba(29,95,191,0.18)] sm:max-w-[17rem] sm:gap-2.5 sm:px-5 sm:py-6 lg:max-w-[18.5rem]"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.25) }}
-                >
-                  <span
-                    className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-1 ${platformToneIconSurface[card.tone]} transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12`}
-                  >
-                    <PlatformControlIcon name={card.icon} className="h-6 w-6 sm:h-7 sm:w-7" />
-                  </span>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 sm:text-xs">
-                    {card.badge}
-                  </span>
-                  <h3 className="text-base font-bold leading-snug text-slate-900 sm:text-[1.05rem]">{card.title}</h3>
-                  <p className="max-w-[15rem] text-sm leading-relaxed text-slate-600 line-clamp-6 sm:max-w-none sm:text-[0.95rem] sm:leading-relaxed sm:line-clamp-none">
-                    {card.description}
-                  </p>
-                </motion.article>
-              ))}
-            </div>
-{/* 
+            {/* Desktop: horizontal timeline */}
             <motion.div
-              className="mt-12 flex justify-center sm:mt-14"
+              className="relative mt-14 hidden lg:mt-16 lg:block"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.52, ease: smoothEase, delay: 0.06 }}
+            >
+              <div
+                className="pointer-events-none absolute left-[6%] right-[6%] top-[2rem] z-0 h-[2px] rounded-full bg-slate-200/95"
+                aria-hidden
+              />
+              <div className="relative z-[1] grid grid-cols-4 gap-6 xl:gap-10">
+                {workforceWorkflowSteps.map((step, i) => (
+                  <motion.div
+                    key={step.num}
+                    className="flex flex-col items-center text-center"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.08, 0.24) }}
+                  >
+                    <div
+                      className={`relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-sm font-bold tabular-nums tracking-tight ${workflowBadgeSurface[step.accent]}`}
+                    >
+                      {step.num}
+                    </div>
+                    <h3 className="mt-6 text-base font-bold text-slate-900 sm:text-lg">{step.title}</h3>
+                    <p className="mt-3 max-w-[15rem] text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                      {step.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Mobile / tablet: vertical timeline */}
+            <motion.div
+              className="relative mx-auto mt-12 max-w-lg lg:hidden"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.48, ease: smoothEase, delay: 0.04 }}
+            >
+              {workforceWorkflowSteps.map((step, i) => (
+                <div key={step.num} className="relative flex gap-4 pb-10 last:pb-0">
+                  {i < workforceWorkflowSteps.length - 1 ? (
+                    <div
+                      className={`pointer-events-none absolute left-[1.6875rem] top-[3.5rem] bottom-0 w-[3px] rounded-full bg-gradient-to-b ${workflowRailToNext[step.accent]}`}
+                      aria-hidden
+                    />
+                  ) : null}
+                  <div
+                    className={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-sm font-bold tabular-nums ${workflowBadgeSurface[step.accent]}`}
+                  >
+                    {step.num}
+                  </div>
+                  <div className="min-w-0 pt-0.5">
+                    <h3 className="text-base font-bold text-slate-900">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+
+        {/* Built for efficiency — 15-module showcase (reference layout) */}
+        <section className="border-t border-slate-200/80 bg-white py-10 sm:py-12 lg:py-14" aria-labelledby="labour-efficiency-heading">
+          <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+            <motion.h2
+              id="labour-efficiency-heading"
+              className="text-center text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-[2rem] lg:leading-tight"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.45, ease: smoothEase }}
             >
-              <Link
-                href="/brochures"
-                className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-lg bg-[color:var(--inops-blue)] px-10 py-3 text-sm font-bold text-white shadow-[0_10px_28px_-12px_rgba(29,95,191,0.45)] transition-[filter,box-shadow] duration-300 hover:brightness-105 hover:shadow-[0_14px_36px_-12px_rgba(29,95,191,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
-              >
-                Download Brochure
-              </Link>
-            </motion.div> */}
-          </div>
-        </section>
+              Built for Efficiency and Control
+            </motion.h2>
 
-     
-
-        {/* Built for efficiency ,  split layout */}
-        <section className="border-t border-slate-200/80 bg-white py-14 lg:py-16" aria-labelledby="labour-efficiency-heading">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-20">
-              <motion.div
-                className="border-l-2 border-[color:var(--inops-blue)]/25 pl-5 sm:pl-6"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase }}
-              >
-                <h2 id="labour-efficiency-heading" className="text-slate-900">
-                  Built for{" "}
-                  <span className="text-[color:var(--inops-blue)]">Efficiency</span> and Control
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                  Designed for HR leaders who want accuracy without the busywork, clear workflows, defensible numbers, and
-                  teams that move faster.
-                </p>
-                <ul className="mt-8 space-y-4">
-                  {efficiencyBenefitBullets.map((line) => (
-                    <li key={line} className="flex gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[color:var(--inops-blue)] ring-1 ring-blue-200/90 ring-offset-1 ring-offset-white">
-                        <CheckIcon className="h-3.5 w-3.5" />
-                      </span>
-                      <span className="text-sm leading-relaxed text-slate-700 sm:text-base">{line}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className="mt-9 inline-flex items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-900/15 transition-[background-color,box-shadow] hover:bg-[color:var(--inops-navy)] hover:shadow-lg hover:shadow-blue-900/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
+            <div className="mx-auto mt-10 grid max-w-none grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-12 lg:grid-cols-5 lg:gap-5">
+              {labourEfficiencyShowcaseCards.map((card, i) => (
+                <motion.article
+                  key={card.id}
+                  className="relative flex flex-col items-center overflow-hidden rounded-[10px] border border-[#e5e5e5] bg-white px-5 py-[25px] text-center shadow-[0_2px_8px_rgba(0,0,0,0.06)] sm:px-6"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={viewport}
+                  transition={{ duration: 0.4, ease: smoothEase, delay: Math.min(i * 0.03, 0.18) }}
                 >
-                  Learn More About Benefits
-                </Link>
-              </motion.div>
-
-              <motion.div
-                className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
-              >
-                {efficiencyHighlightCards.map((card, i) => (
-                  <motion.article
-                    key={card.title}
-                    className={`group relative flex min-h-[200px] flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/75 bg-white/95 p-6 shadow-[0_22px_56px_-34px_rgba(15,23,42,0.18)] ring-1 ring-slate-900/[0.04] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:content-[''] sm:min-h-[210px] sm:p-7 ${efficiencyHighlightTopBar[card.accent]} ${card.staggerClass}`}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={viewport}
-                    transition={{ duration: 0.46, ease: smoothEase, delay: Math.min(0.06 + i * 0.07, 0.28) }}
-                    whileHover={{
-                      y: -6,
-                      boxShadow: "0 28px 64px -36px rgba(15, 23, 42, 0.22)",
-                      transition: { duration: 0.3, ease: smoothEase },
-                    }}
-                  >
-                    <div
-                      className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-                      style={{
-                        background:
-                          card.accent === "blue"
-                            ? "radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)"
-                            : card.accent === "cyan"
-                              ? "radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%)"
-                              : card.accent === "indigo"
-                                ? "radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)"
-                                : "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)",
-                      }}
-                      aria-hidden
-                    />
-                    <span
-                      className={`relative z-10 inline-flex h-14 w-14 items-center justify-center rounded-2xl ring-1 transition-transform duration-300 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-105 ${efficiencyHighlightIconTile[card.accent]}`}
-                    >
-                      <EfficiencyHighlightIcon name={card.icon} className="h-7 w-7 text-current" />
-                    </span>
-                    <h3 className="relative z-10 mt-5 text-slate-900">{card.title}</h3>
-                    <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-                      {card.description}
-                    </p>
-                  </motion.article>
-                ))}
-              </motion.div>
+                  <div
+                    className={`pointer-events-none absolute inset-x-0 top-0 z-[1] h-1.5 rounded-t-[10px] bg-gradient-to-r shadow-sm ${labourShowcaseCardTopBar[card.id]}`}
+                    aria-hidden
+                  />
+                  <span className="relative z-[2] flex h-12 w-12 items-center justify-center sm:h-14 sm:w-14" style={{ color: card.iconColor }}>
+                    <LabourEfficiencyShowcaseIcon id={card.id} className="h-10 w-10 sm:h-11 sm:w-11" />
+                  </span>
+                  <h3 className="relative z-[2] mt-4 text-[15px] font-bold leading-snug text-[#222222] sm:text-base">{card.title}</h3>
+                  <p className="relative z-[2] mt-2 text-[11px] leading-relaxed text-slate-600 sm:text-xs">{card.description}</p>
+                </motion.article>
+              ))}
             </div>
+
+           
           </div>
         </section>
 
         {/* Business impact ,  metrics */}
         <section
-          className="relative overflow-hidden border-t border-slate-800 bg-slate-950 py-14 text-white lg:py-16"
+          className="relative overflow-hidden border-t border-slate-800 bg-slate-950 py-10 text-white lg:py-12"
           aria-labelledby="labour-business-impact-heading"
         >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -978,7 +1068,7 @@ export default function LabourManagementPage() {
 
         {/* Ecosystem & integrations ,  logo strip */}
         <section
-          className="border-t border-slate-200/80 bg-white py-12 lg:py-14"
+          className="border-t border-slate-200/80 bg-white py-10 lg:py-12"
           aria-labelledby="labour-ecosystem-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
@@ -1020,7 +1110,7 @@ export default function LabourManagementPage() {
 
         {/* Designed for simplicity ,  UI previews */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-slate-100/90 via-white to-[#f0f9ff] py-20 lg:py-24"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-slate-100/90 via-white to-[#f0f9ff] py-14 lg:py-18"
           aria-labelledby="labour-simplicity-heading"
         >
           <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -1054,35 +1144,35 @@ export default function LabourManagementPage() {
               </p>
             </motion.div>
 
-            <div className="mt-16 grid grid-cols-1 gap-7 lg:grid-cols-3 lg:gap-8">
+            <div className="mt-12 grid max-w-5xl grid-cols-1 gap-5 sm:mx-auto lg:mt-14 lg:max-w-none lg:grid-cols-3 lg:gap-6">
               <motion.div
-                className="group/card relative flex flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/70 p-6 shadow-[0_32px_72px_-44px_rgba(15,23,42,0.28)] ring-1 ring-white/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-sky-400 before:via-blue-500 before:to-indigo-600 before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-[1.5rem] after:shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:p-7"
+                className="group/card relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-[0_20px_48px_-36px_rgba(15,23,42,0.22)] ring-1 ring-white/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-sky-400 before:via-blue-500 before:to-indigo-600 before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:p-5"
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.05 }}
                 whileHover={{
-                  y: -10,
+                  y: -6,
                   scale: 1.01,
-                  boxShadow: "0 36px 80px -40px rgba(15, 23, 42, 0.35)",
+                  boxShadow: "0 28px 64px -38px rgba(15, 23, 42, 0.3)",
                   transition: { duration: 0.38, ease: smoothEase },
                 }}
               >
-                <div className="pointer-events-none absolute -right-20 top-20 h-48 w-48 rounded-full bg-gradient-to-br from-sky-400/20 to-blue-600/5 blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
-                <div className="relative flex items-start justify-between gap-3">
+                <div className="pointer-events-none absolute -right-20 top-16 h-40 w-40 rounded-full bg-gradient-to-br from-sky-400/20 to-blue-600/5 blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
+                <div className="relative flex items-start justify-between gap-2">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">People</p>
-                    <h3 className="mt-1 text-slate-900">Employee Directory</h3>
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">People</p>
+                    <h3 className="mt-0.5 text-base font-semibold leading-snug text-slate-900">Employee Directory</h3>
                   </div>
-                  <span className="flex shrink-0 items-center gap-2 rounded-full border border-emerald-200/60 bg-emerald-50/90 px-2.5 py-1 shadow-sm ring-1 ring-emerald-500/10 backdrop-blur-sm">
-                    <span className="relative flex h-2 w-2">
+                  <span className="flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-200/60 bg-emerald-50/90 px-2 py-0.5 shadow-sm ring-1 ring-emerald-500/10 backdrop-blur-sm">
+                    <span className="relative flex h-1.5 w-1.5">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.9)]" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.9)]" />
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-800">Live</span>
+                    <span className="text-[9px] font-bold uppercase tracking-wide text-emerald-800">Live</span>
                   </span>
                 </div>
-                <ul className="relative mt-7 space-y-2.5" aria-label="Sample directory rows">
+                <ul className="relative mt-4 space-y-2" aria-label="Sample directory rows">
                   {[
                     {
                       initials: "AK",
@@ -1108,26 +1198,26 @@ export default function LabourManagementPage() {
                   ].map((row, i) => (
                     <motion.li
                       key={row.initials}
-                      className={`group/row relative flex items-center gap-3 overflow-hidden rounded-xl border border-slate-100/90 bg-gradient-to-r from-white to-slate-50/90 px-3 py-3 shadow-sm ring-1 ring-slate-900/[0.03] transition-all duration-300 hover:border-sky-200/90 hover:shadow-md hover:shadow-sky-500/10`}
+                      className={`group/row relative flex items-center gap-2 overflow-hidden rounded-lg border border-slate-100/90 bg-gradient-to-r from-white to-slate-50/90 px-2.5 py-2 shadow-sm ring-1 ring-slate-900/[0.03] transition-all duration-300 hover:border-sky-200/90 hover:shadow-md hover:shadow-sky-500/10`}
                       initial={{ opacity: 0, x: -14 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.42, ease: smoothEase, delay: 0.1 + i * 0.07 }}
                     >
                       <span
-                        className={`pointer-events-none absolute left-0 top-2 bottom-2 w-1 rounded-full bg-gradient-to-b opacity-0 transition-opacity duration-300 group-hover/row:opacity-100 ${row.bar}`}
+                        className={`pointer-events-none absolute left-0 top-1.5 bottom-1.5 w-0.5 rounded-full bg-gradient-to-b opacity-0 transition-opacity duration-300 group-hover/row:opacity-100 ${row.bar}`}
                         aria-hidden
                       />
                       <span
-                        className={`relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-xs font-bold ${row.hue}`}
+                        className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${row.hue}`}
                       >
                         {row.initials}
                       </span>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold tracking-tight text-slate-900">{row.name}</p>
-                        <p className="truncate text-xs font-medium text-slate-500">{row.role}</p>
+                        <p className="truncate text-xs font-semibold tracking-tight text-slate-900">{row.name}</p>
+                        <p className="truncate text-[10px] font-medium text-slate-500">{row.role}</p>
                       </div>
-                      <span className="shrink-0 rounded-full bg-gradient-to-r from-sky-500/12 to-blue-600/12 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-sky-800 ring-1 ring-sky-300/50 backdrop-blur-[2px]">
+                      <span className="shrink-0 rounded-full bg-gradient-to-r from-sky-500/12 to-blue-600/12 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-sky-800 ring-1 ring-sky-300/50 backdrop-blur-[2px]">
                         Active
                       </span>
                     </motion.li>
@@ -1136,34 +1226,34 @@ export default function LabourManagementPage() {
               </motion.div>
 
               <motion.div
-                className="group/card relative flex flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/70 p-6 shadow-[0_32px_72px_-44px_rgba(15,23,42,0.28)] ring-1 ring-white/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-emerald-400 before:via-teal-500 before:to-cyan-500 before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-[1.5rem] after:shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:p-7"
+                className="group/card relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-[0_20px_48px_-36px_rgba(15,23,42,0.22)] ring-1 ring-white/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-emerald-400 before:via-teal-500 before:to-cyan-500 before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:p-5"
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
                 whileHover={{
-                  y: -10,
+                  y: -6,
                   scale: 1.01,
-                  boxShadow: "0 36px 80px -40px rgba(15, 23, 42, 0.35)",
+                  boxShadow: "0 28px 64px -38px rgba(15, 23, 42, 0.3)",
                   transition: { duration: 0.38, ease: smoothEase },
                 }}
               >
-                <div className="pointer-events-none absolute -left-16 bottom-8 h-44 w-44 rounded-full bg-gradient-to-tr from-emerald-400/25 to-transparent blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
+                <div className="pointer-events-none absolute -left-16 bottom-6 h-36 w-36 rounded-full bg-gradient-to-tr from-emerald-400/25 to-transparent blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
                 <div className="relative">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">Time</p>
-                  <h3 className="mt-1 text-slate-900">Attendance Logs</h3>
+                  <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">Time</p>
+                  <h3 className="mt-0.5 text-base font-semibold leading-snug text-slate-900">Attendance Logs</h3>
                 </div>
-                <div className="relative mt-7 overflow-hidden rounded-xl border border-slate-200/70 bg-white shadow-[inset_0_2px_12px_rgba(248,250,252,0.9),0_1px_0_rgba(255,255,255,0.9)] ring-1 ring-slate-100/80">
-                  <table className="w-full min-w-[260px] text-left text-sm">
+                <div className="relative mt-4 overflow-hidden rounded-lg border border-slate-200/70 bg-white shadow-[inset_0_2px_12px_rgba(248,250,252,0.9),0_1px_0_rgba(255,255,255,0.9)] ring-1 ring-slate-100/80">
+                  <table className="w-full min-w-0 text-left text-xs">
                     <thead>
                       <tr className="border-b border-slate-100 bg-gradient-to-r from-slate-50/95 via-white to-sky-50/50 backdrop-blur-sm">
-                        <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                        <th className="px-2.5 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500">
                           Date
                         </th>
-                        <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                        <th className="px-2.5 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500">
                           Clock in
                         </th>
-                        <th className="px-4 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                        <th className="px-2.5 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">
                           Status
                         </th>
                       </tr>
@@ -1179,14 +1269,14 @@ export default function LabourManagementPage() {
                           key={row.date}
                           className="transition-colors duration-200 hover:bg-gradient-to-r hover:from-sky-50/90 hover:to-white"
                         >
-                          <td className="whitespace-nowrap px-4 py-3 font-semibold text-slate-900">{row.date}</td>
-                          <td className="whitespace-nowrap px-4 py-3 tabular-nums text-slate-600">{row.clockIn}</td>
-                          <td className="px-4 py-3">
+                          <td className="whitespace-nowrap px-2.5 py-2 text-xs font-semibold text-slate-900">{row.date}</td>
+                          <td className="whitespace-nowrap px-2.5 py-2 tabular-nums text-[11px] text-slate-600">{row.clockIn}</td>
+                          <td className="px-2.5 py-2">
                             <span
                               className={
                                 row.late
-                                  ? "inline-flex rounded-full bg-gradient-to-r from-amber-50 to-orange-50 px-2.5 py-1 text-xs font-semibold text-amber-900 ring-1 ring-amber-300/70 shadow-sm"
-                                  : "inline-flex rounded-full bg-gradient-to-r from-emerald-50 to-teal-50 px-2.5 py-1 text-xs font-semibold text-emerald-900 ring-1 ring-emerald-300/70 shadow-sm"
+                                  ? "inline-flex rounded-full bg-gradient-to-r from-amber-50 to-orange-50 px-2 py-0.5 text-[10px] font-semibold text-amber-900 ring-1 ring-amber-300/70 shadow-sm"
+                                  : "inline-flex rounded-full bg-gradient-to-r from-emerald-50 to-teal-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-900 ring-1 ring-emerald-300/70 shadow-sm"
                               }
                             >
                               {row.status}
@@ -1200,25 +1290,25 @@ export default function LabourManagementPage() {
               </motion.div>
 
               <motion.div
-                className="group/card relative flex flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/70 p-6 shadow-[0_32px_72px_-44px_rgba(15,23,42,0.28)] ring-1 ring-white/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-blue-600 before:via-indigo-600 before:to-violet-600 before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-[1.5rem] after:shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:p-7"
+                className="group/card relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-[0_20px_48px_-36px_rgba(15,23,42,0.22)] ring-1 ring-white/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-blue-600 before:via-indigo-600 before:to-violet-600 before:content-[''] after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] sm:p-5"
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
                 whileHover={{
-                  y: -10,
+                  y: -6,
                   scale: 1.01,
-                  boxShadow: "0 36px 80px -40px rgba(15, 23, 42, 0.35)",
+                  boxShadow: "0 28px 64px -38px rgba(15, 23, 42, 0.3)",
                   transition: { duration: 0.38, ease: smoothEase },
                 }}
               >
-                <div className="pointer-events-none absolute -right-16 top-28 h-44 w-44 rounded-full bg-gradient-to-bl from-blue-500/25 via-indigo-500/10 to-transparent blur-3xl" aria-hidden />
+                <div className="pointer-events-none absolute -right-16 top-24 h-36 w-36 rounded-full bg-gradient-to-bl from-blue-500/25 via-indigo-500/10 to-transparent blur-3xl" aria-hidden />
                 <div className="relative">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-400">Payroll</p>
-                  <h3 className="mt-1 text-slate-900">Payroll Summary</h3>
+                  <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">Payroll</p>
+                  <h3 className="mt-0.5 text-base font-semibold leading-snug text-slate-900">Payroll Summary</h3>
                 </div>
-                <div className="relative mt-6 flex flex-1 flex-col items-center">
-                  <div className="relative flex h-[10rem] w-[10rem] items-center justify-center">
+                <div className="relative mt-4 flex flex-1 flex-col items-center">
+                  <div className="relative flex h-[7rem] w-[7rem] items-center justify-center">
                     <div className="pointer-events-none absolute inset-0 scale-110 rounded-full bg-gradient-to-br from-blue-400/25 via-cyan-400/15 to-transparent blur-2xl" aria-hidden />
                     <svg className="relative h-full w-full -rotate-90 drop-shadow-[0_4px_24px_rgba(37,99,235,0.25)]" viewBox="0 0 36 36" aria-hidden>
                       <defs>
@@ -1245,7 +1335,7 @@ export default function LabourManagementPage() {
                       />
                     </svg>
                     <motion.span
-                      className="absolute text-2xl font-bold tracking-tight text-slate-900"
+                      className="absolute text-lg font-bold tracking-tight text-slate-900"
                       initial={{ opacity: 0, scale: 0.82 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -1254,18 +1344,18 @@ export default function LabourManagementPage() {
                       75%
                     </motion.span>
                   </div>
-                  <p className="mt-6 tabular-nums text-2xl font-bold tracking-tight text-slate-900 sm:text-[1.7rem]">
+                  <p className="mt-3 tabular-nums text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
                     <span className="text-slate-900">
                       Rs. 452,300
                     </span>
                   </p>
-                  <p className="mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  <p className="mt-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                     Total Net Pay Disbursed
                   </p>
                 </div>
                 <button
                   type="button"
-                  className="relative mt-7 w-full overflow-hidden rounded-xl bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-3.5 text-sm font-semibold text-white shadow-[0_12px_36px_-16px_rgba(15,23,42,0.55)] ring-1 ring-white/10 transition-all duration-300 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100 hover:shadow-[0_16px_44px_-14px_rgba(29,95,191,0.55)] hover:ring-sky-400/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                  className="relative mt-4 w-full overflow-hidden rounded-lg bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-2.5 text-xs font-semibold text-white shadow-[0_10px_28px_-14px_rgba(15,23,42,0.55)] ring-1 ring-white/10 transition-all duration-300 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100 hover:shadow-[0_14px_36px_-14px_rgba(29,95,191,0.55)] hover:ring-sky-400/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 sm:text-sm"
                 >
                   <span className="relative">View Batch Details</span>
                 </button>

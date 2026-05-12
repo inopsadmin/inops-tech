@@ -82,7 +82,7 @@ export default function TurnstilesPage() {
         />
 
         {/* Main content – tripod turnstile image left, text right */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
+        <section className="py-5 lg:py-8 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10 lg:items-center">
               <motion.div
@@ -123,7 +123,7 @@ export default function TurnstilesPage() {
         </section>
 
         {/* Features – three numbered blocks */}
-        <section className="py-6 lg:py-10 border-t border-gray-200 bg-white">
+        <section className="py-5 lg:py-8 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
               {numberedFeatures.map((item, i) => (
@@ -147,7 +147,7 @@ export default function TurnstilesPage() {
         </section>
 
         {/* Features + specifications ,  side by side from lg */}
-        <section className="border-t border-slate-200/80 from-slate-50 via-white to-slate-50 py-10 lg:py-14 bg-white">
+        <section className="border-t border-slate-200/80 from-slate-50 via-white to-slate-50 py-8 lg:py-12 bg-white">
           <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-start lg:gap-10 xl:gap-14">
               {/* Left: Features */}

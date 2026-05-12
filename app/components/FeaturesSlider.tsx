@@ -32,10 +32,10 @@ export default function FeaturesSlider() {
   return (
     <section
       id="solutions"
-      className="relative isolate border-y border-slate-200/80 bg-white py-10 lg:py-12"
+      className="relative isolate border-y border-slate-200/80 bg-white py-7 lg:py-9"
     >
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="group overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/80 hover:shadow-xl hover:shadow-blue-900/10">
+        <div className="group relative overflow-hidden rounded-2xl border border-blue-100/90 bg-white/95 shadow-lg shadow-blue-900/[0.06] backdrop-blur-sm transition-[box-shadow,border-color] duration-300 hover:border-blue-200/80 hover:shadow-xl hover:shadow-blue-900/10">
           <div className="grid grid-cols-1 items-stretch gap-0 md:grid-cols-[minmax(0,1fr)_minmax(0,46%)] lg:grid-cols-[minmax(0,1fr)_minmax(0,44%)]">
             <div className="p-8 lg:p-12">
               <FlyInText as="h2" direction="left" className="text-gray-900">
@@ -71,11 +71,11 @@ export default function FeaturesSlider() {
               viewport={viewport}
               transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
             >
-              {/* object-contain + 16:9 frame avoids top/bottom crop from object-cover */}
+              {/* object-cover: media always fills the 16:9 frame so corner popups stay aligned (object-contain letterboxing made tiles drift vs content). */}
               <div className="relative mx-auto flex w-full flex-1 items-center justify-center px-2 py-3 sm:px-3 sm:py-4 md:mx-0 md:min-h-[min(22rem,36vh)] md:px-3 md:py-5 lg:min-h-[min(26rem,40vh)]">
                 <div className="relative aspect-video w-full max-h-[min(34rem,58vw)] max-w-full sm:max-h-[min(38rem,52vw)] md:max-h-[min(42rem,48vh)] lg:max-h-[min(44rem,46vh)]">
                   <video
-                    className="absolute inset-0 h-full w-full object-contain object-center"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                     autoPlay
                     muted
                     loop
@@ -86,30 +86,33 @@ export default function FeaturesSlider() {
                   >
                     <source src={slide.videoSrc} type="video/mp4" />
                   </video>
-                  <VideoLivePopups
-                    popups={[
-                      {
-                        position: "top-left",
-                        className: "!top-0 sm:!top-10 lg:!-top-18 !left-0 sm:!left-10 lg:!-left-5",
-                        label: "Live",
-                        title: "Platform online",
-                        accent: "emerald",
-                      },
-                      {
-                        position: "bottom-right",
-                        className: "!bottom-0 sm:!bottom-10 lg:!-bottom-15 !right-0 sm:!right-10 lg:!-right-5",
-                        label: "Sync",
-                        title: "Real-time data",
-                        variant: "icon",
-                        icon: "spark",
-                        accent: "blue",
-                      },
-                    ]}
-                  />
                 </div>
               </div>
             </motion.div>
           </div>
+
+          <VideoLivePopups
+            popups={[
+              {
+                position: "top-left",
+                label: "Live",
+                title: "Platform online",
+                hideOnMobile: false,
+                className: "!top-[3%] !left-[55%] !z-30",
+                accent: "emerald",
+              },
+              {
+                position: "bottom-right",
+                label: "Sync",
+                title: "Real-time data",
+                hideOnMobile: false,
+                className: "!bottom-[3%] !right-[0.5%] !z-30 !absolute",
+                variant: "icon",
+                icon: "spark",
+                accent: "blue",
+              },
+            ]}
+          />
         </div>
       </div>
     </section>

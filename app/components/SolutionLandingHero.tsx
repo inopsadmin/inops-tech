@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import VideoLivePopups, { type VideoLivePopupItem } from "./VideoLivePopups";
+import SolutionHeroWaveDecor from "./SolutionHeroWaveDecor";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
@@ -54,6 +56,8 @@ export type SolutionLandingHeroProps = {
   gradientClassName?: string;
   /** Mobile-only stack gradient; pass `""` to omit. Defaults to a light top/bottom veil. */
   mobileStackGradientClassName?: string | null;
+  /** When set, replaces default `inops-ui-lead` on the subtitle paragraph (use for page-specific size/color). */
+  subtitleClassName?: string;
   /** Drawn above the photo and below the text scrim ,  e.g. corner / edge opacity fades. */
   imageEdgeFadeClassName?: string;
   /** Floating "Live" status tiles to overlay on the video. Defaults to a single
@@ -92,6 +96,7 @@ export default function SolutionLandingHero({
   mobileStackGradientClassName,
   imageEdgeFadeClassName,
   livePopups,
+  subtitleClassName,
 }: SolutionLandingHeroProps) {
   const popupsToRender =
     livePopups === null
@@ -187,6 +192,7 @@ export default function SolutionLandingHero({
       ) : null}
       <div className={`${bgGradientClass} z-[1]`} aria-hidden />
       {mobileVeilClass ? <div className={`${mobileVeilClass} z-[1]`} aria-hidden /> : null}
+      <SolutionHeroWaveDecor className="z-[4]" />
       {popupsToRender ? (
         <div className={`${mediaShellClass} pointer-events-none z-[5]`}>
           <VideoLivePopups popups={popupsToRender} />
@@ -213,14 +219,19 @@ export default function SolutionLandingHero({
           {title}
         </motion.h1>
 
-        <motion.p
-          className="mt-5 max-w-xl text-slate-600"
+        {/* `div` avoids `.inops-template p { font-size: … !important }` overriding Tailwind / `inops-ui-lead`. */}
+        <motion.div
+          className={
+            subtitleClassName?.trim()
+              ? `mt-5 max-w-xl ${subtitleClassName.trim()}`
+              : `inops-ui-lead mt-5 max-w-xl`
+          }
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
         >
           {subtitle}
-        </motion.p>
+        </motion.div>
 
         <motion.div
           className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
@@ -230,20 +241,14 @@ export default function SolutionLandingHero({
         >
           <Link
             href={primaryCta.href}
-            className={
-              primaryCtaClassName ??
-              "inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
-            }
+            className={primaryCtaClassName ?? inopsUi.btnPrimary}
           >
             {primaryCta.label}
           </Link>
           {secondaryCta ? (
             <Link
               href={secondaryCta.href}
-              className={
-                secondaryCtaClassName ??
-                "inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-blue-900/25"
-              }
+              className={secondaryCtaClassName ?? inopsUi.btnSecondary}
             >
               {secondaryCta.label}
             </Link>

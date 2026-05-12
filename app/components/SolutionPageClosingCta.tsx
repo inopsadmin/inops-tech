@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -19,6 +20,8 @@ export type SolutionPageClosingCtaProps = {
   footnote?: ReactNode;
   /** Only the blue card ,  no outer white band (use when a parent section already provides layout). */
   embedded?: boolean;
+  /** Optional extra classes on the outer `<section>` (non-embedded). */
+  sectionClassName?: string;
 };
 
 export default function SolutionPageClosingCta({
@@ -31,10 +34,8 @@ export default function SolutionPageClosingCta({
   secondaryHref = "/contact",
   footnote,
   embedded = false,
+  sectionClassName,
 }: SolutionPageClosingCtaProps) {
-  const secondaryClassName =
-    "inline-flex items-center justify-center rounded-full border border-white/80 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-white/18";
-
   const secondaryIsSpecialProtocol =
     secondaryHref.startsWith("tel:") || secondaryHref.startsWith("mailto:");
 
@@ -62,18 +63,15 @@ export default function SolutionPageClosingCta({
           {description}
         </div>
         <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
-          <Link
-            href={primaryHref}
-            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[color:var(--inops-blue)] shadow-md transition hover:bg-blue-50"
-          >
+          <Link href={primaryHref} className={inopsUi.btnOnDarkPrimary}>
             {primaryLabel}
           </Link>
           {secondaryIsSpecialProtocol ? (
-            <a href={secondaryHref} className={secondaryClassName}>
+            <a href={secondaryHref} className={inopsUi.btnOnDarkSecondary}>
               {secondaryLabel}
             </a>
           ) : (
-            <Link href={secondaryHref} className={secondaryClassName}>
+            <Link href={secondaryHref} className={inopsUi.btnOnDarkSecondary}>
               {secondaryLabel}
             </Link>
           )}
@@ -95,7 +93,7 @@ export default function SolutionPageClosingCta({
 
   return (
     <section
-      className="border-t border-slate-200/80 bg-white px-4 pb-16 pt-10 sm:px-6 lg:px-12 lg:pb-20"
+      className={`border-t border-slate-200/80 bg-white px-4 pb-16 pt-10 sm:px-6 lg:px-12 lg:pb-20${sectionClassName ? ` ${sectionClassName}` : ""}`}
       aria-labelledby={headingId}
     >
       <div className="mx-auto max-w-7xl">{ctaCard}</div>

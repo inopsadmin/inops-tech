@@ -56,7 +56,7 @@ export default function FixedAssetManagementPage() {
 
         {/* One Unified Ecosystem */}
         <section
-          className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
+          className="border-t border-slate-200/80 py-10 lg:py-12 bg-white"
           aria-labelledby="unified-ecosystem-heading"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">

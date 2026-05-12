@@ -6,6 +6,8 @@ import { motion, MotionConfig } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -86,6 +88,17 @@ const painPoints = [
     description:
       "Buddy punching and proxy clock-ins hide real headcount, clean attendance data never reaches payroll.",
     icon: "users" as const,
+    theme: {
+      topBar: "from-rose-500 via-orange-500 to-amber-500",
+      cardSurface:
+        "border-rose-200/70 bg-gradient-to-br from-rose-50/95 via-white to-orange-50/40 shadow-[0_22px_56px_-32px_rgba(244,63,94,0.14)] ring-1 ring-rose-500/[0.06] hover:border-rose-300/90 hover:shadow-[0_32px_70px_-36px_rgba(244,63,94,0.2)]",
+      orb: "from-rose-400/25 to-orange-500/12",
+      numBg: "bg-gradient-to-br from-rose-600 to-orange-600 text-white shadow-lg shadow-rose-600/25 ring-2 ring-white/80",
+      iconBox:
+        "bg-gradient-to-br from-rose-500 to-orange-600 text-white shadow-md shadow-rose-600/25 ring-2 ring-white/70",
+      statPill:
+        "border border-rose-200/90 bg-gradient-to-r from-rose-50 to-orange-50/90 text-rose-950 shadow-sm ring-1 ring-rose-500/10",
+    },
   },
   {
     title: "Compliance violations",
@@ -93,6 +106,17 @@ const painPoints = [
     description:
       "OT, wage, and incident gaps surface after the fact, audits and disputes land on your desk.",
     icon: "shield" as const,
+    theme: {
+      topBar: "from-violet-600 via-purple-500 to-indigo-600",
+      cardSurface:
+        "border-violet-200/70 bg-gradient-to-br from-violet-50/95 via-white to-indigo-50/38 shadow-[0_22px_56px_-32px_rgba(139,92,246,0.12)] ring-1 ring-violet-500/[0.06] hover:border-violet-300/90 hover:shadow-[0_32px_70px_-36px_rgba(124,58,237,0.18)]",
+      orb: "from-violet-400/22 to-indigo-600/12",
+      numBg: "bg-gradient-to-br from-violet-600 to-indigo-700 text-white shadow-lg shadow-violet-600/28 ring-2 ring-white/80",
+      iconBox:
+        "bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-md shadow-violet-600/25 ring-2 ring-white/70",
+      statPill:
+        "border border-violet-200/90 bg-gradient-to-r from-violet-50 to-indigo-50/90 text-violet-950 shadow-sm ring-1 ring-violet-500/10",
+    },
   },
   {
     title: "Invoice chaos",
@@ -100,6 +124,17 @@ const painPoints = [
     description:
       "Finance burns 80–120 hrs./month matching invoices to gates and shifts instead of closing books.",
     icon: "invoice" as const,
+    theme: {
+      topBar: "from-amber-500 via-orange-500 to-rose-500",
+      cardSurface:
+        "border-amber-200/70 bg-gradient-to-br from-amber-50/95 via-white to-orange-50/38 shadow-[0_22px_56px_-32px_rgba(245,158,11,0.12)] ring-1 ring-amber-500/[0.06] hover:border-amber-300/90 hover:shadow-[0_32px_70px_-36px_rgba(251,146,60,0.18)]",
+      orb: "from-amber-400/22 to-rose-500/12",
+      numBg: "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-600/26 ring-2 ring-white/80",
+      iconBox:
+        "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-600/25 ring-2 ring-white/70",
+      statPill:
+        "border border-amber-200/90 bg-gradient-to-r from-amber-50 to-orange-50/90 text-amber-950 shadow-sm ring-1 ring-amber-500/10",
+    },
   },
   {
     title: "System fragmentation",
@@ -107,6 +142,17 @@ const painPoints = [
     description:
       "Biometrics, spreadsheets, and ERP live in silos, nothing reconciles without manual stitching.",
     icon: "layers" as const,
+    theme: {
+      topBar: "from-sky-500 via-cyan-500 to-teal-500",
+      cardSurface:
+        "border-sky-200/70 bg-gradient-to-br from-sky-50/95 via-white to-cyan-50/40 shadow-[0_22px_56px_-32px_rgba(14,165,233,0.12)] ring-1 ring-sky-500/[0.06] hover:border-sky-300/90 hover:shadow-[0_32px_70px_-36px_rgba(6,182,212,0.18)]",
+      orb: "from-cyan-400/22 to-teal-600/12",
+      numBg: "bg-gradient-to-br from-sky-500 to-teal-600 text-white shadow-lg shadow-cyan-600/25 ring-2 ring-white/80",
+      iconBox:
+        "bg-gradient-to-br from-sky-500 to-teal-600 text-white shadow-md shadow-sky-600/25 ring-2 ring-white/70",
+      statPill:
+        "border border-sky-200/90 bg-gradient-to-r from-sky-50 to-cyan-50/90 text-sky-950 shadow-sm ring-1 ring-sky-500/10",
+    },
   },
   {
     title: "ESI / PF reconciliation & true-up",
@@ -114,6 +160,17 @@ const painPoints = [
     description:
       "Spreadsheet-driven statutory checks miss deltas until filings, errors compound across branches.",
     icon: "statutory" as const,
+    theme: {
+      topBar: "from-emerald-500 via-teal-500 to-green-600",
+      cardSurface:
+        "border-emerald-200/70 bg-gradient-to-br from-emerald-50/95 via-white to-teal-50/38 shadow-[0_22px_56px_-32px_rgba(16,185,129,0.11)] ring-1 ring-emerald-500/[0.06] hover:border-emerald-300/90 hover:shadow-[0_32px_70px_-36px_rgba(20,184,166,0.18)]",
+      orb: "from-emerald-400/22 to-green-600/12",
+      numBg: "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-600/26 ring-2 ring-white/80",
+      iconBox:
+        "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-600/25 ring-2 ring-white/70",
+      statPill:
+        "border border-emerald-200/90 bg-gradient-to-r from-emerald-50 to-teal-50/90 text-emerald-950 shadow-sm ring-1 ring-emerald-500/10",
+    },
   },
 ] as const;
 
@@ -185,39 +242,42 @@ function WhyInopsMosaicPainCard({
   num: number;
   idx: number;
 }) {
+  const t = card.theme;
   return (
     <motion.article
-      className="group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/75 bg-white p-6 shadow-[0_22px_56px_-32px_rgba(15,23,42,0.22)] ring-1 ring-slate-900/[0.04] sm:min-h-[240px] sm:p-7"
+      className={`group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[1.35rem] border p-6 transition-[transform,box-shadow] duration-300 sm:min-h-[240px] sm:p-7 ${t.cardSurface}`}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
       transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(idx * 0.05, 0.28) }}
       whileHover={{
         y: -10,
-        boxShadow: "0 32px 70px -36px rgba(15, 23, 42, 0.28)",
         transition: { duration: 0.3, ease: smoothEase },
       }}
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[3px] overflow-hidden rounded-t-[1.35rem]"
+        className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1.5 rounded-t-[1.35rem] bg-gradient-to-r shadow-sm ${t.topBar}`}
         aria-hidden
-      >
-        <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100" />
-      </div>
-      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-sky-400/12 via-transparent to-transparent blur-2xl transition-opacity duration-500 group-hover:opacity-100 opacity-70" aria-hidden />
+      />
+      <div
+        className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${t.orb}`}
+        aria-hidden
+      />
       <div className="relative flex items-center gap-3">
         <span
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-800 text-sm font-bold tabular-nums text-white shadow-md ring-2 ring-white"
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold tabular-nums shadow-md ${t.numBg}`}
           aria-hidden
         >
           {num}
         </span>
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-600 ring-1 ring-slate-200/90 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-900/25 group-hover:ring-blue-500">
+        <span
+          className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-md ring-2 ring-white/80 transition-transform duration-300 group-hover:scale-110 ${t.iconBox}`}
+        >
           <PainPointLeadIcon name={card.icon} className="h-5 w-5" />
         </span>
       </div>
-      <h3 className="relative mt-5 text-slate-900">{card.title}</h3>
-      <span className="relative mt-2.5 inline-flex w-fit rounded-full border border-sky-200/90 bg-gradient-to-r from-sky-50/90 to-indigo-50/80 px-3 py-1 text-xs font-bold tabular-nums text-slate-800 shadow-sm ring-1 ring-sky-100/80">
+      <h3 className="relative mt-5 font-semibold tracking-tight text-slate-900">{card.title}</h3>
+      <span className={`relative mt-2.5 inline-flex w-fit rounded-full px-3 py-1 text-xs font-bold tabular-nums shadow-sm ${t.statPill}`}>
         {card.stat}
       </span>
       <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate-600">{card.description}</p>
@@ -309,10 +369,62 @@ const ourModulesSlides = [
   },
 ] as const;
 
+/** Per-slide accents for Capability map cards (matches `ourModulesSlides` order). */
+const ourModuleCardPalettes = [
+  {
+    topBar: "from-blue-600 via-sky-500 to-cyan-500",
+    shell:
+      "border-blue-200/70 bg-gradient-to-b from-white via-blue-50/30 to-white ring-1 ring-blue-500/[0.06] hover:border-blue-300/90 hover:shadow-[0_24px_50px_-22px_rgba(59,130,246,0.2)]",
+    sweep: "linear-gradient(135deg, rgba(59,130,246,0.18) 0%, transparent 42%, rgba(6,182,212,0.14) 100%)",
+  },
+  {
+    topBar: "from-emerald-600 via-teal-500 to-cyan-500",
+    shell:
+      "border-emerald-200/70 bg-gradient-to-b from-white via-emerald-50/35 to-white ring-1 ring-emerald-500/[0.06] hover:border-emerald-300/90 hover:shadow-[0_24px_50px_-22px_rgba(16,185,129,0.2)]",
+    sweep: "linear-gradient(135deg, rgba(16,185,129,0.16) 0%, transparent 45%, rgba(20,184,166,0.14) 100%)",
+  },
+  {
+    topBar: "from-amber-500 via-orange-500 to-rose-500",
+    shell:
+      "border-amber-200/70 bg-gradient-to-b from-white via-amber-50/35 to-white ring-1 ring-amber-500/[0.06] hover:border-amber-300/90 hover:shadow-[0_24px_50px_-22px_rgba(245,158,11,0.2)]",
+    sweep: "linear-gradient(135deg, rgba(245,158,11,0.16) 0%, transparent 45%, rgba(251,113,133,0.12) 100%)",
+  },
+  {
+    topBar: "from-violet-600 via-fuchsia-500 to-pink-500",
+    shell:
+      "border-violet-200/70 bg-gradient-to-b from-white via-violet-50/32 to-white ring-1 ring-violet-500/[0.06] hover:border-violet-300/90 hover:shadow-[0_24px_50px_-22px_rgba(139,92,246,0.2)]",
+    sweep: "linear-gradient(135deg, rgba(139,92,246,0.16) 0%, transparent 45%, rgba(236,72,153,0.12) 100%)",
+  },
+  {
+    topBar: "from-cyan-500 via-sky-500 to-blue-600",
+    shell:
+      "border-cyan-200/70 bg-gradient-to-b from-white via-cyan-50/30 to-white ring-1 ring-cyan-500/[0.06] hover:border-cyan-300/90 hover:shadow-[0_24px_50px_-22px_rgba(6,182,212,0.18)]",
+    sweep: "linear-gradient(135deg, rgba(6,182,212,0.15) 0%, transparent 45%, rgba(59,130,246,0.12) 100%)",
+  },
+  {
+    topBar: "from-indigo-600 via-violet-500 to-purple-600",
+    shell:
+      "border-indigo-200/70 bg-gradient-to-b from-white via-indigo-50/32 to-white ring-1 ring-indigo-500/[0.06] hover:border-indigo-300/90 hover:shadow-[0_24px_50px_-22px_rgba(99,102,241,0.2)]",
+    sweep: "linear-gradient(135deg, rgba(99,102,241,0.18) 0%, transparent 45%, rgba(168,85,247,0.12) 100%)",
+  },
+  {
+    topBar: "from-sky-500 via-indigo-500 to-violet-600",
+    shell:
+      "border-sky-200/70 bg-gradient-to-b from-white via-sky-50/28 to-white ring-1 ring-sky-500/[0.06] hover:border-sky-300/90 hover:shadow-[0_24px_50px_-22px_rgba(14,165,233,0.18)]",
+    sweep: "linear-gradient(135deg, rgba(14,165,233,0.14) 0%, transparent 45%, rgba(99,102,241,0.14) 100%)",
+  },
+  {
+    topBar: "from-rose-500 via-amber-500 to-orange-500",
+    shell:
+      "border-rose-200/65 bg-gradient-to-b from-white via-rose-50/28 to-white ring-1 ring-rose-500/[0.06] hover:border-rose-300/90 hover:shadow-[0_24px_50px_-22px_rgba(244,63,94,0.16)]",
+    sweep: "linear-gradient(135deg, rgba(244,63,94,0.14) 0%, transparent 45%, rgba(251,146,60,0.14) 100%)",
+  },
+] as const;
+
 function OurModulesCarousel() {
   return (
     <section
-      className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white !mt-0 pt-5 pb-14 sm:pt-6 lg:pt-7 lg:pb-16"
+      className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white !mt-0 pt-4 pb-10 sm:pt-5 lg:pt-6 lg:pb-12"
       aria-labelledby="our-modules-heading"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden />
@@ -337,33 +449,31 @@ function OurModulesCarousel() {
         >
           <motion.span
             variants={ourModulesHeaderItem}
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm ring-1 ring-slate-900/5 backdrop-blur-sm sm:text-[11px]"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[11px]"
           >
             <motion.span
-              className="relative flex h-1.5 w-1.5"
+              className="relative flex h-1.5 w-1.5 shrink-0"
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
               aria-hidden
             >
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400/45 opacity-50" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-500 shadow-[0_0_14px_rgba(59,130,246,0.55)]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500/40 opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_0_2px_rgba(29,95,191,0.22)]" />
             </motion.span>
             Capability map
           </motion.span>
           <motion.h2 id="our-modules-heading" variants={ourModulesHeaderItem} className="mt-5">
-            <span className="text-slate-900">
-              Our{" "}
-            </span>
-            <span className="font-semibold text-[color:var(--inops-blue)]">
+            <span className="text-slate-900">Our </span>
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 bg-clip-text font-semibold text-transparent">
               modules
             </span>
           </motion.h2>
           <motion.div variants={ourModulesHeaderItem} className="mx-auto mt-4 max-w-xl">
-            <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
+            <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
               End-to-end payroll and workforce capabilities, pick what you need, everything stays connected.
             </p>
             <motion.div
-              className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500"
+              className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-fuchsia-500 to-amber-500 shadow-sm shadow-blue-500/20"
               initial={{ scaleX: 0, opacity: 0 }}
               whileInView={{ scaleX: 1, opacity: 1 }}
               viewport={viewport}
@@ -375,35 +485,30 @@ function OurModulesCarousel() {
         </motion.div>
 
         <motion.ul
-          className="mt-10 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:mt-11"
+          className="mt-8 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:mt-9"
           variants={ourModulesGridStagger}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
         >
-          {ourModulesSlides.map((slide) => (
+          {ourModulesSlides.map((slide, si) => {
+            const palette = ourModuleCardPalettes[si % ourModuleCardPalettes.length];
+            return (
             <motion.li key={slide.title} variants={ourModulesCardVariant} className="min-w-0">
               <motion.article
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm shadow-slate-900/[0.04] ring-1 ring-slate-900/[0.03] will-change-transform"
+                className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm shadow-slate-900/[0.05] will-change-transform transition-[border-color,box-shadow] duration-300 ${palette.shell}`}
                 whileHover={{
                   y: -8,
-                  boxShadow: "0 24px 50px -18px rgba(15, 23, 42, 0.18)",
-                  borderColor: "rgba(148, 163, 184, 0.45)",
                   transition: { duration: 0.28, ease: smoothEase },
                 }}
               >
                 <div
-                  className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[3px] overflow-hidden rounded-t-2xl"
+                  className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${palette.topBar}`}
                   aria-hidden
-                >
-                  <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100" />
-                </div>
+                />
                 <motion.div
                   className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(59,130,246,0.15) 0%, transparent 45%, rgba(99,102,241,0.12) 100%)",
-                  }}
+                  style={{ background: palette.sweep }}
                   aria-hidden
                 />
                 <div className="relative aspect-[5/3] w-full overflow-hidden bg-slate-100">
@@ -432,10 +537,10 @@ function OurModulesCarousel() {
                     className="pointer-events-none absolute inset-0 z-[2] translate-x-[-120%] skew-x-[-12deg] bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-x-[120%] group-hover:opacity-100 motion-reduce:hidden"
                     aria-hidden
                   />
-                  <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-slate-900/25 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-[0.85]" />
+                  <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-slate-900/30 via-fuchsia-900/5 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-[0.88]" />
                 </div>
                 <div className="relative flex min-h-[11rem] flex-1 flex-col px-5 pb-5 pt-5 text-center sm:px-6">
-                  <h3 className="text-slate-900 transition-colors duration-300 group-hover:text-slate-950">
+                  <h3 className="bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text font-semibold tracking-tight text-transparent transition-opacity duration-300 group-hover:opacity-95">
                     {slide.title}
                   </h3>
                   <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
@@ -450,7 +555,8 @@ function OurModulesCarousel() {
                 </div>
               </motion.article>
             </motion.li>
-          ))}
+            );
+          })}
         </motion.ul>
       </div>
     </section>
@@ -502,8 +608,8 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-function WithInOpsBenefitIcon({ variant }: { variant: "ghost" | "invoice" | "visibility" | "compliance" }) {
-  const c = "h-[1.05rem] w-[1.05rem] sm:h-[1.125rem] sm:w-[1.125rem]";
+function WithInOpsBenefitIcon({ variant, className }: { variant: "ghost" | "invoice" | "visibility" | "compliance"; className?: string }) {
+  const c = className ?? "h-[1.05rem] w-[1.05rem] sm:h-[1.125rem] sm:w-[1.125rem]";
   if (variant === "ghost") {
     return (
       <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -613,9 +719,9 @@ function AccessGovernanceVisual() {
 export default function PayrollSolutionsPage() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
+      <div className="payroll-solutions-section-gap min-h-screen bg-white text-gray-900">
         <motion.section
-          className="mt-5 w-full border-b border-slate-100 bg-white pt-10 sm:pt-12 lg:pt-14"
+          className="relative mt-3 w-full border-b border-slate-100 bg-white pt-7 sm:pt-9 lg:pt-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
@@ -627,8 +733,9 @@ export default function PayrollSolutionsPage() {
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+              <SolutionHeroWaveDecor className="z-[1]" />
               {/* Right-half hero background (full width on small screens, then locked to the right on lg) */}
-              <div className="relative mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div className="relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
                   autoPlay
@@ -670,7 +777,7 @@ export default function PayrollSolutionsPage() {
                 />
               </div>
               <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-                <div className="max-w-3xl px-2 py-8 pb-6 sm:px-4 sm:py-10 sm:pb-8 lg:max-w-xl lg:pt-14 lg:pb-7 lg:pr-6">
+                <div className="max-w-3xl px-2 py-6 pb-5 sm:px-4 sm:py-8 sm:pb-7 lg:max-w-xl lg:pt-10 lg:pb-5 lg:pr-6">
                   <FlyInText
                     as="span"
                     trigger="mount"
@@ -716,18 +823,12 @@ export default function PayrollSolutionsPage() {
                     className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
                   >
                     <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center justify-center rounded-full bg-[color:var(--inops-blue)] px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(29,95,191,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_14px_32px_-10px_rgba(15,47,87,0.5)]"
-                      >
+                      <Link href="/contact" className={inopsUi.btnPrimary}>
                         Get In Touch
                       </Link>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3 text-sm font-semibold text-slate-800 shadow-sm transition-[border-color,box-shadow,background-color] duration-300 hover:border-slate-400 hover:bg-slate-50 hover:shadow-md"
-                      >
+                      <Link href="/contact" className={inopsUi.btnSecondary}>
                         Calculate ROI
                       </Link>
                     </motion.div>
@@ -778,7 +879,7 @@ export default function PayrollSolutionsPage() {
 
         <section
           id="why-inops"
-          className="relative !mt-8 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50/40 sm:!mt-10 lg:!mt-10"
+          className="relative !mt-4 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50/40 sm:!mt-5 lg:!mt-5"
           aria-labelledby="why-inops-heading"
         >
           <div
@@ -788,7 +889,7 @@ export default function PayrollSolutionsPage() {
           <div className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-sky-400/15 blur-3xl" aria-hidden />
           <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-indigo-400/12 blur-3xl" aria-hidden />
 
-          <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-10 sm:px-6 lg:px-12 lg:pb-12 lg:pt-11">
+          <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-6 lg:px-12 lg:pb-9 lg:pt-9">
             <motion.div
               className="mx-auto max-w-2xl text-center lg:max-w-3xl"
               initial={{ opacity: 0, y: 14 }}
@@ -796,37 +897,36 @@ export default function PayrollSolutionsPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-600 shadow-sm ring-1 ring-slate-900/5 backdrop-blur-sm sm:text-[11px]">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.65)]" aria-hidden />
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[11px]">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_0_2px_rgba(29,95,191,0.22)]" aria-hidden />
                 Operational gaps
               </span>
-              <h2 id="why-inops-heading" className="mt-6 text-slate-900">
-                Why Inops?
+              <h2 id="why-inops-heading" className="mt-6">
+                <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">Why Inops?</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Where contract payroll breaks today, and what teams fix first when they standardize on one platform.
               </p>
             </motion.div>
 
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-7">
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3 lg:gap-7">
               {whyInopsGridSlots.map((slot, idx) => {
                 if (slot.kind === "image") {
                   return (
                     <motion.figure
                       key="why-inops-photo"
-                      className="group relative flex min-h-[240px] flex-col overflow-hidden rounded-[1.35rem] bg-slate-900 shadow-[0_28px_70px_-36px_rgba(15,23,42,0.45)] ring-2 ring-slate-200/90 ring-offset-2 ring-offset-slate-50 sm:min-h-[260px] lg:min-h-[280px]"
+                      className="group relative flex min-h-[240px] flex-col overflow-hidden rounded-[1.35rem] bg-slate-900 shadow-[0_28px_70px_-36px_rgba(244,63,94,0.35)] ring-2 ring-transparent [background:linear-gradient(135deg,rgba(59,130,246,0.5),rgba(236,72,153,0.45),rgba(245,158,11,0.45))] p-[2px] sm:min-h-[260px] lg:min-h-[280px]"
                       initial={{ opacity: 0, y: 18 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.5, ease: smoothEase, delay: Math.min(idx * 0.05, 0.25) }}
                       whileHover={{ scale: 1.02, transition: { duration: 0.35, ease: smoothEase } }}
                     >
+                      <div className="relative flex min-h-[236px] flex-1 flex-col overflow-hidden rounded-[1.28rem] bg-slate-900 sm:min-h-[256px] lg:min-h-[276px]">
                       <div
-                        className="pointer-events-none absolute inset-x-0 top-0 z-30 h-[3px] overflow-hidden rounded-t-[1.35rem]"
+                        className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1.5 overflow-hidden rounded-t-[1.28rem] bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400"
                         aria-hidden
-                      >
-                        <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-400 transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-x-100" />
-                      </div>
+                      />
                       <div className="relative min-h-[220px] flex-1 sm:min-h-[240px]">
                         <Image
                           src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
@@ -840,16 +940,20 @@ export default function PayrollSolutionsPage() {
                           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/35 to-slate-900/10"
                           aria-hidden
                         />
-                        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_100%,rgba(59,130,246,0.15),transparent_55%)] opacity-90 mix-blend-screen" aria-hidden />
+                        <div
+                          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_100%,rgba(59,130,246,0.15),transparent_55%),radial-gradient(ellipse_60%_50%_at_0%_50%,rgba(236,72,153,0.12),transparent_50%)] opacity-90 mix-blend-screen"
+                          aria-hidden
+                        />
                         <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6 pt-16 text-left">
-                          <span className="inline-flex rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/95 ring-1 ring-white/25 backdrop-blur-sm">
+                          <span className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/40 via-cyan-500/35 to-violet-500/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
                             Field reality
                           </span>
-                          <p className="mt-3 text-base font-semibold leading-snug text-white drop-shadow-md sm:text-[1.05rem]">
+                          <p className="mt-3 text-base font-semibold leading-snug text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:text-[1.05rem]">
                             Gate data and payroll runs rarely match, until systems align.
                           </p>
                         </figcaption>
                       </div>
+                    </div>
                     </motion.figure>
                   );
                 }
@@ -940,7 +1044,7 @@ export default function PayrollSolutionsPage() {
             <div className="relative min-h-[280px] bg-black sm:min-h-[360px] lg:min-h-[min(100vh,520px)]">
               <AccessGovernanceVisual />
             </div>
-            <div className="flex flex-col justify-center bg-black px-6 py-12 sm:px-10 sm:py-14 lg:min-h-[min(100vh,520px)] lg:px-14 lg:py-16">
+            <div className="flex flex-col justify-center bg-black px-6 py-8 sm:px-10 sm:py-10 lg:min-h-[min(100vh,520px)] lg:px-14 lg:py-12">
               <h2 id="access-governance-heading" className="text-white">
                 Real-Time Entry, Exit &amp; Access Governance
               </h2>
@@ -973,7 +1077,7 @@ export default function PayrollSolutionsPage() {
 
         {/* Contractor leakage + ROI ,  premium layout */}
         <section
-          className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 !mt-0 pt-10 pb-16 sm:pt-12 lg:pt-14 lg:pb-24"
+          className="relative overflow-hidden border-t border-slate-200/80 bg-slate-50 !mt-0 pt-8 pb-12 sm:pt-10 lg:pt-12 lg:pb-16"
           aria-labelledby="contractor-leakage-heading"
         >
           <div
@@ -992,8 +1096,8 @@ export default function PayrollSolutionsPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm ring-1 ring-slate-900/5 backdrop-blur-sm sm:text-[11px]">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.7)]" aria-hidden />
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/90 px-3 py-1.5 text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-[color:var(--inops-blue)]/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.2em]">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_0_2px_rgba(29,95,191,0.2)]" aria-hidden />
                 Cost leakage is silent. Savings don&apos;t have to be.
               </span>
               <h2 id="contractor-leakage-heading" className="mt-7 text-slate-900">
@@ -1008,7 +1112,7 @@ export default function PayrollSolutionsPage() {
               </p>
             </motion.div>
 
-            <div className="relative mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10 lg:gap-y-12">
+            <div className="relative mt-10 grid gap-8 lg:grid-cols-2 lg:gap-10 lg:gap-y-10">
               <div className="pointer-events-none absolute left-1/2 top-[42%] hidden -translate-x-1/2 lg:block" aria-hidden>
                 <div className="flex h-24 w-px flex-col items-center bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
                 <motion.div
@@ -1200,7 +1304,7 @@ export default function PayrollSolutionsPage() {
             </div>
 
             <motion.div
-              className="relative mt-14 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white shadow-[0_32px_100px_-48px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/5"
+              className="relative mt-10 overflow-hidden rounded-[1.75rem] border border-slate-200/90 bg-white shadow-[0_32px_100px_-48px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/5"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
@@ -1215,90 +1319,212 @@ export default function PayrollSolutionsPage() {
               <div className="grid gap-0 lg:grid-cols-[1.15fr_1fr]">
                 <div className="border-b border-slate-100 p-8 lg:border-b-0 lg:border-r lg:p-10 xl:p-12">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-blue-700 ring-1 ring-sky-200/80">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-600/30 ring-2 ring-white/40">
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </span>
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">With the platform</p>
-                      <p className="mt-0.5 text-sm text-slate-600">What changes when CLMS runs your contractor layer</p>
+                      <p className="inline-flex rounded-full border border-blue-200/90 bg-gradient-to-r from-blue-50 to-indigo-50/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
+                        With the platform
+                      </p>
+                      <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-700">
+                        What changes when{" "}
+                        <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-violet-600 bg-clip-text font-semibold text-transparent">
+                          CLMS runs your contractor layer
+                        </span>
+                      </p>
                     </div>
                   </div>
                   <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {(
                       [
-                        { line: "Eliminate ghost workers", icon: "ghost" as const },
-                        { line: "99%+ invoice accuracy", icon: "invoice" as const },
-                        { line: "Real-time workforce visibility", icon: "visibility" as const },
-                        { line: "Compliance built-in", icon: "compliance" as const },
+                        {
+                          line: "Eliminate ghost workers",
+                          icon: "ghost" as const,
+                          tag: "Identity",
+                          topBar: "from-violet-600 via-fuchsia-500 to-pink-500",
+                          cardSurface:
+                            "border-violet-200/75 bg-gradient-to-br from-violet-50/95 via-white to-fuchsia-50/45 shadow-[0_12px_40px_-28px_rgba(139,92,246,0.16)] ring-1 ring-violet-500/[0.07] hover:border-violet-300/90 hover:shadow-[0_22px_48px_-28px_rgba(139,92,246,0.22)]",
+                          iconBg: "from-violet-600 to-fuchsia-600 text-white shadow-lg shadow-violet-600/30 ring-2 ring-white/55",
+                          tagBadge:
+                            "border border-violet-200/90 bg-gradient-to-r from-violet-50 to-fuchsia-50/90 text-violet-950 shadow-sm ring-1 ring-violet-500/10",
+                          orb: "from-fuchsia-400/25 to-violet-600/12",
+                          footerRail: "from-violet-500 via-fuchsia-500 to-pink-500",
+                          footerText: "font-medium text-violet-900/90",
+                          checkTint: "text-violet-600",
+                        },
+                        {
+                          line: "99%+ invoice accuracy",
+                          icon: "invoice" as const,
+                          tag: "Finance",
+                          topBar: "from-emerald-500 via-teal-500 to-cyan-500",
+                          cardSurface:
+                            "border-emerald-200/75 bg-gradient-to-br from-emerald-50/95 via-white to-teal-50/42 shadow-[0_12px_40px_-28px_rgba(16,185,129,0.14)] ring-1 ring-emerald-500/[0.07] hover:border-emerald-300/90 hover:shadow-[0_22px_48px_-28px_rgba(20,184,166,0.2)]",
+                          iconBg: "from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-600/28 ring-2 ring-white/55",
+                          tagBadge:
+                            "border border-emerald-200/90 bg-gradient-to-r from-emerald-50 to-teal-50/90 text-emerald-950 shadow-sm ring-1 ring-emerald-500/10",
+                          orb: "from-teal-400/22 to-emerald-600/12",
+                          footerRail: "from-emerald-500 via-teal-500 to-cyan-500",
+                          footerText: "font-medium text-emerald-900/90",
+                          checkTint: "text-emerald-600",
+                        },
+                        {
+                          line: "Real-time workforce visibility",
+                          icon: "visibility" as const,
+                          tag: "Operations",
+                          topBar: "from-sky-500 via-blue-500 to-indigo-600",
+                          cardSurface:
+                            "border-sky-200/75 bg-gradient-to-br from-sky-50/95 via-white to-blue-50/40 shadow-[0_12px_40px_-28px_rgba(14,165,233,0.14)] ring-1 ring-sky-500/[0.07] hover:border-sky-300/90 hover:shadow-[0_22px_48px_-28px_rgba(59,130,246,0.2)]",
+                          iconBg: "from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-600/28 ring-2 ring-white/55",
+                          tagBadge:
+                            "border border-sky-200/90 bg-gradient-to-r from-sky-50 to-blue-50/90 text-sky-950 shadow-sm ring-1 ring-sky-500/10",
+                          orb: "from-blue-400/22 to-indigo-600/12",
+                          footerRail: "from-sky-500 via-blue-500 to-indigo-600",
+                          footerText: "font-medium text-sky-950/90",
+                          checkTint: "text-sky-600",
+                        },
+                        {
+                          line: "Compliance built-in",
+                          icon: "compliance" as const,
+                          tag: "Governance",
+                          topBar: "from-amber-500 via-orange-500 to-rose-600",
+                          cardSurface:
+                            "border-amber-200/75 bg-gradient-to-br from-amber-50/95 via-white to-orange-50/38 shadow-[0_12px_40px_-28px_rgba(245,158,11,0.12)] ring-1 ring-amber-500/[0.07] hover:border-amber-300/90 hover:shadow-[0_22px_48px_-28px_rgba(251,146,60,0.2)]",
+                          iconBg: "from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-600/26 ring-2 ring-white/55",
+                          tagBadge:
+                            "border border-amber-200/90 bg-gradient-to-r from-amber-50 to-orange-50/90 text-amber-950 shadow-sm ring-1 ring-amber-500/10",
+                          orb: "from-orange-400/22 to-rose-600/12",
+                          footerRail: "from-amber-500 via-orange-500 to-rose-600",
+                          footerText: "font-medium text-amber-950/90",
+                          checkTint: "text-amber-600",
+                        },
                       ] as const
-                    ).map(({ line, icon }, bIdx) => (
+                    ).map(({ line, icon, tag, topBar, cardSurface, iconBg, tagBadge, orb, footerRail, footerText, checkTint }, bIdx) => (
                       <motion.div
                         key={line}
-                        className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-5 transition-colors hover:border-sky-200/80 hover:bg-white hover:shadow-md hover:shadow-slate-900/5"
+                        className={`group relative flex flex-col overflow-hidden rounded-2xl border p-4 transition-[transform,box-shadow,border-color] duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0 hover:-translate-y-0.5 ${cardSurface}`}
                         initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={viewport}
                         transition={{ duration: 0.38, ease: smoothEase, delay: Math.min(bIdx * 0.06, 0.2) }}
-                        whileHover={{
-                          y: -6,
-                          boxShadow: "0 18px 40px -20px rgba(15, 23, 42, 0.15)",
-                          transition: { duration: 0.22, ease: smoothEase },
-                        }}
                       >
-                        <motion.span
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-blue-700 shadow-sm ring-1 ring-slate-200/80 group-hover:ring-sky-300/60"
-                          whileHover={{ scale: 1.08 }}
-                          transition={{ type: "spring", stiffness: 420, damping: 20 }}
-                        >
-                          <WithInOpsBenefitIcon variant={icon} />
-                        </motion.span>
-                        <span className="text-sm font-semibold leading-snug text-slate-900">{line}</span>
+                        <div
+                          className={`pointer-events-none absolute inset-x-0 top-0 z-[2] h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${topBar}`}
+                          aria-hidden
+                        />
+                        <div
+                          className={`pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${orb}`}
+                          aria-hidden
+                        />
+                        <div className="relative flex min-h-0 flex-1 flex-col">
+                          <div className="flex items-start justify-between gap-2">
+                            <span
+                              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${iconBg}`}
+                            >
+                              <WithInOpsBenefitIcon variant={icon} />
+                            </span>
+                            <span className={`rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] shadow-sm sm:text-[10px] sm:tracking-[0.14em] ${tagBadge}`}>
+                              {tag}
+                            </span>
+                          </div>
+                          <p className="mt-3 text-sm font-semibold leading-snug text-slate-900">{line}</p>
+                          <div className="mt-auto flex items-center gap-2 border-t border-slate-100/90 pt-2.5 text-left">
+                            <span className={`h-0.5 w-6 shrink-0 rounded-full bg-gradient-to-r ${footerRail}`} aria-hidden />
+                            <CheckIcon className={`h-3.5 w-3.5 shrink-0 ${checkTint}`} />
+                            <span className={`text-[11px] leading-snug ${footerText}`}>
+                              Included in unified CLMS rollout
+                            </span>
+                          </div>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
                 </div>
-                <div className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 lg:p-10 xl:p-12">
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_80%_20%,rgba(56,189,248,0.12),transparent)]" aria-hidden />
+                <div className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-950 p-8 lg:p-10 xl:p-12">
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_20%_15%,rgba(52,211,153,0.14),transparent_50%),radial-gradient(ellipse_70%_50%_at_90%_80%,rgba(99,102,241,0.18),transparent_52%),radial-gradient(ellipse_90%_60%_at_80%_20%,rgba(56,189,248,0.1),transparent)]"
+                    aria-hidden
+                  />
                   <div className="relative">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-600">The impact</p>
-                    <p className="mt-2 text-lg font-semibold text-white">Measured outcomes on comparable deployments</p>
+                    <p className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/25 via-cyan-500/20 to-indigo-500/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-cyan-100 shadow-sm ring-1 ring-cyan-400/25">
+                      The impact
+                    </p>
+                    <p className="mt-3 max-w-xl bg-gradient-to-r from-white via-sky-100 to-cyan-100 bg-clip-text text-lg font-semibold leading-snug text-transparent sm:text-xl">
+                      Measured outcomes on comparable deployments
+                    </p>
                     <div className="mt-8 grid gap-4 sm:grid-cols-3 sm:gap-3">
                       {(
                         [
-                          { k: "Leakage prevented", v: "₹1.98 Cr / year", icon: "leakage" as const },
-                          { k: "Payback period", v: "~3 months", icon: "payback" as const },
-                          { k: "Net annual savings", v: "₹19 Lakhs", icon: "savings" as const },
+                          {
+                            k: "Leakage prevented",
+                            v: "₹1.98 Cr / year",
+                            icon: "leakage" as const,
+                            topBar: "from-emerald-400 via-teal-400 to-cyan-400",
+                            shell:
+                              "relative overflow-hidden border border-emerald-400/35 bg-gradient-to-br from-emerald-500/[0.22] via-white/[0.06] to-cyan-600/[0.14] shadow-[0_16px_44px_-28px_rgba(16,185,129,0.35)] ring-1 ring-emerald-400/20 hover:border-emerald-300/55 hover:shadow-[0_22px_50px_-24px_rgba(52,211,153,0.35)]",
+                            iconWrap:
+                              "bg-gradient-to-br from-emerald-400/45 to-teal-500/30 text-emerald-50 ring-2 ring-emerald-300/30",
+                            labelClass: "text-emerald-100/90",
+                            valueGradient: "bg-gradient-to-br from-emerald-200 via-teal-100 to-cyan-200",
+                          },
+                          {
+                            k: "Payback period",
+                            v: "~3 months",
+                            icon: "payback" as const,
+                            topBar: "from-amber-400 via-orange-400 to-rose-500",
+                            shell:
+                              "relative overflow-hidden border border-amber-400/35 bg-gradient-to-br from-amber-500/[0.22] via-white/[0.06] to-rose-600/[0.12] shadow-[0_16px_44px_-28px_rgba(245,158,11,0.28)] ring-1 ring-amber-400/20 hover:border-amber-300/55 hover:shadow-[0_22px_50px_-24px_rgba(251,191,36,0.3)]",
+                            iconWrap:
+                              "bg-gradient-to-br from-amber-400/45 to-orange-500/30 text-amber-50 ring-2 ring-amber-300/30",
+                            labelClass: "text-amber-100/90",
+                            valueGradient: "bg-gradient-to-br from-amber-200 via-orange-100 to-rose-200",
+                          },
+                          {
+                            k: "Net annual savings",
+                            v: "₹19 Lakhs",
+                            icon: "savings" as const,
+                            topBar: "from-indigo-400 via-violet-400 to-fuchsia-500",
+                            shell:
+                              "relative overflow-hidden border border-violet-400/35 bg-gradient-to-br from-indigo-600/[0.28] via-white/[0.06] to-fuchsia-600/[0.14] shadow-[0_16px_44px_-28px_rgba(139,92,246,0.3)] ring-1 ring-violet-400/20 hover:border-violet-300/55 hover:shadow-[0_22px_50px_-24px_rgba(167,139,250,0.32)]",
+                            iconWrap:
+                              "bg-gradient-to-br from-indigo-400/45 to-fuchsia-500/30 text-violet-50 ring-2 ring-violet-300/30",
+                            labelClass: "text-violet-100/90",
+                            valueGradient: "bg-gradient-to-br from-indigo-200 via-violet-100 to-fuchsia-200",
+                          },
                         ] as const
                       ).map((row, kIdx) => (
                         <motion.div
                           key={row.k}
-                          className="flex flex-col rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-center ring-1 ring-white/5 backdrop-blur-sm"
+                          className={`group flex flex-col rounded-2xl px-4 py-5 text-center backdrop-blur-sm transition-[transform,box-shadow] duration-300 ${row.shell}`}
                           initial={{ opacity: 0, y: 16 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={viewport}
                           transition={{ duration: 0.42, ease: smoothEase, delay: Math.min(kIdx * 0.08, 0.24) }}
-                          whileHover={{
-                            y: -8,
-                            scale: 1.03,
-                            borderColor: "rgba(56, 189, 248, 0.35)",
-                            boxShadow: "0 20px 50px -24px rgba(56, 189, 248, 0.25)",
-                            transition: { duration: 0.28, ease: smoothEase },
-                          }}
+                          whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.28, ease: smoothEase } }}
                         >
+                          <div
+                            className={`pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${row.topBar}`}
+                            aria-hidden
+                          />
                           <motion.span
-                            className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-slate-500/15 text-slate-600 ring-1 ring-slate-400/25"
+                            className={`relative z-[1] mx-auto flex h-11 w-11 items-center justify-center rounded-full ${row.iconWrap}`}
                             aria-hidden
                             whileHover={{ scale: 1.08 }}
                             transition={{ type: "spring", stiffness: 400, damping: 18 }}
                           >
                             <ImpactKpiIcon variant={row.icon} />
                           </motion.span>
-                          <p className="mt-4 text-[10px] font-semibold uppercase leading-snug tracking-wider text-white/55 sm:text-[11px]">
+                          <p
+                            className={`relative z-[1] mt-4 text-[10px] font-semibold uppercase leading-snug tracking-wider sm:text-[11px] ${row.labelClass}`}
+                          >
                             {row.k}
                           </p>
-                          <p className="mt-2 text-lg font-bold tabular-nums tracking-tight text-white sm:text-xl">{row.v}</p>
+                          <p
+                            className={`relative z-[1] mt-2 bg-clip-text text-lg font-bold tabular-nums tracking-tight text-transparent sm:text-xl ${row.valueGradient}`}
+                          >
+                            {row.v}
+                          </p>
                         </motion.div>
                       ))}
                     </div>
@@ -1308,17 +1534,14 @@ export default function PayrollSolutionsPage() {
             </motion.div>
 
             <motion.div
-              className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center"
+              className="mt-8 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
             >
               <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-sm font-semibold text-white shadow-[0_16px_40px_-12px_rgba(37,99,235,0.65)] transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-[0_22px_48px_-14px_rgba(37,99,235,0.55)]"
-                >
+                <Link href="/contact" className={`${inopsUi.btnPrimary} group gap-2 shadow-lg`}>
                   Calculate your savings
                   <motion.span
                     className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15"
@@ -1331,10 +1554,7 @@ export default function PayrollSolutionsPage() {
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-slate-300 bg-white px-8 py-4 text-sm font-semibold text-slate-800 shadow-sm transition-[border-color,box-shadow,background-color] duration-300 hover:border-slate-400 hover:bg-slate-50 hover:shadow-md"
-                >
+                <Link href="/contact" className={`${inopsUi.btnSecondary} gap-2 shadow-sm`}>
                   Book a demo
                   <motion.span aria-hidden whileHover={{ x: 3 }} transition={{ type: "spring", stiffness: 450, damping: 24 }}>
                     →
@@ -1352,6 +1572,7 @@ export default function PayrollSolutionsPage() {
           secondaryLabel="Download Brochure"
           secondaryHref="/brochures"
           footnote="Trusted by Fortune 500 manufacturing, logistics, and infrastructure giants."
+          sectionClassName="!pt-7 !pb-12 sm:!px-6 lg:!pb-14"
         />
       </div>
     </MotionConfig>

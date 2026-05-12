@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
@@ -86,7 +87,7 @@ export default function ContactForm() {
       <div>
         <motion.button
           type="submit"
-          className="w-full cursor-pointer rounded-full bg-[var(--inops-navy)] py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/15 transition hover:bg-[var(--inops-blue)] hover:shadow-blue-600/25 focus:outline-none focus:ring-4 focus:ring-blue-500/20"
+          className={`${inopsUi.btnFull} cursor-pointer shadow-xl shadow-slate-900/10 focus:outline-none focus:ring-4 focus:ring-blue-500/15`}
           whileHover={{ scale: 1.01, transition: { duration: 0.2, ease: smoothEase } }}
           whileTap={{ scale: 0.98 }}
         >
