@@ -1069,7 +1069,7 @@ export default function EwaPage() {
                   </span>
                   <h2 className="relative mt-4 text-slate-900">
                     <span
-                      className={`bg-gradient-to-r bg-clip-text text-transparent ${column.titleAccent}`}
+                      className={`text-black ${column.titleAccent}`}
                     >
                       {column.title}
                     </span>

@@ -172,7 +172,7 @@ export default function BrochuresPage() {
                   >
                     Resource 0{i + 1}
                   </FlyInText>
-                  <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-3 text-[var(--inops-navy)]">
+                  <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-3 text-black">
                     {brochure.title}
                   </FlyInText>
                   <FlyInText

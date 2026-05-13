@@ -199,7 +199,7 @@ export default function BlogPage() {
                   <span>{featured.readMinutes} min read</span>
                 </FlyInText>
 
-                <FlyInText as="h3" direction="left" delay={0.08} className="mt-5 text-[var(--inops-navy)]">
+                <FlyInText as="h3" direction="left" delay={0.08} className="mt-5 text-black">
                   <Link href="#" className="transition-colors hover:text-[var(--inops-blue)]">
                     {featured.title}
                   </Link>
@@ -288,7 +288,7 @@ export default function BlogPage() {
                     </span>
                     <span>{post.readMinutes} min read</span>
                   </FlyInText>
-                  <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-4 text-[var(--inops-navy)]">
+                  <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-4 text-black">
                     <Link href="#" className="transition-colors hover:text-[var(--inops-blue)]">
                       {post.title}
                     </Link>

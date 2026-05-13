@@ -1018,7 +1018,7 @@ export default function BiometricAccessControlPage() {
                 <span className="bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-600 bg-clip-text text-transparent">Hardware DNA</span>
               </span>
               <h2 className="mt-5 text-slate-900">
-                <span className="bg-gradient-to-r from-slate-900 via-indigo-800 to-violet-800 bg-clip-text text-transparent">Universal Device Excellence</span>
+                <span className=" text-black">Universal Device Excellence</span>
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Built for harsh floors, heavy traffic, and always-on operations, without sacrificing precision.
@@ -1096,7 +1096,7 @@ export default function BiometricAccessControlPage() {
                 <span className="inline-flex rounded-full border border-cyan-200/70 bg-gradient-to-r from-white to-sky-50 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] shadow-sm ring-1 ring-cyan-500/15">
                   <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">Integrations</span>
                 </span>
-                <h2 className="mt-5 text-slate-900">
+                <h2 className="mt-5 text-black">
                   Seamlessly Connected to{" "}
                   <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text font-semibold text-transparent">Your Systems</span>
                 </h2>
@@ -1251,7 +1251,7 @@ export default function BiometricAccessControlPage() {
                 <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Why InOps</span>
               </span>
               <h2 className="mt-5">
-                <span className="bg-gradient-to-r from-slate-900 via-indigo-800 to-violet-800 bg-clip-text text-transparent">Why Choose InOps?</span>
+                <span className="text-black">Why Choose InOps?</span>
               </h2>
             </motion.div>
 

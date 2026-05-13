@@ -902,7 +902,7 @@ export default function PayrollSolutionsPage() {
                 Operational gaps
               </span>
               <h2 id="why-inops-heading" className="mt-6">
-                <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">Why Inops?</span>
+                <span className=" text-black">Why Inops?</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Where contract payroll breaks today, and what teams fix first when they standardize on one platform.

@@ -84,7 +84,7 @@ export default function BusinessImpactSection() {
                   </div>
                   <h3 className="mt-3.5 text-base font-heading-bold tracking-tight text-slate-900 sm:text-lg">OT &amp; Night Shift Management</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                    Automate overtime tracking, night shift handling, approvals, compliance, and accurate payroll processing.
+                    Intelligently automate overtime tracking and night shift workflows—streamline approvals, ensure compliance, and deliver precise payroll processing every cycle.
                   </p>
                 </article>
 
@@ -96,9 +96,9 @@ export default function BusinessImpactSection() {
                       <path d="m6 8 4 6 4-3 6 7" />
                     </svg>
                   </div>
-                  <h3 className="mt-3.5 text-base font-heading-bold tracking-tight text-slate-900 sm:text-lg">Reduce Cost Leakages</h3>
+                  <h3 className="mt-3.5 text-base font-heading-bold tracking-tight text-slate-900 sm:text-lg">Eliminate Cost Leakages</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
-                    Automated invoice cross-verification typically recovers 10–15% in previously undetected billing errors.
+                    Intelligent invoice verification catches billing discrepancies in real-time. Organizations typically recover <span className="font-semibold text-slate-900">10–15% in previously hidden costs</span>.
                   </p>
                 </article>
               </div>
@@ -110,7 +110,7 @@ export default function BusinessImpactSection() {
                 </div>
                 <div className="pt-5 sm:pt-0 sm:pl-6">
                   <p className="text-xl font-heading-bold tracking-tight text-slate-900 sm:text-2xl">30–60 Days</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">Typical deployment timeframe</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">Rapid deployment to full production</p>
                 </div>
               </article>
             </motion.div>
