@@ -23,9 +23,9 @@
   --premium-shadow-hover: 0 22px 54px -34px rgb(15 23 42 / 0.38);
   --premium-border: #dbe5f0;
   --premium-icon-bg: #eef6ff;
-  /** Same stack as section titles (e.g. “Designed for Simplicity”) — Geist-first everywhere */
-  --font-inops-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  /** Primary UI stack — Inter (Next font variable) + system sans fallbacks */
+  --font-inops-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 
 @theme inline {
@@ -51,18 +51,6 @@ html {
 }
 
 @media (min-width: 1280px) {
-  html {
-    font-size: 16.5px;
-  }
-}
-
-@media (min-width: 1536px) {
-  html {
-    font-size: 17px;
-  }
-}
-
-@media (min-width: 1280px) {
   :root {
     --home-nav-offset: 4.9rem;
   }
@@ -71,12 +59,6 @@ html {
 @media (min-width: 1536px) {
   :root {
     --home-nav-offset: 5.2rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  html {
-    font-size: 17.5px;
   }
 }
 
@@ -98,7 +80,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Match body font everywhere main content is rendered (same family as layout Geist). */
+/* Match body font everywhere main content is rendered (same stack as root layout Inter). */
 .inops-template {
   font-family: var(--font-inops-sans);
   -webkit-font-smoothing: antialiased;
@@ -934,76 +916,125 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   letter-spacing: -0.03em;
 }
 
-/* Keep heading hierarchy visually consistent across templates */
-.inops-template h1,
-.inops-template h2 {
+/*
+ * Responsive type rule (site-wide): use mobile-first utilities that only stay flat or grow
+ * from `sm:` onward — avoid patterns like `text-lg sm:text-base` or `text-sm sm:text-xs`
+ * (text would shrink on wider viewports). Prefer `text-base sm:text-lg` or a single `text-base`.
+ */
+
+/* ===== Site-wide typography (defaults only: specificity 0 so Tailwind utilities win) ===== */
+.inops-template :where(h1) {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
-.inops-template h1.home-display-heading,
-.inops-template h2.home-display-heading {
-  letter-spacing: -0.03em;
+.inops-template :where(h2) {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
-/* ===== Site-wide typography uniformity ===== */
-.inops-template h1 {
-  font-size: clamp(2.15rem, 1.9rem + 1.25vw, 3.1rem) !important;
-  line-height: 1.12 !important;
-  font-weight: 700 !important;
+.inops-template :where(h3) {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
-.inops-template h2 {
-  font-size: clamp(1.75rem, 1.55rem + 0.9vw, 2.45rem) !important;
-  line-height: 1.2 !important;
-  font-weight: 700 !important;
+.inops-template :where(h4, h5, h6) {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
-.inops-template h3 {
-  font-size: clamp(1.25rem, 1.18rem + 0.4vw, 1.5rem) !important;
-  line-height: 1.3 !important;
-  font-weight: 600 !important;
+.inops-template :where(p, li, dd, dt) {
+  font-size: 1rem;
+  line-height: 1.75rem;
 }
 
-.inops-template h4,
-.inops-template h5,
-.inops-template h6 {
-  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem) !important;
-  line-height: 1.35 !important;
-  font-weight: 600 !important;
-}
-
-.inops-template p,
-.inops-template li,
-.inops-template dd,
-.inops-template dt {
-  font-size: clamp(0.98rem, 0.94rem + 0.16vw, 1.08rem) !important;
-  line-height: 1.65 !important;
-}
-
-.inops-template small,
-.inops-template .text-xs,
-.inops-template .text-sm {
-  font-size: clamp(0.86rem, 0.83rem + 0.12vw, 0.95rem) !important;
-  line-height: 1.5 !important;
+.inops-template :where(small) {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
 }
 
 /* Utility: force smaller copy where global p sizing is too large */
 .inops-template .ta-small-desc {
-  font-size: 0.7rem !important;
+  font-size: 0.75rem !important;
   line-height: 1.4 !important;
 }
 
-/* Closing CTA: keep heading + subheading consistent across pages */
-.inops-template .solution-cta__heading {
-  font-size: clamp(1.6rem, 1.4rem + 0.8vw, 2.15rem) !important;
-  line-height: 1.15 !important;
-  font-weight: 700 !important;
-}
+/* Reusable type scale — use via `app/lib/inopsUi.ts` (prefers composition over one-off sizes) */
+@layer components {
+  .inops-type-hero {
+    @apply !text-5xl font-bold tracking-tight;
+  }
 
-.inops-template .solution-cta__desc {
-  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem) !important;
-  line-height: 1.6 !important;
+  /* Beat `.inops-template :where(h1)` default size so hero matches home (`text-5xl`). */
+  .inops-template h1.inops-type-hero {
+    @apply !text-5xl font-bold tracking-tight;
+  }
+
+  .inops-type-page {
+    @apply text-4xl font-bold tracking-tight text-gray-900;
+  }
+
+  .inops-type-section {
+    @apply text-3xl font-semibold tracking-tight text-gray-900;
+  }
+
+  .inops-type-card-title {
+    @apply text-xl font-semibold tracking-tight text-gray-900;
+  }
+
+  .inops-type-subtitle {
+    @apply text-lg font-medium leading-7 text-gray-600;
+  }
+
+  .inops-type-body {
+    @apply text-base leading-7 text-gray-600;
+  }
+
+  .inops-type-small {
+    @apply text-sm leading-6 text-gray-600;
+  }
+
+  .inops-type-muted {
+    @apply text-sm text-gray-500;
+  }
+
+  .inops-type-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gray-500;
+  }
+
+  .inops-type-on-dark-title {
+    @apply text-3xl font-bold tracking-tight text-white sm:text-4xl;
+  }
+
+  .inops-type-on-dark-body {
+    @apply text-base leading-7 text-blue-50/95;
+  }
+
+  /** Premium cards: shared inner text rhythm */
+  .inops-card-prose {
+    @apply space-y-3 p-6 sm:p-7;
+  }
+
+  .inops-card-prose .inops-type-card-title {
+    @apply mb-0;
+  }
+
+  .inops-card-prose .inops-type-body,
+  .inops-card-prose .inops-type-small {
+    @apply mt-0;
+  }
 }
 
 /* Media never shrinks awkwardly on wide displays */
@@ -1145,11 +1176,7 @@ main section img.impact-bullet-tick.site-img-hover:hover {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .inops-ui-eyebrow {
-  font-size: clamp(0.6875rem, 0.64rem + 0.14vw, 0.75rem);
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #64748b;
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-gray-500;
 }
 
 .inops-ui-eyebrow--brand {
@@ -1157,24 +1184,19 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 }
 
 .inops-ui-lead {
-  font-size: clamp(0.98rem, 0.94rem + 0.14vw, 1.08rem) !important;
-  line-height: 1.65 !important;
-  color: #475569;
+  @apply text-lg font-medium leading-7 text-gray-600;
 }
 
 .inops-ui-body-muted {
-  color: #475569;
+  @apply text-gray-500;
 }
 
 .inops-ui-section-heading {
-  color: var(--inops-navy);
+  @apply text-gray-900;
 }
 
 .inops-ui-hero-kicker {
-  font-size: clamp(0.875rem, 0.82rem + 0.12vw, 0.95rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #ffffff;
+  @apply text-sm font-semibold tracking-tight text-white;
   text-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
 }
 
@@ -1182,9 +1204,7 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   margin-left: auto;
   margin-right: auto;
   max-width: 42rem;
-  font-size: clamp(0.875rem, 0.82rem + 0.12vw, 0.95rem) !important;
-  line-height: 1.65 !important;
-  color: rgb(255 255 255 / 0.88);
+  @apply text-base font-normal leading-7 text-white/90;
 }
 
 /* ─── Buttons: one pill system site-wide ─── */
@@ -1197,7 +1217,8 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.25;
-  font-size: clamp(0.875rem, 0.82rem + 0.1vw, 0.9375rem);
+  /* Fixed size on all viewports — avoids vw-based shrink/grow feeling inconsistent next to Tailwind text-* */
+  font-size: 0.9375rem;
   padding: 0.875rem 1.75rem;
   text-decoration: none;
   border: 1px solid transparent;

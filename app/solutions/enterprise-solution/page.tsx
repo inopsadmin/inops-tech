@@ -314,7 +314,7 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" aria-hidden />
               Three pillars
             </span>
@@ -370,7 +370,7 @@ export default function EnterpriseSolutionPage() {
                     >
                       {module.icon}
                     </div>
-                    <span className="rounded-full border border-slate-200/90 bg-slate-50/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
+                    <span className="rounded-full border border-slate-200/90 bg-slate-50/90 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
                       {module.tag}
                     </span>
                   </div>
@@ -378,7 +378,7 @@ export default function EnterpriseSolutionPage() {
                   <h3 className="relative mt-4 text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
                     {module.title}
                   </h3>
-                  <p className="relative mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem]">
+                  <p className="relative mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">
                     {module.description}
                   </p>
 
@@ -502,7 +502,7 @@ export default function EnterpriseSolutionPage() {
                     duration={0.65}
                     className="absolute left-4 top-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur sm:left-6 sm:top-6"
                   >
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
                       Sensor Status
                     </p>
                     <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
@@ -541,7 +541,7 @@ export default function EnterpriseSolutionPage() {
                     duration={0.65}
                     className="absolute bottom-6 right-6 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur"
                   >
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
                       Efficiency Gain
                     </p>
                     <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
@@ -723,7 +723,7 @@ export default function EnterpriseSolutionPage() {
                     duration={0.65}
                     className="absolute right-4 top-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur sm:right-6 sm:top-6"
                   >
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
                       Inventory Accuracy
                     </p>
                     <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
@@ -795,7 +795,7 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-gradient-to-r from-white via-sky-50/90 to-indigo-50/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm shadow-sky-500/10 ring-1 ring-sky-200/60">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-gradient-to-r from-white via-sky-50/90 to-indigo-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm shadow-sky-500/10 ring-1 ring-sky-200/60">
               <span className="h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500" aria-hidden />
               End-to-end flow
             </span>
@@ -844,7 +844,7 @@ export default function EnterpriseSolutionPage() {
                       </div>
                     </div>
                     <p
-                      className={`mt-5 bg-gradient-to-r bg-clip-text text-[10px] font-bold uppercase tracking-[0.2em] text-transparent sm:text-[11px] ${step.stageGradient}`}
+                      className={`mt-5 bg-gradient-to-r bg-clip-text text-xs font-bold uppercase tracking-[0.2em] text-transparent sm:text-xs ${step.stageGradient}`}
                     >
                       {step.stage}
                     </p>
@@ -893,7 +893,7 @@ export default function EnterpriseSolutionPage() {
                 </div>
                 <div className="relative min-w-0 pt-0.5">
                   <p
-                    className={`inline-block bg-gradient-to-r bg-clip-text text-[10px] font-bold uppercase tracking-[0.18em] text-transparent ${step.stageGradient}`}
+                    className={`inline-block bg-gradient-to-r bg-clip-text text-xs font-bold uppercase tracking-[0.18em] text-transparent ${step.stageGradient}`}
                   >
                     {step.stage}
                   </p>
@@ -948,7 +948,7 @@ export default function EnterpriseSolutionPage() {
               transition={{ duration: 0.55, ease: smoothEase }}
             >
               <div className="rounded-2xl  p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md sm:p-7">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 backdrop-blur-md">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400 backdrop-blur-md">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400" />
@@ -1088,7 +1088,7 @@ export default function EnterpriseSolutionPage() {
                   <h3 className="relative mt-4 text-white">
                     {item.title}
                   </h3>
-                  <p className="relative mt-2 text-sm leading-relaxed text-slate-300 sm:text-[0.97rem]">
+                  <p className="relative mt-2 text-sm leading-relaxed text-slate-300 sm:text-base">
                     {item.subtitle}
                   </p>
                 </motion.article>
@@ -1127,7 +1127,7 @@ export default function EnterpriseSolutionPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center rounded-full border border-slate-200/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.12)] backdrop-blur-sm">
+            <span className="inline-flex items-center rounded-full border border-slate-200/90 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.12)] backdrop-blur-sm">
               Outcomes
             </span>
             <h2 id="nexus-operational-benefits-heading" className="mt-6 text-slate-900">
@@ -1159,6 +1159,7 @@ export default function EnterpriseSolutionPage() {
                 {
                   value: "+35%",
                   label: "Asset Utilization",
+                  outcomeTag: "Yield",
                   description: "Raise yield from fleets and fixed assets with utilization intelligence.",
                   ring: "from-emerald-400 via-teal-500 to-cyan-600",
                   numberGradient: "from-emerald-600 via-teal-600 to-cyan-700",
@@ -1175,6 +1176,7 @@ export default function EnterpriseSolutionPage() {
                 {
                   value: "-22%",
                   label: "Logistics Costs",
+                  outcomeTag: "Spend",
                   description: "Less fuel burn, detention, and dead miles through smarter routing and yards.",
                   ring: "from-amber-400 via-orange-500 to-rose-600",
                   numberGradient: "from-amber-600 via-orange-600 to-rose-700",
@@ -1192,6 +1194,7 @@ export default function EnterpriseSolutionPage() {
                 {
                   value: "-15%",
                   label: "Cycle Times",
+                  outcomeTag: "Velocity",
                   description: "Shorter dock-to-door lead time with orchestrated handoffs.",
                   ring: "from-sky-400 via-blue-500 to-indigo-600",
                   numberGradient: "from-sky-600 via-blue-600 to-indigo-700",
@@ -1206,6 +1209,7 @@ export default function EnterpriseSolutionPage() {
                 {
                   value: "99%",
                   label: "Decision Precision",
+                  outcomeTag: "Clarity",
                   description: "Fewer fire drills, operators align on one trusted operational picture.",
                   ring: "from-violet-400 via-purple-500 to-fuchsia-600",
                   numberGradient: "from-violet-600 via-purple-600 to-fuchsia-700",
@@ -1231,11 +1235,20 @@ export default function EnterpriseSolutionPage() {
                     whileHover={hoverLift}
                   >
                     <span
-                      className={`pointer-events-none absolute left-0 top-5 z-0 bg-gradient-to-br bg-clip-text font-mono text-[3.5rem] font-black tabular-nums leading-none tracking-tighter text-transparent opacity-[0.88] sm:left-0.5 sm:top-6 sm:text-[4.25rem] sm:opacity-95 ${item.numberGradient}`}
+                      className={`pointer-events-none absolute right-0 top-5 z-0 bg-gradient-to-br bg-clip-text font-mono text-[3.5rem] font-black tabular-nums leading-none tracking-tighter text-transparent opacity-[0.88] sm:right-0.5 sm:top-6 sm:text-[4.25rem] sm:opacity-95 ${item.numberGradient}`}
                       aria-hidden
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
+                    <div
+                      className="pointer-events-none absolute left-4 top-5 z-10 flex flex-col items-start gap-1.5 sm:left-5 sm:top-6"
+                      aria-hidden
+                    >
+                      <span className="rounded-lg border border-slate-200/90 bg-gradient-to-br from-white to-slate-50/95 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-[0.14em] text-slate-600 shadow-[0_6px_20px_-12px_rgba(15,23,42,0.25)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm sm:text-[10px] sm:tracking-[0.16em]">
+                        {item.outcomeTag}
+                      </span>
+                      <span className={`h-1 w-9 rounded-full bg-gradient-to-r shadow-sm ${item.ring}`} />
+                    </div>
                     <div className="relative z-10">
                       <div
                         className={`relative mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br shadow-sm ring-1 ${item.iconTint}`}
@@ -1248,7 +1261,7 @@ export default function EnterpriseSolutionPage() {
                       <h3 className="relative mt-2 text-slate-900">
                         {item.label}
                       </h3>
-                      <p className="relative mt-2 text-sm leading-relaxed text-slate-600 sm:text-[0.97rem]">
+                      <p className="relative mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
                         {item.description}
                       </p>
                     </div>

@@ -8,6 +8,7 @@ import ConnectedEcosystemSection from "@/app/components/ConnectedEcosystemSectio
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { inopsUi } from "@/app/lib/inopsUi";
 
@@ -653,7 +654,9 @@ export default function LabourManagementPage() {
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
             <div className="relative min-h-[400px] w-full sm:min-h-[420px] lg:min-h-[min(520px,85vh)]">
-              <div className="relative mt-8 h-56 w-full sm:h-64 sm:mt-10 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[52%]">
+              <div
+                className={`relative mt-8 h-56 w-full sm:h-64 sm:mt-10 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[52%] ${SPLIT_HERO_MEDIA_MR}`}
+              >
                 {/* Inner clip for rounded corners; popups stay outside so they are not clipped (see VideoLivePopups). */}
                 <div className="absolute inset-0 overflow-hidden rounded-2xl shadow-[0_24px_60px_-38px_rgba(15,23,42,0.28)] ring-1 ring-slate-200/70 lg:rounded-none lg:shadow-none lg:ring-0">
                   <video
@@ -704,7 +707,9 @@ export default function LabourManagementPage() {
                 />
               </div>
               <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-                <div className="max-w-3xl px-1 py-8 sm:px-3 sm:py-10 lg:max-w-[26rem] xl:max-w-xl lg:py-[4.25rem] lg:pr-8">
+                <div
+                  className={`max-w-3xl px-1 py-8 sm:px-3 sm:py-10 lg:max-w-[26rem] xl:max-w-xl lg:py-[4.25rem] lg:pr-8 ${SPLIT_HERO_COPY_ML}`}
+                >
                   <FlyInText
                     as="span"
                     trigger="mount"
@@ -722,7 +727,7 @@ export default function LabourManagementPage() {
                     direction="left"
                     delay={0.06}
                     duration={0.68}
-                    className="mt-4 flex flex-col gap-1 text-slate-900 sm:mt-5 sm:gap-1.5"
+                    className="home-display-heading inops-type-hero mt-4 flex flex-col gap-1 text-slate-900 sm:mt-5 sm:gap-1.5"
                   >
                     <span className="text-slate-900 whitespace-nowrap">
                       Total Workforce  <br /> Management                     <span className="text-[color:var(--inops-blue)]">Simplified.</span>
@@ -736,7 +741,7 @@ export default function LabourManagementPage() {
                     direction="up"
                     delay={0.12}
                     duration={0.62}
-                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.06rem]"
+                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
                     One platform for employee records, attendance, payroll, and day-to-day workforce ops, fast to run and
                     structured for compliance.
@@ -752,7 +757,7 @@ export default function LabourManagementPage() {
                   >
                     <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
                       <Link href="/contact" className={inopsUi.btnPrimary}>
-                        Request a Free Demo
+                        Get In Touch
                       </Link>
                     </motion.div>
                   </FlyInText>
@@ -786,7 +791,7 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/90 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm backdrop-blur-sm">
                 The hidden cost
               </span>
               <h2 id="labour-pain-points-heading" className="mt-5 text-balance text-slate-900">
@@ -843,7 +848,7 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center rounded-full border border-blue-300/90 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm backdrop-blur-sm">
+              <span className="inline-flex items-center rounded-full border border-blue-300/90 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm backdrop-blur-sm">
                 End to end flow
               </span>
               <h2 id="labour-e2e-flow-heading" className="mt-5 text-balance text-slate-900">
@@ -885,7 +890,7 @@ export default function LabourManagementPage() {
                       {step.num}
                     </div>
                     <h3 className="mt-6 text-base font-bold text-slate-900 sm:text-lg">{step.title}</h3>
-                    <p className="mt-3 max-w-[15rem] text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                    <p className="mt-3 max-w-[15rem] text-sm leading-relaxed text-slate-600 sm:text-base">
                       {step.description}
                     </p>
                   </motion.div>
@@ -956,8 +961,8 @@ export default function LabourManagementPage() {
                   <span className="relative z-[2] flex h-12 w-12 items-center justify-center sm:h-14 sm:w-14" style={{ color: card.iconColor }}>
                     <LabourEfficiencyShowcaseIcon id={card.id} className="h-10 w-10 sm:h-11 sm:w-11" />
                   </span>
-                  <h3 className="relative z-[2] mt-4 text-[15px] font-bold leading-snug text-[#222222] sm:text-base">{card.title}</h3>
-                  <p className="relative z-[2] mt-2 text-[11px] leading-relaxed text-slate-600 sm:text-xs">{card.description}</p>
+                  <h3 className="relative z-[2] mt-4 text-base font-bold leading-snug text-[#222222] sm:text-base">{card.title}</h3>
+                  <p className="relative z-[2] mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
                 </motion.article>
               ))}
             </div>
@@ -1079,7 +1084,7 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 sm:text-[0.95rem]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600 sm:text-base">
                 Ecosystem &amp; Integrations
               </p>
               <h2
@@ -1099,7 +1104,7 @@ export default function LabourManagementPage() {
               {ecosystemStackMarks.map((partner) => (
                 <div key={partner.name} className="flex flex-col items-center gap-2.5">
                   <EcosystemStackMark id={partner.id} />
-                  <span className="text-center text-xs font-medium uppercase tracking-wide text-slate-400 sm:text-[0.84rem]">
+                  <span className="text-center text-xs font-medium uppercase tracking-wide text-slate-400 sm:text-sm">
                     {partner.name}
                   </span>
                 </div>
@@ -1128,7 +1133,7 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.52, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--inops-blue)] shadow-[0_8px_32px_-16px_rgba(29,95,191,0.35)] backdrop-blur-md">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--inops-blue)] shadow-[0_8px_32px_-16px_rgba(29,95,191,0.35)] backdrop-blur-md">
                 <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_8px_rgba(29,95,191,0.8)]" />
                 Product preview
               </span>
@@ -1161,7 +1166,7 @@ export default function LabourManagementPage() {
                 <div className="pointer-events-none absolute -right-20 top-16 h-40 w-40 rounded-full bg-gradient-to-br from-sky-400/20 to-blue-600/5 blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
                 <div className="relative flex items-start justify-between gap-2">
                   <div>
-                    <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">People</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">People</p>
                     <h3 className="mt-0.5 text-base font-semibold leading-snug text-slate-900">Employee Directory</h3>
                   </div>
                   <span className="flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-200/60 bg-emerald-50/90 px-2 py-0.5 shadow-sm ring-1 ring-emerald-500/10 backdrop-blur-sm">
@@ -1169,7 +1174,7 @@ export default function LabourManagementPage() {
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                       <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.9)]" />
                     </span>
-                    <span className="text-[9px] font-bold uppercase tracking-wide text-emerald-800">Live</span>
+                    <span className="text-xs font-bold uppercase tracking-wide text-emerald-800">Live</span>
                   </span>
                 </div>
                 <ul className="relative mt-4 space-y-2" aria-label="Sample directory rows">
@@ -1209,15 +1214,15 @@ export default function LabourManagementPage() {
                         aria-hidden
                       />
                       <span
-                        className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${row.hue}`}
+                        className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold ${row.hue}`}
                       >
                         {row.initials}
                       </span>
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-xs font-semibold tracking-tight text-slate-900">{row.name}</p>
-                        <p className="truncate text-[10px] font-medium text-slate-500">{row.role}</p>
+                        <p className="truncate text-xs font-medium text-slate-500">{row.role}</p>
                       </div>
-                      <span className="shrink-0 rounded-full bg-gradient-to-r from-sky-500/12 to-blue-600/12 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-sky-800 ring-1 ring-sky-300/50 backdrop-blur-[2px]">
+                      <span className="shrink-0 rounded-full bg-gradient-to-r from-sky-500/12 to-blue-600/12 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-sky-800 ring-1 ring-sky-300/50 backdrop-blur-[2px]">
                         Active
                       </span>
                     </motion.li>
@@ -1240,20 +1245,20 @@ export default function LabourManagementPage() {
               >
                 <div className="pointer-events-none absolute -left-16 bottom-6 h-36 w-36 rounded-full bg-gradient-to-tr from-emerald-400/25 to-transparent blur-3xl transition-opacity duration-700 group-hover/card:opacity-100" aria-hidden />
                 <div className="relative">
-                  <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">Time</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Time</p>
                   <h3 className="mt-0.5 text-base font-semibold leading-snug text-slate-900">Attendance Logs</h3>
                 </div>
                 <div className="relative mt-4 overflow-hidden rounded-lg border border-slate-200/70 bg-white shadow-[inset_0_2px_12px_rgba(248,250,252,0.9),0_1px_0_rgba(255,255,255,0.9)] ring-1 ring-slate-100/80">
                   <table className="w-full min-w-0 text-left text-xs">
                     <thead>
                       <tr className="border-b border-slate-100 bg-gradient-to-r from-slate-50/95 via-white to-sky-50/50 backdrop-blur-sm">
-                        <th className="px-2.5 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500">
+                        <th className="px-2.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
                           Date
                         </th>
-                        <th className="px-2.5 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500">
+                        <th className="px-2.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
                           Clock in
                         </th>
-                        <th className="px-2.5 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                        <th className="px-2.5 py-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                           Status
                         </th>
                       </tr>
@@ -1270,13 +1275,13 @@ export default function LabourManagementPage() {
                           className="transition-colors duration-200 hover:bg-gradient-to-r hover:from-sky-50/90 hover:to-white"
                         >
                           <td className="whitespace-nowrap px-2.5 py-2 text-xs font-semibold text-slate-900">{row.date}</td>
-                          <td className="whitespace-nowrap px-2.5 py-2 tabular-nums text-[11px] text-slate-600">{row.clockIn}</td>
+                          <td className="whitespace-nowrap px-2.5 py-2 tabular-nums text-xs text-slate-600">{row.clockIn}</td>
                           <td className="px-2.5 py-2">
                             <span
                               className={
                                 row.late
-                                  ? "inline-flex rounded-full bg-gradient-to-r from-amber-50 to-orange-50 px-2 py-0.5 text-[10px] font-semibold text-amber-900 ring-1 ring-amber-300/70 shadow-sm"
-                                  : "inline-flex rounded-full bg-gradient-to-r from-emerald-50 to-teal-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-900 ring-1 ring-emerald-300/70 shadow-sm"
+                                  ? "inline-flex rounded-full bg-gradient-to-r from-amber-50 to-orange-50 px-2 py-0.5 text-xs font-semibold text-amber-900 ring-1 ring-amber-300/70 shadow-sm"
+                                  : "inline-flex rounded-full bg-gradient-to-r from-emerald-50 to-teal-50 px-2 py-0.5 text-xs font-semibold text-emerald-900 ring-1 ring-emerald-300/70 shadow-sm"
                               }
                             >
                               {row.status}
@@ -1304,7 +1309,7 @@ export default function LabourManagementPage() {
               >
                 <div className="pointer-events-none absolute -right-16 top-24 h-36 w-36 rounded-full bg-gradient-to-bl from-blue-500/25 via-indigo-500/10 to-transparent blur-3xl" aria-hidden />
                 <div className="relative">
-                  <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">Payroll</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Payroll</p>
                   <h3 className="mt-0.5 text-base font-semibold leading-snug text-slate-900">Payroll Summary</h3>
                 </div>
                 <div className="relative mt-4 flex flex-1 flex-col items-center">
@@ -1349,7 +1354,7 @@ export default function LabourManagementPage() {
                       Rs. 452,300
                     </span>
                   </p>
-                  <p className="mt-1.5 text-center text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  <p className="mt-1.5 text-center text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                     Total Net Pay Disbursed
                   </p>
                 </div>

@@ -185,7 +185,7 @@ export default function TurnstilesPage() {
                       >
                         <CheckIcon className="text-white" />
                       </span>
-                      <p className="text-[15px] font-medium leading-snug text-slate-700 pt-0.5">{item.text}</p>
+                      <p className="text-base font-medium leading-snug text-slate-700 pt-0.5">{item.text}</p>
                     </motion.div>
                   ))}
                 </div>

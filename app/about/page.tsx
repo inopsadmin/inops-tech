@@ -7,6 +7,7 @@ import AnimatedCounter from "../components/AnimatedCounter";
 import CollaborateCtaBand from "../components/CollaborateCtaBand";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "../components/SolutionHeroWaveDecor";
+import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
@@ -43,7 +44,7 @@ const aboutKickerStyle = {
 } as const;
 
 const aboutKickerClass =
-  "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] shadow-sm ring-1 ring-[color:var(--inops-blue)]/15 backdrop-blur-sm";
+  "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] shadow-sm ring-1 ring-[color:var(--inops-blue)]/15 backdrop-blur-sm";
 
 const aboutH2 = "home-display-heading font-heading-bold text-slate-900";
 
@@ -268,7 +269,9 @@ export default function AboutPage() {
           <SolutionHeroWaveDecor className="z-[1]" />
           <div className="relative z-[2] w-full">
             <div className="relative min-h-[280px] w-full bg-transparent sm:min-h-[340px] lg:flex lg:min-h-[400px] lg:items-stretch">
-              <div className="relative mt-5 h-48 w-full sm:mt-7 sm:h-56 lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0">
+              <div
+                className={`relative mt-5 h-48 w-full sm:mt-7 sm:h-56 lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0 ${SPLIT_HERO_MEDIA_MR}`}
+              >
                 <Image
                   src={aboutHeroOfficeImage}
                   alt="About Us - team and workforce operations landing image"
@@ -306,7 +309,9 @@ export default function AboutPage() {
               </div>
 
               <div className="relative z-10 mx-auto flex max-w-7xl flex-1 flex-col justify-center px-4 sm:px-6 lg:px-12 lg:order-1 lg:w-1/2">
-                <div className="max-w-3xl px-0 py-6 sm:py-8 lg:max-w-xl lg:py-10 lg:pr-8 ml-[5%]">
+                <div
+                  className={`max-w-3xl px-0 py-6 sm:py-8 lg:max-w-xl lg:py-10 lg:pr-8 ${SPLIT_HERO_COPY_ML}`}
+                >
                   <motion.span
                     className={aboutKickerClass}
                     style={aboutKickerStyle}
@@ -318,7 +323,7 @@ export default function AboutPage() {
                     About InOps
                   </motion.span>
                   <motion.h1
-                    className="home-display-heading mt-4 font-heading-bold text-slate-900 sm:mt-5"
+                    className="home-display-heading inops-type-hero mt-4 font-heading-bold text-slate-900 sm:mt-5"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
@@ -699,7 +704,7 @@ export default function AboutPage() {
             className="h-[2px] w-full bg-gradient-to-r from-transparent via-slate-500/55 to-transparent shadow-[0_1px_0_rgb(255_255_255_/_.85)]"
             aria-hidden
           />
-          <div className="relative mx-auto max-w-7xl px-6 py-10 lg:px-12 lg:py-16">
+          <div className="relative mx-auto max-w-7xl px-6 pt-10 lg:px-12 lg:pt-16">
             <motion.div
               className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-7"
               variants={visionMissionCards}
@@ -722,7 +727,7 @@ export default function AboutPage() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden
                 />
-                <p className={`relative text-slate-900 font-heading-bold ${aboutLabelUpper} tracking-[0.22em]`}>Vision</p>
+                <p className={`relative !text-xl text-slate-900 font-heading-bold ${aboutLabelUpper} tracking-[0.22em]`}>Vision</p>
                 <p className={`relative mt-4 text-sm ${aboutLead}`}>
                   To build the most trusted workforce ecosystem, where work, identity, and financial access seamlessly come together.
                 </p>
@@ -742,7 +747,7 @@ export default function AboutPage() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   aria-hidden
                 />
-                <p className={`relative text-slate-900 font-heading-bold ${aboutLabelUpper} tracking-[0.22em]`}>Mission</p>
+                <p className={`relative !text-xl text-slate-900 font-heading-bold ${aboutLabelUpper} tracking-[0.22em]`}>Mission</p>
                 <p className={`relative mt-4  text-sm ${aboutLead}`}>
                   To help enterprises digitize and control workforce operations through unified governance and verified data, and extend this foundation to enable earned wage access and a curated marketplace of financial and worker-focused services.
                 </p>
@@ -763,7 +768,7 @@ export default function AboutPage() {
 
         {/* Expertise ,  section intro, then visuals + carousel */}
         <section
-          className={`section-flush-footer relative overflow-hidden border-t border-slate-200/80 ${aboutSectionBg} pb-0 pt-10 lg:pb-0 lg:pt-16`}
+          className={`section-flush-footer relative overflow-hidden border-t border-slate-200/80 ${aboutSectionBg} pb-0 pt-10 lg:pb-0 lg:pt-0`}
           aria-labelledby="why-choose-heading"
         >
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

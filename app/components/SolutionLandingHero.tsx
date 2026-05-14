@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import VideoLivePopups, { type VideoLivePopupItem } from "./VideoLivePopups";
-import SolutionHeroWaveDecor from "./SolutionHeroWaveDecor";
+import SolutionHeroWaveDecor, { SolutionHeroWaveBottomBand } from "./SolutionHeroWaveDecor";
 import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -64,6 +64,10 @@ export type SolutionLandingHeroProps = {
    *  "Live · Detection running" tile when `videoSrc` is provided. Pass `null` to
    *  hide the default tile, or an array to fully customise. */
   livePopups?: VideoLivePopupItem[] | null;
+  /** Wraps badge → CTAs (split heroes: e.g. progressive `ml-*` toward media on wide screens). */
+  splitHeroCopyStackClassName?: string;
+  /** Renders the SVG wave band in a sibling block under the hero so it is not clipped by section overflow/min-height. */
+  waveBandBelowHero?: boolean;
 };
 
 const defaultHeroPopups: VideoLivePopupItem[] = [
@@ -97,6 +101,8 @@ export default function SolutionLandingHero({
   imageEdgeFadeClassName,
   livePopups,
   subtitleClassName,
+  splitHeroCopyStackClassName,
+  waveBandBelowHero,
 }: SolutionLandingHeroProps) {
   const popupsToRender =
     livePopups === null
@@ -119,14 +125,13 @@ export default function SolutionLandingHero({
         "pointer-events-none absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-white/30 sm:hidden";
 
   /** `overflow-visible` so corner `livePopups` with negative offsets are not clipped; media stays clipped by inner shell. */
-  const sectionShell =
-    "relative overflow-visible border-b border-slate-200/80 bg-white";
+  const sectionShell = `relative overflow-visible bg-white ${waveBandBelowHero ? "" : "border-b border-slate-200/80"}`;
   const defaultHeights = "min-h-[20rem] sm:min-h-[22.5rem] lg:min-h-[25rem] xl:min-h-[27rem] 2xl:min-h-[29rem]";
   const imageWrapClass = imageWrapperClassName ?? "absolute inset-0 mt-10 overflow-hidden";
   const hadOverflowHidden = /\boverflow-hidden\b/.test(imageWrapClass);
   const mediaShellClass = hadOverflowHidden ? stripOverflowHidden(imageWrapClass) : imageWrapClass;
 
-  return (
+  const section = (
     <motion.section
       className={`${sectionShell} ${sectionClassName ?? defaultHeights}`}
       initial={{ opacity: 0 }}
@@ -192,7 +197,7 @@ export default function SolutionLandingHero({
       ) : null}
       <div className={`${bgGradientClass} z-[1]`} aria-hidden />
       {mobileVeilClass ? <div className={`${mobileVeilClass} z-[1]`} aria-hidden /> : null}
-      <SolutionHeroWaveDecor className="z-[4]" />
+      <SolutionHeroWaveDecor className="z-[4]" showBottomWaves={!waveBandBelowHero} />
       {popupsToRender ? (
         <div className={`${mediaShellClass} pointer-events-none z-[5]`}>
           <VideoLivePopups popups={popupsToRender} />
@@ -200,62 +205,75 @@ export default function SolutionLandingHero({
       ) : null}
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16 xl:py-18 2xl:py-20">
-        {badge ? (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-          >
-            {badge}
-          </motion.div>
-        ) : null}
-
-        <motion.h1
-          className={`max-w-2xl tracking-tight text-slate-900 ${badge ? "mt-4 sm:mt-5" : ""}`}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
-        >
-          {title}
-        </motion.h1>
-
-        {/* `div` avoids `.inops-template p { font-size: … !important }` overriding Tailwind / `inops-ui-lead`. */}
-        <motion.div
-          className={
-            subtitleClassName?.trim()
-              ? `mt-5 max-w-xl ${subtitleClassName.trim()}`
-              : `inops-ui-lead mt-5 max-w-xl`
-          }
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
-        >
-          {subtitle}
-        </motion.div>
-
-        <motion.div
-          className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: smoothEase, delay: 0.16 }}
-        >
-          <Link
-            href={primaryCta.href}
-            className={primaryCtaClassName ?? inopsUi.btnPrimary}
-          >
-            {primaryCta.label}
-          </Link>
-          {secondaryCta ? (
-            <Link
-              href={secondaryCta.href}
-              className={secondaryCtaClassName ?? inopsUi.btnSecondary}
+        <div className={splitHeroCopyStackClassName ?? "contents"}>
+          {badge ? (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
             >
-              {secondaryCta.label}
-            </Link>
+              {badge}
+            </motion.div>
           ) : null}
-        </motion.div>
-        {children}
+
+          <motion.h1
+            className={`max-w-2xl text-gray-900 ${inopsUi.typeHero} ${badge ? "mt-4 sm:mt-5" : ""}`}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
+          >
+            {title}
+          </motion.h1>
+
+          {/* `div` avoids `.inops-template p { font-size: … !important }` overriding Tailwind / `inops-ui-lead`. */}
+          <motion.div
+            className={
+              subtitleClassName?.trim()
+                ? `mt-5 max-w-xl ${subtitleClassName.trim()}`
+                : `inops-ui-lead mt-5 max-w-xl`
+            }
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
+          >
+            {subtitle}
+          </motion.div>
+
+          <motion.div
+            className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: smoothEase, delay: 0.16 }}
+          >
+            <Link
+              href={primaryCta.href}
+              className={primaryCtaClassName ?? inopsUi.btnPrimary}
+            >
+              {primaryCta.label}
+            </Link>
+            {secondaryCta ? (
+              <Link
+                href={secondaryCta.href}
+                className={secondaryCtaClassName ?? inopsUi.btnSecondary}
+              >
+                {secondaryCta.label}
+              </Link>
+            ) : null}
+          </motion.div>
+          {children}
+        </div>
       </div>
     </motion.section>
   );
+
+  if (waveBandBelowHero) {
+    return (
+      <>
+        {section}
+        <SolutionHeroWaveBottomBand />
+      </>
+    );
+  }
+
+  return section;
 }

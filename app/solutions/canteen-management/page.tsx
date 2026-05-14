@@ -281,19 +281,19 @@ export default function CanteenManagementPage() {
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           badge={
-            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 ml-10 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-sm">
               <span className="h-2 w-2 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
               Canteen &amp; visitor solutions
             </span>
           }
           title={
             <>
-              <span className="block text-slate-900">Canteen, visitors, and subsidies</span>
-              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">unified on one platform.</span>
+              <span className="block text-slate-900 ml-10">Canteen, Visitors, <br /> &amp; Subsidies</span>
+              <span className="mt-1.5 block ml-10 text-[color:var(--inops-blue)] sm:mt-2">Unified on One Platform.</span>
             </>
           }
           subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll, then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
-          subtitleClassName="text-[11px] leading-relaxed text-slate-600 sm:text-[15px]"
+          subtitleClassName="text-xs ml-10 leading-relaxed text-slate-600 sm:text-base"
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
           imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
           videoSrc="/genrate_this_part_image_202605080013.mp4"
@@ -304,7 +304,9 @@ export default function CanteenManagementPage() {
           gradientClassName="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.92)_14%,rgba(255,255,255,0.55)_24%,rgba(255,255,255,0.18)_34%,transparent_46%)] sm:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.88)_15%,rgba(255,255,255,0.42)_26%,rgba(255,255,255,0.1)_36%,transparent_48%)] lg:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.82)_16%,rgba(255,255,255,0.32)_28%,transparent_44%)]"
           mobileStackGradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white via-white/55 to-white/95 sm:hidden"
           primaryCta={{ label: "Get in touch", href: "/contact" }}
+          primaryCtaClassName="ml-10 text-center border-2 bg-blue-700 font-bold text-white py-2 px-4 border-blue-700 rounded-full"
           secondaryCta={{ label: "How it works", href: "#canteen-realtime-visibility" }}
+          secondaryCtaClassName=" text-center border-2 border-gray-200 bg-white py-2 px-4 rounded-full"
           livePopups={[
             {
               position: "top-left",
@@ -326,7 +328,7 @@ export default function CanteenManagementPage() {
             },
           ]}
         >
-       
+    
         </SolutionLandingHero>
 
         {/* Operational metrics ,  premium live-ops band */}
@@ -394,7 +396,7 @@ export default function CanteenManagementPage() {
                       >
                         <MetricIcon name={m.icon} />
                       </div>
-                      <span className="rounded-full bg-white/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400 ring-1 ring-white/10">
+                      <span className="rounded-full bg-white/[0.06] px-2.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-400 ring-1 ring-white/10">
                         Live
                       </span>
                     </div>
@@ -485,7 +487,7 @@ export default function CanteenManagementPage() {
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
                 <div className="shrink-0">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                     Serving line to ledger
                   </span>
@@ -512,7 +514,7 @@ export default function CanteenManagementPage() {
                       <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--inops-blue)] to-sky-600 text-white shadow-md shadow-blue-900/15 ring-2 ring-white">
                         <CheckIcon className="h-4 w-4" />
                       </span>
-                      <span className="text-[15px] leading-relaxed text-slate-700">{line}</span>
+                      <span className="text-base leading-relaxed text-slate-700">{line}</span>
                     </li>
                   ))}
                 </ul>
@@ -618,7 +620,7 @@ export default function CanteenManagementPage() {
                 transition={{ duration: 0.55, ease: smoothEase }}
               >
                 <div className="shrink-0">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
                     Lobby &amp; access
                   </span>
@@ -649,14 +651,14 @@ export default function CanteenManagementPage() {
                         <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--inops-blue)] to-sky-600 text-white shadow-md shadow-blue-900/15 ring-2 ring-white">
                           <CheckIcon className="h-4 w-4" />
                         </span>
-                        <span className="text-[15px] leading-relaxed text-slate-700">{line}</span>
+                        <span className="text-base leading-relaxed text-slate-700">{line}</span>
                       </div>
                     </li>
                   ))}
                 </ul>
 
                 <div className="mt-10 shrink-0 space-y-4 lg:mt-0">
-                  {/* <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  {/* <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
                     Visitor Management System
                   </p> */}
                   <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
@@ -773,7 +775,7 @@ export default function CanteenManagementPage() {
                 </p>
                 <h2
                   id="vms-overview-heading"
-                  className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[1.85rem] lg:leading-snug xl:text-[2rem]"
+                  className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-3xl xl:text-4xl"
                 >
                   From invite to{" "}
                   <span className="font-semibold text-[color:var(--inops-blue)]">
@@ -826,10 +828,10 @@ export default function CanteenManagementPage() {
                         aria-hidden
                       />
                       <div className="relative z-[2] px-2.5 pb-2.5 pt-3.5 sm:px-3 sm:pb-3 sm:pt-4">
-                        <span className="text-[10px] font-bold uppercase tracking-wide text-[color:var(--inops-blue)] sm:text-xs">
+                        <span className="text-sm font-bold uppercase tracking-wide text-[color:var(--inops-blue)] sm:text-base">
                           {chip.k}
                         </span>
-                        <span className="mt-1 block text-[11px] leading-snug text-slate-600 sm:text-xs">{chip.d}</span>
+                        <span className="mt-1 block text-xs leading-snug text-slate-600 sm:text-xs">{chip.d}</span>
                       </div>
                     </li>
                   ))}

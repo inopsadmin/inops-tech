@@ -135,7 +135,7 @@ export default function FixedAssetManagementPage() {
                             </div>
                           </div>
                           <div className="rounded-lg bg-slate-50 p-3 ring-1 ring-slate-100">
-                            <p className="text-[10px] font-semibold text-slate-600">Job Proficiency Breakdown</p>
+                            <p className="text-xs font-semibold text-slate-600">Job Proficiency Breakdown</p>
                             <div className="mt-2 flex h-14 items-end justify-between gap-1">
                               {[40, 70, 55, 85, 50].map((h, i) => (
                                 <div
@@ -150,15 +150,15 @@ export default function FixedAssetManagementPage() {
                         <div className="mt-3 grid grid-cols-3 gap-2 text-center">
                           <div className="rounded-md bg-slate-100 py-2">
                             <p className="text-lg font-bold text-slate-900">12</p>
-                            <p className="text-[9px] text-slate-500">Active</p>
+                            <p className="text-xs text-slate-500">Active</p>
                           </div>
                           <div className="rounded-md bg-slate-100 py-2">
                             <p className="text-lg font-bold text-slate-900">3</p>
-                            <p className="text-[9px] text-slate-500">Alerts</p>
+                            <p className="text-xs text-slate-500">Alerts</p>
                           </div>
                           <div className="rounded-md bg-slate-100 py-2">
                             <p className="text-lg font-bold text-slate-900">52%</p>
-                            <p className="text-[9px] text-slate-500">Efficiency</p>
+                            <p className="text-xs text-slate-500">Efficiency</p>
                           </div>
                         </div>
                       </div>

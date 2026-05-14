@@ -1,5 +1,5 @@
 /**
- * Canonical UI classes — styles live in `app/globals.css` under `.inops-ui-*`.
+ * Canonical UI classes — styles live in `app/globals.css` under `.inops-ui-*` / `.inops-type-*`.
  * Use these for headings, body, and buttons so every page stays visually aligned.
  */
 export const inopsUi = {
@@ -23,4 +23,20 @@ export const inopsUi = {
   btnOnDarkPrimary: "inops-ui-btn inops-ui-btn--on-dark-primary",
   btnOnDarkSecondary: "inops-ui-btn inops-ui-btn--on-dark-secondary",
   btnFull: "inops-ui-btn inops-ui-btn--primary inops-ui-btn--full",
+
+  /** Alias: section intro line under a title */
+  sectionSubtitle: "inops-type-subtitle",
+  typeHero: "inops-type-hero",
+  typePage: "inops-type-page",
+  typeSection: "inops-type-section",
+  typeCardTitle: "inops-type-card-title",
+  typeSubtitle: "inops-type-subtitle",
+  typeBody: "inops-type-body",
+  typeSmall: "inops-type-small",
+  typeMuted: "inops-type-muted",
+  typeEyebrow: "inops-type-eyebrow",
+  typeOnDarkTitle: "inops-type-on-dark-title",
+  typeOnDarkBody: "inops-type-on-dark-body",
+  /** Wrapper class for card inner stacks (padding + vertical rhythm) */
+  cardProse: "inops-card-prose",
 } as const;

@@ -219,7 +219,7 @@ export default function FourPillarsSection() {
               viewport={viewport}
               transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.06, 0.18) }}
             >
-              <span className="absolute right-5 top-5 max-w-[11rem] rounded-full bg-violet-50 px-2.5 py-1 text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-violet-700 ring-1 ring-violet-100 sm:right-6 sm:top-6 sm:max-w-none sm:text-xs">
+              <span className="absolute right-5 top-5 max-w-[11rem] rounded-full bg-violet-50 px-2.5 py-1 text-center text-xs font-semibold uppercase leading-tight tracking-wide text-violet-700 ring-1 ring-violet-100 sm:right-6 sm:top-6 sm:max-w-none sm:text-xs">
                 {pillar.category}
               </span>
               <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-100 text-violet-700 ring-1 ring-violet-200/80">

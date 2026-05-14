@@ -7,6 +7,7 @@ import { FlyInText } from "@/app/components/FlyInText";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
+import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -85,6 +86,7 @@ const painPoints = [
   {
     title: "Ghost workers & time theft",
     stat: "~3–5% of spend",
+    cornerBadge: "Spend leak",
     description:
       "Buddy punching and proxy clock-ins hide real headcount, clean attendance data never reaches payroll.",
     icon: "users" as const,
@@ -103,6 +105,7 @@ const painPoints = [
   {
     title: "Compliance violations",
     stat: "₹50K–₹1L per violation",
+    cornerBadge: "Audit risk",
     description:
       "OT, wage, and incident gaps surface after the fact, audits and disputes land on your desk.",
     icon: "shield" as const,
@@ -121,6 +124,7 @@ const painPoints = [
   {
     title: "Invoice chaos",
     stat: "25–30% discrepancy rate",
+    cornerBadge: "Mismatch",
     description:
       "Finance burns 80–120 hrs./month matching invoices to gates and shifts instead of closing books.",
     icon: "invoice" as const,
@@ -139,6 +143,7 @@ const painPoints = [
   {
     title: "System fragmentation",
     stat: "Data chaos",
+    cornerBadge: "Siloed",
     description:
       "Biometrics, spreadsheets, and ERP live in silos, nothing reconciles without manual stitching.",
     icon: "layers" as const,
@@ -157,6 +162,7 @@ const painPoints = [
   {
     title: "ESI / PF reconciliation & true-up",
     stat: "Manual checks",
+    cornerBadge: "Filing gap",
     description:
       "Spreadsheet-driven statutory checks miss deltas until filings, errors compound across branches.",
     icon: "statutory" as const,
@@ -260,10 +266,28 @@ function WhyInopsMosaicPainCard({
         aria-hidden
       />
       <div
+        className="pointer-events-none absolute right-3 top-3 z-30 sm:right-4 sm:top-4"
+        aria-hidden
+      >
+        <div className="flex max-w-[9.5rem] items-center gap-1.5 rounded-2xl border border-white/95 bg-white/90 py-1 pl-1 pr-2 shadow-[0_12px_40px_-14px_rgba(15,23,42,0.28)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-transform duration-300 group-hover:-translate-y-0.5 sm:max-w-[11rem] sm:pr-2.5">
+          <span
+            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-inner ring-1 ring-white/30 ${t.numBg}`}
+          >
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden>
+              <path d="M12 3v3M12 18v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M3 12h3M18 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" strokeLinecap="round" />
+              <circle cx="12" cy="12" r="3.2" />
+            </svg>
+          </span>
+          <span className="min-w-0 text-[9px] font-extrabold uppercase leading-snug tracking-[0.14em] text-slate-700 sm:text-[10px] sm:tracking-[0.16em]">
+            {card.cornerBadge}
+          </span>
+        </div>
+      </div>
+      <div
         className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${t.orb}`}
         aria-hidden
       />
-      <div className="relative flex items-center gap-3">
+      <div className="relative flex items-center gap-3 pr-16 sm:pr-20">
         <span
           className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold tabular-nums shadow-md ${t.numBg}`}
           aria-hidden
@@ -449,7 +473,7 @@ function OurModulesCarousel() {
         >
           <motion.span
             variants={ourModulesHeaderItem}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[11px]"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-xs"
           >
             <motion.span
               className="relative flex h-1.5 w-1.5 shrink-0"
@@ -735,7 +759,9 @@ export default function PayrollSolutionsPage() {
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
               <SolutionHeroWaveDecor className="z-[1]" />
               {/* Right-half hero background (full width on small screens, then locked to the right on lg) */}
-              <div className="relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div
+                className={`relative z-[2] mt-8 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+              >
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
                   autoPlay
@@ -777,7 +803,9 @@ export default function PayrollSolutionsPage() {
                 />
               </div>
               <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-                <div className="max-w-3xl px-2 py-6 pb-5 sm:px-4 sm:py-8 sm:pb-7 lg:max-w-xl lg:pt-10 lg:pb-5 lg:pr-6">
+                <div
+                  className={`max-w-3xl px-2 py-6 pb-5 sm:px-4 sm:py-8 sm:pb-7 lg:max-w-xl lg:pt-10 lg:pb-5 lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
+                >
                   <FlyInText
                     as="span"
                     trigger="mount"
@@ -796,7 +824,7 @@ export default function PayrollSolutionsPage() {
                       direction="left"
                       delay={0.06}
                       duration={0.68}
-                      className="mt-4 whitespace-nowrap text-slate-900 lg:mt-5"
+                      className="home-display-heading inops-type-hero mt-4 whitespace-nowrap text-slate-900 lg:mt-5"
                     >
                       Unified{" "}
                       <span className="text-blue-800">payroll</span> & contract <br /> workforce governance
@@ -809,7 +837,7 @@ export default function PayrollSolutionsPage() {
                     direction="up"
                     delay={0.12}
                     duration={0.62}
-                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
                     Attendance, statutory compliance, and payouts on one platform, from gate logs to finance close.
                   </FlyInText>
@@ -897,7 +925,7 @@ export default function PayrollSolutionsPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[11px]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-xs">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_0_2px_rgba(29,95,191,0.22)]" aria-hidden />
                 Operational gaps
               </span>
@@ -945,7 +973,7 @@ export default function PayrollSolutionsPage() {
                           aria-hidden
                         />
                         <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6 pt-16 text-left">
-                          <span className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/40 via-cyan-500/35 to-violet-500/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
+                          <span className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/40 via-cyan-500/35 to-violet-500/35 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
                             Field reality
                           </span>
                           <p className="mt-3 text-base font-semibold leading-snug text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:text-[1.05rem]">
@@ -1096,7 +1124,7 @@ export default function PayrollSolutionsPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/90 px-3 py-1.5 text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-[color:var(--inops-blue)]/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.2em]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/90 px-3 py-1.5 text-center text-xs font-semibold uppercase leading-snug tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-[color:var(--inops-blue)]/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.2em]">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)] shadow-[0_0_0_2px_rgba(29,95,191,0.2)]" aria-hidden />
                 Cost leakage is silent. Savings don&apos;t have to be.
               </span>
@@ -1142,12 +1170,12 @@ export default function PayrollSolutionsPage() {
                 <div className="relative flex min-h-0 flex-1 flex-col rounded-[1.65rem] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-7 sm:p-8">
                   <div className="flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-6">
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
                         Your leakage snapshot
                       </p>
                       <p className="mt-2 text-xl font-semibold tracking-tight text-white">Typical Enterprise Scenario</p>
                     </div>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/70 ring-1 ring-white/10">
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/70 ring-1 ring-white/10">
                       Illustrative model
                     </span>
                   </div>
@@ -1216,10 +1244,10 @@ export default function PayrollSolutionsPage() {
               >
                 <div className="flex flex-wrap items-start justify-between gap-3 border-b border-rose-100/80 pb-5">
                   <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-rose-900/80">Where you lose money</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-rose-900/80">Where you lose money</p>
                     <p className="mt-1.5 text-sm text-slate-600">Ranked by typical exposure in multi-site contractor ops</p>
                   </div>
-                  <span className="rounded-lg bg-rose-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-rose-700 ring-1 ring-rose-100">
+                  <span className="rounded-lg bg-rose-50 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-rose-700 ring-1 ring-rose-100">
                     Annual bleed
                   </span>
                 </div>
@@ -1293,7 +1321,7 @@ export default function PayrollSolutionsPage() {
                   transition={{ duration: 0.45, ease: smoothEase }}
                   whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
                 >
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/95 transition-colors duration-300 group-hover:text-white">
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/95 transition-colors duration-300 group-hover:text-white">
                     Total leakage
                   </span>
                   <span className="text-2xl font-bold tabular-nums tracking-tight text-white transition-colors duration-300 group-hover:text-white sm:text-3xl">
@@ -1325,7 +1353,7 @@ export default function PayrollSolutionsPage() {
                       </svg>
                     </span>
                     <div>
-                      <p className="inline-flex rounded-full border border-blue-200/90 bg-gradient-to-r from-blue-50 to-indigo-50/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
+                      <p className="inline-flex rounded-full border border-blue-200/90 bg-gradient-to-r from-blue-50 to-indigo-50/90 px-2.5 py-0.5 text-xs font-bold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
                         With the platform
                       </p>
                       <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-700">
@@ -1424,15 +1452,15 @@ export default function PayrollSolutionsPage() {
                             >
                               <WithInOpsBenefitIcon variant={icon} />
                             </span>
-                            <span className={`rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] shadow-sm sm:text-[10px] sm:tracking-[0.14em] ${tagBadge}`}>
+                            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.12em] shadow-sm sm:text-xs sm:tracking-[0.14em] ${tagBadge}`}>
                               {tag}
                             </span>
                           </div>
-                          <p className="mt-3 text-sm font-semibold leading-snug text-slate-900">{line}</p>
+                          <p className="mt-3 text-lg font-semibold leading-snug text-slate-900">{line}</p>
                           <div className="mt-auto flex items-center gap-2 border-t border-slate-100/90 pt-2.5 text-left">
                             <span className={`h-0.5 w-6 shrink-0 rounded-full bg-gradient-to-r ${footerRail}`} aria-hidden />
                             <CheckIcon className={`h-3.5 w-3.5 shrink-0 ${checkTint}`} />
-                            <span className={`text-[11px] leading-snug ${footerText}`}>
+                            <span className={`text-xs leading-snug ${footerText}`}>
                               Included in unified CLMS rollout
                             </span>
                           </div>
@@ -1447,7 +1475,7 @@ export default function PayrollSolutionsPage() {
                     aria-hidden
                   />
                   <div className="relative">
-                    <p className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/25 via-cyan-500/20 to-indigo-500/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-cyan-100 shadow-sm ring-1 ring-cyan-400/25">
+                    <p className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/25 via-cyan-500/20 to-indigo-500/25 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-cyan-100 shadow-sm ring-1 ring-cyan-400/25">
                       The impact
                     </p>
                     <p className="mt-3 max-w-xl bg-gradient-to-r from-white via-sky-100 to-cyan-100 bg-clip-text text-lg font-semibold leading-snug text-transparent sm:text-xl">
@@ -1516,7 +1544,7 @@ export default function PayrollSolutionsPage() {
                             <ImpactKpiIcon variant={row.icon} />
                           </motion.span>
                           <p
-                            className={`relative z-[1] mt-4 text-[10px] font-semibold uppercase leading-snug tracking-wider sm:text-[11px] ${row.labelClass}`}
+                            className={`relative z-[1] mt-4 text-xs font-semibold uppercase leading-snug tracking-wider sm:text-xs ${row.labelClass}`}
                           >
                             {row.k}
                           </p>
@@ -1541,14 +1569,9 @@ export default function PayrollSolutionsPage() {
               transition={{ duration: 0.45, ease: smoothEase, delay: 0.08 }}
             >
               <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
-                <Link href="/contact" className={`${inopsUi.btnPrimary} group gap-2 shadow-lg`}>
-                  Calculate your savings
-                  <motion.span
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15"
-                    aria-hidden
-                    transition={{ type: "spring", stiffness: 400, damping: 22 }}
-                    whileHover={{ x: 4, backgroundColor: "rgba(255,255,255,0.28)" }}
-                  >
+                <Link href="/contact" className={`${inopsUi.btnSecondary} gap-2 !bg-blue-600 !text-white !border-blue-600 shadow-sm`}>
+                Calculate your savings
+                  <motion.span aria-hidden whileHover={{ x: 3 }} transition={{ type: "spring", stiffness: 450, damping: 24 }}>
                     →
                   </motion.span>
                 </Link>

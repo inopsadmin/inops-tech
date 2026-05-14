@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -317,7 +318,9 @@ export default function EwaPage() {
         videoSrc="/videos/genrate_this_image_in_video_202605080131.mp4"
         imageSrc="/images/ewa-hero.png"
         imageAlt="Workforce on site ,  earned wage access aligned to verified attendance"
-        imageWrapperClassName="relative mt-25 rounded-2xl  h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2"
+        imageWrapperClassName={`relative mt-25 rounded-2xl  h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+        splitHeroCopyStackClassName={SPLIT_HERO_COPY_ML}
+        waveBandBelowHero
         imageClassName="object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
         gradientClassName="pointer-events-none absolute inset-0 bg-gradient-to-r from-white from-0% via-white/[0.98] via-[42%] to-transparent to-[62%] lg:via-[44%] lg:to-[68%]"
         imageSizes="(max-width: 1024px) 100vw, 50vw"
@@ -359,7 +362,7 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-sm backdrop-blur-sm">
               The cost of waiting
             </span>
             <h2 id="ewa-cost-of-waiting-heading" className="mt-6 text-gray-900">
@@ -424,7 +427,7 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 shadow-sm backdrop-blur-sm">
               The platform
             </span>
             <h2 className="mt-6 text-slate-900">
@@ -533,7 +536,7 @@ export default function EwaPage() {
                       {item.icon}
                     </div>
                     <span
-                      className={`rounded-full px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] shadow-sm backdrop-blur-[2px] ${item.tagTone}`}
+                      className={`rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.14em] shadow-sm backdrop-blur-[2px] ${item.tagTone}`}
                     >
                       {item.tag}
                     </span>
@@ -541,7 +544,7 @@ export default function EwaPage() {
                   <h3 className="relative z-10 mt-4 text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
                     {item.title}
                   </h3>
-                  <p className="relative z-10 mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.9375rem]">
+                  <p className="relative z-10 mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">
                     {item.description}
                   </p>
                   <div
@@ -552,7 +555,7 @@ export default function EwaPage() {
                       aria-hidden
                     />
                     <span
-                      className={`bg-gradient-to-r bg-clip-text text-[10px] font-semibold uppercase tracking-[0.12em] text-transparent sm:text-xs ${item.stackGradient}`}
+                      className={`bg-gradient-to-r bg-clip-text text-xs font-semibold uppercase tracking-[0.12em] text-transparent sm:text-xs ${item.stackGradient}`}
                     >
                       Built into your stack
                     </span>
@@ -589,7 +592,7 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
               How it works
             </span>
             <h2 id="ewa-how-it-works-heading" className="mt-5 text-white">
@@ -651,7 +654,7 @@ export default function EwaPage() {
                     </span>
                   </div>
                   <div className="min-w-0 flex-1 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.08] to-white/[0.02] px-4 py-3.5 shadow-[0_16px_48px_-32px_rgba(0,0,0,0.85)] ring-1 ring-white/[0.05] backdrop-blur-sm">
-                    <p className="text-[0.9375rem] font-medium leading-snug text-slate-200">{step}</p>
+                    <p className="text-base font-medium leading-snug text-slate-200">{step}</p>
                   </div>
                 </motion.li>
               ))}
@@ -679,7 +682,7 @@ export default function EwaPage() {
                       {String(index + 1).padStart(2, "0")}
                     </div>
                     <div className="mt-5 flex min-h-[7.5rem] flex-1 flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-4 shadow-[0_20px_50px_-36px_rgba(0,0,0,0.9)] ring-1 ring-white/[0.05] backdrop-blur-sm transition-[border-color,box-shadow] duration-300 group-hover:border-blue-400/25 group-hover:shadow-[0_24px_56px_-32px_rgba(59,130,246,0.22)] lg:min-h-[8.25rem]">
-                      <p className="text-left text-[13px] font-medium leading-snug text-slate-200 sm:text-sm lg:text-[0.9375rem] lg:leading-relaxed">
+                      <p className="text-left text-sm font-medium leading-snug text-slate-200 sm:text-sm lg:text-base lg:leading-relaxed">
                         {step}
                       </p>
                     </div>
@@ -716,7 +719,7 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 shadow-sm backdrop-blur-sm">
               Integration stack
             </span>
             <h2 id="ewa-ecosystem-heading" className="mt-5 text-slate-900">
@@ -804,7 +807,7 @@ export default function EwaPage() {
                   Live Data Verification
                 </motion.h3>
                 <motion.span
-                  className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400"
+                  className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={viewport}
@@ -891,7 +894,7 @@ export default function EwaPage() {
                   />
                 ) : null}
                 <motion.div
-                  className="mt-2 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500"
+                  className="mt-2 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.12em] text-slate-500"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={viewport}
@@ -982,7 +985,7 @@ export default function EwaPage() {
                     </motion.span>
                     <div className="relative z-[2] min-w-0">
                       <h3 className="font-semibold tracking-tight text-slate-900">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">{item.description}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600 sm:text-base">{item.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -1063,7 +1066,7 @@ export default function EwaPage() {
                     aria-hidden
                   />
                   <span
-                    className={`relative mt-1 inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${column.badgeClass}`}
+                    className={`relative mt-1 inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] ${column.badgeClass}`}
                   >
                     {column.badge}
                   </span>
@@ -1111,7 +1114,7 @@ export default function EwaPage() {
             viewport={viewport}
             transition={{ duration: 0.5, ease: smoothEase }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-gradient-to-r from-blue-50/95 via-indigo-50/80 to-violet-50/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-gradient-to-r from-blue-50/95 via-indigo-50/80 to-violet-50/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
               Results
             </span>
             <h2 id="ewa-impact-heading" className="mt-5 text-gray-900">
@@ -1137,10 +1140,11 @@ export default function EwaPage() {
               whileInView="visible"
               viewport={viewport}
             >
-              {ewaImpactMetrics.map((item) => (
+              {ewaImpactMetrics.map((item, idx) => (
                 <motion.li key={item.label} variants={impactMetricsCard} className="relative">
                   <article
                     className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1.5 sm:p-7 ${item.cardSurface}`}
+                    aria-label={`${idx + 1} of ${ewaImpactMetrics.length}: ${item.label}`}
                   >
                     <div
                       className={`pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-gradient-to-br opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${item.orb}`}
@@ -1150,6 +1154,13 @@ export default function EwaPage() {
                       className={`pointer-events-none absolute inset-x-0 top-0 z-[2] h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${item.topBar}`}
                       aria-hidden
                     />
+
+                    <span
+                      className={`pointer-events-none absolute -right-0.5 top-2 z-[3] bg-gradient-to-r bg-clip-text font-mono text-[2.85rem] font-black leading-none tracking-tighter text-transparent opacity-[0.7] sm:right-1 sm:top-3 sm:text-[3.25rem] sm:opacity-[0.76] ${item.topBar}`}
+                      aria-hidden
+                    >
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
 
                     <div className="relative z-10 flex items-start justify-between gap-3">
                       <span
@@ -1166,7 +1177,7 @@ export default function EwaPage() {
                     </p>
 
                     <h3 className="relative z-10 mt-2 font-semibold tracking-tight text-slate-900">{item.label}</h3>
-                    <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-[0.95rem]">
+                    <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">
                       {item.description}
                     </p>
                   </article>

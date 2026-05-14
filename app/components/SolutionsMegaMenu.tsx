@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { solutionsMegaRows, type SolutionsMegaCell } from "./solutionsMenuData";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 28 };
 
@@ -17,12 +18,20 @@ function MegaCell({ cell, onNavigate }: { cell: SolutionsMegaCell; onNavigate?: 
     <Link
       href={cell.href}
       onClick={() => onNavigate?.()}
-      className={`block min-h-[140px] p-7 transition-colors duration-200 focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1D2B83] ${
+      className={`group block min-h-[140px] p-7 transition-colors duration-200 focus-visible:outline focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1D2B83] ${
         accent ? "bg-[#eef6ff] hover:bg-[#e4efff]" : "bg-white hover:bg-slate-50"
       } ${isEwa ? "relative before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-slate-400/80 before:content-['']" : ""}`}
     >
-      <div className="text-base font-semibold leading-snug text-[#1D2B83]">{cell.title}</div>
-      <p className="mt-2 text-sm leading-relaxed text-slate-600">{cell.description}</p>
+      <div
+        className={`transition-colors duration-200 group-hover:text-[color:var(--inops-blue)] ${inopsUi.typeCardTitle}`}
+      >
+        {cell.title}
+      </div>
+      <p
+        className={`mt-2 transition-colors duration-200 group-hover:text-blue-700/90 ${inopsUi.typeSmall}`}
+      >
+        {cell.description}
+      </p>
     </Link>
   );
 }
@@ -90,11 +99,19 @@ export function SolutionsMegaMenuMobile({ onNavigate }: { onNavigate: () => void
                 <Link
                   key={cell.title + cell.href}
                   href={cell.href}
-                  className={`block min-h-[140px] min-w-0 p-7 transition-colors hover:bg-[#eef6ff]/60 ${cell.accent ? "bg-[#eef6ff]/40" : ""}`}
+                  className={`group block min-h-[140px] min-w-0 p-7 transition-colors hover:bg-[#eef6ff]/60 ${cell.accent ? "bg-[#eef6ff]/40" : ""}`}
                   onClick={() => onNavigate()}
                 >
-                  <div className="break-words text-base font-semibold leading-snug text-[#1D2B83]">{cell.title}</div>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{cell.description}</p>
+                  <div
+                    className={`break-words transition-colors duration-200 group-hover:text-[color:var(--inops-blue)] ${inopsUi.typeCardTitle}`}
+                  >
+                    {cell.title}
+                  </div>
+                  <p
+                    className={`mt-2 transition-colors duration-200 group-hover:text-blue-700/90 ${inopsUi.typeSmall}`}
+                  >
+                    {cell.description}
+                  </p>
                 </Link>
               ))}
           </div>

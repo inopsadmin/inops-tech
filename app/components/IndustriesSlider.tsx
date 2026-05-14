@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { industriesImagery } from "@/app/lib/serviceImagery";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 const industries = industriesImagery.map((row) => ({ ...row }));
 
@@ -18,7 +19,7 @@ function IndustryCard({ name, imageUrl }: { name: string; imageUrl: string }) {
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-4">
-        <h3 className="font-heading text-white drop-shadow-md">{name}</h3>
+        <h3 className={`${inopsUi.typeCardTitle} text-white drop-shadow-md`}>{name}</h3>
       </div>
     </div>
   );
@@ -30,7 +31,7 @@ export default function IndustriesSlider() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
         <div className="text-center">
           <span
-            className="inline-flex items-center gap-2 rounded-full border px-[0.9rem] py-[0.35rem] text-[0.6875rem] font-semibold uppercase tracking-[0.12em] shadow-sm ring-1 ring-[color:var(--inops-blue)]/12"
+            className="inline-flex items-center gap-2 rounded-full border px-[0.9rem] py-[0.35rem] text-xs font-semibold uppercase tracking-[0.12em] shadow-sm ring-1 ring-[color:var(--inops-blue)]/12"
             style={{
               color: "var(--inops-blue)",
               backgroundColor: "var(--brand-light)",
@@ -39,8 +40,8 @@ export default function IndustriesSlider() {
           >
             Industries
           </span>
-          <h2 className="mt-4 text-center text-black">Industries We Serve</h2>
-          <p className="mx-auto mt-3 max-w-xl text-gray-600">
+          <h2 className={`mt-4 text-center ${inopsUi.typeSection}`}>Industries We Serve</h2>
+          <p className={`mx-auto mt-3 max-w-xl ${inopsUi.typeBody}`}>
             Trusted across manufacturing, electronics, logistics, construction, and more
           </p>
         </div>

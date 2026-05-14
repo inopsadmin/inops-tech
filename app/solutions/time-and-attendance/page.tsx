@@ -10,6 +10,7 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
 const timeAttendanceProductVideo = "/genrate_this_image_video_202605072329.mp4";
 const optiCamSolutionImage =
@@ -290,7 +291,9 @@ export default function TimeAndAttendancePage() {
           <div className="relative w-full overflow-hidden">
             <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
               <SolutionHeroWaveDecor className="z-[1]" />
-              <div className="relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
+              <div
+                className={`relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+              >
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
                   autoPlay
@@ -329,7 +332,9 @@ export default function TimeAndAttendancePage() {
                 />
               </div>
               <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
-                <div className="max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6">
+                <div
+                  className={`max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
+                >
                   <FlyInText
                     as="span"
                     trigger="mount"
@@ -347,7 +352,7 @@ export default function TimeAndAttendancePage() {
                     direction="left"
                     delay={0.08}
                     duration={0.68}
-                    className="mt-4 text-slate-900 sm:mt-5"
+                    className="home-display-heading inops-type-hero mt-4 text-slate-900 sm:mt-5"
                   >
                     Attendance without devices,{" "}
                     <span className="text-blue-800">powered by AI</span>
@@ -358,7 +363,7 @@ export default function TimeAndAttendancePage() {
                     direction="up"
                     delay={0.16}
                     duration={0.62}
-                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base lg:text-[1.05rem]"
+                    className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
                     Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer
                     vision. No queues, no contact, no excuses.
@@ -373,9 +378,9 @@ export default function TimeAndAttendancePage() {
                   >
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
+                      className="inline-flex items-center justify-center rounded-full bg-blue-700 px-7 py-3 text-sm font-semibold text-white shadow-md shadow-sky-500/30"
                     >
-                      Book a Live Demo
+                      Get In Touch
                     </Link>
                   </FlyInText>
                 </div>
@@ -406,94 +411,106 @@ export default function TimeAndAttendancePage() {
               </FlyInText>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-              {[
-                {
-                  title: "Endless Queues",
-                  description:
-                    "Employees spend average 8 minutes daily waiting at biometric checkpoints during peak hours.",
-                  icon: "clock" as const,
-                  chip: "Throughput",
-                  metric: "~8 min",
-                  accentBar: "from-rose-500 via-orange-400 to-amber-300",
-                  iconWrap:
-                    "bg-rose-50 text-rose-600 ring-rose-500/20 group-hover:bg-rose-500 group-hover:text-white group-hover:ring-rose-400/40",
-                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(244,63,94,0.35)]",
-                },
-                {
-                  title: "Buddy Punching",
-                  description:
-                    "Time theft through shared cards or fingerprints costs businesses up to 2% of annual payroll.",
-                  icon: "users" as const,
-                  chip: "Payroll risk",
-                  metric: "Up to 2%",
-                  accentBar: "from-violet-500 via-fuchsia-500 to-pink-400",
-                  iconWrap:
-                    "bg-violet-50 text-violet-600 ring-violet-500/20 group-hover:bg-violet-600 group-hover:text-white group-hover:ring-violet-400/40",
-                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.35)]",
-                },
-                {
-                  title: "High Capex",
-                  description:
-                    "Proprietary hardware devices require frequent maintenance, licenses, and replacement.",
-                  icon: "briefcase" as const,
-                  chip: "Cost stack",
-                  metric: "Capex + Opex",
-                  accentBar: "from-amber-500 via-orange-500 to-red-400",
-                  iconWrap:
-                    "bg-amber-50 text-amber-700 ring-amber-500/20 group-hover:bg-amber-500 group-hover:text-white group-hover:ring-amber-400/40",
-                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.38)]",
-                },
-                {
-                  title: "Data Gaps",
-                  description:
-                    "Multi-location enterprises struggle with fragmented data and delayed sync between sites.",
-                  icon: "globe" as const,
-                  chip: "Visibility",
-                  metric: "Delayed sync",
-                  accentBar: "from-sky-500 via-cyan-400 to-teal-400",
-                  iconWrap:
-                    "bg-sky-50 text-sky-600 ring-sky-500/20 group-hover:bg-sky-500 group-hover:text-white group-hover:ring-sky-400/40",
-                  hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
-                },
-              ].map((item, i) => (
-                <ThroughputMetricCard
-                  key={item.title}
-                  title={item.title}
-                  description={item.description}
-                  chip={item.chip}
-                  metric={item.metric}
-                  accentBar={item.accentBar}
-                  iconWrap={item.iconWrap}
-                  hoverGlow={item.hoverGlow}
-                  index={i}
-                  icon={
-                    item.icon === "clock" ? (
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 7v5l3 2" />
-                      </svg>
-                    ) : item.icon === "users" ? (
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="9" cy="8" r="3" />
-                        <circle cx="17" cy="9" r="2" />
-                        <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                        <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
-                      </svg>
-                    ) : item.icon === "briefcase" ? (
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <rect x="3" y="7" width="18" height="12" rx="2" />
-                        <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
-                      </svg>
-                    ) : (
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
-                      </svg>
-                    )
-                  }
-                />
-              ))}
+            <div className="relative mt-10">
+              <div
+                className="pointer-events-none absolute left-[8%] right-[8%] top-8 hidden h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent md:block xl:left-[10%] xl:right-[10%]"
+                aria-hidden
+              />
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4 xl:gap-5">
+                {[
+                  {
+                    title: "Endless Queues",
+                    description:
+                      "Employees spend average 8 minutes daily waiting at biometric checkpoints during peak hours.",
+                    icon: "clock" as const,
+                    chip: "Throughput",
+                    metric: "~8 min",
+                    accentBar: "from-rose-500 via-orange-400 to-amber-300",
+                    borderGradient: "from-rose-600 via-orange-500 to-amber-500",
+                    iconWrap:
+                      "bg-gradient-to-br from-rose-500 via-orange-500 to-amber-600 text-white shadow-[0_10px_28px_-10px_rgba(244,63,94,0.45)] ring-1 ring-white/25",
+                    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(244,63,94,0.35)]",
+                  },
+                  {
+                    title: "Buddy Punching",
+                    description:
+                      "Time theft through shared cards or fingerprints costs businesses up to 2% of annual payroll.",
+                    icon: "users" as const,
+                    chip: "Payroll risk",
+                    metric: "Up to 2%",
+                    accentBar: "from-violet-500 via-fuchsia-500 to-pink-400",
+                    borderGradient: "from-violet-600 via-fuchsia-500 to-pink-500",
+                    iconWrap:
+                      "bg-gradient-to-br from-violet-600 via-fuchsia-500 to-pink-600 text-white shadow-[0_10px_28px_-10px_rgba(139,92,246,0.45)] ring-1 ring-white/25",
+                    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(139,92,246,0.35)]",
+                  },
+                  {
+                    title: "High Capex",
+                    description:
+                      "Proprietary hardware devices require frequent maintenance, licenses, and replacement.",
+                    icon: "briefcase" as const,
+                    chip: "Cost stack",
+                    metric: "Capex + Opex",
+                    accentBar: "from-amber-500 via-orange-500 to-red-400",
+                    borderGradient: "from-amber-600 via-orange-500 to-red-500",
+                    iconWrap:
+                      "bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 text-white shadow-[0_10px_28px_-10px_rgba(245,158,11,0.45)] ring-1 ring-white/25",
+                    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(245,158,11,0.38)]",
+                  },
+                  {
+                    title: "Data Gaps",
+                    description:
+                      "Multi-location enterprises struggle with fragmented data and delayed sync between sites.",
+                    icon: "globe" as const,
+                    chip: "Visibility",
+                    metric: "Delayed sync",
+                    accentBar: "from-sky-500 via-cyan-400 to-teal-400",
+                    borderGradient: "from-sky-600 via-cyan-500 to-teal-600",
+                    iconWrap:
+                      "bg-gradient-to-br from-sky-500 via-cyan-500 to-teal-600 text-white shadow-[0_10px_28px_-10px_rgba(14,165,233,0.45)] ring-1 ring-white/25",
+                    hoverGlow: "hover:shadow-[0_24px_56px_-28px_rgba(14,165,233,0.35)]",
+                  },
+                ].map((item, i) => (
+                  <ThroughputMetricCard
+                    key={item.title}
+                    title={item.title}
+                    description={item.description}
+                    chip={item.chip}
+                    metric={item.metric}
+                    accentBar={item.accentBar}
+                    borderGradient={item.borderGradient}
+                    iconWrap={item.iconWrap}
+                    hoverGlow={item.hoverGlow}
+                    index={i}
+                    cta={{ href: "/contact", label: "Explore module" }}
+                    icon={
+                      item.icon === "clock" ? (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M12 7v5l3 2" />
+                        </svg>
+                      ) : item.icon === "users" ? (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                          <circle cx="9" cy="8" r="3" />
+                          <circle cx="17" cy="9" r="2" />
+                          <path d="M4 18c0-2.8 2.2-5 5-5s5 2.2 5 5" />
+                          <path d="M15 18c0-1.8 1.2-3.3 2.9-3.8" />
+                        </svg>
+                      ) : item.icon === "briefcase" ? (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                          <rect x="3" y="7" width="18" height="12" rx="2" />
+                          <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2" />
+                        </svg>
+                      ) : (
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
+                        </svg>
+                      )
+                    }
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -564,7 +581,7 @@ export default function TimeAndAttendancePage() {
                   as="span"
                   direction="up"
                   duration={0.55}
-                  className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700"
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-blue-600" aria-hidden />
                   Our solution
@@ -690,7 +707,7 @@ export default function TimeAndAttendancePage() {
                 as="span"
                 direction="up"
                 duration={0.55}
-                className="inline-flex items-center gap-2 rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-cyan-700"
+                className="inline-flex items-center gap-2 rounded-full border border-cyan-200/80 bg-cyan-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-700"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-600" aria-hidden />
                 How it deploys
@@ -804,7 +821,7 @@ export default function TimeAndAttendancePage() {
 
                     <div className="relative flex flex-1 flex-col items-center text-center">
                       <span
-                        className={`inline-flex h-5 items-center justify-center rounded-full bg-gradient-to-br ${item.accentBar} px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-sm`}
+                        className={`inline-flex h-5 items-center justify-center rounded-full bg-gradient-to-br ${item.accentBar} px-2.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-sm`}
                       >
                         Step {item.step}
                       </span>
@@ -904,7 +921,7 @@ export default function TimeAndAttendancePage() {
                 as="span"
                 direction="up"
                 duration={0.55}
-                className="inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-violet-50/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-700"
+                className="inline-flex items-center gap-2 rounded-full border border-violet-200/80 bg-violet-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-violet-700"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-violet-600" aria-hidden />
                 Why switch
@@ -955,7 +972,7 @@ export default function TimeAndAttendancePage() {
                         </svg>
                       </span>
                       <div className="min-w-0">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-700">Traditional</p>
+                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-rose-700">Traditional</p>
                         <p className="mt-0.5 text-sm leading-snug text-slate-700">{row.traditional}</p>
                       </div>
                     </div>
@@ -966,9 +983,9 @@ export default function TimeAndAttendancePage() {
                         </svg>
                       </span>
                       <div className="min-w-0 flex-1">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">OptiCam AI</p>
+                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">OptiCam AI</p>
                         <p className="mt-0.5 text-sm font-semibold leading-snug text-slate-900">{row.opticam}</p>
-                        <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20">
+                        <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20">
                           {row.highlight}
                         </span>
                       </div>
@@ -988,7 +1005,7 @@ export default function TimeAndAttendancePage() {
             >
               {/* "Recommended" ribbon over OptiCam column */}
               <div className="pointer-events-none absolute right-6 top-0 z-10 hidden lg:block">
-                <span className="inline-flex items-center gap-1.5 rounded-b-xl bg-gradient-to-br from-emerald-500 to-teal-500 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-md">
+                <span className="inline-flex items-center gap-1.5 rounded-b-xl bg-gradient-to-br from-emerald-500 to-teal-500 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-md">
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <path d="M12 2 15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6Z" />
                   </svg>
@@ -999,11 +1016,11 @@ export default function TimeAndAttendancePage() {
               {/* Header */}
               <div className="grid grid-cols-[1.1fr_1fr_1.1fr] border-b border-slate-200 bg-gradient-to-r from-slate-50 via-white to-slate-50">
                 <div className="flex items-center gap-2 px-6 py-5 text-left">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Feature</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Feature</span>
                 </div>
                 <div className="flex items-center justify-between gap-3 border-l border-slate-200 px-6 py-5">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-rose-600">Yesterday</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-rose-600">Yesterday</p>
                     <p className="mt-0.5 text-sm font-bold text-slate-700">Traditional Biometrics</p>
                   </div>
                   <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-50 text-rose-500 ring-1 ring-rose-500/20">
@@ -1015,7 +1032,7 @@ export default function TimeAndAttendancePage() {
                 </div>
                 <div className="flex items-center justify-between gap-3 border-l border-slate-200 bg-gradient-to-br from-blue-50/80 via-white to-emerald-50/40 px-6 py-5">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">Today</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Today</p>
                     <p className="mt-0.5 text-sm font-bold text-slate-900">OptiCam AI</p>
                   </div>
                   <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
@@ -1064,7 +1081,7 @@ export default function TimeAndAttendancePage() {
                       </span>
                       <p className="text-sm font-semibold tracking-tight text-slate-900">{row.opticam}</p>
                     </div>
-                    <span className="hidden shrink-0 items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20 lg:inline-flex">
+                    <span className="hidden shrink-0 items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20 lg:inline-flex">
                       {row.highlight}
                     </span>
                   </div>
@@ -1074,7 +1091,7 @@ export default function TimeAndAttendancePage() {
               {/* Footer summary */}
               <div className="grid grid-cols-[1.1fr_1fr_1.1fr] border-t border-slate-200 bg-gradient-to-r from-slate-50 via-white to-blue-50/40">
                 <div className="flex items-center gap-2 px-6 py-4">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Summary</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Summary</span>
                 </div>
                 <div className="flex items-center gap-2 border-l border-slate-200 px-6 py-4">
                   <span className="inline-flex h-2 w-2 rounded-full bg-rose-500" aria-hidden />
@@ -1114,7 +1131,7 @@ export default function TimeAndAttendancePage() {
                 as="span"
                 direction="up"
                 duration={0.55}
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400 backdrop-blur"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400 backdrop-blur"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" aria-hidden />
                 Measurable outcomes
@@ -1242,7 +1259,7 @@ export default function TimeAndAttendancePage() {
                               </svg>
                             )}
                           </span>
-                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide ring-1 ${item.trendChipColor}`}>
+                          <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold uppercase tracking-wide ring-1 ${item.trendChipColor}`}>
                             {item.trendChip}
                           </span>
                         </div>
@@ -1250,8 +1267,8 @@ export default function TimeAndAttendancePage() {
                         <p className="mt-3.5 text-[1.75rem] font-bold leading-none tracking-tight tabular-nums text-white drop-shadow-sm sm:text-[2rem]">
                           {item.value}
                         </p>
-                        <p className="mt-1.5 text-[13px] font-semibold leading-snug text-slate-100">{item.label}</p>
-                        <p className="mt-1 text-[12px] leading-snug text-slate-400">{item.detail}</p>
+                        <p className="mt-1.5 text-sm font-semibold leading-snug text-slate-100">{item.label}</p>
+                        <p className="mt-1 text-sm leading-snug text-slate-400">{item.detail}</p>
                       </div>
                     </motion.article>
                   ))}
@@ -1270,7 +1287,7 @@ export default function TimeAndAttendancePage() {
                   aria-hidden
                 />
 
-                <span className="relative inline-flex w-fit items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/80 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-blue-700">
+                <span className="relative inline-flex w-fit items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/80 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">
                   <span className="h-1.5 w-1.5 rounded-full bg-blue-600" aria-hidden />
                   Ready for production
                 </span>
@@ -1283,7 +1300,7 @@ export default function TimeAndAttendancePage() {
                 >
                   Enterprise <span className="text-blue-800">Deployment Readiness</span>
                 </FlyInText>
-                <p className="relative mt-1.5 text-[13px] leading-relaxed text-slate-600">
+                <p className="relative mt-1.5 text-sm leading-relaxed text-slate-600">
                   OptiCam ships secure-by-default with the integrations and codecs your IT team already trusts.
                 </p>
 
@@ -1317,19 +1334,19 @@ export default function TimeAndAttendancePage() {
                         </svg>
                       </span>
                       <div className="leading-snug">
-                        <p className="text-[13px] font-semibold text-slate-900">{item.title}</p>
-                        <p className="mt-0.5 text-[12px] text-slate-600">{item.detail}</p>
+                        <p className="!text-sm font-semibold text-slate-900">{item.title}</p>
+                        <p className="mt-0.5 text-base text-slate-600">{item.detail}</p>
                       </div>
                     </li>
                   ))}
                 </ul>
 
                 <div className="relative mt-4 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">Compliance</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Compliance</span>
                   {["SOC2", "GDPR", "PDPA", "ISO 27001"].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700"
+                      className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-semibold text-slate-700"
                     >
                       <svg className="h-2.5 w-2.5 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <path d="M20 6 9 17l-5-5" />
@@ -1341,7 +1358,7 @@ export default function TimeAndAttendancePage() {
 
                 <Link
                   href="/contact"
-                  className="relative mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[color:var(--inops-blue)] px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_32px_-12px_rgba(29,95,191,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_18px_44px_-16px_rgba(29,95,191,0.65)]"
+                  className="relative mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[color:var(--inops-blue)] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_32px_-12px_rgba(29,95,191,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--inops-navy)] hover:shadow-[0_18px_44px_-16px_rgba(29,95,191,0.65)]"
                 >
                   Request Implementation Plan
                   <svg className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>

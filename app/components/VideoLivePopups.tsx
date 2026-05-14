@@ -299,12 +299,12 @@ export default function VideoLivePopups({ popups }: VideoLivePopupsProps) {
               </span>
             )}
             <div className="leading-tight">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                 {p.label ?? "Live"}
               </p>
               <p className="text-sm font-semibold text-slate-900">{p.title}</p>
               {p.subtitle ? (
-                <p className="mt-0.5 text-[11px] font-medium text-slate-500">{p.subtitle}</p>
+                <p className="mt-0.5 text-xs font-medium text-slate-500">{p.subtitle}</p>
               ) : null}
             </div>
           </motion.div>

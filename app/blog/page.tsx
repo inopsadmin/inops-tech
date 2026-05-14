@@ -119,7 +119,7 @@ export default function BlogPage() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
                   <p className={inopsUi.heroKicker}>InOps</p>
-                  <h1 className="mt-4 text-white">Blog</h1>
+                  <h1 className="home-display-heading inops-type-hero mt-4 text-white">Blog</h1>
                   <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{blogBanner.tagline}</p>
                 </div>
               </div>

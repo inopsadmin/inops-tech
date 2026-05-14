@@ -57,7 +57,7 @@ export default function PlatformShowcaseDevice() {
             <FlyInText
               as="span"
               direction="left"
-              className="hidden text-[9px] font-medium text-slate-400 sm:inline sm:text-[10px]"
+              className="hidden text-xs font-medium text-slate-400 sm:inline sm:text-xs"
             >
               Live preview
             </FlyInText>
@@ -83,7 +83,7 @@ export default function PlatformShowcaseDevice() {
                     id={`platform-tab-${s.id}`}
                     aria-controls={`platform-panel-${s.id}`}
                     onClick={() => setActiveIndex(i)}
-                    className={`shrink-0 rounded-lg px-2.5 py-2 text-[11px] font-semibold transition-colors duration-200 sm:px-3 sm:text-xs md:text-[13px] ${
+                    className={`shrink-0 rounded-lg px-2.5 py-2 text-xs font-semibold transition-colors duration-200 sm:px-3 sm:text-xs md:text-sm ${
                       active
                         ? "bg-sky-100 text-sky-900 ring-1 ring-sky-200/80"
                         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
@@ -135,7 +135,7 @@ export default function PlatformShowcaseDevice() {
                 <FlyInText
                   as="div"
                   direction="up"
-                  className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md sm:left-5 sm:top-5 sm:text-[11px]"
+                  className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md sm:left-5 sm:top-5 sm:text-xs"
                 >
                   {slide.badge}
                 </FlyInText>
@@ -143,13 +143,13 @@ export default function PlatformShowcaseDevice() {
 
               <div className="flex flex-col justify-between gap-6 border-t border-slate-100 bg-white p-5 sm:p-6 md:border-l md:border-t-0 lg:p-8">
                 <div>
-                  <FlyInText as="p" direction="left" className="text-[10px] font-bold tracking-[0.12em] text-slate-400 sm:text-[11px]">
+                  <FlyInText as="p" direction="left" className="text-xs font-bold tracking-[0.12em] text-slate-400 sm:text-xs">
                     {slide.badge}
                   </FlyInText>
                   <FlyInText as="h3" direction="up" delay={0.05} className="mt-3 text-slate-900">
                     {slide.title}
                   </FlyInText>
-                  <FlyInText as="p" direction="up" delay={0.1} className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                  <FlyInText as="p" direction="up" delay={0.1} className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
                     {slide.text}
                   </FlyInText>
                 </div>
@@ -181,7 +181,7 @@ export default function PlatformShowcaseDevice() {
             className="h-7 w-7 shrink-0 rounded object-contain opacity-90 sm:h-8 sm:w-8"
             aria-hidden
           />
-          <FlyInText as="p" direction="up" className="text-[10px] font-medium tracking-wide text-slate-400 sm:text-[11px]">
+          <FlyInText as="p" direction="up" className="text-xs font-medium tracking-wide text-slate-400 sm:text-xs">
             Platform overview
           </FlyInText>
         </div>

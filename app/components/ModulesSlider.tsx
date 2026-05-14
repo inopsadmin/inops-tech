@@ -116,7 +116,7 @@ function ModuleCard({
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/88 via-black/35 to-transparent transition-opacity duration-300 group-hover:from-black/92" aria-hidden />
       <div className="absolute inset-x-0 bottom-0 p-4 pt-12 sm:pt-14">
         <h3 className="text-sm font-heading leading-tight text-white drop-shadow-sm sm:text-base">{title}</h3>
-        <p className="mt-1.5 text-[11px] leading-relaxed text-white/90 line-clamp-3 group-hover:line-clamp-none sm:text-xs">
+        <p className="mt-1.5 text-xs leading-relaxed text-white/90 line-clamp-3 group-hover:line-clamp-none sm:text-xs">
           {description}
         </p>
       </div>
@@ -168,7 +168,7 @@ export default function ModulesSlider() {
               Solutions
             </span>
             <h2 className="mt-4 text-blue-600">Our Modules</h2>
-            <p className="mt-3 max-w-sm text-slate-600 mx-auto lg:mx-0 text-sm leading-relaxed sm:text-[15px]">
+            <p className="mt-3 max-w-sm text-slate-600 mx-auto lg:mx-0 text-sm leading-relaxed sm:text-base">
               Each module maps to a real operations job, time capture, gates, visitors, payroll, and compliance, with plain-language detail on every card.
             </p>
             <div className="mt-4 h-0.5 w-12 rounded-full bg-blue-600" />

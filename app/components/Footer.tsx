@@ -70,7 +70,7 @@ function FooterLink({ href, children, isActive = false }: { href: string; childr
   return (
     <Link
       href={href}
-      className={`text-sm underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline xl:text-[0.96rem] 2xl:text-base ${
+      className={`text-sm underline-offset-4 transition-[color,transform] duration-200 hover:translate-x-0.5 hover:text-white hover:underline ${
         isActive ? "font-medium text-blue-300" : "text-slate-400"
       }`}
     >
@@ -80,9 +80,7 @@ function FooterLink({ href, children, isActive = false }: { href: string; childr
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="font-label text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 xl:text-xs 2xl:text-[0.82rem]">{children}</h3>
-  );
+  return <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">{children}</h3>;
 }
 
 export default function Footer() {

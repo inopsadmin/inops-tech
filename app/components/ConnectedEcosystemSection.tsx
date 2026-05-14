@@ -76,7 +76,7 @@ export default function ConnectedEcosystemSection() {
                     as="p"
                     direction="up"
                     delay={0.05 + index * 0.06}
-                    className="mt-3 min-h-[2.8rem] text-[10px] font-bold uppercase leading-tight tracking-wide text-slate-800 sm:text-[11px]"
+                    className="mt-3 min-h-[2.8rem] text-xs font-bold uppercase leading-tight tracking-wide text-slate-800 sm:text-xs"
                   >
                     {step.label}
                   </FlyInText>

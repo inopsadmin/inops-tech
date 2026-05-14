@@ -249,7 +249,7 @@ export default function Home() {
                 }}
               >
                 {/* <motion.div variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 12 } }} transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}>
-                  <span className="inline-flex max-w-[min(100%,22rem)] items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-white/95 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:max-w-none sm:px-5 sm:tracking-[0.22em] sm:text-[11px]">
+                  <span className="inline-flex max-w-[min(100%,22rem)] items-center gap-2 rounded-full border border-white/20 bg-white/[0.08] px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/95 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] backdrop-blur-md sm:max-w-none sm:px-5 sm:tracking-[0.22em] sm:text-xs">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400 shadow-[0_0_10px_rgba(56,189,248,0.7)]" aria-hidden />
                     Contract Labour Management
                   </span>
@@ -263,7 +263,7 @@ export default function Home() {
                     className="home-hero__glow-pulse pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[min(120%,42rem)] -translate-x-1/2 -translate-y-1/2 rounded-[3rem] bg-gradient-to-r from-blue-500/45 via-cyan-400/35 to-blue-600/40 blur-[56px]"
                     aria-hidden
                   />
-                  <h1 className="home-display-heading relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased">
+                  <h1 className={`home-display-heading inops-type-hero relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased`}>
                     {heroSlides[activeHeroIndex]?.title}
                   </h1>
                 </motion.div>
@@ -323,7 +323,7 @@ export default function Home() {
               as="h2"
               id="hero-trusted-clients-heading"
               direction="up"
-              className="font-heading-bold tracking-tight text-slate-900 lg:tracking-wide"
+              className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
             >
               Trusted by leading manufacturing &amp; infrastructure companies
             </FlyInText>
@@ -480,12 +480,12 @@ export default function Home() {
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
-                <AnimatedHeading as="h2" className="home-display-heading text-gray-900">
+                <AnimatedHeading as="h2" className="home-display-heading text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
                   Workforce governance
                 </AnimatedHeading>
               </motion.div>
             </motion.div>
-            <AnimatedParagraph className="mx-auto mt-6 max-w-2xl font-body text-gray-600">
+            <AnimatedParagraph className={`mx-auto mt-6 max-w-2xl ${inopsUi.typeBody}`}>
               Built for factories and industrial sites: one platform for visibility, compliance, and secure access, so operations teams spend less time on paperwork and more time running the floor.
             </AnimatedParagraph>
           </div>
@@ -545,20 +545,20 @@ export default function Home() {
                           sizes="(max-width: 1024px) 100vw, 55vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/20 to-transparent" />
-                        <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-body-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
+                        <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-body-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
                           {selectedWhyCard.badge ?? "Dashboard view"}
                         </div>
                       </div>
 
                       <div className="relative flex flex-col justify-between p-6 transition-colors duration-150 ease-out sm:p-8">
                         <div>
-                          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-label uppercase tracking-wide text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
+                          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-label uppercase tracking-wide text-blue-700 transition-colors duration-150 ease-out group-hover:border-blue-300 group-hover:bg-blue-100">
                             {selectedWhyCard.badge ?? "Capability"}
                           </div>
-                          <h3 className="mt-4 text-gray-900 transition-colors duration-150 ease-out">
+                          <h3 className={`mt-4 ${inopsUi.typeCardTitle} transition-colors duration-150 ease-out`}>
                             {selectedWhyCard.title}
                           </h3>
-                          <p className="mt-3 text-sm font-body leading-relaxed text-gray-600 transition-colors duration-150 ease-out group-hover:text-gray-700 sm:text-[15px]">
+                          <p className={`mt-3 ${inopsUi.typeBody} transition-colors duration-150 ease-out group-hover:text-gray-700`}>
                             {selectedWhyCard.text}
                           </p>
                         </div>
@@ -635,10 +635,10 @@ export default function Home() {
                               </div>
                             </div>
 
-                            <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+                            <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-blue-700">
                               {card.badge ?? "Capability"}
                             </div>
-                            <div className="mt-1.5 line-clamp-2 text-[1rem] font-heading-semibold leading-snug text-slate-900">{card.title}</div>
+                            <div className={`mt-1.5 line-clamp-2 ${inopsUi.typeCardTitle} leading-snug`}>{card.title}</div>
                           </div>
                         </div>
                       </button>
@@ -678,10 +678,10 @@ export default function Home() {
               >
                 Command dashboards
               </FlyInText>
-              <FlyInText as="h2" direction="up" delay={0.05} className="mt-2 text-slate-900">
+              <FlyInText as="h2" direction="up" delay={0.05} className={`mt-2 ${inopsUi.typeSection}`}>
                 One view for managers, leadership, and HR
               </FlyInText>
-              <FlyInText as="p" direction="up" delay={0.1} className="mt-2 text-sm text-slate-600 sm:text-base">
+              <FlyInText as="p" direction="up" delay={0.1} className={`mt-2 ${inopsUi.typeBody}`}>
                 Live data across attendance, compliance, productivity, and executive KPIs.
               </FlyInText>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -747,19 +747,19 @@ export default function Home() {
                 const textBlock = (
                   <div className="flex min-w-0 flex-col justify-center md:flex-1 md:max-w-[50%]">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                      <FlyInText as="h3" direction={textFirst ? "right" : "left"} className="text-slate-900">
+                      <FlyInText as="h3" direction={textFirst ? "right" : "left"} className={inopsUi.typeCardTitle}>
                         {card.title}
                       </FlyInText>
                       <FlyInText
                         as="span"
                         direction="up"
                         delay={0.04}
-                        className={`w-fit rounded-md border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${card.badgeClass}`}
+                        className={`w-fit rounded-md border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
                       >
                         {card.badge}
                       </FlyInText>
                     </div>
-                    <FlyInText as="p" direction="up" delay={0.08} className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                    <FlyInText as="p" direction="up" delay={0.08} className={`mt-3 ${inopsUi.typeBody}`}>
                       {card.description}
                     </FlyInText>
                     <FlyInText as="div" direction="up" delay={0.12} className="mt-4">

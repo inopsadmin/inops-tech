@@ -56,10 +56,10 @@ export default function SolutionPageClosingCta({
         aria-hidden
       />
       <div className="relative z-10 mx-auto max-w-3xl">
-        <h2 id={headingId} className="solution-cta__heading tracking-tight text-white">
+        <h2 id={headingId} className={`solution-cta__heading ${inopsUi.typeOnDarkTitle}`}>
           {heading}
         </h2>
-        <div className="solution-cta__desc mx-auto mt-4 max-w-2xl leading-relaxed text-blue-50">
+        <div className={`solution-cta__desc mx-auto mt-4 max-w-2xl ${inopsUi.typeOnDarkBody}`}>
           {description}
         </div>
         <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
@@ -77,7 +77,7 @@ export default function SolutionPageClosingCta({
           )}
         </div>
         {footnote ? (
-          <p className="mt-8 text-sm leading-relaxed text-blue-50/95">{footnote}</p>
+          <p className="mt-8 text-sm leading-6 text-blue-50/95">{footnote}</p>
         ) : null}
       </div>
     </motion.div>
