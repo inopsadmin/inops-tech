@@ -187,15 +187,26 @@ const whyCards: WhyCard[] = [
   },
 ];
 
-function whyCardNumber(title: string): string {
-  const idx = whyCards.findIndex((c) => c.title === title);
+function whyCardNumber(title: string, order: string[]): string {
+  const idx = order.indexOf(title);
   if (idx < 0) return "00";
   return String(idx + 1).padStart(2, "0");
 }
 
+const defaultWhyFeaturedTitle = "Contract workforce governance";
+
+function buildWhyOrder(featuredTitle = defaultWhyFeaturedTitle) {
+  const titles = whyCards.map((c) => c.title);
+  const featuredIdx = titles.indexOf(featuredTitle);
+  if (featuredIdx <= 0) return titles;
+  const next = [...titles];
+  [next[0], next[featuredIdx]] = [next[featuredIdx], next[0]];
+  return next;
+}
+
 export default function Home() {
   const [heroDarkPhase, setHeroDarkPhase] = useState(true);
-  const [whyOrder, setWhyOrder] = useState(() => whyCards.map((c) => c.title));
+  const [whyOrder, setWhyOrder] = useState(() => buildWhyOrder());
   const selectedWhyCard = whyCards.find((c) => c.title === whyOrder[0]) ?? whyCards[0];
 
   const swapFeaturedWith = (title: string) => {
@@ -602,7 +613,7 @@ export default function Home() {
                           className="pointer-events-none absolute bottom-4 right-4 select-none text-4xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-5 sm:right-5 sm:text-5xl lg:bottom-6 lg:right-7 lg:text-6xl"
                           aria-hidden
                         >
-                          {whyCardNumber(selectedWhyCard.title)}
+                          {whyCardNumber(selectedWhyCard.title, whyOrder)}
                         </span>
                       </div>
                     </motion.div>
@@ -681,7 +692,7 @@ export default function Home() {
                       className="pointer-events-none absolute bottom-3 right-3 select-none text-3xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-4 sm:right-4 sm:text-4xl"
                       aria-hidden
                     >
-                      {whyCardNumber(card.title)}
+                      {whyCardNumber(card.title, whyOrder)}
                     </span>
                   </motion.div>
                 );

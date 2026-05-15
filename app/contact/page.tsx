@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
 import { FlyInText } from "@/app/components/FlyInText";
 import { inopsUi } from "@/app/lib/inopsUi";
+import { OFFICE_ADDRESS_LINE, OFFICE_MAPS_EMBED_URL } from "@/app/lib/site";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -23,8 +24,8 @@ const contactInfo: {
 }[] = [
   {
     label: "Location:",
-    value: "No.18, 4th 'C' Cross, 1st Main Rd, Koramangala Industrial Layout, 5th Block, Bengaluru, Karnataka 560095.",
-    valueClass: "!text-black",
+    value: `${OFFICE_ADDRESS_LINE}.`,
+    valueClass: "!text-slate-500",
     icon: (
       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -195,12 +196,12 @@ export default function ContactPage() {
                 Bengaluru office
               </FlyInText>
               <FlyInText as="h3" direction="up" delay={0.06} className={`mt-2 ${inopsUi.sectionHeading} !text-black`}>
-                Koramangala Industrial Layout
+                Bommasandra Industrial Area
               </FlyInText>
             </div>
             <iframe
-              title="Office location - Koramangala, Bengaluru"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.016988!2d77.6242!3d12.9352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15e3e5c14749%3A0x1b7756b2e58d8d8!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1709123456789"
+              title="Office location - Bommasandra Industrial Area, Bengaluru"
+              src={OFFICE_MAPS_EMBED_URL}
               width="100%"
               height="390"
               style={{ border: 0 }}

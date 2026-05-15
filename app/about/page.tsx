@@ -486,8 +486,8 @@ export default function AboutPage() {
                 />
               </div>
               <div className="min-w-0 text-left">
-                <p className="text-base font-heading-bold tracking-tight text-slate-900">Prashanth K.</p>
-                <p className={`${aboutLead} mt-0.5 text-sm`}>Chief Executive Officer</p>
+                <p className="text-base font-heading-bold tracking-tight text-slate-900">Satish Sinha </p>
+                <p className={`${aboutLead} mt-0.5 text-sm`}>Founder</p>
               </div>
             </motion.div>
           </div>

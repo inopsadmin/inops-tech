@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
@@ -82,6 +83,17 @@ const comprehensiveControlCards = [
   },
 ] as const;
 
+/** Matches standard cards elsewhere on this page (white surface, slate border, brand blue accents) */
+const painPointTheme = {
+  cardSurface:
+    "border-slate-200/90 bg-white shadow-sm shadow-slate-900/[0.04] ring-1 ring-slate-900/[0.03] hover:border-blue-200/80 hover:shadow-md hover:shadow-slate-900/[0.06]",
+  numBg: "bg-blue-50 text-[color:var(--inops-blue)] ring-1 ring-blue-100/80",
+  iconBox: "bg-blue-50 text-blue-600 ring-1 ring-blue-100/80",
+  statPill: "border border-blue-200/80 bg-blue-50/90 text-blue-800 ring-1 ring-blue-500/10",
+  cornerBadge:
+    "border border-blue-200/90 bg-blue-50/95 text-blue-800 ring-1 ring-blue-500/15",
+} as const;
+
 const painPoints = [
   {
     title: "Ghost workers & time theft",
@@ -90,17 +102,6 @@ const painPoints = [
     description:
       "Buddy punching and proxy clock-ins hide real headcount, clean attendance data never reaches payroll.",
     icon: "users" as const,
-    theme: {
-      topBar: "from-rose-500 via-orange-500 to-amber-500",
-      cardSurface:
-        "border-rose-200/70 bg-gradient-to-br from-rose-50/95 via-white to-orange-50/40 shadow-[0_22px_56px_-32px_rgba(244,63,94,0.14)] ring-1 ring-rose-500/[0.06] hover:border-rose-300/90 hover:shadow-[0_32px_70px_-36px_rgba(244,63,94,0.2)]",
-      orb: "from-rose-400/25 to-orange-500/12",
-      numBg: "bg-gradient-to-br from-rose-600 to-orange-600 text-white shadow-lg shadow-rose-600/25 ring-2 ring-white/80",
-      iconBox:
-        "bg-gradient-to-br from-rose-500 to-orange-600 text-white shadow-md shadow-rose-600/25 ring-2 ring-white/70",
-      statPill:
-        "border border-rose-200/90 bg-gradient-to-r from-rose-50 to-orange-50/90 text-rose-950 shadow-sm ring-1 ring-rose-500/10",
-    },
   },
   {
     title: "Compliance violations",
@@ -109,17 +110,6 @@ const painPoints = [
     description:
       "OT, wage, and incident gaps surface after the fact, audits and disputes land on your desk.",
     icon: "shield" as const,
-    theme: {
-      topBar: "from-violet-600 via-purple-500 to-indigo-600",
-      cardSurface:
-        "border-violet-200/70 bg-gradient-to-br from-violet-50/95 via-white to-indigo-50/38 shadow-[0_22px_56px_-32px_rgba(139,92,246,0.12)] ring-1 ring-violet-500/[0.06] hover:border-violet-300/90 hover:shadow-[0_32px_70px_-36px_rgba(124,58,237,0.18)]",
-      orb: "from-violet-400/22 to-indigo-600/12",
-      numBg: "bg-gradient-to-br from-violet-600 to-indigo-700 text-white shadow-lg shadow-violet-600/28 ring-2 ring-white/80",
-      iconBox:
-        "bg-gradient-to-br from-violet-600 to-indigo-600 text-white shadow-md shadow-violet-600/25 ring-2 ring-white/70",
-      statPill:
-        "border border-violet-200/90 bg-gradient-to-r from-violet-50 to-indigo-50/90 text-violet-950 shadow-sm ring-1 ring-violet-500/10",
-    },
   },
   {
     title: "Invoice chaos",
@@ -128,17 +118,6 @@ const painPoints = [
     description:
       "Finance burns 80–120 hrs./month matching invoices to gates and shifts instead of closing books.",
     icon: "invoice" as const,
-    theme: {
-      topBar: "from-amber-500 via-orange-500 to-rose-500",
-      cardSurface:
-        "border-amber-200/70 bg-gradient-to-br from-amber-50/95 via-white to-orange-50/38 shadow-[0_22px_56px_-32px_rgba(245,158,11,0.12)] ring-1 ring-amber-500/[0.06] hover:border-amber-300/90 hover:shadow-[0_32px_70px_-36px_rgba(251,146,60,0.18)]",
-      orb: "from-amber-400/22 to-rose-500/12",
-      numBg: "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-600/26 ring-2 ring-white/80",
-      iconBox:
-        "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-600/25 ring-2 ring-white/70",
-      statPill:
-        "border border-amber-200/90 bg-gradient-to-r from-amber-50 to-orange-50/90 text-amber-950 shadow-sm ring-1 ring-amber-500/10",
-    },
   },
   {
     title: "System fragmentation",
@@ -147,17 +126,6 @@ const painPoints = [
     description:
       "Biometrics, spreadsheets, and ERP live in silos, nothing reconciles without manual stitching.",
     icon: "layers" as const,
-    theme: {
-      topBar: "from-sky-500 via-cyan-500 to-teal-500",
-      cardSurface:
-        "border-sky-200/70 bg-gradient-to-br from-sky-50/95 via-white to-cyan-50/40 shadow-[0_22px_56px_-32px_rgba(14,165,233,0.12)] ring-1 ring-sky-500/[0.06] hover:border-sky-300/90 hover:shadow-[0_32px_70px_-36px_rgba(6,182,212,0.18)]",
-      orb: "from-cyan-400/22 to-teal-600/12",
-      numBg: "bg-gradient-to-br from-sky-500 to-teal-600 text-white shadow-lg shadow-cyan-600/25 ring-2 ring-white/80",
-      iconBox:
-        "bg-gradient-to-br from-sky-500 to-teal-600 text-white shadow-md shadow-sky-600/25 ring-2 ring-white/70",
-      statPill:
-        "border border-sky-200/90 bg-gradient-to-r from-sky-50 to-cyan-50/90 text-sky-950 shadow-sm ring-1 ring-sky-500/10",
-    },
   },
   {
     title: "ESI / PF reconciliation & true-up",
@@ -166,17 +134,6 @@ const painPoints = [
     description:
       "Spreadsheet-driven statutory checks miss deltas until filings, errors compound across branches.",
     icon: "statutory" as const,
-    theme: {
-      topBar: "from-emerald-500 via-teal-500 to-green-600",
-      cardSurface:
-        "border-emerald-200/70 bg-gradient-to-br from-emerald-50/95 via-white to-teal-50/38 shadow-[0_22px_56px_-32px_rgba(16,185,129,0.11)] ring-1 ring-emerald-500/[0.06] hover:border-emerald-300/90 hover:shadow-[0_32px_70px_-36px_rgba(20,184,166,0.18)]",
-      orb: "from-emerald-400/22 to-green-600/12",
-      numBg: "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-600/26 ring-2 ring-white/80",
-      iconBox:
-        "bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md shadow-emerald-600/25 ring-2 ring-white/70",
-      statPill:
-        "border border-emerald-200/90 bg-gradient-to-r from-emerald-50 to-teal-50/90 text-emerald-950 shadow-sm ring-1 ring-emerald-500/10",
-    },
   },
 ] as const;
 
@@ -248,54 +205,42 @@ function WhyInopsMosaicPainCard({
   num: number;
   idx: number;
 }) {
-  const t = card.theme;
+  const t = painPointTheme;
   return (
     <motion.article
-      className={`group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-[1.35rem] border p-6 transition-[transform,box-shadow] duration-300 sm:min-h-[240px] sm:p-7 ${t.cardSurface}`}
+      className={`group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-2xl border p-6 transition-[transform,box-shadow,border-color] duration-300 sm:min-h-[240px] sm:p-6 ${t.cardSurface}`}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
       transition={{ duration: 0.48, ease: smoothEase, delay: Math.min(idx * 0.05, 0.28) }}
       whileHover={{
-        y: -10,
+        y: -4,
         transition: { duration: 0.3, ease: smoothEase },
       }}
     >
       <div
-        className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1.5 rounded-t-[1.35rem] bg-gradient-to-r shadow-sm ${t.topBar}`}
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-1 rounded-t-2xl bg-[color:var(--inops-blue)]"
         aria-hidden
       />
       <div
         className="pointer-events-none absolute right-3 top-3 z-30 sm:right-4 sm:top-4"
         aria-hidden
       >
-        <div className="flex max-w-[9.5rem] items-center gap-1.5 rounded-2xl border border-white/95 bg-white/90 py-1 pl-1 pr-2 shadow-[0_12px_40px_-14px_rgba(15,23,42,0.28)] ring-1 ring-slate-900/[0.04] backdrop-blur-sm transition-transform duration-300 group-hover:-translate-y-0.5 sm:max-w-[11rem] sm:pr-2.5">
-          <span
-            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-inner ring-1 ring-white/30 ${t.numBg}`}
-          >
-            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden>
-              <path d="M12 3v3M12 18v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M3 12h3M18 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" strokeLinecap="round" />
-              <circle cx="12" cy="12" r="3.2" />
-            </svg>
-          </span>
-          <span className="min-w-0 text-[9px] font-extrabold uppercase leading-snug tracking-[0.14em] text-slate-700 sm:text-[10px] sm:tracking-[0.16em]">
-            {card.cornerBadge}
-          </span>
-        </div>
+        <span
+          className={`inline-flex max-w-[9.5rem] items-center rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase leading-snug tracking-[0.14em] sm:max-w-[11rem] sm:text-[10px] sm:tracking-[0.16em] ${t.cornerBadge}`}
+        >
+          {card.cornerBadge}
+        </span>
       </div>
-      <div
-        className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${t.orb}`}
-        aria-hidden
-      />
       <div className="relative flex items-center gap-3 pr-16 sm:pr-20">
         <span
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold tabular-nums shadow-md ${t.numBg}`}
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold tabular-nums ${t.numBg}`}
           aria-hidden
         >
           {num}
         </span>
         <span
-          className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-md ring-2 ring-white/80 transition-transform duration-300 group-hover:scale-110 ${t.iconBox}`}
+          className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105 ${t.iconBox}`}
         >
           <PainPointLeadIcon name={card.icon} className="h-5 w-5" />
         </span>
@@ -391,6 +336,18 @@ const ourModulesSlides = [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=85",
     alt: "Invoice and challan reconciliation review",
   },
+  {
+    title: "Access Control & Gate Integration",
+    description:
+      "Connect biometrics, turnstiles, and gate events to attendance and payroll so only verified workers enter and every entry stays audit-ready.",
+    image:
+      "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
+    hoverImage:
+      // "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=85",
+
+    alt: "Contract worker using biometric turnstile access at an industrial gate",
+  },
 ] as const;
 
 /** Per-slide accents for Capability map cards (matches `ourModulesSlides` order). */
@@ -443,7 +400,78 @@ const ourModuleCardPalettes = [
       "border-rose-200/65 bg-gradient-to-b from-white via-rose-50/28 to-white ring-1 ring-rose-500/[0.06] hover:border-rose-300/90 hover:shadow-[0_24px_50px_-22px_rgba(244,63,94,0.16)]",
     sweep: "linear-gradient(135deg, rgba(244,63,94,0.14) 0%, transparent 45%, rgba(251,146,60,0.14) 100%)",
   },
+  {
+    topBar: "from-teal-600 via-emerald-500 to-cyan-500",
+    shell:
+      "border-teal-200/70 bg-gradient-to-b from-white via-teal-50/30 to-white ring-1 ring-teal-500/[0.06] hover:border-teal-300/90 hover:shadow-[0_24px_50px_-22px_rgba(20,184,166,0.2)]",
+    sweep: "linear-gradient(135deg, rgba(20,184,166,0.16) 0%, transparent 45%, rgba(6,182,212,0.14) 100%)",
+  },
 ] as const;
+
+type OurModuleSlide = (typeof ourModulesSlides)[number];
+type OurModulePalette = (typeof ourModuleCardPalettes)[number];
+
+function OurModuleCard({ slide, palette }: { slide: OurModuleSlide; palette: OurModulePalette }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.article
+      className={`relative flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm shadow-slate-900/[0.05] will-change-transform transition-[border-color,box-shadow] duration-300 ${palette.shell}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
+      whileHover={{
+        y: -8,
+        transition: { duration: 0.28, ease: smoothEase },
+      }}
+    >
+      <motion.div
+        className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${palette.topBar}`}
+        aria-hidden
+      />
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300"
+        style={{ background: palette.sweep, opacity: hovered ? 1 : 0 }}
+        aria-hidden
+      />
+      <div className="relative aspect-[5/3] w-full overflow-hidden bg-slate-100">
+        <Image
+          src={slide.image}
+          alt=""
+          fill
+          className={`object-cover object-center transition-opacity duration-500 ease-out ${hovered ? "opacity-0" : "opacity-100"}`}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+        />
+        <Image
+          src={slide.hoverImage}
+          alt={slide.alt}
+          fill
+          className={`object-cover object-center transition-opacity duration-500 ease-out ${hovered ? "opacity-100" : "opacity-0"}`}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+        />
+        <div
+          className={`pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-slate-900/20 via-transparent to-transparent transition-opacity duration-500 ${hovered ? "opacity-40" : "opacity-70"}`}
+          aria-hidden
+        />
+      </div>
+      <div className="relative flex min-h-[11rem] flex-1 flex-col px-5 pb-5 pt-5 text-center sm:px-6">
+        <h3 className="bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text font-semibold tracking-tight text-transparent">
+          {slide.title}
+        </h3>
+        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-5">
+          <Link
+            href="/contact"
+            className="inline-flex min-h-10 w-full items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-slate-900/15 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
+          >
+            Know more
+          </Link>
+        </motion.div>
+      </div>
+    </motion.article>
+  );
+}
 
 function OurModulesCarousel() {
   return (
@@ -509,7 +537,7 @@ function OurModulesCarousel() {
         </motion.div>
 
         <motion.ul
-          className="mt-8 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:mt-9"
+          className="mt-8 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:mt-9"
           variants={ourModulesGridStagger}
           initial="hidden"
           whileInView="visible"
@@ -519,65 +547,7 @@ function OurModulesCarousel() {
             const palette = ourModuleCardPalettes[si % ourModuleCardPalettes.length];
             return (
             <motion.li key={slide.title} variants={ourModulesCardVariant} className="min-w-0">
-              <motion.article
-                className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm shadow-slate-900/[0.05] will-change-transform transition-[border-color,box-shadow] duration-300 ${palette.shell}`}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.28, ease: smoothEase },
-                }}
-              >
-                <div
-                  className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${palette.topBar}`}
-                  aria-hidden
-                />
-                <motion.div
-                  className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{ background: palette.sweep }}
-                  aria-hidden
-                />
-                <div className="relative aspect-[5/3] w-full overflow-hidden bg-slate-100">
-                  {/* Base image ,  subtle zoom; stays visible under the reveal */}
-                  <Image
-                    src={slide.image}
-                    alt=""
-                    fill
-                    className="object-cover object-center transition-[transform] duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-[1.06] motion-reduce:group-hover:scale-100"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  />
-                  {/* Hover image ,  iris reveal from center (reduced motion: simple fade) */}
-                  <div
-                    className="absolute inset-0 z-[1] [clip-path:circle(0%_at_50%_50%)] transition-[clip-path] duration-[650ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:[clip-path:circle(145%_at_50%_50%)] motion-reduce:[clip-path:none] motion-reduce:opacity-0 motion-reduce:transition-opacity motion-reduce:duration-300 motion-reduce:group-hover:opacity-100"
-                  >
-                    <Image
-                      src={slide.hoverImage}
-                      alt={slide.alt}
-                      fill
-                      className="object-cover object-center scale-110 transition-transform duration-[650ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-100 motion-reduce:scale-100"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                    />
-                  </div>
-                  {/* Specular sweep ,  reads as a quick “flash” while the iris opens */}
-                  <div
-                    className="pointer-events-none absolute inset-0 z-[2] translate-x-[-120%] skew-x-[-12deg] bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-x-[120%] group-hover:opacity-100 motion-reduce:hidden"
-                    aria-hidden
-                  />
-                  <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-slate-900/30 via-fuchsia-900/5 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-[0.88]" />
-                </div>
-                <div className="relative flex min-h-[11rem] flex-1 flex-col px-5 pb-5 pt-5 text-center sm:px-6">
-                  <h3 className="bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text font-semibold tracking-tight text-transparent transition-opacity duration-300 group-hover:opacity-95">
-                    {slide.title}
-                  </h3>
-                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-5">
-                    <Link
-                      href="/contact"
-                      className="inline-flex min-h-10 w-full items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-slate-900/15 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
-                    >
-                      Know more
-                    </Link>
-                  </motion.div>
-                </div>
-              </motion.article>
+              <OurModuleCard slide={slide} palette={palette} />
             </motion.li>
             );
           })}
@@ -907,15 +877,14 @@ export default function PayrollSolutionsPage() {
 
         <section
           id="why-inops"
-          className="relative !mt-4 overflow-hidden border-b border-slate-200/80 bg-gradient-to-b from-slate-50 via-white to-slate-50/40 sm:!mt-5 lg:!mt-5"
+          className="relative overflow-hidden border-t border-b border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white !mt-0 pt-4 pb-10 sm:pt-5 lg:pt-6 lg:pb-12"
           aria-labelledby="why-inops-heading"
         >
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden />
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(to_right,rgb(226_232_240/0.65)_1px,transparent_1px),linear-gradient(to_bottom,rgb(226_232_240/0.65)_1px,transparent_1px)] [background-size:48px_48px]"
             aria-hidden
           />
-          <div className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-sky-400/15 blur-3xl" aria-hidden />
-          <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-indigo-400/12 blur-3xl" aria-hidden />
 
           <div className="relative mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-6 lg:px-12 lg:pb-9 lg:pt-9">
             <motion.div
@@ -943,16 +912,16 @@ export default function PayrollSolutionsPage() {
                   return (
                     <motion.figure
                       key="why-inops-photo"
-                      className="group relative flex min-h-[240px] flex-col overflow-hidden rounded-[1.35rem] bg-slate-900 shadow-[0_28px_70px_-36px_rgba(244,63,94,0.35)] ring-2 ring-transparent [background:linear-gradient(135deg,rgba(59,130,246,0.5),rgba(236,72,153,0.45),rgba(245,158,11,0.45))] p-[2px] sm:min-h-[260px] lg:min-h-[280px]"
+                      className={`group relative flex min-h-[240px] flex-col overflow-hidden rounded-2xl border sm:min-h-[260px] lg:min-h-[280px] ${painPointTheme.cardSurface}`}
                       initial={{ opacity: 0, y: 18 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={viewport}
                       transition={{ duration: 0.5, ease: smoothEase, delay: Math.min(idx * 0.05, 0.25) }}
-                      whileHover={{ scale: 1.02, transition: { duration: 0.35, ease: smoothEase } }}
+                      whileHover={{ y: -4, transition: { duration: 0.35, ease: smoothEase } }}
                     >
-                      <div className="relative flex min-h-[236px] flex-1 flex-col overflow-hidden rounded-[1.28rem] bg-slate-900 sm:min-h-[256px] lg:min-h-[276px]">
+                      <div className="relative flex min-h-[236px] flex-1 flex-col overflow-hidden rounded-2xl bg-slate-900 sm:min-h-[256px] lg:min-h-[276px]">
                       <div
-                        className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1.5 overflow-hidden rounded-t-[1.28rem] bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400"
+                        className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1 rounded-t-2xl bg-[color:var(--inops-blue)]"
                         aria-hidden
                       />
                       <div className="relative min-h-[220px] flex-1 sm:min-h-[240px]">
@@ -968,12 +937,8 @@ export default function PayrollSolutionsPage() {
                           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/35 to-slate-900/10"
                           aria-hidden
                         />
-                        <div
-                          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_100%,rgba(59,130,246,0.15),transparent_55%),radial-gradient(ellipse_60%_50%_at_0%_50%,rgba(236,72,153,0.12),transparent_50%)] opacity-90 mix-blend-screen"
-                          aria-hidden
-                        />
                         <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6 pt-16 text-left">
-                          <span className="inline-flex rounded-full border border-cyan-400/35 bg-gradient-to-r from-emerald-500/40 via-cyan-500/35 to-violet-500/35 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
+                          <span className={`inline-flex !rounded-full !border !border-blue-200/90 !bg-blue-50/95 font-semibold !text-blue-800 !ring-1 !ring-blue-500/15 p-2 text-xs tracking-[0.18em]`}>
                             Field reality
                           </span>
                           <p className="mt-3 text-base font-semibold leading-snug text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:text-[1.05rem]">
@@ -1524,7 +1489,7 @@ export default function PayrollSolutionsPage() {
                       ).map((row, kIdx) => (
                         <motion.div
                           key={row.k}
-                          className={`group flex flex-col rounded-2xl px-4 py-5 text-center backdrop-blur-sm transition-[transform,box-shadow] duration-300 ${row.shell}`}
+                          className={`group flex flex-col mt-5 rounded-2xl px-4 py-5 text-center backdrop-blur-sm transition-[transform,box-shadow] duration-300 ${row.shell}`}
                           initial={{ opacity: 0, y: 16 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={viewport}

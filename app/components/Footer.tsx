@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { OFFICE_ADDRESS_LINE } from "@/app/lib/site";
 
 const solutions = [
   { label: "Workforce Governance Solution", href: "/solutions/payroll-solutions" },
@@ -187,8 +188,8 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </span>
-                  <p className="leading-relaxed text-black">
-                    No.18, 4th &apos;C&apos; Cross, 1st Main Rd, Koramangala Industrial Layout, 5th Block, Bengaluru, Karnataka 560095
+                  <p className="leading-relaxed text-slate-300 hover:text-white">
+                    {OFFICE_ADDRESS_LINE}
                   </p>
                 </div>
                 <div className="flex gap-3">

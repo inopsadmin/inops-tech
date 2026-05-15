@@ -9,7 +9,7 @@ export const SITE_TAGLINE =
   "CLMS, workforce compliance, biometrics, and access control for industrial and enterprise sites in India.";
 
 export const DEFAULT_DESCRIPTION =
-  "Enterprise workforce management and authentication for industrial environments, biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, access control, and visitor management. Based in Koramangala, Bengaluru.";
+  "Enterprise workforce management and authentication for industrial environments, biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, access control, and visitor management. Based in Bommasandra Industrial Area, Bengaluru.";
 
 export const CONTACT_EMAIL = "contact@inops.tech";
 
@@ -21,17 +21,23 @@ export const PHONE_DISPLAY = "+91 80886 02602";
 /** Full postal address (matches footer / Google Business profile style). */
 export const OFFICE_ADDRESS = {
   streetAddress:
-    "No.18, 4th 'C' Cross, 1st Main Rd, Koramangala Industrial Layout, 5th Block",
+    "Second Floor, Sy. No.60/A, Bommasandra Industrial Area, Jigani Road",
   addressLocality: "Bengaluru",
   addressRegion: "Karnataka",
-  postalCode: "560095",
+  postalCode: "560099",
   addressCountry: "IN",
 } as const;
 
-/** Approximate coordinates for Koramangala Industrial Layout (LocalBusiness geo). */
+/** Single-line display (footer, contact cards). */
+export const OFFICE_ADDRESS_LINE = `${OFFICE_ADDRESS.streetAddress}, ${OFFICE_ADDRESS.addressLocality}, ${OFFICE_ADDRESS.addressRegion} ${OFFICE_ADDRESS.postalCode}`;
+
+/** Google Maps embed for the office location. */
+export const OFFICE_MAPS_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(OFFICE_ADDRESS_LINE)}&hl=en&z=16&output=embed`;
+
+/** Approximate coordinates for Bommasandra Industrial Area, Jigani Road (LocalBusiness geo). */
 export const OFFICE_GEO = {
-  latitude: 12.9352,
-  longitude: 77.6245,
+  latitude: 12.8176,
+  longitude: 77.6793,
 } as const;
 
 export const KEYWORDS_BASE = [
@@ -48,7 +54,7 @@ export const KEYWORDS_BASE = [
   "canteen management system",
   "payroll compliance India",
   "industrial attendance",
-  "Koramangala",
+  "Bommasandra Industrial Area",
   "Bengaluru workforce software",
   "Karnataka enterprise software",
 ] as const;

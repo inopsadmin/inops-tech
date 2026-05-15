@@ -8,6 +8,7 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { inopsUi } from "@/app/lib/inopsUi";
+import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -281,32 +282,35 @@ export default function CanteenManagementPage() {
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
           badge={
-            <span className="inline-flex items-center gap-2 ml-10 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-sm">
               <span className="h-2 w-2 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
               Canteen &amp; visitor solutions
             </span>
           }
           title={
             <>
-              <span className="block text-slate-900 ml-10">Canteen, Visitors, <br /> &amp; Subsidies</span>
-              <span className="mt-1.5 block ml-10 text-[color:var(--inops-blue)] sm:mt-2">Unified on One Platform.</span>
+              <span className="block text-slate-900">Canteen, Visitors, <br /> &amp; Subsidies</span>
+              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">Unified on One Platform.</span>
             </>
           }
           subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll, then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
-          subtitleClassName="text-xs ml-10 leading-relaxed text-slate-600 sm:text-base"
+          subtitleClassName="text-xs leading-relaxed text-slate-600 sm:text-base"
+          splitHeroCopyStackClassName={`max-w-3xl lg:max-w-xl lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
           imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
           videoSrc="/genrate_this_part_image_202605080013.mp4"
-          sectionClassName="min-h-[28rem] sm:min-h-[32rem] lg:min-h-[min(36rem,88vh)]"
-          imageWrapperClassName="absolute inset-0 overflow-hidden sm:inset-y-0 sm:bottom-0 sm:left-auto sm:right-0 sm:top-0 sm:w-[min(100%,36rem)] lg:w-[min(100%,44rem)]"
-          imageSizes="(max-width: 640px) 100vw, (max-width: 1024px) 34rem, 46rem"
-          imageClassName="object-cover mt-28 object-[center_42%] sm:object-[center_38%] lg:object-[center_35%]"
-          gradientClassName="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.92)_14%,rgba(255,255,255,0.55)_24%,rgba(255,255,255,0.18)_34%,transparent_46%)] sm:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.88)_15%,rgba(255,255,255,0.42)_26%,rgba(255,255,255,0.1)_36%,transparent_48%)] lg:bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.82)_16%,rgba(255,255,255,0.32)_28%,transparent_44%)]"
+          // videoSrcClipClassName="pt-12"
+          sectionClassName="min-h-[340px] sm:min-h-[390px] lg:min-h-[430px]"
+          imageWrapperClassName={`relative z-[2] mt-8 h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+          imageSizes="(max-width: 1024px) 100vw, 50vw"
+          imageClassName="object-cover mt-15 object-[center_42%] sm:object-[center_38%] lg:object-[center_35%]"
+          gradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-white from-0% via-white/[0.98] via-[42%] to-transparent to-[62%] lg:via-[44%] lg:to-[68%]"
+          imageEdgeFadeClassName="bg-gradient-to-r from-white via-white/80 to-transparent lg:via-[28%] lg:to-[52%]"
           mobileStackGradientClassName="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-white via-white/55 to-white/95 sm:hidden"
           primaryCta={{ label: "Get in touch", href: "/contact" }}
-          primaryCtaClassName="ml-10 text-center border-2 bg-blue-700 font-bold text-white py-2 px-4 border-blue-700 rounded-full"
+          primaryCtaClassName="text-center border-2 bg-blue-700 font-bold text-white py-2 px-4 border-blue-700 rounded-full"
           secondaryCta={{ label: "How it works", href: "#canteen-realtime-visibility" }}
-          secondaryCtaClassName=" text-center border-2 border-gray-200 bg-white py-2 px-4 rounded-full"
+          secondaryCtaClassName="text-center border-2 border-gray-200 bg-white py-2 px-4 rounded-full"
           livePopups={[
             {
               position: "top-left",
@@ -762,9 +766,9 @@ export default function CanteenManagementPage() {
           </div>
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12 xl:gap-14">
+            <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:items-center lg:gap-12 xl:grid-cols-[minmax(26rem,1.15fr)_minmax(0,32rem)] xl:gap-14">
               <motion.div
-                className="min-w-0 flex-1 lg:max-w-[min(100%,28rem)] xl:max-w-md"
+                className="min-w-0 w-full lg:max-w-none xl:pr-6"
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
@@ -788,11 +792,11 @@ export default function CanteenManagementPage() {
                 />
 
                 <div className="mt-6 space-y-3">
-                  <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
+                  <p className="text-sm leading-relaxed text-slate-600 lg:text-base">
                     Pre-registration, desk check-in, badges, and host alerts roll into{" "}
                     <span className="font-medium text-slate-800">one audit-ready trail</span>, not parallel visitor logs.
                   </p>
-                  <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
+                  <p className="text-sm leading-relaxed text-slate-600 lg:text-base">
                     See who&apos;s on-site by zone, enforce access in real time, and export evidence when security or
                     compliance needs proof.
                   </p>
@@ -821,7 +825,7 @@ export default function CanteenManagementPage() {
                   ).map((chip) => (
                     <li
                       key={chip.k}
-                      className="relative min-w-[7.25rem] shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200/90 bg-white/95 text-center shadow-[0_12px_36px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.04] sm:min-w-0 sm:flex-1"
+                      className="relative min-w-[7.25rem] shrink-0 snap-start overflow-hidden rounded-xl border border-slate-200/90 bg-white/95 text-center shadow-[0_12px_36px_-28px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.04] sm:min-w-0 sm:flex-1 lg:min-w-[7.25rem] lg:flex-1"
                     >
                       <div
                         className={`pointer-events-none absolute inset-x-0 top-0 z-[1] h-1.5 rounded-t-xl bg-gradient-to-r shadow-sm ${chip.topBar}`}
@@ -839,52 +843,54 @@ export default function CanteenManagementPage() {
               </motion.div>
 
               <motion.div
-                className="min-w-0 flex-1"
+                className="min-w-0 w-full lg:max-w-[28rem] lg:justify-self-end xl:max-w-[32rem]"
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
-                <div className="rounded-[1.25rem] border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/90 p-2 shadow-[0_28px_80px_-40px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/[0.05]">
-                  <div className="relative aspect-[1230/650] w-full overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-slate-200/80">
-                    <video
-                      className="absolute inset-0 h-full w-full object-contain object-center"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      poster={visitorManagementProcessImage}
-                      aria-label="Visitor management process ,  scheduled and walk-up flows, QR, badges, and records"
-                    >
-                      <source src={visitorManagementSystemVideo} type="video/mp4" />
-                    </video>
+                <div className="relative">
+                  <div className="rounded-[1.15rem] border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/90 p-1.5 shadow-[0_20px_60px_-36px_rgba(15,23,42,0.32)] ring-1 ring-slate-900/[0.05]">
+                    <div className="relative aspect-[1230/650] w-full overflow-hidden rounded-xl bg-slate-100 ring-1 ring-slate-200/80">
+                      <video
+                        className="absolute inset-0 h-full w-full object-contain object-center"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        poster={visitorManagementProcessImage}
+                        aria-label="Visitor management process ,  scheduled and walk-up flows, QR, badges, and records"
+                      >
+                        <source src={visitorManagementSystemVideo} type="video/mp4" />
+                      </video>
                     <div
-                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-slate-900/[0.07] via-transparent to-transparent"
+                      className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-t from-slate-900/[0.07] via-transparent to-transparent"
                       aria-hidden
                     />
-                    <VideoLivePopups
-                      popups={[
-                        {
-                          position: "top-left",
-                          label: "Live",
-                          title: "Process running",
-                          className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-0 xl:-left-0",
-                          accent: "emerald",
-                        },
-                        {
-                          position: "bottom-right",
-                          label: "Workflow",
-                          title: "Scheduled & walk-up",
-                          className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2",
-                          // subtitle: "QR → badge → records",
-                          variant: "icon",
-                          icon: "qr",
-                          accent: "blue",
-                        },
+                    </div>
+                  </div>
+                  <VideoLivePopups
+                    popups={[
+                      {
+                        position: "top-left",
+                        label: "Live",
+                        title: "Process running",
+                        className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:-top-10 xl:-left-10",
+                        accent: "emerald",
+                      },
+                      {
+                        position: "bottom-right",
+                        label: "Workflow",
+                        title: "Scheduled & walk-up",
+                        // subtitle: "QR → badge → records"
+                        className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:-bottom-10 xl:-right-10",
+                        variant: "icon",
+                        icon: "qr",
+                        accent: "blue",
+                      },
                       ]}
                     />
-                  </div>
                 </div>
               </motion.div>
             </div>

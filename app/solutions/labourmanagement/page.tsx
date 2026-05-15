@@ -200,12 +200,7 @@ const labourEfficiencyShowcaseCards = [
     description: "Track your Claim & Reimbursement hassle-free.",
     iconColor: "#9C27B0",
   },
-  {
-    id: "loansAdvance" as const,
-    title: "Loans & Advance",
-    description: "Get Instant Information about all your loans & advances.",
-    iconColor: "#FF9800",
-  },
+  
   {
     id: "tdsTaxPlanner" as const,
     title: "TDS & Tax Planner",
@@ -236,18 +231,7 @@ const labourEfficiencyShowcaseCards = [
     description: "Control labor costs & working hours of employees.",
     iconColor: "#22AA44",
   },
-  {
-    id: "recruitment" as const,
-    title: "Recruitment",
-    description: "Recruiting has never been this easy.",
-    iconColor: "#FF9800",
-  },
-  {
-    id: "performancePms" as const,
-    title: "Performance (PMS)",
-    description: "Boost your employee's performance with 360-degree appraisal.",
-    iconColor: "#E53935",
-  },
+  
   {
     id: "training" as const,
     title: "Training",
@@ -266,14 +250,11 @@ const labourShowcaseCardTopBar: Record<LabourShowcaseId, string> = {
   timeAttendance: "from-amber-500 via-orange-500 to-rose-500",
   leaveManagement: "from-sky-500 via-blue-500 to-indigo-600",
   claimReimbursement: "from-violet-600 via-fuchsia-500 to-pink-500",
-  loansAdvance: "from-orange-500 via-amber-500 to-yellow-400",
   tdsTaxPlanner: "from-indigo-600 via-blue-600 to-sky-500",
   exitManagement: "from-rose-600 via-red-500 to-orange-600",
   travelManagement: "from-cyan-500 via-teal-500 to-emerald-600",
   employeeSelfService: "from-blue-500 via-indigo-500 to-violet-600",
   timeSheet: "from-green-600 via-emerald-500 to-teal-500",
-  recruitment: "from-orange-500 via-rose-500 to-fuchsia-600",
-  performancePms: "from-rose-500 via-fuchsia-600 to-purple-700",
   training: "from-violet-500 via-indigo-600 to-blue-700",
 };
 
@@ -333,14 +314,6 @@ function LabourEfficiencyShowcaseIcon({ id, className = "h-10 w-10" }: { id: Lab
           <path d="M14 18c1.5 0 3-.8 3-2s-1.5-2-3-2-3 .8-3 2 1.5 2 3 2z" />
         </svg>
       );
-    case "loansAdvance":
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
-          <rect x="4" y="6" width="16" height="12" rx="2" />
-          <path d="M8 10h8M8 14h6" />
-          <circle cx="17" cy="9" r="1.5" fill="currentColor" stroke="none" />
-        </svg>
-      );
     case "tdsTaxPlanner":
       return (
         <svg viewBox="0 0 24 24" aria-hidden className={stroke.className}>
@@ -389,22 +362,6 @@ function LabourEfficiencyShowcaseIcon({ id, className = "h-10 w-10" }: { id: Lab
           <path d="M8 6V5a2 2 0 012-2h4a2 2 0 012 2v1" />
           <circle cx="15" cy="11" r="3.5" />
           <path d="M15 9.5V11l1 1" strokeWidth={1.5} />
-        </svg>
-      );
-    case "recruitment":
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
-          <circle cx="8" cy="9" r="2.5" />
-          <circle cx="16" cy="9" r="2.5" />
-          <circle cx="12" cy="7" r="2.5" />
-          <path d="M5 18c.6-2 2.8-3.5 5.5-3.5S17 16 17.5 18" />
-        </svg>
-      );
-    case "performancePms":
-      return (
-        <svg viewBox="0 0 24 24" aria-hidden {...stroke}>
-          <path d="M6 18V10M12 18V6M18 18v-5" strokeWidth={2.5} />
-          <path d="M4 20h16" />
         </svg>
       );
     case "training":
@@ -944,7 +901,7 @@ export default function LabourManagementPage() {
               Built for Efficiency and Control
             </motion.h2>
 
-            <div className="mx-auto mt-10 grid max-w-none grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-12 lg:grid-cols-5 lg:gap-5">
+            <div className="mx-auto mt-10 grid max-w-none grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-12 lg:grid-cols-4 lg:gap-5">
               {labourEfficiencyShowcaseCards.map((card, i) => (
                 <motion.article
                   key={card.id}
