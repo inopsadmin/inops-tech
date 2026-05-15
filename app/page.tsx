@@ -39,6 +39,10 @@ type DashboardCard = {
   description: string;
   badgeClass: string;
   footerTag: string;
+  /** Short bullets between body and CTA to balance height vs. tall media. */
+  highlights: string[];
+  /** Compact pills on the bottom-right beside the primary CTA. */
+  footerChips: string[];
   videoSrc?: string;
   livePopups?: VideoLivePopupItem[];
 };
@@ -54,6 +58,12 @@ const dashboardCards: DashboardCard[] = [
       "Real-time visibility into workforce attendance, productivity, and on-ground operations. Make faster decisions with actionable insights at a team level.",
     badgeClass: "border-blue-200 bg-blue-50 text-blue-700",
     footerTag: "Unified command center",
+    highlights: [
+      "Multi-site attendance roll-up",
+      "Shift & overtime alerts",
+      "Payroll-ready export views",
+    ],
+    footerChips: ["Web + mobile", "Role-based access", "Live refreshes"],
     livePopups: [
       { position: "top-left", label: "Live", title: "Team activity", accent: "emerald" },
       {
@@ -76,6 +86,12 @@ const dashboardCards: DashboardCard[] = [
       "A unified view of workforce, compliance, and operational performance across the organization. Drive strategic decisions with a single source of truth and enterprise-level insights.",
     badgeClass: "border-violet-200 bg-violet-50 text-violet-700",
     footerTag: "Executive command center",
+    highlights: [
+      "Cross-site KPI snapshots",
+      "Compliance & risk posture",
+      "Board-ready trend views",
+    ],
+    footerChips: ["Enterprise rollups", "Board exports", "Risk posture"],
     livePopups: [
       { position: "top-right", label: "Live", title: "Cross-site KPIs", accent: "violet" },
       {
@@ -98,6 +114,12 @@ const dashboardCards: DashboardCard[] = [
       "Centralized control over employee data, compliance, and lifecycle management. Ensure accuracy, visibility, and seamless workforce governance across systems.",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
     footerTag: "People operations control",
+    highlights: [
+      "Central employee records",
+      "Lifecycle & document control",
+      "Policy & audit trails",
+    ],
+    footerChips: ["Document vault", "Lifecycle workflows", "Audit-ready"],
     livePopups: [
       { position: "top-left", label: "Live", title: "People ops", accent: "emerald" },
       {
@@ -164,6 +186,12 @@ const whyCards: WhyCard[] = [
     icon: "doc",
   },
 ];
+
+function whyCardNumber(title: string): string {
+  const idx = whyCards.findIndex((c) => c.title === title);
+  if (idx < 0) return "00";
+  return String(idx + 1).padStart(2, "0");
+}
 
 export default function Home() {
   const [heroDarkPhase, setHeroDarkPhase] = useState(true);
@@ -570,6 +598,12 @@ export default function Home() {
                         </div>
 
                         <div className="mt-6 h-px w-20 bg-gradient-to-r from-gray-200 to-transparent" aria-hidden />
+                        <span
+                          className="pointer-events-none absolute bottom-4 right-4 select-none text-4xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-5 sm:right-5 sm:text-5xl lg:bottom-6 lg:right-7 lg:text-6xl"
+                          aria-hidden
+                        >
+                          {whyCardNumber(selectedWhyCard.title)}
+                        </span>
                       </div>
                     </motion.div>
                   </button>
@@ -643,6 +677,12 @@ export default function Home() {
                         </div>
                       </button>
                     </motion.div>
+                    <span
+                      className="pointer-events-none absolute bottom-3 right-3 select-none text-3xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-4 sm:right-4 sm:text-4xl"
+                      aria-hidden
+                    >
+                      {whyCardNumber(card.title)}
+                    </span>
                   </motion.div>
                 );
               })}
@@ -704,7 +744,7 @@ export default function Home() {
                 const textFirst = cardIndex === 1;
 
                 const mediaBlock = (
-                  <div className="relative w-full min-w-0 md:flex-1 md:max-w-[50%]">
+                  <div className="relative min-h-0 w-full min-w-0 md:h-full">
                     {/* Popups sit outside the overflow-hidden frame so corner tiles are not clipped */}
                     <div className="relative aspect-video w-full overflow-visible">
                       <div className="absolute inset-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_-38px_rgba(15,23,42,0.35)] ring-1 ring-white">
@@ -745,28 +785,65 @@ export default function Home() {
                 );
 
                 const textBlock = (
-                  <div className="flex min-w-0 flex-col justify-center md:flex-1 md:max-w-[50%]">
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                      <FlyInText as="h3" direction={textFirst ? "right" : "left"} className={inopsUi.typeCardTitle}>
-                        {card.title}
+                  <div className="flex min-h-0 w-full min-w-0 flex-col md:h-full">
+                    <div className="shrink-0">
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                        <FlyInText as="h3" direction={textFirst ? "right" : "left"} className={inopsUi.typeCardTitle}>
+                          {card.title}
+                        </FlyInText>
+                        <FlyInText
+                          as="span"
+                          direction="up"
+                          delay={0.04}
+                          className={`w-fit rounded-md border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
+                        >
+                          {card.badge}
+                        </FlyInText>
+                      </div>
+                      <FlyInText as="p" direction="up" delay={0.08} className={`mt-3 ${inopsUi.typeBody}`}>
+                        {card.description}
                       </FlyInText>
-                      <FlyInText
-                        as="span"
-                        direction="up"
-                        delay={0.04}
-                        className={`w-fit rounded-md border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide ${card.badgeClass}`}
-                      >
-                        {card.badge}
-                      </FlyInText>
+                      <ul className="mt-5 flex w-full flex-col gap-2.5" aria-label="Key capabilities">
+                        {card.highlights.map((line) => (
+                          <li
+                            key={line}
+                            className="flex items-start gap-2.5 rounded-xl border border-slate-100 bg-gradient-to-br from-slate-50/95 to-white px-3 py-2.5 text-xs font-medium leading-snug text-slate-700 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)] ring-1 ring-slate-900/[0.04]"
+                          >
+                            <span
+                              className="mt-0.5 h-5 w-5 shrink-0 rounded-lg bg-[color:var(--inops-blue)]/10 text-[color:var(--inops-blue)] ring-1 ring-[color:var(--inops-blue)]/20"
+                              aria-hidden
+                            >
+                              <svg className="m-0.5 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M20 6 9 17l-5-5" />
+                              </svg>
+                            </span>
+                            <span>{line}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <FlyInText as="p" direction="up" delay={0.08} className={`mt-3 ${inopsUi.typeBody}`}>
-                      {card.description}
-                    </FlyInText>
-                    <FlyInText as="div" direction="up" delay={0.12} className="mt-4">
-                      <span className="inline-flex items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                        {card.footerTag}
-                      </span>
-                    </FlyInText>
+                    <div className="mt-6 grid w-full shrink-0 gap-3 md:mt-auto md:grid-cols-[auto_minmax(0,1fr)] md:items-end md:gap-5 md:pt-5">
+                      <FlyInText as="div" direction="up" delay={0.12} className="shrink-0">
+                        <span className="inline-flex items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-xs font-semibold text-white shadow-sm">
+                          {card.footerTag}
+                        </span>
+                      </FlyInText>
+                      <div
+                        className="flex min-w-0 items-center gap-1 max-md:flex-nowrap max-md:justify-between md:flex-wrap md:justify-end md:gap-2"
+                        aria-label="At a glance"
+                      >
+                        {card.footerChips.map((chip) => (
+                          <span
+                            key={chip}
+                            className="inline-flex min-w-0 max-md:max-w-[33%] max-md:flex-1 items-center justify-center rounded-full border border-slate-200/90 bg-slate-50/90 px-1.5 py-1 text-[9px] font-semibold uppercase leading-tight tracking-tight text-slate-600 shadow-sm ring-1 ring-slate-900/[0.03] md:flex-none md:px-2.5 md:text-[11px] md:leading-none md:tracking-wide"
+                          >
+                            <span className="block w-full text-center max-md:truncate md:inline md:w-auto md:whitespace-nowrap">
+                              {chip}
+                            </span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 );
 
@@ -774,7 +851,7 @@ export default function Home() {
                   <article
                     key={card.title}
                     data-no-site-hover
-                    className="dashboard-feature-row flex flex-col gap-8 rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.22)] md:flex-row md:items-center md:gap-10 lg:gap-16 lg:p-8"
+                    className="dashboard-feature-row flex flex-col gap-8 rounded-3xl border border-slate-200/70 bg-white p-6 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.22)] md:grid md:grid-cols-2 md:items-stretch md:gap-x-10 md:gap-y-0 lg:gap-x-16 lg:p-8"
                   >
                     {textFirst ? (
                       <>

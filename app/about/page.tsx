@@ -826,6 +826,19 @@ export default function AboutPage() {
               >
                 <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/80 to-transparent lg:hidden" aria-hidden />
                 <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-100/80 blur-3xl" aria-hidden />
+                <div
+                  className="pointer-events-none absolute right-4 top-4 z-[2] select-none sm:right-6 sm:top-5 lg:right-8 lg:top-6"
+                  aria-hidden
+                >
+                  <div className="rounded-2xl border border-slate-200/80 bg-white/90 px-3 py-2 shadow-[0_12px_28px_-22px_rgba(15,23,42,0.35)] ring-1 ring-white/70 backdrop-blur-sm">
+                    <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">Expertise track</span>
+                    <span className="mt-0.5 flex items-baseline justify-end gap-1 font-semibold tabular-nums tracking-tight text-slate-800">
+                      <span className="text-2xl leading-none sm:text-3xl">{String(expertiseIndex + 1).padStart(2, "0")}</span>
+                      <span className="text-base font-semibold text-slate-400">/</span>
+                      <span className="text-sm font-semibold text-slate-500">{String(expertiseSlides.length).padStart(2, "0")}</span>
+                    </span>
+                  </div>
+                </div>
                 <div className="relative mx-auto flex w-full min-h-[16rem] max-w-xl flex-col items-center justify-center text-center sm:min-h-[18rem] lg:min-h-[20rem] lg:pt-2">
                   <AnimatePresence mode="wait">
                     <motion.div
