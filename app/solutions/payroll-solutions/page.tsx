@@ -336,77 +336,142 @@ const ourModulesSlides = [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=85",
     alt: "Invoice and challan reconciliation review",
   },
-  {
-    title: "Access Control & Gate Integration",
-    description:
-      "Connect biometrics, turnstiles, and gate events to attendance and payroll so only verified workers enter and every entry stays audit-ready.",
-    image:
-      "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
-    hoverImage:
-      // "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=85",
+  // {
+  //   title: "Access Control & Gate Integration",
+  //   description:
+  //     "Connect biometrics, turnstiles, and gate events to attendance and payroll so only verified workers enter and every entry stays audit-ready.",
+  //   image:
+  //     "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
+  //   hoverImage:
+  //     // "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
+  //     "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=85",
 
-    alt: "Contract worker using biometric turnstile access at an industrial gate",
-  },
+  //   alt: "Contract worker using biometric turnstile access at an industrial gate",
+  // },
 ] as const;
 
-/** Per-slide accents for Capability map cards (matches `ourModulesSlides` order). */
+/** Per-slide top accent for Capability map cards (matches `ourModulesSlides` order). */
 const ourModuleCardPalettes = [
-  {
-    topBar: "from-blue-600 via-sky-500 to-cyan-500",
-    shell:
-      "border-blue-200/70 bg-gradient-to-b from-white via-blue-50/30 to-white ring-1 ring-blue-500/[0.06] hover:border-blue-300/90 hover:shadow-[0_24px_50px_-22px_rgba(59,130,246,0.2)]",
-    sweep: "linear-gradient(135deg, rgba(59,130,246,0.18) 0%, transparent 42%, rgba(6,182,212,0.14) 100%)",
-  },
-  {
-    topBar: "from-emerald-600 via-teal-500 to-cyan-500",
-    shell:
-      "border-emerald-200/70 bg-gradient-to-b from-white via-emerald-50/35 to-white ring-1 ring-emerald-500/[0.06] hover:border-emerald-300/90 hover:shadow-[0_24px_50px_-22px_rgba(16,185,129,0.2)]",
-    sweep: "linear-gradient(135deg, rgba(16,185,129,0.16) 0%, transparent 45%, rgba(20,184,166,0.14) 100%)",
-  },
-  {
-    topBar: "from-amber-500 via-orange-500 to-rose-500",
-    shell:
-      "border-amber-200/70 bg-gradient-to-b from-white via-amber-50/35 to-white ring-1 ring-amber-500/[0.06] hover:border-amber-300/90 hover:shadow-[0_24px_50px_-22px_rgba(245,158,11,0.2)]",
-    sweep: "linear-gradient(135deg, rgba(245,158,11,0.16) 0%, transparent 45%, rgba(251,113,133,0.12) 100%)",
-  },
-  {
-    topBar: "from-violet-600 via-fuchsia-500 to-pink-500",
-    shell:
-      "border-violet-200/70 bg-gradient-to-b from-white via-violet-50/32 to-white ring-1 ring-violet-500/[0.06] hover:border-violet-300/90 hover:shadow-[0_24px_50px_-22px_rgba(139,92,246,0.2)]",
-    sweep: "linear-gradient(135deg, rgba(139,92,246,0.16) 0%, transparent 45%, rgba(236,72,153,0.12) 100%)",
-  },
-  {
-    topBar: "from-cyan-500 via-sky-500 to-blue-600",
-    shell:
-      "border-cyan-200/70 bg-gradient-to-b from-white via-cyan-50/30 to-white ring-1 ring-cyan-500/[0.06] hover:border-cyan-300/90 hover:shadow-[0_24px_50px_-22px_rgba(6,182,212,0.18)]",
-    sweep: "linear-gradient(135deg, rgba(6,182,212,0.15) 0%, transparent 45%, rgba(59,130,246,0.12) 100%)",
-  },
-  {
-    topBar: "from-indigo-600 via-violet-500 to-purple-600",
-    shell:
-      "border-indigo-200/70 bg-gradient-to-b from-white via-indigo-50/32 to-white ring-1 ring-indigo-500/[0.06] hover:border-indigo-300/90 hover:shadow-[0_24px_50px_-22px_rgba(99,102,241,0.2)]",
-    sweep: "linear-gradient(135deg, rgba(99,102,241,0.18) 0%, transparent 45%, rgba(168,85,247,0.12) 100%)",
-  },
-  {
-    topBar: "from-sky-500 via-indigo-500 to-violet-600",
-    shell:
-      "border-sky-200/70 bg-gradient-to-b from-white via-sky-50/28 to-white ring-1 ring-sky-500/[0.06] hover:border-sky-300/90 hover:shadow-[0_24px_50px_-22px_rgba(14,165,233,0.18)]",
-    sweep: "linear-gradient(135deg, rgba(14,165,233,0.14) 0%, transparent 45%, rgba(99,102,241,0.14) 100%)",
-  },
-  {
-    topBar: "from-rose-500 via-amber-500 to-orange-500",
-    shell:
-      "border-rose-200/65 bg-gradient-to-b from-white via-rose-50/28 to-white ring-1 ring-rose-500/[0.06] hover:border-rose-300/90 hover:shadow-[0_24px_50px_-22px_rgba(244,63,94,0.16)]",
-    sweep: "linear-gradient(135deg, rgba(244,63,94,0.14) 0%, transparent 45%, rgba(251,146,60,0.14) 100%)",
-  },
-  {
-    topBar: "from-teal-600 via-emerald-500 to-cyan-500",
-    shell:
-      "border-teal-200/70 bg-gradient-to-b from-white via-teal-50/30 to-white ring-1 ring-teal-500/[0.06] hover:border-teal-300/90 hover:shadow-[0_24px_50px_-22px_rgba(20,184,166,0.2)]",
-    sweep: "linear-gradient(135deg, rgba(20,184,166,0.16) 0%, transparent 45%, rgba(6,182,212,0.14) 100%)",
-  },
+  { topBar: "from-blue-600 via-sky-500 to-cyan-500" },
+  { topBar: "from-emerald-600 via-teal-500 to-cyan-500" },
+  { topBar: "from-amber-500 via-orange-500 to-rose-500" },
+  { topBar: "from-violet-600 via-fuchsia-500 to-pink-500" },
+  { topBar: "from-cyan-500 via-sky-500 to-blue-600" },
+  { topBar: "from-indigo-600 via-violet-500 to-purple-600" },
+  { topBar: "from-sky-500 via-indigo-500 to-violet-600" },
+  { topBar: "from-rose-500 via-amber-500 to-orange-500" },
 ] as const;
+
+/** Cost leakage cards — width scales with viewport on all breakpoints. */
+const leakageCardWidthClass = "w-[92vw] sm:w-[90vw] lg:w-[42vw] xl:w-[43vw] 2xl:w-[44vw]";
+
+type LeakageSnapshotIcon =
+  | "users"
+  | "currency"
+  | "location"
+  | "vendor"
+  | "clock"
+  | "chart"
+  | "building"
+  | "clipboard"
+  | "alert"
+  | "leak";
+
+const leakageSnapshotRows: ReadonlyArray<{
+  label: string;
+  value: string;
+  icon: LeakageSnapshotIcon;
+}> = [
+  { label: "Number of Contractors", value: "1,000", icon: "users" },
+  { label: "Avg Monthly Cost per Contractor", value: "₹15,000", icon: "currency" },
+  { label: "Number of Locations", value: "6", icon: "location" },
+  { label: "Active Vendor Partners", value: "24", icon: "vendor" },
+  // { label: "Shifts Tracked per Day", value: "3", icon: "clock" },
+  // { label: "Monthly Payroll Outflow", value: "₹1.5 Cr", icon: "chart" },
+  // { label: "Avg Headcount per Site", value: "~167", icon: "building" },
+  // { label: "Attendance Logs / Month", value: "~45,000", icon: "clipboard" },
+  // { label: "Typical Leakage Band", value: "8–12%", icon: "alert" },
+  // { label: "Projected Annual Leakage", value: "₹1.98 Cr", icon: "leak" },
+];
+
+const leakageBleedItems = [
+  { label: "Ghost Workers (3%)", amount: "₹54 Lakhs", pct: 22, icon: "user-x" as const },
+  { label: "Billing Errors (2%)", amount: "₹36 Lakhs", pct: 15, icon: "doc" as const },
+  { label: "OT Fraud (1%)", amount: "₹18 Lakhs", pct: 8, icon: "clock" as const },
+  { label: "Compliance Penalties", amount: "₹50 Lakhs", pct: 21, icon: "alert" as const },
+  { label: "Admin Inefficiencies", amount: "₹40 Lakhs", pct: 17, icon: "stack" as const },
+  // { label: "Duplicate Billing (0.8%)", amount: "₹14 Lakhs", pct: 6, icon: "doc" as const },
+  // { label: "Rate Card Mismatches (1.2%)", amount: "₹22 Lakhs", pct: 9, icon: "stack" as const },
+  // { label: "Gate–Attendance Gaps (0.5%)", amount: "₹9 Lakhs", pct: 4, icon: "user-x" as const },
+] as const;
+
+function LeakageSnapshotRowIcon({ name }: { name: LeakageSnapshotIcon }) {
+  const c = "h-4 w-4";
+  switch (name) {
+    case "users":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      );
+    case "currency":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      );
+    case "location":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      );
+    case "vendor":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0h-8m8 0v2a4 4 0 01-4 4H8a4 4 0 01-4-4V6" />
+        </svg>
+      );
+    case "clock":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      );
+    case "chart":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      );
+    case "building":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      );
+    case "clipboard":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      );
+    case "alert":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      );
+    case "leak":
+      return (
+        <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 type OurModuleSlide = (typeof ourModulesSlides)[number];
 type OurModulePalette = (typeof ourModuleCardPalettes)[number];
@@ -416,54 +481,49 @@ function OurModuleCard({ slide, palette }: { slide: OurModuleSlide; palette: Our
 
   return (
     <motion.article
-      className={`relative flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm shadow-slate-900/[0.05] will-change-transform transition-[border-color,box-shadow] duration-300 ${palette.shell}`}
+      className="relative flex h-[19.5rem] w-full max-w-[17.5rem] flex-col overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:border-slate-300 hover:shadow-[0_14px_40px_-14px_rgba(15,23,42,0.22)] lg:max-w-none"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
       whileHover={{
-        y: -8,
+        y: -3,
         transition: { duration: 0.28, ease: smoothEase },
       }}
     >
       <motion.div
-        className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1.5 rounded-t-2xl bg-gradient-to-r shadow-sm ${palette.topBar}`}
+        className={`pointer-events-none absolute inset-x-0 top-0 z-20 h-1 rounded-t-xl bg-gradient-to-r ${palette.topBar}`}
         aria-hidden
       />
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300"
-        style={{ background: palette.sweep, opacity: hovered ? 1 : 0 }}
-        aria-hidden
-      />
-      <div className="relative aspect-[5/3] w-full overflow-hidden bg-slate-100">
+      <div className="relative w-full shrink-0 overflow-hidden bg-slate-100">
+        <div className="relative h-[8.25rem] w-full shrink-0">
         <Image
           src={slide.image}
           alt=""
           fill
           className={`object-cover object-center transition-opacity duration-500 ease-out ${hovered ? "opacity-0" : "opacity-100"}`}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
         />
         <Image
           src={slide.hoverImage}
           alt={slide.alt}
           fill
           className={`object-cover object-center transition-opacity duration-500 ease-out ${hovered ? "opacity-100" : "opacity-0"}`}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
         />
-        <div
-          className={`pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-slate-900/20 via-transparent to-transparent transition-opacity duration-500 ${hovered ? "opacity-40" : "opacity-70"}`}
-          aria-hidden
-        />
+        </div>
       </div>
-      <div className="relative flex min-h-[11rem] flex-1 flex-col px-5 pb-5 pt-5 text-center sm:px-6">
-        <h3 className="bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text font-semibold tracking-tight text-transparent">
+      <div className="relative flex flex-1 flex-col px-3 pb-3 pt-3 text-center">
+        <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-slate-900">
           {slide.title}
         </h3>
-        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">{slide.description}</p>
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-5">
+        <p className="mt-2 line-clamp-3 flex-1 text-xs leading-relaxed text-slate-600">
+          {slide.description}
+        </p>
+        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto pt-3">
           <Link
             href="/contact"
-            className="inline-flex min-h-10 w-full items-center justify-center rounded-xl bg-[color:var(--inops-blue)] px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-slate-900/15 transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
+            className="inline-flex h-9 w-full items-center justify-center rounded-lg bg-[color:var(--inops-blue)] text-xs font-semibold text-white shadow-sm transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
           >
             Know more
           </Link>
@@ -476,14 +536,14 @@ function OurModuleCard({ slide, palette }: { slide: OurModuleSlide; palette: Our
 function OurModulesCarousel() {
   return (
     <section
-      className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white !mt-0 pt-4 pb-10 sm:pt-5 lg:pt-6 lg:pb-12"
+      className="relative overflow-hidden border-t border-slate-200/80 bg-gradient-to-b from-white via-slate-50/50 to-white !mt-0 pt-2 pb-5 sm:pt-3 sm:pb-6 lg:pt-3 lg:pb-6"
       aria-labelledby="our-modules-heading"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden />
       <div className="pointer-events-none absolute left-1/2 top-24 h-px w-[min(90%,56rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-200/40 to-transparent blur-[1px]" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_-10%,rgba(59,130,246,0.06),transparent_60%)]" aria-hidden />
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-32 h-[min(24rem,50vw)] w-[min(90vw,48rem)] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08),transparent_68%)]"
+        className="pointer-events-none absolute left-1/2 top-32 h-[min(16rem,40vw)] w-[min(80vw,40rem)] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06),transparent_68%)] lg:hidden"
         aria-hidden
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -491,9 +551,9 @@ function OurModulesCarousel() {
         transition={{ duration: 0.9, ease: smoothEase }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+      <motion.div className="relative mx-auto max-w-7xl px-3 sm:px-5 lg:px-8">
         <motion.div
-          className="mx-auto max-w-2xl text-center"
+          className="mx-auto max-w-xl text-center lg:max-w-lg"
           variants={ourModulesHeaderStagger}
           initial="hidden"
           whileInView="visible"
@@ -501,7 +561,7 @@ function OurModulesCarousel() {
         >
           <motion.span
             variants={ourModulesHeaderItem}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-4 sm:py-2 sm:text-xs"
+            className="inline-flex items-center gap-1.5 rounded-full border border-blue-200/90 bg-blue-50/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-800 shadow-sm ring-1 ring-blue-500/20 backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]"
           >
             <motion.span
               className="relative flex h-1.5 w-1.5 shrink-0"
@@ -514,30 +574,26 @@ function OurModulesCarousel() {
             </motion.span>
             Capability map
           </motion.span>
-          <motion.h2 id="our-modules-heading" variants={ourModulesHeaderItem} className="mt-5">
+          <motion.h2
+            id="our-modules-heading"
+            variants={ourModulesHeaderItem}
+            className="mt-2 text-xl font-heading-bold tracking-tight sm:text-2xl"
+          >
             <span className="text-slate-900">Our </span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 bg-clip-text font-semibold text-transparent">
               modules
             </span>
           </motion.h2>
-          <motion.div variants={ourModulesHeaderItem} className="mx-auto mt-4 max-w-xl">
-            <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
-              End-to-end payroll and workforce capabilities, pick what you need, everything stays connected.
-            </p>
-            <motion.div
-              className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-fuchsia-500 to-amber-500 shadow-sm shadow-blue-500/20"
-              initial={{ scaleX: 0, opacity: 0 }}
-              whileInView={{ scaleX: 1, opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.65, ease: smoothEase, delay: 0.35 }}
-              style={{ transformOrigin: "center" }}
-              aria-hidden
-            />
-          </motion.div>
+          <motion.p
+            variants={ourModulesHeaderItem}
+            className="mx-auto mt-1.5 max-w-lg text-[10px] leading-snug text-slate-700 sm:text-[11px] sm:leading-relaxed"
+          >
+            End-to-end payroll and workforce capabilities, pick what you need, everything stays connected.
+          </motion.p>
         </motion.div>
 
         <motion.ul
-          className="mt-8 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:mt-9"
+          className="mt-6 grid list-none grid-cols-2 gap-4 lg:mt-8 lg:grid-cols-4 lg:gap-4"
           variants={ourModulesGridStagger}
           initial="hidden"
           whileInView="visible"
@@ -546,13 +602,13 @@ function OurModulesCarousel() {
           {ourModulesSlides.map((slide, si) => {
             const palette = ourModuleCardPalettes[si % ourModuleCardPalettes.length];
             return (
-            <motion.li key={slide.title} variants={ourModulesCardVariant} className="min-w-0">
+            <motion.li key={slide.title} variants={ourModulesCardVariant} className="flex w-full justify-center">
               <OurModuleCard slide={slide} palette={palette} />
             </motion.li>
             );
           })}
         </motion.ul>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -1105,7 +1161,7 @@ export default function PayrollSolutionsPage() {
               </p>
             </motion.div>
 
-            <div className="relative mt-10 grid gap-8 lg:grid-cols-2 lg:gap-10 lg:gap-y-10">
+            <div className="relative mx-auto mt-8 grid w-full grid-cols-1 justify-items-center gap-[3vw] lg:grid-cols-2 lg:gap-[2.5vw]">
               <div className="pointer-events-none absolute left-1/2 top-[42%] hidden -translate-x-1/2 lg:block" aria-hidden>
                 <div className="flex h-24 w-px flex-col items-center bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
                 <motion.div
@@ -1120,115 +1176,85 @@ export default function PayrollSolutionsPage() {
               </div>
 
               <motion.div
-                className="relative flex min-h-0 flex-col overflow-hidden rounded-[1.75rem] p-px shadow-[0_28px_90px_-32px_rgba(15,23,42,0.55)] ring-1 ring-white/10"
+                className={`relative flex shrink-0 flex-col overflow-hidden rounded-2xl p-px shadow-[0_20px_60px_-28px_rgba(15,23,42,0.5)] ring-1 ring-white/10 ${leakageCardWidthClass}`}
                 initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase }}
                 whileHover={{
-                  y: -8,
-                  boxShadow: "0 36px 100px -36px rgba(15, 23, 42, 0.55)",
+                  y: -4,
+                  boxShadow: "0 28px 72px -32px rgba(15, 23, 42, 0.5)",
                   transition: { duration: 0.35, ease: smoothEase },
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-500/25 via-indigo-600/20 to-slate-900" aria-hidden />
-                <div className="relative flex min-h-0 flex-1 flex-col rounded-[1.65rem] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-7 sm:p-8">
-                  <div className="flex flex-wrap items-end justify-between gap-3 border-b border-white/10 pb-6">
+                <div className="relative flex min-h-0 flex-1 flex-col rounded-[15px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4">
+                  <div className="flex flex-wrap items-end justify-between gap-2 border-b border-white/10 pb-3">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
                         Your leakage snapshot
                       </p>
-                      <p className="mt-2 text-xl font-semibold tracking-tight text-white">Typical Enterprise Scenario</p>
+                      <p className="mt-1 text-base font-semibold tracking-tight text-white">Typical Enterprise Scenario</p>
                     </div>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/70 ring-1 ring-white/10">
+                    <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/70 ring-1 ring-white/10">
                       Illustrative model
                     </span>
                   </div>
-                  <div className="mt-6 flex flex-1 flex-col justify-start space-y-0 divide-y divide-white/10">
-                    {[
-                      {
-                        label: "Number of Contractors",
-                        value: "1,000",
-                        icon: (
-                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                        ),
-                      },
-                      {
-                        label: "Avg Monthly Cost per Contractor",
-                        value: "₹15,000",
-                        icon: (
-                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        ),
-                      },
-                      {
-                        label: "Number of Locations",
-                        value: "6",
-                        icon: (
-                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                        ),
-                      },
-                    ].map((row) => (
-                      <div key={row.label} className="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/[0.08] text-sky-200 ring-1 ring-white/10">
-                          {row.icon}
+                  <div className="mt-3 flex flex-1 flex-col divide-y divide-white/10">
+                    {leakageSnapshotRows.map((row) => (
+                      <div key={row.label} className="flex items-center gap-2.5 py-2 first:pt-0">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.08] text-sky-200 ring-1 ring-white/10">
+                          <LeakageSnapshotRowIcon name={row.icon} />
                         </div>
-                        <p className="min-w-0 flex-1 text-sm font-medium text-white/88">{row.label}</p>
-                        <div className="shrink-0 rounded-lg bg-gradient-to-br from-sky-400 to-sky-500 px-3.5 py-2 text-sm font-bold tabular-nums text-slate-950 shadow-md shadow-sky-900/30">
+                        <p className="min-w-0 flex-1 text-[11px] font-medium leading-snug text-white/88">{row.label}</p>
+                        <div className="shrink-0 rounded-md bg-gradient-to-br from-sky-400 to-sky-500 px-2 py-1 text-[11px] font-bold tabular-nums text-slate-950 shadow-md shadow-sky-900/30">
                           {row.value}
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-6 sm:flex-row sm:items-end sm:justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">Annual spend</span>
-                    <span className="text-4xl font-bold tabular-nums tracking-tight text-white sm:text-[2.75rem]">
-                      ₹18{" "}
-                      <span className="text-slate-200">Cr</span>
-                    </span>
+                  <div className="mt-3 shrink-0 space-y-2 border-t border-white/10 pt-3">
+                    <div className="flex flex-row items-end justify-between gap-1">
+                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">Annual spend</span>
+                      <span className="text-2xl font-bold tabular-nums tracking-tight text-white">
+                        ₹18{" "}
+                        <span className="text-slate-200">Cr</span>
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between rounded-lg bg-white/[0.06] px-2.5 py-1.5 ring-1 ring-white/10">
+                      <span className="text-[10px] font-medium text-white/60">Recoverable with CLMS (est.)</span>
+                      <span className="text-xs font-bold tabular-nums text-emerald-300">₹1.4 Cr+ / yr</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div
-                className="relative flex min-h-0 flex-col overflow-hidden rounded-[1.75rem] border border-rose-100/90 bg-white/90 p-7 shadow-[0_24px_70px_-36px_rgba(190,18,60,0.35)] ring-1 ring-rose-100/60 backdrop-blur-md sm:p-8"
+                className={`relative flex shrink-0 flex-col overflow-hidden rounded-2xl border border-rose-100/90 bg-white/90 p-4 shadow-[0_18px_50px_-30px_rgba(190,18,60,0.3)] ring-1 ring-rose-100/60 backdrop-blur-md ${leakageCardWidthClass}`}
                 initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
                 whileHover={{
-                  y: -8,
-                  boxShadow: "0 32px 80px -32px rgba(190, 24, 93, 0.45)",
+                  y: -4,
+                  boxShadow: "0 24px 60px -28px rgba(190, 24, 93, 0.4)",
                   transition: { duration: 0.35, ease: smoothEase },
                 }}
               >
-                <div className="flex flex-wrap items-start justify-between gap-3 border-b border-rose-100/80 pb-5">
+                <div className="flex flex-wrap items-start justify-between gap-2 border-b border-rose-100/80 pb-3">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-rose-900/80">Where you lose money</p>
-                    <p className="mt-1.5 text-sm text-slate-600">Ranked by typical exposure in multi-site contractor ops</p>
+                    <p className="mt-1 text-xs text-slate-600">Ranked by typical exposure in multi-site contractor ops</p>
                   </div>
                   <span className="rounded-lg bg-rose-50 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-rose-700 ring-1 ring-rose-100">
                     Annual bleed
                   </span>
                 </div>
-                <ul className="mt-6 flex flex-1 flex-col gap-4">
-                  {(
-                    [
-                      { label: "Ghost Workers (3%)", amount: "₹54 Lakhs", pct: 27, icon: "user-x" as const },
-                      { label: "Billing Errors (2%)", amount: "₹36 Lakhs", pct: 18, icon: "doc" as const },
-                      { label: "OT Fraud (1%)", amount: "₹18 Lakhs", pct: 9, icon: "clock" as const },
-                      { label: "Compliance Penalties", amount: "₹50 Lakhs", pct: 25, icon: "alert" as const },
-                      { label: "Admin Inefficiencies", amount: "₹40 Lakhs", pct: 21, icon: "stack" as const },
-                    ] as const
-                  ).map((item, barIdx) => (
+                <ul className="mt-3 flex flex-1 flex-col gap-2.5">
+                  {leakageBleedItems.map((item, barIdx) => (
                     <li key={item.label}>
                       <div className="flex items-start gap-3">
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-rose-50 to-white text-rose-600 ring-1 ring-rose-100/80">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-rose-50 to-white text-rose-600 ring-1 ring-rose-100/80">
                           {item.icon === "user-x" && (
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11a4 4 0 100-8 4 4 0 000 8zM5 21a7 7 0 0114 0M21 12h-4m0 0l2-2m-2 2l2 2" />
@@ -1257,10 +1283,10 @@ export default function PayrollSolutionsPage() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-baseline justify-between gap-2">
-                            <span className="text-sm font-semibold text-slate-800">{item.label}</span>
-                            <span className="text-sm font-bold tabular-nums text-slate-900">{item.amount}</span>
+                            <span className="text-xs font-semibold text-slate-800">{item.label}</span>
+                            <span className="text-xs font-bold tabular-nums text-slate-900">{item.amount}</span>
                           </div>
-                          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100 ring-1 ring-slate-200/80">
+                          <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-slate-100 ring-1 ring-slate-200/80">
                             <motion.div
                               className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-500"
                               initial={{ width: 0 }}
@@ -1279,7 +1305,7 @@ export default function PayrollSolutionsPage() {
                   ))}
                 </ul>
                 <motion.div
-                  className="group mt-8 flex cursor-default flex-col gap-2 rounded-2xl bg-gradient-to-br from-rose-400 via-rose-400 to-rose-500 px-5 py-5 text-white shadow-lg shadow-rose-500/20 transition-[background-image,box-shadow] duration-300 ease-out hover:from-rose-600 hover:via-rose-600 hover:to-red-700 hover:shadow-rose-900/30 sm:flex-row sm:items-center sm:justify-between"
+                  className="group mt-5 flex cursor-default flex-row items-center justify-between gap-1.5 rounded-xl bg-gradient-to-br from-rose-400 via-rose-400 to-rose-500 px-4 py-3.5 text-white shadow-lg shadow-rose-500/20 transition-[background-image,box-shadow] duration-300 ease-out hover:from-rose-600 hover:via-rose-600 hover:to-red-700 hover:shadow-rose-900/30"
                   initial={{ opacity: 0, scale: 0.98 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.6 }}
@@ -1289,7 +1315,7 @@ export default function PayrollSolutionsPage() {
                   <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/95 transition-colors duration-300 group-hover:text-white">
                     Total leakage
                   </span>
-                  <span className="text-2xl font-bold tabular-nums tracking-tight text-white transition-colors duration-300 group-hover:text-white sm:text-3xl">
+                  <span className="text-xl font-bold tabular-nums tracking-tight text-white transition-colors duration-300 group-hover:text-white">
                     ₹1.98 Cr / year
                   </span>
                 </motion.div>

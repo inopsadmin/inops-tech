@@ -790,13 +790,13 @@ export default function EwaPage() {
             >
               <motion.div
                 aria-hidden
-                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/15 blur-3xl"
+                className="pointer-events-none  absolute -right-16 !-top-16 h-40 w-40  rounded-full bg-blue-500/15 blur-3xl"
                 initial={{ opacity: 0, scale: 0.6 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={viewport}
                 transition={{ duration: 0.8, ease: smoothEase }}
               />
-              <div className="relative mb-4 flex items-center justify-between gap-3">
+              <div className="relative mb-4  flex items-center justify-between gap-3">
                 <motion.h3
                   className="text-lg font-semibold text-white sm:text-xl"
                   initial={{ opacity: 0, y: 6 }}
@@ -953,15 +953,15 @@ export default function EwaPage() {
                       iconWrap:
                         "bg-gradient-to-br from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-600/25 ring-2 ring-white/60",
                     },
-                    {
-                      title: "Behavior-based eligibility",
-                      description: "Intelligent limits based on historical attendance patterns.",
-                      topBar: "from-amber-500 via-orange-500 to-rose-600",
-                      surface:
-                        "border-amber-200/65 bg-gradient-to-br from-amber-50/80 via-white to-orange-50/32 shadow-[0_12px_36px_-28px_rgba(245,158,11,0.14)] ring-1 ring-amber-500/[0.06]",
-                      iconWrap:
-                        "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-600/22 ring-2 ring-white/60",
-                    },
+                    // {
+                    //   title: "Behavior-based eligibility",
+                    //   description: "Intelligent limits based on historical attendance patterns.",
+                    //   topBar: "from-amber-500 via-orange-500 to-rose-600",
+                    //   surface:
+                    //     "border-amber-200/65 bg-gradient-to-br from-amber-50/80 via-white to-orange-50/32 shadow-[0_12px_36px_-28px_rgba(245,158,11,0.14)] ring-1 ring-amber-500/[0.06]",
+                    //   iconWrap:
+                    //     "bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-md shadow-amber-600/22 ring-2 ring-white/60",
+                    // },
                   ] as const
                 ).map((item) => (
                   <motion.div

@@ -271,6 +271,7 @@ export default function AboutPage() {
             <div className="relative min-h-[280px] w-full bg-transparent sm:min-h-[340px] lg:flex lg:min-h-[400px] lg:items-stretch">
               <div
                 className={`relative mt-5 h-48 w-full sm:mt-7 sm:h-56 lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0 ${SPLIT_HERO_MEDIA_MR}`}
+                data-no-site-hover
               >
                 <Image
                   src={aboutHeroOfficeImage}

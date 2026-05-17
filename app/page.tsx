@@ -146,35 +146,49 @@ type WhyCard = {
   text: string;
   badge?: string;
   imageUrl: string;
+  href: string;
   icon?: "chart" | "lock" | "gear" | "integration" | "doc";
 };
 
+const whyCardHrefByTitle: Record<string, string> = {
+  "Identity solution": "/solutions/mobile-app",
+  HRIS: "/solutions/labourmanagement",
+  "Contract workforce governance": "/solutions/payroll-solutions",
+  "Logistics Solutions": "/solutions/enterprise-solution",
+  EWA: "/solutions/ewa",
+};
+
+/** Contract workforce governance is default featured → numbered from 01. */
 const whyCards: WhyCard[] = [
   {
-    title: "Identity solution",
-    badge: "Face + access",
-    imageUrl: whySectionCardImages[0],
-    text: "Cut queues and stop buddy punching with fast, accurate identity verification across devices and cameras.",
-    icon: "lock",
+    title: "Contract workforce governance",
+    badge: "Workforce system",
+    imageUrl: whySectionCardImages[2],
+    href: whyCardHrefByTitle["Contract workforce governance"],
+    text: "Real-time dashboards for plant, HR, and leadership, so every team sees the same source of truth.",
+    icon: "chart",
   },
   {
     title: "HRIS",
     badge: "HR platform",
     imageUrl: whySectionCardImages[1],
+    href: whyCardHrefByTitle.HRIS,
     text: "Centralise attendance, shifts, compliance, and reporting so operations stays audit-ready without spreadsheets.",
     icon: "gear",
   },
   {
-    title: "Contract workforce governance",
-    badge: "Workforce system",
-    imageUrl: whySectionCardImages[2],
-    text: "Real-time dashboards for plant, HR, and leadership, so every team sees the same source of truth.",
-    icon: "chart",
+    title: "Identity solution",
+    badge: "Face + access",
+    imageUrl: whySectionCardImages[0],
+    href: whyCardHrefByTitle["Identity solution"],
+    text: "Cut queues and stop buddy punching with fast, accurate identity verification across devices and cameras.",
+    icon: "lock",
   },
   {
     title: "Logistics Solutions",
     badge: "Enterprise solutions",
     imageUrl: whySectionCardImages[3],
+    href: whyCardHrefByTitle["Logistics Solutions"],
     text: "Roll out across multiple sites with controls, logs, and workflows designed for large industrial operations.",
     icon: "integration",
   },
@@ -182,13 +196,15 @@ const whyCards: WhyCard[] = [
     title: "EWA",
     badge: "Financial wellness",
     imageUrl: whySectionCardImages[4],
+    href: whyCardHrefByTitle.EWA,
     text: "Give employees flexible access to earned wages while keeping payroll controls and compliance intact.",
     icon: "doc",
   },
 ];
 
-function whyCardNumber(title: string, order: string[]): string {
-  const idx = order.indexOf(title);
+/** Fixed display number per card (stays with the card when swapping featured). */
+function whyCardNumber(title: string): string {
+  const idx = whyCards.findIndex((c) => c.title === title);
   if (idx < 0) return "00";
   return String(idx + 1).padStart(2, "0");
 }
@@ -318,9 +334,7 @@ export default function Home() {
                       className={`${inopsUi.btnPrimary} w-full shadow-lg shadow-blue-900/25 sm:w-auto`}
                     >
                       Get In Touch
-                      <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      
                     </Link>
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.04, y: -4 }} whileTap={{ scale: 0.98 }}>
@@ -548,42 +562,34 @@ export default function Home() {
 
               {/* Click left card => swap with first right card */}
               <motion.div
+                className="h-full"
                 initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
                 <motion.div
+                  className="h-full"
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setWhyOrder((prev) => {
-                        if (prev.length < 2) return prev;
-                        return [...prev.slice(1), prev[0]];
-                      })
-                    }
-                    className="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                    aria-label="Switch featured card"
-                  >
+                  <motion.div className="block h-full w-full text-left">
                     <motion.div
                       key={selectedWhyCard.title}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      className="grid grid-cols-1 lg:grid-cols-[1.12fr_0.88fr]"
+                      className="grid h-full grid-cols-1 lg:grid-cols-[1.12fr_0.88fr] lg:items-stretch"
                     >
-                      <div className="relative min-h-[220px] lg:min-h-[360px]">
+                      <div className="relative min-h-[220px] w-full overflow-hidden bg-slate-900 lg:min-h-full lg:h-full">
                         <Image
                           src={selectedWhyCard.imageUrl}
                           alt={selectedWhyCard.title}
                           fill
-                          className="object-cover transition-transform duration-150 ease-out group-hover:scale-[1.03]"
+                          className="object-cover object-center transition-transform duration-150 ease-out group-hover:scale-[1.03]"
                           sizes="(max-width: 1024px) 100vw, 55vw"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-slate-950/20 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-slate-950/10 to-transparent" />
                         <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-body-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
                           {selectedWhyCard.badge ?? "Dashboard view"}
                         </div>
@@ -603,9 +609,12 @@ export default function Home() {
                         </div>
 
                         <div className="mt-6 flex flex-wrap items-center gap-3">
-                          <span className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm text-white shadow-md transition-colors duration-150 ease-out group-hover:bg-blue-700">
+                          <Link
+                            href={selectedWhyCard.href}
+                            className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm text-white shadow-md transition-colors duration-150 ease-out hover:bg-blue-700 group-hover:bg-blue-700"
+                          >
                             View all Solutions
-                          </span>
+                          </Link>
                         </div>
 
                         <div className="mt-6 h-px w-20 bg-gradient-to-r from-gray-200 to-transparent" aria-hidden />
@@ -613,11 +622,11 @@ export default function Home() {
                           className="pointer-events-none absolute bottom-4 right-4 select-none text-4xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-5 sm:right-5 sm:text-5xl lg:bottom-6 lg:right-7 lg:text-6xl"
                           aria-hidden
                         >
-                          {whyCardNumber(selectedWhyCard.title, whyOrder)}
+                          {whyCardNumber(selectedWhyCard.title)}
                         </span>
                       </div>
                     </motion.div>
-                  </button>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -692,7 +701,7 @@ export default function Home() {
                       className="pointer-events-none absolute bottom-3 right-3 select-none text-3xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-4 sm:right-4 sm:text-4xl"
                       aria-hidden
                     >
-                      {whyCardNumber(card.title, whyOrder)}
+                      {whyCardNumber(card.title)}
                     </span>
                   </motion.div>
                 );
