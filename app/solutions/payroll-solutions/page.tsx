@@ -8,7 +8,13 @@ import { FlyInText } from "@/app/components/FlyInText";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
-import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
+import {
+  SPLIT_HERO_COPY_ML,
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -782,11 +788,11 @@ export default function PayrollSolutionsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
-            <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+            <div className={`relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px] ${SPLIT_HERO_MOBILE_STACK}`}>
               <SolutionHeroWaveDecor className="z-[1]" />
               {/* Right-half hero background (full width on small screens, then locked to the right on lg) */}
               <div
-                className={`relative z-[2] mt-8 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+                className={`relative z-[2] mt-8 h-52 w-full sm:h-60 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
               >
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
@@ -828,7 +834,7 @@ export default function PayrollSolutionsPage() {
                   ]}
                 />
               </div>
-              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <div className={`relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 ${SPLIT_HERO_MOBILE_COPY_ORDER}`}>
                 <div
                   className={`max-w-3xl px-2 py-6 pb-5 sm:px-4 sm:py-8 sm:pb-7 lg:max-w-xl lg:pt-10 lg:pb-5 lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
                 >

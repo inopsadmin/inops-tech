@@ -8,7 +8,13 @@ import ConnectedEcosystemSection from "@/app/components/ConnectedEcosystemSectio
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
-import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
+import {
+  SPLIT_HERO_COPY_ML,
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { inopsUi } from "@/app/lib/inopsUi";
 
@@ -610,9 +616,9 @@ export default function LabourManagementPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
-            <div className="relative min-h-[400px] w-full sm:min-h-[420px] lg:min-h-[min(520px,85vh)]">
+            <div className={`relative min-h-[400px] w-full sm:min-h-[420px] lg:min-h-[min(520px,85vh)] ${SPLIT_HERO_MOBILE_STACK}`}>
               <div
-                className={`relative mt-8 h-56 w-full sm:h-64 sm:mt-10 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[52%] ${SPLIT_HERO_MEDIA_MR}`}
+                className={`relative mt-8 h-56 w-full sm:h-64 sm:mt-10 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[52%] ${SPLIT_HERO_MEDIA_MR}`}
               >
                 {/* Inner clip for rounded corners; popups stay outside so they are not clipped (see VideoLivePopups). */}
                 <div className="absolute inset-0 overflow-hidden rounded-2xl shadow-[0_24px_60px_-38px_rgba(15,23,42,0.28)] ring-1 ring-slate-200/70 lg:rounded-none lg:shadow-none lg:ring-0">
@@ -663,7 +669,7 @@ export default function LabourManagementPage() {
                   ]}
                 />
               </div>
-              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <div className={`relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 ${SPLIT_HERO_MOBILE_COPY_ORDER}`}>
                 <div
                   className={`max-w-3xl px-1 py-8 sm:px-3 sm:py-10 lg:max-w-[26rem] xl:max-w-xl lg:py-[4.25rem] lg:pr-8 ${SPLIT_HERO_COPY_ML}`}
                 >

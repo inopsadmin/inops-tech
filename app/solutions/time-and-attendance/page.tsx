@@ -10,7 +10,13 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
-import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
+import {
+  SPLIT_HERO_COPY_ML,
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
 const timeAttendanceProductVideo = "/genrate_this_image_video_202605072329.mp4";
 const optiCamSolutionImage =
@@ -289,10 +295,10 @@ export default function TimeAndAttendancePage() {
           transition={{ duration: 0.45 }}
         >
           <div className="relative w-full overflow-hidden">
-            <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+            <div className={`relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px] ${SPLIT_HERO_MOBILE_STACK}`}>
               <SolutionHeroWaveDecor className="z-[1]" />
               <div
-                className={`relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+                className={`relative z-[2] mt-10 h-52 w-full sm:h-60 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
               >
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
@@ -331,7 +337,7 @@ export default function TimeAndAttendancePage() {
                   ]}
                 />
               </div>
-              <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+              <div className={`relative z-10 mx-auto max-w-7xl px-6 lg:px-12 ${SPLIT_HERO_MOBILE_COPY_ORDER}`}>
                 <div
                   className={`max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
                 >

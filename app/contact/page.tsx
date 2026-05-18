@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
 import { FlyInText } from "@/app/components/FlyInText";
 import { inopsUi } from "@/app/lib/inopsUi";
-import { OFFICE_ADDRESS_LINE, OFFICE_MAPS_EMBED_URL } from "@/app/lib/site";
+import { OFFICE_ADDRESS_LINE, OFFICE_MAPS_EMBED_URL, OFFICE_MAPS_URL } from "@/app/lib/site";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -191,14 +191,48 @@ export default function ContactPage() {
             transition={{ duration: 0.65, ease: smoothEase }}
             whileHover={{ y: -4, transition: { duration: 0.22, ease: smoothEase } }}
           >
-            <div className="border-b border-slate-200/80 bg-gradient-to-r from-white via-slate-50 to-[#eaf7fc] px-6 py-5 sm:px-8">
-              <FlyInText as="p" direction="right" className={inopsUi.eyebrowBrand}>
-                Bengaluru office
-              </FlyInText>
-              <FlyInText as="h3" direction="up" delay={0.06} className={`mt-2 ${inopsUi.sectionHeading} !text-black`}>
-                Bommasandra Industrial Area
-              </FlyInText>
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-200/80 bg-gradient-to-r from-white via-slate-50 to-[#eaf7fc] px-6 py-5 sm:px-8">
+              <div>
+                <FlyInText as="p" direction="right" className={inopsUi.eyebrowBrand}>
+                  Bengaluru office
+                </FlyInText>
+                <FlyInText as="h3" direction="up" delay={0.06} className={`mt-2 ${inopsUi.sectionHeading} !text-black`}>
+                  Bommasandra Industrial Area
+                </FlyInText>
+              </div>
+              <a
+                href={OFFICE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden items-center gap-1.5 text-sm font-semibold text-[color:var(--inops-blue)] transition hover:text-blue-700 md:inline-flex"
+              >
+                Open in Google Maps
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
             </div>
+            {/* Mobile: static card only — embedded Maps shows a Google overlay / app prompt */}
+            <a
+              href={OFFICE_MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-[220px] flex-col items-center justify-center gap-4 bg-gradient-to-br from-slate-100 via-slate-50 to-[#eaf7fc] px-6 py-10 text-center md:hidden"
+            >
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--inops-navy)] text-white shadow-lg shadow-slate-900/15">
+                <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </span>
+              <p className="max-w-sm text-sm leading-relaxed text-slate-600">{OFFICE_ADDRESS_LINE}</p>
+              <span className="inline-flex items-center gap-2 rounded-xl bg-[color:var(--inops-blue)] px-5 py-2.5 text-sm font-semibold text-white shadow-md">
+                View on Google Maps
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </span>
+            </a>
             <iframe
               title="Office location - Bommasandra Industrial Area, Bengaluru"
               src={OFFICE_MAPS_EMBED_URL}
@@ -208,7 +242,7 @@ export default function ContactPage() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="block w-full grayscale-[15%] transition duration-500 hover:grayscale-0"
+              className="hidden w-full grayscale-[15%] transition duration-500 hover:grayscale-0 md:block"
             />
           </motion.div>
         </div>

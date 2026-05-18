@@ -6,7 +6,13 @@ import { motion } from "framer-motion";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
-import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
+import {
+  SPLIT_HERO_COPY_ML,
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -456,10 +462,10 @@ export default function MobileAppPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
         >
-          <div className="relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px]">
+          <div className={`relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px] ${SPLIT_HERO_MOBILE_STACK}`}>
             <SolutionHeroWaveDecor className="z-[1] pt-3 sm:pt-4 lg:pt-5" />
             <div
-              className={`relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+              className={`relative z-[2] mt-10 h-52 w-full sm:h-60 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
             >
               <video
                 className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
@@ -489,7 +495,7 @@ export default function MobileAppPage() {
                   {
                     position: "bottom-right",
                     label: "Today",
-                    className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2",
+                    className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-10 xl:-right-2",
                     title: "On-shift workers",
                     subtitle: "Synced from field",
                     variant: "icon",
@@ -499,7 +505,7 @@ export default function MobileAppPage() {
                 ]}
               />
             </div>
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <div className={`relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 ${SPLIT_HERO_MOBILE_COPY_ORDER}`}>
               <div
                 className={`max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
               >

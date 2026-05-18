@@ -327,7 +327,8 @@ export default function EwaPage() {
         livePopups={[
           {
             position: "top-left",
-            className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:-top-5 xl:-left-20",
+            animateOnMount: true,
+            className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-20 xl:-left-20",
             label: "Live",
             title: "Wages unlocked",
             accent: "emerald",
@@ -337,7 +338,7 @@ export default function EwaPage() {
             label: "Approved",
             title: "Earned-wage withdrawal",
             subtitle: "Linked to attendance",
-            className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-20 xl:-right-0",
+            className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-0",
             variant: "icon",
             icon: "wallet",
             accent: "blue",

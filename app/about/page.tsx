@@ -7,7 +7,13 @@ import AnimatedCounter from "../components/AnimatedCounter";
 import CollaborateCtaBand from "../components/CollaborateCtaBand";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "../components/SolutionHeroWaveDecor";
-import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
+import {
+  SPLIT_HERO_COPY_ML,
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
@@ -268,9 +274,9 @@ export default function AboutPage() {
         >
           <SolutionHeroWaveDecor className="z-[1]" />
           <div className="relative z-[2] w-full">
-            <div className="relative min-h-[280px] w-full bg-transparent sm:min-h-[340px] lg:flex lg:min-h-[400px] lg:items-stretch">
+            <div className={`relative min-h-[280px] w-full bg-transparent sm:min-h-[340px] lg:flex lg:min-h-[400px] lg:items-stretch ${SPLIT_HERO_MOBILE_STACK}`}>
               <div
-                className={`relative mt-5 h-48 w-full sm:mt-7 sm:h-56 lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0 ${SPLIT_HERO_MEDIA_MR}`}
+                className={`relative mt-5 h-48 w-full sm:mt-7 sm:h-56 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:order-2 lg:mt-0 lg:h-auto lg:min-h-[400px] lg:w-1/2 lg:flex-shrink-0 ${SPLIT_HERO_MEDIA_MR}`}
                 data-no-site-hover
               >
                 <Image
@@ -309,7 +315,7 @@ export default function AboutPage() {
                 />
               </div>
 
-              <div className="relative z-10 mx-auto flex max-w-7xl flex-1 flex-col justify-center px-4 sm:px-6 lg:px-12 lg:order-1 lg:w-1/2">
+              <div className={`relative z-10 mx-auto flex max-w-7xl flex-1 flex-col justify-center px-4 sm:px-6 lg:px-12 lg:order-1 lg:w-1/2 ${SPLIT_HERO_MOBILE_COPY_ORDER}`}>
                 <div
                   className={`max-w-3xl px-0 py-6 sm:py-8 lg:max-w-xl lg:py-10 lg:pr-8 ${SPLIT_HERO_COPY_ML}`}
                 >

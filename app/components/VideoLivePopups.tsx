@@ -245,10 +245,10 @@ export default function VideoLivePopups({ popups }: VideoLivePopupsProps) {
       {popups.map((p, i) => {
         const accent = accentMap[p.accent ?? "emerald"];
         const variant = p.variant ?? "pulse";
-        const showOnMobile = p.hideOnMobile === false;
         const baseClass =
-          "pointer-events-none absolute z-20 items-center gap-3 rounded-2xl border border-slate-200/90 bg-white/95 px-4 py-3 shadow-[0_18px_48px_-22px_rgba(15,23,42,0.45)] backdrop-blur";
-        const visibilityClass = showOnMobile ? "flex" : "hidden sm:flex";
+          "pointer-events-none absolute z-30 items-center gap-3 rounded-2xl border border-slate-200/90 bg-white px-4 py-3 shadow-[0_18px_48px_-22px_rgba(15,23,42,0.45)] backdrop-blur-sm";
+        /** Hidden below `lg` — corner tiles crowd mobile layouts and overlap hero media. */
+        const visibilityClass = "hidden lg:flex";
         /** When `className` sets inset offsets, skip preset corners so Tailwind does not emit conflicting `bottom-*` / `right-*` utilities. */
         const positionClass = p.className?.trim() ? "" : positionMap[p.position];
         const customClass = p.className ?? "";

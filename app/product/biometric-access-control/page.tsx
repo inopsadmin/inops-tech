@@ -6,7 +6,13 @@ import { motion } from "framer-motion";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import SolutionHeroWaveDecor from "@/app/components/SolutionHeroWaveDecor";
-import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
+import {
+  SPLIT_HERO_COPY_ML,
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -404,10 +410,10 @@ export default function BiometricAccessControlPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: smoothEase, delay: 0.06 }}
           >
-            <div className="relative min-h-[340px] w-full sm:min-h-[390px] lg:min-h-[430px]">
+            <div className={`relative min-h-[340px] w-full sm:min-h-[390px] lg:min-h-[430px] ${SPLIT_HERO_MOBILE_STACK}`}>
               <SolutionHeroWaveDecor className="z-[1]" />
               <div
-                className={`relative z-[2] mt-10 h-52 w-full sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
+                className={`relative z-[2] mt-10 h-52 w-full sm:h-60 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
               >
                 <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-blue-500/15 to-indigo-600/20 blur-2xl lg:block lg:rounded-l-[2rem] lg:rounded-r-none" aria-hidden />
                 <div className="relative h-full overflow-hidden lg:h-full">
@@ -451,7 +457,7 @@ export default function BiometricAccessControlPage() {
                   ]}
                 />
               </div>
-              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+              <div className={`relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-12 ${SPLIT_HERO_MOBILE_COPY_ORDER}`}>
                 <div
                   className={`max-w-3xl px-2 py-8 sm:px-4 sm:py-10 lg:max-w-xl lg:py-16 lg:pr-8 ${SPLIT_HERO_COPY_ML}`}
                 >

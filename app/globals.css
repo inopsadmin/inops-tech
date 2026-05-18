@@ -974,12 +974,12 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 /* Reusable type scale — use via `app/lib/inopsUi.ts` (prefers composition over one-off sizes) */
 @layer components {
   .inops-type-hero {
-    @apply !text-5xl font-bold tracking-tight;
+    @apply !text-[1.75rem] !leading-[1.12] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
   }
 
-  /* Beat `.inops-template :where(h1)` default size so hero matches home (`text-5xl`). */
+  /* Beat `.inops-template :where(h1)` default size so hero matches home (`text-5xl` at lg+). */
   .inops-template h1.inops-type-hero {
-    @apply !text-5xl font-bold tracking-tight;
+    @apply !text-[1.75rem] !leading-[1.12] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
   }
 
   .inops-type-page {

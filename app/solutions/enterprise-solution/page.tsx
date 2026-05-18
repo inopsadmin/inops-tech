@@ -271,7 +271,8 @@ export default function EnterpriseSolutionPage() {
         livePopups={[
           {
             position: "top-left",
-            className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-9 xl:left-130",
+            animateOnMount: true,
+            className: "top-10 -left-10 sm:-top-10 sm:-left-10 md:-top-10 md:-left-10 lg:-top-10 lg:-left-10 xl:top-21 xl:left-130",
             label: "Live",
             title: "Operations connected",
             accent: "emerald",

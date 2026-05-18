@@ -7,6 +7,12 @@ import type { ReactNode } from "react";
 import VideoLivePopups, { type VideoLivePopupItem } from "./VideoLivePopups";
 import SolutionHeroWaveDecor, { SolutionHeroWaveBottomBand } from "./SolutionHeroWaveDecor";
 import { inopsUi } from "@/app/lib/inopsUi";
+import {
+  SPLIT_HERO_MEDIA_MR,
+  SPLIT_HERO_MOBILE_COPY_ORDER,
+  SPLIT_HERO_MOBILE_MEDIA_ORDER,
+  SPLIT_HERO_MOBILE_STACK,
+} from "@/app/lib/splitHeroWideInsets";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
@@ -130,10 +136,12 @@ export default function SolutionLandingHero({
   const imageWrapClass = imageWrapperClassName ?? "absolute inset-0 mt-10 overflow-hidden";
   const hadOverflowHidden = /\boverflow-hidden\b/.test(imageWrapClass);
   const mediaShellClass = hadOverflowHidden ? stripOverflowHidden(imageWrapClass) : imageWrapClass;
+  const stackedMobileSplit =
+    /\brelative\b/.test(imageWrapClass) && /\blg:absolute\b/.test(imageWrapClass);
 
   const section = (
     <motion.section
-      className={`${sectionShell} ${sectionClassName ?? defaultHeights}`}
+      className={`${sectionShell} ${stackedMobileSplit ? SPLIT_HERO_MOBILE_STACK : ""} ${sectionClassName ?? defaultHeights}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.45 }}
@@ -199,12 +207,17 @@ export default function SolutionLandingHero({
       {mobileVeilClass ? <div className={`${mobileVeilClass} z-[1]`} aria-hidden /> : null}
       <SolutionHeroWaveDecor className="z-[4]" showBottomWaves={!waveBandBelowHero} />
       {popupsToRender ? (
-        <div className={`${mediaShellClass} pointer-events-none z-[5]`}>
+        <div
+          className={
+            stackedMobileSplit
+              ? `pointer-events-none absolute inset-y-0 right-0 z-[12] hidden overflow-visible lg:block lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`
+              : "pointer-events-none absolute inset-0 z-[12] overflow-visible"
+          }
+        >
           <VideoLivePopups popups={popupsToRender} />
         </div>
       ) : null}
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16 xl:py-18 2xl:py-20">
+      <div className={`relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16 xl:py-18 2xl:py-20 ${stackedMobileSplit ? SPLIT_HERO_MOBILE_COPY_ORDER + " max-lg:pt-6 max-lg:pb-2" : ""}`}>
         <div className={splitHeroCopyStackClassName ?? "contents"}>
           {badge ? (
             <motion.div
