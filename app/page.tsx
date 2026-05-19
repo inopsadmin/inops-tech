@@ -20,7 +20,7 @@ import VideoLivePopups, { type VideoLivePopupItem } from "./components/VideoLive
 import ClientMarqueeLogo from "@/app/components/ClientMarqueeLogo";
 import { CLIENT_LOGO_MARQUEE_TRACK, industryLeaderClientLogos } from "@/app/lib/industryLeaderClientLogos";
 import { mediaVideos } from "@/app/lib/mediaAssets";
-import { HOME_HERO_SEO_H1, heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
+import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
 import { TRUSTED_BY_HEADLINE } from "@/app/lib/trustedClients";
 import { inopsUi } from "@/app/lib/inopsUi";
 
@@ -331,14 +331,9 @@ export default function Home() {
                       aria-live="polite"
                     >
                       {activeHeroSlide?.layout === "legacy" ? (
-                        <>
-                          <h1 className="home-display-heading inops-type-hero relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased">
-                            {HOME_HERO_SEO_H1}
-                          </h1>
-                          <h2 className="home-hero-support-line home-display-heading mt-4 sm:mt-5">
-                            {activeHeroSlide.headline}
-                          </h2>
-                        </>
+                        <h1 className="home-display-heading inops-type-hero relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased">
+                          {activeHeroSlide.headline}
+                        </h1>
                       ) : activeHeroSlide?.layout === "seo-stack" ? (
                         <>
                           <h1

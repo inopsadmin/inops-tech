@@ -50,17 +50,6 @@ html {
   text-rendering: optimizeLegibility;
 }
 
-@media (min-width: 1280px) {
-  :root {
-    --home-nav-offset: 4.9rem;
-  }
-}
-
-@media (min-width: 1536px) {
-  :root {
-    --home-nav-offset: 5.2rem;
-  }
-}
 
 /* Navbar: `position` set in Navbar.tsx (home hero = static, then fixed + white) */
 .navbar-fixed-header {
@@ -68,6 +57,20 @@ html {
   left: 0;
   right: 0;
   z-index: 100;
+}
+
+/* InOps wordmark — fixed box, same on every page and breakpoint */
+.navbar-brand-logo {
+  position: relative;
+  display: block;
+  height: 2.25rem;
+  width: 8.75rem;
+  min-height: 2.25rem;
+  min-width: 8.75rem;
+  max-height: 2.25rem;
+  max-width: 8.75rem;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 body {
@@ -778,14 +781,14 @@ button, a, [role="button"] {
 
 /* Navbar links: slight lift on hover (footer links keep their own motion in Footer.tsx) */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .navbar-fixed-header a[href] {
+  .navbar-fixed-header a[href]:not(.navbar-brand-link) {
     transition:
       transform 0.2s cubic-bezier(0.33, 1, 0.68, 1),
       color 0.2s ease,
       opacity 0.2s ease;
   }
 
-  .navbar-fixed-header a[href]:hover {
+  .navbar-fixed-header a[href]:not(.navbar-brand-link):hover {
     transform: translateY(-1px);
   }
 }
@@ -1007,12 +1010,12 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
   /* Slide 1 — CLMS, CLRA, Compliance */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--tag {
-    @apply !text-lg !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-xl lg:!text-2xl;
+    @apply !text-xl !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-2xl lg:!text-3xl;
   }
 
   /* Slide 2 — same size as slide 1 SEO tag; single row */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--line {
-    @apply !text-lg !font-medium normal-case !tracking-normal !whitespace-nowrap text-sky-100/80 sm:!text-xl lg:!text-2xl;
+    @apply !text-xl !font-medium normal-case !tracking-normal !whitespace-nowrap text-sky-100/80 sm:!text-2xl lg:!text-3xl;
   }
 
   .home-hero-seo-h1--line {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import BrandLogoImage from "@/app/components/BrandLogoImage";
+import NavbarBrandLogo from "@/app/components/NavbarBrandLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -151,11 +151,13 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Link href="/" className="relative block transition-opacity hover:opacity-90" aria-label="InOps Solutions home">
-            <BrandLogoImage
-              className={`h-8 w-auto object-contain transition-all duration-300 xl:h-9 2xl:h-10 ${scrolled ? "opacity-90" : "opacity-95 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"}`}
-              priority
-              fetchPriority="high"
+          <Link
+            href="/"
+            className={`navbar-brand-link block shrink-0 transition-opacity duration-300 hover:opacity-90 ${scrolled ? "opacity-90" : "opacity-95"}`}
+            aria-label="InOps Solutions home"
+          >
+            <NavbarBrandLogo
+              className={scrolled ? "" : "drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]"}
             />
           </Link>
         </motion.div>
