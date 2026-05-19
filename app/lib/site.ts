@@ -13,6 +13,13 @@ export const DEFAULT_DESCRIPTION =
 
 export const CONTACT_EMAIL = "contact@inops.tech";
 
+/** Official company social profiles (footer / schema). */
+export const SOCIAL_LINKS = {
+  linkedin: "https://in.linkedin.com/company/inops-it-solutions-pvt-ltd",
+  twitter: "https://x.com/InOpstweets",
+  facebook: "https://www.facebook.com/people/InOps-Solutions/61552352699183/",
+} as const;
+
 /** E.164 for schema.org / tel: links */
 export const PHONE_E164 = "+918088602602";
 

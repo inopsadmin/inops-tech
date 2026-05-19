@@ -15,6 +15,7 @@ import {
   SPLIT_HERO_MOBILE_MEDIA_ORDER,
   SPLIT_HERO_MOBILE_STACK,
 } from "@/app/lib/splitHeroWideInsets";
+import { mediaVideos } from "@/app/lib/mediaAssets";
 import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -53,8 +54,8 @@ const ourModulesCardVariant = {
 } as const;
 
 const payrollHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.41.37 PM.jpeg";
-const payrollHeroRightVideo = "/genrate_this_image_video_202605072346.mp4";
-const accessGovernanceLeftVideo = "/genrate_this_part_image_video_202605072352.mp4";
+const payrollHeroRightVideo = mediaVideos.payrollHeroDemo;
+const accessGovernanceLeftVideo = mediaVideos.accessGovernanceDemo;
 
 const comprehensiveControlCards = [
   {
@@ -1591,7 +1592,7 @@ export default function PayrollSolutionsPage() {
           primaryLabel="Request a Demo"
           secondaryLabel="Download Brochure"
           secondaryHref="/brochures"
-          footnote="Trusted by Fortune 500 manufacturing, logistics, and infrastructure giants."
+          footnote="Trusted by leading Indian manufacturers and infrastructure companies."
           sectionClassName="!pt-7 !pb-12 sm:!px-6 lg:!pb-14"
         />
       </div>

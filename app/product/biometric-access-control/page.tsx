@@ -14,13 +14,14 @@ import {
   SPLIT_HERO_MOBILE_STACK,
 } from "@/app/lib/splitHeroWideInsets";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { mediaVideos } from "@/app/lib/mediaAssets";
 import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
 const smartAccessShowcaseImage =
   "/WhatsApp Image 2026-04-29 at 3.18.32 PM.jpeg";
-const smartAccessShowcaseVideo = "/genrate_image_in_video_202605080051.mp4";
+const smartAccessShowcaseVideo = mediaVideos.smartAccessShowcase;
 const deviceCategoryCards = [
   {
     title: "Face Recognition",
@@ -53,7 +54,7 @@ const deviceCategoryCards = [
 ] as const;
 
 const touchlessFaceReaderShowcaseImage = "/images/Screenshot 2026-05-04 220326.png";
-const touchlessFaceReaderShowcaseVideo = "/genrate_this_image_in_video_202605080054.mp4";
+const touchlessFaceReaderShowcaseVideo = mediaVideos.touchlessFaceReaderDemo;
 
 /** “Platform strengths” — same card language as solution pain/insight tiles */
 const biometricPlatformStrengthCards = [

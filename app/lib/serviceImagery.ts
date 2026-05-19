@@ -3,25 +3,61 @@
  * Centralised so homepage sliders and modules stay consistent with real services.
  */
 
-export const heroSlides = [
+/** Stable homepage H1 for SEO on legacy hero slide (slide 3 — EWA). */
+export const HOME_HERO_SEO_H1 =
+  "Contract Workforce Governance, CLMS & Biometric Attendance";
+
+export type HeroSlide =
+  | {
+      layout: "seo-stack";
+      src: string;
+      alt: string;
+      /** Small visible H1 — primary SEO keyword line for this slide */
+      seoHeading: string;
+      /** `tag` = short uppercase label; `line` = longer single-row sentence */
+      seoHeadingVariant?: "tag" | "line";
+      /** Main hero message (H2) */
+      headline: string;
+      /** Supporting line (H3), optional */
+      subheadline?: string;
+      solutionHref: string;
+    }
+  | {
+      layout: "legacy";
+      src: string;
+      alt: string;
+      headline: string;
+      solutionHref: string;
+    };
+
+/** Homepage hero slides — copy order: small H1 (SEO) → big H2 → big H3 (slide 1 only). Slide 3 uses legacy layout. */
+export const heroSlides: readonly HeroSlide[] = [
   {
-    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=3200&q=90",
-    alt: "Operations team at computers in a modern enterprise control room reviewing workforce management analytics",
-    title: "Single Source of Truth for Workforce Governance",
-   
+    layout: "seo-stack",
+    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80",
+    alt: "Operations team reviewing contract workforce compliance and CLMS dashboards in an enterprise control room",
+    seoHeading: "CLMS, CLRA, Compliance",
+    headline: "India's Contract Workforce Compliance Platform",
+    subheadline: "Single Source of Truth for Workforce Governance",
+    solutionHref: "/solutions/payroll-solutions",
   },
   {
+    layout: "seo-stack",
     src: "/WhatsApp Image 2026-05-04 at 11.55.24 AM.jpeg",
     alt: "Face recognition and biometric access across mobile, CCTV, and on-ground devices in enterprise operations",
-    title: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
+    seoHeading: "Biometric CLMS That Eliminates Contractor Payroll Leakage",
+    seoHeadingVariant: "line",
+    headline: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
+    solutionHref: "/solutions/mobile-app",
   },
   {
-    src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=3200&q=85",
+    layout: "legacy",
+    src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1920&q=75",
     alt: "Employee reviewing earnings and financial planning documents",
-    title: "Building Financial Resilience for the Workforce",
-    
+    headline: "Building Financial Resilience for the Workforce",
+    solutionHref: "/solutions/ewa",
   },
-] as const;
+];
 
 /**
  * Trusted clients shown directly under the homepage hero (single-row marquee).

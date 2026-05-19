@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { mediaVideos } from "@/app/lib/mediaAssets";
 import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -315,7 +316,7 @@ export default function EwaPage() {
           </>
         }
         subtitle="Enable your workforce to access wages they've already earned, powered by real-time attendance and payroll data."
-        videoSrc="/videos/genrate_this_image_in_video_202605080131.mp4"
+        videoSrc={mediaVideos.ewaPlatformPreview}
         imageSrc="/images/ewa-hero.png"
         imageAlt="Workforce on site ,  earned wage access aligned to verified attendance"
         imageWrapperClassName={`relative mt-25 rounded-2xl  h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
@@ -730,7 +731,7 @@ export default function EwaPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              WageStream doesn&apos;t just work in isolation. It deeply integrates into your existing
+              InOps EWA doesn&apos;t just work in isolation. It deeply integrates into your existing
               enterprise stack.
             </p>
           </motion.div>

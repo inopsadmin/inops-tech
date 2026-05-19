@@ -5,6 +5,7 @@ import {
   OFFICE_GEO,
   PHONE_E164,
   SITE_NAME,
+  SOCIAL_LINKS,
   absoluteUrl,
   getSiteUrl,
 } from "@/app/lib/site";
@@ -26,6 +27,7 @@ export default function OrganizationJsonLd() {
       description: DEFAULT_DESCRIPTION,
       email: CONTACT_EMAIL,
       telephone: PHONE_E164,
+      sameAs: [SOCIAL_LINKS.linkedin, SOCIAL_LINKS.twitter, SOCIAL_LINKS.facebook],
       address: {
         "@type": "PostalAddress",
         streetAddress: OFFICE_ADDRESS.streetAddress,
@@ -67,6 +69,7 @@ export default function OrganizationJsonLd() {
         longitude: OFFICE_GEO.longitude,
       },
       parentOrganization: { "@id": `${siteUrl}/#organization` },
+      areaServed: { "@type": "Country", name: "India" },
     },
   ];
 

@@ -4,65 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
+import { blogPosts, getBlogPostHref } from "@/app/lib/blogPosts";
 import { inopsUi } from "@/app/lib/inopsUi";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.12 };
 
-const posts = [
-  {
-    title: "Top 8 Access Control Technology Trends For 2024",
-    author: "InOps Editorial",
-    date: "September 13, 2024",
-    snippet:
-      "In a rapidly evolving digital landscape, access control technology continues to redefine security and convenience. Explore the key trends shaping the industry this year.",
-    slug: "access-control-trends-2024",
-    category: "Access control",
-    readMinutes: 6,
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=85",
-    imageAlt: "Premium digital security dashboard representing modern access control",
-  },
-  {
-    title: "The Future of Work: How Biometric Attendance Systems are Shaping the Workplace",
-    author: "admin",
-    date: "September 13, 2024",
-    snippet:
-      "In today's rapidly evolving business landscape, the future of work is being shaped by smart attendance and identity solutions. Learn how biometrics are transforming workforce management.",
-    slug: "biometric-attendance-future-of-work",
-    category: "Biometrics",
-    readMinutes: 8,
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Cybersecurity and digital identity technology representing biometric systems",
-  },
-  {
-    title: "Navigating the Future of Work: 6 Trends in Employee Time and Attendance Tracking",
-    author: "admin",
-    date: "September 13, 2024",
-    snippet:
-      "In today's dynamic work environment, where remote work, flexible hours, and hybrid models are the norm, effective time and attendance tracking has never been more critical.",
-    slug: "time-attendance-tracking-trends",
-    category: "Time & attendance",
-    readMinutes: 7,
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "Business professional reviewing schedules and analytics for time tracking",
-  },
-  {
-    title: "Maximizing Employee Efficiency and Engagement: 6 Ways HR Technology Drives Success",
-    author: "admin",
-    date: "September 13, 2024",
-    snippet:
-      "In today's fast-paced business environment, organizations are turning to HR technology to boost efficiency, engagement, and overall workforce performance.",
-    slug: "hr-technology-efficiency-engagement",
-    category: "HR technology",
-    readMinutes: 6,
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
-    imageAlt: "HR team collaboration and people strategy meeting in a modern office",
-  },
-] as const;
+const posts = blogPosts.map((post) => ({
+  ...post,
+  snippet: post.description,
+}));
 
 const blogBanner = {
   src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85",
@@ -156,7 +107,7 @@ export default function BlogPage() {
             <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#39bde8]/15 blur-3xl" aria-hidden />
             <div className="grid gap-0 lg:grid-cols-12">
               <Link
-                href="#"
+                href={getBlogPostHref(featured.slug)}
                 className="relative block aspect-[16/11] overflow-hidden bg-slate-100 lg:col-span-7 lg:aspect-auto lg:min-h-[440px]"
                 aria-label={`Read featured article: ${featured.title}`}
               >
@@ -200,7 +151,7 @@ export default function BlogPage() {
                 </FlyInText>
 
                 <FlyInText as="h3" direction="left" delay={0.08} className="mt-5 text-black">
-                  <Link href="#" className="transition-colors hover:text-[var(--inops-blue)]">
+                  <Link href={getBlogPostHref(featured.slug)} className="transition-colors hover:text-[var(--inops-blue)]">
                     {featured.title}
                   </Link>
                 </FlyInText>
@@ -210,7 +161,7 @@ export default function BlogPage() {
 
                 <FlyInText as="div" direction="up" delay={0.2} className="mt-8">
                   <Link
-                    href="#"
+                    href={getBlogPostHref(featured.slug)}
                     className="inline-flex items-center gap-2 self-start rounded-full bg-[var(--inops-navy)] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-slate-900/20 transition hover:-translate-y-0.5 hover:bg-[var(--inops-blue)] hover:shadow-blue-600/25"
                   >
                     Read article
@@ -258,7 +209,7 @@ export default function BlogPage() {
                 viewport={viewport}
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 * i }}
               >
-                <Link href="#" className="relative aspect-[16/10] block overflow-hidden bg-slate-100" aria-label={post.title}>
+                <Link href={getBlogPostHref(post.slug)} className="relative aspect-[16/10] block overflow-hidden bg-slate-100" aria-label={post.title}>
                   <Image
                     src={post.image}
                     alt={post.imageAlt}
@@ -289,7 +240,7 @@ export default function BlogPage() {
                     <span>{post.readMinutes} min read</span>
                   </FlyInText>
                   <FlyInText as="h3" direction="up" delay={0.08 + i * 0.04} className="mt-4 text-black">
-                    <Link href="#" className="transition-colors hover:text-[var(--inops-blue)]">
+                    <Link href={getBlogPostHref(post.slug)} className="transition-colors hover:text-[var(--inops-blue)]">
                       {post.title}
                     </Link>
                   </FlyInText>
@@ -298,7 +249,7 @@ export default function BlogPage() {
                   </FlyInText>
                   <FlyInText as="div" direction="up" delay={0.16 + i * 0.04} className="mt-6">
                     <Link
-                      href="#"
+                      href={getBlogPostHref(post.slug)}
                       className="inline-flex items-center gap-2 self-start rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-[var(--inops-blue)] transition hover:gap-3 hover:border-[var(--inops-blue)] hover:bg-blue-50 hover:text-[var(--brand-hover)]"
                     >
                       Continue reading

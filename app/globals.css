@@ -281,6 +281,14 @@ button, a, [role="button"] {
 .hero-trusted-marquee .animate-marquee {
   animation-duration: 14s;
 }
+
+/* Client logo marquee — one shared vertical axis */
+.hero-trusted-marquee .brand-marquee-group,
+.hero-trusted-marquee .brand-marquee-track,
+.brand-marquee-group,
+.brand-marquee-track {
+  align-items: center;
+}
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-marquee-slow {
@@ -735,6 +743,12 @@ button, a, [role="button"] {
   main section.site-reveal-pending.site-reveal-visible {
     opacity: 1;
     transform: none;
+    will-change: auto;
+  }
+
+  main > section:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
   }
 }
 
@@ -975,6 +989,47 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 @layer components {
   .inops-type-hero {
     @apply !text-[1.75rem] !leading-[1.12] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
+  }
+
+  /*
+   * Homepage hero copy hierarchy (slides 1–2: seo-stack)
+   * H1 = small SEO line(s) | H2 = inops-type-hero | support line = home-hero-support-line
+   */
+
+  .home-hero-seo-h1 {
+    @apply font-normal normal-case leading-snug text-white/70;
+  }
+
+  /* Beat `.inops-template :where(h1)` */
+  .inops-template h1.home-hero-seo-h1 {
+    @apply !font-normal !leading-snug;
+  }
+
+  /* Slide 1 — CLMS, CLRA, Compliance */
+  .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--tag {
+    @apply !text-base !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-lg lg:!text-xl;
+  }
+
+  /* Slide 2 — long SEO line, single row */
+  .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--line {
+    @apply !text-[0.8125rem] !font-medium normal-case !tracking-normal !whitespace-nowrap text-white/85 sm:!text-lg lg:!text-xl;
+  }
+
+  .home-hero-seo-h1--line {
+    @apply max-w-[min(100%,56rem)];
+  }
+
+  /*
+   * Slide 1 H3 + slide 3 secondary headline — same size, color, single row
+   * e.g. “Single Source of Truth…” / “Building Financial Resilience…”
+   */
+  .home-hero-support-line {
+    @apply relative mx-auto max-w-[min(100%,56rem)] whitespace-nowrap bg-gradient-to-br from-white/95 via-sky-100/90 to-cyan-100/90 bg-clip-text px-2 font-bold text-transparent antialiased;
+    @apply text-xl leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] sm:text-3xl lg:text-4xl;
+  }
+
+  .inops-template :is(h2, h3).home-hero-support-line {
+    @apply !text-xl !font-bold !leading-tight sm:!text-3xl lg:!text-4xl;
   }
 
   /* Beat `.inops-template :where(h1)` default size so hero matches home (`text-5xl` at lg+). */

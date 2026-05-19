@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import BrandLogoImage from "@/app/components/BrandLogoImage";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { OFFICE_ADDRESS_LINE } from "@/app/lib/site";
+import { OFFICE_ADDRESS_LINE, SOCIAL_LINKS } from "@/app/lib/site";
 
 const solutions = [
   { label: "Workforce Governance Solution", href: "/solutions/payroll-solutions" },
@@ -26,9 +27,9 @@ const company = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/", icon: "linkedin" as const },
-  { label: "Twitter / X", href: "https://twitter.com/", icon: "twitter" as const },
-  { label: "Facebook", href: "https://www.facebook.com/", icon: "facebook" as const },
+  { label: "LinkedIn", href: SOCIAL_LINKS.linkedin, icon: "linkedin" as const },
+  { label: "Twitter / X", href: SOCIAL_LINKS.twitter, icon: "twitter" as const },
+  { label: "Facebook", href: SOCIAL_LINKS.facebook, icon: "facebook" as const },
 ];
 
 type NavItem = { label: string; href: string };
@@ -109,9 +110,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4">
             <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-90">
-              <Image
-                src="/logo.png"
-                alt="InOps Solutions"
+              <BrandLogoImage
                 width={192}
                 height={60}
                 className="h-12 w-auto object-contain sm:h-[3.25rem] xl:h-14 2xl:h-[3.75rem]"

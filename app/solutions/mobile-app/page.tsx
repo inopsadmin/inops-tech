@@ -14,12 +14,14 @@ import {
   SPLIT_HERO_MOBILE_STACK,
 } from "@/app/lib/splitHeroWideInsets";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
+import { mediaVideos } from "@/app/lib/mediaAssets";
 import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
 const mobileAppHeroImage = "/WhatsApp Image 2026-05-04 at 12.24.06 PM.jpeg";
-const mobileAppHeroVideo = "/genrate_this_part_image_202605080039.mp4";
-const smartAttendanceWhySectionVideo = "/genrate_this_image_video_202605080043.mp4";
+
+const mobileAppHeroVideo = mediaVideos.mobileAppHero;
+const smartAttendanceWhySectionVideo = mediaVideos.smartAttendanceMobile;
 const viewport = { once: true, amount: 0.2 };
 
 const featureCards = [

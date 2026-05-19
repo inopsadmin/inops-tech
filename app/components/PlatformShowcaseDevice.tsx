@@ -42,13 +42,15 @@ export default function PlatformShowcaseDevice() {
       <div className="relative rounded-[1.45rem] border border-slate-600/40 bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 p-[9px] shadow-[0_32px_80px_-20px_rgba(15,23,42,0.72),inset_0_1px_0_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(255,255,255,0.06)] sm:rounded-[1.75rem] sm:p-[11px] md:p-3">
         <div className="flex items-center justify-between gap-3 px-1 pb-2 pt-1 sm:px-1.5 sm:pb-2.5 sm:pt-1.5">
           <div className="flex min-w-0 flex-1 items-center pl-0.5 sm:pl-1">
-            <Image
-              src="/logo.png"
-              alt="InOps"
-              width={40}
-              height={40}
-              className="h-9 w-9 shrink-0 rounded-md object-contain opacity-95 sm:h-10 sm:w-10 md:h-11 md:w-11"
-            />
+            <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10 md:h-11 md:w-11">
+              <Image
+                src="/logo.png"
+                alt="InOps"
+                fill
+                sizes="(max-width: 768px) 36px, 44px"
+                className="rounded-md object-contain opacity-95"
+              />
+            </div>
           </div>
           <div className="pointer-events-none flex flex-1 justify-center" aria-hidden>
             <div className="h-1 w-[4.5rem] rounded-full bg-slate-950/80 ring-1 ring-white/10 sm:h-1.5 sm:w-[5.25rem]" />
@@ -173,14 +175,15 @@ export default function PlatformShowcaseDevice() {
         </div>
 
         <div className="mt-2 flex items-center justify-center gap-2 border-t border-white/5 px-2 pb-1 pt-2 sm:mt-2.5 sm:gap-2.5 sm:pb-1.5 sm:pt-2.5">
-          <Image
-            src="/logo.png"
-            alt=""
-            width={32}
-            height={32}
-            className="h-7 w-7 shrink-0 rounded object-contain opacity-90 sm:h-8 sm:w-8"
-            aria-hidden
-          />
+          <div className="relative h-7 w-7 shrink-0 sm:h-8 sm:w-8" aria-hidden>
+            <Image
+              src="/logo.png"
+              alt=""
+              fill
+              sizes="32px"
+              className="rounded object-contain opacity-90"
+            />
+          </div>
           <FlyInText as="p" direction="up" className="text-xs font-medium tracking-wide text-slate-400 sm:text-xs">
             Platform overview
           </FlyInText>

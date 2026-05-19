@@ -1,35 +1,28 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import "./home-visual.css";
 import HeroBackgroundSlider from "./components/HeroBackgroundSlider";
 import { AnimatedHeading, AnimatedParagraph, AnimatedSection } from "./components/AnimatedSection";
-import BusinessImpactSection from "./components/BusinessImpactSection";
-import FeaturesSlider from "./components/FeaturesSlider";
-import IndustriesSlider from "./components/IndustriesSlider";
+import LazyInViewVideo from "./components/LazyInViewVideo";
 import { FlyInText } from "./components/FlyInText";
 import SectionFade from "./components/SectionFade";
-import CollaborateCtaBand from "./components/CollaborateCtaBand";
-import VideoLivePopups, { type VideoLivePopupItem } from "./components/VideoLivePopups";
-import { enlargedMarqueeLogoSrcs, industryLeaderClientLogos, logoAltFromSrc } from "@/app/lib/industryLeaderClientLogos";
-import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
-import { inopsUi } from "@/app/lib/inopsUi";
 
-const heroLogoVisualScale: Record<string, string> = {
-  "/clients/ashok-leyland.svg": "scale-[0.9]",
-  "/clients/automotive-axle.svg": "scale-[0.92]",
-  "/clients/bfw.svg": "scale-[0.92]",
-  "/clients/bhel.svg": "scale-[0.84]",
-  "/clients/foxconn.svg": "scale-[0.88]",
-  "/clients/hal.svg": "scale-[0.94]",
-  "/clients/midhani.svg": "scale-[0.92]",
-  "/clients/seg.svg": "scale-[0.92]",
-  "/clients/skf.svg": "scale-[0.9]",
-  "/clients/wheels-india.svg": "scale-[0.9]",
-};
+const BusinessImpactSection = dynamic(() => import("./components/BusinessImpactSection"));
+const FeaturesSlider = dynamic(() => import("./components/FeaturesSlider"));
+const IndustriesSlider = dynamic(() => import("./components/IndustriesSlider"));
+const CollaborateCtaBand = dynamic(() => import("./components/CollaborateCtaBand"));
+import VideoLivePopups, { type VideoLivePopupItem } from "./components/VideoLivePopups";
+import ClientMarqueeLogo from "@/app/components/ClientMarqueeLogo";
+import { CLIENT_LOGO_MARQUEE_TRACK, industryLeaderClientLogos } from "@/app/lib/industryLeaderClientLogos";
+import { mediaVideos } from "@/app/lib/mediaAssets";
+import { HOME_HERO_SEO_H1, heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
+import { TRUSTED_BY_HEADLINE } from "@/app/lib/trustedClients";
+import { inopsUi } from "@/app/lib/inopsUi";
 
 type DashboardCard = {
   title: string;
@@ -52,7 +45,7 @@ const dashboardCards: DashboardCard[] = [
     title: "Manager Dashboard",
     badge: "Team view",
     imageSrc: "/image-1024x692.png",
-    videoSrc: "/genrate_this_image_video_202605062242.mp4",
+    videoSrc: mediaVideos.managerDashboardDemo,
     imageAlt: "Manager dashboard",
     description:
       "Real-time visibility into workforce attendance, productivity, and on-ground operations. Make faster decisions with actionable insights at a team level.",
@@ -80,7 +73,7 @@ const dashboardCards: DashboardCard[] = [
     title: "CXO Dashboard",
     badge: "Enterprise view",
     imageSrc: "/1_r5bfwbn5H6UK8ZnAJ1kufA.jpg",
-    videoSrc: "/images/genrate_a_video_form_image_202605062313.mp4",
+    videoSrc: mediaVideos.cxoDashboardDemo,
     imageAlt: "CXO dashboard",
     description:
       "A unified view of workforce, compliance, and operational performance across the organization. Drive strategic decisions with a single source of truth and enterprise-level insights.",
@@ -108,7 +101,7 @@ const dashboardCards: DashboardCard[] = [
     title: "HR Dashboard",
     badge: "People ops",
     imageSrc: "/images/improve-hiring-quality.jpg",
-    videoSrc: "/images/genrate_this_part_video_202605062315.mp4",
+    videoSrc: mediaVideos.hrDashboardDemo,
     imageAlt: "HR dashboard",
     description:
       "Centralized control over employee data, compliance, and lifecycle management. Ensure accuracy, visibility, and seamless workforce governance across systems.",
@@ -134,12 +127,6 @@ const dashboardCards: DashboardCard[] = [
   },
 ];
 
-const heroSolutionHrefByTitle: Record<string, string> = {
-  "Building Financial Resilience for the Workforce": "/solutions/ewa",
-  "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices": "/solutions/mobile-app",
-  /** Matches homepage “Contract workforce governance” → payroll / CLMS governance page */
-  "Single Source of Truth for Workforce Governance": "/solutions/payroll-solutions",
-};
 
 type WhyCard = {
   title: string;
@@ -236,8 +223,23 @@ export default function Home() {
     });
   };
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
-  const activeHeroSolutionHref =
-    heroSolutionHrefByTitle[heroSlides[activeHeroIndex]?.title ?? ""] ?? "/solutions/payroll-solutions";
+  const activeHeroSlide = heroSlides[activeHeroIndex];
+  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/solutions/payroll-solutions";
+
+  useEffect(() => {
+    const href = heroSlides[0]?.src;
+    if (!href) return;
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = href;
+    if (href.startsWith("http")) link.crossOrigin = "anonymous";
+    document.head.appendChild(link);
+    return () => {
+      link.remove();
+    };
+  }, []);
+
   return (
     <div className="home-page home-section-gap relative min-h-screen bg-white text-gray-900 perspective-page">
       {/* Hero: on home, navbar is static above this block; after hero, navbar is fixed + white */}
@@ -318,9 +320,48 @@ export default function Home() {
                     className="home-hero__glow-pulse pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[min(120%,42rem)] -translate-x-1/2 -translate-y-1/2 rounded-[3rem] bg-gradient-to-r from-blue-500/45 via-cyan-400/35 to-blue-600/40 blur-[56px]"
                     aria-hidden
                   />
-                  <h1 className={`home-display-heading inops-type-hero relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased`}>
-                    {heroSlides[activeHeroIndex]?.title}
-                  </h1>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeHeroIndex}
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+                      className="relative"
+                      aria-live="polite"
+                    >
+                      {activeHeroSlide?.layout === "legacy" ? (
+                        <>
+                          <h1 className="home-display-heading inops-type-hero relative mx-auto max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] lg:max-w-[58rem] antialiased">
+                            {HOME_HERO_SEO_H1}
+                          </h1>
+                          <h2 className="home-hero-support-line home-display-heading mt-4 sm:mt-5">
+                            {activeHeroSlide.headline}
+                          </h2>
+                        </>
+                      ) : activeHeroSlide?.layout === "seo-stack" ? (
+                        <>
+                          <h1
+                            className={`home-hero-seo-h1 home-display-heading relative mx-auto px-2 antialiased${
+                              activeHeroSlide.seoHeadingVariant === "line"
+                                ? " home-hero-seo-h1--line"
+                                : " home-hero-seo-h1--tag max-w-[min(100%,36rem)]"
+                            }`}
+                          >
+                            {activeHeroSlide.seoHeading}
+                          </h1>
+                          <h2 className="home-display-heading inops-type-hero relative mx-auto mt-2 max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:mt-3 lg:max-w-[58rem] antialiased">
+                            {activeHeroSlide.headline}
+                          </h2>
+                          {activeHeroSlide.subheadline ? (
+                            <h3 className="home-hero-support-line home-display-heading mt-4 sm:mt-5">
+                              {activeHeroSlide.subheadline}
+                            </h3>
+                          ) : null}
+                        </>
+                      ) : null}
+                    </motion.div>
+                  </AnimatePresence>
                 </motion.div>
                 
                 <motion.div
@@ -378,9 +419,9 @@ export default function Home() {
               direction="up"
               className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
             >
-              Trusted by leading manufacturing &amp; infrastructure companies
+              {TRUSTED_BY_HEADLINE}
             </FlyInText>
-            <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
+            <motion.div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
           </div>
           <motion.div
             className="hero-trusted-marquee relative mt-5 -mx-4 overflow-hidden bg-white pt-3 pb-2 sm:-mx-6 sm:pt-4 sm:pb-2 lg:-mx-12"
@@ -391,85 +432,23 @@ export default function Home() {
           >
             <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-12 bg-gradient-to-r from-white via-white/90 to-transparent" aria-hidden />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-12 bg-gradient-to-l from-white via-white/90 to-transparent" aria-hidden />
-            <div className="brand-marquee-group relative flex motion-reduce:overflow-x-auto">
+            <div className={`brand-marquee-group relative ${CLIENT_LOGO_MARQUEE_TRACK} motion-reduce:overflow-x-auto`}>
               <div
-                className="brand-marquee-track flex animate-marquee gap-0 motion-reduce:animate-none"
+                className={`brand-marquee-track ${CLIENT_LOGO_MARQUEE_TRACK} animate-marquee motion-reduce:animate-none`}
                 role="list"
                 aria-label="Client logos"
               >
-                {industryLeaderClientLogos.map((src, i) => {
-                  const large = enlargedMarqueeLogoSrcs.has(src);
-                  return (
-                    <div
-                      key={`hero-logo-a-${i}`}
-                      role="listitem"
-                      className={`relative flex flex-shrink-0 items-center justify-center px-3 py-4 sm:px-4 ${
-                        large
-                          ? "h-24 min-w-[168px] sm:h-[5.5rem] sm:min-w-[200px]"
-                          : "h-20 min-w-[140px] sm:min-w-[160px]"
-                      }`}
-                    >
-                      <span
-                        className={`flex items-center justify-center ${
-                          large
-                            ? "h-14 w-44 overflow-visible sm:h-16 sm:w-52"
-                            : "h-12 w-36 overflow-hidden sm:h-[3.25rem] sm:w-40"
-                        }`}
-                      >
-                        <Image
-                          src={src}
-                          alt={logoAltFromSrc(src)}
-                          width={large ? 200 : 140}
-                          height={large ? 80 : 56}
-                          className={`object-contain object-center opacity-100 ${
-                            large
-                              ? "max-h-[3.75rem] max-w-[12rem] sm:max-h-[4.5rem] sm:max-w-[14.5rem] scale-100"
-                              : `max-h-[2.5rem] max-w-[7.8rem] sm:max-h-[2.8rem] sm:max-w-[8.4rem] ${heroLogoVisualScale[src] ?? "scale-[0.92]"}`
-                          }`}
-                          sizes={large ? "200px" : "140px"}
-                          unoptimized={src.endsWith(".svg")}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+                {industryLeaderClientLogos.map((src, i) => (
+                  <ClientMarqueeLogo key={`hero-logo-a-${i}`} src={src} />
+                ))}
               </div>
-              <div className="brand-marquee-track flex animate-marquee gap-0 motion-reduce:animate-none" aria-hidden>
-                {industryLeaderClientLogos.map((src, i) => {
-                  const large = enlargedMarqueeLogoSrcs.has(src);
-                  return (
-                    <div
-                      key={`hero-logo-b-${i}`}
-                      className={`relative flex flex-shrink-0 items-center justify-center px-3 py-4 sm:px-4 ${
-                        large
-                          ? "h-24 min-w-[168px] sm:h-[5.5rem] sm:min-w-[200px]"
-                          : "h-20 min-w-[140px] sm:min-w-[160px]"
-                      }`}
-                    >
-                      <span
-                        className={`flex items-center justify-center ${
-                          large
-                            ? "h-14 w-44 overflow-visible sm:h-16 sm:w-52"
-                            : "h-12 w-36 overflow-hidden sm:h-[3.25rem] sm:w-40"
-                        }`}
-                      >
-                        <Image
-                          src={src}
-                          alt=""
-                          width={large ? 200 : 140}
-                          height={large ? 80 : 56}
-                          className={`object-contain object-center opacity-100 ${
-                            large
-                              ? "max-h-[3.75rem] max-w-[12rem] sm:max-h-[4.5rem] sm:max-w-[14.5rem] scale-100"
-                              : `max-h-[2.5rem] max-w-[7.8rem] sm:max-h-[2.8rem] sm:max-w-[8.4rem] ${heroLogoVisualScale[src] ?? "scale-[0.92]"}`
-                          }`}
-                          sizes={large ? "200px" : "140px"}
-                          unoptimized={src.endsWith(".svg")}
-                        />
-                      </span>
-                    </div>
-                  );
-                })}
+              <div
+                className={`brand-marquee-track ${CLIENT_LOGO_MARQUEE_TRACK} animate-marquee motion-reduce:animate-none`}
+                aria-hidden
+              >
+                {industryLeaderClientLogos.map((src, i) => (
+                  <ClientMarqueeLogo key={`hero-logo-b-${i}`} src={src} alt="" />
+                ))}
               </div>
             </div>
           </motion.div>
@@ -769,18 +748,13 @@ export default function Home() {
                     <div className="relative aspect-video w-full overflow-visible">
                       <div className="absolute inset-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_-38px_rgba(15,23,42,0.35)] ring-1 ring-white">
                         {card.videoSrc ? (
-                          <video
+                          <LazyInViewVideo
                             className="absolute inset-0 h-full w-full object-cover object-center"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            preload="metadata"
                             poster={card.imageSrc}
                             aria-label={card.imageAlt}
                           >
                             <source src={card.videoSrc} type="video/mp4" />
-                          </video>
+                          </LazyInViewVideo>
                         ) : (
                           <Image
                             src={card.imageSrc}

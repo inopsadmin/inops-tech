@@ -17,11 +17,14 @@ import {
   SPLIT_HERO_MOBILE_MEDIA_ORDER,
   SPLIT_HERO_MOBILE_STACK,
 } from "@/app/lib/splitHeroWideInsets";
+import { mediaVideos } from "@/app/lib/mediaAssets";
+
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
-const timeAttendanceProductVideo = "/genrate_this_image_video_202605072329.mp4";
+
+const timeAttendanceProductVideo = mediaVideos.timeAttendanceProduct;
 const optiCamSolutionImage =
   "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.png";
-const optiCamSolutionVideo = "/GENRATE_THIS_IMAGE_VIDEO_202605072332.mp4";
+const optiCamSolutionVideo = mediaVideos.opticamSolutionDemo;
 
 const authAccessGalleryImages = [
   {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import Image from "next/image";
+import BrandLogoImage from "@/app/components/BrandLogoImage";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -151,14 +151,11 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <Link href="/" className="relative block transition-opacity hover:opacity-90">
-            <Image
-              src="/logo.png"
-              alt="InOps Solutions"
-              width={140}
-              height={40}
+          <Link href="/" className="relative block transition-opacity hover:opacity-90" aria-label="InOps Solutions home">
+            <BrandLogoImage
               className={`h-8 w-auto object-contain transition-all duration-300 xl:h-9 2xl:h-10 ${scrolled ? "opacity-90" : "opacity-95 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"}`}
               priority
+              fetchPriority="high"
             />
           </Link>
         </motion.div>
@@ -329,7 +326,7 @@ export default function Navbar() {
         >
           <motion.button
             type="button"
-            className={`flex h-10 w-10 items-center justify-center rounded-full border shadow-sm transition-colors md:hidden ${
+            className={`flex min-h-11 min-w-11 items-center justify-center rounded-full border shadow-sm transition-colors md:hidden ${
               scrolled ? "border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600" : "border-white/40 bg-white/10 text-white hover:bg-white/20"
             }`}
             aria-label="Open menu"
@@ -343,10 +340,10 @@ export default function Navbar() {
           </motion.button>
           <Link href="/contact">
             <motion.span
-              className={`flex h-10 w-10 items-center justify-center rounded-full border shadow-sm transition-colors md:hidden ${
+              className={`flex min-h-11 min-w-11 items-center justify-center rounded-full border shadow-sm transition-colors md:hidden ${
                 scrolled ? "border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600" : "border-white/40 bg-white/10 text-white hover:bg-white/20"
               }`}
-              aria-label="Contact"
+              aria-label="Contact us"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -392,7 +389,7 @@ export default function Navbar() {
                 <span className="text-sm font-semibold tracking-wide text-gray-800">Menu</span>
                 <button
                   type="button"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100"
+                  className="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 hover:bg-gray-100"
                   aria-label="Close menu"
                   onClick={() => setMobileOpen(false)}
                 >

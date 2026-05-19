@@ -26,66 +26,94 @@ export default function ScrollRevealEnhancer() {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) return;
 
-    const main = document.querySelector("main");
-    if (!main) return;
+    let cancelled = false;
+    let teardown: (() => void) | undefined;
+    let idleId: number | undefined;
 
-    const sections = Array.from(main.querySelectorAll("section")).filter(
-      (el) => !el.classList.contains("no-site-reveal") && !isLikelyHeroSection(el),
-    );
+    const run = () => {
+      if (cancelled) return;
 
-    let ioIndex = 0;
-    const cleanups: Array<() => void> = [];
-    const imgs: HTMLImageElement[] = [];
+      const main = document.querySelector("main");
+      if (!main) return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const t = entry.target as HTMLElement;
-          t.classList.add("site-reveal-visible");
-          io.unobserve(t);
+      const sections = Array.from(main.querySelectorAll("section")).filter(
+        (el) => !el.classList.contains("no-site-reveal") && !isLikelyHeroSection(el),
+      );
+
+      let ioIndex = 0;
+      const cleanups: Array<() => void> = [];
+      const imgs: HTMLImageElement[] = [];
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const t = entry.target as HTMLElement;
+            t.classList.add("site-reveal-visible");
+            io.unobserve(t);
+          });
+        },
+        { root: null, rootMargin: "0px 0px -8% 0px", threshold: [0, 0.08, 0.15] },
+      );
+
+      sections.forEach((el, i) => {
+        const html = el as HTMLElement;
+        html.setAttribute("data-site-reveal-from", directions[i % 4]);
+        html.classList.add("site-reveal-pending");
+
+        const rect = html.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > -48;
+
+        if (inView) {
+          html.classList.add("site-reveal-visible");
+        } else {
+          html.style.transitionDelay = `${Math.min(ioIndex * 0.05, 0.45)}s`;
+          ioIndex += 1;
+          io.observe(html);
+        }
+
+        cleanups.push(() => {
+          io.unobserve(html);
+          html.classList.remove("site-reveal-pending", "site-reveal-visible");
+          html.removeAttribute("data-site-reveal-from");
+          html.style.transitionDelay = "";
         });
-      },
-      { root: null, rootMargin: "0px 0px -8% 0px", threshold: [0, 0.08, 0.15] },
-    );
-
-    sections.forEach((el, i) => {
-      const html = el as HTMLElement;
-      html.setAttribute("data-site-reveal-from", directions[i % 4]);
-      html.classList.add("site-reveal-pending");
-
-      const rect = html.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > -48;
-
-      if (inView) {
-        html.classList.add("site-reveal-visible");
-      } else {
-        html.style.transitionDelay = `${Math.min(ioIndex * 0.05, 0.45)}s`;
-        ioIndex += 1;
-        io.observe(html);
-      }
-
-      cleanups.push(() => {
-        io.unobserve(html);
-        html.classList.remove("site-reveal-pending", "site-reveal-visible");
-        html.removeAttribute("data-site-reveal-from");
-        html.style.transitionDelay = "";
       });
-    });
 
-    main.querySelectorAll("section img").forEach((node) => {
-      const img = node as HTMLImageElement;
-      if (img.closest("[data-no-site-hover]")) return;
-      const alt = img.getAttribute("alt");
-      if (alt === "") return;
-      img.classList.add("site-img-hover");
-      imgs.push(img);
-    });
+      main.querySelectorAll("section img").forEach((node) => {
+        const img = node as HTMLImageElement;
+        if (img.closest("[data-no-site-hover]")) return;
+        const alt = img.getAttribute("alt");
+        if (alt === "") return;
+        img.classList.add("site-img-hover");
+        imgs.push(img);
+      });
+
+      teardown = () => {
+        io.disconnect();
+        cleanups.forEach((fn) => fn());
+        imgs.forEach((img) => img.classList.remove("site-img-hover"));
+      };
+    };
+
+    const scheduleIdle =
+      typeof requestIdleCallback === "function"
+        ? (cb: () => void) => requestIdleCallback(cb, { timeout: 2000 })
+        : (cb: () => void) => setTimeout(cb, 1);
+
+    const cancelIdle =
+      typeof cancelIdleCallback === "function"
+        ? (id: number) => cancelIdleCallback(id)
+        : (id: number) => clearTimeout(id);
+
+    idleId = scheduleIdle(run) as number;
 
     return () => {
-      io.disconnect();
-      cleanups.forEach((fn) => fn());
-      imgs.forEach((img) => img.classList.remove("site-img-hover"));
+      cancelled = true;
+      if (idleId !== undefined) {
+        cancelIdle(idleId);
+      }
+      teardown?.();
     };
   }, [pathname]);
 

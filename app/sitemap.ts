@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/app/lib/blogPosts";
 import { getSiteUrl } from "@/app/lib/site";
 
 const siteUrl = getSiteUrl();
@@ -20,13 +21,20 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/solutions/labourmanagement", priority: 0.95, changeFrequency: "monthly" },
   { path: "/solutions/mobile-app", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/enterprise-solution", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/solutions/ewa", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/visitor-management", priority: 0.9, changeFrequency: "monthly" },
   { path: "/solutions/fixed-asset-management", priority: 0.85, changeFrequency: "monthly" },
 ];
 
+const blogRoutes = blogPosts.map((post) => ({
+  path: `/blog/${post.slug}`,
+  priority: 0.75,
+  changeFrequency: "monthly" as ChangeFreq,
+}));
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return routes.map(({ path, priority, changeFrequency }) => ({
+  return [...routes, ...blogRoutes].map(({ path, priority, changeFrequency }) => ({
     url: `${siteUrl}${path}`,
     lastModified,
     changeFrequency,

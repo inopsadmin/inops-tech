@@ -3,8 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import SmoothScroll from "./components/SmoothScroll";
-import ScrollRevealEnhancer from "./components/ScrollRevealEnhancer";
+import ClientShell from "./components/ClientShell";
 import OrganizationJsonLd from "./components/OrganizationJsonLd";
 import {
   DEFAULT_DESCRIPTION,
@@ -18,11 +17,15 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500", "600", "700"],
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 const siteUrl = getSiteUrl();
@@ -93,13 +96,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`} suppressHydrationWarning>
+    <html
+      lang="en-IN"
+      className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body
         className="flex min-h-screen flex-col overflow-x-hidden bg-white font-sans text-gray-900 antialiased"
         suppressHydrationWarning
       >
         <OrganizationJsonLd />
-        <SmoothScroll>
+        <ClientShell>
           <div className="site-shell relative flex min-h-screen w-full flex-col">
             <div className="brand-shape-canvas" aria-hidden>
               <div className="brand-shape brand-shape--top-left" />
@@ -110,13 +118,12 @@ export default function RootLayout({
             <Navbar />
             <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans">
               {children}
-              <ScrollRevealEnhancer />
             </main>
             <div className="relative z-[1]">
               <Footer />
             </div>
           </div>
-        </SmoothScroll>
+        </ClientShell>
       </body>
     </html>
   );

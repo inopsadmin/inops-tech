@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
+import { mediaVideos } from "@/app/lib/mediaAssets";
 import { featuresSliderImages } from "@/app/lib/serviceImagery";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
+import LazyInViewVideo from "@/app/components/LazyInViewVideo";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -20,7 +22,7 @@ const slides = [
       "Scalable Across Locations & Workforce Types",
       "Hardware + Software Integrated",
     ],
-    videoSrc: "/make_video_form_this_image_202605062236.mp4",
+    videoSrc: mediaVideos.enterpriseFeaturesDemo,
     posterSrc: featuresSliderImages.clms,
   },
 ] as const;
@@ -74,18 +76,13 @@ export default function FeaturesSlider() {
               {/* object-cover: media always fills the 16:9 frame so corner popups stay aligned (object-contain letterboxing made tiles drift vs content). */}
               <div className="relative mx-auto flex w-full flex-1 items-center justify-center px-2 py-3 sm:px-3 sm:py-4 md:mx-0 md:min-h-[min(22rem,36vh)] md:px-3 md:py-5 lg:min-h-[min(26rem,40vh)]">
                 <div className="relative aspect-video w-full max-h-[min(34rem,58vw)] max-w-full sm:max-h-[min(38rem,52vw)] md:max-h-[min(42rem,48vh)] lg:max-h-[min(44rem,46vh)]">
-                  <video
+                  <LazyInViewVideo
                     className="absolute inset-0 h-full w-full object-cover object-center"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
                     poster={slide.posterSrc}
                     aria-label="Product preview video: enterprise operations and workforce platform"
                   >
                     <source src={slide.videoSrc} type="video/mp4" />
-                  </video>
+                  </LazyInViewVideo>
                 </div>
               </div>
             </motion.div>

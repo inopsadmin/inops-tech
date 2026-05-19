@@ -8,6 +8,7 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import VideoLivePopups from "@/app/components/VideoLivePopups";
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { inopsUi } from "@/app/lib/inopsUi";
+import { mediaVideos } from "@/app/lib/mediaAssets";
 import { SPLIT_HERO_COPY_ML, SPLIT_HERO_MEDIA_MR } from "@/app/lib/splitHeroWideInsets";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
@@ -24,7 +25,7 @@ const buttonHover =
 const visitorManagementProcessImage = "/images/Visitor-Management-Process (1).png";
 const digitalCanteenSubsidyControlVideo = "/Digital_canteen_subsidy_control_202605080015.mp4";
 const visitorDeskLobbyCampusStackVideo = "/Visitor_desk_lobby_campus_stack_202605080018.mp4";
-const visitorManagementSystemVideo = "/genrate_this_image_video_202605080021.mp4";
+const visitorManagementSystemVideo = mediaVideos.visitorManagementSystem;
 
 /** Live ops metrics ,  tones drive premium card styling below. */
 type OperationalMetricTone = "emerald" | "amber" | "sky" | "violet";
@@ -298,7 +299,7 @@ export default function CanteenManagementPage() {
           splitHeroCopyStackClassName={`max-w-3xl lg:max-w-xl lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
           imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
-          videoSrc="/genrate_this_part_image_202605080013.mp4"
+          videoSrc={mediaVideos.canteenHeroDemo}
           // videoSrcClipClassName="pt-12"
           sectionClassName="min-h-[340px] sm:min-h-[390px] lg:min-h-[430px]"
           imageWrapperClassName={`relative z-[2] mt-8 h-52 w-full overflow-hidden sm:h-60 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}

@@ -1,3 +1,4 @@
+import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
@@ -10,5 +11,10 @@ export const metadata: Metadata = routeMetadata({
 });
 
 export default function TimeAndAttendanceLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <SolutionSchemaInjector path="/solutions/time-and-attendance" />
+      {children}
+    </>
+  );
 }
