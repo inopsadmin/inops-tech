@@ -1007,12 +1007,12 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
   /* Slide 1 — CLMS, CLRA, Compliance */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--tag {
-    @apply !text-base !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-lg lg:!text-xl;
+    @apply !text-lg !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-xl lg:!text-2xl;
   }
 
-  /* Slide 2 — long SEO line, single row */
+  /* Slide 2 — same size as slide 1 SEO tag; single row */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--line {
-    @apply !text-[0.8125rem] !font-medium normal-case !tracking-normal !whitespace-nowrap text-white/85 sm:!text-lg lg:!text-xl;
+    @apply !text-lg !font-medium normal-case !tracking-normal !whitespace-nowrap text-sky-100/80 sm:!text-xl lg:!text-2xl;
   }
 
   .home-hero-seo-h1--line {
