@@ -7,6 +7,7 @@ import ClientShell from "./components/ClientShell";
 import OrganizationJsonLd from "./components/OrganizationJsonLd";
 import {
   DEFAULT_DESCRIPTION,
+  HOME_PAGE_TITLE,
   KEYWORDS_BASE,
   SITE_NAME,
   defaultOgImageUrl,
@@ -34,6 +35,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f2f57" },
+  ],
 };
 
 const ogImage = defaultOgImageUrl();
@@ -42,7 +47,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: SITE_NAME,
   title: {
-    default: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance | Bengaluru`,
+    default: HOME_PAGE_TITLE,
     /** Child layouts set full titles (e.g. "About Us | InOps Solutions"); avoid double suffix. */
     template: "%s",
   },
@@ -51,6 +56,17 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME, url: siteUrl }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
+  category: "business",
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png", sizes: "any" }],
+    shortcut: "/logo.png",
+    apple: [{ url: "/logo.png", sizes: "180x180" }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "default",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -78,15 +94,20 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "/",
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
+    title: HOME_PAGE_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: ogImage, alt: `${SITE_NAME} ,  enterprise workforce and access solutions` }],
+    images: [
+      {
+        url: ogImage,
+        alt: `${SITE_NAME} — enterprise workforce, CLMS, and biometric compliance`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
+    title: HOME_PAGE_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [ogImage],
+    images: [{ url: ogImage, alt: `${SITE_NAME} — workforce compliance platform` }],
   },
 };
 

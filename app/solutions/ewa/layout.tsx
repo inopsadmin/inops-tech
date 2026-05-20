@@ -3,11 +3,11 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "EWA (Earned Wage Access) | InOps Solutions",
+  title: "Earned Wage Access (EWA) for Factory Workers | InOps Solutions",
   description:
-    "Give employees instant access to earned wages with a compliant, payroll-connected EWA solution that improves retention and financial well-being.",
+    "Payroll-connected earned wage access (EWA) for industrial workforces: on-demand earned wages, attendance validation, and compliant controls.",
   path: "/solutions/ewa",
-  extraKeywords: ["earned wage access", "ewa platform", "salary advance solution", "financial wellness"],
+  extraKeywords: ["earned wage access", "EWA India", "salary advance factory workers", "financial wellness"],
 });
 
 export default function EwaLayout({ children }: { children: React.ReactNode }) {

@@ -2,11 +2,11 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Biometric Access Control | InOps Solutions",
+  title: "Biometric Access Control & Face Readers | InOps Solutions",
   description:
-    "Face reader, fingerprint reader, and card reader systems for enterprise access control. Secure gates, turnstiles, and critical zones with enterprise-grade biometrics in India.",
+    "Biometric access control for enterprise: face and fingerprint readers, turnstiles, card readers, and attendance integration for Indian industrial sites.",
   path: "/product/biometric-access-control",
-  extraKeywords: ["face recognition access control", "fingerprint reader India", "card reader attendance"],
+  extraKeywords: ["face recognition access control India", "turnstile biometric", "industrial access control"],
 });
 
 export default function BiometricAccessControlLayout({ children }: { children: React.ReactNode }) {

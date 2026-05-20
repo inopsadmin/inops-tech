@@ -14,9 +14,9 @@ export const solutionSchemaByPath: Record<
       "Unified payroll, statutory compliance, and contract labour governance from gate logs to finance close.",
   },
   "/solutions/labourmanagement": {
-    name: "InOps HR Information System",
+    name: "InOps Contract Labour Management (CLMS)",
     description:
-      "HRIS for contract and permanent workforces with attendance, compliance, and payroll-ready data on one platform.",
+      "Contract labour management with biometric attendance, PF/ESI workflows, gate compliance, and payroll-ready data for Indian manufacturers.",
   },
   "/solutions/time-and-attendance": {
     name: "InOps Time & Attendance",

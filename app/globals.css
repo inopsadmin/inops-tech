@@ -991,7 +991,7 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 /* Reusable type scale — use via `app/lib/inopsUi.ts` (prefers composition over one-off sizes) */
 @layer components {
   .inops-type-hero {
-    @apply !text-[1.75rem] !leading-[1.12] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
+    @apply !text-[1.28rem] !leading-[1.2] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
   }
 
   /*
@@ -1010,16 +1010,16 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
   /* Slide 1 — CLMS, CLRA, Compliance */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--tag {
-    @apply !text-xl !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-2xl lg:!text-3xl;
+    @apply !text-base !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-2xl lg:!text-3xl;
   }
 
-  /* Slide 2 — same size as slide 1 SEO tag; single row */
+  /* Slide 2 — wrap on small screens; single line from sm up */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--line {
-    @apply !text-xl !font-medium normal-case !tracking-normal !whitespace-nowrap text-sky-100/80 sm:!text-2xl lg:!text-3xl;
+    @apply !text-sm !font-medium normal-case !tracking-normal whitespace-normal text-balance text-sky-100/80 sm:!text-2xl sm:!whitespace-nowrap lg:!text-3xl;
   }
 
   .home-hero-seo-h1--line {
-    @apply max-w-[min(100%,56rem)];
+    @apply max-w-full sm:max-w-[min(100%,56rem)];
   }
 
   /*
@@ -1027,17 +1027,17 @@ main section img.impact-bullet-tick.site-img-hover:hover {
    * e.g. “Single Source of Truth…” / “Building Financial Resilience…”
    */
   .home-hero-support-line {
-    @apply relative mx-auto max-w-[min(100%,56rem)] whitespace-nowrap bg-gradient-to-br from-white/95 via-sky-100/90 to-cyan-100/90 bg-clip-text px-2 font-bold text-transparent antialiased;
-    @apply text-xl leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] sm:text-3xl lg:text-4xl;
+    @apply relative mx-auto max-w-full whitespace-normal bg-gradient-to-br from-white/95 via-sky-100/90 to-cyan-100/90 bg-clip-text px-2 font-bold text-transparent antialiased;
+    @apply text-base leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)] text-balance sm:max-w-[min(100%,56rem)] sm:whitespace-nowrap sm:text-3xl sm:leading-tight lg:text-4xl;
   }
 
   .inops-template :is(h2, h3).home-hero-support-line {
-    @apply !text-xl !font-bold !leading-tight sm:!text-3xl lg:!text-4xl;
+    @apply !text-base !font-bold !leading-snug sm:!max-w-[min(100%,56rem)] sm:!whitespace-nowrap sm:!text-3xl sm:!leading-tight lg:!text-4xl;
   }
 
   /* Beat `.inops-template :where(h1)` default size so hero matches home (`text-5xl` at lg+). */
   .inops-template h1.inops-type-hero {
-    @apply !text-[1.75rem] !leading-[1.12] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
+    @apply !text-[1.28rem] !leading-[1.2] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
   }
 
   .inops-type-page {

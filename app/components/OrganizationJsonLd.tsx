@@ -4,18 +4,46 @@ import {
   OFFICE_ADDRESS,
   OFFICE_GEO,
   PHONE_E164,
+  SCHEMA_SITE_NAV_PAGES,
   SITE_NAME,
   SOCIAL_LINKS,
   absoluteUrl,
   getSiteUrl,
 } from "@/app/lib/site";
-
 /**
  * Organization + WebSite + LocalBusiness JSON-LD for rich results and local relevance.
  */
 export default function OrganizationJsonLd() {
   const siteUrl = getSiteUrl();
   const logoUrl = absoluteUrl("/logo.png");
+
+  const navWebPages = SCHEMA_SITE_NAV_PAGES.map((item) => ({
+    "@type": "WebPage",
+    "@id": `${absoluteUrl(item.path)}#webpage`,
+    name: item.name,
+    url: absoluteUrl(item.path),
+    description: item.description,
+    isPartOf: { "@id": `${siteUrl}/#website` },
+  }));
+
+  const sitelinkUrls = SCHEMA_SITE_NAV_PAGES.map((item) => absoluteUrl(item.path));
+
+  const keyPagesItemList = {
+    "@type": "ItemList",
+    "@id": `${siteUrl}/#key-pages`,
+    name: "Popular pages",
+    numberOfItems: SCHEMA_SITE_NAV_PAGES.length,
+    itemListElement: SCHEMA_SITE_NAV_PAGES.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "WebPage",
+        name: item.name,
+        description: item.description,
+        url: absoluteUrl(item.path),
+      },
+    })),
+  };
 
   const graph: Record<string, unknown>[] = [
     {
@@ -24,6 +52,7 @@ export default function OrganizationJsonLd() {
       name: SITE_NAME,
       url: siteUrl,
       logo: { "@type": "ImageObject", url: logoUrl },
+      image: logoUrl,
       description: DEFAULT_DESCRIPTION,
       email: CONTACT_EMAIL,
       telephone: PHONE_E164,
@@ -45,7 +74,14 @@ export default function OrganizationJsonLd() {
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${siteUrl}/#organization` },
       inLanguage: "en-IN",
+      significantLink: sitelinkUrls,
+      hasPart: [
+        ...navWebPages.map((p) => ({ "@id": p["@id"] as string })),
+        { "@id": `${siteUrl}/#key-pages` },
+      ],
     },
+    ...navWebPages,
+    keyPagesItemList,
     {
       "@type": "LocalBusiness",
       "@id": `${siteUrl}/#localbusiness`,

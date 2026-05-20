@@ -18,9 +18,13 @@ export default function SoftwareApplicationJsonLd({ name, description, path }: P
     operatingSystem: "Web",
     offers: {
       "@type": "Offer",
-      price: "0",
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
+      url: absoluteUrl("/contact"),
+      availability: "https://schema.org/OnlineOnly",
+      seller: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: absoluteUrl("/"),
+      },
     },
     provider: {
       "@type": "Organization",

@@ -27,6 +27,7 @@ export function routeMetadata({
     keywords,
     alternates: { canonical },
     openGraph: {
+      type: "website",
       title,
       description,
       url: canonical,

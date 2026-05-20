@@ -5,11 +5,15 @@
 
 export const SITE_NAME = "InOps Solutions";
 
-export const SITE_TAGLINE =
-  "CLMS, workforce compliance, biometrics, and access control for industrial and enterprise sites in India.";
+/** Default `<title>` for the homepage (matches brand + high-intent queries + geo). */
+export const HOME_PAGE_TITLE = `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance | Bengaluru`;
 
+export const SITE_TAGLINE =
+  "Enterprise contract labour management, biometric attendance, PF/ESI compliance, payroll automation, and earned wage access for Indian manufacturers.";
+
+/** Meta description: optimized for SERP snippet (reference: contract labour, biometrics, PF ESI, EWA, geo). */
 export const DEFAULT_DESCRIPTION =
-  "Enterprise workforce management and authentication for industrial environments, biometrics, real-time tracking, and automated compliance for contract workers, attendance, payroll, access control, and visitor management. Based in Bommasandra Industrial Area, Bengaluru.";
+  "Enterprise contract labour management software with biometric attendance, PF ESI compliance, payroll automation, and earned wage access for Indian manufacturers. Bengaluru.";
 
 export const CONTACT_EMAIL = "contact@inops.tech";
 
@@ -68,6 +72,33 @@ export const KEYWORDS_BASE = [
   "Bommasandra Industrial Area",
   "Bengaluru workforce software",
   "Karnataka enterprise software",
+] as const;
+
+/**
+ * Important landing URLs surfaced internally for structured data (`WebSite` → `hasPart`).
+ * Helps search engines understand IA (sitelinks are still algorithmically chosen).
+ */
+export const SCHEMA_SITE_NAV_PAGES = [
+  {
+    path: "/solutions/labourmanagement",
+    name: "Contract Labour Management",
+    description: "Automate payroll, PF/ESI & biometric attendance",
+  },
+  {
+    path: "/solutions/ewa",
+    name: "Earned Wage Access (EWA)",
+    description: "On-demand wages for factory workers",
+  },
+  {
+    path: "/product/biometric-access-control",
+    name: "Biometric Access Control",
+    description: "Face readers, turnstiles & attendance hardware",
+  },
+  {
+    path: "/contact",
+    name: "Contact InOps",
+    description: `Book a demo · ${PHONE_DISPLAY}`,
+  },
 ] as const;
 
 export function getSiteUrl(): string {
