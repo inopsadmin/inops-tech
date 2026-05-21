@@ -3,30 +3,27 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ClientShell from "./components/ClientShell";
+import SmoothScroll from "./components/SmoothScroll";
+import ScrollRevealEnhancer from "./components/ScrollRevealEnhancer";
 import OrganizationJsonLd from "./components/OrganizationJsonLd";
 import {
   DEFAULT_DESCRIPTION,
-  HOME_PAGE_TITLE,
   KEYWORDS_BASE,
   SITE_NAME,
   defaultOgImageUrl,
   getSiteUrl,
 } from "@/app/lib/site";
+import LayoutWrapper from "./components/LayoutWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
-  preload: false,
 });
 
 const siteUrl = getSiteUrl();
@@ -35,10 +32,6 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f2f57" },
-  ],
 };
 
 const ogImage = defaultOgImageUrl();
@@ -47,7 +40,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: SITE_NAME,
   title: {
-    default: HOME_PAGE_TITLE,
+    default: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance | Bengaluru`,
     /** Child layouts set full titles (e.g. "About Us | InOps Solutions"); avoid double suffix. */
     template: "%s",
   },
@@ -56,17 +49,6 @@ export const metadata: Metadata = {
   authors: [{ name: SITE_NAME, url: siteUrl }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
-  category: "business",
-  icons: {
-    icon: [{ url: "/logo.png", type: "image/png", sizes: "any" }],
-    shortcut: "/logo.png",
-    apple: [{ url: "/logo.png", sizes: "180x180" }],
-  },
-  appleWebApp: {
-    capable: true,
-    title: SITE_NAME,
-    statusBarStyle: "default",
-  },
   formatDetection: {
     email: false,
     address: false,
@@ -94,20 +76,15 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "/",
     siteName: SITE_NAME,
-    title: HOME_PAGE_TITLE,
+    title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
     description: DEFAULT_DESCRIPTION,
-    images: [
-      {
-        url: ogImage,
-        alt: `${SITE_NAME} — enterprise workforce, CLMS, and biometric compliance`,
-      },
-    ],
+    images: [{ url: ogImage, alt: `${SITE_NAME} ,  enterprise workforce and access solutions` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: HOME_PAGE_TITLE,
+    title: `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance`,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: ogImage, alt: `${SITE_NAME} — workforce compliance platform` }],
+    images: [ogImage],
   },
 };
 
@@ -117,34 +94,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en-IN"
-      className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`}
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-    >
+    <html lang="en-IN" className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`} suppressHydrationWarning>
       <body
         className="flex min-h-screen flex-col overflow-x-hidden bg-white font-sans text-gray-900 antialiased"
         suppressHydrationWarning
       >
         <OrganizationJsonLd />
-        <ClientShell>
-          <div className="site-shell relative flex min-h-screen w-full flex-col">
-            <div className="brand-shape-canvas" aria-hidden>
-              <div className="brand-shape brand-shape--top-left" />
-              <div className="brand-shape brand-shape--top-right" />
-              <div className="brand-shape brand-shape--mid-right" />
-              <div className="brand-shape brand-shape--bottom-left" />
-            </div>
-            <Navbar />
-            <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans">
-              {children}
-            </main>
-            <div className="relative z-[1]">
-              <Footer />
-            </div>
-          </div>
-        </ClientShell>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
