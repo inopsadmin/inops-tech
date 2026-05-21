@@ -35,9 +35,9 @@ const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 2
 const linkStagger = 0.05;
 
 const productRoutes: Record<string, string> = {
-  "Biometric Access Control": "/product/biometric-access-control",
-  "Turnstiles": "/product/turnstiles",
-  "Accessories": "/product/accessories",
+  "Biometric Access Control": "/face",
+  "Turnstiles": "/turnstiles",
+  "Accessories": "/accessories",
 };
 
 const resourceRoutes: Record<string, string> = {
@@ -47,12 +47,23 @@ const resourceRoutes: Record<string, string> = {
 
 function pathUsesSolidNavBar(path: string) {
   return (
-    path.startsWith("/solutions") ||
+    path.startsWith("/ewa") ||
     path.startsWith("/about") ||
     path.startsWith("/product") ||
     path.startsWith("/blog") ||
     path.startsWith("/brochures") ||
-    path.startsWith("/contact")
+    path.startsWith("/canteen-and-visitor") ||
+    path.startsWith("/cctv") ||
+    path.startsWith("/clms") ||
+    path.startsWith("/enterprise-solution") ||
+    path.startsWith("/ewa") ||
+    path.startsWith("/fixed-asset-management") ||
+    path.startsWith("/hris") ||
+    path.startsWith("/mobile-app") ||
+    path.startsWith("/visitor-management") ||
+    path.startsWith("/accessories") ||
+    path.startsWith("/face") ||
+    path.startsWith("/turnstiles")
   );
 }
 

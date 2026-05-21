@@ -13,7 +13,7 @@ export const metadata: Metadata = routeMetadata({
 export default function EnterpriseSolutionLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/solutions/enterprise-solution" />
+      <SolutionSchemaInjector path="/enterprise-solution" />
       {children}
     </>
   );

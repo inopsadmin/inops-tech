@@ -10,20 +10,20 @@ const mainPages = [
 ];
 
 const productPages = [
-  { label: "Biometric Access Control", href: "/product/biometric-access-control" },
-  { label: "Turnstiles", href: "/product/turnstiles" },
-  { label: "Accessories", href: "/product/accessories" },
+  { label: "Biometric Access Control", href: "/face" },
+  { label: "Turnstiles", href: "/turnstiles" },
+  { label: "Accessories", href: "/accessories" },
 ];
 
 const solutionPages = [
-  { label: "Time & Attendance", href: "/solutions/time-and-attendance" },
-  { label: "Canteen Management", href: "/solutions/canteen-management" },
-  { label: "Payroll Solutions", href: "/solutions/payroll-solutions" },
-  { label: "Labour Management Software", href: "/solutions/labourmanagement" },
-  { label: "Mobile App", href: "/solutions/mobile-app" },
-  { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
-  { label: "Visitor Management", href: "/solutions/visitor-management" },
-  { label: "Fixed Asset Management", href: "/solutions/fixed-asset-management" },
+  { label: "Time & Attendance", href: "/cctv" },
+  { label: "Canteen Management", href: "/canteen-and-visitor" },
+  { label: "Payroll Solutions", href: "/clms" },
+  { label: "Labour Management Software", href: "/hris" },
+  { label: "Mobile App", href: "/mobile-app" },
+  { label: "Enterprise Solution", href: "/enterprise-solution" },
+  { label: "Visitor Management", href: "/visitor-management" },
+  { label: "Fixed Asset Management", href: "/fixed-asset-management" },
 ];
 
 const resourcePages = [

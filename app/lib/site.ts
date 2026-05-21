@@ -80,17 +80,17 @@ export const KEYWORDS_BASE = [
  */
 export const SCHEMA_SITE_NAV_PAGES = [
   {
-    path: "/solutions/labourmanagement",
+    path: "/hris",
     name: "Contract Labour Management",
     description: "Automate payroll, PF/ESI & biometric attendance",
   },
   {
-    path: "/solutions/ewa",
+    path: "/ewa",
     name: "Earned Wage Access (EWA)",
     description: "On-demand wages for factory workers",
   },
   {
-    path: "/product/biometric-access-control",
+    path: "/face",
     name: "Biometric Access Control",
     description: "Face readers, turnstiles & attendance hardware",
   },

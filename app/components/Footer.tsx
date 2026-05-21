@@ -7,16 +7,16 @@ import { usePathname } from "next/navigation";
 import { OFFICE_ADDRESS_LINE, SCHEMA_SITE_NAV_PAGES, SOCIAL_LINKS } from "@/app/lib/site";
 
 const solutions = [
-  { label: "Workforce Governance Solution", href: "/solutions/payroll-solutions" },
-  { label: "Contract Employee Governance System", href: "/solutions/payroll-solutions" },
-  { label: "HR Information System", href: "/solutions/labourmanagement" },
-  { label: "Canteen & Visitor Management", href: "/solutions/canteen-management" },
-  { label: "Identity & Face Solution", href: "/solutions/mobile-app" },
-  { label: "Mobile App", href: "/solutions/mobile-app" },
-  { label: "CCTV Attendance", href: "/solutions/time-and-attendance" },
-  { label: "Face Reader", href: "/product/biometric-access-control" },
-  { label: "Enterprise Solution", href: "/solutions/enterprise-solution" },
-  { label: "EWA (Earned Wage Access)", href: "/solutions/ewa" },
+  { label: "Workforce Governance Solution", href: "/clms" },
+  { label: "Contract Employee Governance System", href: "/clms" },
+  { label: "HR Information System", href: "/hris" },
+  { label: "Canteen & Visitor Management", href: "/canteen-and-visitor" },
+  { label: "Identity & Face Solution", href: "/mobile-app" },
+  { label: "Mobile App", href: "/mobile-app" },
+  { label: "CCTV Attendance", href: "/cctv" },
+  { label: "Face Reader", href: "/face" },
+  { label: "Enterprise Solution", href: "/enterprise-solution" },
+  { label: "EWA (Earned Wage Access)", href: "/ewa" },
 ];
 
 const company = [

@@ -265,7 +265,7 @@ export default function AboutPage() {
   return (
     <>
       <div className="about-page-section-gap relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
-        {/* Hero ,  split layout like solutions/time-and-attendance: copy left, media right + live tiles */}
+        {/* Hero ,  split layout like solutions/cctv: copy left, media right + live tiles */}
         <motion.section
           className={`relative z-[1] w-full overflow-x-hidden border-b border-slate-200/80 ${aboutHeroBg} pt-6 sm:pt-8 lg:pt-10`}
           initial={{ opacity: 0 }}

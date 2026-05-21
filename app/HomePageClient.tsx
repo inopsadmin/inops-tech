@@ -138,11 +138,11 @@ type WhyCard = {
 };
 
 const whyCardHrefByTitle: Record<string, string> = {
-  "Identity solution": "/solutions/mobile-app",
-  HRIS: "/solutions/labourmanagement",
-  "Contract workforce governance": "/solutions/payroll-solutions",
-  "Logistics Solutions": "/solutions/enterprise-solution",
-  EWA: "/solutions/ewa",
+  "Identity solution": "/mobile-app",
+  HRIS: "/hris",
+  "Contract workforce governance": "/clms",
+  "Logistics Solutions": "/enterprise-solution",
+  EWA: "/ewa",
 };
 
 /** Contract workforce governance is default featured → numbered from 01. */
@@ -224,7 +224,7 @@ export default function Home() {
   };
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const activeHeroSlide = heroSlides[activeHeroIndex];
-  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/solutions/payroll-solutions";
+  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/clms";
 
   useEffect(() => {
     const href = heroSlides[0]?.src;

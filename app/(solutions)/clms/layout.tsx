@@ -6,14 +6,14 @@ export const metadata: Metadata = routeMetadata({
   title: "Payroll Solutions | InOps Solutions",
   description:
     "Payroll and compliance workflows aligned with attendance and labour data ,  fewer errors, faster cycles, and audit-ready reporting.",
-  path: "/solutions/payroll-solutions",
+  path: "/clms",
   extraKeywords: ["payroll software India", "statutory compliance payroll", "attendance payroll integration"],
 });
 
 export default function PayrollSolutionsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/solutions/payroll-solutions" />
+      <SolutionSchemaInjector path="/clms" />
       {children}
     </>
   );

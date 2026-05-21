@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sambal — Earned Wage Access by InOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Variables ─────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:    #071A3E;
+  --navy2:   #0D2660;
+  --blue:    #1B4FCC;
+  --blue2:   #2B62E8;
+  --gold:    #E8B84B;
+  --gold2:   #F5CB6A;
+  --white:   #FFFFFF;
+  --lblue:   #B8D4F5;
+  --light:   #EEF4FF;
+  --slate:   #4A6080;
+  --muted:   #8BA4C8;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Manrope', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--white); color: var(--navy); overflow-x: hidden; }
+
+/* ── Utility ───────────────────────────────────────────── */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+.tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,184,75,.15); color: var(--gold); border: 1px solid rgba(232,184,75,.35); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+
+/* ── NAV ───────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 0;
+  background: rgba(7,26,62,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(184,212,245,.08);
+  transition: all .3s;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.logo-word { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: -.01em; }
+.logo-scripts { font-family: 'Nirmala UI', 'Arial Unicode MS', sans-serif; font-size: 12px; color: var(--gold); opacity: .85; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { text-decoration: none; color: var(--lblue); font-size: 14px; font-weight: 500; opacity: .85; transition: opacity .2s; }
+.nav-links a:hover { opacity: 1; color: var(--white); }
+.nav-cta { background: var(--gold); color: var(--navy); padding: 10px 24px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+.nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
+
+/* ── HERO ──────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+.hero-rings {
+  position: absolute; right: -80px; top: -100px;
+  width: 700px; height: 700px; pointer-events: none;
+}
+.ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(27,79,204,.35);
+}
+.ring:nth-child(1) { width:700px;height:700px;top:0;left:0; border-color:rgba(27,79,204,.18); }
+.ring:nth-child(2) { width:540px;height:540px;top:80px;left:80px; border-color:rgba(27,79,204,.28); }
+.ring:nth-child(3) { width:380px;height:380px;top:160px;left:160px; border-color:rgba(27,79,204,.4); animation: ringRotate 20s linear infinite; }
+.ring:nth-child(4) { width:220px;height:220px;top:240px;left:240px; background:rgba(13,38,96,.8); border-color:rgba(232,184,75,.5); }
+@keyframes ringRotate { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+.shield-center {
+  position: absolute; right: 212px; top: 272px;
+  width: 76px; height: 76px;
+  background: var(--gold);
+  clip-path: polygon(50% 0%, 100% 20%, 100% 60%, 50% 100%, 0% 60%, 0% 20%);
+  display: flex; align-items: center; justify-content: center;
+  animation: shieldPulse 3s ease-in-out infinite;
+}
+.shield-center svg { width: 36px; height: 36px; fill: var(--navy); }
+@keyframes shieldPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+.hero-content { position: relative; max-width: 640px; }
+.hero-tag { margin-bottom: 28px; }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 88px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.hero-scripts {
+  font-family: 'Nirmala UI', 'Arial Unicode MS', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: .04em;
+  margin-bottom: 8px;
+}
+.hero-tagline {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.hero-divider { width: 56px; height: 3px; background: var(--gold); margin-bottom: 28px; }
+.hero-desc {
+  font-size: 17px;
+  color: var(--lblue);
+  line-height: 1.7;
+  margin-bottom: 44px;
+  max-width: 520px;
+}
+.hero-desc strong { color: var(--white); }
+
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-primary {
+  background: var(--gold); color: var(--navy);
+  padding: 14px 32px; border-radius: 6px;
+  font-size: 15px; font-weight: 700;
+  text-decoration: none;
+  transition: all .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,184,75,.3); }
+.btn-outline {
+  background: transparent; color: var(--white);
+  padding: 14px 32px; border-radius: 6px;
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid rgba(184,212,245,.35);
+  transition: all .2s;
+}
+.btn-outline:hover { border-color: var(--lblue); background: rgba(184,212,245,.08); }
+
+.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.stat-item { }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 36px; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+/* ── MARQUEE ───────────────────────────────────────────── */
+.marquee-bar {
+  background: var(--gold);
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll 25s linear infinite;
+}
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 0 32px;
+  font-size: 13px; font-weight: 700; color: var(--navy);
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.marquee-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy); opacity: .4; }
+@keyframes marqueeScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── PROBLEM ───────────────────────────────────────────── */
+.problem { padding: 100px 0; background: var(--light); }
+.section-tag { margin-bottom: 16px; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--navy); margin-bottom: 16px;
+}
+.section-sub { font-size: 16px; color: var(--slate); line-height: 1.65; max-width: 540px; margin-bottom: 56px; }
+
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.problem-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 36px 32px;
+  border: 1px solid rgba(27,79,204,.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.problem-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(7,26,62,.1); }
+.problem-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold);
+}
+.problem-icon {
+  width: 52px; height: 52px;
+  background: rgba(232,184,75,.12);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.problem-icon svg { width: 26px; height: 26px; fill: var(--gold); }
+.problem-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.problem-card p { font-size: 14px; color: var(--slate); line-height: 1.65; }
+
+/* ── HOW IT WORKS ──────────────────────────────────────── */
+.how { padding: 100px 0; background: var(--navy); }
+.how .section-title { color: var(--white); }
+.how .section-sub { color: var(--lblue); }
+.steps-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; position: relative; }
+
+.step {
+  background: var(--navy2);
+  border: 1px solid rgba(27,79,204,.3);
+  border-radius: 12px;
+  padding: 40px 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: border-color .25s, transform .25s;
+}
+.step:hover { border-color: var(--gold); transform: translateY(-4px); }
+.step-num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700; color: var(--white);
+}
+.step-icon { margin-bottom: 20px; }
+.step-icon svg { width: 40px; height: 40px; fill: var(--gold); }
+.step h3 { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.step p { font-size: 14px; color: var(--lblue); line-height: 1.65; }
+.step-tag { margin-top: 20px; }
+.step-tag span {
+  background: rgba(232,184,75,.15);
+  color: var(--gold);
+  border-radius: 100px;
+  padding: 4px 14px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+
+/* ── DUAL BENEFIT ──────────────────────────────────────── */
+.benefits { padding: 100px 0; background: var(--white); }
+.benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+.benefit-panel {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(27,79,204,.12);
+}
+.benefit-header {
+  padding: 32px 36px;
+  display: flex; align-items: center; gap: 16px;
+}
+.benefit-header.employer { background: var(--navy); }
+.benefit-header.worker   { background: var(--blue); }
+.benefit-header svg { width: 32px; height: 32px; fill: var(--gold); flex-shrink: 0; }
+.benefit-header h3 { font-size: 22px; font-weight: 700; color: var(--white); line-height: 1.2; }
+.benefit-header p { font-size: 13px; color: var(--lblue); margin-top: 4px; }
+.benefit-body { padding: 32px 36px; background: var(--light); }
+.benefit-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(27,79,204,.08);
+}
+.benefit-item:last-child { border-bottom: none; padding-bottom: 0; }
+.benefit-check {
+  width: 24px; height: 24px; flex-shrink: 0;
+  background: var(--blue); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.benefit-check svg { width: 12px; height: 12px; fill: var(--white); }
+.benefit-item strong { display: block; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+.benefit-item span { font-size: 13px; color: var(--slate); line-height: 1.5; }
+.benefit-stat {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: var(--navy);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.benefit-stat .snum {
+  font-family: var(--font-display);
+  font-size: 40px; font-weight: 700; color: var(--gold);
+  line-height: 1;
+}
+.benefit-stat .slabel { font-size: 12px; color: var(--lblue); max-width: 120px; text-align: right; }
+
+/* ── MOAT ──────────────────────────────────────────────── */
+.moat { padding: 100px 0; background: var(--light); }
+.moat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.moat-text .section-sub { margin-bottom: 36px; }
+.moat-points { display: flex; flex-direction: column; gap: 20px; }
+.moat-point {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px 24px;
+  background: var(--white);
+  border-radius: 10px;
+  border-left: 3px solid var(--gold);
+  box-shadow: 0 2px 12px rgba(7,26,62,.06);
+  transition: transform .2s;
+}
+.moat-point:hover { transform: translateX(4px); }
+.moat-point svg { width: 22px; height: 22px; fill: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.moat-point strong { display: block; font-size: 15px; color: var(--navy); margin-bottom: 4px; }
+.moat-point span { font-size: 13px; color: var(--slate); line-height: 1.5; }
+
+.moat-visual {
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.moat-visual::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 240px; height: 240px; border-radius: 50%;
+  border: 1px solid rgba(27,79,204,.3);
+}
+.moat-visual::after {
+  content: '';
+  position: absolute; top: -20px; right: -20px;
+  width: 140px; height: 140px; border-radius: 50%;
+  border: 1px solid rgba(232,184,75,.25);
+}
+.moat-visual h4 {
+  font-family: var(--font-display);
+  font-size: 26px; color: var(--white);
+  margin-bottom: 32px;
+}
+.data-pillar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px;
+  background: var(--navy2);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(27,79,204,.4);
+  transition: border-color .2s;
+}
+.data-pillar:hover { border-color: var(--gold); }
+.data-pillar svg { width: 24px; height: 24px; fill: var(--gold); flex-shrink: 0; }
+.data-pillar strong { display: block; font-size: 14px; color: var(--white); }
+.data-pillar span { font-size: 12px; color: var(--muted); }
+.engine-box {
+  margin-top: 20px;
+  padding: 20px 24px;
+  background: var(--blue);
+  border-radius: 10px;
+  border: 1.5px solid var(--gold);
+  text-align: center;
+}
+.engine-box strong { display: block; font-size: 15px; color: var(--white); font-weight: 700; }
+.engine-box span { font-size: 12px; color: var(--lblue); }
+
+/* ── COMPARISON ────────────────────────────────────────── */
+.compare { padding: 100px 0; background: var(--navy); }
+.compare .section-title { color: var(--white); }
+.compare .section-sub { color: var(--lblue); }
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.compare-table th {
+  padding: 18px 24px;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-align: center;
+}
+.compare-table th:first-child { text-align: left; background: rgba(13,38,96,.6); color: var(--lblue); }
+.compare-table th.sambal-col { background: var(--blue); color: var(--white); }
+.compare-table th.other-col { background: rgba(13,38,96,.4); color: var(--muted); }
+.compare-table td {
+  padding: 16px 24px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(27,79,204,.15);
+  text-align: center;
+}
+.compare-table td:first-child { text-align: left; color: var(--lblue); font-weight: 500; background: rgba(13,38,96,.3); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:nth-child(even) td.sambal-col { background: rgba(27,79,204,.1); }
+.compare-table tr:nth-child(odd) td.sambal-col { background: rgba(27,79,204,.05); }
+.compare-table tr:nth-child(even) td.other-col { background: rgba(13,38,96,.25); }
+.compare-table tr:nth-child(odd) td.other-col { background: rgba(13,38,96,.15); }
+.check { color: var(--gold); font-size: 18px; font-weight: 700; }
+.cross { color: var(--muted); font-size: 18px; }
+.partial { color: var(--blue2); font-size: 13px; font-weight: 600; }
+
+/* ── CTA ───────────────────────────────────────────────── */
+.cta-section {
+  padding: 100px 0;
+  background: var(--light);
+  text-align: center;
+}
+.cta-section .section-title { margin: 0 auto 16px; }
+.cta-section .section-sub { margin: 0 auto 44px; text-align: center; }
+.cta-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; margin: 0 auto 56px; }
+.cta-card {
+  padding: 36px;
+  border-radius: 14px;
+  text-align: left;
+  border: 1px solid;
+  transition: transform .25s, box-shadow .25s;
+}
+.cta-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(7,26,62,.12); }
+.cta-card.employer { background: var(--navy); border-color: rgba(27,79,204,.4); }
+.cta-card.worker   { background: var(--blue); border-color: var(--blue2); }
+.cta-card h4 { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.cta-card p { font-size: 14px; color: var(--lblue); line-height: 1.6; margin-bottom: 24px; }
+.cta-card a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 6px;
+  font-size: 14px; font-weight: 700;
+  text-decoration: none;
+  transition: all .2s;
+}
+.cta-card.employer a { background: var(--gold); color: var(--navy); }
+.cta-card.worker   a { background: var(--white); color: var(--blue); }
+.cta-card a:hover { transform: translateY(-1px); opacity: .9; }
+
+.contact-line {
+  font-size: 14px; color: var(--slate);
+}
+.contact-line a { color: var(--blue); font-weight: 600; text-decoration: none; }
+.contact-line a:hover { text-decoration: underline; }
+
+/* ── FOOTER ────────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 48px 0 28px;
+  border-top: 1px solid rgba(184,212,245,.08);
+}
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap; gap: 32px; }
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.65; max-width: 280px; }
+.footer-links h5 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; font-weight: 700; }
+.footer-links a { display: block; text-decoration: none; color: var(--lblue); font-size: 14px; margin-bottom: 10px; opacity: .8; transition: opacity .2s; }
+.footer-links a:hover { opacity: 1; }
+.footer-bottom {
+  border-top: 1px solid rgba(184,212,245,.08);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: var(--muted); }
+
+/* ── SCROLL ANIMATIONS ─────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  .problem-grid, .steps-grid, .benefits-grid, .moat-grid, .cta-cards { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .steps-grid::before { display: none; }
+  .hero-title { font-size: 52px; }
+  .hero-rings { display: none; }
+}
+
+/* ── PHONE MOCKUPS ──────────────────────────────────────── */
+.phone-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding-top: 20px;
+}
+.phone {
+  position: relative;
+  width: 220px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 32px 64px rgba(0,0,0,.55));
+  transition: transform .4s ease;
+}
+.phone:hover { transform: translateY(-8px) rotate(1deg); }
+.phone-frame {
+  width: 100%;
+  background: #0a0a12;
+  border-radius: 38px;
+  border: 2px solid rgba(255,255,255,.12);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 9/19.5;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 0 0 6px #111118, 0 0 0 7px rgba(255,255,255,.08);
+}
+.phone-notch {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 22px;
+  background: #0a0a12;
+  border-radius: 0 0 14px 14px;
+  z-index: 10;
+}
+.phone-screen {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+/* floating badge on phone */
+.phone-badge {
+  position: absolute;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 32px rgba(7,26,62,.25);
+  display: flex; align-items: center; gap: 10px;
+  z-index: 5;
+  animation: floatBadge 4s ease-in-out infinite;
+}
+.phone-badge.left { left: -52px; }
+.phone-badge.right { right: -52px; }
+.phone-badge .badge-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.phone-badge .badge-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--navy); }
+.phone-badge .badge-text span { font-size: 10px; color: var(--slate); }
+@keyframes floatBadge {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ── App screens ─────────────────────────── */
+.app-home { background: var(--navy); height: 100%; display: flex; flex-direction: column; }
+.app-header { padding: 28px 16px 14px; background: var(--navy2); }
+.app-greeting { font-size: 11px; color: var(--muted); font-family: var(--font-body); }
+.app-name { font-size: 15px; font-weight: 700; color: var(--white); font-family: var(--font-body); margin-top: 2px; }
+.app-card {
+  margin: 12px;
+  background: linear-gradient(135deg, var(--blue) 0%, #0e3aa8 100%);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid rgba(232,184,75,.3);
+}
+.app-card-label { font-size: 9px; color: var(--lblue); font-family: var(--font-body); letter-spacing: .06em; text-transform: uppercase; }
+.app-card-amount { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); margin: 4px 0 2px; }
+.app-card-sub { font-size: 9px; color: rgba(184,212,245,.7); font-family: var(--font-body); }
+.app-card-btn {
+  margin-top: 12px; width: 100%;
+  background: var(--gold); color: var(--navy);
+  border: none; border-radius: 8px; padding: 9px;
+  font-size: 11px; font-weight: 700; font-family: var(--font-body);
+  cursor: pointer; letter-spacing: .04em;
+}
+.app-row { display: flex; justify-content: space-between; gap: 8px; padding: 0 12px 8px; }
+.app-quick { flex: 1; background: var(--navy2); border-radius: 10px; padding: 10px 8px; text-align: center; border: 1px solid rgba(27,79,204,.35); }
+.app-quick svg { width: 20px; height: 20px; fill: var(--gold); margin-bottom: 4px; }
+.app-quick span { display: block; font-size: 9px; color: var(--lblue); font-family: var(--font-body); }
+.app-section-title { padding: 8px 12px 6px; font-size: 10px; font-weight: 700; color: var(--muted); font-family: var(--font-body); letter-spacing: .06em; text-transform: uppercase; }
+.app-txn { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-top: 1px solid rgba(27,79,204,.15); }
+.app-txn-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(232,184,75,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.app-txn-icon svg { width: 14px; height: 14px; fill: var(--gold); }
+.app-txn-info { flex: 1; }
+.app-txn-info strong { display: block; font-size: 10px; color: var(--white); font-family: var(--font-body); }
+.app-txn-info span { font-size: 9px; color: var(--muted); font-family: var(--font-body); }
+.app-txn-amt { font-size: 11px; font-weight: 700; color: var(--gold); font-family: var(--font-body); }
+
+/* Request screen */
+.app-request { background: var(--light); height: 100%; display: flex; flex-direction: column; }
+.app-req-header { background: var(--navy); padding: 28px 16px 16px; }
+.app-req-title { font-size: 13px; font-weight: 700; color: var(--white); font-family: var(--font-body); }
+.app-req-sub { font-size: 9px; color: var(--lblue); font-family: var(--font-body); margin-top: 3px; }
+.app-req-body { padding: 14px 12px; flex: 1; }
+.app-input-label { font-size: 9px; font-weight: 700; color: var(--slate); text-transform: uppercase; letter-spacing: .06em; font-family: var(--font-body); margin-bottom: 5px; }
+.app-input-box { background: var(--white); border: 1.5px solid rgba(27,79,204,.25); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; }
+.app-input-box .amount { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--navy); }
+.app-input-box .currency { font-size: 10px; color: var(--muted); font-family: var(--font-body); }
+.app-slider-track { height: 4px; background: rgba(27,79,204,.15); border-radius: 2px; margin: 6px 0 14px; position: relative; }
+.app-slider-fill { position: absolute; left: 0; top: 0; height: 100%; width: 60%; background: var(--blue); border-radius: 2px; }
+.app-slider-thumb { position: absolute; top: -6px; left: 58%; width: 16px; height: 16px; background: var(--blue); border: 2px solid var(--white); border-radius: 50%; box-shadow: 0 2px 8px rgba(27,79,204,.4); }
+.app-info-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(27,79,204,.08); }
+.app-info-row span { font-size: 9px; color: var(--slate); font-family: var(--font-body); }
+.app-info-row strong { font-size: 9px; color: var(--navy); font-weight: 700; font-family: var(--font-body); }
+.app-submit { margin: 12px 0 0; width: 100%; background: var(--blue); color: var(--white); border: none; border-radius: 8px; padding: 11px; font-size: 11px; font-weight: 700; font-family: var(--font-body); cursor: pointer; }
+
+/* Success screen */
+.app-success { background: var(--navy); height: 100%; display: flex; flex-direction: column; align-items: center; padding: 32px 16px 20px; }
+.success-ring { width: 72px; height: 72px; border-radius: 50%; background: rgba(232,184,75,.15); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 20px 0 14px; animation: successPop .5s cubic-bezier(.175,.885,.32,1.275); }
+.success-ring svg { width: 36px; height: 36px; fill: var(--gold); }
+@keyframes successPop { from{transform:scale(0);opacity:0} to{transform:scale(1);opacity:1} }
+.success-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--white); text-align: center; margin-bottom: 4px; }
+.success-sub { font-size: 9px; color: var(--lblue); text-align: center; font-family: var(--font-body); margin-bottom: 18px; }
+.success-amount { font-family: var(--font-display); font-size: 38px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+.success-to { font-size: 10px; color: var(--muted); font-family: var(--font-body); margin-bottom: 18px; }
+.success-card { background: var(--navy2); border-radius: 12px; padding: 12px 14px; width: 100%; border: 1px solid rgba(27,79,204,.35); margin-bottom: 10px; }
+.success-card-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.success-card-row:last-child { margin-bottom: 0; }
+.success-card-row span { font-size: 9px; color: var(--muted); font-family: var(--font-body); }
+.success-card-row strong { font-size: 9px; color: var(--white); font-family: var(--font-body); }
+.success-btn { width: 100%; background: var(--gold); color: var(--navy); border: none; border-radius: 8px; padding: 10px; font-size: 11px; font-weight: 700; font-family: var(--font-body); cursor: pointer; margin-top: 8px; }
+
+/* HOW-IT-WORKS phone layout */
+.steps-with-phones { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 48px; }
+.step-with-phone { display: flex; flex-direction: column; align-items: center; }
+.step-phone-wrap { margin-bottom: 24px; position: relative; }
+.step-phone-wrap .phone { width: 160px; filter: drop-shadow(0 20px 40px rgba(0,0,0,.6)); }
+.step-num-badge {
+  position: absolute; top: -14px; right: -14px; z-index: 10;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gold); color: var(--navy);
+  font-family: var(--font-display); font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(232,184,75,.5);
+}
+.step-info { text-align: center; }
+.step-info h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.step-info p { font-size: 13px; color: var(--lblue); line-height: 1.6; }
+.step-info .step-tag { margin-top: 12px; }
+
+/* HERO layout fix for phone */
+.hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+.hero-phone-col { position: relative; display: flex; justify-content: flex-end; align-items: center; padding-right: 40px; }
+.hero-phone-col .phone { width: 210px; }
+
+@media(max-width:1000px){
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-phone-col { display: none; }
+  .steps-with-phones { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#">
+      <span class="logo-word">Sambal</span>
+      <span class="logo-scripts">सम्बल · ಸಂಬಳ · சம்பளம்</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://test-inops-tech.vercel.app" target="_top" rel="noopener noreferrer">Home</a>
+      <a href="#how">How it Works</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#moat">Why Sambal</a>
+    </div>
+    <a href="#cta" class="nav-cta">Get Started →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="tag">Earned Wage Access · India</span>
+      </div>
+      <h1 class="hero-title">Sambal</h1>
+      <div class="hero-scripts">सम्बल &nbsp;·&nbsp; ಸಂಬಳ &nbsp;·&nbsp; சம்பளம்</div>
+      <p class="hero-tagline">Support · Sustenance · Wage</p>
+      <div class="hero-divider"></div>
+      <p class="hero-desc">
+        Give your <strong>contract workers</strong> on-demand access to wages they've already earned — verified by biometric attendance, recovered through payroll. <strong>Zero disruption. Near-zero default risk.</strong>
+      </p>
+      <div class="hero-ctas">
+        <a href="#cta" class="btn-primary">For Employers &nbsp;→</a>
+        <a href="#how" class="btn-outline">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">50M+</div>
+          <div class="stat-label">Contract workers<br>in Indian manufacturing</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">92%</div>
+          <div class="stat-label">With no access<br>to formal credit</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">60 days</div>
+          <div class="stat-label">From agreement<br>to pilot launch</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Hero Phone Mockup -->
+    <div class="hero-phone-col">
+      <div style="position:relative">
+        <!-- Floating badge: Instant -->
+        <div class="phone-badge left" style="top:180px;animation-delay:.5s">
+          <div class="badge-icon" style="background:rgba(27,79,204,.12)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1B4FCC"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+          </div>
+          <div class="badge-text"><strong>₹4,800</strong><span>Sent instantly</span></div>
+        </div>
+        <!-- Floating badge: Verified -->
+        <div class="phone-badge right" style="top:80px;animation-delay:1.2s">
+          <div class="badge-icon" style="background:rgba(232,184,75,.12)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#E8B84B"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="badge-text"><strong>Verified</strong><span>Biometric ✓</span></div>
+        </div>
+        <div class="phone">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Sambal App Home Screen -->
+              <div class="app-home">
+                <div class="app-header">
+                  <div class="app-greeting">Good morning,</div>
+                  <div class="app-name">Rajan Kumar ·  <span style="color:var(--gold);font-size:10px">✓ Verified</span></div>
+                </div>
+                <div class="app-card">
+                  <div class="app-card-label">Wages Accrued This Month</div>
+                  <div class="app-card-amount">₹8,400</div>
+                  <div class="app-card-sub">18 days worked · Available: ₹4,200 (50%)</div>
+                  <button class="app-card-btn">⚡ Request Advance</button>
+                </div>
+                <div class="app-row">
+                  <div class="app-quick">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    <span>Balance</span>
+                  </div>
+                  <div class="app-quick">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Attendance</span>
+                  </div>
+                  <div class="app-quick">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.19-1.21.53-1.71C7 15.29 9.28 14 12 14s5 1.29 6.47 3.06c.34.5.53 1.09.53 1.71V19z"/></svg>
+                    <span>Profile</span>
+                  </div>
+                </div>
+                <div class="app-section-title">Recent Transactions</div>
+                <div class="app-txn">
+                  <div class="app-txn-icon"><svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div>
+                  <div class="app-txn-info"><strong>Advance Received</strong><span>Nov 12 · Auto-recovery Dec 1</span></div>
+                  <div class="app-txn-amt">+₹3,000</div>
+                </div>
+                <div class="app-txn">
+                  <div class="app-txn-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+                  <div class="app-txn-info"><strong>Recovery Deducted</strong><span>Oct 31 · Payroll</span></div>
+                  <div class="app-txn-amt" style="color:var(--muted)">−₹2,500</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ───────────────────────────────────────────── -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">Biometric Verified <span class="marquee-dot"></span></span>
+    <span class="marquee-item">NBFC Backed <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Instant UPI Disbursal <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Zero Payroll Disruption <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Auto Recovery <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CLRA Compliant <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Manufacturing Focused <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Biometric Verified <span class="marquee-dot"></span></span>
+    <span class="marquee-item">NBFC Backed <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Instant UPI Disbursal <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Zero Payroll Disruption <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Auto Recovery <span class="marquee-dot"></span></span>
+    <span class="marquee-item">CLRA Compliant <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Manufacturing Focused <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ── PROBLEM ───────────────────────────────────────────── -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-tag reveal"><span class="tag">The Problem</span></div>
+    <h2 class="section-title reveal reveal-delay-1">Your workers are living<br>paycheck to paycheck</h2>
+    <p class="section-sub reveal reveal-delay-2">Contract labour in Indian manufacturing faces a daily financial crisis that hurts their productivity — and yours.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        </div>
+        <h3>30-Day Wait</h3>
+        <p>Contract workers wait an entire month to access wages they earned weeks ago — creating acute cash stress and forcing dangerous decisions.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <h3>High Attrition</h3>
+        <p>Financial distress is the #1 reason for absenteeism and contract labour turnover. Replacing a worker costs 2–3× their monthly wage.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <h3>Predatory Lending</h3>
+        <p>Workers turn to informal moneylenders charging 40–120% interest. This debt trap reduces long-term loyalty and productivity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ───────────────────────────────────────── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-tag reveal"><span class="tag" style="background:rgba(184,212,245,.1);color:var(--lblue);border-color:rgba(184,212,245,.2);">How It Works</span></div>
+    <h2 class="section-title reveal reveal-delay-1" style="color:var(--white);">Simple. Fast. Secure.</h2>
+    <p class="section-sub reveal reveal-delay-2">Three steps from request to wallet — no HR intervention, no paperwork, no risk.</p>
+    <div class="steps-with-phones reveal reveal-delay-1">
+
+      <!-- Step 1: Request -->
+      <div class="step-with-phone">
+        <div class="step-phone-wrap">
+          <div class="step-num-badge">01</div>
+          <div class="phone">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="app-request">
+                  <div class="app-req-header">
+                    <div class="app-req-title">Request Advance</div>
+                    <div class="app-req-sub">Accrued wages: ₹8,400 · Max: ₹4,200</div>
+                  </div>
+                  <div class="app-req-body">
+                    <div class="app-input-label">Amount</div>
+                    <div class="app-input-box">
+                      <span class="currency">₹</span>
+                      <span class="amount">3,000</span>
+                    </div>
+                    <div class="app-slider-track">
+                      <div class="app-slider-fill"></div>
+                      <div class="app-slider-thumb"></div>
+                    </div>
+                    <div class="app-input-label">Details</div>
+                    <div class="app-info-row"><span>Days Worked</span><strong>18 days</strong></div>
+                    <div class="app-info-row"><span>Daily Wage</span><strong>₹467</strong></div>
+                    <div class="app-info-row"><span>Fee (1.5%)</span><strong>₹45</strong></div>
+                    <div class="app-info-row"><span>You Receive</span><strong style="color:#1B4FCC">₹2,955</strong></div>
+                    <div class="app-info-row"><span>Recovery Date</span><strong>Dec 1, 2025</strong></div>
+                    <button class="app-submit">Submit Request →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-info">
+          <h3>Worker Requests</h3>
+          <p>Worker raises a Sambal advance via the app. Attendance & accrued wage verified instantly from CLMS.</p>
+          <div class="step-tag"><span>Takes 60 seconds</span></div>
+        </div>
+      </div>
+
+      <!-- Step 2: Validate -->
+      <div class="step-with-phone">
+        <div class="step-phone-wrap">
+          <div class="step-num-badge">02</div>
+          <div class="phone">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="app-home" style="justify-content:center;align-items:center;padding:20px 16px">
+                  <div style="width:100%;background:var(--navy2);border-radius:14px;padding:16px;margin-bottom:12px;border:1px solid rgba(27,79,204,.4)">
+                    <div style="font-size:9px;color:var(--muted);font-family:var(--font-body);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Verification Status</div>
+                    <div style="display:flex;gap:8px;flex-direction:column">
+                      <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(27,79,204,.15)">
+                        <div style="width:18px;height:18px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="10" height="10" viewBox="0 0 24 24" fill="#071A3E"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                        <span style="font-size:10px;color:var(--white);font-family:var(--font-body)">Biometric attendance verified</span>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(27,79,204,.15)">
+                        <div style="width:18px;height:18px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="10" height="10" viewBox="0 0 24 24" fill="#071A3E"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                        <span style="font-size:10px;color:var(--white);font-family:var(--font-body)">Wage accrual confirmed</span>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(27,79,204,.15)">
+                        <div style="width:18px;height:18px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="10" height="10" viewBox="0 0 24 24" fill="#071A3E"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                        <span style="font-size:10px;color:var(--white);font-family:var(--font-body)">NBFC approved</span>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:6px 0">
+                        <div style="width:18px;height:18px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="10" height="10" viewBox="0 0 24 24" fill="#071A3E"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                        <span style="font-size:10px;color:var(--white);font-family:var(--font-body)">Eligibility confirmed</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="width:100%;background:var(--blue);border-radius:10px;padding:12px;text-align:center;border:1px solid rgba(232,184,75,.3)">
+                    <div style="font-size:9px;color:var(--lblue);font-family:var(--font-body);margin-bottom:4px">Approved Amount</div>
+                    <div style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--white)">₹3,000</div>
+                    <div style="font-size:8px;color:rgba(184,212,245,.7);font-family:var(--font-body)">Processing disbursal...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-info">
+          <h3>Sambal Validates</h3>
+          <p>System confirms eligibility: days worked × daily wage. NBFC partner approves — no manual HR step.</p>
+          <div class="step-tag"><span>Approved in minutes</span></div>
+        </div>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div class="step-with-phone">
+        <div class="step-phone-wrap">
+          <div class="step-num-badge">03</div>
+          <div class="phone">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="app-success">
+                  <div style="font-size:9px;color:var(--muted);font-family:var(--font-body);text-align:center;margin-top:10px">SAMBAL</div>
+                  <div class="success-ring">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  </div>
+                  <div class="success-title">Money Sent!</div>
+                  <div class="success-sub">Transferred to your UPI account</div>
+                  <div class="success-amount">₹2,955</div>
+                  <div class="success-to">→ rajan.kumar@upi</div>
+                  <div class="success-card" style="width:100%">
+                    <div class="success-card-row"><span>Amount Requested</span><strong>₹3,000</strong></div>
+                    <div class="success-card-row"><span>Platform Fee (1.5%)</span><strong>₹45</strong></div>
+                    <div class="success-card-row"><span>You Received</span><strong style="color:var(--gold)">₹2,955</strong></div>
+                    <div class="success-card-row"><span>Recovery Date</span><strong>Dec 1, 2025</strong></div>
+                  </div>
+                  <button class="success-btn">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-info">
+          <h3>Instant to Wallet</h3>
+          <p>Funds hit the worker's UPI account instantly. Repayment auto-deducted at month-end payroll.</p>
+          <div class="step-tag"><span>Instant UPI transfer</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── DUAL BENEFITS ─────────────────────────────────────── -->
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="section-tag reveal"><span class="tag">Benefits</span></div>
+    <h2 class="section-title reveal reveal-delay-1">Wins for every stakeholder</h2>
+    <p class="section-sub reveal reveal-delay-2">Sambal is the only EWA platform where both the employer and the worker gain measurably — with no cost or risk to either.</p>
+    <div class="benefits-grid">
+      <div class="benefit-panel reveal reveal-delay-1">
+        <div class="benefit-header employer">
+          <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+          <div>
+            <h3>For Employers</h3>
+            <p>Lower attrition. Higher output. Zero cost.</p>
+          </div>
+        </div>
+        <div class="benefit-body">
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Reduce Contract Labour Attrition</strong><span>Plants offering EWA report 20–35% lower turnover. Less replacement, less training cost.</span></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Boost Productivity by 12–14%</strong><span>Financially secure workers show up, focus, and perform — measurably better.</span></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Zero Payroll Disruption</strong><span>Recovery is built into your existing payroll run. No cash flow impact. No additional liability.</span></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Strengthen Vendor Relations</strong><span>Contractors retain skilled workers longer when Sambal is available at the plant.</span></div>
+          </div>
+          <div class="benefit-stat">
+            <div class="snum">35%</div>
+            <div class="slabel">Average reduction in contract labour attrition</div>
+          </div>
+        </div>
+      </div>
+      <div class="benefit-panel reveal reveal-delay-2">
+        <div class="benefit-header worker">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <div>
+            <h3>For Workers</h3>
+            <p>Dignity. Freedom. Instant access.</p>
+          </div>
+        </div>
+        <div class="benefit-body">
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Access Wages Anytime</strong><span>Get up to 50% of accrued wages on demand. No waiting 30 days for money already earned.</span></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Escape the Debt Trap</strong><span>Replace moneylender dependency at 40–120% interest with Sambal at 1–2% — up to 80% cheaper.</span></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Instant UPI Disbursal</strong><span>Funds in seconds. No paperwork, no middlemen, no embarrassment. Available 24×7.</span></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div><strong>Build a Credit Footprint</strong><span>Responsible usage creates a formal credit history — opening doors to mainstream banking.</span></div>
+          </div>
+          <div class="benefit-stat">
+            <div class="snum">80%</div>
+            <div class="slabel">Lower effective cost vs. informal moneylenders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MOAT ───────────────────────────────────────────────── -->
+<section class="moat" id="moat">
+  <div class="container">
+    <div class="moat-grid">
+      <div class="moat-text">
+        <div class="section-tag reveal"><span class="tag">Why Sambal</span></div>
+        <h2 class="section-title reveal reveal-delay-1">Pure-play fintechs<br>guess at eligibility.<br><em style="color:var(--blue)">Sambal knows.</em></h2>
+        <p class="section-sub reveal reveal-delay-2">Sambal is built on InOps's verified contract labour data — the only EWA platform where attendance and payroll recovery are native, not bolted on.</p>
+        <div class="moat-points reveal reveal-delay-3">
+          <div class="moat-point">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <div><strong>Biometric-Verified Attendance</strong><span>Daily punch data from InOps CLMS confirms exact days worked — no self-reported data.</span></div>
+          </div>
+          <div class="moat-point">
+            <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+            <div><strong>Real-Time Payroll Data</strong><span>Exact wage accrual per worker per day — enabling precise, defensible underwriting.</span></div>
+          </div>
+          <div class="moat-point">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <div><strong>PF / ESI Compliance Data</strong><span>Formal employment proof that de-risks the NBFC underwriting — near-zero default rate.</span></div>
+          </div>
+          <div class="moat-point">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.19-1.21.53-1.71C7 15.29 9.28 14 12 14s5 1.29 6.47 3.06c.34.5.53 1.09.53 1.71V19z"/></svg>
+            <div><strong>Existing Employer Trust</strong><span>Sambal activates within your existing InOps CLMS relationship — zero new sales cycle.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="moat-visual reveal reveal-delay-2">
+        <h4>Sambal Underwriting Engine</h4>
+        <div class="data-pillar">
+          <svg viewBox="0 0 24 24" style="fill:var(--gold)"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 6.65c.22.18.25.5.07.72-.19.22-.5.25-.72.07C13.84 5.1 10.25 5.11 7.27 6.65c-1.37.7-2.52 1.7-3.4 2.96-.08.14-.23.11-.37.11zm6.25 12.07c-.13 0-.26-.05-.35-.15-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39-2.57 0-4.66 1.97-4.66 4.39 0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.18.51-.01.71-.11.1-.24.15-.37.15z"/></svg>
+          <div><strong>Biometric Attendance</strong><span>Daily punch · Verified days worked</span></div>
+        </div>
+        <div class="data-pillar">
+          <svg viewBox="0 0 24 24" style="fill:var(--gold)"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          <div><strong>Vendor Payroll Data</strong><span>Exact wage accrual · Per worker, per day</span></div>
+        </div>
+        <div class="data-pillar">
+          <svg viewBox="0 0 24 24" style="fill:var(--gold)"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          <div><strong>PF / ESI Records</strong><span>Formal employment proof · Compliance verified</span></div>
+        </div>
+        <div class="engine-box">
+          <strong>⚡ Sambal EWA Decision Engine</strong>
+          <span>Real-time eligibility · Instant disbursal · Auto-recovery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARISON ─────────────────────────────────────────── -->
+<!-- <section class="compare" id="compare">
+  <div class="container">
+    <div class="section-tag reveal"><span class="tag" style="background:rgba(184,212,245,.1);color:var(--lblue);border-color:rgba(184,212,245,.2);">vs. Alternatives</span></div>
+    <h2 class="section-title reveal reveal-delay-1" style="color:var(--white);">Sambal vs. the rest</h2>
+    <p class="section-sub reveal reveal-delay-2">The only EWA platform where verified attendance and payroll recovery are native — not bolted on.</p>
+    <table class="compare-table reveal reveal-delay-3">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th class="sambal-col">Sambal</th>
+          <th class="other-col">Refyne</th>
+          <th class="other-col">KarmaLife</th>
+          <th class="other-col">Jify</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Biometric-Verified Attendance</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Payroll-Integrated Recovery</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="partial">Partial</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="partial">Partial</span></td>
+        </tr>
+        <tr>
+          <td>Existing Employer Relationships</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="check" style="color:var(--muted)">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>PF / ESI Compliance Data</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Manufacturing Sector Focus</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="check" style="color:var(--muted)">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>HR + Attendance + EWA in One</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+        </tr>
+        <tr>
+          <td>Near-Zero Default Rate</td>
+          <td class="sambal-col"><span class="check">✓</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+          <td class="other-col"><span class="cross">✗</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section> -->
+
+<!-- ── CTA ───────────────────────────────────────────────── -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="section-tag reveal" style="justify-content:center"><span class="tag">Get Started</span></div>
+    <h2 class="section-title reveal reveal-delay-1">Ready to launch Sambal<br>at your plant?</h2>
+    <p class="section-sub reveal reveal-delay-2">Go from agreement to pilot in 60 days. No upfront cost. No payroll risk.</p>
+    <div class="cta-cards reveal reveal-delay-3">
+      <div class="cta-card employer">
+        <h4>For Employers &amp; HR Teams</h4>
+        <p>Activate Sambal for your contract workforce. We map your existing CLMS data — pilot is live in 30 days.</p>
+        <a href="mailto:hello@sambal.work">Book a Discovery Call →</a>
+      </div>
+      <div class="cta-card worker">
+        <h4>For Staffing &amp; Labour Contractors</h4>
+        <p>Offer Sambal as a retention tool to your client plants. Become a Sambal channel partner.</p>
+        <a href="mailto:hello@sambal.work">Become a Partner →</a>
+      </div>
+    </div>
+    <p class="contact-line reveal reveal-delay-4">
+      Questions? Write to us at <a href="mailto:hello@sambal.work">hello@sambal.work</a> &nbsp;·&nbsp; <a href="https://sambal.work">sambal.work</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#">
+          <span class="logo-word">Sambal</span>
+          <span class="logo-scripts">सम्बल · ಸಂಬಳ · சம்பளம்</span>
+        </a>
+        <p>Earned Wage Access for Indian manufacturing — powered by verified biometric attendance and InOps CLMS.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Product</h5>
+        <a href="#how">How It Works</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#moat">Why Sambal</a>
+        <a href="#compare">Compare</a>
+      </div>
+      <div class="footer-links">
+        <h5>Company</h5>
+        <a href="#">About InOps</a>
+        <a href="#">CLMS Platform</a>
+        <a href="#">Partner Program</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h5>Legal</h5>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">DPDP Compliance</a>
+        <a href="#">CLRA Notice</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 InOps IT Solutions Pvt. Ltd. · Bengaluru, India · sambal.work</p>
+      <p style="color:var(--gold);font-size:11px;letter-spacing:.08em;text-transform:uppercase">Support · Sustenance · Wage</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav scroll style
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 40 ? '0 4px 32px rgba(7,26,62,.5)' : 'none';
+});
+
+// Stat counter animation
+function animateCount(el, target, suffix='') {
+  let start = 0;
+  const isFloat = target % 1 !== 0;
+  const step = () => {
+    start += target / 60;
+    if (start >= target) { el.textContent = (isFloat ? target.toFixed(1) : Math.floor(target)) + suffix; return; }
+    el.textContent = (isFloat ? start.toFixed(1) : Math.floor(start)) + suffix;
+    requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const text = el.textContent;
+      if (text.includes('50M')) animateCount(el, 50, 'M+');
+      else if (text.includes('92')) animateCount(el, 92, '%');
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+
+// External links should not navigate inside the iframe.
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+
+  const href = link.getAttribute('href');
+  if (!href) return;
+
+  // Keep in-page anchors, mailto, tel, and relative links inside iframe.
+  if (
+    href.startsWith('#') ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:') ||
+    href.startsWith('/') ||
+    href.startsWith('./') ||
+    href.startsWith('../')
+  ) {
+    return;
+  }
+
+  // Absolute http(s) links open outside iframe in a new tab.
+  if (/^https?:\/\//i.test(href)) {
+    event.preventDefault();
+    window.open(href, '_blank', 'noopener,noreferrer');
+  }
+});
+</script>
+</body>
+</html>

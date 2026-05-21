@@ -5,7 +5,7 @@ export const metadata: Metadata = routeMetadata({
   title: "Biometric Access Control & Face Readers | InOps Solutions",
   description:
     "Biometric access control for enterprise: face and fingerprint readers, turnstiles, card readers, and attendance integration for Indian industrial sites.",
-  path: "/product/biometric-access-control",
+  path: "/face",
   extraKeywords: ["face recognition access control India", "turnstile biometric", "industrial access control"],
 });
 

@@ -6,14 +6,14 @@ export const metadata: Metadata = routeMetadata({
   title: "Contract Labour Management (CLMS) | InOps Solutions",
   description:
     "Contract labour management (CLMS) for Indian manufacturers: onboarding, gate compliance, biometric attendance, PF/ESI workflows, and contractor governance.",
-  path: "/solutions/labourmanagement",
+  path: "/hris",
   extraKeywords: ["CLMS India", "contract labour compliance", "contractor workforce software"],
 });
 
 export default function LabourManagementLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/solutions/labourmanagement" />
+      <SolutionSchemaInjector path="/hris" />
       {children}
     </>
   );

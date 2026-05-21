@@ -13,7 +13,7 @@ export const metadata: Metadata = routeMetadata({
 export default function EwaLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/solutions/ewa" />
+      <SolutionSchemaInjector path="/ewa" />
       {children}
     </>
   );

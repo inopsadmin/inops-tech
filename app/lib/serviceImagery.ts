@@ -39,7 +39,7 @@ export const heroSlides: readonly HeroSlide[] = [
     seoHeading: "CLMS, CLRA, Compliance",
     headline: "India's Contract Workforce Compliance Platform",
     subheadline: "Single Source of Truth for Workforce Governance",
-    solutionHref: "/solutions/payroll-solutions",
+    solutionHref: "/clms",
   },
   {
     layout: "seo-stack",
@@ -48,14 +48,14 @@ export const heroSlides: readonly HeroSlide[] = [
     seoHeading: "Biometric CLMS That Eliminates Contractor Payroll Leakage",
     seoHeadingVariant: "line",
     headline: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
-    solutionHref: "/solutions/mobile-app",
+    solutionHref: "/mobile-app",
   },
   {
     layout: "legacy",
     src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1920&q=75",
     alt: "Employee reviewing earnings and financial planning documents",
     headline: "Building Financial Resilience for the Workforce",
-    solutionHref: "/solutions/ewa",
+    solutionHref: "/ewa",
   },
 ];
 

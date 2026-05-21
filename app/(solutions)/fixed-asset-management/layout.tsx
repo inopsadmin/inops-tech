@@ -6,14 +6,14 @@ export const metadata: Metadata = routeMetadata({
   title: "Fixed Asset Management | InOps Solutions",
   description:
     "Track, maintain, and audit fixed assets across locations ,  depreciation visibility, custody, and maintenance workflows with fixed asset management.",
-  path: "/solutions/fixed-asset-management",
+  path: "/fixed-asset-management",
   extraKeywords: ["fixed asset tracking India", "asset register software", "FAM enterprise"],
 });
 
 export default function FixedAssetManagementLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/solutions/fixed-asset-management" />
+      <SolutionSchemaInjector path="/fixed-asset-management" />
       {children}
     </>
   );

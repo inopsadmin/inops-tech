@@ -6,7 +6,7 @@ export const platformShowcaseSlides = [
   {
     id: "workforce-governance",
     tabLabel: "Workforce governance",
-    href: "/solutions/time-and-attendance",
+    href: "/cctv",
     title: "Attendance without devices, powered by AI",
     badge: "CCTV attendance",
     text:
@@ -17,7 +17,7 @@ export const platformShowcaseSlides = [
   {
     id: "payroll-clms",
     tabLabel: "Contract & payroll",
-    href: "/solutions/payroll-solutions",
+    href: "/clms",
     title: "Redefining contract workforce ,  governance system",
     badge: "CLMS",
     text: "One Unified Platform for Complete Control",
@@ -27,7 +27,7 @@ export const platformShowcaseSlides = [
   {
     id: "hris",
     tabLabel: "HRIS",
-    href: "/solutions/labourmanagement",
+    href: "/hris",
     title: "Total workforce management ,  simplified",
     badge: "HR Information System",
     text:
@@ -38,7 +38,7 @@ export const platformShowcaseSlides = [
   {
     id: "canteen-visitor",
     tabLabel: "Canteen & visitors",
-    href: "/solutions/canteen-management",
+    href: "/canteen-and-visitor",
     title: "Manage visitors and canteen operations with ease",
     badge: "Canteen & visitor",
     text:
@@ -49,7 +49,7 @@ export const platformShowcaseSlides = [
   {
     id: "mobile-app",
     tabLabel: "Mobile app",
-    href: "/solutions/mobile-app",
+    href: "/mobile-app",
     title: "Attendance in every pocket",
     badge: "Mobile attendance",
     text:
@@ -60,7 +60,7 @@ export const platformShowcaseSlides = [
   {
     id: "face-reader",
     tabLabel: "Face & devices",
-    href: "/product/biometric-access-control",
+    href: "/face",
     title: "Smart access. Secure workforce.",
     badge: "Biometric hardware",
     text:
@@ -71,7 +71,7 @@ export const platformShowcaseSlides = [
   {
     id: "enterprise",
     tabLabel: "Enterprise",
-    href: "/solutions/enterprise-solution",
+    href: "/enterprise-solution",
     title: "Connected operations. Intelligent control.",
     badge: "Enterprise scale",
     text:
@@ -83,7 +83,7 @@ export const platformShowcaseSlides = [
   {
     id: "ewa",
     tabLabel: "EWA",
-    href: "/solutions/ewa",
+    href: "/ewa",
     title: "Instant access to earned wages",
     badge: "Earned wage access",
     text:

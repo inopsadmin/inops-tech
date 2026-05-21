@@ -131,7 +131,7 @@ export default function EnterpriseSolutionPage() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname !== "/solutions/enterprise-solution") return;
+    if (pathname !== "/enterprise-solution") return;
 
     const scrollToHashTarget = () => {
       const id = window.location.hash.slice(1);
@@ -203,7 +203,7 @@ export default function EnterpriseSolutionPage() {
       title: "Route Optimization",
       description:
         "Dispatch and paths that respond to traffic, SLAs, and capacity in real time, fewer empty miles, less idle time, lower fuel spend.",
-      href: "#route-optimization",
+      href: "#delivery-management",
       borderGradient: "from-cyan-500 via-teal-500 to-emerald-600",
       topBarGradient: "from-cyan-400 via-teal-500 to-emerald-500",
       iconWrap:
@@ -518,7 +518,7 @@ export default function EnterpriseSolutionPage() {
       </section>
 
       <section
-        id="route-optimization"
+        id="delivery-management"
         className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">

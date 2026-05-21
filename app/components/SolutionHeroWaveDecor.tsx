@@ -54,7 +54,7 @@ export function SolutionHeroWaveBottomBand({ className }: { className?: string }
   );
 }
 
-/** Bottom wave transition and soft blobs matching `solutions/labourmanagement` hero. */
+/** Bottom wave transition and soft blobs matching `solutions/hris` hero. */
 export default function SolutionHeroWaveDecor({ className, showBottomWaves = true }: SolutionHeroWaveDecorProps) {
   return (
     <div
