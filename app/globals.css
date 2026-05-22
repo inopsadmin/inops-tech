@@ -991,7 +991,7 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 /* Reusable type scale — use via `app/lib/inopsUi.ts` (prefers composition over one-off sizes) */
 @layer components {
   .inops-type-hero {
-    @apply !text-[1.28rem] !leading-[1.2] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
+    @apply !text-[1.28rem] !leading-[1.2] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-4xl;
   }
 
   /*
@@ -1001,6 +1001,7 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
   .home-hero-seo-h1 {
     @apply font-normal normal-case leading-snug text-white/70;
+
   }
 
   /* Beat `.inops-template :where(h1)` */
@@ -1010,12 +1011,12 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
   /* Slide 1 — CLMS, CLRA, Compliance */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--tag {
-    @apply !text-base !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-2xl lg:!text-3xl;
+    @apply !text-base !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-2xl lg:!text-2xl;
   }
 
   /* Slide 2 — wrap on small screens; single line from sm up */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--line {
-    @apply !text-sm !font-medium normal-case !tracking-normal whitespace-normal text-balance text-sky-100/80 sm:!text-2xl sm:!whitespace-nowrap lg:!text-3xl;
+    @apply !text-sm !font-medium normal-case !tracking-normal whitespace-normal text-balance text-sky-100/80 sm:!text-2xl sm:!whitespace-nowrap lg:!text-2xl;
   }
 
   .home-hero-seo-h1--line {
