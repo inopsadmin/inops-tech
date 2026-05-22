@@ -5,7 +5,7 @@ export const metadata: Metadata = routeMetadata({
   title: "Accessories | InOps Solutions",
   description:
     "Access control accessories ,  wireless exit button, exit push button, and add-ons for request-to-exit and integrated security systems.",
-  path: "/product/accessories",
+  path: "/accessories",
   extraKeywords: ["exit button access control", "RTE button India", "proximity card accessories"],
 });
 

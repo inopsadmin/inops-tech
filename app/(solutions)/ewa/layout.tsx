@@ -6,7 +6,7 @@ export const metadata: Metadata = routeMetadata({
   title: "Earned Wage Access (EWA) for Factory Workers | InOps Solutions",
   description:
     "Payroll-connected earned wage access (EWA) for industrial workforces: on-demand earned wages, attendance validation, and compliant controls.",
-  path: "/solutions/ewa",
+  path: "/ewa",
   extraKeywords: ["earned wage access", "EWA India", "salary advance factory workers", "financial wellness"],
 });
 

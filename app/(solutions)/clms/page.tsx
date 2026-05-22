@@ -1120,7 +1120,7 @@ export default function PayrollSolutionsPage() {
                   Contact us
                 </Link>
                 <Link
-                  href="/product/turnstiles"
+                  href="/turnstiles"
                   className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-transparent px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5"
                 >
                   Gate hardware

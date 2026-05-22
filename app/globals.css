@@ -1011,12 +1011,12 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 
   /* Slide 1 — CLMS, CLRA, Compliance */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--tag {
-    @apply !text-base !font-medium uppercase !tracking-[0.12em] text-sky-100/80 sm:!text-2xl lg:!text-2xl;
+    @apply !text-base !font-medium  !tracking-[0.12em] text-sky-100/80 sm:!text-xl lg:!text-xl;
   }
 
   /* Slide 2 — wrap on small screens; single line from sm up */
   .inops-template h1.home-hero-seo-h1.home-hero-seo-h1--line {
-    @apply !text-sm !font-medium normal-case !tracking-normal whitespace-normal text-balance text-sky-100/80 sm:!text-2xl sm:!whitespace-nowrap lg:!text-2xl;
+    @apply !text-sm !font-medium normal-case !tracking-normal whitespace-normal text-balance text-sky-100/80 sm:!text-xl sm:!whitespace-nowrap lg:!text-xl;
   }
 
   .home-hero-seo-h1--line {
@@ -1033,12 +1033,12 @@ main section img.impact-bullet-tick.site-img-hover:hover {
   }
 
   .inops-template :is(h2, h3).home-hero-support-line {
-    @apply !text-base !font-bold !leading-snug sm:!max-w-[min(100%,56rem)] sm:!whitespace-nowrap sm:!text-3xl sm:!leading-tight lg:!text-4xl;
+    @apply !text-base !font-bold !leading-snug sm:!max-w-[min(100%,56rem)] sm:!whitespace-nowrap sm:!text-3xl sm:!leading-tight lg:!text-2xl;
   }
 
   /* Beat `.inops-template :where(h1)` default size so hero matches home (`text-5xl` at lg+). */
   .inops-template h1.inops-type-hero {
-    @apply !text-[1.28rem] !leading-[1.2] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-5xl;
+    @apply !text-[1.28rem] !leading-[1.2] font-bold tracking-tight sm:!text-4xl sm:!leading-tight lg:!text-4xl;
   }
 
   .inops-type-page {
