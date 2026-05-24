@@ -47,7 +47,7 @@ export const heroSlides: readonly HeroSlide[] = [
     alt: "Face recognition and biometric access across mobile, CCTV, and on-ground devices in enterprise operations",
     seoHeading: "Biometric CLMS That Eliminates Contractor Payroll Leakage",
     seoHeadingVariant: "line",
-    headline: "Face Recognition That Works Across Mobile, CCTV & On-Ground Devices",
+    headline: "Face Recognition Across Mobile, CCTV & Reader",
     solutionHref: "/mobile-app",
   },
   {
