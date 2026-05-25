@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Contract Labour Management (CLMS) | InOps Solutions",
+  title: "HRIS",
   description:
     "Contract labour management (CLMS) for Indian manufacturers: onboarding, gate compliance, biometric attendance, PF/ESI workflows, and contractor governance.",
   path: "/hris",
