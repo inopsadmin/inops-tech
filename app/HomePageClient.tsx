@@ -139,9 +139,9 @@ type WhyCard = {
 };
 
 const whyCardHrefByTitle: Record<string, string> = {
-  "Identity solution": "/mobile-app",
+  "Identity Solution": "/mobile-app",
   HRIS: "/hris",
-  "Contract workforce governance": "/clms",
+  "Contract Workforce Governance": "/clms",
   "Logistics Solutions": "/enterprise-solution",
   EWA: "/ewa",
 };
@@ -149,16 +149,17 @@ const whyCardHrefByTitle: Record<string, string> = {
 /** Contract workforce governance is default featured → numbered from 01. */
 const whyCards: WhyCard[] = [
   {
-    title: "Contract workforce governance",
+    title: "Contract Workforce Governance",
     badge: "CLMS platform",
+    description:"Contract Workforce Governance",
     imageUrl: whySectionCardImages[2],
-    href: whyCardHrefByTitle["Contract workforce governance"],
+    href: whyCardHrefByTitle["Contract Workforce Governance"],
     text: "Real-time dashboards for plant, HR, and leadership, so every team sees the same source of truth.",
     icon: "chart",
   },
   {
     title: "HRIS",
-    badge: "HRIS platform",
+    badge: "HR platform",
     description:" HR Information System",
     imageUrl: whySectionCardImages[1],
     href: whyCardHrefByTitle.HRIS,
@@ -166,10 +167,11 @@ const whyCards: WhyCard[] = [
     icon: "gear",
   },
   {
-    title: "Identity solution",
+    title: "Identity Solution",
     badge: "Face + access",
+    description:"Identity Solution",
     imageUrl: whySectionCardImages[0],
-    href: whyCardHrefByTitle["Identity solution"],
+    href: whyCardHrefByTitle["Identity Solution"],
     text: "Cut queues and stop buddy punching with fast, accurate identity verification across devices and cameras.",
     icon: "lock",
   },
@@ -185,7 +187,7 @@ const whyCards: WhyCard[] = [
   {
     title: "EWA",
     badge: "EWA",
-    description:"Financial wellness",
+    description:"Financial Wellness",
     imageUrl: whySectionCardImages[4],
     href: whyCardHrefByTitle.EWA,
     text: "Give employees flexible access to earned wages while keeping payroll controls and compliance intact.",
@@ -200,7 +202,7 @@ function whyCardNumber(title: string): string {
   return String(idx + 1).padStart(2, "0");
 }
 
-const defaultWhyFeaturedTitle = "Contract workforce governance";
+const defaultWhyFeaturedTitle = "Contract Workforce Governance";
 
 function buildWhyOrder(featuredTitle = defaultWhyFeaturedTitle) {
   const titles = whyCards.map((c) => c.title);
@@ -512,7 +514,7 @@ export default function Home() {
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <AnimatedHeading as="h2" className="home-display-heading text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-                  Workforce governance
+                  Workforce Governance
                 </AnimatedHeading>
               </motion.div>
             </motion.div>

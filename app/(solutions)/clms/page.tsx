@@ -859,8 +859,8 @@ export default function PayrollSolutionsPage() {
                       duration={0.68}
                       className="home-display-heading inops-type-hero mt-4 whitespace-nowrap text-slate-900 lg:mt-5"
                     >
-                      Unified{" "}
-                      <span className="text-blue-800">payroll</span> & contract <br /> workforce governance
+                      End to end
+                      <span className="text-blue-800"></span>  contract <br /> workforce governance
                     </FlyInText>
                   </div>
 
