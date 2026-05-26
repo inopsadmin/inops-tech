@@ -16,9 +16,9 @@ export default function LayoutWrapper({
   const pathname = usePathname();
 
   // Skip full layout for /ewa
-  if (pathname === "/ewa") {
-    return <>{children}</>;
-  }
+  // if (pathname === "/ewa") {
+  //   return <>{children}</>;
+  // }
 
   return (
     <SmoothScroll>
