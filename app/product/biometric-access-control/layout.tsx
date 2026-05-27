@@ -1,3 +1,4 @@
+import ProductSchemaInjector from "@/app/components/ProductSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
@@ -10,5 +11,10 @@ export const metadata: Metadata = routeMetadata({
 });
 
 export default function BiometricAccessControlLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <ProductSchemaInjector path="/product/biometric-access-control" />
+      {children}
+    </>
+  );
 }

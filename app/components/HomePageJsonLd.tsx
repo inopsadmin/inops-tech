@@ -1,9 +1,12 @@
+import { jsonLdScriptProps } from "@/app/lib/jsonLd";
 import {
   DEFAULT_DESCRIPTION,
   HOME_PAGE_TITLE,
+  SCHEMA_SITE_NAV_PAGES,
   SITE_NAME,
   absoluteUrl,
   getSiteUrl,
+  siteIconUrl,
 } from "@/app/lib/site";
 
 /**
@@ -12,7 +15,7 @@ import {
 export default function HomePageJsonLd() {
   const siteUrl = getSiteUrl();
   const homeUrl = `${siteUrl}/`;
-  const logoUrl = absoluteUrl("/logo.png");
+  const logoUrl = siteIconUrl();
 
   const graph = [
     {
@@ -25,6 +28,7 @@ export default function HomePageJsonLd() {
       isPartOf: { "@id": `${siteUrl}/#website` },
       primaryImageOfPage: { "@type": "ImageObject", url: logoUrl },
       about: { "@id": `${siteUrl}/#primary-product` },
+      significantLink: SCHEMA_SITE_NAV_PAGES.map((p) => absoluteUrl(p.path)),
     },
     {
       "@type": "SoftwareApplication",
@@ -43,14 +47,23 @@ export default function HomePageJsonLd() {
         seller: { "@id": `${siteUrl}/#organization` },
       },
     },
+    {
+      "@type": "ItemList",
+      "@id": `${homeUrl}#home-sitelinks`,
+      name: "Core solutions",
+      numberOfItems: SCHEMA_SITE_NAV_PAGES.length,
+      itemListElement: SCHEMA_SITE_NAV_PAGES.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "WebPage",
+          name: item.name,
+          description: item.description,
+          url: absoluteUrl(item.path),
+        },
+      })),
+    },
   ];
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }),
-      }}
-    />
-  );
+  return <script {...jsonLdScriptProps({ "@context": "https://schema.org", "@graph": graph })} />;
 }

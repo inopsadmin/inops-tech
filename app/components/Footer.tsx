@@ -4,7 +4,7 @@ import Image from "next/image";
 import BrandLogoImage from "@/app/components/BrandLogoImage";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { OFFICE_ADDRESS_LINE, SCHEMA_SITE_NAV_PAGES, SOCIAL_LINKS } from "@/app/lib/site";
+import { OFFICE_ADDRESS_LINE, SOCIAL_LINKS } from "@/app/lib/site";
 
 const solutions = [
   { label: "Workforce Governance Solution", href: "/solutions/payroll-solutions" },
@@ -226,23 +226,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        <nav className="mt-10 border-t border-white/10 pt-10 lg:mt-12" aria-label="Popular pages">
-          <SectionTitle>Popular pages</SectionTitle>
-          <ul className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {SCHEMA_SITE_NAV_PAGES.map((item) => (
-              <li key={item.path} className="min-w-0">
-                <Link
-                  href={item.path}
-                  className="text-sm font-semibold text-blue-300 transition-colors hover:text-blue-200 hover:underline"
-                >
-                  {item.name}
-                </Link>
-                <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{item.description}</p>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:text-left xl:mt-14 xl:pt-9">

@@ -1,5 +1,6 @@
 import type { BlogPost } from "@/app/lib/blogPosts";
-import { SITE_NAME, absoluteUrl } from "@/app/lib/site";
+import { jsonLdScriptProps } from "@/app/lib/jsonLd";
+import { SITE_NAME, absoluteUrl, getSiteUrl, siteIconUrl } from "@/app/lib/site";
 
 type Props = {
   post: BlogPost;
@@ -7,6 +8,8 @@ type Props = {
 
 export default function BlogPostingJsonLd({ post }: Props) {
   const url = absoluteUrl(`/blog/${post.slug}`);
+  const siteUrl = getSiteUrl();
+
   const payload = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -20,11 +23,11 @@ export default function BlogPostingJsonLd({ post }: Props) {
       name: post.author === "admin" ? SITE_NAME : post.author,
     },
     publisher: {
-      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
       name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/logo.png"),
+        url: siteIconUrl(),
       },
     },
     mainEntityOfPage: {
@@ -34,10 +37,5 @@ export default function BlogPostingJsonLd({ post }: Props) {
     url,
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
-    />
-  );
+  return <script {...jsonLdScriptProps(payload)} />;
 }

@@ -29,6 +29,9 @@ export const PHONE_E164 = "+918088602602";
 
 export const PHONE_DISPLAY = "+91 80886 02602";
 
+/** X (Twitter) handle for `twitter:site` / `twitter:creator` metadata. */
+export const TWITTER_HANDLE = "@InOpstweets";
+
 /** Full postal address (matches footer / Google Business profile style). */
 export const OFFICE_ADDRESS = {
   streetAddress:
@@ -114,7 +117,33 @@ export function absoluteUrl(path: string): string {
   return `${base}${p}`;
 }
 
-/** Default OG/Twitter image (absolute). Use logo until a dedicated 1200×630 asset exists. */
+/**
+ * Default OG/Twitter image (absolute). Uses App Router `app/opengraph-image.tsx` (1200×630).
+ * Falls back to logo if a route overrides images explicitly.
+ */
 export function defaultOgImageUrl(): string {
-  return absoluteUrl("/logo.png");
+  return absoluteUrl("/opengraph-image");
 }
+
+/** Full-width brand logo (navbar, marketing). */
+export const BRAND_LOGO_PATH = "/logo.png";
+
+/** Square mark for favicon, app icon, and SERP site icon. */
+export const SITE_ICON_PATH = "/logo1.png";
+
+export function logoImageUrl(): string {
+  return absoluteUrl(BRAND_LOGO_PATH);
+}
+
+export function siteIconUrl(): string {
+  return absoluteUrl(SITE_ICON_PATH);
+}
+
+/** Sitemap `lastModified` hints for high-priority routes (ISO date strings). */
+export const SITEMAP_LAST_MODIFIED: Record<string, string> = {
+  "/": "2026-05-01",
+  "/contact": "2026-05-01",
+  "/solutions/labourmanagement": "2026-04-15",
+  "/solutions/ewa": "2026-04-15",
+  "/product/biometric-access-control": "2026-04-15",
+};

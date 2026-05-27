@@ -1,4 +1,5 @@
-import { SITE_NAME, absoluteUrl } from "@/app/lib/site";
+import { jsonLdScriptProps } from "@/app/lib/jsonLd";
+import { absoluteUrl, getSiteUrl } from "@/app/lib/site";
 
 type Props = {
   name: string;
@@ -7,10 +8,13 @@ type Props = {
 };
 
 export default function SoftwareApplicationJsonLd({ name, description, path }: Props) {
+  const siteUrl = getSiteUrl();
   const url = absoluteUrl(path);
+
   const payload = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${url}#software`,
     name,
     description,
     url,
@@ -20,23 +24,10 @@ export default function SoftwareApplicationJsonLd({ name, description, path }: P
       "@type": "Offer",
       url: absoluteUrl("/contact"),
       availability: "https://schema.org/OnlineOnly",
-      seller: {
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: absoluteUrl("/"),
-      },
+      seller: { "@id": `${siteUrl}/#organization` },
     },
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: absoluteUrl("/"),
-    },
+    provider: { "@id": `${siteUrl}/#organization` },
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
-    />
-  );
+  return <script {...jsonLdScriptProps(payload)} />;
 }

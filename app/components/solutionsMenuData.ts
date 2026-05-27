@@ -17,6 +17,33 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     {
       type: "tile",
       accent: true,
+      title: "Contract Labour Management",
+      description: "Automate payroll, PF/ESI & biometric attendance for contract workforces.",
+      href: "/solutions/labourmanagement",
+    },
+    {
+      type: "tile",
+      title: "Earned Wage Access (EWA)",
+      description: "On-demand wages for factory workers with payroll controls intact.",
+      href: "/solutions/ewa",
+    },
+    {
+      type: "tile",
+      title: "Biometric Access Control",
+      description: "Face readers, turnstiles & attendance hardware for industrial sites.",
+      href: "/product/biometric-access-control",
+    },
+    {
+      type: "tile",
+      title: "Contact InOps",
+      description: "Book a demo · speak with our Bengaluru team.",
+      href: "/contact",
+    },
+  ],
+  [
+    {
+      type: "tile",
+      accent: true,
       title: "Workforce Governance Solution",
       description: "End-to-end platform for workforce governance, time, and attendance.",
       href: "/solutions/payroll-solutions",

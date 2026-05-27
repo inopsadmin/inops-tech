@@ -10,8 +10,11 @@ import {
   HOME_PAGE_TITLE,
   KEYWORDS_BASE,
   SITE_NAME,
+  TWITTER_HANDLE,
   defaultOgImageUrl,
   getSiteUrl,
+  SITE_ICON_PATH,
+  siteIconUrl,
 } from "@/app/lib/site";
 
 const inter = Inter({
@@ -58,9 +61,12 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   category: "business",
   icons: {
-    icon: [{ url: "/logo.png", type: "image/png", sizes: "any" }],
-    shortcut: "/logo.png",
-    apple: [{ url: "/logo.png", sizes: "180x180" }],
+    icon: [
+      { url: SITE_ICON_PATH, type: "image/png", sizes: "32x32" },
+      { url: SITE_ICON_PATH, type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: SITE_ICON_PATH,
+    apple: [{ url: SITE_ICON_PATH, sizes: "180x180", type: "image/png" }],
   },
   appleWebApp: {
     capable: true,
@@ -99,15 +105,22 @@ export const metadata: Metadata = {
     images: [
       {
         url: ogImage,
+        width: 1200,
+        height: 630,
         alt: `${SITE_NAME} — enterprise workforce, CLMS, and biometric compliance`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: TWITTER_HANDLE,
+    creator: TWITTER_HANDLE,
     title: HOME_PAGE_TITLE,
     description: DEFAULT_DESCRIPTION,
     images: [{ url: ogImage, alt: `${SITE_NAME} — workforce compliance platform` }],
+  },
+  other: {
+    "msapplication-TileImage": siteIconUrl(),
   },
 };
 

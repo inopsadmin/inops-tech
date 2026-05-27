@@ -35,6 +35,22 @@ const nextConfig: NextConfig = {
         source: "/clients/:path*",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
+      {
+        source: "/logo.png",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
+      },
+      {
+        source: "/logo1.png",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
+      },
+      {
+        source: "/opengraph-image",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+      },
+      {
+        source: "/images/:path*",
+        headers: [{ key: "Cache-Control", value: staticAssetCache }],
+      },
     ];
   },
 };

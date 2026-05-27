@@ -1,3 +1,4 @@
+import BreadcrumbJsonLd from "@/app/components/BreadcrumbJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
@@ -10,5 +11,10 @@ export const metadata: Metadata = routeMetadata({
 });
 
 export default function BrochuresLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <BreadcrumbJsonLd path="/brochures" />
+      {children}
+    </>
+  );
 }

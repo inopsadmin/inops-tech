@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { DEFAULT_DESCRIPTION, SITE_NAME, getSiteUrl } from "@/app/lib/site";
+import { DEFAULT_DESCRIPTION, SITE_ICON_PATH, SITE_NAME, getSiteUrl } from "@/app/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   const base = getSiteUrl();
@@ -13,7 +13,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#1d5fbf",
     icons: [
       {
-        src: "/logo.png",
+        src: SITE_ICON_PATH,
         type: "image/png",
         sizes: "any",
         purpose: "any",
