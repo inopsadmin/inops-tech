@@ -264,6 +264,7 @@ function WhyInopsMosaicPainCard({
 /** Horizontal “Our Module” carousel ,  image, title, description per slide */
 const ourModulesSlides = [
   {
+    slug: "attendance-leave",
     title: "Time Attendance and Leave",
     description:
       "Track attendance in real time, apply shift and leave policies automatically, and push verified hours directly to payroll.",
@@ -274,6 +275,7 @@ const ourModulesSlides = [
     alt: "Team planning attendance and leave schedules",
   },
   {
+    slug: "wage-payroll",
     title: "Wage/Payroll",
     description:
       "Calculate wages, statutory deductions, and overtime with audit trails that stay compliant across every pay cycle.",
@@ -284,6 +286,7 @@ const ourModulesSlides = [
     alt: "Payroll and compensation dashboard",
   },
   {
+    slug: "contractor-management",
     title: "Contractor Management",
     description:
       "Manage vendor profiles, manpower allocation, renewals, and site-level accountability from one centralized view.",
@@ -294,6 +297,7 @@ const ourModulesSlides = [
     alt: "Contractors and supervisors on an industrial site",
   },
   {
+    slug: "cxo-dashboard",
     title: "CXO Dashboard",
     description:
       "Give leadership real-time visibility into headcount, productivity, compliance posture, and cost leakages.",
@@ -304,6 +308,7 @@ const ourModulesSlides = [
     alt: "Executive dashboard with operations KPIs",
   },
   {
+    slug: "background-verification",
     title: "Background Verification",
     description:
       "Verify contractor identity and documents before onboarding, with complete records ready for audits and renewals.",
@@ -314,6 +319,7 @@ const ourModulesSlides = [
     alt: "Document and background verification process",
   },
   {
+    slug: "ai-assistance",
     title: "AI Assistance",
     description:
       "Use AI to flag anomalies, predict risks, and suggest next actions across attendance, compliance, and billing workflows.",
@@ -324,6 +330,7 @@ const ourModulesSlides = [
     alt: "AI workforce analytics and assistance",
   },
   {
+    slug: "compliance-report",
     title: "Compliance Report",
     description:
       "Generate ready-to-submit compliance reports for labor laws, statutory filings, and internal governance reviews.",
@@ -334,6 +341,7 @@ const ourModulesSlides = [
     alt: "Compliance reports and governance analytics",
   },
   {
+    slug: "challan-reconciliation",
     title: "Challan Reconciliation",
     description:
       "Reconcile challans with attendance and wage data to detect mismatches early and prevent financial leakage.",
@@ -483,7 +491,7 @@ function LeakageSnapshotRowIcon({ name }: { name: LeakageSnapshotIcon }) {
 type OurModuleSlide = (typeof ourModulesSlides)[number];
 type OurModulePalette = (typeof ourModuleCardPalettes)[number];
 
-function OurModuleCard({ slide, palette }: { slide: OurModuleSlide; palette: OurModulePalette }) {
+function OurModuleCard({ slide, palette, slug }: { slide: OurModuleSlide; palette: OurModulePalette; slug: string }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -529,7 +537,7 @@ function OurModuleCard({ slide, palette }: { slide: OurModuleSlide; palette: Our
         </p>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto pt-3">
           <Link
-            href="/contact"
+            href={`/clms/modules/${slug}`}
             className="inline-flex h-9 w-full items-center justify-center rounded-lg bg-[color:var(--inops-blue)] text-xs font-semibold text-white shadow-sm transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
           >
             Know more
@@ -610,7 +618,7 @@ function OurModulesCarousel() {
             const palette = ourModuleCardPalettes[si % ourModuleCardPalettes.length];
             return (
             <motion.li key={slide.title} variants={ourModulesCardVariant} className="flex w-full justify-center">
-              <OurModuleCard slide={slide} palette={palette} />
+              <OurModuleCard slide={slide} palette={palette} slug={slide.slug} />
             </motion.li>
             );
           })}
