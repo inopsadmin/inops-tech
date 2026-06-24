@@ -6,7 +6,10 @@ export interface ModuleData {
 
   metrics: string[];
   challenges: string[];
-  workflow: string[];
+  workflow: {
+    title: string;
+    description: string;
+  }[];
   features: string[];
 
   roi: {
@@ -42,7 +45,7 @@ export const modules: ModuleData[] = [
     badge: "Attendance & Leave",
     title: "Attendance, Leave & Shift Management",
     description:
-      "Attendance fraud, manual shift planning and workforce visibility gaps impact productivity and payroll accuracy.",
+      "Attendance fraud, manual shift planning and workforce visibility gaps impact productivity and payroll accuracy across industrial operations.",
 
     metrics: ["Reduced Attendance Fraud", "Better Workforce Planning", "Accurate Payroll Processing"],
 
@@ -55,10 +58,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Attendance Capture",
-      "Shift Validation",
-      "Exception Handling",
-      "Workforce Visibility",
+      {
+        title: "Attendance Capture",
+        description: "Attendance is recorded through biometric devices, mobile app, CCTV AI, or geofencing."
+      },
+      {
+        title: "Shift Validation",
+        description: "System validates punches against roster, shift schedules, and overtime policies."
+      },
+      {
+        title: "Exception Processing",
+        description: "Late arrivals, missing punches, absenteeism, and shift deviations are flagged."
+      },
+      {
+        title: "Workforce Visibility",
+        description: "Real-time dashboards provide workforce strength, attendance status, and leave analytics."
+      },
     ],
 
     features: [
@@ -144,10 +159,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Data Collection",
-      "Compliance Validation",
-      "Report Generation",
-      "Audit Readiness",
+      {
+        title: "Data Collection",
+        description: "Workforce, contractor, and statutory information is collected automatically."
+      },
+      {
+        title: "Compliance Validation",
+        description: "Rules are checked against CLRA, Factories Act, state-specific requirements, and licenses."
+      },
+      {
+        title: "Register & Report Generation",
+        description: "Statutory registers, forms, and compliance reports are generated automatically."
+      },
+      {
+        title: "Audit Readiness",
+        description: "All records are stored in a central repository with complete audit trails."
+      },
     ],
 
     features: [
@@ -234,10 +261,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Worker Registration",
-      "Document Verification",
-      "BGV & Medical Checks",
-      "Deployment Approval",
+      {
+        title: "Digital Registration ",
+        description: "Contractor uploads worker details, Aadhaar, PAN, bank details, and supporting documents."
+      },
+      {
+        title: "Automated Verification",
+        description: "Identity, UAN, PF, ESI, and background verification checks are initiated automatically."
+      },
+      {
+        title: "Medical & Safety Clearance",
+        description: "Worker undergoes medical fitness validation and mandatory induction training."
+      },
+      {
+        title: "Workforce Activation",
+        description: "Approved workers are assigned to contractor, location, shift, and become deployment-ready."
+      },
     ],
 
     features: [
@@ -323,10 +362,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Contractor Registration",
-      "Workforce Mapping",
-      "Compliance Monitoring",
-      "Performance Tracking",
+      {
+        title: "Contractor Registration",
+        description: "Vendor profile, contracts, licenses, and work orders are onboarded into the system."
+      },
+      {
+        title: "Workforce Mapping",
+        description: "Workers are linked to contractors, departments, cost centers, and project locations."
+      },
+      {
+        title: "Compliance Monitoring",
+        description: "The platform continuously tracks licenses, manpower strength, and statutory obligations."
+      },
+      {
+        title: "Performance Evaluation",
+        description: "Contractor scorecards, compliance ratings, and productivity metrics are updated automatically."
+      },
     ],
 
     features: [
@@ -412,10 +463,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Attendance Processing",
-      "Wage Calculation",
-      "Invoice Validation",
-      "Finance Approval",
+      {
+        title: "Attendance Consolidation",
+        description: "Approved attendance and overtime data are collected from all sites."
+      },
+      {
+        title: "Wage Computation",
+        description: "System calculates wages based on minimum wage rules, OT, deductions, and benefits."
+      },
+      {
+        title: "Invoice Reconciliation",
+        description: "Contractor invoices are matched against attendance, wages, and approved manpower."
+      },
+      {
+        title: "Finance Approval",
+        description: "Validated invoices move through approval workflows and ERP integration."
+      },
     ],
 
     features: [
@@ -501,10 +564,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Data Consolidation",
-      "KPI Monitoring",
-      "Risk Analysis",
-      "Executive Insights",
+      {
+        title: "Data Aggregation",
+        description: "Data from attendance, compliance, onboarding, and payroll modules is consolidated."
+      },
+      {
+        title: "KPI Monitoring ",
+        description: "Key metrics such as workforce strength, contractor performance, and compliance scores are tracked."
+      },
+      {
+        title: "Risk Identification",
+        description: "AI highlights compliance risks, manpower shortages, and financial leakages."
+      },
+      {
+        title: "Executive Decision Making",
+        description: "Leadership receives actionable insights, trends, and recommendations."
+      },
     ],
 
     features: [
@@ -590,10 +665,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Ask a Question",
-      "AI Analyzes Data",
-      "Generates Insights",
-      "Triggers Actions",
+      {
+        title: "Ask a Question",
+        description: "User asks a workforce, compliance, payroll, or contractor-related question."
+      },
+      {
+        title: "Data Analysis",
+        description: "AI analyzes data across all modules and historical records."
+      },
+      {
+        title: "Insight Generation",
+        description: "System prepares summaries, exceptions, root causes, and recommendations."
+      },
+      {
+        title: "Action Execution",
+        description: "Users can trigger workflows, generate reports, or assign corrective actions."
+      },
     ],
 
     features: [
@@ -679,10 +766,22 @@ export const modules: ModuleData[] = [
     ],
 
     workflow: [
-      "Challan Upload",
-      "Validation",
-      "Reconciliation",
-      "Exception Resolution",
+      {
+        title: "Challan Upload ",
+        description: "Contractors upload PF and ESI challans, ECR files, and supporting records."
+      },
+      {
+        title: "Data Validation",
+        description: "System validates employee-wise contributions against statutory records."
+      },
+      {
+        title: "Reconciliation",
+        description: "Contributions are matched with attendance, wages, and contractor submissions."
+      },
+      {
+        title: "Exception Resolution",
+        description: "Variances are highlighted and assigned for corrective action."
+      },
     ],
 
     features: [
