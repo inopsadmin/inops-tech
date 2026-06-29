@@ -64,7 +64,10 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/visitor-management") ||
     path.startsWith("/accessories") ||
     path.startsWith("/face") ||
-    path.startsWith("/turnstiles")
+    path.startsWith("/turnstiles") ||
+    path.startsWith("/warehouse-management") ||
+    path.startsWith("/delivery-management") ||
+    path.startsWith("/order-management")
   );
 }
 

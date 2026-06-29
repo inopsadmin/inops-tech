@@ -180,10 +180,30 @@ export default function EnterpriseSolutionPage() {
   const coreModules = [
     {
       step: "01",
-      tag: "Capital & uptime",
-      title: "Asset Management",
+      tag: "Throughput",
+      title: "Warehouse Management",
       description:
-        "Full lifecycle visibility, from procurement to retirement, with utilization, maintenance, and compliance aligned across every site.",
+        "Optimize inventory, assets, and warehouse operations with real-time tracking, barcode automation, and analytics for improved efficiency.",
+      href: "#warehouse-management",
+      borderGradient: "from-violet-600 via-fuchsia-500 to-indigo-600",
+      topBarGradient: "from-violet-500 via-purple-500 to-fuchsia-500",
+      iconWrap:
+        "from-violet-600 via-indigo-600 to-blue-700 shadow-[0_10px_28px_-10px_rgba(109,40,217,0.45)] ring-1 ring-white/25",
+      icon: (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+          <rect x="5" y="4" width="14" height="16" rx="2" />
+          <path d="M8 8h8" />
+          <path d="M8 12h8" />
+          <path d="M8 16h5" />
+        </svg>
+      ),
+    },
+    {
+      step: "02",
+      tag: "Capital & uptime",
+      title: "Delivery Management",
+      description:
+        "Ensure faster deliveries through route optimization, fleet tracking, transport management, and digital proof of delivery.",
       href: "#asset-management",
       borderGradient: "from-blue-600 via-indigo-500 to-violet-600",
       topBarGradient: "from-blue-500 via-indigo-500 to-sky-400",
@@ -198,11 +218,11 @@ export default function EnterpriseSolutionPage() {
       ),
     },
     {
-      step: "02",
+      step: "03",
       tag: "Fleet & miles",
-      title: "Route Optimization",
+      title: "Order Management",
       description:
-        "Dispatch and paths that respond to traffic, SLAs, and capacity in real time, fewer empty miles, less idle time, lower fuel spend.",
+        "Streamline order processing, fulfillment, tracking, and returns with automated workflows and real-time visibility",
       href: "#delivery-management",
       borderGradient: "from-cyan-500 via-teal-500 to-emerald-600",
       topBarGradient: "from-cyan-400 via-teal-500 to-emerald-500",
@@ -219,26 +239,7 @@ export default function EnterpriseSolutionPage() {
         </svg>
       ),
     },
-    {
-      step: "03",
-      tag: "Throughput",
-      title: "Warehouse Management",
-      description:
-        "Inventory, slotting, and flows tuned for velocity, accurate stock and smarter space use without slowing pick, pack, or ship.",
-      href: "#warehouse-management",
-      borderGradient: "from-violet-600 via-fuchsia-500 to-indigo-600",
-      topBarGradient: "from-violet-500 via-purple-500 to-fuchsia-500",
-      iconWrap:
-        "from-violet-600 via-indigo-600 to-blue-700 shadow-[0_10px_28px_-10px_rgba(109,40,217,0.45)] ring-1 ring-white/25",
-      icon: (
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
-          <rect x="5" y="4" width="14" height="16" rx="2" />
-          <path d="M8 8h8" />
-          <path d="M8 12h8" />
-          <path d="M8 16h5" />
-        </svg>
-      ),
-    },
+    
   ] as const;
 
   const enterpriseClientLogos = [
@@ -382,23 +383,6 @@ export default function EnterpriseSolutionPage() {
                   <p className="relative mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">
                     {module.description}
                   </p>
-
-                  <Link
-                    href={module.href}
-                    className="relative mt-6 inline-flex items-center gap-1.5 self-start rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-[0_8px_22px_-10px_rgba(37,99,235,0.45)] transition-all duration-200 hover:-translate-y-0.5 hover:from-blue-700 hover:to-indigo-700 hover:shadow-[0_12px_28px_-12px_rgba(37,99,235,0.4)] active:scale-[0.98] group/link"
-                  >
-                    Explore module
-                    <svg
-                      className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      aria-hidden
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                  </Link>
                 </article>
               </motion.div>
             ))}
@@ -434,7 +418,7 @@ export default function EnterpriseSolutionPage() {
                 duration={0.62}
                 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
               >
-                Asset Management
+                Warehourse Management
               </FlyInText>
 
               <FlyInText
@@ -444,16 +428,15 @@ export default function EnterpriseSolutionPage() {
                 duration={0.58}
                 className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg"
               >
-                Maintain full lifecycle visibility of your physical infrastructure. NexusOps provides
-                real-time telemetry and predictive insights to maximize asset lifespan and ROI.
+                Optimize warehouse operations with real-time inventory control, asset tracking, barcode/QR automation, and analytics to improve accuracy and efficiency.
               </FlyInText>
 
               <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
-                  "Real-time IoT tracking",
-                  "Utilization monitoring",
-                  "Maintenance scheduling",
-                  "Lifecycle management",
+                  "Inventory Management",
+                  "Barcode & QR Tracking",
+                  "Asset Tracking",
+                  "Warehouse Analytics",
                 ].map((point, i) => (
                   <FlyInText
                     key={point}
@@ -475,10 +458,10 @@ export default function EnterpriseSolutionPage() {
 
               <FlyInText as="div" direction="up" delay={0.34} duration={0.55} className="mt-8">
                 <Link
-                  href="/contact"
+                  href="/warehouse-management"
                   className="inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:scale-95"
                 >
-                  Explore Asset Features
+                  Explore Warehouse Features
                 </Link>
               </FlyInText>
             </motion.div>
@@ -504,10 +487,10 @@ export default function EnterpriseSolutionPage() {
                     className="absolute left-4 top-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur sm:left-6 sm:top-6"
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
-                      Sensor Status
+                      Inventory Accuracy
                     </p>
                     <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
-                      12,482 Active Nodes
+                      99.9% Reliable Tracking
                     </p>
                   </FlyInText>
                 </div>
@@ -540,10 +523,10 @@ export default function EnterpriseSolutionPage() {
                     direction="up"
                     delay={0.12}
                     duration={0.65}
-                    className="absolute bottom-6 right-6 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur"
+                    className="absolute bottom-6 left-6 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur"
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
-                      Efficiency Gain
+                      On-time Delivery
                     </p>
                     <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
                       +24% Faster Delivery
@@ -576,7 +559,7 @@ export default function EnterpriseSolutionPage() {
                 duration={0.62}
                 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
               >
-                Route Optimization
+                Delivery Management
               </FlyInText>
 
               <FlyInText
@@ -586,16 +569,15 @@ export default function EnterpriseSolutionPage() {
                 duration={0.58}
                 className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg"
               >
-                Eliminate inefficiency in your logistics network. NexusOps uses dynamic AI algorithms
-                to re-route vehicles based on live traffic, weather, and service priorities.
+                Streamline delivery operations with intelligent route optimization, transport management, real-time fleet tracking, and proof of delivery for reliable results.
               </FlyInText>
 
               <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
-                  "Smart route planning",
-                  "Real-time vehicle tracking",
-                  "Dynamic adjustments",
-                  "Fuel & cost optimization",
+                  "Route Optimzation",
+                  "Fleet Tracking",
+                  "Transport Management",
+                  "Proof of Delivery",
                 ].map((point, i) => (
                   <FlyInText
                     key={point}
@@ -617,10 +599,10 @@ export default function EnterpriseSolutionPage() {
 
               <FlyInText as="div" direction="up" delay={0.34} duration={0.55} className="mt-8">
                 <Link
-                  href="/contact"
+                  href="/delivery-management"
                   className="inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:scale-95"
                 >
-                  Optimize Fleet
+                  Explore Delivery Features
                 </Link>
               </FlyInText>
             </motion.div>
@@ -656,7 +638,7 @@ export default function EnterpriseSolutionPage() {
                 duration={0.62}
                 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
               >
-                Warehouse Management
+                Order Management
               </FlyInText>
 
               <FlyInText
@@ -666,17 +648,15 @@ export default function EnterpriseSolutionPage() {
                 duration={0.58}
                 className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg"
               >
-                Synchronize your supply chain with precision inventory control. From automated
-                receiving to intelligent picking paths, NexusOps keeps your warehouse moving at high
-                speed.
+                Manage the complete order lifecycle with efficient order processing, fulfillment management, real-time order tracking, and seamless returns handling.
               </FlyInText>
 
               <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
-                  "SKU-level inventory tracking",
-                  "Full stock visibility",
-                  "Internal movement tracking",
-                  "Storage space optimization",
+                  "Order Processing",
+                  "Order Tracking",
+                  "Fulfillment Management",
+                  "Returns Management",
                 ].map((point, i) => (
                   <FlyInText
                     key={point}
@@ -698,10 +678,10 @@ export default function EnterpriseSolutionPage() {
 
               <FlyInText as="div" direction="up" delay={0.34} duration={0.55} className="mt-8">
                 <Link
-                  href="/contact"
+                  href="/order-management"
                   className="inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:scale-95"
                 >
-                  Streamline Inventory
+                  Explore Order Features
                 </Link>
               </FlyInText>
             </motion.div>
@@ -725,10 +705,10 @@ export default function EnterpriseSolutionPage() {
                     className="absolute right-4 top-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur sm:right-6 sm:top-6"
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
-                      Inventory Accuracy
+                      Order Accuracy
                     </p>
                     <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
-                      99.9% Reliable Tracking
+                      98% On-time Fulfillment
                     </p>
                   </FlyInText>
                 </div>

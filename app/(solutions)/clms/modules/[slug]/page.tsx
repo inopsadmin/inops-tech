@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
-
 import ModuleTemplate from "@/app/components/modules/ModuleTemplate";
 import { modules } from "@/app/lib/module";
+import ModuleSwitcher from "@/app/components/modules/ModuleSwitcher";
 
 export default async function ModulePage({
   params,
@@ -11,9 +11,6 @@ export default async function ModulePage({
 
   const { slug } = await params;
 
-  console.log("Requested slug:", slug);
-  console.log("Available slugs:", modules.map(m => m.slug));
-
   const selectedModule = modules.find(
     (item) => item.slug === slug
   );
@@ -22,5 +19,10 @@ export default async function ModulePage({
     notFound();
   }
 
-  return <ModuleTemplate data={selectedModule} />;
+  return(
+    <main>
+      <ModuleSwitcher activeSlug={slug}/>
+      <ModuleTemplate data={selectedModule} />
+    </main>
+  )
 }
