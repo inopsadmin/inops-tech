@@ -10,13 +10,14 @@ import {
   AnimatedCardGrid,
   AnimatedCardItem,
 } from "../AnimatedSection";
+import type { ComponentType } from "react";
 
 interface Props {
   data: ModuleData;
 }
 
 interface StatusCard {
-  icon: (props: { className?: string }) => JSX.Element;
+  icon: ComponentType<{ className?: string }>;
   label: string;
   value?: string;
   iconBg: string;
