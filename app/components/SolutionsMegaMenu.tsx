@@ -27,6 +27,9 @@ function MegaCell({ cell, onNavigate }: { cell: SolutionsMegaCell; onNavigate?: 
       >
         {cell.title}
       </div>
+      <div className={`mt-1 font-semibold text-blue-600/70 ${inopsUi.typeSmall}`}>
+          {cell.subtitle}
+      </div>
       <p
         className={`mt-2 transition-colors duration-200 group-hover:text-blue-700/90 ${inopsUi.typeSmall}`}
       >
@@ -107,6 +110,7 @@ export function SolutionsMegaMenuMobile({ onNavigate }: { onNavigate: () => void
                   >
                     {cell.title}
                   </div>
+                  <div className="text-red-500">DEBUG subtitle: {JSON.stringify(cell.subtitle)}</div>
                   <p
                     className={`mt-2 transition-colors duration-200 group-hover:text-blue-700/90 ${inopsUi.typeSmall}`}
                   >
