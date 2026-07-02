@@ -1,0 +1,12 @@
+# inops.tech llms.txt
+
+> To provide workforce compliance and management solutions for industrial and manufacturing sectors, enabling real-time visibility, automation, and operational efficiency across multiple sites.
+
+- [InOps Brochures](https://inops.tech/brochures): Provides downloadable brochures and resources for evaluating InOps workforce management products.
+- [Mobile Workforce Management](https://inops.tech/mobile-app): Promote and explain a mobile-based employee attendance and workforce management system.
+- [Canteen & Visitor Systems](https://inops.tech/canteen-and-visitor): Promote integrated canteen, visitor, and workforce management solutions with real-time monitoring.
+- [Workforce Management Platform](https://inops.tech/about): To showcase enterprise workforce management solutions focusing on control, transparency, and compliance for large-scale operations.
+- [Access Control Trends 2024](https://inops.tech/blog): Highlighting trends and solutions in physical security, access control, and workforce management technologies for 2024.
+- [HR Tech Solutions](https://inops.tech/blog/hr-technology-efficiency-engagement): Promote integrated HR technology solutions to improve workforce management and engagement in manufacturing.
+- [Biometric Attendance Future](https://inops.tech/blog/biometric-attendance-future-of-work): Promoting biometric attendance systems as a reliable, accurate solution for modern workforce management.
+- [Earned Wage Access](https://inops.tech/ewa): Promote real-time earned wage access to improve workforce financial stability and retention.
