@@ -159,9 +159,9 @@ export default function EnterpriseSolutionPage() {
 
   const moduleVisuals = {
     sensorStatus:
-      "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1400&q=80",
-    efficiencyGain:
       "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
+    efficiencyGain:
+      "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1400&q=80",
     inventoryAccuracy:
       "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1400",
   } as const;
@@ -222,7 +222,7 @@ export default function EnterpriseSolutionPage() {
       tag: "Fleet & miles",
       title: "Order Management",
       description:
-        "Streamline order processing, fulfillment, tracking, and returns with automated workflows and real-time visibility",
+        "Streamline order processing, fulfillment, tracking, and returns with automated workflows and real-time visibility.",
       href: "#delivery-management",
       borderGradient: "from-cyan-500 via-teal-500 to-emerald-600",
       topBarGradient: "from-cyan-400 via-teal-500 to-emerald-500",
@@ -418,7 +418,7 @@ export default function EnterpriseSolutionPage() {
                 duration={0.62}
                 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
               >
-                Warehourse Management
+                Warehouse Management
               </FlyInText>
 
               <FlyInText

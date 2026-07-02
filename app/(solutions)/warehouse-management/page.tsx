@@ -17,84 +17,117 @@ import {
   IconWorkflow,
   IconClipboardCheck,
   IconChip,
+  IconCheckCircle,
 } from "@/app/components/solution/Icons";
 
 const warehouseHeroRight = (
-  <div className="relative w-full max-w-150 rounded-3xl shadow-[0_24px_60px_-12px_rgba(0,0,0,0.18)] bg-gray-900 overflow-hidden aspect-[4/3] flex flex-col border border-[#1a2235]">
-    <div className="flex items-center gap-3 px-4 py-3 bg-[#0a0f1a] shrink-0">
-      <div className="flex gap-1.5">
-        <div className="w-3 h-3 rounded-full bg-gray-700/40" />
-        <div className="w-3 h-3 rounded-full bg-gray-700/40" />
-        <div className="w-3 h-3 rounded-full bg-gray-700/40" />
-      </div>
-      <div className="flex-1 h-4 rounded-sm bg-gray-700/40 max-w-[25%]" />
-    </div>
+  <div className="relative rounded-2xl shadow-[0_12px_40px_-12px_rgba(0,0,0,0.08)] bg-white overflow-visible flex flex-col border border-gray-100 font-sans z-10">
     
-    <div className="flex flex-1 rounded-sm! overflow-hidden">
-      <div className="w-16 flex flex-col gap-3 pl-3.5 pt-1">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="w-9 h-9 rounded-lg bg-gray-700/40"></div>
-        ))}
-      </div>
-
-      <div className="flex-1 flex flex-col gap-3 p-3 overflow-hidden">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-1 rounded-xl border border-blue-900/60 bg-blue-700/10 p-4 h-28 flex flex-col gap-3">
-            <div className="w-10 h-3 rounded bg-blue-500/50"></div>
-            <div className="w-full max-w-20 h-6 rounded bg-blue-500"></div>
-          </div>
-          <div className="col-span-1 rounded-xl bg-gray-700/40 h-28"></div>
-          <div className="col-span-1 rounded-xl bg-gray-700/40 h-28"></div>
-        </div>
-        <div className="w-[48%] h-4 rounded-md bg-gray-700/40 mt-2"></div>
-        <div className="flex flex-col gap-2">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 border border-gray-800 px-3 py-3.5 my-2"
-            >
-              <div className="h-4 w-4 shrink-0 rounded-full bg-gray-700/40" />
-              <div className="h-2 flex-1 rounded bg-gray-700/40" style={{ maxWidth: "75%" }} />
-              <div className="ml-auto h-3.5 w-12 rounded bg-gray-700/40" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-    
-    <div className="absolute rounded-md! bottom-8 right-8 bg-white py-4 px-5 shadow-2xl flex flex-col gap-2.5 min-w-50 border border-gray-100 z-10">
-      <div className="flex items-center justify-center gap-3">
-        <div className="w-5 h-5 rounded-full border-[1.5px] border-gray-800 flex items-center justify-center">
-          <svg className="w-3 h-3 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+    <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+      <div className="flex items-center gap-3">
+        <div className="bg-[#eef4ff] p-2 rounded-lg text-blue-600">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
           </svg>
         </div>
-        <span className="text-sm font-bold text-gray-900 tracking-wide">Stock Verified</span>
+        <div>
+          <h3 className="font-bold text-gray-900 text-sm">Warehouse Operations Overview</h3>
+          <p className="text-[11px] text-gray-500 mt-0.5">Live Snapshot • Today</p>
+        </div>
       </div>
-      <div className="w-full h-1.5 bg-[#f3f4f6] rounded-full mt-1"></div>
+      <div className="px-3 py-1 rounded-full border border-gray-200 text-[11px] font-semibold text-gray-700">
+        Depot: Main
+      </div>
+    </div>
+
+    <div className="grid grid-cols-3 gap-3 px-5 py-4">
+      <div className="border border-gray-100 rounded-xl p-3 bg-gray-50/50">
+        <div className="text-[10px] font-bold text-gray-600 mb-1 tracking-wide">INVENTORY ACCURACY</div>
+        <div className="text-xl font-black text-gray-900 flex items-center gap-1.5">
+          99.9% 
+        </div>
+        <div className="text-[10px] text-gray-500 mt-0.5">(vs last month) <span className="text-emerald-500 font-medium">↗</span></div>
+      </div>
+      <div className="border border-gray-100 rounded-xl p-3 bg-gray-50/50">
+        <div className="text-[10px] font-bold text-gray-600 mb-1 tracking-wide">ORDERS PICKED/HR</div>
+        <div className="text-xl font-black text-gray-900 flex items-center gap-1.5">
+          240+ 
+        </div>
+        <div className="text-[10px] text-gray-500 mt-0.5">(vs last month) <span className="text-emerald-500 font-medium">↗</span></div>
+      </div>
+      <div className="border border-gray-100 rounded-xl p-3 bg-gray-50/50">
+        <div className="text-[10px] font-bold text-gray-600 mb-1 tracking-wide">ON-TIME DISPATCH</div>
+        <div className="text-xl font-black text-gray-900 flex items-center gap-1.5">
+          99.7% 
+        </div>
+        <div className="text-[10px] text-gray-500 mt-0.5">(vs last month) <span className="text-emerald-500 font-medium">↗</span></div>
+      </div>
+    </div>
+
+    <div className="px-5 pb-5">
+      <div className="flex justify-between items-center mb-3">
+        <h4 className="font-bold text-gray-900 text-sm">Live Operations Feed</h4>
+        <button className="text-[11px] font-semibold text-gray-500 hover:text-gray-900">
+          Filter by Station
+        </button>
+      </div>
+
+      <div className="flex flex-col text-[12px]">
+        <div className="flex items-center justify-between py-2.5 border-t border-gray-100">
+          <div className="w-[38%] font-medium text-gray-900">Receiving Station 3 - T. Jenkins</div>
+          <div className="w-[28%] text-gray-600">Stock Putaway</div>
+          <div className="w-[14%] text-gray-500">08:52 AM</div>
+          <div className="w-[18%] flex justify-end">
+            <span className="px-2 py-0.5 rounded bg-yellow-100 text-yellow-800 text-[10px] font-bold">In Progress</span>
+          </div>
+        </div>
+        <div className="flex items-center justify-between py-2.5 border-t border-gray-100 relative bg-gray-50 -mx-5 px-5">
+          <div className="w-[38%] font-bold text-gray-900">Order #4593 - Pick Verification</div>
+          <div className="w-[28%] text-gray-900 relative">
+            <span className="relative z-10 font-medium">Stock Verified</span>
+            
+            <div className="absolute -inset-x-2 -inset-y-1.5 border border-blue-200 bg-blue-50/30 rounded-md shadow-sm pointer-events-none z-10"></div>
+            
+            <div className="absolute top-[140%] left-0 bg-white rounded-lg shadow-[0_10px_20px_-5px_rgba(0,0,0,0.15)] border border-blue-100 p-2.5 z-20 flex gap-2.5 items-center w-max">
+              <div className="bg-blue-50 rounded-full p-1 border border-blue-100">
+                <IconCheckCircle />
+              </div>
+              <div className="leading-tight">
+                <div className="font-bold text-[12px] text-gray-900">Stock Verified</div>
+                <div className="text-[10px] text-gray-500 mt-0.5">Order fulfillment</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-[14%] text-gray-900 font-medium">09:05 AM</div>
+          <div className="w-[18%] flex justify-end">
+            <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-700 text-[10px] font-bold">Verified</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 );
 
-
 const heroData = {
+  bgImage: "/images/solutions/warehouse-management.jpeg", 
+  bgImageAlt: "Warehouse manager reviewing inventory data on a laptop",
+  bgPosition: "72% 40%",
+  gradientCenter: "28% 22%",
   eyebrow: "Logistics Excellence",
-  titleLine1: "Warehouse",
-  titleLine2: "Management",
-  titleLine3: "Solution",
+  titleLine1: "Warehouse Management",
+  titleLine2: "Solution",
   description:
-    "Real-time inventory visibility, efficient operational orchestration, and predictive analytics designed for high-throughput modern warehouses.",
+    "Real-time inventory visibility, efficient operational orchestration and predictive analytics designed for high-throughput modern warehouses.",
   buttons: [
-    { label: "Request Demo", href: "#", variant: "primary" as const },
-    { label: "See Warehouse Demo", href: "#", variant: "outline" as const },
+    { label: "Request Demo", href: "/contact", variant: "primary" as const },
   ],
-  trustText: "Trusted by 500+ warehouse managers worldwide",
   rightContent: warehouseHeroRight,
+  rightContentWidthClassName: "w-[66%] sm:w-[44%] lg:w-[34%] max-w-[500px]",
 };
 
 const statsData = {
   heading: "Impact Performance",
-  subheading: "Industry-leading benchmarks achieved by LogiStream partners.",
+  subheading: "Industry-leading benchmarks achieved by InOps partners.",
   stats: [
     { label: "Inventory Accuracy", value: 99, suffix: ".9%", change: "↑ 2.4% vs last month", changePositive: true },
     { label: "Orders Picked/hr", value: 240, suffix: "+", change: "↑ 18% vs last month", changePositive: true },
@@ -154,7 +187,7 @@ const featuresData = {
 };
 
 const lifecycleData = {
-  heading: "The LogiStream Journey",
+  heading: "The InOps Journey",
   subheading: "From arrival to departure, every step is optimized for speed.",
   steps: [
     { icon: <IconClipboardCheck className="h-9 w-9" />,         label: "Receiving", sublabel: "Automated verification & staging protocols", iconBg: "bg-blue-50",   iconColor: "#2563eb" },
@@ -168,16 +201,11 @@ const lifecycleData = {
 const ctaData = {
   heading: "Optimize your warehouse operations today.",
   subheading:
-    "Join hundreds of logistics leaders who have revolutionized their fulfillment efficiency with LogiStream.",
+    "Join hundreds of logistics leaders who have revolutionized their fulfillment efficiency with InOps.",
   buttons: [
-    { label: "Request Personal Demo", href: "#", variant: "white" as const },
-    { label: "Contact Sales Specialist", href: "#", variant: "outline-white" as const },
-  ],
-  testimonial: {
-    quote: "LogiStream didn't just give us software; they gave us a 40% efficiency boost in 3 months.",
-    name: "David Chen",
-    role: "Director of Ops, GlobalFreight",
-  },
+    { label: "Request Personal Demo", href: "/contact", variant: "white" as const },
+    { label: "Contact Sales Specialist", href: "/contact", variant: "outline-white" as const },
+  ]
 };
 
 const integrations = [

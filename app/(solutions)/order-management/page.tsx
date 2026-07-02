@@ -18,11 +18,11 @@ import {
   IconTag,
   IconShield,
 } from "@/app/components/solution/Icons";
+import Image from "next/image";
 
 const ordersHeroRight = (
-  <div className="relative w-full rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] bg-white border border-gray-200 flex flex-col">
-
-    <div className="flex items-center justify-between px-5 py-3 bg-white border-b border-gray-100">
+  <div className="relative h-100% rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] bg-white border border-gray-200 flex flex-col">
+    <div className="flex flex-col items-center justify-between px-5 py-3 bg-white border-b border-gray-100">
       <div className="flex gap-1.5">
         <div className="h-3 w-3 rounded-full bg-red-400" />
         <div className="h-3 w-3 rounded-full bg-gray-200" />
@@ -75,18 +75,20 @@ const ordersHeroRight = (
 );
 
 const heroData = {
+  bgImage: "/images/solutions/order-management.jpeg", 
+  bgImageAlt: "Warehouse worker reviewing the order management dashboard",
+  bgPosition: "72% 40%",
+  gradientCenter: "18% 22%",
   eyebrow: "Enterprise Solutions",
   titleLine1: "Order Management",
   titleLine2: "Solution",
   description:
     "Streamline order capture, fulfillment, tracking and returns in one platform. Orchestrate complex global commerce from a single source of truth.",
-  buttons: [
-    { label: "Request Demo", href: "#", variant: "primary" as const },
-    { label: "Start Free Trial", href: "#", variant: "outline" as const },
-  ],
-  trustText: "Join 800+ global brands optimizing their fulfillment",
+  buttons: [{ label: "Request Demo", href: "/contact", variant: "primary" as const }],
   rightContent: ordersHeroRight,
+  rightContentWidthClassName: "w-[56%] sm:w-[44%] lg:w-[34%] max-w-[500px]",
 };
+
 
 const statsData = {
   heading: "Impact that Matters",
@@ -120,7 +122,7 @@ const featuresData = {
   eyebrow: "Platform Capabilities",
   heading: "Engineered for Scalability",
   description:
-    "LogiStream OMS provides the tools required to manage orders from any source to any destination.",
+    "InOps OMS provides the tools required to manage orders from any source to any destination.",
   cards: [
     {
       icon: <IconTag />,
@@ -346,18 +348,110 @@ export default function OrdersPage() {
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll variant="slide-left" delay={100}>
-              <div className="rounded-xl bg-white border border-gray-200 shadow-sm flex items-center justify-center relative overflow-hidden h-full">
-                <div className="w-28 h-52 rounded-[28px] border-[6px] border-gray-800 bg-[#c8c0a0] relative flex items-center justify-center shadow-xl">
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-7 h-1.5 bg-gray-800 rounded-full" />
-                  <div className="w-full h-full rounded-[22px] bg-white" />
+            <div className="rounded-xl bg-white border border-gray-200 shadow-sm p-4 sm:p-6 h-full">
+            
+              <div className="flex justify-end mb-5">
+                <span className="rounded-full bg-gray-100 px-3 py-1 text-[10px] font-bold text-gray-600 uppercase tracking-wide">
+                  Returns Intake / ID #RTN-120
+                </span>
+              </div>
+
+              <div className="flex flex-col lg:flex-row gap-5 sm:gap-6">
+                <div className="flex lg:flex-col items-start gap-0 shrink-0">
+                  <div className="flex lg:flex-col items-center lg:items-start gap-0">
+                    <div className="flex items-start gap-3">
+                      <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
+                          <IconBox className="w-4 h-4 text-gray-500" />
+                        </div>
+                        <div className="w-px flex-1 min-h-[40px] bg-gray-200 my-1" />
+                      </div>
+                      <div className="pb-6">
+                        <p className="text-xs font-semibold text-gray-900 leading-tight">Received</p>
+                        <p className="text-[11px] text-gray-400 mt-0.5">10:05 AM</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 shrink-0 rounded-full bg-gray-100 flex items-center justify-center">
+                        <IconSearch className="w-4 h-4 text-gray-500" />
+                      </div>
+                      <div className="w-px flex-1 min-h-[40px] bg-gray-200 my-1" />
+                    </div>
+                    <div className="pb-6">
+                      <p className="text-xs font-semibold text-gray-900 leading-tight">Inspected</p>
+                      <p className="text-[11px] text-gray-400 mt-0.5">10:15 AM</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 shrink-0 rounded-full bg-green-50 border border-green-300 flex items-center justify-center">
+                        <IconCheckCircle className="w-4 h-4 text-green-500" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-gray-900 leading-tight">Verified</p>
+                      <p className="text-[11px] text-gray-400 mt-0.5">10:20 AM</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute right-6 top-1/2 -translate-y-1/4 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-md">
-                  <p className="text-[9px] font-bold text-gray-400 uppercase tracking-wide mb-0.5">Returns Intake</p>
-                  <p className="text-xs font-bold text-gray-900">Item Verified</p>
-                  <p className="text-[10px] text-gray-500">Ready for Restock</p>
+                <div className="flex justify-center shrink-0">
+                  <div className="w-32 sm:w-36 rounded-[28px] border-[5px] border-blue-100 bg-white shadow-md relative overflow-hidden flex flex-col">
+                    <div className="flex justify-center pt-2 pb-1">
+                      <div className="w-10 h-1.5 rounded-full bg-gray-300" />
+                    </div>
+                    <div className="mx-2 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden" style={{ height: '130px' }}>
+                      <Image
+                        src="/images/solutions/Order-image.png"
+                        alt="Canon EOS R5"
+                        width={110}
+                        height={110}
+                        className="object-contain p-2 w-full h-full"
+                      />
+                    </div>
+                    <div className="px-2.5 pt-2 pb-3">
+                      <p className="text-[10px] text-gray-500 leading-snug">Returns Processing -</p>
+                      <p className="text-[11px] font-semibold text-gray-900 leading-snug">Canon EOS R5</p>
+                      <div className="mt-2 rounded-lg bg-green-50 px-2 py-1.5 flex items-center gap-1">
+                        <span className="text-green-500 text-[10px]">✓</span>
+                        <span className="text-[10px] font-semibold text-green-700">Verified &amp; Tested</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 min-w-0 flex flex-col gap-3">
+                  <div className="rounded-xl border border-gray-200 p-3 sm:p-4">
+                    <div className="flex justify-between items-center text-xs py-1">
+                      <span className="text-gray-500">Condition:</span>
+                      <span className="font-bold text-gray-900">Excellent (A)</span>
+                    </div>
+                    <div className="border-t border-gray-100 my-1" />
+                    <div className="flex justify-between items-center text-xs py-1">
+                      <span className="text-gray-500">Accessories:</span>
+                      <span className="font-bold text-gray-900">Complete</span>
+                    </div>
+                    <div className="border-t border-gray-100 my-1" />
+                    <div className="text-xs py-1">
+                      <p className="text-gray-500">Verification Method:</p>
+                      <p className="font-bold text-gray-900 mt-1 text-sm">
+                        Multi-point Optical &amp; Electronic
+                      </p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl border-2 border-green-400 bg-green-50 p-3 sm:p-4">
+                    <p className="font-bold text-green-700 flex items-center gap-2 text-sm">
+                      <span className="w-5 h-5 rounded bg-green-500 flex items-center justify-center text-white text-[11px] shrink-0">✓</span>
+                      Item Verified
+                    </p>
+                    <p className="text-sm mt-1.5 text-gray-700">
+                      → Ready for Restock
+                    </p>
+                  </div>
                 </div>
               </div>
-            </AnimateOnScroll>
+            </div>
+          </AnimateOnScroll>
           </div>
           <AnimateOnScroll variant="fade" delay={120}>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -18,36 +18,43 @@ import {
   IconClock,
   IconUserTrust,
   IconGlobal,
+  IconMapPin,
+  IconChart,
+  IconCode,
 } from "@/app/components/solution/Icons";
 import Image from "next/image";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
 
 
 const deliveryHeroRight = (
-  <div className="relative w-full aspect-4/3 rounded-3xl overflow-hidden shadow-[0_24px_60px_-12px_rgba(0,0,0,0.25)]">
+  <div className="relative w-full aspect-4/3 rounded-3xl overflow-hidden border-4 border-white shadow-[0_25px_60px_-12px_rgba(0,0,0,0.3)]">
     <Image
       src="/images/solutions/Prdouct-delivery.jpg"
       alt="Live fleet navigation"
       fill
-      className="object-cover brightness-[0.35]"
+      className="object-cover brightness-[0.4]"
       priority
     />
-    <div className="absolute top-5 left-5 rounded-xl bg-[#0f141f]/95 backdrop-blur-sm border border-white/10 p-3.5 w-45 shadow-lg">
-      <div className="flex items-center gap-1.5 mb-2.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-        <p className="text-[10px]! font-bold text-green-400 uppercase tracking-widest leading-none">Live Fleet Status</p>
+ 
+    <div className="absolute top-4 left-4 right-4 rounded-xl bg-[#0f141f]/95 backdrop-blur-sm border border-white/10 p-3.5 shadow-lg">
+      <div className="flex items-center justify-between mb-2.5">
+        <div className="flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+          <p className="text-[10px]! font-bold text-green-400 uppercase tracking-widest leading-none">
+            Live Fleet Status
+          </p>
+        </div>
+        <p className="text-xs! font-black text-white leading-none">1,284 today</p>
       </div>
       {[
         { id: "DX-204", pct: 65, color: "bg-blue-500" },
         { id: "DX-118", pct: 92, color: "bg-blue-500" },
         { id: "DX-092", pct: 40, color: "bg-orange-400" },
       ].map((truck) => (
-        <div key={truck.id} className="mb-1.5">
+        <div key={truck.id} className="mb-1.5 last:mb-0">
           <div className="flex justify-between text-[10px] text-gray-300 mb-0.5">
             <span>{truck.id}</span>
-            <span className={truck.pct < 50 ? "text-orange-400 font-bold" : "text-white"}>
-              {truck.pct}%
-            </span>
+            <span className={truck.pct < 50 ? "text-orange-400 font-bold" : "text-white"}>{truck.pct}%</span>
           </div>
           <div className="h-1 w-full rounded-full bg-white/10">
             <div className={`h-1 rounded-full ${truck.color}`} style={{ width: `${truck.pct}%` }} />
@@ -55,61 +62,45 @@ const deliveryHeroRight = (
         </div>
       ))}
     </div>
-
-    <div className="absolute top-5 right-5 rounded-xl bg-[#0f141f]/95 backdrop-blur-sm border border-white/10 px-3.5 py-3 shadow-lg">
-      <div className="flex items-center gap-2 mb-1.5">
-        <div className="flex h-6 w-6 items-center justify-center rounded-md bg-teal-500/30 shrink-0">
-          <IconRoute />
-        </div>
-        <p className="text-[10px] text-gray-400 whitespace-nowrap">Total Deliveries Today</p>
-      </div>
-        <p className="text-xl font-black text-white leading-none">1,284</p>
-    </div>
-
-    <div className="absolute top-1/2 right-1/2 -translate-x-1/4 -translate-y-1/4 flex flex-col items-center">
-      <IconGps className="h-7 w-7 text-blue-600" />
-      <div className="rounded-full bg-white px-2.5 py-0.5 text-[10px] font-bold text-gray-900 shadow-lg mb-1 whitespace-nowrap">
-        HQ DISPATCH
-      </div>
-    </div>
-
-    <div className="absolute bottom-5 right-5 rounded-xl bg-white px-4 py-3 shadow-2xl w-55">
+    <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white px-4 py-3 shadow-2xl">
       <div className="flex items-center gap-2.5 mb-2">
         <div className="h-8 w-8 rounded-full bg-gray-100 overflow-hidden shrink-0 flex items-center justify-center">
-          <IconUserTrust className="text-gray-400" />
+          <IconUserTrust className="text-green-200 bg-green-400" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-1">
-            <p className="text-xs! font-bold text-gray-900 truncate">Marcus Thompson</p>
+            <p className="text-4 font-bold text-gray-900 truncate">Marcus Thompson</p>
             <span className="shrink-0 rounded-full bg-green-100 px-1.5 py-0.5 text-[9px] font-bold text-green-700">
               On-Time
             </span>
           </div>
-          <p className="text-[10px]! text-gray-500 truncate">Route: North Sector B</p>
+          <p className="text-3 text-blue-500 truncate">Route: North Sector B</p>
         </div>
       </div>
       <div className="flex items-center gap-1.5 text-[10px] text-gray-400 border-t border-gray-100 pt-2">
-        <IconClock className="h-4 w-4"/>
-        <span className="whitespace-nowrap">Next Stop: 12:45 PM • 1.4 miles</span>
+        <IconClock className="h-4 w-4 text-gray-700" />
+        <span className="whitespace-nowrap text-gray-500">Next Stop: 12:45 PM • 1.4 miles</span>
       </div>
     </div>
-
   </div>
 );
 
 
 const heroData = {
+  bgImage: "/images/solutions/courier-dashboard.jpeg", 
+  bgImageAlt: "Courier delivering a package, tracked live on dashboard and mobile",
+  bgPosition: "72% 40%",
+  gradientCenter: "18% 22%",
   eyebrow: "Last-Mile Logistics Solution",
   titleLine1: "Delivery Management",
   titleLine2: "Perfected.",
   description:
     "Smart dispatch, live tracking, and digital proof-of-delivery for reliable last-mile operations that keep customers coming back.",
   buttons: [
-    { label: "Request Demo", href: "#", variant: "primary" as const },
-    { label: "Calculate ROI", href: "#", variant: "outline" as const },
+    { label: "Request Demo", href: "/contact", variant: "primary" as const },
   ],
-  trustText: "Trusted by 500+ global carriers",
   rightContent: deliveryHeroRight,
+  rightContentWidthClassName: "w-[68%] sm:w-[56%] lg:w-[48%] max-w-[500px]",
 };
 
 const painData = {
@@ -161,7 +152,7 @@ const featuresData = {
 
 const lifecycleData = {
   heading: "The Seamless Delivery Lifecycle",
-  subheading: "From click to customer, LogiStream orchestrates every micro-moment.",
+  subheading: "From click to customer, InOps orchestrates every micro-moment.",
   steps: [
     {
       icon: <IconBox className="h-6 w-6" />,
@@ -196,8 +187,7 @@ const ctaData = {
   subheading:
     "Join the world's most efficient logistics operations. Scale your last-mile without scaling your overhead.",
   buttons: [
-    { label: "Request a Demo", href: "#", variant: "white" as const },
-    { label: "Calculate ROI", href: "#", variant: "outline-white" as const },
+    { label: "Request a Demo", href: "/contact", variant: "white" as const },
   ],
   layout: "centered" as const,
   trustBadges: [
@@ -254,11 +244,39 @@ const impactPersonas = [
 ];
 
 
-const integrations = [
-  { name: "Telematics+" },
-  { name: "GeoMaps" },
-  { name: "GlobalTMS" },
-  { name: "CarrierAPI" },
+const hubItems = [
+  {
+    name: "GeoMaps",
+    desc: "Maps & Location Intelligence",
+    Icon: IconMapPin,
+    iconBg: "bg-green-100",
+    iconColor: "text-green-600",
+    position: "top",
+  },
+  {
+    name: "Telematics+",
+    desc: "Vehicle & Driver Telemetry",
+    Icon: IconTruck,
+    iconBg: "bg-blue-100",
+    iconColor: "text-blue-600",
+    position: "left",
+  },
+  {
+    name: "CarrierAPI",
+    desc: "Carrier Connectivity & APIs",
+    Icon: IconCode,
+    iconBg: "bg-purple-100",
+    iconColor: "text-purple-600",
+    position: "right",
+  },
+  {
+    name: "GlobalTMS",
+    desc: "Transport Management Systems",
+    Icon: IconChart,
+    iconBg: "bg-orange-100",
+    iconColor: "text-orange-600",
+    position: "bottom",
+  },
 ];
 
 const integrationFeatures = [
@@ -267,6 +285,19 @@ const integrationFeatures = [
   "REST API for Custom Carrier Portals",
   "Certified TMS Connectors",
 ];
+
+function HubCard({ item }: { item: (typeof hubItems)[number] }) {
+  const { Icon, name, desc, iconBg, iconColor } = item;
+  return (
+    <div className="flex w-36 flex-col items-center gap-1.5 rounded-xl border border-gray-100 bg-white px-3 py-4 text-center shadow-sm">
+      <span className={`flex h-9 w-9 items-center justify-center rounded-lg ${iconBg}`}>
+        <Icon className={`h-5 w-5 ${iconColor}`} />
+      </span>
+      <span className="text-xs font-bold text-gray-900">{name}</span>
+      <span className="text-[11px] leading-tight text-gray-400">{desc}</span>
+    </div>
+  );
+}
 
 
 
@@ -370,7 +401,6 @@ export default function DeliveryPage() {
           </div>
         </div>
       </AnimatedSection>
-
       <AnimatedSection className="bg-gray-50 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
@@ -380,13 +410,12 @@ export default function DeliveryPage() {
                 Built for Connectivity
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.07} className="mt-1 text-sm text-gray-500 leading-relaxed max-w-xl">
-                Inops doesn&apos;t operate in a vacuum. We integrate seamlessly with your existing
+                InOps doesn&apos;t operate in a vacuum. We integrate seamlessly with your existing
                 technology ecosystem, from telematics providers to global map APIs.
               </FlyInText>
-
               <ul className="mt-6 space-y-3">
                 {integrationFeatures.map((f, i) => (
-                  <AnimateOnScroll key={f} variant="slide-right" delay={i * 70} className="flex items-center gap-3">
+                  <AnimateOnScroll key={f} variant="slide-right" delay={i * 70} className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white px-4 py-3 shadow-sm">
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-100">
                       <svg className="h-3 w-3 text-green-600" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -396,16 +425,52 @@ export default function DeliveryPage() {
                   </AnimateOnScroll>
                 ))}
               </ul>
-            </div>
-            <AnimateOnScroll variant="slide-left" delay={150} className="grid grid-cols-2 gap-4">
-              {integrations.map((int) => (
-                <div
-                  key={int.name}
-                  className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-8 shadow-sm hover:shadow-md transition"
-                >
-                  <span className="text-sm font-semibold text-gray-400">{int.name}</span>
+
+              <AnimateOnScroll variant="slide-right" delay={integrationFeatures.length * 70} className="mt-4 flex items-start gap-3 rounded-xl bg-blue-50 px-5 py-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600">
+                  <IconShield className="h-5 w-5 text-white" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-blue-700">Secure. Reliable. Scalable.</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Enterprise-grade integrations with 99.99% uptime guarantee.</p>
                 </div>
-              ))}
+              </AnimateOnScroll>
+            </div>
+            <AnimateOnScroll variant="slide-left" delay={150}>
+              <div className="relative rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 to-white p-8 shadow-sm overflow-hidden">
+                <div className="flex items-center justify-center gap-3 mb-10">
+                  <span className="h-px w-8 bg-blue-300" />
+                  <span className="text-sm font-semibold text-blue-600">Seamless Integrations</span>
+                  <span className="h-px w-8 bg-blue-300" />
+                </div>
+
+                <div className="relative mx-auto grid max-w-md grid-cols-3 grid-rows-3 items-center justify-items-center gap-y-6">
+                  <div className="col-start-2 row-start-1">
+                    <HubCard item={hubItems[0]} />
+                  </div>
+                  <div className="col-start-1 row-start-2">
+                    <HubCard item={hubItems[1]} />
+                  </div>
+                  <div className="col-start-2 row-start-2 z-10">
+                    <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border border-gray-200 bg-white shadow-md">
+                      <svg className="h-7 w-7 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l2.5 4.5L19 9l-4.5 2.5L12 16l-2.5-4.5L5 9l4.5-2.5L12 2z" />
+                      </svg>
+                      <span className="mt-1 text-xs font-extrabold text-gray-900">InOps</span>
+                    </div>
+                  </div>
+                  <div className="col-start-3 row-start-2">
+                    <HubCard item={hubItems[2]} />
+                  </div>
+                  <div className="col-start-2 row-start-3">
+                    <HubCard item={hubItems[3]} />
+                  </div>
+                  <span className="pointer-events-none absolute left-1/2 top-[24%] h-2 w-2 -translate-x-1/2 rounded-full bg-blue-500" />
+                  <span className="pointer-events-none absolute left-1/2 top-[74%] h-2 w-2 -translate-x-1/2 rounded-full bg-blue-500" />
+                  <span className="pointer-events-none absolute left-[24%] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-blue-500" />
+                  <span className="pointer-events-none absolute left-[74%] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-blue-500" />
+                </div>
+              </div>
             </AnimateOnScroll>
           </div>
         </div>

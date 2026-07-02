@@ -93,7 +93,7 @@ export default function CTASection({ data }: { data: ModuleData }) {
             </div>
 
             <div className="relative z-10 flex shrink-0 flex-col gap-3 sm:flex-row sm:flex-wrap md:flex-col lg:flex-row">
-              <button className="group relative overflow-hidden rounded-xl bg-linear-to-br from-gray-900 to-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/20 xl:px-8 xl:py-4 xl:text-base">
+              <button className="group relative overflow-hidden rounded-xl bg-[var(--inops-blue)] px-6 py-3.5 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/20 xl:px-8 xl:py-4 xl:text-base">
                 <span className="relative z-10">Request a Demo</span>
                 <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
               </button>

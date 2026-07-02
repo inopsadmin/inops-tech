@@ -142,3 +142,14 @@ export const IconGlobal = ({ className = "h-5 w-5" }: { className?: string }) =>
   </svg>
 );
 
+export const IconCode = ({ className = "h-5 w-5" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+  </svg>
+);
+
+export const IconAlertTriangle = ({ className = "h-5 w-5" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a1.5 1.5 0 001.29 2.25h17.78A1.5 1.5 0 0022.18 18L13.71 3.86a1.5 1.5 0 00-2.42 0z" />
+  </svg>
+);

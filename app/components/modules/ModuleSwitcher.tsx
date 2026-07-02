@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 const MODULE_TABS = [
   {
@@ -48,12 +50,30 @@ interface ModuleSwitcherProps {
 }
 
 export default function ModuleSwitcher({ activeSlug }: ModuleSwitcherProps) {
+
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const setHeightVar = () => {
+      document.documentElement.style.setProperty(
+        "--module-nav-height",
+        `${el.offsetHeight}px`
+      );
+    };
+    setHeightVar();
+    const resizeObserver = new ResizeObserver(setHeightVar);
+    resizeObserver.observe(el);
+    return () => resizeObserver.disconnect();
+  }, []);
+
   return (
-    <div
-      className="sticky z-40 w-full"
-      style={{ top: "var(--home-nav-offset)" }}
-    >
-      <div className="border-b border-slate-200/80 bg-white/95 shadow-[0_4px_24px_-4px_rgba(15,23,42,0.10)] backdrop-blur-md">
+      <div
+        ref={navRef}
+        className="fixed left-0 right-0 z-[100] top-(--home-nav-offset)"
+      >
+       <div className="border-b border-blue-100 bg-gradient-to-r from-blue-50/95 via-white/95 to-blue-50/95 backdrop-blur-xl shadow-lg">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {MODULE_TABS.map((tab) => {
@@ -66,8 +86,8 @@ export default function ModuleSwitcher({ activeSlug }: ModuleSwitcherProps) {
                     "group relative rounded-xl border px-4 py-4 text-left",
                     "transition-all duration-200 ease-out hover:-translate-y-px",
                     isActive
-                      ? "border-blue-200 bg-blue-50 shadow-[0_2px_8px_-2px_rgba(59,130,246,0.25)] ring-1 ring-blue-300/40"
-                      : "border-slate-200 bg-white shadow-sm hover:border-blue-200/70 hover:bg-blue-50/40 hover:shadow-[0_4px_12px_-4px_rgba(59,130,246,0.15)]",
+                      ? "border-blue-300 bg-white shadow-lg ring-1 ring-blue-300/40"
+                      : "border-slate-200 bg-white/80 shadow-sm hover:border-blue-200/70 hover:bg-blue-50/40 hover:shadow-[0_4px_12px_-4px_rgba(59,130,246,0.15)]",
                   ].join(" ")}
                 >
                   {isActive && (

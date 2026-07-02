@@ -20,7 +20,7 @@ export default async function ModulePage({
   }
 
   return(
-    <main>
+    <main className="pt-[calc(var(--home-nav-offset)+var(--module-nav-height,0px))]">
       <ModuleSwitcher activeSlug={slug}/>
       <ModuleTemplate data={selectedModule} />
     </main>
