@@ -16,74 +16,12 @@ import {
   IconTag,
   IconUser,
   IconClock,
-  IconUserTrust,
   IconGlobal,
   IconMapPin,
   IconChart,
   IconCode,
 } from "@/app/components/solution/Icons";
-import Image from "next/image";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
-
-
-const deliveryHeroRight = (
-  <div className="relative w-full aspect-4/3 rounded-3xl overflow-hidden border-4 border-white shadow-[0_25px_60px_-12px_rgba(0,0,0,0.3)]">
-    <Image
-      src="/images/solutions/Prdouct-delivery.jpg"
-      alt="Live fleet navigation"
-      fill
-      className="object-cover brightness-[0.4]"
-      priority
-    />
- 
-    <div className="absolute top-4 left-4 right-4 rounded-xl bg-[#0f141f]/95 backdrop-blur-sm border border-white/10 p-3.5 shadow-lg">
-      <div className="flex items-center justify-between mb-2.5">
-        <div className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-          <p className="text-[10px]! font-bold text-green-400 uppercase tracking-widest leading-none">
-            Live Fleet Status
-          </p>
-        </div>
-        <p className="text-xs! font-black text-white leading-none">1,284 today</p>
-      </div>
-      {[
-        { id: "DX-204", pct: 65, color: "bg-blue-500" },
-        { id: "DX-118", pct: 92, color: "bg-blue-500" },
-        { id: "DX-092", pct: 40, color: "bg-orange-400" },
-      ].map((truck) => (
-        <div key={truck.id} className="mb-1.5 last:mb-0">
-          <div className="flex justify-between text-[10px] text-gray-300 mb-0.5">
-            <span>{truck.id}</span>
-            <span className={truck.pct < 50 ? "text-orange-400 font-bold" : "text-white"}>{truck.pct}%</span>
-          </div>
-          <div className="h-1 w-full rounded-full bg-white/10">
-            <div className={`h-1 rounded-full ${truck.color}`} style={{ width: `${truck.pct}%` }} />
-          </div>
-        </div>
-      ))}
-    </div>
-    <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white px-4 py-3 shadow-2xl">
-      <div className="flex items-center gap-2.5 mb-2">
-        <div className="h-8 w-8 rounded-full bg-gray-100 overflow-hidden shrink-0 flex items-center justify-center">
-          <IconUserTrust className="text-green-200 bg-green-400" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between gap-1">
-            <p className="text-4 font-bold text-gray-900 truncate">Marcus Thompson</p>
-            <span className="shrink-0 rounded-full bg-green-100 px-1.5 py-0.5 text-[9px] font-bold text-green-700">
-              On-Time
-            </span>
-          </div>
-          <p className="text-3 text-blue-500 truncate">Route: North Sector B</p>
-        </div>
-      </div>
-      <div className="flex items-center gap-1.5 text-[10px] text-gray-400 border-t border-gray-100 pt-2">
-        <IconClock className="h-4 w-4 text-gray-700" />
-        <span className="whitespace-nowrap text-gray-500">Next Stop: 12:45 PM • 1.4 miles</span>
-      </div>
-    </div>
-  </div>
-);
 
 
 const heroData = {
@@ -99,8 +37,6 @@ const heroData = {
   buttons: [
     { label: "Request Demo", href: "/contact", variant: "primary" as const },
   ],
-  rightContent: deliveryHeroRight,
-  rightContentWidthClassName: "w-[68%] sm:w-[56%] lg:w-[48%] max-w-[500px]",
 };
 
 const painData = {

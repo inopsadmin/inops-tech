@@ -38,9 +38,6 @@ export type SolutionHeroBannerProps = {
   badges?: HeroBadge[];
   buttons: HeroButton[];
   liveBadge?: HeroLiveBadge;
-  rightContent: React.ReactNode;
-  rightContentWidthClassName?: string; 
-  showWave?: boolean;
 };
 
 export default function SolutionHeroBanner({
@@ -56,9 +53,6 @@ export default function SolutionHeroBanner({
   badges = [],
   buttons,
   liveBadge,
-  rightContent,
-  rightContentWidthClassName = "w-[54%] sm:w-[42%] lg:w-[36%] max-w-[440px]",
-  showWave = true,
 }: SolutionHeroBannerProps) {
   return (
     <section className="relative w-full overflow-hidden bg-white min-h-[560px] sm:min-h-[640px] lg:min-h-[700px]">
@@ -94,18 +88,6 @@ export default function SolutionHeroBanner({
 
       </div>
 
-      {showWave && (
-        <svg
-          className="absolute bottom-0 left-0 w-full h-20 sm:h-28 text-blue-50/70 pointer-events-none"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="currentColor"
-            d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L0,120Z"
-          />
-        </svg>
-      )}
 
       <div className="absolute inset-0 z-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="max-w-xl pt-24 sm:pt-28 lg:pt-32">
@@ -193,13 +175,6 @@ export default function SolutionHeroBanner({
             </div>
           </AnimateOnScroll>
         )}
-        <AnimateOnScroll
-          variant="slide-left"
-          delay={140}
-          className={`absolute right-6 sm:right-10 lg:right-16 top-1/2 -translate-y-[42%] ${rightContentWidthClassName}`}
-        >
-          {rightContent}
-        </AnimateOnScroll>
       </div>
     </section>
   );

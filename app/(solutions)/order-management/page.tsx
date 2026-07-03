@@ -20,59 +20,6 @@ import {
 } from "@/app/components/solution/Icons";
 import Image from "next/image";
 
-const ordersHeroRight = (
-  <div className="relative h-100% rounded-3xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] bg-white border border-gray-200 flex flex-col">
-    <div className="flex flex-col items-center justify-between px-5 py-3 bg-white border-b border-gray-100">
-      <div className="flex gap-1.5">
-        <div className="h-3 w-3 rounded-full bg-red-400" />
-        <div className="h-3 w-3 rounded-full bg-gray-200" />
-        <div className="h-3 w-3 rounded-full bg-gray-200" />
-      </div>
-      <span className="text-[10px] font-mono text-gray-400">OMS_DASHBOARD_V4.0</span>
-    </div>
-    <div className="p-6 flex flex-col gap-5">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-2xl font-black text-gray-900">#ORD-88291</p>
-          <p className="text-sm text-gray-500 mt-1">Customer: Global Retail Corp</p>
-        </div>
-        <span className="rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-semibold text-gray-700 shadow-sm whitespace-nowrap">
-          Fulfillment In Progress
-        </span>
-      </div>
-      <div>
-        <div className="flex justify-between text-xs font-semibold mb-3">
-          <span className="text-gray-400 uppercase tracking-wide">Capture</span>
-          <span className="text-gray-400 uppercase tracking-wide">Validate</span>
-          <span className="text-blue-600 font-bold uppercase tracking-wide">Picking</span>
-          <span className="text-gray-300">···</span>
-        </div>
-        <div className="h-2 w-full rounded-full bg-gray-100 overflow-hidden">
-          <div className="h-2 rounded-full bg-blue-600" style={{ width: "62%" }} />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3 mt-2">
-        <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-            Line Items
-          </p>
-          <p className="text-2xl font-black text-gray-900">
-            1,240 <span className="text-base font-semibold text-gray-400">Units</span>
-          </p>
-        </div>
-        <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">
-            Est. Delivery
-          </p>
-          <p className="text-xl font-black text-gray-900">
-            Tomorrow, <span className="text-blue-600">4PM</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
 
 const heroData = {
   bgImage: "/images/solutions/order-management.jpeg", 
@@ -85,8 +32,6 @@ const heroData = {
   description:
     "Streamline order capture, fulfillment, tracking and returns in one platform. Orchestrate complex global commerce from a single source of truth.",
   buttons: [{ label: "Request Demo", href: "/contact", variant: "primary" as const }],
-  rightContent: ordersHeroRight,
-  rightContentWidthClassName: "w-[56%] sm:w-[44%] lg:w-[34%] max-w-[500px]",
 };
 
 
