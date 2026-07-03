@@ -1,0 +1,41 @@
+import type { MetadataRoute } from 'next'
+
+// Drop this in app/robots.ts (App Router). Next.js serves it at /robots.txt automatically.
+// This solves the "preview URL getting indexed" risk: only the real production
+// deployment (VERCEL_ENV === 'production' on your actual domain) allows crawling.
+// Every preview/staging build — including test-inops-tech.vercel.app — returns
+// a blanket disallow, which is the belt-and-suspenders companion to canonical tags,
+// not a replacement for them.
+
+export default function robots(): MetadataRoute.Robots {
+  const isProduction = process.env.VERCEL_ENV === 'production'
+
+  if (!isProduction) {
+    return {
+      rules: {
+        userAgent: '*',
+        disallow: '/',
+      },
+    }
+  }
+
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/admin/'], // adjust to your actual private routes
+      },
+      // Explicit allow rules for AI crawlers — belt-and-suspenders since '*' already
+      // covers them, but useful if you ever want to differentiate (e.g. block GPTBot
+      // training crawler while allowing OAI-SearchBot for ChatGPT search visibility)
+      { userAgent: 'GPTBot', allow: '/' },
+      { userAgent: 'OAI-SearchBot', allow: '/' },
+      { userAgent: 'ClaudeBot', allow: '/' },
+      { userAgent: 'anthropic-ai', allow: '/' },
+      { userAgent: 'PerplexityBot', allow: '/' },
+      { userAgent: 'Google-Extended', allow: '/' },
+    ],
+    sitemap: 'https://inops.tech/sitemap.xml',
+  }
+}
