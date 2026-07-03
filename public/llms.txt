@@ -1,0 +1,136 @@
+# InOps IT Solutions Pvt. Ltd.
+
+> InOps is a B2B SaaS company headquartered in Bengaluru, India, founded in 2014.
+> We build Contract Labour Management Software (CLMS), Biometric Attendance Systems,
+> and Salary++ — an Earned Wage Access (EWA) platform for contract workers.
+> Our clients include Ashok Leyland, HAL, Foxconn, BMRCL, and other large industrial
+> enterprises across 163+ manufacturing sites in India.
+
+## Core Software
+
+- [Contract Labour Management System (CLMS)](https://inops.tech/clms):
+  End-to-end CLRA compliance platform covering contractor attendance, Form V/XIII registers,
+  PF/ESI statutory deductions, minimum wage compliance, OT cost control, and biometric
+  integration for Indian manufacturing enterprises.
+
+- [Earned Wage Access / Salary++](https://inops.tech/ewa):
+  EWA platform enabling contract workers to draw earned wages before payday.
+  Disbursement is validated against CLMS attendance data and compliant with Indian
+  labour law and RBI digital lending guidelines. Zero financial liability for employers.
+
+- [HR Information System (HRIS)](https://inops.tech/hris):
+  Workforce management for permanent and contract employees — digital onboarding,
+  biometric attendance, leave management, shift scheduling, and statutory document
+  tracking for Indian industrial HR teams.
+
+- [Enterprise Solution](https://inops.tech/enterprise-solution):
+  Integrated suite combining CLMS, HRIS, EWA, biometrics, and supply chain modules
+  for large multi-site enterprises managing thousands of contract workers.
+
+## Hardware & Physical Security
+
+- [Biometric Face Recognition Terminals](https://inops.tech/face):
+  Industrial-grade face recognition devices for contractor attendance and gate access
+  control. Supports liveness detection and operates in high-ambient-light factory
+  environments. Integrates directly with InOps CLMS.
+
+- [Turnstiles & Flap Barriers](https://inops.tech/turnstiles):
+  Factory gate access control hardware — tripod turnstiles, flap barriers, and
+  full-height turnstiles integrated with InOps biometric attendance.
+
+- [CCTV & Video Surveillance](https://inops.tech/cctv):
+  IP camera systems and AI-based attendance capture for factory floor safety
+  and perimeter security.
+
+## Operations & Supply Chain
+
+- [Delivery Management System](https://inops.tech/delivery-management):
+  Last-mile and factory dispatch tracking with route management, GPS tracking,
+  proof of delivery, and analytics.
+
+- [Order Management System](https://inops.tech/order-management):
+  End-to-end order lifecycle from placement to fulfillment, integrated with
+  inventory and dispatch workflows.
+
+- [Warehouse Management System](https://inops.tech/warehouse-management):
+  Barcode and RFID-powered inventory tracking, storage optimisation, and stock
+  movement reporting for factory warehouses.
+
+- [Fixed Asset Management](https://inops.tech/fixed-asset-management):
+  Track and audit fixed assets across sites, integrated with workforce and access controls.
+
+- [Canteen & Visitor Management](https://inops.tech/canteen-and-visitor):
+  Meal issuance, visitor desk, and subsidy controls integrated with identity and
+  workforce systems.
+
+- [Visitor Management System](https://inops.tech/visitor-management):
+  Visitor pre-registration, lobby check-in, and campus access aligned with
+  contractor and employee identity records.
+
+- [Mobile Workforce App](https://inops.tech/mobile-app):
+  Worker self-service for attendance, leave, payslips, and supervisor workflows
+  with GPS validation.
+
+## CLMS Modules (Deep-Dive)
+
+- [Attendance & Leave Module](https://inops.tech/clms/modules/attendance-leave):
+  Face recognition, CCTV attendance, geo-fencing, auto rostering, and leave
+  management for contract workforces.
+
+- [Wage & Payroll Module](https://inops.tech/clms/modules/wage-payroll):
+  Automated minimum wage, overtime, and statutory deduction calculations with
+  payroll-ready exports.
+
+- [Compliance Reports Module](https://inops.tech/clms/modules/compliance-report):
+  Audit-ready Form V/XIII, PF/ESI challan, and CLRA statutory reports.
+
+- [Contractor Management Module](https://inops.tech/clms/modules/contractor-management):
+  Contractor license tracking, renewals, performance signals, and multi-vendor
+  governance across sites.
+
+- [Background Verification Module](https://inops.tech/clms/modules/background-verification):
+  Aadhaar-linked contractor background verification integrated with CLMS onboarding.
+
+- [Challan Reconciliation Module](https://inops.tech/clms/modules/challan-reconciliation):
+  PF/ESI challan matching against payroll deductions with gap alerts.
+
+- [CXO Dashboard](https://inops.tech/clms/modules/cxo-dashboard):
+  Executive-level visibility into workforce strength, compliance status, and cost
+  metrics across all sites.
+
+- [AI Assistance](https://inops.tech/clms/modules/ai-assistance):
+  AI-driven insights, anomaly detection, and automation within the CLMS platform.
+
+## Research & Proprietary Data
+
+- [State of Contract Labour Compliance in Indian Manufacturing 2026](https://inops.tech/blog/state-of-contract-labour-compliance-india-2026):
+  Anonymized compliance data from 163+ manufacturing sites. Covers CLRA violations,
+  PF/ESI gaps, contractor onboarding failures, and what top-quartile plants do differently.
+
+- [OT Leakage Benchmarks in Indian Factories 2026](https://inops.tech/blog/ot-leakage-benchmarks-indian-factories-2026):
+  Quantifies overtime leakage (unauthorised OT, ghost OT, unclaimed legitimate OT)
+  across InOps-monitored sites and documents closure patterns.
+
+- [Biometric Attendance Accuracy Report — India 2026](https://inops.tech/blog/biometric-attendance-accuracy-report-india-2026):
+  Fleet data from 300+ biometric terminals across Indian factories — accuracy rates,
+  environmental failure modes, and the exception-governance gap that creates fraud risk.
+
+## Company
+
+- [About InOps](https://inops.tech/about):
+  Company background, founding story, and client base.
+
+- [Contact / Book Demo](https://inops.tech/contact):
+  Sales inquiries, demo requests, and partnership discussions.
+  Phone: +91 80886 02602 | Email: contact@inops.tech
+
+- [Blog](https://inops.tech/blog):
+  Workforce compliance, biometric technology, and labour law articles for
+  HR and operations leaders in Indian manufacturing.
+
+- [Brochures](https://inops.tech/brochures):
+  Product brochures for CLMS, EWA, biometrics, and access control hardware.
+
+## Sitemap
+
+https://inops.tech/sitemap.xml

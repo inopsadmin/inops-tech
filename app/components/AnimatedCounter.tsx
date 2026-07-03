@@ -24,12 +24,14 @@ export default function AnimatedCounter({
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
-  const [display, setDisplay] = useState(0);
+  // SSR initial value = real number so crawlers read actual stats, not 0
+  const [display, setDisplay] = useState(value);
   const controlsRef = useRef<ReturnType<typeof animate> | null>(null);
+  const started = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
-    setDisplay(0);
+    if (!inView || started.current) return;
+    started.current = true;
     const timeout = window.setTimeout(() => {
       controlsRef.current = animate(0, value, {
         duration,

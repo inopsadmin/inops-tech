@@ -486,7 +486,7 @@ export default function AboutPage() {
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-slate-200 ring-2 ring-white shadow-md sm:h-16 sm:w-16">
                 <Image
                   src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
-                  alt="Portrait of Prashanth K."
+                  alt="Portrait of Satish Sinha, Founder of InOps IT Solutions"
                   fill
                   className="object-cover object-top"
                   sizes="64px"

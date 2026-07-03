@@ -9,19 +9,19 @@ export const solutionSchemaByPath: Record<
       "Payroll-connected earned wage access with real-time attendance validation and compliant withdrawals for industrial workforces.",
   },
   "/clms": {
-    name: "InOps Payroll & Contract Workforce Governance",
+    name: "InOps CLMS — Contract Labour Management System",
     description:
-      "Unified payroll, statutory compliance, and contract labour governance from gate logs to finance close.",
+      "Contract Labour Management Software (CLMS) for Indian manufacturers: CLRA compliance, contractor onboarding, biometric attendance, PF/ESI statutory deductions, and payroll automation.",
   },
   "/hris": {
-    name: "InOps Contract Labour Management (CLMS)",
+    name: "InOps HRIS — HR Information System for Contract Labour",
     description:
       "Contract labour management with biometric attendance, PF/ESI workflows, gate compliance, and payroll-ready data for Indian manufacturers.",
   },
   "/cctv": {
-    name: "InOps Time & Attendance",
+    name: "InOps Camera & AI Attendance for Contract Workers",
     description:
-      "Biometric and CCTV-based attendance with shift rules, multi-site roll-ups, and audit-ready exports.",
+      "Camera-based and AI attendance for manufacturing contract workers — face recognition, CCTV integration, proxy prevention, OT verification, and CLRA compliance linked to the InOps CLMS platform.",
   },
   "/canteen-and-visitor": {
     name: "InOps Canteen & Visitor Management",
@@ -47,5 +47,20 @@ export const solutionSchemaByPath: Record<
     name: "InOps Fixed Asset Management",
     description:
       "Track, audit, and optimise fixed assets across sites with integrated workforce and access controls.",
+  },
+  "/delivery-management": {
+    name: "InOps Delivery Management System",
+    description:
+      "Last-mile and factory dispatch tracking: route management, GPS tracking, proof of delivery, and delivery analytics for Indian manufacturing and logistics operations.",
+  },
+  "/order-management": {
+    name: "InOps Order Management System",
+    description:
+      "End-to-end order lifecycle tracking from placement to fulfillment, integrated with inventory and dispatch workflows for Indian manufacturing operations.",
+  },
+  "/warehouse-management": {
+    name: "InOps Warehouse Management System",
+    description:
+      "Barcode and RFID-powered inventory tracking, storage optimization, and stock movement reporting for Indian factory warehouses and stores.",
   },
 };

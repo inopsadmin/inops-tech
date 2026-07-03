@@ -1,4 +1,5 @@
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
+import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
@@ -10,13 +11,54 @@ export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   path: "/ewa",
-  extraKeywords: ["earned wage access", "EWA India", "salary advance factory workers", "financial wellness"],
+  extraKeywords: [
+    "earned wage access India",
+    "EWA platform India",
+    "salary advance factory workers",
+    "on-demand wages contract workers India",
+    "earned wage access manufacturing",
+    "EWA financial wellness blue collar workers",
+    "contract worker salary advance India",
+    "reduce workforce attrition manufacturing",
+    // Tier 4 — InOps-exclusive: only platform linking EWA to CLMS biometric attendance
+    "EWA contract workers biometric attendance",
+    "earned wage access biometric attendance India",
+  ],
 });
+
+const FAQ_ITEMS = [
+  {
+    question: "What is Earned Wage Access (EWA) for factory workers in India?",
+    answer:
+      "Earned Wage Access (EWA) lets workers draw a portion of their already-earned wages before the monthly payday. InOps EWA connects directly to attendance and payroll data, so workers can request only what they have genuinely earned — no loans, no interest, no new debt.",
+  },
+  {
+    question: "Does EWA create financial liability for the employer?",
+    answer:
+      "No. InOps EWA is structured with an NBFC or banking partner who handles disbursement and collection. The employer bears zero financial liability or capital expenditure. Funds are recovered automatically at the next payroll cycle.",
+  },
+  {
+    question: "How does EWA reduce worker attrition in manufacturing?",
+    answer:
+      "Financial stress from fixed 30-day pay cycles is one of the top drivers of blue-collar attrition. Workers facing medical emergencies or urgent repairs turn to high-interest informal lenders. On-demand access to earned wages removes this pressure — InOps EWA customers report a 40% reduction in workforce churn.",
+  },
+  {
+    question: "Is Earned Wage Access compliant with Indian labour law?",
+    answer:
+      "Yes. InOps EWA is structured as an advance on earned wages — not a loan — and is disbursed through a regulated NBFC partner. Deductions are recovered at source through payroll, keeping the arrangement fully compliant with the Payment of Wages Act and applicable state labour rules.",
+  },
+  {
+    question: "How does InOps EWA integrate with existing payroll and CLMS?",
+    answer:
+      "InOps EWA connects directly to the InOps CLMS attendance and payroll module. Every wage withdrawal is validated against actual attendance records, capped at a configurable percentage of earnings, and auto-reconciled at month end — no manual intervention needed.",
+  },
+];
 
 export default function EwaLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SolutionSchemaInjector path="/ewa" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
+      <FAQPageJsonLd items={FAQ_ITEMS} />
       {children}
     </>
   );

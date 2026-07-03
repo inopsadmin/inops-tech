@@ -26,6 +26,9 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/ewa", priority: 0.85, changeFrequency: "monthly" },
   { path: "/visitor-management", priority: 0.6, changeFrequency: "monthly" },
   { path: "/fixed-asset-management", priority: 0.55, changeFrequency: "monthly" },
+  { path: "/delivery-management", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/order-management", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/warehouse-management", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
 ];
 
@@ -35,11 +38,58 @@ function priorityFor(path: string, base: number): number {
   return SITELINK_PATHS.has(path) ? Math.max(base, 0.8) : base;
 }
 
+const MODULE_SLUGS = [
+  "attendance-leave",
+  "compliance-report",
+  "background-verification",
+  "contractor-management",
+  "wage-payroll",
+  "cxo-dashboard",
+  "ai-assistance",
+  "challan-reconciliation",
+];
+
+const moduleRoutes = MODULE_SLUGS.map((slug) => ({
+  path: `/clms/modules/${slug}`,
+  priority: 0.65,
+  changeFrequency: "monthly" as ChangeFreq,
+}));
+
+const RESEARCH_SLUGS = new Set([
+  "state-of-contract-labour-compliance-india-2026",
+  "ot-leakage-benchmarks-indian-factories-2026",
+  "biometric-attendance-accuracy-report-india-2026",
+]);
+
+const PILLAR_SLUGS = new Set([
+  "camera-attendance-clra-compliance-manufacturing",
+]);
+
+const CLUSTER_SLUGS = new Set([
+  "clra-compliance-checklist-india-2026",
+  "form-v-form-xiii-clra-guide-india",
+  "overtime-cost-leakage-manufacturing-india",
+  "9-day-continuous-attendance-clra-risk-india",
+  "contractor-attendance-tracking-software-india",
+  "biometric-attendance-defence-contractors-india",
+  "zkteco-clms-integration-multi-site-attendance-india",
+  "contractor-overbilling-prevention-biometric-india",
+  "ewa-contract-workers-biometric-attendance-india",
+]);
+
 const blogRoutes = blogPosts.map((post) => ({
   path: `/blog/${post.slug}`,
-  priority: 0.4,
-  changeFrequency: "monthly" as ChangeFreq,
-  lastModified: post.dateIso,
+  priority: PILLAR_SLUGS.has(post.slug) ? 0.8
+    : RESEARCH_SLUGS.has(post.slug) ? 0.75
+    : CLUSTER_SLUGS.has(post.slug) ? 0.65
+    : 0.4,
+  changeFrequency: (
+    PILLAR_SLUGS.has(post.slug) ? "weekly" :
+    RESEARCH_SLUGS.has(post.slug) ? "monthly" :
+    CLUSTER_SLUGS.has(post.slug) ? "monthly" :
+    "yearly"
+  ) as ChangeFreq,
+  lastModified: post.dateModifiedIso ?? post.dateIso,
 }));
 
 function resolveLastModified(path: string, blogDateIso?: string): Date {
@@ -57,6 +107,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: priorityFor(path, priority),
   }));
 
+  const moduleEntries = moduleRoutes.map(({ path, priority, changeFrequency }) => ({
+    url: `${siteUrl}${path}`,
+    lastModified: resolveLastModified(path),
+    changeFrequency,
+    priority,
+  }));
+
   const blogEntries = blogRoutes.map(({ path, priority, changeFrequency, lastModified }) => ({
     url: `${siteUrl}${path}`,
     lastModified: resolveLastModified(path, lastModified),
@@ -64,5 +121,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
-  return [...staticEntries, ...blogEntries];
+  return [...staticEntries, ...moduleEntries, ...blogEntries];
 }

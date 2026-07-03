@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BreadcrumbJsonLd from "@/app/components/BreadcrumbJsonLd";
 import BlogPostingJsonLd from "@/app/components/BlogPostingJsonLd";
+import HowToJsonLd from "@/app/components/HowToJsonLd";
 import { blogPosts, getBlogPost, getBlogPostHref } from "@/app/lib/blogPosts";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import { SITE_NAME } from "@/app/lib/site";
@@ -40,6 +41,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     <article className="min-h-screen bg-[#eef4f8] text-slate-950">
       <BlogPostingJsonLd post={post} />
       <BreadcrumbJsonLd path={`/blog/${post.slug}`} />
+      {post.howTo ? <HowToJsonLd {...post.howTo} /> : null}
 
       <header className="border-b border-slate-200/80 bg-white px-4 pt-24 pb-10 sm:px-6 lg:px-12">
         <div className="mx-auto max-w-3xl">
@@ -57,9 +59,33 @@ export default async function BlogArticlePage({ params }: PageProps) {
           </h1>
           <p className="mt-4 text-sm text-slate-600">
             <time dateTime={post.dateIso}>{post.date}</time>
+            {post.dateModifiedIso ? (
+              <>
+                <span aria-hidden> · </span>
+                <span className="text-blue-600">
+                  Updated{" "}
+                  <time dateTime={post.dateModifiedIso}>
+                    {new Date(post.dateModifiedIso).toLocaleDateString("en-IN", { month: "long", year: "numeric" })}
+                  </time>
+                </span>
+              </>
+            ) : null}
             <span aria-hidden> · </span>
             {post.readMinutes} min read
+            {post.personAuthor ? (
+              <>
+                <span aria-hidden> · </span>
+                <span className="font-medium text-slate-700">{post.author}</span>
+                <span className="text-slate-400">, Founder &amp; CEO, InOps IT Solutions</span>
+              </>
+            ) : null}
           </p>
+          {post.type === "research" && post.dataSource ? (
+            <p className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-xs leading-relaxed text-blue-800">
+              <span className="font-semibold">Data source: </span>
+              {post.dataSource}
+            </p>
+          ) : null}
         </div>
       </header>
 

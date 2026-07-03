@@ -17,12 +17,40 @@ export const DEFAULT_DESCRIPTION =
 
 export const CONTACT_EMAIL = "contact@inops.tech";
 
-/** Official company social profiles (footer / schema). */
+/** Official company social profiles (footer / schema / sameAs). */
 export const SOCIAL_LINKS = {
   linkedin: "https://in.linkedin.com/company/inops-it-solutions-pvt-ltd",
   twitter: "https://x.com/InOpstweets",
   facebook: "https://www.facebook.com/people/InOps-Solutions/61552352699183/",
+  // Add these once profiles are live — they unlock sameAs entity resolution in AI engines
+  // g2: "https://www.g2.com/products/inops",
+  // capterra: "https://www.capterra.com/p/inops",
+  // crunchbase: "https://www.crunchbase.com/organization/inops-it-solutions",
+  // softwaresuggest: "https://www.softwaresuggest.com/inops",
 } as const;
+
+export const FOUNDING_YEAR = "2014" as const;
+
+/** Founder / CEO — used as named Person author in blog Article schema.
+ *  Update `name` to the full name (first + last) before publishing bylined posts. */
+export const FOUNDER = {
+  name: "Satish Sinha",
+  jobTitle: "Founder & CEO, InOps IT Solutions",
+  url: "https://in.linkedin.com/company/inops-it-solutions-pvt-ltd",
+} as const;
+
+export const KNOWS_ABOUT = [
+  "Contract Labour Management",
+  "Contract Labour (Regulation & Abolition) Act Compliance",
+  "Biometric Attendance Systems",
+  "Earned Wage Access",
+  "Factory Workforce Management",
+  "PF ESI Statutory Compliance",
+  "Industrial Access Control",
+  "Contractor Payroll Automation",
+  "Manufacturing HR Software",
+  "Zone Safety Monitoring",
+] as const;
 
 /** E.164 for schema.org / tel: links */
 export const PHONE_E164 = "+918088602602";
@@ -63,11 +91,20 @@ export const KEYWORDS_BRAND = ["InOps", "InOps Solutions"] as const;
 
 export const KEYWORDS_BASE = [
   ...KEYWORDS_BRAND,
+  // Tier 1 — pillar keywords every page should carry
   "CLMS software",
+  "contract labour management software India",
   "contract labour management system",
   "contract labor management India",
+  "contractor compliance software India",
+  // Tier 2 — product and compliance cluster
+  "CLRA compliance software",
   "biometric attendance system",
+  "biometric attendance system manufacturing",
   "workforce management India",
+  "PF ESI compliance software",
+  "contractor payroll automation India",
+  // Supporting
   "access control systems",
   "turnstiles India",
   "visitor management system",

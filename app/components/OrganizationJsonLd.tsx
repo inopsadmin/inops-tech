@@ -1,6 +1,8 @@
 import {
   CONTACT_EMAIL,
   DEFAULT_DESCRIPTION,
+  FOUNDING_YEAR,
+  KNOWS_ABOUT,
   OFFICE_ADDRESS,
   OFFICE_GEO,
   PHONE_E164,
@@ -62,10 +64,13 @@ export default function OrganizationJsonLd() {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
       name: SITE_NAME,
+      alternateName: "InOps",
       url: siteUrl,
       logo: { "@type": "ImageObject", url: logoUrl },
       image: logoUrl,
       description: DEFAULT_DESCRIPTION,
+      foundingDate: FOUNDING_YEAR,
+      knowsAbout: [...KNOWS_ABOUT],
       email: CONTACT_EMAIL,
       telephone: PHONE_E164,
       contactPoint: [
