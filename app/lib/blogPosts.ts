@@ -39,9 +39,9 @@ export const blogPosts: BlogPost[] = [
     description:
       "Key access control trends for industrial and enterprise sites: biometrics, mobile credentials, audit trails, and integrated workforce governance. Updated June 2026 with India STQC camera mandate impact.",
     author: "InOps Editorial",
-    date: "September 13, 2024",
-    dateIso: "2024-09-13",
-    dateModifiedIso: "2026-06-01",
+    date: "June 3, 2026",
+    dateIso: "2026-06-03",
+    dateModifiedIso: "2026-06-20",
     category: "Access control",
     readMinutes: 6,
     image:
@@ -73,8 +73,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "How biometric attendance improves accuracy, reduces leakage, and supports contract workforce governance across Indian manufacturing sites.",
     author: "InOps Editorial",
-    date: "September 13, 2024",
-    dateIso: "2024-09-13",
+    date: "May 3, 2026",
+    dateIso: "2026-05-03",
     dateModifiedIso: "2026-06-01",
     category: "Biometrics",
     readMinutes: 8,
@@ -107,8 +107,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Six practical trends in time and attendance for enterprise operators: CCTV validation, mobile punch, shift rules, and audit-ready exports.",
     author: "InOps Editorial",
-    date: "September 13, 2024",
-    dateIso: "2024-09-13",
+    date: "April 3, 2026",
+    dateIso: "2026-04-03",
     dateModifiedIso: "2026-06-01",
     category: "Time & attendance",
     readMinutes: 7,
@@ -141,8 +141,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "How integrated HR technology improves engagement, compliance, and workforce visibility for industrial enterprises in India.",
     author: "InOps Editorial",
-    date: "September 13, 2024",
-    dateIso: "2024-09-13",
+    date: "March 3, 2026",
+    dateIso: "2026-03-03",
     dateModifiedIso: "2026-06-01",
     category: "HR technology",
     readMinutes: 6,
@@ -177,8 +177,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Face recognition terminals and CCTV cameras record who entered your factory. But attendance data is only compliance data when it is linked to CLRA records, OT verification, and contractor billing. Here's how InOps CLMS connects the camera to the compliance stack.",
     author: "InOps Editorial",
-    date: "August 2026",
-    dateIso: "2026-08-05",
+    date: "February 2026",
+    dateIso: "2026-02-03",
     category: "Biometrics",
     readMinutes: 11,
     image:
@@ -252,8 +252,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "A complete CLRA compliance checklist for principal employers in India — Form V, Form XIII, headcount limits, wage registers, PF/ESI, and the 9-day attendance rule that triggers permanent employment liability.",
     author: "InOps Editorial",
-    date: "June 2026",
-    dateIso: "2026-06-10",
+    date: "January 2026",
+    dateIso: "2026-01-03",
     category: "CLRA Compliance",
     readMinutes: 9,
     image:
@@ -369,8 +369,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "A complete guide to Form V (commencement certificate) and Form XIII (Register of Contractors) under the Contract Labour (Regulation & Abolition) Act, 1970 — mandatory documentation every Indian principal employer must maintain.",
     author: "InOps Editorial",
-    date: "June 2026",
-    dateIso: "2026-06-20",
+    date: "December 2025",
+    dateIso: "2025-12-03",
     category: "CLRA Compliance",
     readMinutes: 7,
     image:
@@ -419,8 +419,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Overtime fraud, unauthorised OT, and reconciliation errors drain significant contractor budget in Indian manufacturing. This guide explains the three types of OT leakage and how biometric CLMS closes each one.",
     author: "InOps Editorial",
-    date: "July 2026",
-    dateIso: "2026-07-05",
+    date: "November 2025",
+    dateIso: "2025-11-03",
     category: "OT Cost Control",
     readMinutes: 8,
     image:
@@ -468,8 +468,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "When a contract worker attends continuously without a weekly off, Indian labour law may confer permanent employment rights. Here's what the rule means, when it applies, and how automated attendance tracking prevents liability.",
     author: "InOps Editorial",
-    date: "July 2026",
-    dateIso: "2026-07-10",
+    date: "October 2025",
+    dateIso: "2025-10-03",
     category: "CLRA Compliance",
     readMinutes: 6,
     image:
@@ -518,8 +518,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "A buyer's guide to contractor attendance tracking software for Indian manufacturers — key capabilities, integration requirements, biometric options, and the CLRA compliance features that distinguish CLMS from generic HR software.",
     author: "InOps Editorial",
-    date: "July 2026",
-    dateIso: "2026-07-15",
+    date: "September 2025",
+    dateIso: "2025-09-03",
     category: "CLMS",
     readMinutes: 8,
     image:
@@ -562,8 +562,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Face recognition and biometric attendance for contractor workforces at HAL, DRDO, ISRO, and other defence/aerospace facilities — compliance requirements, hardware specifications, and how InOps manages 163+ sites including defence installations.",
     author: "InOps Editorial",
-    date: "July 2026",
-    dateIso: "2026-07-20",
+    date: "August 2025",
+    dateIso: "2025-08-03",
     category: "Biometrics",
     readMinutes: 7,
     image:
@@ -607,8 +607,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "How ZKTeco biometric terminals integrate with a Contract Labour Management System for unified contractor attendance across 100+ manufacturing sites — device management, offline buffering, and compliance reporting.",
     author: "InOps Editorial",
-    date: "July 2026",
-    dateIso: "2026-07-22",
+    date: "July 2025",
+    dateIso: "2025-07-03",
     category: "Biometrics",
     readMinutes: 8,
     image:
@@ -663,8 +663,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Contractor overbilling — inflated headcount, ghost workers, and mismatched OT claims — is the leading source of contractor spend leakage in Indian manufacturing. Here's how biometric attendance and CLMS reconciliation closes it.",
     author: "InOps Editorial",
-    date: "July 2026",
-    dateIso: "2026-07-25",
+    date: "June 2025",
+    dateIso: "2025-06-03",
     category: "OT Cost Control",
     readMinutes: 7,
     image:
@@ -713,8 +713,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "InOps is the only platform that links Earned Wage Access (EWA) directly to biometric attendance records — making on-demand wage disbursement for contract workers verifiable, compliant, and fraud-free.",
     author: "InOps Editorial",
-    date: "August 2026",
-    dateIso: "2026-08-01",
+    date: "May 2025",
+    dateIso: "2025-05-03",
     category: "EWA",
     readMinutes: 8,
     image:
@@ -773,8 +773,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Anonymized compliance data from 163+ Indian manufacturing sites reveals the most common CLRA violations, PF/ESI gaps, and contractor onboarding failures — and what top-quartile plants do differently.",
     author: "InOps Research",
-    date: "June 2026",
-    dateIso: "2026-06-01",
+    date: "April 2025",
+    dateIso: "2025-04-03",
     category: "Research",
     readMinutes: 12,
     image:
@@ -834,8 +834,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "InOps platform data from Indian manufacturing sites quantifies overtime leakage — unclaimed OT, unauthorised OT, and reconciliation errors — and shows the corrective patterns that close the gap.",
     author: "InOps Research",
-    date: "June 2026",
-    dateIso: "2026-06-15",
+    date: "March 2025",
+    dateIso: "2025-03-03",
     category: "Research",
     readMinutes: 10,
     image:
@@ -891,8 +891,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Analysis of InOps biometric device fleet data from Indian factories — face recognition accuracy rates, common failure modes, and the attendance-to-payroll leakage they create when left uncorrected.",
     author: "InOps Research",
-    date: "July 2026",
-    dateIso: "2026-07-01",
+    date: "February 2025",
+    dateIso: "2025-02-03",
     category: "Research",
     readMinutes: 9,
     image:
