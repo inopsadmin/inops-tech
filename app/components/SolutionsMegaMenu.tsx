@@ -27,6 +27,9 @@ function MegaCell({ cell, onNavigate }: { cell: SolutionsMegaCell; onNavigate?: 
       >
         {cell.title}
       </div>
+      <div className={`mt-1 font-semibold transition-colors duration-200 group-hover:text-[color:var(--inops-blue)] ${inopsUi.typeSmall}`}>
+        {cell.subtitle}
+      </div>
       <p
         className={`mt-2 transition-colors duration-200 group-hover:text-blue-700/90 ${inopsUi.typeSmall}`}
       >

@@ -11,6 +11,7 @@ type AnimatedCounterProps = {
   prefix?: string;
   className?: string;
   ease?: "easeOut" | "easeIn" | "linear" | "easeInOut";
+  locale? : string;
 };
 
 export default function AnimatedCounter({
@@ -21,6 +22,7 @@ export default function AnimatedCounter({
   prefix = "",
   className = "",
   ease = "easeOut",
+  locale = "en-US",
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
@@ -48,7 +50,7 @@ export default function AnimatedCounter({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {display.toLocaleString()}
+      {display.toLocaleString(locale)}
       {suffix}
     </span>
   );

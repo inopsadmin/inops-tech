@@ -7,6 +7,7 @@ export type SolutionsMegaCell =
   | {
       type: "tile";
       title: string;
+      subtitle? : string;
       description: string;
       href: string;
       accent?: boolean;
@@ -23,19 +24,22 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     },
     {
       type: "tile",
-      title: "Contract Employee Governance System",
-      description: "Payroll and compliance governance for contractual employees.",
+      title: "Iddion RegX- External",
+      subtitle: "Contract Labour Management Solution",
+      description: "Contract workforce governance with compliance, attendance & payroll.",
       href: "/clms",
     },
     {
       type: "tile",
-      title: "HR Information System",
+      title: "Iddion RegX- Core",
+      subtitle: "Human Resource Information System",
       description: "Central employee records and labour workflows for your organisation.",
       href: "/hris",
     },
     {
       type: "tile",
-      title: "Canteen & Visitor Management",
+      title: "Vizion",
+      subtitle: "Canteen and visitor managemnt",
       description: "Canteen operations and visitor flow across your premises.",
       href: "/canteen-and-visitor",
     },
@@ -105,19 +109,19 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     {
       type: "tile",
       title: "Warehouse Management",
-      description: "Advanced inventory control with barcode scanning, real-time stock visibility, and intelligent warehouse operations.",
+      description: "Advanced inventory control with barcode scanning and real-time visibility.",
       href: "/enterprise-solution#asset-management",
     },
     {
       type: "tile",
       title: "Delivery Management",
-      description: "Optimize deliveries with route planning, fleet tracking, proof of delivery, and real-time shipment visibility.",
+      description: "Optimize deliveries with route planning, and real-time shipment visibility.",
       href: "/enterprise-solution#delivery-management",
     },
     {
       type: "tile",
       title: "Order Management",
-      description: "Automate order processing, fulfillment, tracking, and returns with complete end-to-end order visibility.",
+      description: "Automate order processing and returns with complete end-to-end visibility.",
       href: "/enterprise-solution#warehouse-management",
     },
   ],
