@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ModuleData } from "@/app/lib/module";
@@ -16,7 +17,7 @@ interface Props {
 }
 
 interface StatusCard {
-  icon: (props: { className?: string }) => JSX.Element;
+  icon: (props: { className?: string }) => React.JSX.Element;
   label: string;
   value?: string;
   iconBg: string;
