@@ -109,7 +109,7 @@ const warehouseHeroRight = (
 );
 
 const heroData = {
-  bgImage: "/images/solutions/warehouse-management.jpeg", 
+  bgImage: "/images/solutions/Warehouse-management.jpeg", 
   bgImageAlt: "Warehouse manager reviewing inventory data on a laptop",
   bgPosition: "72% 40%",
   gradientCenter: "28% 22%",
