@@ -51,6 +51,34 @@ const featureCards = [
   },
 ];
 
+const mobileAttendanceFaqItems = [
+  {
+    question: "What is a mobile attendance app?",
+    answer:
+      "A mobile attendance app allows employees and field staff to record attendance using smartphones with GPS, geofencing, and selfie verification.",
+  },
+  {
+    question: "Can field employees mark attendance remotely?",
+    answer:
+      "Yes. Attendance can be captured from authorized locations using GPS and geofencing policies.",
+  },
+  {
+    question: "Does the app work for contract workers?",
+    answer:
+      "Yes. The app supports both employees and contract workers across multiple locations.",
+  },
+  {
+    question: "Can mobile attendance integrate with payroll?",
+    answer:
+      "Yes. Attendance records can be synchronized with payroll and HR systems for accurate salary processing.",
+  },
+  {
+    question: "Is internet connectivity required?",
+    answer:
+      "Attendance can be captured online, and many solutions also support offline synchronization when connectivity is restored.",
+  },
+] as const;
+
 type AccurateTrackingTone = "sky" | "indigo" | "emerald" | "violet" | "cyan" | "amber";
 
 /** Time & attendance “Hidden Cost” card tokens */
@@ -1327,6 +1355,58 @@ export default function MobileAppPage() {
             </div>
           </motion.section>
         </div>
+
+        <section aria-labelledby="mobile-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+                Mobile Attendance FAQ
+              </span>
+              <h2 id="mobile-attendance-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Answers to common questions about GPS attendance, geofencing, remote workers, payroll sync, and offline capture.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="divide-y divide-slate-200">
+                {mobileAttendanceFaqItems.map((item, index) => (
+                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                      <span className="flex min-w-0 gap-4">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                      </span>
+                      <span
+                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                        aria-hidden
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
         <SolutionPageClosingCta
           headingId="mobile-app-final-cta-heading"

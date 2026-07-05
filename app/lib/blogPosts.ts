@@ -773,8 +773,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "Anonymized compliance data from 163+ Indian manufacturing sites reveals the most common CLRA violations, PF/ESI gaps, and contractor onboarding failures — and what top-quartile plants do differently.",
     author: "InOps Research",
-    date: "April 2025",
-    dateIso: "2025-04-03",
+    date: "May 2025",
+    dateIso: "2025-05-03",
     category: "Research",
     readMinutes: 12,
     image:
@@ -782,7 +782,7 @@ export const blogPosts: BlogPost[] = [
     imageAlt: "Indian manufacturing plant floor representing compliance data research",
     type: "research",
     dataSource:
-      "Anonymized InOps platform data from 163+ manufacturing sites across India, covering automotive, electronics, FMCG, steel, cement, and logistics sectors. Data period: January 2025 – May 2026.",
+      "Anonymized InOps platform data from 163+ manufacturing sites across India, covering automotive, electronics, FMCG, steel, cement, and logistics sectors. Data period: December 2025 – May 2026.",
     sections: [
       {
         paragraphs: [
@@ -839,7 +839,7 @@ export const blogPosts: BlogPost[] = [
     category: "Research",
     readMinutes: 10,
     image:
-      "https://images.unsplash.com/photo-1565108602375-b40aa3e7c582?auto=format&fit=crop&w=1400&q=85",
+      "https://www.elimparcial.com/resizer/v2/I5RBX5QZXFDYTNAXBP2SI4TNUA.png?auth=82dd3dc4bb4b37bc4b5511ae7766389e91256978fe8d2080ce70bc33eb881d29&height=800&quality=70&smart=true&width=1200",
     imageAlt: "Factory shift operations representing overtime tracking and leakage data",
     type: "research",
     dataSource:

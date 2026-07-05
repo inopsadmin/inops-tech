@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.elimparcial.com",
+        pathname: "/resizer/**",
+      },
     ],
   },
   experimental: {

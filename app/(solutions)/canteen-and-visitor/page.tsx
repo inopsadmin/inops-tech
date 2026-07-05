@@ -196,6 +196,34 @@ const visitorLobbyHighlights = [
   },
 ] as const;
 
+const smartCanteenFaqItems = [
+  {
+    question: "What is a Smart Canteen Management System?",
+    answer:
+      "A Smart Canteen Management System automates meal eligibility, digital meal transactions, attendance-based meal allocation, and vendor reconciliation.",
+  },
+  {
+    question: "How does canteen management software reduce food wastage?",
+    answer:
+      "By tracking actual consumption and planned meals, organizations can optimize meal preparation and reduce unnecessary food waste.",
+  },
+  {
+    question: "Can the system integrate with employee attendance?",
+    answer:
+      "Yes. Meal eligibility can be automatically linked to employee attendance, shifts, and contractor records.",
+  },
+  {
+    question: "Does the solution support cashless meal transactions?",
+    answer:
+      "Yes. Employees and contractors can access meals using facial recognition, RFID cards, QR codes, or biometric authentication.",
+  },
+  {
+    question: "Is the system suitable for factories and corporate campuses?",
+    answer:
+      "Yes. It is designed for manufacturing plants, IT campuses, industrial facilities, educational institutions, and large enterprises.",
+  },
+] as const;
+
 function CheckIcon({ className }: { className?: string }) {
   return (
     <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -895,6 +923,58 @@ export default function CanteenManagementPage() {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="smart-canteen-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+                Smart Canteen FAQ
+              </span>
+              <h2 id="smart-canteen-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Answers to common questions about digital meal transactions, attendance-linked eligibility, cashless access, and canteen operations.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="divide-y divide-slate-200">
+                {smartCanteenFaqItems.map((item, index) => (
+                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                      <span className="flex min-w-0 gap-4">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                      </span>
+                      <span
+                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                        aria-hidden
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 

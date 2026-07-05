@@ -119,6 +119,34 @@ const powerfulServices = [
   { title: "Contract Management System", icon: "document-pen", color: "bg-blue-500" },
 ];
 
+const cctvSurveillanceFaqItems = [
+  {
+    question: "Why is CCTV important for businesses?",
+    answer:
+      "CCTV systems improve workplace security, monitor operations, deter unauthorized activities, and provide recorded evidence when required.",
+  },
+  {
+    question: "Can CCTV integrate with facial recognition?",
+    answer:
+      "Yes. Modern CCTV solutions integrate with facial recognition, access control, and AI-based video analytics.",
+  },
+  {
+    question: "What industries use CCTV surveillance systems?",
+    answer:
+      "Manufacturing, warehouses, retail, healthcare, logistics, education, and corporate offices widely use CCTV surveillance.",
+  },
+  {
+    question: "Can CCTV footage be monitored remotely?",
+    answer:
+      "Yes. Authorized users can securely access live and recorded footage from desktops and mobile devices.",
+  },
+  {
+    question: "How long can CCTV footage be stored?",
+    answer:
+      "Storage duration depends on camera resolution, recording settings, and storage capacity, with options for cloud or on-premise retention.",
+  },
+] as const;
+
 function CheckIcon({ className }: { className?: string }) {
   return (
     <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -1377,6 +1405,58 @@ export default function TimeAndAttendancePage() {
                 </Link>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="cctv-surveillance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+                CCTV Surveillance FAQ
+              </span>
+              <h2 id="cctv-surveillance-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Answers to common questions about CCTV security, facial recognition integration, remote monitoring, industry use, and footage retention.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="divide-y divide-slate-200">
+                {cctvSurveillanceFaqItems.map((item, index) => (
+                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                      <span className="flex min-w-0 gap-4">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                      </span>
+                      <span
+                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                        aria-hidden
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 
