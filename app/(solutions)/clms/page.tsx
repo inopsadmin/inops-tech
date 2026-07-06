@@ -90,6 +90,39 @@ const comprehensiveControlCards = [
   },
 ] as const;
 
+const clmsFaqItems = [
+  {
+    question: "What is a Contract Labour Management System?",
+    answer:
+      "A Contract Labour Management System (CLMS) is software that helps organizations manage contractor onboarding, compliance, attendance, payroll validation, invoice verification, and workforce governance through a centralized platform.",
+  },
+  {
+    question: "How does CLMS improve contractor compliance?",
+    answer:
+      "CLMS automates document verification, license tracking, statutory compliance, expiry alerts, and audit-ready reporting to help organizations reduce compliance risks and maintain regulatory requirements.",
+  },
+  {
+    question: "Which industries benefit from Contract Labour Management Software?",
+    answer:
+      "Manufacturing, automotive, pharmaceuticals, electronics, steel, cement, FMCG, logistics, warehouses, infrastructure, and engineering companies commonly use CLMS to manage contract workforces efficiently.",
+  },
+  {
+    question: "Can CLMS integrate with ERP, HRMS, and biometric systems?",
+    answer:
+      "Yes. Modern CLMS solutions integrate with ERP, HRMS, payroll software, biometric devices, facial recognition systems, access control, and third-party applications through APIs.",
+  },
+  {
+    question: "How does CLMS reduce payroll leakage?",
+    answer:
+      "By validating contractor attendance, overtime, shifts, and manpower before invoice processing, CLMS helps identify discrepancies, duplicate entries, and unauthorized payments.",
+  },
+  {
+    question: "Is CLMS suitable for multiple factories and locations?",
+    answer:
+      "Yes. A centralized CLMS allows organizations to manage contractors across multiple plants, warehouses, and project sites from a single dashboard.",
+  },
+] as const;
+
 /** Matches standard cards elsewhere on this page (white surface, slate border, brand blue accents) */
 const painPointTheme = {
   cardSurface:
@@ -1590,6 +1623,58 @@ export default function PayrollSolutionsPage() {
                   </motion.span>
                 </Link>
               </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section aria-labelledby="clms-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+                CLMS FAQ
+              </span>
+              <h2 id="clms-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Answers to common questions about contract labour management, compliance, integrations, and multi-site workforce governance.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="divide-y divide-slate-200">
+                {clmsFaqItems.map((item, index) => (
+                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                      <span className="flex min-w-0 gap-4">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                      </span>
+                      <span
+                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                        aria-hidden
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
             </motion.div>
           </div>
         </section>

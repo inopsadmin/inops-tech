@@ -24,6 +24,7 @@ import { mediaVideos } from "@/app/lib/mediaAssets";
 import { heroSlides, whySectionCardImages } from "@/app/lib/serviceImagery";
 import { TRUSTED_BY_HEADLINE } from "@/app/lib/trustedClients";
 import { inopsUi } from "@/app/lib/inopsUi";
+import { homeFaqItems } from "@/app/lib/homeFaqItems";
 
 type DashboardCard = {
   title: string;
@@ -857,6 +858,45 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <CollaborateCtaBand />
         </div>
+      </SectionFade>
+
+      <SectionFade className="border-t border-slate-100 bg-white">
+        <section aria-labelledby="home-faq-heading" className="py-10 lg:py-14">
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-12">
+            <div>
+              <FlyInText
+                as="p"
+                direction="left"
+                className="inline-flex w-fit items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-sm"
+              >
+                FAQ
+              </FlyInText>
+              <FlyInText as="h2" id="home-faq-heading" direction="up" delay={0.05} className={`mt-3 ${inopsUi.typeSection}`}>
+                Frequently asked questions
+              </FlyInText>
+              <FlyInText as="p" direction="up" delay={0.1} className={`mt-3 ${inopsUi.typeBody}`}>
+                Quick answers about Inops for workforce, compliance, and operations teams.
+              </FlyInText>
+            </div>
+
+            <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-slate-50/70 shadow-[0_18px_50px_-42px_rgba(15,23,42,0.28)]">
+              {homeFaqItems.map((item) => (
+                <details key={item.question} className="group p-5 open:bg-white sm:p-6">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-semibold text-slate-950 marker:hidden">
+                    <span>{item.question}</span>
+                    <span
+                      className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition group-open:rotate-45 group-open:text-blue-700"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className={`mt-3 pr-10 ${inopsUi.typeBody}`}>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
       </SectionFade>
 
       

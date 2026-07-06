@@ -162,6 +162,34 @@ const ewaHowItWorksSteps = [
   "Deducted automatically from next payroll cycle.",
 ] as const;
 
+const ewaFaqItems = [
+  {
+    question: "What is Earned Wage Access (EWA)?",
+    answer:
+      "Earned Wage Access allows employees to access a portion of their earned salary before the regular payday without disrupting payroll processes.",
+  },
+  {
+    question: "How does Earned Wage Access benefit employees?",
+    answer:
+      "EWA improves financial flexibility, reduces dependence on high-interest loans, and supports employee financial well-being.",
+  },
+  {
+    question: "Does Earned Wage Access affect payroll?",
+    answer:
+      "No. Approved salary advances are automatically reconciled during the regular payroll cycle.",
+  },
+  {
+    question: "Is Earned Wage Access suitable for contract workers?",
+    answer:
+      "Yes. Organizations can extend EWA benefits to eligible employees and contract workers based on company policies.",
+  },
+  {
+    question: "Can Earned Wage Access integrate with HRMS and payroll?",
+    answer:
+      "Yes. EWA platforms integrate with HRMS, attendance, and payroll systems for secure and accurate wage calculations.",
+  },
+] as const;
+
 const ewaEcosystemIntegrations = [
   {
     title: "Workforce Platform (CLMS)",
@@ -1187,6 +1215,58 @@ export default function EwaPage() {
               ))}
             </motion.ul>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="ewa-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            className="mx-auto max-w-3xl text-center"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5, ease: smoothEase }}
+          >
+            <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+              EWA FAQ
+            </span>
+            <h2 id="ewa-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              Frequently asked questions
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600">
+              Answers to common questions about earned salary access, payroll reconciliation, workforce eligibility, and HRMS integrations.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+          >
+            <div className="divide-y divide-slate-200">
+              {ewaFaqItems.map((item, index) => (
+                <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                    <span className="flex min-w-0 gap-4">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                    </span>
+                    <span
+                      className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 

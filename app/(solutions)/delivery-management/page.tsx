@@ -142,6 +142,34 @@ const ctaData = {
   ],
 };
 
+const deliveryWarehouseFaqItems = [
+  {
+    question: "What is Delivery and Warehouse Management Software?",
+    answer:
+      "It helps organizations manage inbound deliveries, outbound dispatches, warehouse operations, vehicle movement, inventory visibility, and gate processes.",
+  },
+  {
+    question: "How does warehouse management software improve efficiency?",
+    answer:
+      "It automates receiving, storage, picking, dispatch, and inventory tracking, reducing errors and improving operational productivity.",
+  },
+  {
+    question: "Can the solution track delivery vehicles?",
+    answer:
+      "Yes. Vehicle entry, exit, loading status, and delivery movements can be monitored in real time.",
+  },
+  {
+    question: "Does warehouse management integrate with ERP?",
+    answer:
+      "Yes. Warehouse Management Software integrates with ERP systems for inventory, procurement, and order management.",
+  },
+  {
+    question: "Which industries use warehouse management solutions?",
+    answer:
+      "Manufacturing, logistics, distribution, retail, FMCG, pharmaceuticals, and e-commerce companies widely use warehouse management software.",
+  },
+] as const;
+
 
 const deliveryStats = [
   { label: "On-Time Delivery %", value: 98.4, suffix: "%", change: "↑ 2.4% vs last month" },
@@ -409,6 +437,62 @@ export default function DeliveryPage() {
               </div>
             </AnimateOnScroll>
           </div>
+        </div>
+      </AnimatedSection>
+      <AnimatedSection className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <AnimateOnScroll variant="fade-up">
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+                Delivery &amp; Warehouse FAQ
+              </span>
+            </AnimateOnScroll>
+            <FlyInText
+              as="h2"
+              id="delivery-warehouse-faq-heading"
+              direction="up"
+              delay={0.05}
+              className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+            >
+              Frequently asked questions
+            </FlyInText>
+            <FlyInText
+              as="p"
+              direction="up"
+              delay={0.1}
+              className="mt-4 text-base leading-relaxed text-slate-600"
+            >
+              Answers to common questions about deliveries, dispatches, warehouse operations, vehicle tracking, ERP integration, and inventory visibility.
+            </FlyInText>
+          </div>
+
+          <AnimateOnScroll
+            variant="fade-up"
+            delay={120}
+            className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+          >
+            <div className="divide-y divide-slate-200">
+              {deliveryWarehouseFaqItems.map((item, index) => (
+                <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                    <span className="flex min-w-0 gap-4">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                    </span>
+                    <span
+                      className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </AnimateOnScroll>
         </div>
       </AnimatedSection>
       <CTASection {...ctaData} />
