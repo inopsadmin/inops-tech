@@ -110,19 +110,19 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       type: "tile",
       title: "Warehouse Management",
       description: "Advanced inventory control with barcode scanning and real-time visibility.",
-      href: "/enterprise-solution#asset-management",
+      href: "/warehouse-management",
     },
     {
       type: "tile",
       title: "Delivery Management",
       description: "Optimize deliveries with route planning, and real-time shipment visibility.",
-      href: "/enterprise-solution#delivery-management",
+      href: "/delivery-management",
     },
     {
       type: "tile",
       title: "Order Management",
       description: "Automate order processing and returns with complete end-to-end visibility.",
-      href: "/enterprise-solution#warehouse-management",
+      href: "/order-management",
     },
   ],
   [

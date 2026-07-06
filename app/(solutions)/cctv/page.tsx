@@ -1417,9 +1417,9 @@ export default function TimeAndAttendancePage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+              {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
                 CCTV Surveillance FAQ
-              </span>
+              </span> */}
               <h2 id="cctv-surveillance-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
                 Frequently asked questions
               </h2>
