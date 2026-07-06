@@ -92,34 +92,54 @@ const comprehensiveControlCards = [
 
 const clmsFaqItems = [
   {
-    question: "What is a Contract Labour Management System?",
+    question: "What is a Contract Labour Management System (CLMS)?",
     answer:
-      "A Contract Labour Management System (CLMS) is software that helps organizations manage contractor onboarding, compliance, attendance, payroll validation, invoice verification, and workforce governance through a centralized platform.",
+      "A Contract Labour Management System (CLMS) is software that automates the full lifecycle of contract labour: onboarding, gate compliance, biometric attendance, PF/ESI/LWF statutory deductions, payroll processing, and contractor governance for manufacturing plants and industrial facilities.",
   },
   {
-    question: "How does CLMS improve contractor compliance?",
+    question: "How does ghost worker fraud drain contractor spend?",
     answer:
-      "CLMS automates document verification, license tracking, statutory compliance, expiry alerts, and audit-ready reporting to help organizations reduce compliance risks and maintain regulatory requirements.",
+      "Buddy punching and proxy clock-ins hide real headcount so clean attendance data never reaches payroll. Industry estimates put the drain at approximately 3–5% of total contractor spend. InOps CLMS eliminates this through biometric verification and face recognition at the gate.",
   },
   {
-    question: "Which industries benefit from Contract Labour Management Software?",
+    question: "What is the financial risk of CLRA compliance violations in India?",
     answer:
-      "Manufacturing, automotive, pharmaceuticals, electronics, steel, cement, FMCG, logistics, warehouses, infrastructure, and engineering companies commonly use CLMS to manage contract workforces efficiently.",
+      "OT, wage, and incident gaps in contract labour records surface during audits and disputes after the fact. Each violation can cost significant financial penalties under the Contract Labour (Regulation & Abolition) Act. Automated compliance tracking prevents gaps before filing deadlines.",
   },
   {
-    question: "Can CLMS integrate with ERP, HRMS, and biometric systems?",
+    question: "Why do contractor invoices have a 25–30% discrepancy rate?",
     answer:
-      "Yes. Modern CLMS solutions integrate with ERP, HRMS, payroll software, biometric devices, facial recognition systems, access control, and third-party applications through APIs.",
+      "Finance teams spend 80–120 hours per month manually matching contractor invoices to gate attendance and shift logs instead of closing books. InOps reconciles invoices against verified headcount and hours automatically, catching leakage before it reaches the finance close.",
   },
   {
-    question: "How does CLMS reduce payroll leakage?",
+    question: "How does InOps handle PF and ESI reconciliation for contract labour?",
     answer:
-      "By validating contractor attendance, overtime, shifts, and manpower before invoice processing, CLMS helps identify discrepancies, duplicate entries, and unauthorized payments.",
+      "Spreadsheet-driven statutory checks miss deltas until filing deadlines, and errors compound across branches. InOps automates PF, ESI, and LWF deduction calculations per worker, generates challan-ready reports, and flags reconciliation gaps in real time — eliminating end-of-month scrambles.",
   },
   {
-    question: "Is CLMS suitable for multiple factories and locations?",
+    question: "Can InOps CLMS manage contractors across multiple factory sites?",
     answer:
-      "Yes. A centralized CLMS allows organizations to manage contractors across multiple plants, warehouses, and project sites from a single dashboard.",
+      "Yes. InOps supports multi-site deployments where biometrics, contractor records, and compliance data from each plant are unified in a single dashboard. HR heads and compliance teams get site-level and aggregate visibility without manual stitching across systems.",
+  },
+  {
+    question: "How does CLMS help with CLRA compliance?",
+    answer:
+      "InOps CLMS automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log.",
+  },
+  {
+    question: "Can CLMS integrate with biometric attendance devices?",
+    answer:
+      "Yes. InOps CLMS integrates with ZKTeco face and fingerprint terminals, AI-based CCTV attendance, QR code readers, and card swipe systems. All hardware feeds into the same CLMS attendance engine — per-worker, per-contractor, per-site. Mixed hardware deployments across multiple plant gates are supported without additional configuration.",
+  },
+  {
+    question: "What is the 9-day continuous attendance rule under CLRA?",
+    answer:
+      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some circumstances may acquire employment rights that complicate the contractor relationship. InOps CLMS tracks continuous attendance per worker and alerts HR to schedule the mandatory off before the threshold is crossed.",
+  },
+  {
+    question: "How does InOps CLMS prevent OT cost leakage?",
+    answer:
+      "InOps CLMS calculates overtime from biometric punch-out times against registered shift end times. Any OT above the configured threshold requires digital supervisor approval before it becomes payable. Contractor invoices are reconciled line-by-line against the CLMS-approved OT record — discrepancies are flagged before payment. This closes the three types of OT leakage: unauthorised OT, ghost OT, and unclaimed legitimate OT.",
   },
 ] as const;
 
@@ -1636,9 +1656,9 @@ export default function PayrollSolutionsPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+              {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
                 CLMS FAQ
-              </span>
+              </span> */}
               <h2 id="clms-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
                 Frequently asked questions
               </h2>

@@ -864,13 +864,13 @@ export default function Home() {
         <section aria-labelledby="home-faq-heading" className="py-10 lg:py-14">
           <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-12">
             <div>
-              <FlyInText
+              {/* <FlyInText
                 as="p"
                 direction="left"
                 className="inline-flex w-fit items-center rounded-full bg-[color:var(--inops-blue)] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-sm"
               >
                 FAQ
-              </FlyInText>
+              </FlyInText> */}
               <FlyInText as="h2" id="home-faq-heading" direction="up" delay={0.05} className={`mt-3 ${inopsUi.typeSection}`}>
                 Frequently asked questions
               </FlyInText>

@@ -194,9 +194,9 @@ export default function WarehousePage() {
       <section aria-labelledby="delivery-warehouse-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
+            {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
               Delivery & Warehouse Management FAQ
-            </span>
+            </span> */}
             <h2 id="delivery-warehouse-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
               Frequently asked questions
             </h2>
