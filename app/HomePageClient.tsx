@@ -875,7 +875,7 @@ export default function Home() {
                 Frequently asked questions
               </FlyInText>
               <FlyInText as="p" direction="up" delay={0.1} className={`mt-3 ${inopsUi.typeBody}`}>
-                Quick answers about Inops for workforce, compliance, and operations teams.
+                Quick answers about InOps for workforce, compliance, and operations teams.
               </FlyInText>
             </div>
 
