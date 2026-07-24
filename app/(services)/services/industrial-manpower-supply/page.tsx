@@ -29,7 +29,7 @@ export default function IndustrialManpowerSupplyPage() {
     <main className="bg-[#f4f6f8] font-sans">
 
       {/* ========== HERO ========== */}
-      <section className="relative bg-[#1578c2] overflow-hidden pt-[80px] px-[6vw] pb-[100px] min-h-[620px]">
+      <section className="relative bg-[#0a1f3d] overflow-hidden pt-[80px] px-[6vw] pb-[100px] min-h-[620px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[60px] max-w-[1240px] mx-auto relative z-[2]">
 
           {/* Copy */}

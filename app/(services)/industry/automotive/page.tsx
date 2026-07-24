@@ -193,8 +193,9 @@ export default function AutomotiveIndustryPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#001a33]/95 from-[0%] via-[#0067b1]/35 via-[58%] to-white/25 to-[100%]" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-b from-[#06284a]/30 via-transparent to-[#011d38]/25" aria-hidden />
 
-        <div className="relative z-10 mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-16 lg:px-8">
-          <div className="max-w-[42rem]">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-12 py-16 sm:px-16 lg:px-24">
+          <div className="lg:grid lg:grid-cols-2">
+          <div>
             <span className="inline-flex bg-teal-500/25 px-3 py-1 text-[0.56rem] font-bold uppercase tracking-wider text-teal-100 ring-1 ring-teal-400/40">
               Industry Focus: Automotive
             </span>
@@ -234,6 +235,7 @@ export default function AutomotiveIndustryPage() {
                 </div>
               ))}
             </div>
+          </div>
           </div>
         </div>
       </section>

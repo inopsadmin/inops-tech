@@ -142,11 +142,10 @@ function MenuItem({
       </span>
       <span style={{ display: "inline-block" }}>
         <span
-          className="group-hover:text-[#1652d1] group-hover:border-[#1652d1]"
+          className="group-hover:text-[#1652d1] group-hover:border-[#1652d1] inops-type-small"
           style={{
             display: "inline-block",
-            fontSize: "13px",
-            fontWeight: 700,
+            fontWeight: 600,
             color: "#0a1958",
             paddingBottom: "5px",
             borderBottom: "1px solid #ececee",
@@ -197,12 +196,13 @@ export function ServicesMegaMenuDesktop({
       >
         {/* Header */}
         <div style={{ background: "#f7f8fa", padding: "22px 32px 20px", borderBottom: "1px solid #ececee" }}>
-          <h2 style={{ margin: "0 0 4px", fontSize: "18px", fontWeight: 600, color: "#2b2f38" }}>InOps RegX</h2>
-          <p style={{ margin: 0, fontSize: "12.5px", color: "#8a8f9c" }}>Complete workforce management solutions for industrial enterprises</p>
+          <h2 className="inops-type-card-title" style={{ margin: "0 0 4px" }}>Industry & Workforce Solutions</h2>
+          {/* <p className="inops-type-small" style={{ margin: "0 0 2px", fontWeight: 600 }}>Industry Solutions & Workforce Compliance Services</p> */}
+          <p className="inops-type-small" style={{ margin: 0 }}>Complete workforce management solutions for industrial enterprises</p>
         </div>
 
         {/* Industries label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
+        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
           SOLUTION{" "}
           <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "}
           <span style={{ color: "#3a3f4b" }}>BY INDUSTRIES</span>
@@ -216,7 +216,7 @@ export function ServicesMegaMenuDesktop({
         </div>
 
         {/* Services label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
+        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
           SOLUTION{" "}
           <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "}
           <span style={{ color: "#3a3f4b" }}>BY SERVICES</span>
@@ -252,7 +252,7 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
             <svg viewBox="0 0 24 24" fill="none" stroke="#1652d1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px", flexShrink: 0 }}>
               {item.icon}
             </svg>
-            <span className="group-hover:text-[#1652d1]" style={{ fontSize: "13px", fontWeight: 700, color: "#0a1958" }}>{item.label}</span>
+            <span className="group-hover:text-[#1652d1] inops-type-small" style={{ fontWeight: 600, color: "#0a1958" }}>{item.label}</span>
           </Link>
         ))}
       </div>
@@ -273,7 +273,7 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
             <svg viewBox="0 0 24 24" fill="none" stroke="#1652d1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px", flexShrink: 0 }}>
               {item.icon}
             </svg>
-            <span className="group-hover:text-[#1652d1]" style={{ fontSize: "13px", fontWeight: 700, color: "#0a1958" }}>{item.label}</span>
+            <span className="group-hover:text-[#1652d1] inops-type-small" style={{ fontWeight: 600, color: "#0a1958" }}>{item.label}</span>
           </Link>
         ))}
       </div>

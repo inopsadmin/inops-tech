@@ -10,10 +10,12 @@ import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.12 };
 
-const posts = blogPosts.map((post) => ({
-  ...post,
-  snippet: post.description,
-}));
+const posts = [...blogPosts]
+  .sort((a, b) => b.dateIso.localeCompare(a.dateIso))
+  .map((post) => ({
+    ...post,
+    snippet: post.description,
+  }));
 
 const blogBanner = {
   src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85",

@@ -102,19 +102,94 @@ export default async function BlogArticlePage({ params }: PageProps) {
         </div>
       </div>
 
+      {post.summary ? (
+        <div className="mx-auto max-w-3xl px-4 pt-8 sm:px-6 lg:px-0">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 px-6 py-5">
+            <p className="text-sm font-semibold text-slate-900">Summary</p>
+            <p className="mt-2 text-sm leading-7 text-slate-600">{post.summary}</p>
+          </div>
+        </div>
+      ) : null}
+
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-0">
         {post.sections.map((section, i) => (
           <section key={i} className="mb-8">
             {section.heading ? (
-              <h2 className="text-xl font-semibold text-slate-900">{section.heading}</h2>
+              <h2 className="mt-2 text-xl font-semibold text-slate-900">{section.heading}</h2>
+            ) : null}
+            {section.subheading ? (
+              <h3 className="mt-5 text-base font-semibold text-[color:var(--inops-blue)]">{section.subheading}</h3>
             ) : null}
             {section.paragraphs.map((p, j) => (
               <p key={j} className="mt-4 text-base leading-8 text-slate-600">
                 {p}
               </p>
             ))}
+            {section.list && section.list.length > 0 ? (
+              <ul className="mt-4 space-y-2 pl-5">
+                {section.list.map((item, k) => (
+                  <li key={k} className="flex items-start gap-2 text-base leading-7 text-slate-600">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {section.ctaLabel && section.ctaHref ? (
+              <div className="mt-6">
+                <Link
+                  href={section.ctaHref}
+                  className="inline-flex items-center gap-2 rounded-full bg-[color:var(--inops-navy)] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[color:var(--inops-blue)]"
+                >
+                  {section.ctaLabel}
+                </Link>
+              </div>
+            ) : null}
+            {section.table ? (
+              <div className="mt-5 overflow-x-auto rounded-xl border border-slate-200">
+                <table className="min-w-full divide-y divide-slate-200 text-sm">
+                  <thead className="bg-[color:var(--inops-navy)]">
+                    <tr>
+                      {section.table.headers.map((h, k) => (
+                        <th
+                          key={k}
+                          className="px-4 py-3 text-left font-semibold text-white"
+                        >
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {section.table.rows.map((row, k) => (
+                      <tr key={k} className={k % 2 === 1 ? "bg-slate-50" : ""}>
+                        {row.map((cell, l) => (
+                          <td key={l} className="px-4 py-3 text-slate-700">
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : null}
           </section>
         ))}
+
+        {post.faqs && post.faqs.length > 0 ? (
+          <section className="mt-10 border-t border-slate-200 pt-10">
+            <h2 className="text-xl font-semibold text-slate-900">Frequently asked questions</h2>
+            <dl className="mt-6 space-y-6">
+              {post.faqs.map((faq, i) => (
+                <div key={i} className="rounded-xl border border-slate-200 bg-white p-5">
+                  <dt className="font-semibold text-slate-900">{faq.question}</dt>
+                  <dd className="mt-2 text-sm leading-7 text-slate-600">{faq.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ) : null}
 
         {related.length > 0 ? (
           <aside className="mt-14 border-t border-slate-200 pt-10">

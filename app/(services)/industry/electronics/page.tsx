@@ -174,9 +174,10 @@ export default function ElectronicsIndustryPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#001a33]/95 from-[0%] via-[#0067b1]/35 via-[58%] to-white/25 to-[100%]" aria-hidden />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06284a]/30 via-transparent to-[#011d38]/25" aria-hidden />
 
-          <div className="relative z-10 mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-16 lg:px-8">
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-12 py-16 sm:px-16 lg:px-24">
+            <div className="lg:grid lg:grid-cols-2">
             <motion.div
-              className="max-w-[42rem]"
+              className=""
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: smoothEase }}
@@ -219,6 +220,7 @@ export default function ElectronicsIndustryPage() {
                 ))}
               </div>
             </motion.div>
+            </div>
           </div>
         </section>
 

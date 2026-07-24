@@ -118,9 +118,9 @@ export default function ManufacturingIndustryPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#001a33]/95 from-[0%] via-[#0067b1]/35 via-[58%] to-[#041a33]/25 to-[100%]" aria-hidden />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06284a]/30 via-transparent to-[#011d38]/25" aria-hidden />
 
-          <div
-            className="relative z-10 mx-auto w-full max-w-7xl px-6 py-16 sm:px-8 lg:px-8"
-          >
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-12 py-16 sm:px-16 lg:px-24">
+          <div className="lg:grid lg:grid-cols-2">
+          <div>
             {/* Badge pill */}
             <span className="inline-flex items-center rounded-full border border-blue-400/50 bg-blue-500/15 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest text-blue-300">
               Manufacturing Solutions
@@ -172,6 +172,8 @@ export default function ManufacturingIndustryPage() {
                 </div>
               ))}
             </div>
+          </div>
+          </div>
           </div>
         </section>
 
