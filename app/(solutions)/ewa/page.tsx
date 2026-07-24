@@ -759,8 +759,9 @@ export default function EwaPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              InOps EWA doesn&apos;t just work in isolation. It deeply integrates into your existing
-              enterprise stack.
+              Salary++ intelligently connects your workforce,
+payroll and banking ecosystem to deliver secure,
+real-time earned wage access. 
             </p>
           </motion.div>
 

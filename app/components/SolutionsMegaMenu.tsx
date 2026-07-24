@@ -55,7 +55,14 @@ export function SolutionsMegaMenuDesktop({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -8, scale: 0.98 }}
       transition={dropdownTransition}
-      className="absolute left-0 top-full z-[100] w-[min(92vw,80rem)] origin-top-left pt-2 md:left-28 md:-translate-x-1/2"
+      className="fixed z-[100]"
+      style={{
+        top: "var(--home-nav-offset)",
+        left: "50%",
+        x: "-50%",
+        width: "min(92vw, 80rem)",
+        paddingTop: "8px",
+      }}
     >
       <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-200/80 shadow-lg shadow-slate-900/[0.08] ring-1 ring-slate-950/[0.04]">
         <div className="flex flex-col gap-px">

@@ -647,9 +647,9 @@ function OurModulesCarousel() {
             variants={ourModulesHeaderItem}
             className="mt-2 text-xl font-heading-bold tracking-tight sm:text-2xl"
           >
-            <span className="text-slate-900">Our </span>
+            <span className="text-slate-900">RegX </span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 bg-clip-text font-semibold text-transparent">
-              modules
+              Modules 
             </span>
           </motion.h2>
           <motion.p
@@ -1023,7 +1023,7 @@ export default function PayrollSolutionsPage() {
                 Operational gaps
               </span>
               <h2 id="why-inops-heading" className="mt-6">
-                <span className=" text-black">Why InOps?</span>
+                <span className=" text-black">Why Iddion RegX?</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Where contract payroll breaks today, and what teams fix first when they standardize on one platform.

@@ -48,7 +48,7 @@ const FAQ_ITEMS = [
   {
     question: "What is the financial risk of CLRA compliance violations in India?",
     answer:
-      "OT, wage, and incident gaps in contract labour records surface during audits and disputes after the fact. Each violation can cost ₹50,000–₹1,00,000 in penalties under the Contract Labour (Regulation & Abolition) Act. Automated compliance tracking prevents gaps before filing deadlines.",
+      "OT, wage, and incident gaps in contract labour records surface during audits and disputes after the fact. Each violation can cost significant financial penalties under the Contract Labour (Regulation & Abolition) Act. Automated compliance tracking prevents gaps before filing deadlines.",
   },
   {
     question: "Why do contractor invoices have a 25–30% discrepancy rate?",
@@ -78,7 +78,7 @@ const FAQ_ITEMS = [
   {
     question: "What is the 9-day continuous attendance rule under CLRA?",
     answer:
-      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some circumstances may acquire employment rights that complicate the contractor relationship. InOps CLMS tracks continuous attendance per worker and alerts HR at day 7, giving two days to schedule the mandatory off before the threshold is crossed.",
+      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some circumstances may acquire employment rights that complicate the contractor relationship. InOps CLMS tracks continuous attendance per worker and alerts HR to schedule the mandatory off before the threshold is crossed.",
   },
   {
     question: "How does InOps CLMS prevent OT cost leakage?",

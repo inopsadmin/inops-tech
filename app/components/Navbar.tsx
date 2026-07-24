@@ -6,18 +6,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { SolutionsMegaMenuDesktop, SolutionsMegaMenuMobile } from "./SolutionsMegaMenu";
+import { ServicesMegaMenuDesktop, ServicesMegaMenuMobile } from "./ServicesMegaMenu";
 
 type NavItem =
   | { label: string; href: string }
   | { label: string; href: string; dropdown: string[] }
-  | { label: "Solutions"; href: string; solutionsMega: true };
+  | { label: "Platform"; href: string; solutionsMega: true }
+  | { label: "Services"; href: string; servicesMega: true };
 
 const SOLUTIONS_MENU_PANEL_ID = "nav-solutions-menu-panel";
+const SERVICES_MENU_PANEL_ID = "nav-services-menu-panel";
 
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Solutions", href: "#solutions", solutionsMega: true },
+  { label: "Services", href: "#services-menu", servicesMega: true },
+  { label: "Platform", href: "#solutions", solutionsMega: true },
   { label: "Resources", href: "#resources", dropdown: ["Blog", "Brochures"] },
   { label: "Contact", href: "/contact" },
 ];
@@ -28,6 +32,10 @@ function hasDropdown(item: NavItem): item is NavItem & { dropdown: string[] } {
 
 function hasSolutionsMega(item: NavItem): item is Extract<NavItem, { solutionsMega: true }> {
   return "solutionsMega" in item && item.solutionsMega === true;
+}
+
+function hasServicesMega(item: NavItem): item is Extract<NavItem, { servicesMega: true }> {
+  return "servicesMega" in item && item.servicesMega === true;
 }
 
 const headerTransition = { type: "tween" as const, duration: 0.45, ease: [0.33, 1, 0.68, 1] as const };
@@ -179,7 +187,55 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-3 md:flex xl:gap-4 2xl:gap-5" aria-label="Primary">
           {navItems.map((item, i) =>
-            hasSolutionsMega(item) ? (
+            hasServicesMega(item) ? (
+              <motion.div
+                key={item.label}
+                className="relative"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.08 + i * linkStagger, ease: "easeOut" }}
+              >
+                <div
+                  className="group relative"
+                  onMouseEnter={() => setOpenDropdown(item.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <motion.button
+                    type="button"
+                    id="nav-services-menu-button"
+                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors xl:px-[1.125rem] xl:py-2.5 xl:text-[1.03rem] 2xl:px-5 2xl:py-3 2xl:text-[1.08rem] ${
+                      scrolled ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100" : "text-white hover:text-white/90 hover:bg-white/10"
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    aria-expanded={openDropdown === "Services"}
+                    aria-haspopup="true"
+                    aria-controls={SERVICES_MENU_PANEL_ID}
+                  >
+                    {item.label}
+                    <motion.span
+                      animate={{ rotate: openDropdown === item.label ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      aria-hidden
+                    >
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </motion.span>
+                  </motion.button>
+
+                  <AnimatePresence>
+                    {openDropdown === item.label ? (
+                      <ServicesMegaMenuDesktop
+                        key="services-mega"
+                        menuId={SERVICES_MENU_PANEL_ID}
+                        onNavigate={() => setOpenDropdown(null)}
+                      />
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ) : hasSolutionsMega(item) ? (
               <motion.div
                 key={item.label}
                 className="relative"
@@ -419,6 +475,44 @@ export default function Navbar() {
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain bg-gray-50/80 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
                 <div className="space-y-2">
                   {navItems.map((item) => {
+                    if (hasServicesMega(item)) {
+                      const isOpen = mobileSection === item.label;
+                      return (
+                        <div key={item.label} className="rounded-xl border border-gray-200 bg-white shadow-sm">
+                          <button
+                            type="button"
+                            className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800"
+                            aria-expanded={isOpen}
+                            aria-controls="mobile-services-mega-panel"
+                            onClick={() => setMobileSection((prev) => (prev === item.label ? null : item.label))}
+                          >
+                            <span>{item.label}</span>
+                            <span className={`text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden>
+                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </span>
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {isOpen && (
+                              <motion.div
+                                id="mobile-services-mega-panel"
+                                role="region"
+                                aria-label="Services"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="overflow-hidden"
+                              >
+                                <ServicesMegaMenuMobile onNavigate={() => setMobileOpen(false)} />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    }
+
                     if (hasSolutionsMega(item)) {
                       const isOpen = mobileSection === item.label;
                       return (
