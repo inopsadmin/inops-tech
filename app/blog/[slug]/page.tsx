@@ -121,9 +121,9 @@ export default async function BlogArticlePage({ params }: PageProps) {
               <h3 className="mt-5 text-base font-semibold text-[color:var(--inops-blue)]">{section.subheading}</h3>
             ) : null}
             {section.paragraphs.map((p, j) => (
-              <p key={j} className="mt-4 text-base leading-8 text-slate-600">
-                {p}
-              </p>
+              <p key={j} className="mt-4 text-base leading-8 text-slate-600"
+                dangerouslySetInnerHTML={{ __html: p }}
+              />
             ))}
             {section.list && section.list.length > 0 ? (
               <ul className="mt-4 space-y-2 pl-5">

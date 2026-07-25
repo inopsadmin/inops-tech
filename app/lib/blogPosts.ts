@@ -322,7 +322,7 @@ export const blogPosts: BlogPost[] = [
         heading: "What CLRA compliance automation looks like in practice",
         paragraphs: [
           "InOps CLMS tracks all 12 requirements continuously across every contractor at every site. Licence expiry alerts fire 30 days before renewal. The 9-day attendance risk counter triggers when a worker approaches the threshold. Minimum wage checks run on every payroll cycle against the current notified rate. Form XIII and Form XVII are auto-generated from attendance data.",
-          "The goal is not to have the right documents at audit time — it is to never have a compliance gap that creates a document in the first place.",
+          "The goal is not to have the right documents at audit time — it is to never have a compliance gap that creates a document in the first place. Most checklist failures are timing failures — registers reconstructed at month-end instead of maintained live. That’s the gap <a href=\"/clms/modules/compliance-report\" class=\"text-blue-600 underline\">CLRA compliance software</a> closes.",
         ],
       },
     ],
@@ -511,7 +511,7 @@ export const blogPosts: BlogPost[] = [
         heading: "How to prevent the 9-day attendance liability",
         paragraphs: [
           "The prevention mechanism is straightforward: monitor continuous attendance in real time and enforce the weekly off before it is missed. The challenge is doing this across hundreds of contractors and thousands of workers manually.",
-          "InOps CLMS tracks consecutive attendance per worker and fires alerts at day 7 — giving HR and the contractor two days to schedule the mandatory off before the threshold is crossed. The system also maintains a log of weekly offs granted, which is the documentary evidence needed if a dispute arises.",
+          "Continuous-attendance is tracked automatically by <a href=\"/clms/modules/compliance-report\" class=\"text-blue-600 underline\">CLRA compliance software</a> that alerts at day 7 — giving HR and the contractor two days to schedule the mandatory off before the threshold is crossed. The system also maintains a log of weekly offs granted, which is the documentary evidence needed if a dispute arises.",
           "For plants running continuous shifts with rotating contractor workers, automated attendance monitoring is the only reliable solution. Paper-based weekly off registers are almost always incomplete, especially for short-tenure contract workers who leave before the register is updated.",
         ],
       },

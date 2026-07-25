@@ -43,6 +43,11 @@ const MODULE_TABS = [
     label: "Challan Reconciliation",
     accent: "PF / ESI validation",
   },
+  {
+    slug: "gate-compliance",
+    label: "Gate Compliance",
+    accent: "Compliance at the gate",
+  },
 ] as const;
 
 interface ModuleSwitcherProps {

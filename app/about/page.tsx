@@ -345,8 +345,7 @@ export default function AboutPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                   >
-                    A workforce technology platform built to optimize enterprise workforce operations. We unify identity,
-                    compliance, and financial layers into a single, seamless ecosystem.
+                    InOps is a contract labour and workforce compliance platform founded in Bengaluru in 2014 — serving manufacturers, industrial plants, and infrastructure operators across India. We unify attendance, statutory compliance, and contractor governance into one system, from gate biometrics to finance close.
                   </motion.p>
                 </div>
               </div>

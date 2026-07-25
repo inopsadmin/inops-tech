@@ -4,6 +4,7 @@ export interface ModuleData {
   title: string;
   description: string;
   seoTitle?: string;
+  seoDescription?: string;
   seoKeywords?: string[];
   /** Optional keyword-bearing H2 content sections rendered after the hero. Body may contain inline HTML (e.g. <a> tags). */
   contentSections?: { h2: string; body: string }[];
@@ -165,6 +166,8 @@ export const modules: ModuleData[] = [
     description:
       "InOps CLRA compliance software automates every obligation a principal employer carries under the Contract Labour (Regulation & Abolition) Act: digital Form V and Form XIII registers maintained in real time, contractor licence expiry and headcount-cap tracking per establishment, alerts on the 9-day continuous attendance threshold, and statutory returns generated directly from biometric gate data. Every register entry traces to a verified gate event — so audit day is a report export, not a records hunt.",
     seoTitle: "CLRA Compliance Software — Digital Registers, Licences & Statutory Returns | InOps",
+    seoDescription:
+      "CLRA compliance software for principal employers: automated Form V & Form XIII registers, contractor licence tracking, 9-day rest-rule alerts, and audit-ready statutory returns — generated from live gate data.",
     seoKeywords: [
       "CLRA compliance software",
       "Form V register software",
@@ -972,6 +975,130 @@ export const modules: ModuleData[] = [
         { label: "Automated Reports", status: "Ready", tone: "ok" },
         { label: "Compliance Alerts", status: "Active", tone: "ok" },
         { label: "Recommended Actions", status: "Live", tone: "ok" },
+      ],
+    },
+  },
+
+  {
+    slug: "gate-compliance",
+    badge: "Gate Compliance",
+    title: "Gate Pass Management System for Industrial Sites",
+    description:
+      "InOps gate pass management system enforces compliance rules at the point of entry — verifying contractor licences, Form V coverage, and headcount limits before a worker crosses the gate, then writing every event to the statutory compliance record in real time.",
+    seoTitle: "Gate Pass Management System | Gate Compliance & Access Control — InOps CLMS",
+    seoDescription:
+      "Gate pass management system for industrial sites: contractor licence verification, CLRA headcount enforcement, biometric entry control, and real-time statutory record updates — at every gate, every shift.",
+    seoKeywords: [
+      "gate pass management system",
+      "factory gate compliance software",
+      "contractor gate access control India",
+      "industrial gate pass software",
+      "CLRA gate enforcement",
+    ],
+
+    contentSections: [
+      {
+        h2: "Statutory and CLRA rules enforced at the gate",
+        body: 'The gate is where compliance obligations are created — not the register. InOps evaluates CLRA licence validity, Form V headcount limits, and 9-day continuous attendance status before each worker enters, using the same engine that powers our <a href="/clms/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>. A gate event without a compliance check is an unverified record.',
+      },
+      {
+        h2: "How does a gate pass management system work?",
+        body: "InOps issues digital gate passes tied to a worker's biometric identity, contractor licence, and site assignment. Each pass carries an expiry, a permitted zone, and a shift window. At the gate, the biometric terminal verifies the worker's identity against the pass — not just a badge — before entry is granted. Passes that are expired, outside permitted hours, or for an unlicensed contractor are rejected automatically.",
+      },
+      {
+        h2: "Gate data as the source of compliance records",
+        body: "Every gate event — entry, exit, zone change, rejection — is written to the CLMS compliance record in real time. This means Form XIII register entries, headcount totals, and attendance logs are current to the last gate punch. There is no manual transfer between the gate log and the statutory register.",
+      },
+    ],
+
+    metrics: [
+      "Reduced Unauthorised Entry",
+      "Real-Time Compliance Records",
+      "Faster Audit Response",
+    ],
+
+    challenges: [
+      "Unlicensed contractors entering site",
+      "Headcount caps exceeded per establishment",
+      "Gate logs not linked to statutory registers",
+      "Manual gate pass issuance and tracking",
+      "No real-time rejection audit trail",
+    ],
+
+    workflow: [
+      {
+        title: "Pass Issuance",
+        description: "Digital gate passes are generated from contractor onboarding data — licence, site, permitted zone, and shift window pre-loaded.",
+      },
+      {
+        title: "Biometric Verification at Gate",
+        description: "Worker identity is verified against the pass via face recognition or fingerprint terminal before entry is granted.",
+      },
+      {
+        title: "Compliance Check",
+        description: "Licence validity, Form V headcount limits, and 9-day attendance status are evaluated in real time before the gate opens.",
+      },
+      {
+        title: "Record Update",
+        description: "Each gate event writes to the statutory compliance record, attendance log, and headcount dashboard simultaneously.",
+      },
+    ],
+
+    features: [
+      "Digital Gate Pass Issuance",
+      "Biometric Entry Verification",
+      "CLRA Headcount Enforcement",
+      "Licence Validity Checks",
+      "Zone & Shift Access Control",
+      "Real-Time Rejection Audit Trail",
+    ],
+
+    roi: [
+      {
+        title: "Reduced Unauthorised Entry",
+        description: "Licence checks and headcount caps enforced at the terminal eliminate manual oversight gaps at busy factory gates.",
+      },
+      {
+        title: "Live Statutory Records",
+        description: "Gate events write directly to compliance registers — no manual transcription, no month-end reconstruction.",
+      },
+      {
+        title: "Faster Audit Response",
+        description: "Gate pass history, entry logs, and rejection records are searchable by worker, contractor, date, or site in under a minute.",
+      },
+    ],
+
+    aiInsights: [
+      "AI flags unusual entry patterns — off-shift access, repeated rejections, and headcount anomalies — before they become compliance events.",
+      "Smart alerts surface contractors whose licences will expire before the next pay cycle.",
+      "Predictive headcount analysis warns when a contractor is approaching their permitted deployment limit per establishment.",
+    ],
+
+    benefits: [
+      "Security teams gain a biometric-verified gate log that doubles as a statutory compliance record.",
+      "Compliance officers see real-time headcount per contractor per establishment — with alerts before limits are breached.",
+      "HR and plant managers get a single audit trail from gate entry to payroll, with no manual linking required.",
+    ],
+
+    cta: "Make every gate event a compliance record.",
+
+    dashboard: {
+      analytics: [
+        { label: "Mon", value: 74 },
+        { label: "Tue", value: 58 },
+        { label: "Wed", value: 82 },
+        { label: "Thu", value: 66 },
+        { label: "Fri", value: 90 },
+        { label: "Sat", value: 48 },
+      ],
+      kpis: [
+        { label: "Active Gate Passes", value: "3,841" },
+        { label: "Entry Rejections Today", value: "12" },
+      ],
+      feed: [
+        { label: "Gate Pass Status", status: "Live", tone: "ok" },
+        { label: "Licence Checks", status: "Active", tone: "ok" },
+        { label: "Headcount Cap", status: "Near Limit", tone: "warn" },
       ],
     },
   },

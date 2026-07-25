@@ -94,6 +94,9 @@
 - [Challan Reconciliation Module](https://inops.tech/clms/modules/challan-reconciliation):
   PF/ESI challan matching against payroll deductions with gap alerts.
 
+- [Gate Pass Management System](https://inops.tech/clms/modules/gate-compliance):
+  Biometric gate pass control with CLRA licence checks, headcount enforcement, and real-time statutory record updates.
+
 - [CXO Dashboard](https://inops.tech/clms/modules/cxo-dashboard):
   Executive-level visibility into workforce strength, compliance status, and cost
   metrics across all sites.
