@@ -1355,6 +1355,53 @@ export default function MobileAppPage() {
           </motion.section>
         </div>
 
+        {/* H2 content sections — SEO depth */}
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="mobile-face-gps-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="mobile-face-gps-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Face recognition + GPS: attendance anywhere
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Worker opens the InOps app → on-device face match → GPS geofence validation → punch recorded with identity, time, and location in one step. No fixed biometric terminal needed; every record carries the same verified identity as a gate reader.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Built for sites the fixed gate can't serve: metro corridors, road construction projects, and distributed depot networks — the BOCW-regulated world where attendance evidence is hardest to maintain. Contract workers on scattered sites get the same identity-verified attendance record as workers clocking in at a plant gate.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="mobile-supervisors-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="mobile-supervisors-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                For supervisors and managers
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Supervisors see team attendance status, flag exceptions, and authorize OT from the same app — with push notifications for escalations and threshold breaches. No need to log into the desktop system to action what the field is flagging.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="mobile-where-it-fits-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="mobile-where-it-fits-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Where mobile attendance fits
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Fixed biometric readers suit high-density factory gates where throughput and fraud prevention are primary — see{" "}
+                <a href="/face" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  face recognition attendance
+                </a>
+                . Mobile attendance suits moving or distributed sites where a fixed terminal isn't viable. Most InOps infrastructure clients run both on one platform, so a worker's identity and attendance record are unified regardless of which capture method was used on any given shift.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         <section aria-labelledby="mobile-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
             <motion.div

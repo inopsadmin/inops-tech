@@ -343,7 +343,7 @@ export default function EwaPage() {
             Earned Wage Access for <span className="text-blue-600">factory workers</span>
           </>
         }
-        subtitle="Earned wage access (EWA) lets workers draw wages they have already earned before payday — calculated from verified attendance, capped by payroll rules, and disbursed through a regulated NBFC partner. No loans, no interest, no employer liability."
+        subtitle="InOps EWA (Salary++) lets factory and contract workers withdraw a portion of wages they have already earned — validated against biometric attendance — before payday. It is not a loan: the withdrawable amount is a governed share of verified earned wages, there is no interest to the worker, and settlement happens automatically in the next payroll cycle. Employers carry no capital outlay or balance-sheet exposure."
         videoSrc={mediaVideos.ewaPlatformPreview}
         imageSrc="/images/ewa-hero.png"
         imageAlt="Workforce on site ,  earned wage access aligned to verified attendance"
@@ -724,6 +724,31 @@ export default function EwaPage() {
         </div>
       </section>
 
+      {/* Legal clarity section — pending final legal review before publishing */}
+      <section
+        className="border-t border-slate-100 bg-white py-12 lg:py-20"
+        aria-labelledby="ewa-loan-question-heading"
+      >
+        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.48, ease: smoothEase }}
+          >
+            <h2
+              id="ewa-loan-question-heading"
+              className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+            >
+              Is earned wage access a loan?
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+              Structurally, EWA is an advance on earned-but-unpaid wages rather than credit against future income. The distinction matters under Indian law: an advance on wages does not trigger the Money Lenders Act, does not create a credit liability, and does not require consent under the Credit Information Companies Act. InOps EWA is disbursed through a regulated NBFC partner and recovered at source at the next payroll cycle — no rollovers, no accruing interest, no separate repayment schedule. For the worker it is access to money they have already earned; for the employer it is a payroll timing adjustment with zero additional liability.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <section
         className="relative overflow-hidden border-y border-slate-200/70 bg-gradient-to-b from-slate-50/95 via-white to-white py-12 lg:py-20"
         aria-labelledby="ewa-ecosystem-heading"
@@ -759,9 +784,11 @@ export default function EwaPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Salary++ intelligently connects your workforce,
-payroll and banking ecosystem to deliver secure,
-real-time earned wage access. 
+              Salary++ intelligently connects your workforce, payroll and banking ecosystem to deliver secure, real-time earned wage access. It runs on the same attendance engine as{" "}
+              <a href="/clms" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                InOps CLMS
+              </a>
+              , so every withdrawal is validated against the same verified records that drive your contractor payroll.
             </p>
           </motion.div>
 

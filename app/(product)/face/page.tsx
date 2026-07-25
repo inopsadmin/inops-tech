@@ -1428,6 +1428,78 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
+        {/* H2 content sections — SEO depth */}
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="face-terminals-factory-gates-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="face-terminals-factory-gates-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Face terminals for factory gates
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                InOps deploys enterprise-grade face recognition terminals — ZKTeco face series and equivalent outdoor-rated readers — across factory gates and plant entrances. Purpose-built for industrial throughput: each lane delivers sub-second reads, stainless-steel housing rated for outdoor duty, and infrared sensing that performs in direct sunlight or low light. Throughput per lane supports high-density shift changes without bottlenecks.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Enrollment is a one-time process: a single biometric capture at your HR desk or gate kiosk, digital consent collected in the worker's preferred language, and the identity becomes active across every device on site — gate, canteen terminal, attendance reader — with no re-registration required.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="face-accuracy-factory-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="face-accuracy-factory-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                How accurate is face recognition attendance in factory conditions?
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Accuracy in a lobby and accuracy at a shift-change gate are different problems: dust, backlight, helmets, and 300 workers in 20 minutes. InOps publishes real deployment accuracy data in our{" "}
+                <a href="/blog/biometric-attendance-accuracy-report-india-2026" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  biometric attendance accuracy report
+                </a>{" "}
+                rather than quoting lab numbers.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="face-one-identity-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="face-one-identity-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                One identity across all devices
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                InOps runs a single identity engine across all capture modes: face terminals, fingerprint readers, CCTV-based AI attendance, QR, and card — one enrolled identity, one attendance record, one compliance view per worker, per contractor, per site. For sites that cannot place hardware at every capture point, our{" "}
+                <a href="/cctv" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  CCTV attendance system
+                </a>{" "}
+                captures attendance without dedicated terminals at scale. For physical access control where the barrier arm must not turn, our{" "}
+                <a href="/turnstiles" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  turnstile access control
+                </a>{" "}
+                integrates the same biometric identity into lane enforcement.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="face-recognition-compliance-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="face-recognition-compliance-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                From recognition to compliance
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                The reader identifies; the rules decide. Every recognition event checks induction status, medical fitness, licence validity, and BGV clearance via{" "}
+                <a href="/clms/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  gate compliance and auto-blocking
+                </a>{" "}
+                — a failed check denies entry and logs the reason in real time. Biometric attendance and compliance gate logic share the same underlying record, so a worker blocked at the gate is automatically excluded from that shift's attendance and payroll.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         <section aria-labelledby="face-recognition-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
             <motion.div

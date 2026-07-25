@@ -18,6 +18,7 @@ import {
 import { ThroughputMetricCard } from "@/app/components/ThroughputMetricCard";
 import { mediaVideos } from "@/app/lib/mediaAssets";
 import { inopsUi } from "@/app/lib/inopsUi";
+import { hrisFaqItems } from "@/app/lib/hrisFaqItems";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -106,38 +107,6 @@ const platformControlCards = [
   },
 ] as const;
 
-const hrisFaqItems = [
-  {
-    question: "What is a Human Resource Information System (HRIS)?",
-    answer:
-      "A Human Resource Information System (HRIS) centralizes employee records, attendance, leave, payroll integration, and HR workflows to simplify workforce management.",
-  },
-  {
-    question: "What are the benefits of HRIS software?",
-    answer:
-      "HRIS improves employee data management, reduces manual work, automates HR processes, enhances reporting, and supports better workforce planning.",
-  },
-  {
-    question: "Can HRIS integrate with payroll and attendance systems?",
-    answer:
-      "Yes. HRIS integrates with payroll, biometric attendance, leave management, recruitment, and enterprise applications for seamless HR operations.",
-  },
-  {
-    question: "Is HRIS suitable for growing businesses?",
-    answer:
-      "Yes. HRIS solutions scale from small businesses to large enterprises by supporting multiple locations, departments, and workforce sizes.",
-  },
-  {
-    question: "How does HRIS improve employee record management?",
-    answer:
-      "It provides a centralized digital repository for employee information, documents, performance records, and employment history.",
-  },
-  {
-    question: "Can HRIS automate employee onboarding?",
-    answer:
-      "Yes. HRIS automates employee onboarding, document collection, approval workflows, and employee lifecycle management.",
-  },
-] as const;
 
 type PlatformCardTone = (typeof platformControlCards)[number]["tone"];
 
@@ -739,7 +708,7 @@ export default function LabourManagementPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    InOps HRIS manages your permanent workforce — records, attendance, statutory payroll, leave — on the same attendance and identity engine that runs InOps CLMS, so permanent and contract workforces are governed together without duplicate hardware.
+                    InOps HRIS is the system of record for your permanent workforce — employee data, onboarding, attendance and leave, statutory payroll, claims, and compliance documents — built for Indian manufacturing rather than adapted from a global product. It runs on the same attendance and identity engine as InOps CLMS, so permanent and contract workforces are visible together: one hardware estate, one dashboard, no duplicate systems.
                   </FlyInText>
 
                   <FlyInText
@@ -1360,6 +1329,44 @@ export default function LabourManagementPage() {
                   <span className="relative">View Batch Details</span>
                 </button>
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-100 bg-white py-16 md:py-24" aria-labelledby="hris-content-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8 flex flex-col gap-14">
+            <div>
+              <h2 id="hris-content-heading" className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">What does InOps HRIS cover?</h2>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                Employee records and documents · Digital onboarding and document collection · Attendance and shift tracking via biometric hardware · Leave management and approval workflows · Statutory payroll (PF, ESI, PT, LWF, TDS) · Claims and expense management · Exit and full-and-final settlement.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Statutory payroll for India</h2>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                PF, ESI, Professional Tax, LWF, and TDS computed per employee with state-aware logic; challan-ready outputs for every filing cycle; audit trail on each computation. Statutory rate tables are maintained centrally — changes in notified rates update calculations without manual reconfiguration.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">One engine for permanent and contract workforces</h2>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                InOps HRIS and <Link href="/clms" className="text-blue-600 underline">contract labour management system</Link> share the same biometric attendance and identity infrastructure. The face terminals, fingerprint readers, and CCTV-based attendance devices that clock your permanent staff also govern your contract workforce — no separate hardware estate, no manual data bridging between two systems.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                Plant HR sees total headcount — permanent via HRIS, contractors via CLMS — in one dashboard. Compliance officers see both workforces' statutory status together. This is the integration story that a single-workforce HR platform cannot offer.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">HRIS vs CLMS: which do you need?</h2>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                HRIS is for your own employees — permanent and fixed-term staff on your payroll. <Link href="/clms" className="text-blue-600 underline">CLMS</Link> is for contractors' workers — third-party labour with their own employer, governed by CLRA licences, Form V/XIII registers, and contractor invoices that an HRIS is not designed to handle. Most large manufacturing plants need both. InOps runs them on one platform.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Multi-site by default</h2>
+              <p className="mt-4 text-base leading-relaxed text-gray-600">
+                Employee records, attendance, leave, and payroll consolidate across plants and offices with site-level and aggregate reporting. InOps runs workforce management across 163+ industrial sites — the multi-site architecture is not an add-on; it is how the platform is built.
+              </p>
             </div>
           </div>
         </section>

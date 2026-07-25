@@ -1349,6 +1349,90 @@ export default function EnterpriseSolutionPage() {
         </div>
       </section>
 
+      {/* Capabilities summary — H3 + 2 sentences + keyword link per capability */}
+      <section className="border-t border-slate-100 bg-white py-14 lg:py-20" aria-labelledby="enterprise-capabilities-heading">
+        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <h2 id="enterprise-capabilities-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              What the platform covers
+            </h2>
+            <div className="mt-10 space-y-10">
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Contract labour governance</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  Digital onboarding, gate compliance, CLRA registers, and payroll for every contractor workforce on every site — with licence tracking, BGV, and statutory deductions built in.{" "}
+                  <Link href="/clms" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    Contract labour management system
+                  </Link>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Permanent workforce HR</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  Employee records, leave, and statutory payroll (PF, ESI, PT, LWF) on the same identity engine as your contract workforce — one device estate, one dashboard, no duplicate systems.{" "}
+                  <Link href="/hris" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    HRIS software for manufacturing
+                  </Link>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Attendance capture</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  Every capture mode on one engine:{" "}
+                  <Link href="/face" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    face recognition attendance
+                  </Link>
+                  ,{" "}
+                  <Link href="/cctv" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    CCTV attendance system
+                  </Link>
+                  , fingerprint, mobile — one enrolled identity, one attendance record per worker.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Physical access control</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  <Link href="/turnstiles" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    Turnstile access control
+                  </Link>{" "}
+                  with compliance rule enforcement via{" "}
+                  <Link href="/clms/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    gate pass management
+                  </Link>
+                  — induction, medical, licence, and BGV checked at the barrier before the arm turns.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Site services</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  Biometric meal entitlements, canteen invoice reconciliation, and digital visitor passes — on the same identity spine as gate and workforce.{" "}
+                  <Link href="/canteen-and-visitor" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    Canteen and visitor management
+                  </Link>
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">Worker financial wellness</h3>
+                <p className="mt-2 text-base leading-relaxed text-slate-600">
+                  Contract and factory workers withdraw wages they have already earned — validated against biometric attendance, settled at the next payroll cycle, zero employer liability.{" "}
+                  <Link href="/ewa" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                    Earned wage access
+                  </Link>
+                </p>
+              </div>
+            </div>
+            <p className="mt-10 text-base leading-relaxed text-slate-600">
+              One identity record, one attendance engine, and central multi-site visibility tie every capability together — so gate events, canteen records, payroll runs, and statutory registers all trace to the same verified source. Most enterprise deployments go live in 30–60 days.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       <SolutionPageClosingCta
         headingId="enterprise-final-cta-heading"
         heading="Transform Enterprise Operations with a Unified Platform"

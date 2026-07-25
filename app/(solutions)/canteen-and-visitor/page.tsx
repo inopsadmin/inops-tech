@@ -926,6 +926,60 @@ export default function CanteenManagementPage() {
           </div>
         </section>
 
+        {/* H2 content sections — SEO depth */}
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="canteen-entitlement-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="canteen-entitlement-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Canteen management: entitlement, validation, reconciliation
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Meal entitlements — which shift, which contractor, which cost centre qualifies for which meal — follow the roster automatically. Biometric validation at the canteen counter replaces coupons and manual registers: a worker presents at the terminal, the system confirms their shift eligibility, and the meal is issued and logged without any paper or proxy.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Contractor-wise meal counts roll up to a canteen invoice report. The same contractor mapping your{" "}
+                <a href="/clms" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  contract labour management system
+                </a>{" "}
+                maintains for attendance and payroll closes the billing gap — over-counted meals are flagged before the invoice is approved, not discovered in next month's audit.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="visitor-pass-to-exit-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="visitor-pass-to-exit-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Visitor management: pass to exit
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Visitors enter through pre-registration (host-initiated) or walk-in (lobby check-in), receive host approval or auto-approval by visitor category, and are issued a digital gate pass with a defined validity window. Entry and exit are captured biometrically or by QR scan; the platform checks against watchlists and blacklists before pass issuance. All visit records are retained for the period your security policy requires, with data export available for audit or regulatory review.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="canteen-one-identity-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="canteen-one-identity-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Why one identity platform matters
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                A single enrollment covers every touchpoint: gate entry, canteen counter, and visitor host lookup all resolve against the same identity record. Visitors use the same{" "}
+                <a href="/turnstiles" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  turnstile access control
+                </a>{" "}
+                lanes as workers, so security sees everyone on site — permanent staff, contract workers, and visitors — in one live view.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                When gate, canteen, and workforce systems share one identity spine, a contractor blocked at the gate is also automatically excluded from canteen eligibility that shift — no manual intervention, no reconciliation lag.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         <section aria-labelledby="smart-canteen-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
             <motion.div

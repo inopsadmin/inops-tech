@@ -233,6 +233,77 @@ export default function TurnstilesPage() {
           </div>
         </section>
 
+        {/* H2 content sections — SEO depth */}
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="turnstile-types-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="turnstile-types-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Turnstile and barrier types for industrial sites
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                <strong className="font-semibold text-slate-800">Tripod turnstiles</strong> are the standard for indoor gate lanes and building lobbies: three-arm rotation, up to 25–30 persons per minute per lane, compact footprint, stainless steel. Well-suited to contractor entry points where attendance must be captured at every pass and throughput is the primary constraint.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                <strong className="font-semibold text-slate-800">Full-height turnstiles</strong> close the entire pedestrian path — appropriate for perimeter gates, defence establishments, and PSU campuses where tailgating cannot be tolerated. Rated for outdoor exposure, available with integrated face, card, or fingerprint readers.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                <strong className="font-semibold text-slate-800">Flap barriers</strong> suit office-to-plant transitions and visitor reception lanes where a smooth, fast passage experience matters alongside access control. Indoor rated; sheltered outdoor positions are supported subject to deployment specs.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="turnstile-compliance-rules-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="turnstile-compliance-rules-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Can turnstiles enforce compliance rules?
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                A turnstile alone enforces identity; connected to a rules engine it enforces policy. InOps lanes check induction validity, medical fitness, licence status, and BGV clearance at the moment of entry — a failed check means the arm doesn't turn, and the denial is logged with its reason. See{" "}
+                <a href="/clms/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  gate pass management and auto-blocking
+                </a>{" "}
+                for the full rule set.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="turnstile-attendance-stack-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="turnstile-attendance-stack-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Integration with your attendance stack
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Every reader type — face terminal, fingerprint, card, or QR — mounts to an InOps lane without a separate controller. Entry and exit events feed the same attendance engine as{" "}
+                <a href="/face" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  face recognition attendance
+                </a>{" "}
+                and{" "}
+                <a href="/cctv" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  CCTV attendance
+                </a>
+                , so one worker identity covers every device and every gate with no duplicate enrollment.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="turnstile-deployment-heading">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
+              <h2 id="turnstile-deployment-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Deployment and maintenance
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                InOps handles site survey, civil coordination, installation, and commissioning, with AMC and SLA support available post-deployment. Most gate configurations are live within days of hardware delivery; multi-gate campuses run in parallel lanes to avoid attendance disruptions during rollout.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Why Choose Us */}
         <WhyChooseUsSection />
 

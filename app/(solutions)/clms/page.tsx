@@ -114,7 +114,7 @@ const painPoints = [
   },
   {
     title: "Compliance violations",
-    stat: "₹50K–₹1L per violation",
+    stat: "Penalties + audit exposure",
     cornerBadge: "Audit risk",
     description:
       "OT, wage, and incident gaps surface after the fact, audits and disputes land on your desk.",
@@ -353,6 +353,17 @@ const ourModulesSlides = [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=85",
     alt: "Invoice and challan reconciliation review",
   },
+  {
+    slug: "gate-compliance",
+    title: "Gate Compliance & Auto-Blocking",
+    description:
+      "19 automated entry rules — induction, medical, licence, and BGV enforced at the gate before a worker enters.",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85",
+    hoverImage:
+      "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85",
+    alt: "Industrial gate access control with biometric verification",
+  },
   // {
   //   title: "Access Control & Gate Integration",
   //   description:
@@ -377,6 +388,7 @@ const ourModuleCardPalettes = [
   { topBar: "from-indigo-600 via-violet-500 to-purple-600" },
   { topBar: "from-sky-500 via-indigo-500 to-violet-600" },
   { topBar: "from-rose-500 via-amber-500 to-orange-500" },
+  { topBar: "from-teal-500 via-emerald-500 to-green-500" },
 ] as const;
 
 /** Cost leakage cards — width scales with viewport on all breakpoints. */
@@ -893,7 +905,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Our contract labour management system automates attendance, statutory compliance, and payouts — from gate logs to finance close.
+                    InOps CLMS is a contract labour management system that governs the full contractor lifecycle for Indian manufacturing plants: digital onboarding with background verification, gate compliance and auto-blocking, biometric attendance from face, fingerprint, and CCTV devices, CLRA registers and statutory deductions, contractor payroll, and line-by-line invoice reconciliation — from gate logs to finance close on one platform.
                   </FlyInText>
 
                   <FlyInText
@@ -1529,7 +1541,7 @@ export default function PayrollSolutionsPage() {
                           },
                           {
                             k: "Net annual savings",
-                            v: "₹19 Lakhs",
+                            v: "₹1.49 Cr",
                             icon: "savings" as const,
                             topBar: "from-indigo-400 via-violet-400 to-fuchsia-500",
                             shell:

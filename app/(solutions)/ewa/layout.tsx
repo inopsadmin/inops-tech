@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const PAGE_TITLE = "Earned Wage Access (EWA) for Factory Workers | InOps Salary++";
 const PAGE_DESCRIPTION =
-  "Payroll-connected earned wage access (EWA) for industrial workforces: on-demand earned wages, attendance validation, and compliant controls.";
+  "Earned wage access for India's industrial workforce: workers withdraw wages already earned, verified against biometric attendance — no loans, no employer liability, settlement automated with payroll.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
@@ -17,7 +17,7 @@ export const metadata: Metadata = routeMetadata({
     "on-demand wages",
     "salary advance alternative",
     "blue collar financial wellness",
-    "EWA RBI framework",
+    "EWA factory workers",
   ],
 });
 
