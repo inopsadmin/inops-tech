@@ -3,7 +3,7 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Earned Wage Access (EWA) | On-Demand Wages for Factory Workers";
+const PAGE_TITLE = "Earned Wage Access (EWA) for Factory Workers | InOps Salary++";
 const PAGE_DESCRIPTION =
   "Payroll-connected earned wage access (EWA) for industrial workforces: on-demand earned wages, attendance validation, and compliant controls.";
 
@@ -13,16 +13,11 @@ export const metadata: Metadata = routeMetadata({
   path: "/ewa",
   extraKeywords: [
     "earned wage access India",
-    "EWA platform India",
-    "salary advance factory workers",
-    "on-demand wages contract workers India",
-    "earned wage access manufacturing",
-    "EWA financial wellness blue collar workers",
-    "contract worker salary advance India",
-    "reduce workforce attrition manufacturing",
-    // Tier 4 — InOps-exclusive: only platform linking EWA to CLMS biometric attendance
-    "EWA contract workers biometric attendance",
-    "earned wage access biometric attendance India",
+    "EWA platform",
+    "on-demand wages",
+    "salary advance alternative",
+    "blue collar financial wellness",
+    "EWA RBI framework",
   ],
 });
 

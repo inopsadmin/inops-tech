@@ -4,27 +4,20 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Biometric Access Control | Face Readers & Turnstiles";
+const PAGE_TITLE = "Face Recognition Attendance System for Factories | Terminals & Readers — InOps";
 const PAGE_DESCRIPTION =
-  "Biometric access control for enterprise: face and fingerprint readers, turnstiles, card readers, and attendance integration for Indian industrial sites.";
+  "Industrial face recognition attendance terminals for factory gates: liveness detection, CLMS integration, and multi-site biometric attendance for Indian manufacturers.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   path: "/face",
   extraKeywords: [
-    "biometric attendance system manufacturing",
-    "face recognition access control India",
-    "biometric attendance defence site India",
-    "ZKTeco CLMS integration India",
-    "biometric attendance DRDO HAL contractor",
-    "multi-site biometric attendance manufacturing",
-    "industrial access control India",
-    "turnstile biometric integration CLMS",
-    "contractor attendance hardware India",
-    // Tier 4 — exclusive client/scale keywords
-    "contractor attendance BMRCL metro India",
-    "biometric attendance 163 sites manufacturing",
+    "face recognition attendance",
+    "face reader factory",
+    "biometric face terminal India",
+    "ZKTeco face reader",
+    "industrial face recognition",
   ],
 });
 

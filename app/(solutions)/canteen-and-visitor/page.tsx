@@ -318,11 +318,11 @@ export default function CanteenManagementPage() {
           }
           title={
             <>
-              <span className="block text-slate-900">Canteen, Visitors, <br /> &amp; Subsidies</span>
-              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">Unified on One Platform.</span>
+              <span className="block text-slate-900">Canteen and Visitor Management</span>
+              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">for Industrial Sites</span>
             </>
           }
-          subtitle="Run meal issuance, biometric checks, and subsidy rules from the line to payroll, then connect visitor check-in and lobby flows so canteen entitlements, access, and reporting stay consistent across the campus."
+          subtitle="InOps manages meal entitlement by shift, department, and contractor — biometric meal counts, payroll-linked subsidies, and waste tracking — alongside visitor passes and lobby flows, all from one platform across your industrial campus."
           subtitleClassName="text-xs leading-relaxed text-slate-600 sm:text-base"
           splitHeroCopyStackClassName={`max-w-3xl lg:max-w-xl lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"

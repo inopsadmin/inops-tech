@@ -262,11 +262,11 @@ export default function EnterpriseSolutionPage() {
         }
         title={
           <>
-            Connected operations.{" "}
-            <span className="text-blue-600">Intelligent control.</span>
+            One Platform for{" "}
+            <span className="text-blue-600">Workforce Compliance and Access</span>
           </>
         }
-        subtitle="Manage assets, logistics, and warehouse operations through a unified platform with real-time visibility and AI-driven automation."
+        subtitle="CLMS, HRIS, biometric attendance, and gate access control — unified across all your industrial sites so permanent and contract workforces are governed from a single platform."
         videoSrc="/videos/Enterprise_Solutions_digitizing_202605062212.mp4"
         imageAlt="Warehouse and logistics operations ,  enterprise visibility"
         livePopups={[

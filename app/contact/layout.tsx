@@ -3,7 +3,7 @@ import SecondaryPageJsonLd from "@/app/components/SecondaryPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Book a Demo | Bengaluru Office";
+const PAGE_TITLE = "Book a Demo | InOps — CLMS, Biometrics & Workforce Compliance";
 const PAGE_DESCRIPTION =
   "Book a demo, talk to sales, or visit our Bengaluru office. Phone +91 80886 02602 · contact@inops.tech · Bommasandra Industrial Area.";
 

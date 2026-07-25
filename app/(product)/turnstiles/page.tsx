@@ -75,8 +75,8 @@ export default function TurnstilesPage() {
     <>
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
-          title="Turnstiles for high-throughput, secure entry"
-          subtitle="Stainless steel lanes with integrated readers, built for industrial, commercial, and campus gates with dependable throughput and clear access signals."
+          title="Turnstile Access Control for Factory Gates"
+          subtitle="Tripod turnstiles and flap barriers with integrated biometric readers — stainless steel construction, CLMS-connected access control, and high-throughput entry for industrial sites, campuses, and commercial facilities across India."
           imageSrc={turnstilesHeroBg}
           imageAlt="Security turnstile lanes at a facility entrance"
         />

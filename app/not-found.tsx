@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: `Page not found | ${SITE_NAME}`,
   description: "The page you requested could not be found. Explore CLMS, EWA, biometrics, and contact InOps.",
   robots: { index: false, follow: true },
+  alternates: {},
 };
 
 export default function NotFound() {

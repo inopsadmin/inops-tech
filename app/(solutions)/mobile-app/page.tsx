@@ -553,7 +553,7 @@ export default function MobileAppPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                 >
-                  Attendance in <span className="text-blue-600">every pocket</span>
+                  Mobile Attendance <span className="text-blue-600">with Face Recognition</span>
                 </motion.h1>
                 <motion.p
                   className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
@@ -561,8 +561,7 @@ export default function MobileAppPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                 >
-                  Punch in, submit leave, and see who is on shift, from the phone your people already carry. Give
-                  employees simple self-service without buying extra hardware for everyday tasks.
+                  GPS-validated face recognition attendance on mobile — for contract workers at sites without fixed biometric hardware. InOps verifies location and identity at punch-in, feeds verified attendance directly into CLMS payroll, and gives workers self-service access to leave, payslips, and earned wages.
                 </motion.p>
                 <motion.div
                   className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"

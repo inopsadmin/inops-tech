@@ -727,8 +727,7 @@ export default function LabourManagementPage() {
                     className="home-display-heading inops-type-hero mt-4 flex flex-col gap-1 text-slate-900 sm:mt-5 sm:gap-1.5"
                   >
                     <span className="text-slate-900 whitespace-nowrap">
-                      Total Workforce  <br /> Management                     <span className="text-[color:var(--inops-blue)]">Simplified.</span>
-
+                      HRIS Built for <span className="text-[color:var(--inops-blue)]">Indian Manufacturing</span>
                     </span>
                   </FlyInText>
 
@@ -740,8 +739,7 @@ export default function LabourManagementPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    One platform for employee records, attendance, payroll, and day-to-day workforce ops, fast to run and
-                    structured for compliance.
+                    InOps HRIS manages your permanent workforce — records, attendance, statutory payroll, leave — on the same attendance and identity engine that runs InOps CLMS, so permanent and contract workforces are governed together without duplicate hardware.
                   </FlyInText>
 
                   <FlyInText
@@ -1423,13 +1421,13 @@ export default function LabourManagementPage() {
           heading="Run labour and HR with less friction"
           description={
             <>
-              Teams across industries use this platform to tighten scheduling, stay compliant, and pay people on time.
-              Start your 14-day trial at no cost, or book a live walkthrough mapped to how you actually work.
+              Teams across Indian manufacturing plants use this platform to tighten scheduling, stay compliant, and pay people on time.
+              Book a live walkthrough mapped to how your plant actually works, or talk to our team about your compliance needs.
             </>
           }
           primaryLabel="Book a tailored demo"
           secondaryLabel="Get a free consultation"
-          footnote="No credit card to start · GDPR-ready · Cancel anytime"
+          footnote="No commitment · GDPR-ready · Implementation support included"
         />
       </div>
     </MotionConfig>

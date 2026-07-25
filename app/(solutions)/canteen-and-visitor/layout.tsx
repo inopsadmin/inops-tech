@@ -2,15 +2,20 @@ import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Canteen & Visitor Management | Meals & Guest Access";
+const PAGE_TITLE = "Canteen & Visitor Management System for Factories | InOps";
 const PAGE_DESCRIPTION =
-  "Digital canteen and subsidy control, biometric meal counting, payroll-linked subsidies, inventory and waste tracking, contractor vs employee pricing. Headquartered in Bengaluru.";
+  "Canteen and visitor management for industrial sites: biometric meal entitlement by shift and contractor, payroll-linked subsidies, and visitor pass management for Indian manufacturing plants.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   path: "/canteen-and-visitor",
-  extraKeywords: ["canteen management India", "meal subsidy software", "corporate cafeteria system"],
+  extraKeywords: [
+    "canteen management system",
+    "factory canteen software",
+    "visitor management system India",
+    "industrial visitor pass system",
+  ],
 });
 
 export default function CanteenManagementLayout({ children }: { children: React.ReactNode }) {

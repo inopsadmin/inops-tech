@@ -3,23 +3,21 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "HR Information System | Contract Labour & Compliance";
+const PAGE_TITLE = "HRIS Software for Manufacturing | Payroll, Attendance & Statutory Compliance — InOps";
 const PAGE_DESCRIPTION =
-  "Contract labour management (CLMS) for Indian manufacturers: onboarding, gate compliance, biometric attendance, PF/ESI workflows, and contractor governance.";
+  "HRIS software built for Indian manufacturers: employee records, biometric attendance, statutory payroll (PF, ESI, PT, LWF), leave and claims — one system for your permanent workforce, unified with contract labour data.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   path: "/hris",
   extraKeywords: [
-    "contract labour management system India",
-    "CLRA compliance software",
-    "CLRA registration principal employer",
-    "contract labour compliance India",
-    "contractor workforce software India",
-    "Form V Form XIII CLRA",
-    "contractor onboarding compliance software",
-    "multi-site contractor management India",
+    "HRIS software India",
+    "HRIS for manufacturing",
+    "HR information system",
+    "statutory payroll software",
+    "HRIS biometric attendance",
+    "HRIS vs CLMS",
   ],
 });
 

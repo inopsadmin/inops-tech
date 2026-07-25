@@ -384,9 +384,9 @@ const ourModulesSlides = [
   },
   {
     slug: "compliance-report",
-    title: "Compliance Report",
+    title: "CLRA Compliance & Registers",
     description:
-      "Generate ready-to-submit compliance reports for labor laws, statutory filings, and internal governance reviews.",
+      "Digital Form V/XIII registers, licence tracking, and audit-ready returns.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85",
     hoverImage:
@@ -911,14 +911,25 @@ export default function PayrollSolutionsPage() {
                     Payroll · Compliance · Contractor ops
                   </FlyInText>
 
+                  <FlyInText
+                    as="h1"
+                    trigger="mount"
+                    direction="down"
+                    delay={0.04}
+                    duration={0.5}
+                    className="mt-4 text-sm font-semibold tracking-wide text-slate-700 lg:mt-5"
+                  >
+                    Contract Labour Management System for Indian Manufacturers
+                  </FlyInText>
+
                   <div className="-mx-2 overflow-x-auto pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
                     <FlyInText
-                      as="h1"
+                      as="h2"
                       trigger="mount"
                       direction="left"
                       delay={0.06}
                       duration={0.68}
-                      className="home-display-heading inops-type-hero mt-4 whitespace-nowrap text-slate-900 lg:mt-5"
+                      className="home-display-heading inops-type-hero mt-2 whitespace-nowrap text-slate-900"
                     >
                       End to end
                       <span className="text-blue-800"></span>  contract <br /> workforce governance
@@ -933,7 +944,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Attendance, statutory compliance, and payouts on one platform, from gate logs to finance close.
+                    Our contract labour management system automates attendance, statutory compliance, and payouts — from gate logs to finance close.
                   </FlyInText>
 
                   <FlyInText

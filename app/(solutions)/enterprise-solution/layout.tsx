@@ -3,11 +3,15 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Enterprise Operations Platform | Assets, Logistics & Warehouse",
+  title: "Enterprise Workforce Compliance Platform | CLMS + HRIS + Access Control — InOps",
   description:
-    "Connected operations and intelligent control for enterprise assets, logistics, and warehouse performance with live analytics.",
+    "One platform for workforce compliance and access control: CLMS, HRIS, biometric attendance, gate management, and statutory compliance — unified across all your industrial sites.",
   path: "/enterprise-solution",
-  extraKeywords: ["enterprise operations platform", "asset and logistics visibility", "intelligent control solution"],
+  extraKeywords: [
+    "workforce compliance platform",
+    "enterprise CLMS HRIS",
+    "integrated workforce access control",
+  ],
 });
 
 export default function EnterpriseSolutionLayout({ children }: { children: React.ReactNode }) {

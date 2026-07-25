@@ -3,7 +3,7 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Contract Labour Management | Payroll, PF/ESI & Attendance";
+const PAGE_TITLE = "Contract Labour Management System (CLMS) | Payroll, PF/ESI & Attendance — InOps";
 const PAGE_DESCRIPTION =
   "Automate contract labour payroll, PF/ESI compliance, and biometric attendance for Indian manufacturers — fewer errors, faster cycles, audit-ready reporting.";
 
@@ -12,25 +12,14 @@ export const metadata: Metadata = routeMetadata({
   description: PAGE_DESCRIPTION,
   path: "/clms",
   extraKeywords: [
-    "contract labour management software India",
     "CLMS software",
-    "contract labour management system India",
+    "contract labour management system",
+    "contract labour management software India",
     "CLRA compliance software",
-    "contractor compliance software India",
-    "contractor attendance tracking software India",
-    "Form V Form XIII automation software India",
-    "PF ESI auto-deduction contractor attendance software",
-    "minimum wage compliance tracking contract labour",
-    "biometric attendance CLMS integration",
-    "9 day continuous attendance rule India",
-    "ghost OT fraud detection manufacturing",
-    // Tier 4 — InOps-exclusive, zero competitor coverage
-    "CLMS for defence contractors India",
-    "contract labour management HAL DRDO",
-    "biometric attendance 163 sites manufacturing",
-    "ghost overtime detection biometric",
-    "OT misuse detection manufacturing India",
-    "ZKTeco WDMS integration CLMS",
+    "biometric attendance CLMS",
+    "contractor payroll",
+    "Form V Form XIII",
+    "multi-site contractor management",
   ],
 });
 
@@ -68,7 +57,7 @@ const FAQ_ITEMS = [
   {
     question: "How does CLMS help with CLRA compliance?",
     answer:
-      "InOps CLMS automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log.",
+      "InOps CLMS automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/clms/modules/compliance-report) for the full register and licence capabilities.",
   },
   {
     question: "Can CLMS integrate with biometric attendance devices?",

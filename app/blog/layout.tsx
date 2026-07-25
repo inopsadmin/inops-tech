@@ -3,11 +3,16 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Blog | Workforce, CLMS & Compliance Insights",
+  title: "Resources — Contract Labour Compliance, CLRA & Workforce Tech | InOps",
   description:
-    "Insights on biometric attendance, access control, CLMS, visitor management, payroll compliance, and HR technology, written from our Bengaluru team.",
+    "Insights on contract labour compliance, CLRA, biometric attendance, CLMS, payroll automation, and HR technology — written from our Bengaluru team.",
   path: "/blog",
-  extraKeywords: ["workforce management blog", "biometric attendance India", "CLMS articles"],
+  extraKeywords: [
+    "contract labour compliance blog",
+    "CLRA resources India",
+    "CLMS articles",
+    "workforce compliance guides",
+  ],
 });
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {

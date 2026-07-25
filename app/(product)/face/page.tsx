@@ -508,9 +508,9 @@ export default function BiometricAccessControlPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    Smart access.{" "}
+                    Face Recognition Attendance{" "}
                     <span className="font-semibold text-[color:var(--inops-blue)]">
-                      Secure workforce.
+                      for Industrial Workforces
                     </span>
                   </motion.h1>
                   <motion.p
@@ -519,8 +519,7 @@ export default function BiometricAccessControlPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                   >
-                    Advanced biometric devices engineered for high-precision attendance, access control, and seamless
-                    workforce management across industrial environments.
+                    InOps supplies enterprise face recognition terminals and biometric readers built for factory gates — liveness-detection accuracy, direct integration with CLMS and HRIS, and multi-site deployment across manufacturing, defence, and infrastructure sites.
                   </motion.p>
                   <motion.div
                     className="mt-8 sm:mt-9"

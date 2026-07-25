@@ -3,11 +3,16 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Mobile Workforce App | Attendance & Self-Service",
+  title: "Mobile Attendance & Workforce App | Face Recognition on Mobile — InOps",
   description:
-    "Mobile app for attendance, leave, shift visibility, and employee self-service with real-time sync across HR and operations teams.",
+    "Mobile attendance with face recognition for contract workers: GPS-validated check-in, earned wage access, leave management, and self-service — no fixed biometric hardware needed.",
   path: "/mobile-app",
-  extraKeywords: ["employee self service app", "mobile attendance app", "workforce app"],
+  extraKeywords: [
+    "mobile attendance app for contract workers",
+    "face recognition mobile attendance",
+    "GPS attendance app India",
+    "contractor self service app",
+  ],
 });
 
 export default function MobileAppLayout({ children }: { children: React.ReactNode }) {

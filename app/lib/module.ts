@@ -3,6 +3,12 @@ export interface ModuleData {
   badge: string;
   title: string;
   description: string;
+  seoTitle?: string;
+  seoKeywords?: string[];
+  /** Optional keyword-bearing H2 content sections rendered after the hero. Body may contain inline HTML (e.g. <a> tags). */
+  contentSections?: { h2: string; body: string }[];
+  /** Optional FAQ items rendered visibly and as JSON-LD FAQPage schema. */
+  faq?: { question: string; answer: string }[];
 
   metrics: string[];
   challenges: string[];
@@ -43,9 +49,24 @@ export const modules: ModuleData[] = [
   {
     slug: "attendance-leave",
     badge: "Attendance & Leave",
-    title: "Attendance, Leave & Shift Management",
+    title: "Contract Worker Attendance & Leave Management",
     description:
-      "Attendance fraud, manual shift planning and workforce visibility gaps impact productivity and payroll accuracy across industrial operations.",
+      "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites.",
+    seoTitle: "Contract Worker Attendance & Leave Management | InOps CLMS",
+    seoKeywords: [
+      "contract worker attendance management",
+      "biometric attendance CLMS",
+      "shift management software India",
+      "contractor leave tracking",
+      "9 day attendance rule CLRA",
+    ],
+
+    contentSections: [
+      {
+        h2: "Continuous attendance tracking and CLRA compliance",
+        body: 'Continuous-attendance tracking feeds the 9-day rule alerts in our <a href="/clms/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a> — so HR is notified before a worker crosses the threshold, not after.',
+      },
+    ],
 
     metrics: ["Reduced Attendance Fraud", "Better Workforce Planning", "Accurate Payroll Processing"],
 
@@ -139,84 +160,139 @@ export const modules: ModuleData[] = [
 
   {
     slug: "compliance-report",
-    badge: "P9 • Audit-ready India stack",
-    title: "Labour Compliance Management",
+    badge: "CLRA Compliance",
+    title: "CLRA Compliance Software for Principal Employers",
     description:
-      "Managing labour compliance across sites, contractors, and states is time-consuming and difficult to audit.",
+      "InOps CLRA compliance software automates every obligation a principal employer carries under the Contract Labour (Regulation & Abolition) Act: digital Form V and Form XIII registers maintained in real time, contractor licence expiry and headcount-cap tracking per establishment, alerts on the 9-day continuous attendance threshold, and statutory returns generated directly from biometric gate data. Every register entry traces to a verified gate event — so audit day is a report export, not a records hunt.",
+    seoTitle: "CLRA Compliance Software — Digital Registers, Licences & Statutory Returns | InOps",
+    seoKeywords: [
+      "CLRA compliance software",
+      "Form V register software",
+      "Form XIII automation",
+      "contract labour compliance software India",
+      "contractor licence tracking",
+    ],
+
+    faq: [
+      {
+        question: "What is CLRA compliance software?",
+        answer:
+          "CLRA compliance software automates the statutory obligations that principal employers carry under the Contract Labour (Regulation & Abolition) Act: maintaining Form V and Form XIII registers, tracking contractor licences and headcount caps per establishment, monitoring the 9-day continuous attendance threshold, and generating statutory returns from verified gate and payroll data — with no manual compilation between the gate event and the filed document.",
+      },
+      {
+        question: "Which registers does InOps maintain digitally under CLRA?",
+        answer:
+          "InOps maintains Form V (register of contractors), Form XIII (register of contract workers), muster rolls, and wage and overtime registers — all updated in real time from biometric gate events. Every entry is audit-ready and traceable to a verified gate punch, so inspectors or internal auditors receive current documents, not month-end reconstructions.",
+      },
+      {
+        question: "Does InOps track contractor licences and headcount caps?",
+        answer:
+          "Yes. InOps records each contractor's CLRA licence number, expiry date, and permitted headcount per establishment. Deployments that would breach a licensed headcount cap are flagged before the worker enters. Licence-expiry alerts fire ahead of the renewal deadline so principal employers do not inadvertently engage a contractor whose authorisation has lapsed.",
+      },
+      {
+        question: "What is the 9-day rule alert in CLRA compliance?",
+        answer:
+          "Under the Contract Labour Act and corresponding state rules, a contract worker who works nine or more consecutive days without a weekly off may acquire compensatory rest entitlements — and in some states may trigger employment-rights exposure for the principal employer. InOps monitors continuous attendance per worker per site and alerts HR before the ninth day so the mandatory weekly off can be scheduled in time.",
+      },
+      {
+        question: "Can InOps generate CLRA statutory returns automatically?",
+        answer:
+          "Yes. InOps generates statutory returns directly from live gate and payroll data in state-specific formats. Returns include all required register extracts, PF and ESI challan-ready summaries, and Form V/XIII data — exported as ready-to-file documents without manual compilation. Multi-state establishments get separate outputs per applicable state rules.",
+      },
+    ],
+
+    contentSections: [
+      {
+        h2: "What does CLRA compliance software automate?",
+        body: "InOps automates the four obligation categories every principal employer faces under CLRA: statutory registers (Form V, Form XIII, muster rolls, wage registers); contractor licence verification and headcount-cap monitoring per establishment; the 9-day continuous attendance threshold that creates compensatory rest and potential employment-rights exposure; and statutory returns filed directly from live gate and payroll data — with no manual compilation between the gate event and the filed document.",
+      },
+      {
+        h2: "Form V and Form XIII registers, maintained from gate data",
+        body: "Traditional compliance treats Form V and Form XIII as month-end paperwork. InOps treats them as live outputs of gate operations: every contractor deployment, headcount change, or work-commencement event writes to the register in real time. When an inspector arrives or an audit is called, the register is current to the last gate punch — not reconstructed from memory. This is the structural difference between CLRA compliance software and a document-filing tool.",
+      },
+      {
+        h2: "Licence, headcount and 9-day rule monitoring",
+        body: "InOps tracks each contractor's CLRA licence number, expiry date, and permitted headcount per establishment. Deployments that would breach a licensed headcount cap are flagged before the worker enters. The 9-day continuous attendance rule — where a contract worker working nine or more consecutive days without a weekly off may acquire compensatory rest entitlements and, in some states, permanent employment risk — is monitored per worker per site, with HR alerts before the threshold is crossed.",
+      },
+      {
+        h2: "Built for audits and inspections",
+        body: "Principal employers at PSUs, defence establishments, and large manufacturing plants face periodic CLRA inspections with short notice. InOps stores every register, licence, Form V, and gate event in a single audit repository, tagged by site, contractor, and period. An inspection request is answered with a filtered export — not a records search across files and emails. Compliance officers report audit response time dropping from days to under an hour.",
+      },
+    ],
 
     metrics: [
       "Reduced Compliance Effort",
-      "Faster Audits",
+      "Faster Audit Response",
       "Improved Regulatory Readiness",
     ],
 
     challenges: [
-      "State-specific register complexity",
-      "Manual statutory compilation",
-      "Scattered evidence storage",
-      "Audit request fire drills",
-      "Multi-site monitoring gaps",
+      "Form V / Form XIII maintained manually",
+      "Contractor licence expiry missed",
+      "9-day rest-rule not tracked per worker",
+      "Audit evidence scattered across files",
+      "Multi-site statutory gaps undetected",
     ],
 
     workflow: [
       {
-        title: "Data Collection",
-        description: "Workforce, contractor, and statutory information is collected automatically."
+        title: "Gate data captured",
+        description: "Every worker entry and exit is biometrically verified and written to the compliance record in real time — no manual transcription."
       },
       {
-        title: "Compliance Validation",
-        description: "Rules are checked against CLRA, Factories Act, state-specific requirements, and licenses."
+        title: "Registers updated automatically",
+        description: "Form V, Form XIII, muster rolls, and wage registers are maintained from live gate and payroll data — always current, never reconstructed."
       },
       {
-        title: "Register & Report Generation",
-        description: "Statutory registers, forms, and compliance reports are generated automatically."
+        title: "Alerts before thresholds are crossed",
+        description: "Licence expiry, headcount cap, and 9-day continuous attendance alerts fire before the compliance event, not after it."
       },
       {
-        title: "Audit Readiness",
-        description: "All records are stored in a central repository with complete audit trails."
+        title: "Audit-ready export on demand",
+        description: "Any register, filing period, site, or contractor can be exported as a statutory-format document in under a minute."
       },
     ],
 
     features: [
-      "CLRA Compliance",
-      "State-Specific Registers",
-      "Statutory Report Generation",
-      "Labour License Tracking",
-      "Compliance Alerts",
-      "Audit Repository",
+      "Form V & Form XIII Registers",
+      "Contractor Licence Tracking",
+      "9-Day Attendance Alerts",
+      "State-Specific Register Templates",
+      "Statutory Return Generation",
+      "Central Audit Repository",
     ],
 
     roi: [
       {
         title: "Reduced Compliance Effort",
         description:
-          "Automated report generation eliminates manual statutory compilation across states.",
+          "Automated register maintenance eliminates manual statutory compilation across contractors and states.",
       },
       {
-        title: "Faster Audits",
+        title: "Faster Audit Response",
         description:
-          "Pre-built report packs and centralized evidence reduce audit response time significantly..",
+          "Centralized evidence and filtered exports reduce inspector-response time from days to under an hour.",
       },
       {
         title: "Improved Regulatory Readiness",
         description:
-          "Alerts and compliance status maps surface the next risk before deadlines are missed.",
+          "Licence, headcount, and 9-day alerts surface the next compliance risk before deadlines or inspections arrive.",
       },
     ],
 
     aiInsights: [
-      "Monitor risks, track deadlines, and identify compliance gaps automatically across all sites.",
-      "AI summarizes compliance risk hotspots by state, act, and contractor.",
-      "Assistive search finds the right register, site, or vendor evidence instantly.",
+      "Monitor CLRA risks, track licence deadlines, and flag 9-day threshold exposures automatically across all sites.",
+      "AI summarizes compliance hotspots by contractor, establishment, and state act.",
+      "Assistive search locates any register entry, Form V, or contractor document instantly.",
     ],
 
     benefits: [
-      "Compliance teams gain complete control over labour law obligations across every site.",
-      "Plant teams know exactly what is pending, why, and by when.",
-      "Auditors receive complete, traceable, site-tagged evidence with full documentation.",
+      "Compliance teams maintain current CLRA registers without manual effort across every establishment.",
+      "Plant HR knows exactly which workers are approaching the 9-day threshold and which contractor licences are expiring.",
+      "Auditors and inspectors receive complete, site-tagged, period-filtered evidence in a single export.",
     ],
 
-    cta: "Secure every gate. Verify every worker. Control every site.",
+    cta: "Make CLRA audit day a report export, not a records hunt.",
 
     dashboard: {
       analytics: [
@@ -234,7 +310,7 @@ export const modules: ModuleData[] = [
       feed: [
         { label: "Statutory Filing", status: "Active", tone: "ok" },
         { label: "Audit Repository", status: "Synced", tone: "ok" },
-        { label: "License Renewal", status: "Due Soon", tone: "warn" },
+        { label: "Licence Renewal", status: "Due Soon", tone: "warn" },
       ],
     }
   },
@@ -244,7 +320,15 @@ export const modules: ModuleData[] = [
     badge: "Onboarding & BGV",
     title: "Contractor Onboarding & Background Verification",
     description:
-      "Manual onboarding delays workforce deployment and increases compliance risks across industrial sites.",
+      "InOps automates contractor onboarding and background verification — Aadhaar, PAN, UAN checks, medical clearance, and digital document collection — so workers are compliance-ready before their first gate entry.",
+    seoTitle: "Contractor Onboarding & Background Verification Module | InOps CLMS",
+    seoKeywords: [
+      "contractor onboarding software India",
+      "background verification CLMS",
+      "Aadhaar PAN contractor verification",
+      "digital worker onboarding",
+      "CLMS BGV module",
+    ],
 
     metrics: [
       "80% Faster Onboarding",
@@ -343,9 +427,24 @@ export const modules: ModuleData[] = [
   {
     slug: "contractor-management",
     badge: "Contractor Core",
-    title: "Contractor Lifecycle Management",
+    title: "Contractor Compliance & Lifecycle Management",
     description:
-      "Managing contractor performance, compliance, and workforce strength across multiple sites is complex and fragmented without a centralized governance system.",
+      "Manage contractor compliance centrally: licences, CLRA registrations, headcount limits, document expiry alerts, and contractor scorecards — across every vendor and site from one dashboard.",
+    seoTitle: "Contractor Management & Compliance Software | Licences, Renewals — InOps",
+    seoKeywords: [
+      "contractor compliance software India",
+      "contractor lifecycle management",
+      "vendor compliance tracking India",
+      "contractor licence renewal software",
+      "multi-site contractor management",
+    ],
+
+    contentSections: [
+      {
+        h2: "Contractor licences and CLRA registers in sync",
+        body: 'Licence expiry and headcount caps sync automatically with our <a href="/clms/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a> registers — so Form V headcount limits and contractor-licence validity are always current in the statutory record.',
+      },
+    ],
 
     metrics: [
       "Improved Vendor Accountability",
@@ -444,9 +543,17 @@ export const modules: ModuleData[] = [
   {
     slug: "wage-payroll",
     badge: "Wage & Billing",
-    title: "Wage Processing & Invoice Reconciliation",
+    title: "Contract Labour Payroll & Invoice Reconciliation",
     description:
-      "Manual wage calculations and invoice validation lead to disputes, delays, and financial leakage across contractor operations.",
+      "InOps automates contract labour payroll — wage calculations, OT approvals, and PF/ESI deductions — and reconciles contractor invoices against biometric attendance records before finance sign-off.",
+    seoTitle: "Contract Labour Payroll Software | Wages, OT & Statutory Deductions — InOps",
+    seoKeywords: [
+      "contract labour payroll software",
+      "contractor wage automation India",
+      "OT calculation software",
+      "invoice reconciliation CLMS",
+      "minimum wage compliance software",
+    ],
 
     metrics: [
       "Reduced Billing Errors",
@@ -545,9 +652,17 @@ export const modules: ModuleData[] = [
   {
     slug: "cxo-dashboard",
     badge: "CXO Dashboard",
-    title: "Executive & CXO Dashboard",
+    title: "Contractor Workforce Analytics & CXO Dashboard",
     description:
-      "Leadership teams lack real-time visibility into workforce operations, compliance exposure, and contractor performance across sites.",
+      "Real-time contractor workforce analytics for leadership: headcount by site, compliance scores, cost leakage, and vendor benchmarking — without waiting for month-end reporting packs.",
+    seoTitle: "CXO Dashboard — Contractor Workforce Analytics & Cost Leakage | InOps",
+    seoKeywords: [
+      "contractor workforce analytics",
+      "CXO workforce dashboard",
+      "cost leakage monitoring CLMS",
+      "workforce compliance reporting",
+      "enterprise workforce intelligence",
+    ],
 
     metrics: [
       "Faster Decisions",
@@ -646,9 +761,17 @@ export const modules: ModuleData[] = [
   {
     slug: "ai-assistance",
     badge: "AI Assistant",
-    title: "AI Workforce Assistant",
+    title: "AI Workforce Compliance Assistant",
     description:
-      "Users spend too much time searching dashboards and reports for workforce information that should be available instantly.",
+      "Ask InOps AI questions about attendance, compliance, payroll, or contractor status — and get instant answers, anomaly alerts, and automated report generation across all your CLMS data.",
+    seoTitle: "AI Assistance for Contractor Compliance | Anomaly Detection — InOps",
+    seoKeywords: [
+      "AI workforce compliance assistant",
+      "AI contractor anomaly detection",
+      "workforce analytics AI India",
+      "CLMS AI assistant",
+      "conversational HR analytics",
+    ],
 
     metrics: [
       "Instant Access to Information",
@@ -747,9 +870,17 @@ export const modules: ModuleData[] = [
   {
     slug: "challan-reconciliation",
     badge: "Challan Recon",
-    title: "ESI & PF Challan Reconciliation",
+    title: "Challan & Invoice Reconciliation for Contract Labour",
     description:
-      "Manual reconciliation makes it difficult to identify missing contributions and statutory compliance risks across vendors, states, and compliance periods.",
+      "InOps automatically matches PF and ESI challans against attendance and payroll records, catching the 25–30% discrepancy rate typical of manual contractor billing before it reaches the statutory deadline.",
+    seoTitle: "Challan & Invoice Reconciliation for Contract Labour | InOps",
+    seoKeywords: [
+      "contractor invoice reconciliation software",
+      "PF ESI challan reconciliation",
+      "contractor billing mismatch detection",
+      "statutory challan software India",
+      "CLMS invoice matching",
+    ],
 
     metrics: [
       "Reduced Audit Risks",

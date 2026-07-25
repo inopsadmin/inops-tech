@@ -257,7 +257,7 @@ const ewaImpactMetrics = [
   {
     value: "40%",
     label: "Stability",
-    description: "Reduction in workforce churn rate across all departments.",
+    description: "Reduction in workforce churn rate, based on InOps deployment data.",
     topBar: "from-blue-600 via-indigo-500 to-violet-500",
     cardSurface:
       "border-blue-200/75 bg-gradient-to-br from-blue-50/90 via-white to-indigo-50/40 ring-1 ring-blue-500/[0.07] hover:border-blue-300/90 hover:shadow-[0_26px_56px_-28px_rgba(59,130,246,0.26)]",
@@ -276,7 +276,7 @@ const ewaImpactMetrics = [
   {
     value: "15%",
     label: "Productivity",
-    description: "Increase in shift fulfillment and overtime willingness.",
+    description: "Increase in shift fulfillment, based on InOps deployment data.",
     topBar: "from-sky-500 via-cyan-500 to-teal-500",
     cardSurface:
       "border-cyan-200/70 bg-gradient-to-br from-sky-50/90 via-white to-teal-50/38 ring-1 ring-cyan-500/[0.07] hover:border-cyan-300/90 hover:shadow-[0_26px_56px_-28px_rgba(6,182,212,0.24)]",
@@ -340,10 +340,10 @@ export default function EwaPage() {
         }
         title={
           <>
-            Instant access to <span className="text-blue-600">earned wages</span>
+            Earned Wage Access for <span className="text-blue-600">factory workers</span>
           </>
         }
-        subtitle="Enable your workforce to access wages they've already earned, powered by real-time attendance and payroll data."
+        subtitle="Earned wage access (EWA) lets workers draw wages they have already earned before payday — calculated from verified attendance, capped by payroll rules, and disbursed through a regulated NBFC partner. No loans, no interest, no employer liability."
         videoSrc={mediaVideos.ewaPlatformPreview}
         imageSrc="/images/ewa-hero.png"
         imageAlt="Workforce on site ,  earned wage access aligned to verified attendance"
@@ -1077,7 +1077,7 @@ real-time earned wage access.
                     ],
                     points: [
                       "Drastic reduction in salary advance requests",
-                      "Up to 40% improvement in worker retention",
+                      "Up to 40% improvement in worker retention (InOps deployment data)",
                       "No financial liability or capital expenditure",
                       "Fully automated compliance and accounting",
                     ],

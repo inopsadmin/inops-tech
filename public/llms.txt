@@ -81,8 +81,8 @@
   Automated minimum wage, overtime, and statutory deduction calculations with
   payroll-ready exports.
 
-- [Compliance Reports Module](https://inops.tech/clms/modules/compliance-report):
-  Audit-ready Form V/XIII, PF/ESI challan, and CLRA statutory reports.
+- [CLRA Compliance Software](https://inops.tech/clms/modules/compliance-report):
+  Digital Form V/XIII registers, licence tracking, 9-day rule alerts, statutory returns from gate data.
 
 - [Contractor Management Module](https://inops.tech/clms/modules/contractor-management):
   Contractor license tracking, renewals, performance signals, and multi-vendor

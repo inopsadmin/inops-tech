@@ -2,7 +2,7 @@ import SecondaryPageJsonLd from "@/app/components/SecondaryPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "About Us | Workforce & CLMS Partner";
+const PAGE_TITLE = "About InOps | Contract Workforce Compliance Since 2014";
 const PAGE_DESCRIPTION =
   "Enterprise CLMS, workforce automation, and digital operations partnership, headquartered in Bommasandra Industrial Area, Bengaluru, Karnataka.";
 

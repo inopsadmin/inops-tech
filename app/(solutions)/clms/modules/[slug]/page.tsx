@@ -18,10 +18,10 @@ export async function generateMetadata({
   const mod = modules.find((m) => m.slug === slug);
   if (!mod) return {};
   return routeMetadata({
-    title: `${mod.badge} | CLMS Module — InOps Solutions`,
+    title: mod.seoTitle ?? `${mod.badge} | CLMS Module — InOps Solutions`,
     description: mod.description,
     path: `/clms/modules/${slug}`,
-    extraKeywords: ["CLMS module", "contract labour software India", mod.badge],
+    extraKeywords: mod.seoKeywords ?? ["CLMS module", "contract labour software India", mod.badge],
   });
 }
 

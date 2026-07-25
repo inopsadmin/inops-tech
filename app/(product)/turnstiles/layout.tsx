@@ -3,11 +3,16 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Turnstiles & Speed Gates | Industrial Access Control",
+  title: "Turnstiles & Flap Barriers with Biometric Access Control | InOps",
   description:
-    "Tripod turnstiles and lane hardware for access control ,  stainless steel, smooth operation, compact footprint for offices, plants, and campuses in India.",
+    "Tripod turnstiles and flap barriers with biometric integration for factory gates — stainless steel, smooth throughput, and CLMS-connected access control for Indian industrial sites.",
   path: "/turnstiles",
-  extraKeywords: ["tripod turnstile India", "entrance turnstile", "access control gate"],
+  extraKeywords: [
+    "turnstile access control",
+    "flap barrier factory",
+    "industrial turnstile India",
+    "biometric turnstile integration",
+  ],
 });
 
 export default function TurnstilesLayout({ children }: { children: React.ReactNode }) {
