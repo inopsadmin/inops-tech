@@ -527,7 +527,7 @@ export default function CLRAComplianceAuditPage() {
             Get Started
           </div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-bold text-white leading-[1.15] m-0 mb-[18px] tracking-[-0.01em]">
-            Need Enterprise Workforce Services?
+            Need Enterprise CLRA Compliance Audit?
           </h2>
           <p className="text-[15px] leading-[1.7] text-white/[0.72] mb-9">
             Talk to our team about deploying Compliance Health Check across your sites —<br className="hidden md:block" />

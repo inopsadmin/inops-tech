@@ -181,7 +181,7 @@ const ewaFaqItems = [
   {
     question: "Is Earned Wage Access suitable for contract workers?",
     answer:
-      "Yes. Organizations can extend EWA benefits to eligible employees and contract workers based on company policies.",
+      "Yes. Organizations can extend EWA benefits to eligible employees and contract workers based on policies.",
   },
   {
     question: "Can Earned Wage Access integrate with HRMS and payroll?",
@@ -343,7 +343,7 @@ export default function EwaPage() {
             Earned Wage Access for <span className="text-blue-600">factory workers</span>
           </>
         }
-        subtitle="InOps EWA (Salary++) lets factory and contract workers withdraw a portion of wages they have already earned — validated against biometric attendance — before payday. It is not a loan: the withdrawable amount is a governed share of verified earned wages, there is no interest to the worker, and settlement happens automatically in the next payroll cycle. Employers carry no capital outlay or balance-sheet exposure."
+        subtitle="InOps EWA (Salary++) lets workers withdraw verified earned wages before payday — not a loan, no interest, auto-settled in the next payroll cycle. Zero capital outlay for employers."
         videoSrc={mediaVideos.ewaPlatformPreview}
         imageSrc="/images/ewa-hero.png"
         imageAlt="Workforce on site ,  earned wage access aligned to verified attendance"

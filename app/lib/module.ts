@@ -657,8 +657,8 @@ export const modules: ModuleData[] = [
 
   {
     slug: "wage-payroll",
-    badge: "Wage & Billing",
-    title: "Contract Labour Payroll & Invoice Reconciliation",
+    badge: "Wage & Invoice",
+    title: "Contract Labour Wage & Invoice Reconciliation",
     description:
       "InOps automates contract labour payroll — wage calculations, OT approvals, and PF/ESI deductions — and reconciles contractor invoices against biometric attendance records before finance sign-off.",
     seoTitle: "Contract Labour Payroll Software | Wages, OT & Statutory Deductions — InOps",
@@ -1361,6 +1361,169 @@ export const modules: ModuleData[] = [
         { label: "Gate Pass Status", status: "Live", tone: "ok" },
         { label: "Licence Checks", status: "Active", tone: "ok" },
         { label: "Headcount Cap", status: "Near Limit", tone: "warn" },
+      ],
+    },
+  },
+
+  {
+    slug: "onboarding-offboarding",
+    badge: "Onboarding & Offboarding",
+    title: "Contractor Onboarding & Offboarding Lifecycle Management",
+    description:
+      "InOps digitises the full contractor lifecycle — from document collection, BGV, and induction on day one, to structured exits with asset recovery, final settlement, and statutory closure — so every entry and departure is compliant, traceable, and audit-ready.",
+    seoTitle: "Contractor Onboarding & Offboarding Management | InOps CLMS",
+    seoDescription:
+      "End-to-end contractor onboarding and offboarding software: digital intake, background verification, induction, gate-pass issuance, structured exit, asset recovery, and final statutory settlement — all in one system.",
+    seoKeywords: [
+      "contractor onboarding offboarding software",
+      "worker lifecycle management India",
+      "digital contractor exit process",
+      "industrial worker onboarding system",
+      "contractor final settlement software",
+    ],
+
+    contentSections: [
+      {
+        h2: "From offer to gate pass in hours",
+        body: "Worker details, Aadhaar, PAN, bank account, and supporting documents are captured digitally — in the worker's language — and processed in parallel. Background verification, medical fitness, and induction can run concurrently so onboarding that previously took days compresses to hours, even for bulk shutdown intake of hundreds of workers.",
+      },
+      {
+        h2: "Gate access locked until every clearance is complete",
+        body: 'Onboarding status is enforced at the gate: a worker whose BGV is pending, medical check is incomplete, or induction is unfinished is auto-blocked at entry. There is no manual follow-up loop — the gate itself holds the compliance line. This connects directly with our <a href="/clms/modules/gate-compliance" class="text-blue-600 underline">gate compliance and auto-blocking module</a>.',
+      },
+      {
+        h2: "Structured exits that close the loop",
+        body: "Offboarding is as governed as onboarding: gate passes are revoked on the last working day, PPE and asset returns are tracked digitally, outstanding dues are flagged before final settlement is processed, and statutory closure — PF, ESI, gratuity where applicable — is computed from the same attendance and wage records used during employment. No ad-hoc spreadsheet at exit.",
+      },
+      {
+        h2: "Full audit trail from day one to last day",
+        body: 'Every onboarding action — what was verified, when, by whom, with what result — and every offboarding step — who approved the exit, which assets were returned, when the gate pass was revoked — is stored in the per-worker record. Auditors and compliance officers see a continuous thread, not two separate filing systems. The record feeds both <a href="/clms/modules/compliance-report" class="text-blue-600 underline">CLRA registers</a> and contractor payroll settlement automatically.',
+      },
+    ],
+
+    faq: [
+      {
+        question: "What does digital onboarding include for contract workers?",
+        answer:
+          "Identity capture with Aadhaar linkage, PAN and UAN verification, background verification, medical fitness recording, induction scheduling, document collection, consent capture in the worker's language, and automatic assignment to contractor, site, shift, and cost centre — fully digital and batch-capable for surge intake.",
+      },
+      {
+        question: "Can a worker be blocked at the gate until onboarding is complete?",
+        answer:
+          "Yes — with gate compliance enabled, any incomplete clearance (BGV pending, medical outstanding, induction not done) is a blocking rule. No manual chase required; the gate enforces it automatically.",
+      },
+      {
+        question: "How is offboarding handled for contract workers?",
+        answer:
+          "Gate passes are revoked on the designated last day, asset and PPE returns are tracked digitally, outstanding advances or dues are flagged, and final settlement — including PF, ESI, and statutory deductions — is computed from the verified attendance and wage record. Every step is logged in the worker's audit trail.",
+      },
+      {
+        question: "Does the system handle bulk intake for shutdowns?",
+        answer:
+          "Yes — bulk onboarding is built for shutdown and ramp volumes. Hundreds of workers can be processed in parallel with digital checks running concurrently, significantly reducing deployment lead time versus sequential manual intake.",
+      },
+      {
+        question: "Is offboarding data linked to compliance registers?",
+        answer:
+          "Yes — departure events update Form XIII in real time, gate pass revocation is logged, and the final wage and statutory settlement feeds CLRA records. There is no separate offboarding filing step.",
+      },
+    ],
+
+    metrics: [
+      "80% Faster Onboarding",
+      "Zero Compliance Gaps at Exit",
+      "Full Lifecycle Auditability",
+    ],
+
+    challenges: [
+      "Paper-based intake delays deployment",
+      "BGV and medical clearance bottlenecks",
+      "Gate access issued before compliance is complete",
+      "Ad-hoc exit process misses assets and dues",
+      "No single audit trail from day one to last day",
+    ],
+
+    workflow: [
+      {
+        title: "Digital Registration",
+        description:
+          "Worker details, Aadhaar, PAN, bank account, and documents are captured digitally via mobile or web — in batch for bulk intake.",
+      },
+      {
+        title: "Parallel Verification",
+        description:
+          "BGV, medical fitness, and induction run concurrently. Gate access is blocked until every clearance is green.",
+      },
+      {
+        title: "Activation & Gate Pass",
+        description:
+          "Cleared workers are assigned to contractor, site, shift, and cost centre. A digital gate pass is issued and biometric identity is enrolled.",
+      },
+      {
+        title: "Structured Exit",
+        description:
+          "On separation, gate pass is revoked, assets are recovered, dues are flagged, and final settlement with statutory closure is computed and logged.",
+      },
+    ],
+
+    features: [
+      "Digital Intake & Document Collection",
+      "Aadhaar, PAN & UAN Verification",
+      "Background Verification Integration",
+      "Medical Fitness & Induction Tracking",
+      "Gate-Pass Issuance & Revocation",
+      "Structured Exit & Final Settlement",
+    ],
+
+    roi: [
+      {
+        title: "80% Faster Onboarding",
+        description:
+          "Parallel digital workflows eliminate sequential paper chasing and reduce deployment lead time from days to hours.",
+      },
+      {
+        title: "Zero Compliance Gaps at Exit",
+        description:
+          "Structured offboarding ensures gate passes are revoked, assets recovered, and statutory closure completed — every time.",
+      },
+      {
+        title: "Full Lifecycle Auditability",
+        description:
+          "A continuous per-worker record from first document to last settlement satisfies labour inspector and internal audit requirements without reconstruction.",
+      },
+    ],
+
+    aiInsights: [
+      "AI flags stalled onboarding steps, predicts BGV bottlenecks, and surfaces workers approaching exit without a completed offboarding checklist.",
+      "Smart intake adapts the document checklist by worker category, contractor, plant, and applicable state rules.",
+      "Automated alerts notify HR before gate passes expire and before statutory filing deadlines following a worker's separation.",
+    ],
+
+    benefits: [
+      "HR teams deploy verified workers faster with digital parallel workflows replacing paper-based sequential intake.",
+      "Compliance officers maintain complete, real-time onboarding and offboarding records for every worker across every site.",
+      "Finance and statutory teams receive computed final settlements and closure data without manual handoff from HR.",
+    ],
+
+    cta: "Make every entry and exit compliant, traceable, and audit-ready.",
+
+    dashboard: {
+      analytics: [
+        { label: "Mon", value: 56 },
+        { label: "Tue", value: 72 },
+        { label: "Wed", value: 88 },
+        { label: "Thu", value: 64 },
+        { label: "Fri", value: 80 },
+        { label: "Sat", value: 48 },
+      ],
+      kpis: [
+        { label: "Active Onboardings", value: "214" },
+        { label: "Pending Exits", value: "18" },
+      ],
+      feed: [
+        { label: "BGV Clearances", status: "In Progress", tone: "warn" },
+        { label: "Gate Pass Issuance", status: "Live", tone: "ok" },
+        { label: "Exit Settlements", status: "3 Pending", tone: "warn" },
       ],
     },
   },

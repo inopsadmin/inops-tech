@@ -10,7 +10,7 @@ const MODULE_TABS = [
   },
   {
     slug: "wage-payroll",
-    label: "Wage/Payroll",
+    label: "Wage & Invoice",
     accent: "Finance automation",
   },
   {
@@ -47,6 +47,11 @@ const MODULE_TABS = [
     slug: "gate-compliance",
     label: "Gate Compliance",
     accent: "Compliance at the gate",
+  },
+  {
+    slug: "onboarding-offboarding",
+    label: "Onboarding & Offboarding",
+    accent: "Full lifecycle management",
   },
 ] as const;
 
@@ -91,7 +96,7 @@ export default function ModuleSwitcher({ activeSlug }: ModuleSwitcherProps) {
     >
       <div className="hidden sm:block border-b border-blue-100 bg-gradient-to-r from-blue-50/95 via-white/95 to-blue-50/95 backdrop-blur-xl shadow-lg">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
             {MODULE_TABS.map((tab) => {
               const isActive = tab.slug === activeSlug;
               return (
@@ -218,7 +223,7 @@ export default function ModuleSwitcher({ activeSlug }: ModuleSwitcherProps) {
                 </svg>
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-3 px-4 py-4">
+            <div className="grid grid-cols-2 gap-3 px-4 py-4 sm:grid-cols-5">
               {MODULE_TABS.map((tab) => {
                 const isActive = tab.slug === activeSlug;
                 return (

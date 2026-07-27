@@ -151,7 +151,7 @@ const platformCards = [
   },
 ];
 
-const certBadges = ["GDPR Certified", "SOC2 Type II", "ISO 27001", "HIPAA Compliant"];
+const certBadges = [ "SOC2 Type II", "ISO 27001"];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -192,7 +192,7 @@ export default function ElectronicsIndustryPage() {
               </h1>
 
               <p className="mt-8 max-w-[29rem] text-base leading-relaxed text-blue-50">
-                Precision workforce governance for high-turnover environments. Digitize onboarding, enforce cleanroom
+                Precision Contract Labour Management for high-turnover environments. Digitize onboarding, enforce cleanroom
                 access, and automate compliance to match the speed of global electronics supply chains.
               </p>
 

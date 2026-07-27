@@ -303,7 +303,7 @@ const modernTeamPoints = [
   },
   {
     title: "Easy Deployment",
-    description: "Set up your entire company in minutes.",
+    description: "Set up your entire in minutes.",
     icon: "play",
   },
   {
@@ -561,7 +561,7 @@ export default function MobileAppPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                 >
-                  GPS-validated face recognition attendance on mobile — for contract workers at sites without fixed biometric hardware. InOps verifies location and identity at punch-in, feeds verified attendance directly into CLMS payroll, and gives workers self-service access to leave, payslips, and earned wages.
+                  GPS-validated face attendance for sites without fixed hardware — verified at punch-in, fed into CLMS payroll, with worker self-service for leave, payslips, and earned wages.
                 </motion.p>
                 <motion.div
                   className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"

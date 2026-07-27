@@ -708,7 +708,7 @@ export default function LabourManagementPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    InOps HRIS is the system of record for your permanent workforce — employee data, onboarding, attendance and leave, statutory payroll, claims, and compliance documents — built for Indian manufacturing rather than adapted from a global product. It runs on the same attendance and identity engine as InOps CLMS, so permanent and contract workforces are visible together: one hardware estate, one dashboard, no duplicate systems.
+                    InOps HRIS manages onboarding, attendance, payroll, and compliance for your permanent workforce — one engine with InOps CLMS, one dashboard.
                   </FlyInText>
 
                   <FlyInText

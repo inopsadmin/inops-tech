@@ -519,7 +519,7 @@ export default function BiometricAccessControlPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                   >
-                    InOps supplies enterprise face recognition terminals and biometric readers built for factory gates — liveness-detection accuracy, direct integration with CLMS and HRIS, and multi-site deployment across manufacturing, defence, and infrastructure sites.
+                    Enterprise face recognition terminals for factory gates — liveness detection, CLMS and HRIS integration, multi-site ready.
                   </motion.p>
                   <motion.div
                     className="mt-8 sm:mt-9"

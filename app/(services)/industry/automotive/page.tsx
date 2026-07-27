@@ -200,7 +200,7 @@ export default function AutomotiveIndustryPage() {
               Industry Focus: Automotive
             </span>
             <h1 className="mt-7 max-w-[40rem] text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-[3.6rem]">
-              Workforce Governance for{" "}
+              Contract Labour Management for{" "}
               <span className="block text-teal-400">Automotive Manufacturing</span>
             </h1>
             <p className="mt-8 max-w-[29rem] text-base leading-relaxed text-blue-50">
@@ -449,7 +449,7 @@ export default function AutomotiveIndustryPage() {
           </div>
 
           <div className="mx-auto mt-14 flex max-w-4xl flex-wrap items-center justify-center gap-10 border-t border-slate-200 pt-10">
-            {["SAP CERTIFIED", "ORACLE PARTNER", "ISO 27001", "GDPR COMPLIANT"].map((cert) => (
+            {[ "ISO 27001", "GDPR COMPLIANT"].map((cert) => (
               <span key={cert} className="text-sm font-extrabold italic text-slate-400">
                 {cert}
               </span>

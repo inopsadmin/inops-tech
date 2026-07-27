@@ -81,7 +81,7 @@ const platformCards = [
   },
 ];
 
-const certBadges = ["GxP Certified", "ISO 27001", "21 CFR Part 11", "GDPR Compliant"];
+const certBadges = ["ISO 27001", "21 CFR Part 11", "GDPR Compliant"];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -196,7 +196,7 @@ export default function PharmaIndustryPage() {
 
               <div className="mt-8 max-w-lg space-y-6 text-base leading-relaxed text-slate-600">
                 <p>
-                  In pharmaceutical manufacturing, workforce governance isn&rsquo;t just about
+                  In pharmaceutical manufacturing, Contract Labour Management isn&rsquo;t just about
                   attendance — it&rsquo;s a critical component of safety and product integrity.
                   Regulated environments demand that every individual on the shop floor possesses
                   verified qualifications and training.

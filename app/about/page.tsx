@@ -63,7 +63,7 @@ const aboutLabelUpper = "text-xs font-medium uppercase tracking-widest text-slat
 const cultureCards: { title: string; imageSrc: string }[] = [
   { title: "Face Recognition System", imageSrc: "/images/7a6a2a07-b8a7-48d1-ac83-4201e948805e.png" },
   { title: "HR Information System", imageSrc: "/hrinfromationsystem.jpeg" },
-  { title: "Contract Workforce Governance System", imageSrc: "/contractworkforcemanagemtsystem.jpeg" },
+  { title: "Contract Labour Management System", imageSrc: "/contractworkforcemanagemtsystem.jpeg" },
   { title: "EWA", imageSrc: "/ewa.jpeg" },
   { title: "Enterprise Solution", imageSrc: "/enterprise-solution.png" },
   { title: "CCTV Solution", imageSrc: "/cctvsolution.png" },
@@ -345,7 +345,7 @@ export default function AboutPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                   >
-                    InOps is a contract labour and workforce compliance platform founded in Bengaluru in 2014 — serving manufacturers, industrial plants, and infrastructure operators across India. We unify attendance, statutory compliance, and contractor governance into one system, from gate biometrics to finance close.
+                    Founded in 2014, InOps unifies attendance, compliance, and Contract Labour Management — gate biometrics to finance close — for industrial operators across India.
                   </motion.p>
                 </div>
               </div>
@@ -372,8 +372,8 @@ export default function AboutPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
             >
-              InOps IT Solutions enables enterprises to manage workforce operations, financial access,
-              and business processes through a unified platform. From workforce governance and
+              InOps IT Solutions enables enterprises to manage Contract Labour operations, financial access,
+              and business processes through a unified platform. From Contract Labour Management and
               face-based identity solutions to earned wage access and enterprise operations, InOps
               brings visibility, compliance, and control into one system. Designed for large,
               distributed organizations, it integrates seamlessly with existing infrastructure while
@@ -466,7 +466,7 @@ export default function AboutPage() {
               transition={{ duration: 0.52, ease: smoothEase }}
             >
               <h2 id="governance-platform-heading" className={`${aboutH2} mx-auto mt-4 max-w-[22rem] sm:max-w-none`}>
-                <span className="block">A Full-Stack Workforce Governance</span>
+                <span className="block">A Full-Stack Contract Labour Management</span>
                 <span className="block">Platform</span>
               </h2>
               <p className={`${aboutLead} mx-auto mt-4 max-w-xl lg:max-w-2xl`}>
@@ -660,7 +660,7 @@ export default function AboutPage() {
                 viewport={viewport}
                 transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
               >
-                Smart devices and enterprise tools curated for workforce visibility, governance, and operational control.
+                Smart devices and enterprise tools curated for Contract Labour visibility, Management, and operational control.
               </motion.p>
             </div>
           </div>

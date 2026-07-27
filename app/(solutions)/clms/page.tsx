@@ -364,6 +364,17 @@ const ourModulesSlides = [
       "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=85",
     alt: "Industrial gate access control with biometric verification",
   },
+  {
+    slug: "onboarding-offboarding",
+    title: "Onboarding & Offboarding",
+    description:
+      "Digitise the full contractor lifecycle — collect documents, run BGV, issue gate passes on day one, and close exits cleanly with asset recovery and final settlement.",
+    image:
+      "https://images.unsplash.com/photo-1521791055366-0d553872125f?w=800&q=85",
+    hoverImage:
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85",
+    alt: "HR team completing contractor onboarding paperwork",
+  },
   // {
   //   title: "Access Control & Gate Integration",
   //   description:
@@ -389,6 +400,7 @@ const ourModuleCardPalettes = [
   { topBar: "from-sky-500 via-indigo-500 to-violet-600" },
   { topBar: "from-rose-500 via-amber-500 to-orange-500" },
   { topBar: "from-teal-500 via-emerald-500 to-green-500" },
+  { topBar: "from-orange-500 via-amber-400 to-yellow-400" },
 ] as const;
 
 /** Cost leakage cards — width scales with viewport on all breakpoints. */
@@ -608,7 +620,7 @@ function OurModulesCarousel() {
             variants={ourModulesHeaderItem}
             className="mt-2 text-xl font-heading-bold tracking-tight sm:text-2xl"
           >
-            <span className="text-slate-900">RegX </span>
+            <span className="text-slate-900">Contract Labour Management </span>
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 bg-clip-text font-semibold text-transparent">
               Modules 
             </span>
@@ -869,7 +881,7 @@ export default function PayrollSolutionsPage() {
                     className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-blue-800 shadow-sm backdrop-blur"
                   >
                     <span className="h-2 w-2 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
-                    Payroll · Compliance · Contractor ops
+                    Iddion RegX · Payroll · Compliance · Contractor ops
                   </FlyInText>
 
                   <FlyInText
@@ -883,7 +895,7 @@ export default function PayrollSolutionsPage() {
                     Contract Labour Management System for Indian Manufacturers
                   </FlyInText>
 
-                  <div className="-mx-2 overflow-x-auto pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
+                  {/* <div className="-mx-2 overflow-x-auto pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
                     <FlyInText
                       as="h2"
                       trigger="mount"
@@ -895,7 +907,7 @@ export default function PayrollSolutionsPage() {
                       End to end
                       <span className="text-blue-800"></span>  contract <br /> workforce governance
                     </FlyInText>
-                  </div>
+                  </div> */}
 
                   <FlyInText
                     as="p"
@@ -905,7 +917,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    InOps CLMS is a contract labour management system that governs the full contractor lifecycle for Indian manufacturing plants: digital onboarding with background verification, gate compliance and auto-blocking, biometric attendance from face, fingerprint, and CCTV devices, CLRA registers and statutory deductions, contractor payroll, and line-by-line invoice reconciliation — from gate logs to finance close on one platform.
+                    Iddion RegX - A contract labour management system built for Indian plants — gate to payroll, compliance included, on one platform.
                   </FlyInText>
 
                   <FlyInText
@@ -995,7 +1007,7 @@ export default function PayrollSolutionsPage() {
                 Operational gaps
               </span>
               <h2 id="why-inops-heading" className="mt-6">
-                <span className=" text-black">Why Iddion RegX?</span>
+                <span className=" text-black">Why Contract Labour Management?</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 Where contract payroll breaks today, and what teams fix first when they standardize on one platform.
@@ -1232,7 +1244,7 @@ export default function PayrollSolutionsPage() {
                   <div className="flex flex-wrap items-end justify-between gap-2 border-b border-white/10 pb-3">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
-                        Your leakage snapshot
+                        Iddion RegX leakage snapshot
                       </p>
                       <p className="mt-1 text-base font-semibold tracking-tight text-white">Typical Enterprise Scenario</p>
                     </div>
@@ -1263,7 +1275,7 @@ export default function PayrollSolutionsPage() {
                     </div>
                     <div className="flex items-center justify-between rounded-lg bg-white/[0.06] px-2.5 py-1.5 ring-1 ring-white/10">
                       <span className="text-[10px] font-medium text-white/60">Recoverable with CLMS (est.)</span>
-                      <span className="text-xs font-bold tabular-nums text-emerald-300">₹1.4 Cr+ / yr</span>
+                      <span className="text-xs font-bold tabular-nums text-emerald-300">19 Lakh / yr</span>
                     </div>
                   </div>
                 </div>
@@ -1385,7 +1397,7 @@ export default function PayrollSolutionsPage() {
                     </span>
                     <div>
                       <p className="inline-flex rounded-full border border-blue-200/90 bg-gradient-to-r from-blue-50 to-indigo-50/90 px-2.5 py-0.5 text-xs font-bold uppercase tracking-[0.22em] text-blue-800 shadow-sm ring-1 ring-blue-500/10">
-                        With the platform
+                        With Iddion RegX
                       </p>
                       <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-700">
                         What changes when{" "}
@@ -1673,7 +1685,7 @@ export default function PayrollSolutionsPage() {
 
         <SolutionPageClosingCta
           heading="Ready to take control of your contract workforce?"
-          description="Join leading enterprises who have digitized their workforce governance. Book a personalized walkthrough of the CLMS platform today."
+          description="Join leading enterprises who have digitized their workforce governance. Book a personalized walkthrough of the Iddion RegX CLMS platform today — Book Iddion RegX Demo."
           primaryLabel="Request a Demo"
           secondaryLabel="Download Brochure"
           secondaryHref="/brochures"

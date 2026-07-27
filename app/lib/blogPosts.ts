@@ -281,7 +281,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "1. Registration as Principal Employer (Form I)",
         paragraphs: [
-          "Every principal employer using 20 or more contract workers must register under CLRA with the state's licensing authority. Registration is site-specific — a company with three plants needs three registrations. Failure to register is an absolute offence with no 'first notice' grace period.",
+          "Every principal employer using 20 or more contract workers must register under CLRA with the state's licensing authority. Registration is site-specific — an organisation with three plants needs three registrations. Failure to register is an absolute offence with no 'first notice' grace period.",
         ],
       },
       {
@@ -979,7 +979,7 @@ export const blogPosts: BlogPost[] = [
       {
         paragraphs: [
           "An HRMS provides a centralised platform for managing employee information, improving HR efficiency and ensuring a seamless employee experience.",
-          "However, HRMS platforms are primarily built for employees who are directly on the company payroll.",
+          "However, HRMS platforms are primarily built for employees who are directly on the payroll.",
         ],
       },
       {

@@ -4,7 +4,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 const PAGE_TITLE =
-  "Workforce Governance for Automotive Manufacturing | InOps RegX";
+  "Contract Labour Management for Automotive Manufacturing | InOps RegX";
 const PAGE_DESCRIPTION =
   "Synchronise your contractor workforce with JIT production. InOps RegX delivers shift compliance, vendor governance, and biometric access control for automotive assembly plants.";
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = routeMetadata({
   extraKeywords: [
     "automotive contractor workforce management",
     "JIT workforce synchronisation software",
-    "automotive assembly workforce governance",
+    "automotive assembly Contract Labour Management",
     "shift compliance automotive plant",
     "biometric access control automotive",
     "vendor SLA management automotive",

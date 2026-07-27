@@ -13,7 +13,7 @@ export const clmsFaqItems: FAQItem[] = [
   {
     question: "How does ghost worker fraud drain contractor spend?",
     answer:
-      "Buddy punching and proxy clock-ins hide real headcount so clean attendance data never reaches payroll. Industry estimates put the drain at approximately 3–5% of total contractor spend. InOps CLMS eliminates this through biometric verification and face recognition at the gate.",
+      "Buddy punching and proxy clock-ins hide real headcount so clean attendance data never reaches payroll. Industry estimates put the drain at approximately 3–5% of total contractor spend. Iddion RegX Contract Labour Management System (CLMS) eliminates this through biometric verification and face recognition at the gate.",
   },
   {
     question: "What is the financial risk of CLRA compliance violations in India?",
@@ -31,28 +31,28 @@ export const clmsFaqItems: FAQItem[] = [
       "Spreadsheet-driven statutory checks miss deltas until filing deadlines, and errors compound across branches. InOps automates PF, ESI, and LWF deduction calculations per worker, generates challan-ready reports, and flags reconciliation gaps in real time — eliminating end-of-month scrambles.",
   },
   {
-    question: "Can InOps CLMS manage contractors across multiple factory sites?",
+    question: "Can Iddion RegX Contract Labour Management System (CLMS) manage contractors across multiple factory sites?",
     answer:
       "Yes. InOps supports multi-site deployments where biometrics, contractor records, and compliance data from each plant are unified in a single dashboard. HR heads and compliance teams get site-level and aggregate visibility without manual stitching across systems.",
   },
   {
     question: "How does CLMS help with CLRA compliance?",
     answer:
-      "InOps CLMS automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/clms/modules/compliance-report) for the full register and licence capabilities.",
+      "Iddion RegX Contract Labour Management System (CLMS) automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/clms/modules/compliance-report) for the full register and licence capabilities.",
   },
   {
     question: "Can CLMS integrate with biometric attendance devices?",
     answer:
-      "Yes. InOps CLMS integrates with ZKTeco face and fingerprint terminals, AI-based CCTV attendance, QR code readers, and card swipe systems. All hardware feeds into the same CLMS attendance engine — per-worker, per-contractor, per-site. Mixed hardware deployments across multiple plant gates are supported without additional configuration.",
+      "Yes. Iddion RegX Contract Labour Management System (CLMS) integrates with ZKTeco face and fingerprint terminals, AI-based CCTV attendance, QR code readers, and card swipe systems. All hardware feeds into the same CLMS attendance engine — per-worker, per-contractor, per-site. Mixed hardware deployments across multiple plant gates are supported without additional configuration.",
   },
   {
     question: "What is the 9-day continuous attendance rule under CLRA?",
     answer:
-      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some states may acquire employment rights that complicate the principal-employer relationship. InOps CLMS tracks continuous attendance per worker per site and alerts HR to schedule the mandatory off before the threshold is crossed.",
+      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some states may acquire employment rights that complicate the principal-employer relationship. Iddion RegX Contract Labour Management System (CLMS) tracks continuous attendance per worker per site and alerts HR to schedule the mandatory off before the threshold is crossed.",
   },
   {
-    question: "How does InOps CLMS prevent OT cost leakage?",
+    question: "How does Iddion RegX Contract Labour Management System (CLMS) prevent OT cost leakage?",
     answer:
-      "InOps CLMS calculates overtime from biometric punch-out times against registered shift end times. Any OT above the configured threshold requires digital supervisor approval before it becomes payable. Contractor invoices are reconciled line-by-line against the CLMS-approved OT record — discrepancies are flagged before payment. This closes the three types of OT leakage: unauthorised OT, ghost OT, and unclaimed legitimate OT.",
+      "Iddion RegX Contract Labour Management System (CLMS) calculates overtime from biometric punch-out times against registered shift end times. Any OT above the configured threshold requires digital supervisor approval before it becomes payable. Contractor invoices are reconciled line-by-line against the CLMS-approved OT record — discrepancies are flagged before payment. This closes the three types of OT leakage: unauthorised OT, ghost OT, and unclaimed legitimate OT.",
   },
 ];

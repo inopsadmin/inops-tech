@@ -64,7 +64,7 @@ const industryItems = [
 const serviceItems = [
   {
     label: "Background Verification",
-    href: "/services/bgv",
+    href: "/services/background-verification",
     icon: (
       <>
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -75,7 +75,7 @@ const serviceItems = [
   },
   {
     label: "Biometric AMC",
-    href: "/services/biometric",
+    href: "/services/biometric-AMC",
     icon: (
       <>
         <circle cx="12" cy="12" r="3" />
@@ -194,37 +194,30 @@ export function ServicesMegaMenuDesktop({
           overflow: "hidden",
         }}
       >
-        {/* Header */}
-        <div style={{ background: "#f7f8fa", padding: "22px 32px 20px", borderBottom: "1px solid #ececee" }}>
-          <h2 className="inops-type-card-title" style={{ margin: "0 0 4px" }}>Industry & Workforce Solutions</h2>
-          {/* <p className="inops-type-small" style={{ margin: "0 0 2px", fontWeight: 600 }}>Industry Solutions & Workforce Compliance Services</p> */}
-          <p className="inops-type-small" style={{ margin: 0 }}>Complete workforce management solutions for industrial enterprises</p>
-        </div>
-
-        {/* Industries label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
-          SOLUTION{" "}
-          <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "}
-          <span style={{ color: "#3a3f4b" }}>BY INDUSTRIES</span>
-        </div>
-
-        {/* Industries grid — 4 cols matching reference */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "28px 24px", padding: "26px 32px 30px" }}>
-          {industryItems.map((item) => (
-            <MenuItem key={item.href} {...item} onNavigate={onNavigate} />
-          ))}
-        </div>
-
         {/* Services label */}
         <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
-          SOLUTION{" "}
-          <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "}
-          <span style={{ color: "#3a3f4b" }}>BY SERVICES</span>
+         
+          {/* <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "} */}
+          <span style={{ color: "#3a3f4b" }}>SERVICES</span>
         </div>
 
         {/* Services grid — 3 cols matching reference workforce grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px 24px", padding: "26px 32px 30px" }}>
           {serviceItems.map((item) => (
+            <MenuItem key={item.href} {...item} onNavigate={onNavigate} />
+          ))}
+        </div>
+
+        {/* Industries label */}
+        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
+
+          {/* <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "} */}
+          <span style={{ color: "#3a3f4b" }}>INDUSTRIES</span>
+        </div>
+
+        {/* Industries grid — 4 cols matching reference */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "28px 24px", padding: "26px 32px 30px" }}>
+          {industryItems.map((item) => (
             <MenuItem key={item.href} {...item} onNavigate={onNavigate} />
           ))}
         </div>
@@ -236,12 +229,12 @@ export function ServicesMegaMenuDesktop({
 export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void }) {
   return (
     <div style={{ borderTop: "1px solid #ececee" }}>
-      {/* Industries label */}
+      {/* Services label */}
       <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", color: "#8a8f9c", background: "#f7f8fa", borderBottom: "1px solid #ececee" }}>
-        SOLUTION <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span> <span style={{ color: "#3a3f4b" }}>BY INDUSTRIES</span>
+        <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span> <span style={{ color: "#3a3f4b" }}>SERVICES</span>
       </div>
       <div style={{ padding: "8px 8px 4px" }}>
-        {industryItems.map((item) => (
+        {serviceItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
@@ -257,12 +250,12 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
         ))}
       </div>
 
-      {/* Services label */}
+      {/* Industries label */}
       <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", color: "#8a8f9c", background: "#f7f8fa", borderTop: "1px solid #ececee", borderBottom: "1px solid #ececee" }}>
-        SOLUTION <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span> <span style={{ color: "#3a3f4b" }}>BY SERVICES</span>
+        <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span> <span style={{ color: "#3a3f4b" }}>INDUSTRIES</span>
       </div>
       <div style={{ padding: "8px 8px 12px" }}>
-        {serviceItems.map((item) => (
+        {industryItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}

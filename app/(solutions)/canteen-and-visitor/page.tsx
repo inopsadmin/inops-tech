@@ -322,7 +322,7 @@ export default function CanteenManagementPage() {
               <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">for Industrial Sites</span>
             </>
           }
-          subtitle="InOps manages meal entitlement by shift, department, and contractor — biometric meal counts, payroll-linked subsidies, and waste tracking — alongside visitor passes and lobby flows, all from one platform across your industrial campus."
+          subtitle="InOps handles biometric meal entitlement, payroll-linked subsidies, and waste tracking — plus visitor passes and lobby flows — on one platform across your campus."
           subtitleClassName="text-xs leading-relaxed text-slate-600 sm:text-base"
           splitHeroCopyStackClassName={`max-w-3xl lg:max-w-xl lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
           imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
