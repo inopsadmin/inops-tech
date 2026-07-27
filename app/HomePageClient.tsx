@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -143,7 +143,7 @@ type WhyCard = {
 const whyCardHrefByTitle: Record<string, string> = {
   "Identity Solution": "/mobile-app",
   HRIS: "/hris",
-  "Contract Workforce Governance": "/clms",
+  "Contract Workforce Governance": "/contract-labour-management",
   "Logistics Solutions": "/enterprise-solution",
   EWA: "/ewa",
 };
@@ -232,7 +232,7 @@ export default function Home() {
   };
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const activeHeroSlide = heroSlides[activeHeroIndex];
-  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/clms";
+  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/contract-labour-management";
 
   return (
     <div className="home-page home-section-gap relative min-h-screen bg-white text-gray-900 perspective-page">

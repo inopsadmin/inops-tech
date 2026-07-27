@@ -20,7 +20,7 @@ export async function generateMetadata({
   return routeMetadata({
     title: mod.seoTitle ?? `${mod.badge} | CLMS Module — InOps Solutions`,
     description: mod.seoDescription ?? mod.description,
-    path: `/clms/modules/${slug}`,
+    path: `/contract-labour-management/modules/${slug}`,
     extraKeywords: mod.seoKeywords ?? ["CLMS module", "contract labour software India", mod.badge],
   });
 }

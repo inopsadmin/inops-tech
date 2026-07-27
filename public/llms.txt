@@ -8,7 +8,7 @@
 
 ## Core Software
 
-- [Contract Labour Management System (CLMS)](https://inops.tech/clms):
+- [Contract Labour Management System (CLMS)](https://inops.tech/contract-labour-management):
   End-to-end CLRA compliance platform covering contractor attendance, Form V/XIII registers,
   PF/ESI statutory deductions, minimum wage compliance, OT cost control, and biometric
   integration for Indian manufacturing enterprises.
@@ -73,35 +73,35 @@
 
 ## CLMS Modules (Deep-Dive)
 
-- [Attendance & Leave Module](https://inops.tech/clms/modules/attendance-leave):
+- [Attendance & Leave Module](https://inops.tech/contract-labour-management/modules/attendance-leave):
   Face recognition, CCTV attendance, geo-fencing, auto rostering, and leave
   management for contract workforces.
 
-- [Wage & Payroll Module](https://inops.tech/clms/modules/wage-payroll):
+- [Wage & Payroll Module](https://inops.tech/contract-labour-management/modules/wage-payroll):
   Automated minimum wage, overtime, and statutory deduction calculations with
   payroll-ready exports.
 
-- [CLRA Compliance Software](https://inops.tech/clms/modules/compliance-report):
+- [CLRA Compliance Software](https://inops.tech/contract-labour-management/modules/compliance-report):
   Digital Form V/XIII registers, licence tracking, 9-day rule alerts, statutory returns from gate data.
 
-- [Contractor Management Module](https://inops.tech/clms/modules/contractor-management):
+- [Contractor Management Module](https://inops.tech/contract-labour-management/modules/contractor-management):
   Contractor license tracking, renewals, performance signals, and multi-vendor
   governance across sites.
 
-- [Background Verification Module](https://inops.tech/clms/modules/background-verification):
+- [Background Verification Module](https://inops.tech/contract-labour-management/modules/background-verification):
   Aadhaar-linked contractor background verification integrated with CLMS onboarding.
 
-- [Challan Reconciliation Module](https://inops.tech/clms/modules/challan-reconciliation):
+- [Challan Reconciliation Module](https://inops.tech/contract-labour-management/modules/challan-reconciliation):
   PF/ESI challan matching against payroll deductions with gap alerts.
 
-- [Gate Pass Management System](https://inops.tech/clms/modules/gate-compliance):
+- [Gate Pass Management System](https://inops.tech/contract-labour-management/modules/gate-compliance):
   Biometric gate pass control with CLRA licence checks, headcount enforcement, and real-time statutory record updates.
 
-- [CXO Dashboard](https://inops.tech/clms/modules/cxo-dashboard):
+- [CXO Dashboard](https://inops.tech/contract-labour-management/modules/cxo-dashboard):
   Executive-level visibility into workforce strength, compliance status, and cost
   metrics across all sites.
 
-- [AI Assistance](https://inops.tech/clms/modules/ai-assistance):
+- [AI Assistance](https://inops.tech/contract-labour-management/modules/ai-assistance):
   AI-driven insights, anomaly detection, and automation within the CLMS platform.
 
 ## Research & Proprietary Data

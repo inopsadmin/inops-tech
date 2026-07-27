@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -102,7 +102,7 @@ export default function ModuleSwitcher({ activeSlug }: ModuleSwitcherProps) {
               return (
                 <Link
                   key={tab.slug}
-                  href={`/clms/modules/${tab.slug}`}
+                  href={`/contract-labour-management/modules/${tab.slug}`}
                   className={[
                     "group relative rounded-xl border px-4 py-4 text-left",
                     "transition-all duration-200 ease-out hover:-translate-y-px",
@@ -229,7 +229,7 @@ export default function ModuleSwitcher({ activeSlug }: ModuleSwitcherProps) {
                 return (
                   <Link
                     key={tab.slug}
-                    href={`/clms/modules/${tab.slug}`}
+                    href={`/contract-labour-management/modules/${tab.slug}`}
                     onClick={() => setIsOpen(false)}
                     className={[
                       "group relative rounded-xl border px-4 py-4 text-left",

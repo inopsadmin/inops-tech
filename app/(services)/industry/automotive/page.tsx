@@ -162,7 +162,7 @@ const impactStats = [
 const integrationCards = [
   {
     title: "Deep ERP Sync",
-    desc: "Native connectors for SAP S/4HANA, Oracle NetSuite, and Microsoft Dynamics 365 for bi-directional data flow.",
+    desc: "Connectors for SAP S/4HANA, Oracle NetSuite, and Microsoft Dynamics 365 for bi-directional data flow.",
     icon: <GridIcon />,
   },
   {
@@ -204,7 +204,7 @@ export default function AutomotiveIndustryPage() {
               <span className="block text-teal-400">Automotive Manufacturing</span>
             </h1>
             <p className="mt-8 max-w-[29rem] text-base leading-relaxed text-blue-50">
-              Ensure the right worker with the right skills is on the assembly line at the right time. Iddion RegX
+              Ensure the right worker with the right skills is on the assembly line at the right time. InOps
               digitizes contractor ecosystems to match the precision of Just-In-Time production.
             </p>
 
@@ -272,7 +272,7 @@ export default function AutomotiveIndustryPage() {
                 in contractor availability or compliance bottlenecks can halt multi-million dollar production cycles.
               </p>
               <p>
-                Iddion RegX introduces <strong className="font-bold text-slate-700">Automated Workforce Synchronization</strong>,
+                InOps introduces <strong className="font-bold text-slate-700">Automated Workforce Synchronization</strong>,
                 aligning contractor lifecycle management with your production planning system (PPS) to ensure
                 continuous, compliant operation.
               </p>
@@ -349,7 +349,7 @@ export default function AutomotiveIndustryPage() {
                 Comprehensive Governance for the Global Assembly Line
               </h2>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-600">
-                Iddion RegX provides a modular suite designed to integrate with existing manufacturing execution
+                InOps provides a modular suite designed to integrate with existing manufacturing execution
                 systems (MES), digitizing the entire human layer of your plant.
               </p>
             </div>
@@ -431,7 +431,7 @@ export default function AutomotiveIndustryPage() {
               Seamless Integration with Global ERP Ecosystems
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-slate-500">
-              RegX is not an island. It acts as the intelligent human-governance layer that bridges your corporate ERP
+              InOps is not an island. It acts as the intelligent human-governance layer that bridges your corporate ERP
               with the real-time activity on the shop floor.
             </p>
           </div>
@@ -474,7 +474,7 @@ export default function AutomotiveIndustryPage() {
               Ready to synchronize your workforce with your production?
             </h2>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-blue-100">
-              Join leading automotive OEMs and Tier-1 suppliers using Iddion RegX to secure their labor supply chain.
+              Join leading automotive OEMs and Tier-1 suppliers using InOps to secure their labor supply chain.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 lg:col-span-7 lg:justify-center">

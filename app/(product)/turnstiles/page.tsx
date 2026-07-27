@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -261,7 +261,7 @@ export default function TurnstilesPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 A turnstile alone enforces identity; connected to a rules engine it enforces policy. InOps lanes check induction validity, medical fitness, licence status, and BGV clearance at the moment of entry — a failed check means the arm doesn't turn, and the denial is logged with its reason. See{" "}
-                <a href="/clms/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/contract-labour-management/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   gate pass management and auto-blocking
                 </a>{" "}
                 for the full rule set.

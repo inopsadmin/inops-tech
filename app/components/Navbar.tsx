@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import NavbarBrandLogo from "@/app/components/NavbarBrandLogo";
@@ -63,7 +63,7 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/brochures") ||
     path.startsWith("/canteen-and-visitor") ||
     path.startsWith("/cctv") ||
-    path.startsWith("/clms") ||
+    path.startsWith("/contract-labour-management") ||
     path.startsWith("/enterprise-solution") ||
     path.startsWith("/ewa") ||
     path.startsWith("/fixed-asset-management") ||

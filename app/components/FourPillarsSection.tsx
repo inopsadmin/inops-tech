@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -18,7 +18,7 @@ const inOpsPillars = [
         rowIcon: "userCog" as const,
         name: "Contract Employee Governance (CLMS)",
         blurb: "Manage lifecycle, onboarding, and compliance.",
-        href: "/clms",
+        href: "/contract-labour-management",
       },
       {
         rowIcon: "database" as const,

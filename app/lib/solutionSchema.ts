@@ -1,4 +1,4 @@
-/** SoftwareApplication JSON-LD copy per solution route. */
+﻿/** SoftwareApplication JSON-LD copy per solution route. */
 export const solutionSchemaByPath: Record<
   string,
   { name: string; description: string }
@@ -8,7 +8,7 @@ export const solutionSchemaByPath: Record<
     description:
       "Payroll-connected earned wage access with real-time attendance validation and compliant withdrawals for industrial workforces.",
   },
-  "/clms": {
+  "/contract-labour-management": {
     name: "InOps CLMS — Contract Labour Management System",
     description:
       "Contract Labour Management Software (CLMS) for Indian manufacturers: CLRA compliance, contractor onboarding, biometric attendance, PF/ESI statutory deductions, and payroll automation.",

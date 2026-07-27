@@ -75,7 +75,7 @@ const serviceItems = [
   },
   {
     label: "Biometric AMC",
-    href: "/services/biometric-AMC",
+    href: "/services/biometric-amc",
     icon: (
       <>
         <circle cx="12" cy="12" r="3" />

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Solutions mega-menu: 4 columns per row. Accent = first column (light blue).
  */
 
@@ -20,14 +20,14 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Workforce Governance Solution",
       description: "End-to-end platform for workforce governance, time, and attendance.",
-      href: "/clms",
+      href: "/contract-labour-management",
     },
     {
       type: "tile",
       title: "Iddion RegX- External",
       subtitle: "Contract Labour Management Solution",
       description: "Contract workforce governance with compliance, attendance & payroll.",
-      href: "/clms",
+      href: "/contract-labour-management",
     },
     {
       type: "tile",

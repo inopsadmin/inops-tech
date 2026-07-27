@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { inopsUi } from "@/app/lib/inopsUi";
@@ -18,7 +18,7 @@ const productPages = [
 const solutionPages = [
   { label: "Time & Attendance", href: "/cctv" },
   { label: "Canteen Management", href: "/canteen-and-visitor" },
-  { label: "Payroll Solutions", href: "/clms" },
+  { label: "Payroll Solutions", href: "/contract-labour-management" },
   { label: "Labour Management Software", href: "/hris" },
   { label: "Mobile App", href: "/mobile-app" },
   { label: "Enterprise Solution", href: "/enterprise-solution" },

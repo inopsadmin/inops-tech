@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 import { blogPosts } from "@/app/lib/blogPosts";
 import { SCHEMA_SITE_NAV_PAGES, SITEMAP_LAST_MODIFIED, getSiteUrl } from "@/app/lib/site";
 
@@ -19,7 +19,7 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/accessories", priority: 0.6, changeFrequency: "monthly" },
   { path: "/cctv", priority: 0.6, changeFrequency: "monthly" },
   { path: "/canteen-and-visitor", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/clms", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/contract-labour-management", priority: 0.85, changeFrequency: "monthly" },
   { path: "/hris", priority: 0.7, changeFrequency: "monthly" },
   { path: "/mobile-app", priority: 0.6, changeFrequency: "monthly" },
   { path: "/enterprise-solution", priority: 0.6, changeFrequency: "monthly" },
@@ -50,7 +50,7 @@ const MODULE_SLUGS = [
 ];
 
 const moduleRoutes = MODULE_SLUGS.map((slug) => ({
-  path: `/clms/modules/${slug}`,
+  path: `/contract-labour-management/modules/${slug}`,
   priority: 0.65,
   changeFrequency: "monthly" as ChangeFreq,
 }));

@@ -9,13 +9,13 @@ const viewport = { once: true, amount: 0.15 };
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const heroStats = [
-  { value: "100%", label: "GxP Compliance" },
-  { value: "0%", label: "Access Leakage" },
+  { value: "100%", label: "Compliance" },
+  { value: "0%", label: "Leakage" },
   { value: "Audit", label: "Ready Always" },
 ];
 
 const contextCheckItems = [
-  "Strict GxP Adherence",
+  "Strict Compliance Adherence",
   "Automated Training Validation",
   "Cleanroom Access Logs",
   "Instant Audit Reporting",
@@ -23,7 +23,7 @@ const contextCheckItems = [
 
 const painPoints = [
   {
-    title: "GMP/GxP Compliance",
+    title: "Compliance",
     desc: "Difficulties in enforcing and documenting hygiene and process standards for temporary staff.",
   },
   {
@@ -50,7 +50,7 @@ const painPoints = [
 
 const platformCards = [
   {
-    title: "GxP Compliance Engine",
+    title: "Compliance Engine",
     desc: "Pre-built compliance rules and workflows designed for pharmaceutical and life sciences safety standards.",
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" aria-hidden>
@@ -71,7 +71,7 @@ const platformCards = [
   },
   {
     title: "Deep ERP Integration",
-    desc: "Native connectors for SAP S/4HANA, Oracle, and specialised Pharma MES for seamless data flow.",
+    desc: "Connectors for SAP S/4HANA, Oracle, and specialised Pharma MES for seamless data flow.",
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" aria-hidden>
         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" strokeLinecap="round" strokeLinejoin="round" />
@@ -117,13 +117,13 @@ export default function PharmaIndustryPage() {
               </span>
 
               <h1 className="mt-7 max-w-[40rem] text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-[3.6rem]">
-                Contract Labour Governance for{" "}
+                Contract Labour Management for{" "}
                 <span className="block text-teal-400">Pharmaceutical Manufacturing</span>
               </h1>
 
               <p className="mt-8 max-w-[29rem] text-base leading-relaxed text-blue-50">
                 Ensure only qualified, compliant, and authorized workers enter regulated manufacturing
-                environments. Maintain GxP standards with automated workforce validation.
+                environments. Maintain standards with automated workforce validation.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -137,7 +137,7 @@ export default function PharmaIndustryPage() {
                   href="/contact"
                   className="inline-flex min-w-36 justify-center border border-white/60 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10"
                 >
-                  Explore GxP Solutions
+                  Explore Solutions
                 </Link>
               </div>
 
@@ -202,9 +202,9 @@ export default function PharmaIndustryPage() {
                   verified qualifications and training.
                 </p>
                 <p>
-                  InOps RegX digitises the{" "}
+                  InOps digitises the{" "}
                   <strong className="font-bold text-slate-700">Validation Lifecycle</strong>, ensuring
-                  that only personnel with current medical clearances, GxP certifications, and
+                  that only personnel with current medical clearances, certifications, and
                   specialised area training can cross the threshold into cleanrooms or high-potency labs.
                 </p>
               </div>
@@ -272,7 +272,7 @@ export default function PharmaIndustryPage() {
                   Intelligent Governance for Sterile Environments
                 </h2>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  InOps RegX provides a modular, high-trust architecture designed to digitise the
+                  InOps provides a modular, high-trust architecture designed to digitise the
                   entire contractor lifecycle, specifically mapped to life sciences regulatory demands.
                 </p>
               </div>
@@ -299,7 +299,7 @@ export default function PharmaIndustryPage() {
                 {[
                   {
                     title: "Compliance-Driven Onboarding",
-                    desc: "Automated verification of medical fitness, GxP training, and safety inductions before any ID issuance.",
+                    desc: "Automated verification of medical fitness, training, and safety inductions before any ID issuance.",
                     icon: (
                       <svg className="text-blue-600" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <circle cx="10" cy="7" r="3.5" />
@@ -378,8 +378,8 @@ export default function PharmaIndustryPage() {
                   className="object-cover object-center"
                 />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-[#06284a]/90 px-5 py-3 backdrop-blur-sm ring-1 ring-white/10">
-                  <p className="text-[0.56rem] font-bold uppercase tracking-widest text-slate-300">GxP Compliance Rating</p>
-                  <p className="text-lg font-extrabold text-teal-300">100.0% GxP Validated</p>
+                  <p className="text-[0.56rem] font-bold uppercase tracking-widest text-slate-300">Compliance Rating</p>
+                  <p className="text-lg font-extrabold text-teal-300">100.0% Validated</p>
                 </div>
               </motion.div>
             </div>
@@ -499,7 +499,7 @@ export default function PharmaIndustryPage() {
                 Enterprise Infrastructure for Regulated Environments
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-slate-500">
-                InOps RegX acts as the intelligent human governance layer that bridges your LIMS and ERP
+                InOps acts as the intelligent human governance layer that bridges your LIMS and ERP
                 systems with real-time floor activity.
               </p>
             </motion.div>
@@ -557,7 +557,7 @@ export default function PharmaIndustryPage() {
                 Secure your pharmaceutical labor supply chain
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-blue-100">
-                Join leading life sciences manufacturers using InOps RegX to enforce 100% compliance
+                Join leading life sciences manufacturers using InOps to enforce 100% compliance
                 across their distributed workforce.
               </p>
             </motion.div>
@@ -594,7 +594,7 @@ export default function PharmaIndustryPage() {
 
 function PainIcon({ index }: { index: number }) {
   const icons = [
-    /* 0 — GMP/GxP Compliance */
+    /* 0 — GMP Compliance */
     <svg key="gmp" className="h-[22px] w-[22px]" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="M18 4l12 5v10c0 7.5-5 13-12 15C11 32 6 26.5 6 19V9l12-5z" />
       <path d="M13 19l3.5 3.5L24 14" />

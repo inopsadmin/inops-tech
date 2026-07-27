@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Single source of truth for public site URL, NAP (name, address, phone), and SEO defaults.
  * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://inops.tech) so metadata, sitemap, and schema stay correct.
  */
@@ -122,7 +122,7 @@ export const KEYWORDS_BASE = [
  */
 export const SCHEMA_SITE_NAV_PAGES = [
   {
-    path: "/clms",
+    path: "/contract-labour-management",
     name: "Contract Labour Management",
     description: "Automate payroll, PF/ESI & biometric attendance",
   },
@@ -182,7 +182,7 @@ export function siteIconUrl(): string {
 export const SITEMAP_LAST_MODIFIED: Record<string, string> = {
   "/": "2026-05-01",
   "/contact": "2026-05-01",
-  "/clms": "2026-04-15",
+  "/contract-labour-management": "2026-04-15",
   "/hris": "2026-04-15",
   "/ewa": "2026-04-15",
   "/face": "2026-04-15",

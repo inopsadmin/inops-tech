@@ -1,14 +1,14 @@
 import type { FAQItem } from "@/app/components/FAQPageJsonLd";
 
 /**
- * Single source of truth for /clms FAQ — shared by layout.tsx (JSON-LD schema)
+ * Single source of truth for /contract-labour-management FAQ — shared by layout.tsx (JSON-LD schema)
  * and page.tsx (visible accordion). Edit here; both surfaces update automatically.
  */
 export const clmsFaqItems: FAQItem[] = [
   {
     question: "What is a Contract Labour Management System (CLMS)?",
     answer:
-      "A Contract Labour Management System (CLMS) is software that automates the full lifecycle of contract labour: onboarding, gate compliance, biometric attendance, PF/ESI/LWF statutory deductions, payroll processing, and contractor governance for manufacturing plants and industrial facilities.",
+      "A Contract Labour Management System (CLMS) is software that automates the full lifecycle of contract labour: onboarding, gate compliance, biometric attendance, PF/ESI/LWF statutory deductions, payroll processing, and Contract Labour Management for manufacturing plants and industrial facilities.",
   },
   {
     question: "How does ghost worker fraud drain contractor spend?",
@@ -38,7 +38,7 @@ export const clmsFaqItems: FAQItem[] = [
   {
     question: "How does CLMS help with CLRA compliance?",
     answer:
-      "Iddion RegX Contract Labour Management System (CLMS) automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/clms/modules/compliance-report) for the full register and licence capabilities.",
+      "Iddion RegX Contract Labour Management System (CLMS) automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/contract-labour-management/modules/compliance-report) for the full register and licence capabilities.",
   },
   {
     question: "Can CLMS integrate with biometric attendance devices?",

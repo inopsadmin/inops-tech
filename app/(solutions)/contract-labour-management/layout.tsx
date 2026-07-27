@@ -1,4 +1,4 @@
-import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
+﻿import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import { clmsFaqItems } from "@/app/lib/clmsFaqItems";
@@ -11,7 +11,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/clms",
+  path: "/contract-labour-management",
   extraKeywords: [
     "CLMS software",
     "contract labour management system",
@@ -27,7 +27,7 @@ export const metadata: Metadata = routeMetadata({
 export default function PayrollSolutionsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/clms" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
+      <SolutionSchemaInjector path="/contract-labour-management" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
       <FAQPageJsonLd items={clmsFaqItems} />
       {children}
     </>

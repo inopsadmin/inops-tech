@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+﻿import type { NextConfig } from "next";
 
 const staticAssetCache = "public, max-age=31536000, immutable";
 
@@ -27,15 +27,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  experimental: {
-    optimizePackageImports: ["framer-motion", "simple-icons", "lenis"],
-  },
+  experimental: {},
   async redirects() {
     return [
       { source: "/solutions/labourmanagement", destination: "/hris", permanent: true },
       { source: "/solutions/labourmanagement/:path*", destination: "/hris", permanent: true },
-      { source: "/solutions/payroll-solutions", destination: "/clms", permanent: true },
-      { source: "/solutions/payroll-solutions/:path*", destination: "/clms", permanent: true },
+      { source: "/clms", destination: "/contract-labour-management", permanent: true },
+      { source: "/clms/:path*", destination: "/contract-labour-management/:path*", permanent: true },
+      { source: "/solutions/payroll-solutions", destination: "/contract-labour-management", permanent: true },
+      { source: "/solutions/payroll-solutions/:path*", destination: "/contract-labour-management", permanent: true },
       { source: "/solutions/time-and-attendance", destination: "/cctv", permanent: true },
       { source: "/solutions/time-and-attendance/:path*", destination: "/cctv", permanent: true },
       { source: "/solutions/canteen-management", destination: "/canteen-and-visitor", permanent: true },

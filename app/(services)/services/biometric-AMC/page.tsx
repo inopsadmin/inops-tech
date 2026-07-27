@@ -5,6 +5,10 @@ import { useState } from "react";
 
 const faqs = [
   {
+    q: "What is a biometric AMC and what does it cover?",
+    a: "InOps biometric AMC services keep attendance and access-control hardware running across multi-site industrial operations — SLA-backed preventive and corrective maintenance, remote device-health monitoring, firmware management, and on-site engineer support for biometric terminals, RFID readers, and turnstiles, under one contract across every plant. When a reader fails at the gate, attendance and access fail with it.",
+  },
+  {
     q: "Which devices are covered under AMC?",
     a: "Biometric scanners, access controllers, attendance terminals, RFID readers and related access infrastructure are covered as part of our biometric AMC services.",
   },
@@ -19,10 +23,6 @@ const faqs = [
   {
     q: "Can we monitor device health ourselves?",
     a: "Yes, a live fleet dashboard is available to your operations and IT teams.",
-  },
-  {
-    q: "What is a biometric AMC and what does it cover?",
-    a: "InOps biometric AMC services keep attendance and access-control hardware running across multi-site industrial operations — SLA-backed preventive and corrective maintenance, remote device-health monitoring, firmware management, and on-site engineer support for biometric terminals, RFID readers, and turnstiles, under one contract across every plant. When a reader fails at the gate, attendance and access fail with it.",
   },
 ];
 

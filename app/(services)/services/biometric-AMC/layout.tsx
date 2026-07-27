@@ -2,7 +2,7 @@ import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Biometric AMC Services | InOps RegX";
+const PAGE_TITLE = "Biometric AMC Services | InOps";
 const PAGE_DESCRIPTION =
   "SLA-backed biometric AMC services and lifecycle management covering access control AMC, attendance machine AMC and RFID reader AMC across distributed plants, warehouses and campuses.";
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = routeMetadata({
     "biometric service provider India",
     "device health monitoring",
     "biometric infrastructure maintenance",
-    "InOps RegX AMC",
+    "InOps AMC",
     "preventive biometric maintenance",
     "biometric lifecycle management",
     "on-site engineer support",

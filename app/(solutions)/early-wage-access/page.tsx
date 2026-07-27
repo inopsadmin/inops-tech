@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
@@ -785,7 +785,7 @@ export default function EwaPage() {
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
               Salary++ intelligently connects your workforce, payroll and banking ecosystem to deliver secure, real-time earned wage access. It runs on the same attendance engine as{" "}
-              <a href="/clms" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+              <a href="/contract-labour-management" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                 InOps CLMS
               </a>
               , so every withdrawal is validated against the same verified records that drive your contractor payroll.

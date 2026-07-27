@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Curated Unsplash imagery aligned with industrial workforce, CLMS, biometrics, and access.
  * Centralised so homepage sliders and modules stay consistent with real services.
  */
@@ -39,7 +39,7 @@ export const heroSlides: readonly HeroSlide[] = [
     seoHeading: "CLMS, CLRA, Compliance",
     headline: "India's Contract Workforce Compliance Platform",
     subheadline: "Single Source of Truth for Workforce Governance",
-    solutionHref: "/clms",
+    solutionHref: "/contract-labour-management",
   },
   {
     layout: "seo-stack",

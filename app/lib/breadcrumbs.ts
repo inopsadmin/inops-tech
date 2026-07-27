@@ -1,4 +1,4 @@
-import { SITE_NAME } from "@/app/lib/site";
+﻿import { SITE_NAME } from "@/app/lib/site";
 
 export type BreadcrumbItem = {
   name: string;
@@ -16,7 +16,7 @@ const LABEL_BY_PATH: Record<string, string> = {
   "/face": "Biometric Access Control",
   "/turnstiles": "Turnstiles",
   "/accessories": "Accessories",
-  "/clms": "Contract Labour Management",
+  "/contract-labour-management": "Contract Labour Management",
   "/hris": "HR Information System",
   "/ewa": "Earned Wage Access (EWA)",
   "/cctv": "Time & Attendance",
@@ -45,7 +45,7 @@ export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
   if (!label) return [HOME];
 
   const solutionPaths = new Set([
-    "/clms",
+    "/contract-labour-management",
     "/hris",
     "/ewa",
     "/cctv",

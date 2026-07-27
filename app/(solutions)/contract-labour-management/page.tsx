@@ -522,7 +522,7 @@ function OurModuleCard({ slide, palette, slug }: { slide: OurModuleSlide; palett
 
   return (
     <motion.article
-      className="relative flex h-[19.5rem] w-full max-w-[17.5rem] flex-col overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:border-slate-300 hover:shadow-[0_14px_40px_-14px_rgba(15,23,42,0.22)] lg:max-w-none"
+      className="relative flex h-[22rem] w-full max-w-[17.5rem] flex-col overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:border-slate-300 hover:shadow-[0_14px_40px_-14px_rgba(15,23,42,0.22)] lg:max-w-none"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
@@ -563,7 +563,7 @@ function OurModuleCard({ slide, palette, slug }: { slide: OurModuleSlide; palett
         </p>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto pt-3">
           <Link
-            href={`/clms/modules/${slug}`}
+            href={`/contract-labour-management/modules/${slug}`}
             className="inline-flex h-9 w-full items-center justify-center rounded-lg bg-[color:var(--inops-blue)] text-xs font-semibold text-white shadow-sm transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
           >
             Know more
@@ -634,7 +634,7 @@ function OurModulesCarousel() {
         </motion.div>
 
         <motion.ul
-          className="mt-6 grid list-none grid-cols-2 gap-4 lg:mt-8 lg:grid-cols-4 lg:gap-4"
+          className="mt-6 grid list-none grid-cols-2 gap-4 lg:mt-8 lg:grid-cols-5 lg:gap-4"
           variants={ourModulesGridStagger}
           initial="hidden"
           whileInView="visible"
@@ -837,7 +837,7 @@ export default function PayrollSolutionsPage() {
                   playsInline
                   preload="metadata"
                   poster={payrollHeroRightBackground}
-                  aria-label="Payroll dashboard and contract workforce governance overview"
+                  aria-label="Payroll dashboard and contract Contract Labour Management overview"
                 >
                   <source src={payrollHeroRightVideo} type="video/mp4" />
                 </video>
@@ -905,7 +905,7 @@ export default function PayrollSolutionsPage() {
                       className="home-display-heading inops-type-hero mt-2 whitespace-nowrap text-slate-900"
                     >
                       End to end
-                      <span className="text-blue-800"></span>  contract <br /> workforce governance
+                      <span className="text-blue-800"></span>  contract <br /> Contract Labour Management
                     </FlyInText>
                   </div> */}
 
@@ -1647,7 +1647,7 @@ export default function PayrollSolutionsPage() {
                 Frequently asked questions
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
-                Answers to common questions about contract labour management, compliance, integrations, and multi-site workforce governance.
+                Answers to common questions about contract labour management, compliance, integrations, and multi-site Contract Labour Management.
               </p>
             </motion.div>
 
@@ -1684,8 +1684,8 @@ export default function PayrollSolutionsPage() {
         </section>
 
         <SolutionPageClosingCta
-          heading="Ready to take control of your contract workforce?"
-          description="Join leading enterprises who have digitized their workforce governance. Book a personalized walkthrough of the Iddion RegX CLMS platform today — Book Iddion RegX Demo."
+          heading="Book a personalized walkthrough of the Iddion RegX CLMS platform today"
+          description="Join leading enterprises that have digitized their Contract Labour Management and taken full control of their contract workforce."
           primaryLabel="Request a Demo"
           secondaryLabel="Download Brochure"
           secondaryHref="/brochures"

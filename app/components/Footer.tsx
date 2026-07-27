@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import BrandLogoImage from "@/app/components/BrandLogoImage";
@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 import { OFFICE_ADDRESS_LINE, SOCIAL_LINKS } from "@/app/lib/site";
 
 const solutions = [
-  { label: "Workforce Governance Solution", href: "/clms" },
-  { label: "Contract Employee Governance System", href: "/clms" },
+  { label: "Workforce Governance Solution", href: "/contract-labour-management" },
+  { label: "Contract Employee Governance System", href: "/contract-labour-management" },
   { label: "HR Information System", href: "/hris" },
   { label: "Canteen & Visitor Management", href: "/canteen-and-visitor" },
   { label: "Identity & Face Solution", href: "/mobile-app" },

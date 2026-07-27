@@ -51,7 +51,7 @@ const painPoints = [
 const platformCards = [
   {
     title: "WMS/TMS Connectivity",
-    desc: "Native integrations to Oracle Connectors, Oracle Fieldglass, and Oracle Employee Central for bi-directional data syncing.",
+    desc: "Integrations to Oracle Connectors, Oracle Fieldglass, and Oracle Employee Central for bi-directional data syncing.",
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" aria-hidden>
         <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" strokeLinecap="round" strokeLinejoin="round" />
@@ -115,7 +115,7 @@ export default function LogisticsIndustryPage() {
               </span>
 
               <h1 className="mt-7 max-w-[40rem] text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl lg:text-[3.6rem]">
-                Workforce Management for{" "}
+                Contract Labour Management for{" "}
                 <span className="block text-teal-400">Logistics &amp; Warehousing</span>
               </h1>
 
@@ -199,7 +199,7 @@ export default function LogisticsIndustryPage() {
                   is no longer viable.
                 </p>
                 <p>
-                  InOps RegX provides the digital infrastructure to transition from fragmented manual oversight to{" "}
+                  InOps provides the digital infrastructure to transition from fragmented manual oversight to{" "}
                   <strong className="font-bold text-slate-700">Centralised Workforce Governance</strong>, ensuring your
                   enterprise matches your labor capacity.
                 </p>
@@ -436,7 +436,7 @@ export default function LogisticsIndustryPage() {
                 Measurable Excellence for Logistics Leaders
               </h2>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-blue-100">
-                Transform your workforce management into a quantifiable asset. InOps RegX delivers the operational
+                Transform your workforce management into a quantifiable asset. InOps delivers the operational
                 insights necessary for supply chain scaling.
               </p>
 
@@ -529,7 +529,7 @@ export default function LogisticsIndustryPage() {
                 Built for Global Supply Chain Integration
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-slate-500">
-                InOps RegX acts as the intelligent human governance layer that bridges your WMS/TMS infrastructure
+                InOps acts as the intelligent human governance layer that bridges your WMS/TMS infrastructure
                 with the real-time activity of your workforce.
               </p>
             </motion.div>
@@ -587,7 +587,7 @@ export default function LogisticsIndustryPage() {
                 Secure your logistics workforce today
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-blue-100">
-                Join leading 3PL providers and retail giants using InOps RegX to govern their distributed
+                Join leading 3PL providers and retail giants using InOps to govern their distributed
                 warehousing ecosystems.
               </p>
             </motion.div>

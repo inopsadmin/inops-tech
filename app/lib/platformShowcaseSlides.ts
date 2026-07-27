@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Homepage platform device ,  one tab per unique Solutions mega-menu destination.
  * Copy and imagery mirror each page’s hero section.
  */
@@ -17,7 +17,7 @@ export const platformShowcaseSlides = [
   {
     id: "payroll-clms",
     tabLabel: "Contract & payroll",
-    href: "/clms",
+    href: "/contract-labour-management",
     title: "Redefining contract workforce ,  governance system",
     badge: "CLMS",
     text: "One Unified Platform for Complete Control",

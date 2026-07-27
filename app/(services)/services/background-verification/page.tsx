@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -292,7 +292,7 @@ export default function BGVPage() {
                   </svg>
                 </div>
                 <div className="text-[14.5px] font-bold text-[#0b1e2d] mb-2">Already running InOps CLMS?</div>
-                <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">Verification is built into contractor onboarding — checks fire automatically at intake and block the gate until cleared. <a href="/clms" className="font-semibold text-[#1c7bb8] hover:underline">Explore More</a></div>
+                <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">Verification is built into contractor onboarding — checks fire automatically at intake and block the gate until cleared. <a href="/contract-labour-management" className="font-semibold text-[#1c7bb8] hover:underline">Explore More</a></div>
               </div>
             </div>
           </div>

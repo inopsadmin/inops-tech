@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -938,7 +938,7 @@ export default function CanteenManagementPage() {
               </p>
               <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
                 Contractor-wise meal counts roll up to a canteen invoice report. The same contractor mapping your{" "}
-                <a href="/clms" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/contract-labour-management" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   contract labour management system
                 </a>{" "}
                 maintains for attendance and payroll closes the billing gap — over-counted meals are flagged before the invoice is approved, not discovered in next month's audit.

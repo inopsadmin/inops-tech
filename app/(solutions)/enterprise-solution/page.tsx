@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -1366,7 +1366,7 @@ export default function EnterpriseSolutionPage() {
                 <h3 className="text-lg font-semibold text-slate-900">Contract labour governance</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Digital onboarding, gate compliance, CLRA registers, and payroll for every contractor workforce on every site — with licence tracking, BGV, and statutory deductions built in.{" "}
-                  <Link href="/clms" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/contract-labour-management" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     Contract labour management system
                   </Link>
                 </p>
@@ -1401,7 +1401,7 @@ export default function EnterpriseSolutionPage() {
                     Turnstile access control
                   </Link>{" "}
                   with compliance rule enforcement via{" "}
-                  <Link href="/clms/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/contract-labour-management/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     gate pass management
                   </Link>
                   — induction, medical, licence, and BGV checked at the barrier before the arm turns.

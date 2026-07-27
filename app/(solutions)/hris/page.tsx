@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion, MotionConfig } from "framer-motion";
@@ -1350,7 +1350,7 @@ export default function LabourManagementPage() {
             <div>
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">One engine for permanent and contract workforces</h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
-                InOps HRIS and <Link href="/clms" className="text-blue-600 underline">contract labour management system</Link> share the same biometric attendance and identity infrastructure. The face terminals, fingerprint readers, and CCTV-based attendance devices that clock your permanent staff also govern your contract workforce — no separate hardware estate, no manual data bridging between two systems.
+                InOps HRIS and <Link href="/contract-labour-management" className="text-blue-600 underline">contract labour management system</Link> share the same biometric attendance and identity infrastructure. The face terminals, fingerprint readers, and CCTV-based attendance devices that clock your permanent staff also govern your contract workforce — no separate hardware estate, no manual data bridging between two systems.
               </p>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
                 Plant HR sees total headcount — permanent via HRIS, contractors via CLMS — in one dashboard. Compliance officers see both workforces' statutory status together. This is the integration story that a single-workforce HR platform cannot offer.
@@ -1359,7 +1359,7 @@ export default function LabourManagementPage() {
             <div>
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">HRIS vs CLMS: which do you need?</h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
-                HRIS is for your own employees — permanent and fixed-term staff on your payroll. <Link href="/clms" className="text-blue-600 underline">CLMS</Link> is for contractors' workers — third-party labour with their own employer, governed by CLRA licences, Form V/XIII registers, and contractor invoices that an HRIS is not designed to handle. Most large manufacturing plants need both. InOps runs them on one platform.
+                HRIS is for your own employees — permanent and fixed-term staff on your payroll. <Link href="/contract-labour-management" className="text-blue-600 underline">CLMS</Link> is for contractors' workers — third-party labour with their own employer, governed by CLRA licences, Form V/XIII registers, and contractor invoices that an HRIS is not designed to handle. Most large manufacturing plants need both. InOps runs them on one platform.
               </p>
             </div>
             <div>
