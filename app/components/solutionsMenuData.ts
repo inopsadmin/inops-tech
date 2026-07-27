@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Solutions mega-menu: 4 columns per row. Accent = first column (light blue).
  */
 
@@ -18,15 +18,15 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     {
       type: "tile",
       accent: true,
-      title: "Workforce Governance Solution",
-      description: "End-to-end platform for workforce governance, time, and attendance.",
+      title: "Contract Labour Management Solution",
+      description: "End-to-end platform for Contract Labour Management, time, and attendance.",
       href: "/contract-labour-management",
     },
     {
       type: "tile",
       title: "Iddion RegX- External",
       subtitle: "Contract Labour Management Solution",
-      description: "Contract workforce governance with compliance, attendance & payroll.",
+      description: "Contract Labour Management with compliance, attendance & payroll.",
       href: "/contract-labour-management",
     },
     {
@@ -50,25 +50,25 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Identity & Face Solution",
       description: "Mobile and hardware identity for attendance, access, and verification.",
-      href: "/mobile-app",
+      href: "/mobile-app-attendance",
     },
     {
       type: "tile",
       title: "Mobile App",
       description: "Employee self-service and identity on the go.",
-      href: "/mobile-app",
+      href: "/mobile-app-attendance",
     },
     {
       type: "tile",
       title: "CCTV Attendance",
       description: "Attendance backed by CCTV and vision workflows.",
-      href: "/cctv",
+      href: "/cctv-attendance",
     },
     {
       type: "tile",
       title: "Face Reader",
       description: "Biometric face recognition for secure access and time logs.",
-      href: "/face",
+      href: "/biometric-reader",
     },
   ],
   // [
@@ -129,9 +129,9 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     {
       type: "tile",
       accent: true,
-      title: "EWA (Earned Wage Access)",
+      title: "EWA (Early Wage Access)",
       description: "Early access to earned wages when employees need financial flexibility.",
-      href: "/ewa",
+      href: "/early-wage-access",
     },
     // {
     //   type: "tile",

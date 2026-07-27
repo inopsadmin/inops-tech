@@ -43,7 +43,7 @@ const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 2
 const linkStagger = 0.05;
 
 const productRoutes: Record<string, string> = {
-  "Biometric Access Control": "/face",
+  "Biometric Access Control": "/biometric-reader",
   "Turnstiles": "/turnstiles",
   "Accessories": "/accessories",
 };
@@ -56,22 +56,22 @@ const resourceRoutes: Record<string, string> = {
 function pathUsesSolidNavBar(path: string) {
   return (
     path.startsWith("/contact") ||
-    path.startsWith("/ewa") ||
+    path.startsWith("/early-wage-access") ||
     path.startsWith("/about") ||
     path.startsWith("/product") ||
     path.startsWith("/blog") ||
     path.startsWith("/brochures") ||
     path.startsWith("/canteen-and-visitor") ||
-    path.startsWith("/cctv") ||
+    path.startsWith("/cctv-attendance") ||
     path.startsWith("/contract-labour-management") ||
     path.startsWith("/enterprise-solution") ||
-    path.startsWith("/ewa") ||
+    path.startsWith("/early-wage-access") ||
     path.startsWith("/fixed-asset-management") ||
     path.startsWith("/hris") ||
-    path.startsWith("/mobile-app") ||
+    path.startsWith("/mobile-app-attendance") ||
     path.startsWith("/visitor-management") ||
     path.startsWith("/accessories") ||
-    path.startsWith("/face") ||
+    path.startsWith("/biometric-reader") ||
     path.startsWith("/turnstiles") ||
     path.startsWith("/warehouse-management") ||
     path.startsWith("/delivery-management") ||
