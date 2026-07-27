@@ -6,8 +6,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { OFFICE_ADDRESS_LINE, SOCIAL_LINKS } from "@/app/lib/site";
 
+const services = [
+  { label: "Background Verification", href: "/services/background-verification" },
+  { label: "Biometric AMC", href: "/services/biometric-amc" },
+  { label: "Biometric Database Audit", href: "/services/biometric-database-audit" },
+  { label: "CLRA Compliance Audit", href: "/services/clra-compliance-audit" },
+  { label: "Industrial Manpower Supply", href: "/services/industrial-manpower-supply" },
+];
+
 const solutions = [
-  { label: "Services", href: "/services/background-verification" },
   { label: "Contract Labour Management Solution", href: "/contract-labour-management" },
   { label: "HR Information System", href: "/hris" },
   { label: "Canteen & Visitor Management", href: "/canteen-and-visitor" },
@@ -108,7 +115,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-6 pt-14 pb-10 lg:px-12 lg:pt-18 lg:pb-12 xl:pt-20 2xl:pt-22">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-12 2xl:gap-14">
           {/* Brand */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-90">
               <BrandLogoImage
                 width={192}
@@ -161,10 +168,22 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Services */}
+          <div className="lg:col-span-3">
+            <SectionTitle>Services</SectionTitle>
+            <ul className="mt-5 grid gap-3">
+              {services.map((item) => (
+                <li key={item.href} className="min-w-0">
+                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Solutions */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <SectionTitle>Solutions</SectionTitle>
-            <ul className="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-1 xl:grid-cols-2">
+            <ul className="mt-5 grid gap-3">
               {solutionItems.map((item) => (
                 <li key={`${item.href}-${item.label}`} className="min-w-0">
                   <FooterLink href={item.href} isActive={activeSolutionLabel === item.label}>
@@ -176,7 +195,7 @@ export default function Footer() {
           </div>
 
           {/* Contact card */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <SectionTitle>Head office</SectionTitle>
             <div className="mt-5 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] p-5 shadow-xl shadow-black/20 backdrop-blur-sm xl:p-6 2xl:p-7">
               <div className="space-y-4 text-sm text-slate-400 xl:text-[0.96rem] 2xl:text-base">
