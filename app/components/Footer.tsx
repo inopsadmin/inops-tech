@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import BrandLogoImage from "@/app/components/BrandLogoImage";
@@ -7,16 +7,16 @@ import { usePathname } from "next/navigation";
 import { OFFICE_ADDRESS_LINE, SOCIAL_LINKS } from "@/app/lib/site";
 
 const solutions = [
-  { label: "Workforce Governance Solution", href: "/contract-labour-management" },
-  { label: "Contract Employee Governance System", href: "/contract-labour-management" },
+  { label: "Services", href: "/services/background-verification" },
+  { label: "Contract Labour Management Solution", href: "/contract-labour-management" },
   { label: "HR Information System", href: "/hris" },
   { label: "Canteen & Visitor Management", href: "/canteen-and-visitor" },
-  { label: "Identity & Face Solution", href: "/mobile-app" },
-  { label: "Mobile App", href: "/mobile-app" },
-  { label: "CCTV Attendance", href: "/cctv" },
-  { label: "Face Reader", href: "/face" },
+  { label: "Identity & Face Solution", href: "/mobile-app-attendance" },
+  { label: "Mobile App", href: "/mobile-app-attendance" },
+  { label: "CCTV Attendance", href: "/cctv-attendance" },
+  { label: "Face Reader", href: "/biometric-reader" },
   { label: "Enterprise Solution", href: "/enterprise-solution" },
-  { label: "EWA (Earned Wage Access)", href: "/ewa" },
+  { label: "EWA (Early Wage Access)", href: "/early-wage-access" },
 ];
 
 const company = [

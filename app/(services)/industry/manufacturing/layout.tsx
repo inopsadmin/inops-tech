@@ -3,9 +3,9 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Contract Labour Management for Manufacturing | InOps RegX";
+const PAGE_TITLE = "Contract Labour Management for Manufacturing | InOps";
 const PAGE_DESCRIPTION =
-  "Digitise your manufacturing contractor ecosystem. InOps RegX delivers workforce governance, gate compliance, and payroll automation for industrial manufacturing units.";
+  "Digitise your manufacturing contractor ecosystem. InOps delivers Contract Labour Management, gate compliance, and payroll automation for industrial manufacturing units.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
@@ -21,8 +21,8 @@ export const metadata: Metadata = routeMetadata({
     "gate access control manufacturing",
     "multi-plant contractor management",
     "statutory compliance manufacturing India",
-    "workforce governance manufacturing",
-    "InOps RegX manufacturing",
+    "Contract Labour Management manufacturing",
+    "InOps manufacturing",
     "contract labour CLRA manufacturing",
     "payroll automation manufacturing plant",
     "contractor billing validation manufacturing",
@@ -31,14 +31,14 @@ export const metadata: Metadata = routeMetadata({
 
 const FAQ_ITEMS = [
   {
-    question: "How does InOps RegX handle multi-vendor contractor management?",
+    question: "How does InOps handle multi-vendor contractor management?",
     answer:
-      "InOps RegX provides a unified dashboard to manage multiple contractors across sites, with consolidated attendance, compliance, and billing data per vendor.",
+      "InOps provides a unified dashboard to manage multiple contractors across sites, with consolidated attendance, compliance, and billing data per vendor.",
   },
   {
     question: "Can the platform integrate with our existing ERP system?",
     answer:
-      "Yes. InOps RegX integrates with SAP, Oracle, and custom ERP systems via REST APIs, syncing workforce data in real time.",
+      "Yes. InOps integrates with SAP, Oracle, and custom ERP systems via REST APIs, syncing workforce data in real time.",
   },
   {
     question: "How long does contractor onboarding take on the platform?",
@@ -48,7 +48,7 @@ const FAQ_ITEMS = [
   {
     question: "Does the system support multi-plant or multi-site deployments?",
     answer:
-      "Yes. InOps RegX is built for enterprise-scale deployments across multiple plants, with site-level and consolidated reporting.",
+      "Yes. InOps is built for enterprise-scale deployments across multiple plants, with site-level and consolidated reporting.",
   },
   {
     question: "What compliance standards does the platform support?",

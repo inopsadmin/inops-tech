@@ -51,7 +51,7 @@ const painPoints = [
 const platformCards = [
   {
     title: "WMS/TMS Connectivity",
-    desc: "Integrations to Oracle Connectors, Oracle Fieldglass, and Oracle Employee Central for bi-directional data syncing.",
+    desc: "Integrations to Oracle Connectors, Oracle Fieldglass, and Employee Central for bi-directional data syncing.",
     icon: (
       <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" aria-hidden>
         <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" strokeLinecap="round" strokeLinejoin="round" />

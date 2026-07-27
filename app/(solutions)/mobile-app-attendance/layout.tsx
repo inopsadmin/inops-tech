@@ -6,7 +6,7 @@ export const metadata: Metadata = routeMetadata({
   title: "Mobile Attendance & Workforce App | Face Recognition on Mobile — InOps",
   description:
     "Mobile attendance with face recognition for contract workers: GPS-validated check-in, earned wage access, leave management, and self-service — no fixed biometric hardware needed.",
-  path: "/mobile-app",
+  path: "/mobile-app-attendance",
   extraKeywords: [
     "mobile attendance app for contract workers",
     "face recognition mobile attendance",
@@ -18,7 +18,7 @@ export const metadata: Metadata = routeMetadata({
 export default function MobileAppLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/mobile-app" />
+      <SolutionSchemaInjector path="/mobile-app-attendance" />
       {children}
     </>
   );

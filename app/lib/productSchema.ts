@@ -3,7 +3,7 @@ export const productSchemaByPath: Record<
   string,
   { name: string; description: string; category?: string }
 > = {
-  "/face": {
+  "/biometric-reader": {
     name: "InOps Biometric Access Control",
     description:
       "Enterprise face and fingerprint readers, controllers, and attendance integrations for Indian industrial sites.",

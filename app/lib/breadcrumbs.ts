@@ -13,15 +13,15 @@ const LABEL_BY_PATH: Record<string, string> = {
   "/contact": "Contact",
   "/blog": "Blog",
   "/brochures": "Brochures",
-  "/face": "Biometric Access Control",
+  "/biometric-reader": "Biometric Access Control",
   "/turnstiles": "Turnstiles",
   "/accessories": "Accessories",
   "/contract-labour-management": "Contract Labour Management",
   "/hris": "HR Information System",
-  "/ewa": "Earned Wage Access (EWA)",
-  "/cctv": "Time & Attendance",
+  "/early-wage-access": "Early Wage Access (EWA)",
+  "/cctv-attendance": "Time & Attendance",
   "/canteen-and-visitor": "Canteen & Visitor Management",
-  "/mobile-app": "Mobile Workforce App",
+  "/mobile-app-attendance": "Mobile Workforce App",
   "/enterprise-solution": "Enterprise Solution",
   "/visitor-management": "Visitor Management",
   "/fixed-asset-management": "Fixed Asset Management",
@@ -47,21 +47,21 @@ export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
   const solutionPaths = new Set([
     "/contract-labour-management",
     "/hris",
-    "/ewa",
-    "/cctv",
+    "/early-wage-access",
+    "/cctv-attendance",
     "/canteen-and-visitor",
-    "/mobile-app",
+    "/mobile-app-attendance",
     "/enterprise-solution",
     "/visitor-management",
     "/fixed-asset-management",
   ]);
-  const productPaths = new Set(["/face", "/turnstiles", "/accessories"]);
+  const productPaths = new Set(["/biometric-reader", "/turnstiles", "/accessories"]);
 
   if (solutionPaths.has(normalized)) {
     return [HOME, { name: "Solutions", path: "/#solutions" }, { name: label, path: normalized }];
   }
   if (productPaths.has(normalized)) {
-    return [HOME, { name: "Products", path: "/face" }, { name: label, path: normalized }];
+    return [HOME, { name: "Products", path: "/biometric-reader" }, { name: label, path: normalized }];
   }
 
   return [HOME, { name: label, path: normalized }];

@@ -18,10 +18,9 @@ const SOLUTIONS_MENU_PANEL_ID = "nav-solutions-menu-panel";
 const SERVICES_MENU_PANEL_ID = "nav-services-menu-panel";
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "#services-menu", servicesMega: true },
   { label: "Platform", href: "#solutions", solutionsMega: true },
+  { label: "Services", href: "#services-menu", servicesMega: true },
+  { label: "About", href: "/about" },
   { label: "Resources", href: "#resources", dropdown: ["Blog", "Brochures"] },
   { label: "Contact", href: "/contact" },
 ];

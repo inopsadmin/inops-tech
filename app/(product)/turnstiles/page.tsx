@@ -278,11 +278,11 @@ export default function TurnstilesPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 Every reader type — face terminal, fingerprint, card, or QR — mounts to an InOps lane without a separate controller. Entry and exit events feed the same attendance engine as{" "}
-                <a href="/face" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/biometric-reader" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   face recognition attendance
                 </a>{" "}
                 and{" "}
-                <a href="/cctv" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/cctv-attendance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   CCTV attendance
                 </a>
                 , so one worker identity covers every device and every gate with no duplicate enrollment.

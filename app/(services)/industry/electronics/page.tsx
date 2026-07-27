@@ -9,7 +9,7 @@ const viewport = { once: true, amount: 0.15 };
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const heroStats = [
-  { value: "95%", label: "ESD Compliance" },
+  { value: "100%", label: "Workforce Compliance" },
   { value: "0%", label: "ID Substitution" },
   { value: "2Hr", label: "Onboarding TAT" },
 ];
@@ -270,7 +270,7 @@ export default function ElectronicsIndustryPage() {
                   spikes, rapid temporary workforce shifts, and the critical need for technical cleanroom discipline.
                 </p>
                 <p>
-                  Iddion RegX eliminates the admin friction of high-volume hiring. We provide a single source of truth for{" "}
+                  InOps eliminates the admin friction of high-volume hiring. We provide a single source of truth for{" "}
                   <strong className="font-bold text-slate-700">Turnover Analytics, Compliance Monitoring, and Secure Zone Access</strong>,
                   ensuring your lines never stop.
                 </p>
@@ -305,7 +305,7 @@ export default function ElectronicsIndustryPage() {
               </h2>
               <p className="text-[0.93rem] text-[#5a6a7e] leading-[1.75] max-w-[520px] mx-auto">
                 Fragmented data and manual gate-checks lead to assembly bottlenecks and regulatory liability.
-                RegX addresses the specific vulnerabilities of the high-tech shop floor.
+                InOps addresses the specific vulnerabilities of the high-tech shop floor.
               </p>
             </div>
 
@@ -335,7 +335,7 @@ export default function ElectronicsIndustryPage() {
             <div className="flex items-start justify-between gap-6 mb-10">
               <div className="max-w-lg">
                 <p className="text-[11px] font-bold uppercase tracking-widest text-blue-600 mb-3">
-                  The RegX Framework
+                  The Framework
                 </p>
                 <h2 className="text-2xl lg:text-3xl font-extrabold leading-tight tracking-tight text-gray-900 mb-4">
                   Intelligent Governance for the Precision Shop Floor
@@ -596,7 +596,7 @@ export default function ElectronicsIndustryPage() {
                 Built for the Rigors of Global EMS Operations
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-slate-500">
-                Iddion RegX provides a secure, scalable, and audit-ready layer that connects your distributed factory
+                InOps provides a secure, scalable, and audit-ready layer that connects your distributed factory
                 floors to central corporate governance.
               </p>
             </motion.div>
@@ -656,7 +656,7 @@ export default function ElectronicsIndustryPage() {
                 Secure your labor supply chain today
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-blue-100">
-                Join leading electronics OEMs using Iddion RegX to synchronize their workforce with
+                Join leading electronics OEMs using InOps to synchronize their workforce with
                 high-precision production demands.
               </p>
             </motion.div>

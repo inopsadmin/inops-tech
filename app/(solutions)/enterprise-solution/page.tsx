@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -1363,7 +1363,7 @@ export default function EnterpriseSolutionPage() {
             </h2>
             <div className="mt-10 space-y-10">
               <div>
-                <h3 className="text-lg font-semibold text-slate-900">Contract labour governance</h3>
+                <h3 className="text-lg font-semibold text-slate-900">Contract Labour Management</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Digital onboarding, gate compliance, CLRA registers, and payroll for every contractor workforce on every site — with licence tracking, BGV, and statutory deductions built in.{" "}
                   <Link href="/contract-labour-management" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
@@ -1384,11 +1384,11 @@ export default function EnterpriseSolutionPage() {
                 <h3 className="text-lg font-semibold text-slate-900">Attendance capture</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Every capture mode on one engine:{" "}
-                  <Link href="/face" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/biometric-reader" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     face recognition attendance
                   </Link>
                   ,{" "}
-                  <Link href="/cctv" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/cctv-attendance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     CCTV attendance system
                   </Link>
                   , fingerprint, mobile — one enrolled identity, one attendance record per worker.
@@ -1420,7 +1420,7 @@ export default function EnterpriseSolutionPage() {
                 <h3 className="text-lg font-semibold text-slate-900">Worker financial wellness</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Contract and factory workers withdraw wages they have already earned — validated against biometric attendance, settled at the next payroll cycle, zero employer liability.{" "}
-                  <Link href="/ewa" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/early-wage-access" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     Earned wage access
                   </Link>
                 </p>

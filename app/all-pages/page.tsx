@@ -10,17 +10,17 @@ const mainPages = [
 ];
 
 const productPages = [
-  { label: "Biometric Access Control", href: "/face" },
+  { label: "Biometric Access Control", href: "/biometric-reader" },
   { label: "Turnstiles", href: "/turnstiles" },
   { label: "Accessories", href: "/accessories" },
 ];
 
 const solutionPages = [
-  { label: "Time & Attendance", href: "/cctv" },
+  { label: "Time & Attendance", href: "/cctv-attendance" },
   { label: "Canteen Management", href: "/canteen-and-visitor" },
   { label: "Payroll Solutions", href: "/contract-labour-management" },
   { label: "Labour Management Software", href: "/hris" },
-  { label: "Mobile App", href: "/mobile-app" },
+  { label: "Mobile App", href: "/mobile-app-attendance" },
   { label: "Enterprise Solution", href: "/enterprise-solution" },
   { label: "Visitor Management", href: "/visitor-management" },
   { label: "Fixed Asset Management", href: "/fixed-asset-management" },

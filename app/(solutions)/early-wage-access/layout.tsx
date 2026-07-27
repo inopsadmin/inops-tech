@@ -10,7 +10,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/ewa",
+  path: "/early-wage-access",
   extraKeywords: [
     "earned wage access India",
     "EWA platform",
@@ -52,7 +52,7 @@ const FAQ_ITEMS = [
 export default function EwaLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/ewa" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
+      <SolutionSchemaInjector path="/early-wage-access" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
       <FAQPageJsonLd items={FAQ_ITEMS} />
       {children}
     </>

@@ -1470,7 +1470,7 @@ export default function BiometricAccessControlPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 InOps runs a single identity engine across all capture modes: face terminals, fingerprint readers, CCTV-based AI attendance, QR, and card — one enrolled identity, one attendance record, one compliance view per worker, per contractor, per site. For sites that cannot place hardware at every capture point, our{" "}
-                <a href="/cctv" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/cctv-attendance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   CCTV attendance system
                 </a>{" "}
                 captures attendance without dedicated terminals at scale. For physical access control where the barrier arm must not turn, our{" "}

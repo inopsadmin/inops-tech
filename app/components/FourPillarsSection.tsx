@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,13 +10,13 @@ const inOpsPillars = [
   {
     category: "Core Platform",
     pillarIcon: "governance" as const,
-    title: "Workforce Governance",
+    title: "Contract Labour Management",
     description:
       "Eliminate cost leakages and ensure 100% audit readiness with automated compliance and labor management.",
     features: [
       {
         rowIcon: "userCog" as const,
-        name: "Contract Employee Governance (CLMS)",
+        name: "Contract Labour Management (CLMS)",
         blurb: "Manage lifecycle, onboarding, and compliance.",
         href: "/contract-labour-management",
       },
@@ -39,13 +39,13 @@ const inOpsPillars = [
         rowIcon: "faceId" as const,
         name: "Face Recognition",
         blurb: "High-accuracy touchless attendance.",
-        href: "/face",
+        href: "/biometric-reader",
       },
       {
         rowIcon: "cctv" as const,
         name: "CCTV Attendance",
         blurb: "Automated workforce tracking via vision AI.",
-        href: "/cctv",
+        href: "/cctv-attendance",
       },
       {
         rowIcon: "mobile" as const,

@@ -1,12 +1,12 @@
-﻿/**
+/**
  * Homepage platform device ,  one tab per unique Solutions mega-menu destination.
  * Copy and imagery mirror each page’s hero section.
  */
 export const platformShowcaseSlides = [
   {
     id: "workforce-governance",
-    tabLabel: "Workforce governance",
-    href: "/cctv",
+    tabLabel: "Contract Labour Management",
+    href: "/cctv-attendance",
     title: "Attendance without devices, powered by AI",
     badge: "CCTV attendance",
     text:
@@ -18,7 +18,7 @@ export const platformShowcaseSlides = [
     id: "payroll-clms",
     tabLabel: "Contract & payroll",
     href: "/contract-labour-management",
-    title: "Redefining contract workforce ,  governance system",
+    title: "Redefining contract workforce ,  Management system",
     badge: "CLMS",
     text: "One Unified Platform for Complete Control",
     imageUrl: "/WhatsApp Image 2026-05-04 at 12.41.37 PM.jpeg",
@@ -49,7 +49,7 @@ export const platformShowcaseSlides = [
   {
     id: "mobile-app",
     tabLabel: "Mobile app",
-    href: "/mobile-app",
+    href: "/mobile-app-attendance",
     title: "Attendance in every pocket",
     badge: "Mobile attendance",
     text:
@@ -60,7 +60,7 @@ export const platformShowcaseSlides = [
   {
     id: "face-reader",
     tabLabel: "Face & devices",
-    href: "/face",
+    href: "/biometric-reader",
     title: "Smart access. Secure workforce.",
     badge: "Biometric hardware",
     text:
@@ -83,9 +83,9 @@ export const platformShowcaseSlides = [
   {
     id: "ewa",
     tabLabel: "EWA",
-    href: "/ewa",
+    href: "/early-wage-access",
     title: "Instant access to earned wages",
-    badge: "Earned wage access",
+    badge: "Early wage access",
     text:
       "Enable your workforce to access wages they've already earned, powered by real-time attendance and payroll data.",
     imageUrl: "/images/ewa-hero.png",

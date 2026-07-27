@@ -2,7 +2,7 @@ import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Biometric AMC Services | InOps";
+const PAGE_TITLE = "Biometric AMC Services India | Attendance & Access Control Device AMC — InOps";
 const PAGE_DESCRIPTION =
   "SLA-backed biometric AMC services and lifecycle management covering access control AMC, attendance machine AMC and RFID reader AMC across distributed plants, warehouses and campuses.";
 

@@ -175,7 +175,7 @@ export default function FixedAssetManagementPage() {
 
         <SolutionPageClosingCta
           heading="Ready to take control of your workforce operations?"
-          description="Join 25+ leading enterprises that have optimized their contract labor governance on this platform."
+          description="Join 25+ leading enterprises that have optimized their Contract Labour Management on this platform."
           primaryLabel="Request a Custom Demo"
           secondaryLabel="Contact Sales Team"
         />

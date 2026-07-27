@@ -10,7 +10,7 @@ export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   path: "/about",
-  extraKeywords: ["workforce automation company Bengaluru", "enterprise CLMS India", "workforce technology partner India"],
+  extraKeywords: ["workforce automation Bengaluru", "enterprise CLMS India", "workforce technology partner India"],
 });
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {

@@ -10,7 +10,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/cctv",
+  path: "/cctv-attendance",
   extraKeywords: [
     // Owned — zero competition, high ICP relevance
     "camera based attendance contract workers manufacturing India",
@@ -58,7 +58,7 @@ const FAQ_ITEMS = [
 export default function TimeAndAttendanceLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/cctv" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
+      <SolutionSchemaInjector path="/cctv-attendance" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
       <FAQPageJsonLd items={FAQ_ITEMS} />
       {children}
     </>

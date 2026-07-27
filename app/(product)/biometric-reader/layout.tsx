@@ -11,7 +11,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/face",
+  path: "/biometric-reader",
   extraKeywords: [
     "face recognition attendance",
     "face reader factory",
@@ -57,8 +57,8 @@ const FAQ_ITEMS = [
 export default function BiometricAccessControlLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SecondaryPageJsonLd path="/face" title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
-      <ProductSchemaInjector path="/face" />
+      <SecondaryPageJsonLd path="/biometric-reader" title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
+      <ProductSchemaInjector path="/biometric-reader" />
       <FAQPageJsonLd items={FAQ_ITEMS} />
       {children}
     </>

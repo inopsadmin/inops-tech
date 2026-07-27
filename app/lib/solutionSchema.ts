@@ -3,7 +3,7 @@ export const solutionSchemaByPath: Record<
   string,
   { name: string; description: string }
 > = {
-  "/ewa": {
+  "/early-wage-access": {
     name: "InOps Earned Wage Access (EWA)",
     description:
       "Payroll-connected earned wage access with real-time attendance validation and compliant withdrawals for industrial workforces.",
@@ -18,7 +18,7 @@ export const solutionSchemaByPath: Record<
     description:
       "Contract labour management with biometric attendance, PF/ESI workflows, gate compliance, and payroll-ready data for Indian manufacturers.",
   },
-  "/cctv": {
+  "/cctv-attendance": {
     name: "InOps Camera & AI Attendance for Contract Workers",
     description:
       "Camera-based and AI attendance for manufacturing contract workers — face recognition, CCTV integration, proxy prevention, OT verification, and CLRA compliance linked to the InOps CLMS platform.",
@@ -28,7 +28,7 @@ export const solutionSchemaByPath: Record<
     description:
       "Meal issuance, visitor desk, and subsidy controls integrated with identity and workforce systems.",
   },
-  "/mobile-app": {
+  "/mobile-app-attendance": {
     name: "InOps Mobile Workforce App",
     description:
       "Mobile self-service for attendance, leave, payslips, and supervisor workflows with GPS validation.",

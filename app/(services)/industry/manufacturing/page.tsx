@@ -192,7 +192,7 @@ export default function ManufacturingIndustryPage() {
                 </p>
                 <h2 className="mt-3 max-w-xs text-2xl font-bold leading-tight text-slate-900 lg:text-[1.7rem]">
                   The New Era of <br className="hidden sm:block" />
-                  Workforce Governance
+                    Contract Labour Management
                 </h2>
                 <div className="mt-4 h-[3px] w-10 bg-blue-600" />
               </div>
@@ -206,8 +206,8 @@ export default function ManufacturingIndustryPage() {
                     and operational leakages.
                   </p>
                   <p className="text-sm leading-relaxed text-slate-600">
-                    InOps RegX provides a unified framework for{" "}
-                    <strong className="font-semibold text-slate-900">Workforce Governance</strong>,
+                    InOps provides a unified framework for{" "}
+                    <strong className="font-semibold text-slate-900">Contract Labour Management</strong>,
                     enabling enterprises to transition from reactive management to proactive,
                     data-driven control over their distributed labour force.
                   </p>
@@ -485,10 +485,7 @@ export default function ManufacturingIndustryPage() {
                 Purpose-Built for Compliance-Driven Industries
               </h2>
               <p className="mt-4 text-[0.68rem] leading-relaxed text-slate-300">
-                RegX isn&apos;t just a workforce tool, it&apos;s a specialised governance platform designed to
-                handle the unique complexities of large-scale manufacturing. We understand the high stakes
-                of regulatory non-compliance and labor safety.
-              </p>
+                isn't just a workforce tool—it's a specialized governance platform designed to handle the unique complexities of large-scale manufacturing. We understand the high stakes of regulatory compliance, labor safety, and operational excellence.</p>
             </div>
 
             {/* Capabilities */}
@@ -540,7 +537,7 @@ export default function ManufacturingIndustryPage() {
                     All In One Engine
                   </p>
                   <h2 className="mt-4 max-w-sm text-2xl font-bold leading-tight text-slate-900 lg:text-[1.6rem]">
-                    One Platform. Complete Workforce Governance.
+                    One Platform. Complete Contract Labour Management.
                   </h2>
 
                   <ul className="mt-8 flex flex-col gap-5">
@@ -604,8 +601,7 @@ export default function ManufacturingIndustryPage() {
                       Certified Compliance Standards
                     </h3>
                     <p className="mx-auto mt-3 max-w-xs text-[0.62rem] leading-relaxed text-slate-600">
-                      RegX is built on international security protocols ensuring your workforce data is protected,
-                      encrypted, and audit-ready at all times.
+                       Built on international security protocols, our platform ensures your workforce data is protected, encrypted, and audit-ready at all times.
                     </p>
                     <div className="mt-6 grid grid-cols-3 gap-3">
                       {["ISO 27001", "SOC 2", "CLRA"].map((cert) => (
@@ -636,7 +632,7 @@ export default function ManufacturingIndustryPage() {
                 Ready to digitize your shop floor labor management?
               </h2>
               <p className="mt-4 max-w-md text-[0.68rem] leading-relaxed text-blue-100">
-                Join 100+ manufacturing enterprises optimising their workforce governance today.
+                Join 100+ manufacturing enterprises optimising their Contract Labour Management today.
               </p>
             </div>
 

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -141,11 +141,11 @@ type WhyCard = {
 };
 
 const whyCardHrefByTitle: Record<string, string> = {
-  "Identity Solution": "/mobile-app",
+  "Identity Solution": "/mobile-app-attendance",
   HRIS: "/hris",
   "Contract Workforce Governance": "/contract-labour-management",
   "Logistics Solutions": "/enterprise-solution",
-  EWA: "/ewa",
+  EWA: "/early-wage-access",
 };
 
 /** Contract workforce governance is default featured → numbered from 01. */
@@ -468,7 +468,7 @@ export default function Home() {
                   delay={0.06}
                   className="home-display-heading text-3xl font-heading-bold tracking-tight text-gray-900 sm:text-4xl"
                 >
-                  Workforce Governance In One Platform.
+                  Contract Labour Management In One Platform.
                 </FlyInText>
               </motion.div>
             </motion.div>
@@ -500,7 +500,7 @@ export default function Home() {
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <AnimatedHeading as="h2" className="home-display-heading text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-                  Workforce Governance
+                  Contract Labour Management
                 </AnimatedHeading>
               </motion.div>
             </motion.div>

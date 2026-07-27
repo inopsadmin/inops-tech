@@ -2,7 +2,7 @@ import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Industrial Manpower Supply | InOps RegX";
+const PAGE_TITLE = "Industrial Manpower Supply | InOps";
 const PAGE_DESCRIPTION =
   "Industrial manpower supply and contract labour deployment built around a compliance-ready workforce — background-verified, digitally onboarded and biometrically enrolled before they report on site.";
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = routeMetadata({
     "verified contract workers",
     "digital onboarding workforce",
     "biometric enrollment workers",
-    "InOps RegX workforce",
+    "InOps workforce",
     "contract workforce supply",
   ],
 });

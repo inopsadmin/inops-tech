@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -569,7 +569,7 @@ export default function BGVPage() {
             Get Started
           </div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-bold text-white leading-[1.15] m-0 mb-[18px] tracking-[-0.01em]">
-            Need Enterprise Background Verification?
+            Looking for background verification for your employee
           </h2>
           <p className="text-[15px] leading-[1.7] text-white/[0.72] mb-9">
             Talk to our team about deploying Background Verification across your sites —<br className="hidden md:block" />
