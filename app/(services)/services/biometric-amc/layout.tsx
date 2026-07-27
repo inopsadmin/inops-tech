@@ -9,7 +9,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/services/biometric",
+  path: "/services/biometric-amc",
   extraKeywords: [
     "biometric AMC services India",
     "biometric device maintenance",
