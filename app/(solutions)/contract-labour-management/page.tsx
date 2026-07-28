@@ -18,6 +18,7 @@ import {
 import { mediaVideos } from "@/app/lib/mediaAssets";
 import { inopsUi } from "@/app/lib/inopsUi";
 import { clmsFaqItems } from "@/app/lib/clmsFaqItems";
+import ClmsIndustriesSlider from "@/app/components/ClmsIndustriesSlider";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
@@ -278,7 +279,7 @@ const ourModulesSlides = [
   },
   {
     slug: "wage-payroll",
-    title: "Wage/Payroll",
+    title: "Wage & Invoice",
     description:
       "Calculate wages, statutory deductions, and overtime with audit trails that stay compliant across every pay cycle.",
     image:
@@ -375,18 +376,6 @@ const ourModulesSlides = [
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85",
     alt: "HR team completing contractor onboarding paperwork",
   },
-  // {
-  //   title: "Access Control & Gate Integration",
-  //   description:
-  //     "Connect biometrics, turnstiles, and gate events to attendance and payroll so only verified workers enter and every entry stays audit-ready.",
-  //   image:
-  //     "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
-  //   hoverImage:
-  //     // "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
-  //     "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=85",
-
-  //   alt: "Contract worker using biometric turnstile access at an industrial gate",
-  // },
 ] as const;
 
 /** Per-slide top accent for Capability map cards (matches `ourModulesSlides` order). */
@@ -427,12 +416,6 @@ const leakageSnapshotRows: ReadonlyArray<{
   { label: "Avg Monthly Cost per Contractor", value: "₹15,000", icon: "currency" },
   { label: "Number of Locations", value: "6", icon: "location" },
   { label: "Active Vendor Partners", value: "24", icon: "vendor" },
-  // { label: "Shifts Tracked per Day", value: "3", icon: "clock" },
-  // { label: "Monthly Payroll Outflow", value: "₹1.5 Cr", icon: "chart" },
-  // { label: "Avg Headcount per Site", value: "~167", icon: "building" },
-  // { label: "Attendance Logs / Month", value: "~45,000", icon: "clipboard" },
-  // { label: "Typical Leakage Band", value: "8–12%", icon: "alert" },
-  // { label: "Projected Annual Leakage", value: "₹1.98 Cr", icon: "leak" },
 ];
 
 const leakageBleedItems = [
@@ -441,9 +424,6 @@ const leakageBleedItems = [
   { label: "OT Fraud (1%)", amount: "₹18 Lakhs", pct: 8, icon: "clock" as const },
   { label: "Compliance Penalties", amount: "₹50 Lakhs", pct: 21, icon: "alert" as const },
   { label: "Admin Inefficiencies", amount: "₹40 Lakhs", pct: 17, icon: "stack" as const },
-  // { label: "Duplicate Billing (0.8%)", amount: "₹14 Lakhs", pct: 6, icon: "doc" as const },
-  // { label: "Rate Card Mismatches (1.2%)", amount: "₹22 Lakhs", pct: 9, icon: "stack" as const },
-  // { label: "Gate–Attendance Gaps (0.5%)", amount: "₹9 Lakhs", pct: 4, icon: "user-x" as const },
 ] as const;
 
 function LeakageSnapshotRowIcon({ name }: { name: LeakageSnapshotIcon }) {
@@ -825,7 +805,6 @@ export default function PayrollSolutionsPage() {
           >
             <div className={`relative min-h-[340px] w-full bg-white sm:min-h-[390px] lg:min-h-[430px] ${SPLIT_HERO_MOBILE_STACK}`}>
               <SolutionHeroWaveDecor className="z-[1]" />
-              {/* Right-half hero background (full width on small screens, then locked to the right on lg) */}
               <div
                 className={`relative z-[2] mt-8 h-52 w-full sm:h-60 ${SPLIT_HERO_MOBILE_MEDIA_ORDER} lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2 ${SPLIT_HERO_MEDIA_MR}`}
               >
@@ -859,7 +838,6 @@ export default function PayrollSolutionsPage() {
                       position: "bottom-right",
                       label: "Compliance",
                       title: "Contractors cleared",
-                      // subtitle: "Audit-ready",
                       className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 md:-bottom-10 md:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-10 xl:-right-2",
                       variant: "icon",
                       icon: "shield",
@@ -894,20 +872,6 @@ export default function PayrollSolutionsPage() {
                   >
                     Contract Labour Management System for Indian Manufacturers
                   </FlyInText>
-
-                  {/* <div className="-mx-2 overflow-x-auto pb-1 sm:mx-0 sm:overflow-visible sm:pb-0">
-                    <FlyInText
-                      as="h2"
-                      trigger="mount"
-                      direction="left"
-                      delay={0.06}
-                      duration={0.68}
-                      className="home-display-heading inops-type-hero mt-2 whitespace-nowrap text-slate-900"
-                    >
-                      End to end
-                      <span className="text-blue-800"></span>  contract <br /> Contract Labour Management
-                    </FlyInText>
-                  </div> */}
 
                   <FlyInText
                     as="p"
@@ -944,44 +908,6 @@ export default function PayrollSolutionsPage() {
             </div>
           </motion.div>
         </motion.section>
-
-        {/* <section
-          className="w-full border-b border-slate-200 bg-black"
-          aria-labelledby="clms-hardware-heading"
-        >
-          <div className="grid min-h-0 grid-cols-1 lg:grid-cols-2 lg:min-h-[min(520px,85vh)]">
-            <div className="relative min-h-[260px] w-full bg-slate-200 sm:min-h-[320px] lg:min-h-full">
-              <Image
-                src="/images/payroll-clms-hardware-split.png"
-                alt="Contract worker at a secured turnstile with biometric terminal and access hardware callouts"
-                fill
-                className="object-cover object-[center_40%] lg:object-[center_35%]"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-            <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16 xl:px-16">
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase }}
-              >
-                <h2
-                  id="clms-hardware-heading"
-                  className="text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-[2.05rem] lg:leading-snug xl:text-[2.25rem]"
-                >
-                  Smart Contract Labour Management With Integrated Hardware
-                </h2>
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
-                  Bring software and devices together: face, card, and fingerprint readers, turnstiles, and flap
-                  barriers, wired into one CLMS so attendance is real time, access rules hold at the gate, and your
-                  teams get reports and alerts that keep sites secure and audit ready.
-                </p>
-                <div className="mt-8 h-0.5 w-14 rounded-full bg-blue-500" aria-hidden />
-              </motion.div>
-            </div>
-          </div>
-        </section> */}
 
         <section
           id="why-inops"
@@ -1065,73 +991,6 @@ export default function PayrollSolutionsPage() {
             </div>
           </div>
         </section>
-
-        {/* Comprehensive Control ,  CLMS touchpoints
-        <section
-          className="border-t border-slate-200/80 py-14 lg:py-16 bg-white"
-          aria-labelledby="comprehensive-control-heading"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
-            <motion.div
-              className="mx-auto max-w-2xl text-center"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              <h2
-                id="comprehensive-control-heading"
-                className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl"
-              >
-                Comprehensive Control
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
-                Our CLMS covers every touchpoint of your contract labor operations.
-              </p>
-            </motion.div>
-
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-              {comprehensiveControlCards.map((card, i) => (
-                <motion.div
-                  key={card.title}
-                  className="group rounded-2xl bg-gradient-to-r from-slate-200 via-slate-200 to-slate-200 p-px shadow-sm transition-all duration-300 hover:from-blue-500 hover:via-blue-500 hover:to-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={viewport}
-                  transition={{ duration: 0.45, ease: smoothEase, delay: Math.min(i * 0.05, 0.2) }}
-                >
-                  <div className="flex h-full flex-col rounded-2xl bg-white p-6">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100/80">
-                      <ComprehensiveControlIcon name={card.icon} />
-                    </div>
-                    <h3 className="mt-4 text-slate-900">{card.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{card.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-
-              <motion.div
-                className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-blue-300 bg-blue-50/90 p-6 text-center shadow-sm sm:col-span-2 lg:col-span-1"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.45, ease: smoothEase, delay: 0.15 }}
-              >
-                <h3 className="text-slate-900">Need Custom Integration?</h3>
-                <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-600">
-                  We sync with SAP, Oracle, and legacy ERP systems.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition hover:text-blue-700"
-                >
-                  Talk to Tech Support
-                  <span aria-hidden>→</span>
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </section> */}
 
         <OurModulesCarousel />
 
@@ -1275,7 +1134,7 @@ export default function PayrollSolutionsPage() {
                     </div>
                     <div className="flex items-center justify-between rounded-lg bg-white/[0.06] px-2.5 py-1.5 ring-1 ring-white/10">
                       <span className="text-[10px] font-medium text-white/60">Recoverable with CLMS (est.)</span>
-                      <span className="text-xs font-bold tabular-nums text-emerald-300">19 Lakh / yr</span>
+                      <span className="text-xs font-bold tabular-nums text-emerald-300">₹1.4 Cr / year</span>
                     </div>
                   </div>
                 </div>
@@ -1631,6 +1490,9 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
+        {/* ====== INDUSTRIES SLIDER (ABOVE FAQ) ====== */}
+        <ClmsIndustriesSlider />
+
         <section aria-labelledby="clms-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
             <motion.div
@@ -1640,14 +1502,11 @@ export default function PayrollSolutionsPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
-                CLMS FAQ
-              </span> */}
               <h2 id="clms-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
                 Frequently asked questions
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
-                Answers to common questions about contract labour management, compliance, integrations, and multi-site Contract Labour Management.
+                Answers to common questions about contract labour management system, compliance, integrations, and multi-site workforce governance. 
               </p>
             </motion.div>
 
@@ -1683,6 +1542,7 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
+        {/* ====== BOOK DEMO (CLOSING CTA) ====== */}
         <SolutionPageClosingCta
           heading="Book a personalized walkthrough of the Iddion RegX CLMS platform today"
           description="Join leading enterprises that have digitized their Contract Labour Management and taken full control of their contract workforce."
