@@ -1112,11 +1112,11 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "Why do contractor invoices and attendance never match?",
-        body: 'Three mismatch sources dominate: headcount — workers billed who never presented at the gate; hours — rounded or fabricated shift lengths; OT — claimed at rates or volumes that never received supervisor approval. Each is structural and repeating, not a one-time error. The wage side is governed by <a href="/contract-labour-management/modules/wage-payroll" class="text-blue-600 underline">contract labour payroll software</a>.',
+        body: 'Three mismatch sources dominate: headcount — workers billed who never presented at the gate; hours — rounded or fabricated shift lengths; OT — claimed at rates or volumes that never received supervisor approval. Each is structural and repeating, not a one-time error. The wage side is governed by <a href="/contract-labour-management/iddion-regx-modules/wage-payroll" class="text-blue-600 underline">contract labour payroll software</a>.',
       },
       {
         h2: "Statutory challans checked too",
-        body: 'PF and ESI challans are matched against computed deductions per worker, per cycle — gaps between what was deducted and what was remitted surface before the statutory deadline, not after. Principal-employer liability from contractor remittance defaults is visible in real time, feeding the same registers as our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>.',
+        body: 'PF and ESI challans are matched against computed deductions per worker, per cycle — gaps between what was deducted and what was remitted surface before the statutory deadline, not after. Principal-employer liability from contractor remittance defaults is visible in real time, feeding the same registers as our <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>.',
       },
       {
         h2: "What finance gets back",
@@ -1261,7 +1261,7 @@ export const modules: ModuleData[] = [
     contentSections: [
       {
         h2: "Statutory and CLRA rules enforced at the gate",
-        body: 'The gate is where compliance obligations are created — not the register. InOps evaluates CLRA licence validity, Form V headcount limits, and 9-day continuous attendance status before each worker enters, using the same engine that powers our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>. A gate event without a compliance check is an unverified record.',
+        body: 'The gate is where compliance obligations are created — not the register. InOps evaluates CLRA licence validity, Form V headcount limits, and 9-day continuous attendance status before each worker enters, using the same engine that powers our <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>. A gate event without a compliance check is an unverified record.',
       },
       {
         h2: "How does a gate pass management system work?",
@@ -1389,7 +1389,7 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "Gate access locked until every clearance is complete",
-        body: 'Onboarding status is enforced at the gate: a worker whose BGV is pending, medical check is incomplete, or induction is unfinished is auto-blocked at entry. There is no manual follow-up loop — the gate itself holds the compliance line. This connects directly with our <a href="/contract-labour-management/modules/gate-compliance" class="text-blue-600 underline">gate compliance and auto-blocking module</a>.',
+        body: 'Onboarding status is enforced at the gate: a worker whose BGV is pending, medical check is incomplete, or induction is unfinished is auto-blocked at entry. There is no manual follow-up loop — the gate itself holds the compliance line. This connects directly with our <a href="/contract-labour-management/iddion-regx-modules/gate-compliance" class="text-blue-600 underline">gate compliance and auto-blocking module</a>.',
       },
       {
         h2: "Structured exits that close the loop",
@@ -1397,7 +1397,7 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "Full audit trail from day one to last day",
-        body: 'Every onboarding action — what was verified, when, by whom, with what result — and every offboarding step — who approved the exit, which assets were returned, when the gate pass was revoked — is stored in the per-worker record. Auditors and compliance officers see a continuous thread, not two separate filing systems. The record feeds both <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA registers</a> and contractor payroll settlement automatically.',
+        body: 'Every onboarding action — what was verified, when, by whom, with what result — and every offboarding step — who approved the exit, which assets were returned, when the gate pass was revoked — is stored in the per-worker record. Auditors and compliance officers see a continuous thread, not two separate filing systems. The record feeds both <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA registers</a> and contractor payroll settlement automatically.',
       },
     ],
 

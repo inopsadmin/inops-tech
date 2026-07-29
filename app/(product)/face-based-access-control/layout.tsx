@@ -11,7 +11,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/biometric-reader",
+  path: "/face-based-access-control",
   extraKeywords: [
     "face recognition attendance",
     "face reader factory",

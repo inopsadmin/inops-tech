@@ -14,8 +14,8 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/about", priority: 0.55, changeFrequency: "monthly" },
   { path: "/blog", priority: 0.5, changeFrequency: "weekly" },
   { path: "/brochures", priority: 0.45, changeFrequency: "monthly" },
-  { path: "/biometric-reader", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/turnstiles", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/face-based-access-control", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/turnstiles-access", priority: 0.65, changeFrequency: "monthly" },
   { path: "/accessories", priority: 0.6, changeFrequency: "monthly" },
   { path: "/cctv-attendance", priority: 0.6, changeFrequency: "monthly" },
   { path: "/canteen-and-visitor", priority: 0.6, changeFrequency: "monthly" },
@@ -50,7 +50,7 @@ const MODULE_SLUGS = [
 ];
 
 const moduleRoutes = MODULE_SLUGS.map((slug) => ({
-  path: `/contract-labour-management/modules/${slug}`,
+  path: `/contract-labour-management/iddion-regx-modules/${slug}`,
   priority: 0.65,
   changeFrequency: "monthly" as ChangeFreq,
 }));

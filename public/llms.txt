@@ -73,7 +73,7 @@
 
 ## CLMS Modules (Deep-Dive)
 
-- [Attendance & Leave Module](https://inops.tech/contract-labour-management/modules/attendance-leave):
+- [Attendance & Leave Module](https://inops.tech/contract-labour-management/iddion-regx-modules/attendance-leave):
   Face recognition, CCTV attendance, geo-fencing, auto rostering, and leave
   management for contract workforces.
 

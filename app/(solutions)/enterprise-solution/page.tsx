@@ -1384,7 +1384,7 @@ export default function EnterpriseSolutionPage() {
                 <h3 className="text-lg font-semibold text-slate-900">Attendance capture</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Every capture mode on one engine:{" "}
-                  <Link href="/biometric-reader" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/face-based-access-control" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     face recognition attendance
                   </Link>
                   ,{" "}
@@ -1397,11 +1397,11 @@ export default function EnterpriseSolutionPage() {
               <div>
                 <h3 className="text-lg font-semibold text-slate-900">Physical access control</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
-                  <Link href="/turnstiles" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/turnstiles-access" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     Turnstile access control
                   </Link>{" "}
                   with compliance rule enforcement via{" "}
-                  <Link href="/contract-labour-management/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/contract-labour-management/iddion-regx-modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     gate pass management
                   </Link>
                   — induction, medical, licence, and BGV checked at the barrier before the arm turns.

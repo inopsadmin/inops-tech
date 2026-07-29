@@ -42,7 +42,7 @@ export default async function ModulePage({
   }
 
   return(
-    <main className="pt-[calc(var(--home-nav-offset)+var(--module-nav-height,0px))]">
+    <main className="pt-[calc(var(--home-nav-offset)+var(--module-nav-height,0px))] transition-[padding-top] duration-300 ease-in-out">
       <ModuleSwitcher activeSlug={slug}/>
       <ModuleTemplate data={selectedModule} />
     </main>

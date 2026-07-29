@@ -1474,7 +1474,7 @@ export default function BiometricAccessControlPage() {
                   CCTV attendance system
                 </a>{" "}
                 captures attendance without dedicated terminals at scale. For physical access control where the barrier arm must not turn, our{" "}
-                <a href="/turnstiles" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/turnstiles-access" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   turnstile access control
                 </a>{" "}
                 integrates the same biometric identity into lane enforcement.
@@ -1491,7 +1491,7 @@ export default function BiometricAccessControlPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 The reader identifies; the rules decide. Every recognition event checks induction status, medical fitness, licence validity, and BGV clearance via{" "}
-                <a href="/contract-labour-management/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/contract-labour-management/iddion-regx-modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   gate compliance and auto-blocking
                 </a>{" "}
                 — a failed check denies entry and logs the reason in real time. Biometric attendance and compliance gate logic share the same underlying record, so a worker blocked at the gate is automatically excluded from that shift's attendance and payroll.
