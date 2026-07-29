@@ -10,8 +10,8 @@ const mainPages = [
 ];
 
 const productPages = [
-  { label: "Biometric Access Control", href: "/biometric-reader" },
-  { label: "Turnstiles", href: "/turnstiles" },
+  { label: "Biometric Access Control", href: "/face-based-access-control" },
+  { label: "Turnstiles", href: "/turnstiles-access" },
   { label: "Accessories", href: "/accessories" },
 ];
 

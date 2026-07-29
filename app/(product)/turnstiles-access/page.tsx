@@ -278,7 +278,7 @@ export default function TurnstilesPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 Every reader type — face terminal, fingerprint, card, or QR — mounts to an InOps lane without a separate controller. Entry and exit events feed the same attendance engine as{" "}
-                <a href="/biometric-reader" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/face-based-access-control" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   face recognition attendance
                 </a>{" "}
                 and{" "}

@@ -57,8 +57,8 @@ const FAQ_ITEMS = [
 export default function BiometricAccessControlLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SecondaryPageJsonLd path="/biometric-reader" title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
-      <ProductSchemaInjector path="/biometric-reader" />
+      <SecondaryPageJsonLd path="/face-based-access-control" title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
+      <ProductSchemaInjector path="/face-based-access-control" />
       <FAQPageJsonLd items={FAQ_ITEMS} />
       {children}
     </>

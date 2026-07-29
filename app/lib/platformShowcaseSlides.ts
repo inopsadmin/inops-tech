@@ -60,7 +60,7 @@ export const platformShowcaseSlides = [
   {
     id: "face-reader",
     tabLabel: "Face & devices",
-    href: "/biometric-reader",
+    href: "/face-based-access-control",
     title: "Smart access. Secure workforce.",
     badge: "Biometric hardware",
     text:
