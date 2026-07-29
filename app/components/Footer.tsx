@@ -22,7 +22,7 @@ const solutions = [
   { label: "Mobile App", href: "/mobile-app-attendance" },
   { label: "CCTV Attendance", href: "/cctv-attendance" },
   { label: "Face Reader", href: "/face-based-access-control" },
-  { label: "Enterprise Solution", href: "/enterprise-solution" },
+  { label: "Supply Chain Management", href: "/enterprise-solution" },
   { label: "EWA (Early Wage Access)", href: "/early-wage-access" },
 ];
 
