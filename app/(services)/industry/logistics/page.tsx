@@ -79,7 +79,7 @@ const platformCards = [
   },
 ];
 
-const certBadges = [ "ISO 27001", "SOC 2 Type II", "GDPR Compliant"];
+const certBadges = [ "ISO 27001", "SOC 2 Type II", "GDPR & DPDP Compliant"];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 

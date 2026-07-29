@@ -81,7 +81,7 @@ const platformCards = [
   },
 ];
 
-const certBadges = ["ISO 27001", "21 CFR Part 11", "GDPR Compliant"];
+const certBadges = ["ISO 27001", "21 CFR Part 11", "GDPR & DPDP Compliant"];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 

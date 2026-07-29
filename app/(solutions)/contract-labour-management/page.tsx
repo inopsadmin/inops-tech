@@ -279,7 +279,7 @@ const ourModulesSlides = [
   },
   {
     slug: "wage-payroll",
-    title: "Wage & Invoice",
+    title: " Wage & Invoice",
     description:
       "Calculate wages, statutory deductions, and overtime with audit trails that stay compliant across every pay cycle.",
     image:

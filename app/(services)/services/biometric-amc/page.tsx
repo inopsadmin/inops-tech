@@ -7,35 +7,67 @@ import { useState } from "react";
 const faqs = [
   {
     q: "What is a biometric AMC and what does it cover?",
-    a: "A biometric AMC (Annual Maintenance Contract) is a service agreement that keeps attendance and access-control hardware operational. InOps AMC covers preventive maintenance visits, corrective repairs, firmware lifecycle management, remote device-health monitoring, and on-site engineer support for biometric terminals, fingerprint and face readers, RFID readers, and turnstiles — under one contract and one SLA across every site."
+    a: (
+      <>
+        A biometric AMC (Annual Maintenance Contract) is a service agreement that keeps attendance and access-control hardware operational. InOps AMC covers preventive maintenance visits, corrective repairs, firmware lifecycle management, remote device-health monitoring, and on-site engineer support for biometric terminals, fingerprint and face readers, RFID readers, and turnstiles — under one contract and one SLA across every site.
+      </>
+    )
   },
   {
     q: "Which devices are covered under AMC?",
-    a: "Biometric fingerprint and face terminals, RFID and card readers, turnstiles and flap barriers, and associated controllers and panels — regardless of original vendor. Mixed-brand fleets across multiple sites are supported under a single contract, which is the usual situation for plants that bought hardware over several years from different suppliers."
+    a: (
+      <>
+        Biometric fingerprint and face terminals, RFID and card readers, turnstiles and flap barriers, and associated controllers and panels — regardless of original vendor. Mixed-brand fleets across multiple sites are supported under a single contract, which is the usual situation for plants that bought hardware over several years from different suppliers.
+      </>
+    )
   },
   {
     q: "Do you take over AMC for devices we bought from another vendor?",
-    a: "Yes. Takeover AMC is one of the most common engagements — we audit the existing fleet, register every device, and bring it under one SLA regardless of who supplied or previously serviced it. Enrollment and configuration data is preserved during transition."
+    a: (
+      <>
+        Yes. Takeover AMC is one of the most common engagements — we audit the existing fleet, register every device, and bring it under one SLA regardless of who supplied or previously serviced it. Enrollment and configuration data is preserved during transition.
+      </>
+    )
   },
   {
     q: "What is the standard response SLA?",
-    a: "Standard response is within 24 hours, with remote diagnostics often resolving issues before an engineer is dispatched. Faster-response tiers are available for critical gates and high-security sites, and every SLA window is defined contractually per site tier. (Confirm final tier structure with delivery.)"
+    a: (
+      <>
+        Standard response is within 24 hours, with remote diagnostics often resolving issues before an engineer is dispatched. Faster-response tiers are available for critical gates and high-security sites, and every SLA window is defined contractually per site tier.
+      </>
+    )
   },
   {
     q: "What's the difference between preventive and corrective maintenance?",
-    a: "Preventive maintenance runs on a schedule — cleaning, calibration, firmware updates, and health checks before failures occur. Corrective maintenance is the repair response when something does fail. Most fleets fail because only the second exists; the AMC's value is that the first prevents most of the second."
+    a: (
+      <>
+        Preventive maintenance runs on a schedule — cleaning, calibration, firmware updates, and health checks before failures occur. Corrective maintenance is the repair response when something does fail. Most fleets fail because only the second exists; the AMC's value is that the first prevents most of the second.
+      </>
+    )
   },
   {
     q: "Can we monitor device health ourselves?",
-    a: "Yes. The AMC includes a live fleet-health dashboard showing device status, uptime, open tickets, and service history across every registered site — so your team sees failures forming rather than hearing about them from the gate."
+    a: (
+      <>
+        Yes. The AMC includes a live fleet-health dashboard showing device status, uptime, open tickets, and service history across every registered site — so your team sees failures forming rather than hearing about them from the gate.
+      </>
+    )
   },
   {
     q: "Do you offer RFID reader AMC and access control maintenance?",
-    a: "Yes. RFID reader AMC and access-control maintenance — turnstiles, flap barriers, controllers — are covered alongside biometric attendance devices, so one contract spans your entire identity and access hardware estate rather than splitting it across vendors."
+    a: (
+      <>
+        Yes. RFID reader AMC and access-control maintenance — turnstiles, flap barriers, controllers — are covered alongside biometric attendance devices, so one contract spans your entire identity and access hardware estate rather than splitting it across vendors.
+      </>
+    )
   },
   {
     q: "How does AMC work across multiple sites in different states?",
-    a: "One contract, one SLA, one dashboard, with engineer coverage across India. Site-wise uptime and service history are reported monthly, so corporate sees every plant's fleet condition without chasing local vendors. (Confirm actual coverage footprint before publishing 'Pan-India.')"
+    a: (
+      <>
+        One contract, one SLA, one dashboard, with engineer coverage across India. Site-wise uptime and service history are reported monthly, so corporate sees every plant's fleet condition without chasing local vendors.
+      </>
+    )
   },
   {
     q: "What happens to attendance and access when a device fails?",
@@ -61,11 +93,19 @@ const faqs = [
   },
   {
     q: "Is firmware managed as part of the contract?",
-    a: "Yes. Ageing firmware is one of the most common causes of both device failure and security exposure, and it's rarely anyone's job internally. AMC includes tracking firmware versions across the fleet and applying vendor-supported updates on a managed schedule."
+    a: (
+      <>
+        Yes. Ageing firmware is one of the most common causes of both device failure and security exposure, and it's rarely anyone's job internally. AMC includes tracking firmware versions across the fleet and applying vendor-supported updates on a managed schedule.
+      </>
+    )
   },
   {
     q: "Are spares stocked locally?",
-    a: "Yes — spares are held and supported in India, so replacements don't wait on import lead times. This is a practical difference from vendors who service Indian sites from overseas inventory. (Verify against actual spares policy.)"
+    a: (
+      <>
+        Yes — spares are held and supported in India, so replacements don't wait on import lead times. This is a practical difference from vendors who service Indian sites from overseas inventory.
+      </>
+    )
   },
   {
     q: "How is AMC priced?",
@@ -102,6 +142,7 @@ const faqs = [
 
 export default function BiometricPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
     <main className="bg-[#f4f6f8] font-sans">
@@ -295,10 +336,19 @@ export default function BiometricPage() {
       <section className="bg-white pt-[72px] px-[6vw] pb-[96px]">
         <div className="max-w-[1240px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-[40px] items-end mb-[44px]">
-            <div>
-              <div className="text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold mb-[14px]">What do biometric AMC services cover?</div>
+            {/* <div>
               <h2 className="text-[clamp(24px,3vw,32px)] leading-[1.25] font-bold text-[#0b1e2d] max-w-[480px]">Everything the service runs on</h2>
-            </div>
+              <div className="text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold mb-[14px]">What do biometric AMC services cover?</div>
+            </div> */}
+
+            <div>
+  <h2 className="text-[clamp(24px,3vw,32px)] leading-[1.25] font-bold text-[#0b1e2d] max-w-[480px]">
+    Everything the service runs on
+  </h2>
+  <div className="mt-2 text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold">
+    What do biometric AMC services cover?
+  </div>
+</div>
             <p className="text-[14.5px] leading-[1.65] text-[#667588] max-w-[380px] md:text-right md:justify-self-end">
               Built as modular capabilities that plug directly into existing onboarding and compliance workflows.
             </p>
@@ -315,7 +365,7 @@ export default function BiometricPage() {
                   </svg>
                 </div>
                 <div className="text-[22px] font-extrabold text-white mb-2">Preventive &amp; Corrective Maintenance</div>
-                <div className="text-[13px] leading-[1.6] text-white/75">Scheduled biometric maintenance paired with rapid-response repairs.</div>
+                <div className="text-[13px] leading-[1.6] text-white/75">Biometric AMC covers preventive and corrective maintenance, remote device-health monitoring, firmware lifecycle management, and on-site engineer support for biometric terminals, RFID readers, and turnstiles — under one contract and one SLA across every site.</div>
               </div>
               <div className="relative z-[2] mt-[22px] text-[10.5px] tracking-[0.06em] uppercase text-white/55 font-semibold">Core Capability</div>
             </div>
@@ -327,21 +377,25 @@ export default function BiometricPage() {
                   title: "Remote Diagnostics",
                   desc: "Device health monitored centrally before failures occur.",
                   icon: <><path d="M5 12.55a11 11 0 0 1 14.08 0" /><path d="M1.42 9a16 16 0 0 1 21.16 0" /><path d="M8.53 16.11a6 6 0 0 1 6.95 0" /><line x1="12" y1="20" x2="12.01" y2="20" /></>,
+                 route: "/industry/manufacturing"
                 },
                 {
                   title: "On-site Engineer Support",
                   desc: "Field engineers dispatched against defined SLA windows.",
                   icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /><path d="M16 11l1.5 1.5L20 10" /></>,
+                  route: "/industry/automotive"
                 },
                 {
                   title: "Biometric Device Maintenance",
                   desc: "Devices kept current, secure and vendor-supported.",
                   icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>,
+                  route: "/industry/electronics"
                 },
                 {
                   title: "Device Health Monitoring",
                   desc: "Live fleet dashboard across every registered site.",
                   icon: <><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></>,
+                  route: "/industry/logistics"
                 },
               ].map(({ title, desc, icon }) => (
                 <div key={title} className="border border-[#e6eaee] rounded-xl p-6 bg-white transition-all duration-200 hover:shadow-[0_16px_32px_rgba(11,30,45,0.08)] hover:-translate-y-[2px] hover:border-[#d7e2ea]">
@@ -403,42 +457,85 @@ export default function BiometricPage() {
 
       {/* ========== INDUSTRIES ========== */}
       <section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
-            <div>
-              <div className="text-[12px] tracking-[0.10em] uppercase text-[#1c7bb8] font-bold mb-4">Industries</div>
-              <h2 className="text-[clamp(26px,3vw,34px)] leading-[1.2] font-extrabold text-[#0b1e2d] max-w-[440px]">Built for high-volume industrial operations</h2>
-            </div>
-            <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[320px] md:text-right md:justify-self-end pt-2">
-              Deployed across manufacturing, automotive, electronics, logistics and multi-tenant industrial environments.
-            </p>
-          </div>
+  <div className="max-w-[1240px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
+      <div>
+        <div className="text-[12px] tracking-[0.10em] uppercase text-[#1c7bb8] font-bold mb-4">Industries</div>
+        <h2 className="text-[clamp(26px,3vw,34px)] leading-[1.2] font-extrabold text-[#0b1e2d] max-w-[440px]">Built for high-volume industrial operations</h2>
+      </div>
+      <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[320px] md:text-right md:justify-self-end pt-2">
+        Deployed across manufacturing, automotive, electronics, logistics and multi-tenant industrial environments.
+      </p>
+    </div>
 
-          <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
-            {[
-              { n: "01", title: "Manufacturing", desc: "High-volume plants running multi-shift contract workforces.", icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>, offset: false },
-              { n: "02", title: "Automotive", desc: "Tier-1 and OEM plants with strict access and safety controls.", icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>, offset: true },
-              { n: "03", title: "Electronics", desc: "Cleanroom and assembly sites with tight identity controls.", icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>, offset: false },
-              { n: "04", title: "Warehousing", desc: "Distributed logistics hubs with high workforce turnover.", icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>, offset: true },
-              { n: "05", title: "Engineering", desc: "Project sites with rotating, multi-vendor contractor pools.", icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>, offset: false },
-              { n: "06", title: "Industrial Parks", desc: "Multi-tenant campuses needing shared access governance.", icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>, offset: true },
-            ].map(({ n, title, desc, offset }) => (
-              <div
-                key={title}
-                className="flex-1 min-w-0 rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] cursor-default hover:-translate-y-1 aspect-square"
-                style={offset ? { marginTop: 60 } : {}}
-              >
-                <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
-                <div className="text-[11px] font-bold text-white/50 relative z-[2] tracking-[0.04em]">{n}</div>
-                <div className="relative z-[2]">
-                  <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3]">{title}</div>
-                  <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
-                </div>
-              </div>
-            ))}
+    <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
+      {[
+        {
+          title: "Manufacturing",
+          desc: "High-volume gate control across shift-based factory workforces.",
+          icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>,
+          offset: false,
+          route: "/industry/manufacturing"
+        },
+        {
+          title: "Automotive",
+          desc: "Tier-1 and 2 plant access aligned to OEM standards.",
+          icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>,
+          offset: true,
+          route: "/industry/automotive"
+        },
+        {
+          title: "Electronics",
+          desc: "Cleanroom and assembly sites with tight identity checks.",
+          icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>,
+          offset: false,
+          route: "/industry/electronics"
+        },
+        {
+          title: "Warehousing",
+          desc: "Contractor and shift-worker rotation verified in real time.",
+          icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>,
+          offset: true,
+          route: "/industry/logistics"
+        },
+        {
+          title: "Engineering",
+          desc: "Project-site staffing verified before contractor mobilisation.",
+          icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>,
+          offset: false,
+          route: "/industry/manufacturing"
+        },
+        {
+          title: "Industrial Parks",
+          desc: "Multi-tenant campus access managed under one gate policy.",
+          icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>,
+          offset: true,
+          route: "/industry/logistics"
+        },
+      ].map(({ title, desc, icon, offset, route }) => (
+        <Link
+          key={title}
+          href={route}
+          className="flex-1 min-w-0 block"
+        >
+          <div
+            className="rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] hover:-translate-y-1 aspect-square cursor-pointer"
+            style={offset ? { marginTop: 60 } : {}}
+          >
+            <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
+            <div className="w-9 h-9 rounded-[10px] bg-white/[0.18] border border-white/30 flex items-center justify-center relative z-[2] flex-shrink-0">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+            </div>
+            <div className="relative z-[2]">
+              <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#5de3a5] transition-colors duration-200">{title}</div>
+              <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
+            </div>
           </div>
-        </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ========== SHIFT / COMPARISON ========== */}
       <section className="bg-[#f4f6f8] pt-[80px] px-[6vw] pb-[100px]">
@@ -519,24 +616,32 @@ export default function BiometricPage() {
             </p>
           </div>
 
-          <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
-            <div className="hidden md:block absolute pointer-events-none" style={{ top: 32, left: 32, right: 32, height: 2, background: "#1c7bb8", zIndex: 0 }} />
-            {[
-              { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
-              { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
-              { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
-              { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
-              { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
-            ].map(({ n, title, desc }) => (
-              <div key={n} className="relative z-[1] flex flex-col items-start pr-6">
-                <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: "50%" }}>{n}</div>
-                <div className="pr-3">
-                  <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
-                  <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+         <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
+  {/* connecting line - stops before the 5th step */}
+  <div className="hidden md:block absolute pointer-events-none" style={{ 
+    top: 32, 
+    left: 32, 
+    width: "calc(100% - 216px)",
+    height: 2, 
+    background: "#1c7bb8",
+    zIndex: 0 
+  }} />
+  {[
+    { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
+    { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
+    { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
+    { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
+    { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
+  ].map(({ n, title, desc }) => (
+    <div key={n} className="relative z-[2] flex flex-col items-start pr-6">
+      <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: '50%' }}>{n}</div>
+      <div className="pr-3">
+        <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
+        <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
@@ -567,7 +672,7 @@ export default function BiometricPage() {
 
             {/* Right — accordion */}
             <div className="flex flex-col">
-              {faqs.map(({ q, a }, i) => (
+              {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
                 <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
                   <button
                     className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
@@ -578,10 +683,36 @@ export default function BiometricPage() {
                     <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
                   </button>
                   {openFaq === i && (
-                    <p className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{a}</p>
+                    <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
+                      {a}
+                    </div>
                   )}
                 </div>
               ))}
+
+              {/* Show More / Show Less Button */}
+              {faqs.length > 6 && (
+                <button
+                  onClick={() => setShowAllFaqs(!showAllFaqs)}
+                  className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
+                >
+                  {showAllFaqs ? (
+                    <>
+                      Show Less
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      Show All {faqs.length} Questions
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" >
+                        <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              )}
             </div>
 
           </div>
@@ -589,7 +720,7 @@ export default function BiometricPage() {
           {/* Related tags */}
           <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
             <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
-            {["Biometric Maintenance", "Attendance Machine AMC", "Biometric Device Maintenance", "Biometric Service Provider", "Device Health Monitoring"].map((tag) => (
+            {["Biometric Maintenance", "Attendance Machine AMC", "Biometric Device Maintenance", "Biometric Service Provider", "Device Health Monitoring","Face Reader Device"].map((tag) => (
               <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
             ))}
           </div>

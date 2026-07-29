@@ -16,18 +16,18 @@ const turnstilesHeroBg = "/images/Turnstiles2.jpg";
 const productSpecs = [
   { label: "Power Requirements", value: "AC110V/220V, 50/60Hz" },
   { label: "Dimension(mm)", value: "L=520, W=310, H=1010" },
-  { label: "Working Temperature", value: "28 °C - 60 °C" },
+  { label: "Working Temperature", value: "0 °C - 60 °C" },
   { label: "Working Environment", value: "Indoor/Outdoor(if sheltered)" },
   { label: "RFID & Fingerprint Speed", value: "Maximum 30/Minute" },
   { label: "Material", value: "Stainless Steel" },
 ];
 
 const whyChooseSlides = [
-  { title: "Results-Driven", text: "We are committed to delivering measurable results that help our clients achieve their business objectives and drive sustainable growth." },
-  { title: "Expertise", text: "Our team brings deep industry knowledge and technical expertise to every project, ensuring solutions that fit your unique needs." },
-  { title: "Reliability", text: "Consistent performance and dependable support so you can focus on what matters most for your organization." },
-  { title: "Innovation", text: "We leverage cutting-edge technology and best practices to future-proof your access control and workforce systems." },
-  { title: "Partnership", text: "We work alongside you as a long-term partner, from planning through implementation and beyond." },
+  { title: " Hardware that enforces compliance, not just identity", text: "Most turnstile suppliers sell you a barrier. InOps lanes are connected to a rules engine — induction, medical fitness, licence validity, and BGV status are checked at the moment of entry, and every denial is logged with its reason. The gate becomes a compliance control, not just a counting device." },
+  { title: "One identity across every device and gate", text: "Face terminals, fingerprint readers, cards, QR, and CCTV capture all resolve to a single worker identity. Add a lane or a gate and nobody re-enrols. Multi-gate campuses stay one system instead of becoming several." },
+  { title: "Deployed at scale, in real industrial conditions", text: "3,000+ devices across 70+ industrial sites, including defence and PSU environments where tailgating and access records are audited. Site survey, civil coordination, installation, and commissioning are handled end-to-end — not handed to a third-party installer." },
+  { title: "Supported after the install", text: "Lanes and their readers are covered under [biometric AMC](/services/biometric-amc): SLA-backed preventive and corrective maintenance, spares held in India, engineers across sites. The difference between a vendor and a supplier shows up in year two, not week one." },
+  { title: " Local supply, local spares", text: "Hardware supported and stocked in India — replacements don't wait on import lead times, and procurement documentation is ready for PSU and defence tenders." },
 ];
 
 const numberedFeatures = [
@@ -36,21 +36,21 @@ const numberedFeatures = [
     title: "Reliability",
     color: "bg-amber-500",
     description:
-      "Consistency, dependability, trustworthiness, accuracy, credibility, solidity, steadfastness, authenticity, durability, fidelity, robustness, validity, resilience, faithfulness, certainty.",
+      "Duty cycle, MTBF, oil-lubricated mechanism, stainless construction ·",
   },
   {
     number: 2,
     title: "Safety Feature",
     color: "bg-emerald-500",
     description:
-      "Airbags, antilock brakes, traction control, lane departure warning, blind spot detection, adaptive cruise control, rearview camera, stability control, tire pressure monitoring.",
+      "Anti-panic drop-arm on power failure, fire-alarm integration, anti-pinch arms, emergency free-exit. ",
   },
   {
     number: 3,
     title: "Built-in Reader Integration",
     color: "bg-pink-500",
     description:
-      "Seamless compatibility with Kindle, Nook, iBooks, Google Play Books, Pocket, Adobe Digital Editions, and other popular e-reader platforms.",
+      "Face, fingerprint, RFID, QR readers mounted natively.",
   },
 ];
 
@@ -62,6 +62,110 @@ const featureBullets = [
   { text: "Stainless steel casework which ensures long-lasting durability", iconBg: "bg-blue-500" },
 ];
 
+// ─── FAQ Data ─────────────────────────────────────────────────────────────────
+const turnstileFaqItems = [
+  {
+    question: "What types of turnstiles suit factory gates?",
+    answer:
+      "Tripod turnstiles for indoor lanes and contractor entry points where throughput is the constraint; full-height turnstiles for perimeter gates, defence and PSU campuses where tailgating cannot be tolerated; flap barriers for office-to-plant transitions and visitor lanes where passage speed matters. Most industrial sites use a mix, matched gate by gate during the site survey.",
+  },
+  {
+    question: "How many people per minute can a turnstile lane handle?",
+    answer: (
+      <>
+        A tripod lane handles roughly 25–30 persons per minute with card or fingerprint verification. Shift changes at large plants usually need multiple parallel lanes, or{" "}
+        <Link 
+          href="/cctv-attendance" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          CCTV-based attendance
+        </Link>{" "}
+        alongside lanes to absorb peak flow without queueing.
+      </>
+    ),
+  },
+  {
+    question: "Can turnstiles enforce compliance rules, not just identity?",
+    answer: (
+      <>
+        Yes — that's the difference between access control and compliance enforcement. Connected to a rules engine, the lane checks induction validity, medical fitness, licence status, and BGV clearance at the moment of entry; a failed check means the arm doesn't turn and the denial is logged with its reason. See{" "}
+        <Link 
+          href="/contract-labour-management/modules/gate-compliance" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          gate pass management and auto-blocking
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
+    question: "What happens during a power failure or fire alarm?",
+    answer:
+      "Lanes are configured to fail safe: arms drop or release to allow free egress on power loss and on fire-alarm signal, in line with life-safety requirements. Fail-secure configurations are available for high-security perimeters where the security posture requires it.",
+  },
+  {
+    question: "Which readers can be integrated?",
+    answer: (
+      <>
+        Face terminals, fingerprint readers, RFID and card readers, and QR scanners mount to the lane without a separate controller. Events feed the same attendance engine as{" "}
+        <Link 
+          href="/biometric-reader" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          face recognition attendance
+        </Link>
+        , so one enrollment covers every gate and device.
+      </>
+    ),
+  },
+  {
+    question: "Can turnstiles work with our existing access control system?",
+    answer:
+      "Yes — lanes accept standard reader and controller interfaces, so existing card systems can drive them while attendance and compliance logic runs on InOps. Mixed environments are common in plants that added hardware over several years.",
+  },
+  {
+    question: "Are they suitable for outdoor gates?",
+    answer:
+      "Full-height turnstiles are rated for outdoor exposure. Tripod turnstiles work outdoors when sheltered from direct rain and sun; flap barriers are indoor-rated with sheltered-outdoor options subject to deployment specifications. Site conditions determine the recommendation.",
+  },
+  {
+    question: "How are visitors and vehicles handled?",
+    answer: (
+      <>
+        Visitor passes issued through{" "}
+        <Link 
+          href="/canteen-and-visitor" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          visitor management
+        </Link>{" "}
+        work on the same lanes as workforce credentials, with zone permissions attached. Vehicle access uses boom barriers and ANPR rather than pedestrian lanes, integrated into the same access records.  
+      </>
+    ),
+  },
+  {
+    question: "What's involved in installation?",
+    answer:
+      "Site survey, civil coordination for foundation and cabling, installation, reader mounting, and commissioning against your attendance system. Most single-gate configurations are live within days of hardware delivery; multi-gate campuses are staged in parallel lanes so attendance capture never stops during rollout.",
+  },
+  {
+    question: "Is maintenance covered?",
+    answer: (
+      <>
+        Turnstiles, flap barriers, and their integrated readers are covered under{" "}
+        <Link 
+          href="/services/biometric-amc" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          biometric AMC services
+        </Link>{" "}
+        — preventive maintenance, mechanism servicing, and SLA-backed repair across every site under one contract.
+      </>
+    ),
+  },
+];
+
 function CheckIcon({ className }: { className?: string }) {
   return (
     <svg className={className} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -71,6 +175,8 @@ function CheckIcon({ className }: { className?: string }) {
 }
 
 export default function TurnstilesPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <>
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
@@ -233,79 +339,68 @@ export default function TurnstilesPage() {
           </div>
         </section>
 
-        {/* H2 content sections — SEO depth */}
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="turnstile-types-heading">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
-              <h2 id="turnstile-types-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Turnstile and barrier types for industrial sites
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-                <strong className="font-semibold text-slate-800">Tripod turnstiles</strong> are the standard for indoor gate lanes and building lobbies: three-arm rotation, up to 25–30 persons per minute per lane, compact footprint, stainless steel. Well-suited to contractor entry points where attendance must be captured at every pass and throughput is the primary constraint.
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                <strong className="font-semibold text-slate-800">Full-height turnstiles</strong> close the entire pedestrian path — appropriate for perimeter gates, defence establishments, and PSU campuses where tailgating cannot be tolerated. Rated for outdoor exposure, available with integrated face, card, or fingerprint readers.
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-                <strong className="font-semibold text-slate-800">Flap barriers</strong> suit office-to-plant transitions and visitor reception lanes where a smooth, fast passage experience matters alongside access control. Indoor rated; sheltered outdoor positions are supported subject to deployment specs.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="turnstile-compliance-rules-heading">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
-              <h2 id="turnstile-compliance-rules-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Can turnstiles enforce compliance rules?
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-                A turnstile alone enforces identity; connected to a rules engine it enforces policy. InOps lanes check induction validity, medical fitness, licence status, and BGV clearance at the moment of entry — a failed check means the arm doesn't turn, and the denial is logged with its reason. See{" "}
-                <a href="/contract-labour-management/modules/gate-compliance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
-                  gate pass management and auto-blocking
-                </a>{" "}
-                for the full rule set.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="turnstile-attendance-stack-heading">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
-              <h2 id="turnstile-attendance-stack-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Integration with your attendance stack
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-                Every reader type — face terminal, fingerprint, card, or QR — mounts to an InOps lane without a separate controller. Entry and exit events feed the same attendance engine as{" "}
-                <a href="/biometric-reader" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
-                  face recognition attendance
-                </a>{" "}
-                and{" "}
-                <a href="/cctv-attendance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
-                  CCTV attendance
-                </a>
-                , so one worker identity covers every device and every gate with no duplicate enrollment.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="turnstile-deployment-heading">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
-              <h2 id="turnstile-deployment-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Deployment and maintenance
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-                InOps handles site survey, civil coordination, installation, and commissioning, with AMC and SLA support available post-deployment. Most gate configurations are live within days of hardware delivery; multi-gate campuses run in parallel lanes to avoid attendance disruptions during rollout.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
         {/* Why Choose Us */}
         <WhyChooseUsSection />
+
+        {/* ========== FAQ ========== */}
+        <section className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16 border-t border-[#eef1f4]">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Answers to common questions about turnstile access control, integration, compliance enforcement, and maintenance.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="divide-y divide-slate-200">
+                {turnstileFaqItems.map((item, index) => (
+                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                      <span className="flex min-w-0 gap-4">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                      </span>
+                      <span
+                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                        aria-hidden
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <div className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">
+                      {item.answer}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Related tags */}
+            <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
+              <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
+              {["Turnstile Access Control", "Tripod Turnstile", "Flap Barrier", "Factory Gate Security", "Biometric Turnstile"].map((tag) => (
+                <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <SolutionPageClosingCta
           headingId="turnstiles-final-cta-heading"

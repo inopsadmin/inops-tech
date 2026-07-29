@@ -5,25 +5,75 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "What does a CLRA compliance audit cover?",
-    a: "Contractor licensing, registers, statutory obligations and principal employer compliance under the Contract Labour (Regulation & Abolition) Act.",
+    q: "What is a CLRA compliance audit?",
+    a:
+      "A CLRA compliance audit reviews a principal employer's contract labour operations against the Contract Labour (Regulation & Abolition) Act and applicable state rules: contractor licences and headcount caps, statutory registers, wage and attendance records, statutory remittance evidence, and welfare obligations. It produces a scored gap report with prioritised remediation, not just a list of findings.",
   },
   {
-    q: "How long does a compliance assessment take?",
-    a: "A typical single-site labour compliance audit is completed within one to two weeks.",
+    q: "What does the audit actually cover?",
+    a:
+      "Contractor licence validity and cap headroom per establishment; Form V and Form XIII register completeness; wage records and minimum-wage compliance; attendance and OT records; PF/ESI remittance evidence from contractors; welfare facility obligations; and whether gate-level controls can actually enforce what your policy claims. Gaps are ranked by exposure, not listed alphabetically.",
+  },
+  {
+    q: "Who is responsible when a contractor doesn't comply — us or them?",
+    a:
+      "Both, but the exposure lands differently. Under CLRA the principal employer carries responsibility for ensuring contractors meet obligations and can be liable for defaults such as unpaid wages or statutory dues. That asymmetry is why the audit maps every obligation to an owner — it's usually the single most useful output for a plant that has never separated the two.",
+  },
+  {
+    q: "How long does an assessment take?",
+    a:
+      "Site assessment and documentation review typically complete in days rather than weeks, with duration scaling by site count, contractor count, and how much documentation is retrievable. Multi-site engagements run site-by-site with a consolidated scorecard at the end.",
   },
   {
     q: "Do you help fix the gaps you find?",
-    a: "Yes, the report includes prioritised, actionable remediation recommendations for contract labour compliance.",
+    a: (
+      <>
+        Yes. The report prioritises remediation by risk, and where gaps are structural — registers reconstructed monthly instead of maintained live, licences tracked in spreadsheets, no gate-level enforcement — remediation may mean process or system change rather than paperwork. Those recommendations map to{" "}
+        <Link 
+          href="/contract-labour-management/modules/compliance-report" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          CLRA compliance software
+        </Link>{" "}
+        capabilities where automation is the fix.
+      </>
+    ),
   },
   {
-    q: "Is this useful ahead of a labour department audit?",
-    a: "Yes, the output is structured to be audit-ready and shareable with statutory authorities as proof of labour law compliance.",
+    q: "Is this useful ahead of a labour department inspection?",
+    a:
+      "That's the common trigger. The audit surfaces what an inspector would find, in the same order they'd find it, while you still have time to close it. For PSU and defence sites facing CVC or CAG-style scrutiny, the certified report also documents that due diligence was performed.",
   },
-];
+  {
+    q: "Will you tell us we need to buy your software?",
+    a:
+      "Not necessarily. Many findings are process and documentation issues fixable without any system. The audit's job is to tell you where you stand — where automation is genuinely the a, the report says so and explains why; where it isn't, it doesn't.",
+  },
+  {
+    q: "What's the difference between this and our internal compliance review?",
+    a:
+      "Internal reviews check whether documents exist. This checks whether the documents are current, whether they reconcile against actual attendance and wage data, and whether the controls they describe are enforceable at the gate. Most failures we find aren't missing paperwork — they're timing failures, where records are reconstructed after the fact rather than maintained as events happen.",
+  },
+  {
+    q: "Do you audit our contractors directly?",
+    a:
+      "The audit reviews contractor documentation and compliance evidence as held and required by you as principal employer. Direct contractor engagement — collecting missing licences, remittance proofs, or registers — can be included in scope where you want the gaps closed rather than just identified.",
+  },
+  {
+    q: "Is the audit report legal advice?",
+    a:
+      "No. The audit assesses compliance posture against statutory requirements and industry practice, and is intended to support your legal and compliance teams' decisions rather than replace them. Specific legal positions should be confirmed with counsel.",
+  },
+  {
+    q: "How often should a compliance audit run?",
+    a:
+      "Annually as a baseline, plus after any material change — a new contractor, a site expansion, a shutdown with surge workforce, or a change in state rules. Sites running automated registers need it less often, because the underlying records stay current by design rather than by effort.",
+  },
+] as const;
 
 export default function CLRAComplianceAuditPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
     <main className="bg-[#f4f6f8] font-sans">
@@ -39,7 +89,7 @@ export default function CLRAComplianceAuditPage() {
               SERVICE 04 / 05 &nbsp;·&nbsp; CLRA COMPLIANCE AUDIT
             </div>
             <h1 className="text-[clamp(32px,3.8vw,50px)] leading-[1.10] font-medium text-white tracking-[-0.02em] m-0">
-              Know your compliance gaps before an auditor does.
+              CLRA Compliance Audit for Principal Employers
             </h1>
             <p className="mt-[22px] text-[15px] leading-[1.7] text-white/[0.78] max-w-[500px]">
               A CLRA compliance audit and labour compliance audit built for contract labour compliance and principal employer compliance, with a scored, actionable path to labour law compliance.
@@ -74,7 +124,7 @@ export default function CLRAComplianceAuditPage() {
                   Live Status
                 </div>
               </div>
-              <div className="text-[11px] tracking-[0.06em] uppercase text-white/55 mt-4 font-semibold">CLRA Audit Readiness · Operations Panel</div>
+              <div className="text-[11px] tracking-[0.06em] uppercase text-white/55 mt-4 font-semibold">CLRA Compliance Audit  · Operations Panel</div>
               <div className="text-[26px] font-bold text-white mt-[6px] mb-[26px]">Fleet &amp; Workforce Overview</div>
               <div className="flex items-end gap-3 h-[120px] mb-7 px-[2px]">
                 {[45, 65, 50, 80, 60, 90, 55].map((h, i) => (
@@ -117,7 +167,7 @@ export default function CLRAComplianceAuditPage() {
             <div>
               <div className="text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold mb-[14px]">The Operational Problem</div>
               <h2 className="text-[clamp(24px,3vw,32px)] leading-[1.25] font-bold text-[#0b1e2d] max-w-[480px]">
-                What breaks today, before CLRA Audit Readiness is in place
+                What breaks today, before CLRA Compliance Audit is in place
               </h2>
             </div>
             <p className="text-[14.5px] leading-[1.65] text-[#667588] max-w-[420px]">
@@ -300,7 +350,7 @@ export default function CLRAComplianceAuditPage() {
               <h2 className="text-[clamp(22px,3vw,28px)] leading-[1.25] font-bold text-white max-w-[420px]">What changes on the ground</h2>
             </div>
             <p className="text-[13.5px] leading-[1.65] text-white/75 max-w-[340px] md:text-right md:justify-self-end">
-              Outcomes reported by enterprises running CLRA Audit Readiness across their industrial and contract workforce operations.
+              Outcomes reported by enterprises running CLRA Compliance Audit across their industrial and contract workforce operations.
             </p>
           </div>
 
@@ -337,28 +387,75 @@ export default function CLRAComplianceAuditPage() {
           </div>
 
           <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
-            {[
-              { n: "01", title: "Manufacturing", desc: "High-volume plants running multi-shift contract workforces.", offset: false },
-              { n: "02", title: "Automotive", desc: "Tier-1 and OEM plants with strict access and safety controls.", offset: true },
-              { n: "03", title: "Electronics", desc: "Cleanroom and assembly sites with tight identity controls.", offset: false },
-              { n: "04", title: "Warehousing", desc: "Distributed logistics hubs with high workforce turnover.", offset: true },
-              { n: "05", title: "Engineering", desc: "Project sites with rotating, multi-vendor contractor pools.", offset: false },
-              { n: "06", title: "Industrial Parks", desc: "Multi-tenant campuses needing shared access governance.", offset: true },
-            ].map(({ n, title, desc, offset }) => (
-              <div
-                key={title}
-                className="flex-1 min-w-0 rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] cursor-default hover:-translate-y-1 aspect-square"
-                style={offset ? { marginTop: 60 } : {}}
-              >
-                <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
-                <div className="text-[11px] font-bold text-white/50 relative z-[2] tracking-[0.04em]">{n}</div>
-                <div className="relative z-[2]">
-                  <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3]">{title}</div>
-                  <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+  {[
+    { 
+      n: "01", 
+      title: "Manufacturing", 
+      desc: "High-volume plants running multi-shift contract workforces.", 
+      icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>, 
+      offset: false, 
+      route: "/industry/manufacturing" 
+    },
+    { 
+      n: "02", 
+      title: "Automotive", 
+      desc: "Tier-1 and OEM plants with strict access and safety controls.", 
+      icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>, 
+      offset: true,
+      route: "/industry/automotive" 
+    },
+    { 
+      n: "03", 
+      title: "Electronics", 
+      desc: "Cleanroom and assembly sites with tight identity controls.", 
+      icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>, 
+      offset: false,
+      route: "/industry/electronics" 
+    },
+    { 
+      n: "04", 
+      title: "Warehousing", 
+      desc: "Distributed logistics hubs with high workforce turnover.", 
+      icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>, 
+      offset: true,
+      route: "/industry/logistics" 
+    },
+    { 
+      n: "05", 
+      title: "Engineering", 
+      desc: "Project sites with rotating, multi-vendor contractor pools.", 
+      icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>, 
+      offset: false,
+      route: "/industry/manufacturing" 
+    },
+    { 
+      n: "06", 
+      title: "Industrial Parks", 
+      desc: "Multi-tenant campuses needing shared access governance.", 
+      icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>, 
+      offset: true,
+      route: "/industry/logistics" 
+    },
+  ].map(({ n, title, desc, offset, route }) => (
+    <Link
+      key={title}
+      href={route}
+      className="flex-1 min-w-0 block"
+    >
+      <div
+        className="rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] hover:-translate-y-1 aspect-square cursor-pointer"
+        style={offset ? { marginTop: 60 } : {}}
+      >
+        <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
+        <div className="text-[11px] font-bold text-white/50 relative z-[2] tracking-[0.04em]">{n}</div>
+        <div className="relative z-[2]">
+          <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#5de3a5] transition-colors duration-200">{title}</div>
+          <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
         </div>
       </section>
 
@@ -371,7 +468,7 @@ export default function CLRAComplianceAuditPage() {
               <h2 className="text-[clamp(24px,3vw,36px)] leading-[1.2] font-bold text-[#0b1e2d] max-w-[440px]">The shift from manual to managed</h2>
             </div>
             <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[340px] md:text-right md:justify-self-end pt-2">
-              A side-by-side view of how CLRA Audit Readiness changes day-to-day operations.
+              A side-by-side view of how CLRA Compliance Audit changes day-to-day operations.
             </p>
           </div>
 
@@ -409,7 +506,7 @@ export default function CLRAComplianceAuditPage() {
               <div className="text-[22px] font-bold mb-7 leading-[1.2] text-white">Digital &amp; Managed</div>
               <div className="flex flex-col">
                 {[
-                  "Structured CLRA readiness framework",
+                  "Structured CLRA Compliance Audit framework",
                   "Gaps surfaced before any inspection",
                   "Obligations mapped and assigned clearly",
                   "Documentation reviewed and refreshed",
@@ -440,83 +537,116 @@ export default function CLRAComplianceAuditPage() {
               A consistent path from first assessment to ongoing, supported operations.
             </p>
           </div>
-
-          <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
-            <div className="hidden md:block absolute pointer-events-none" style={{ top: 32, left: 32, right: 32, height: 2, background: "#1c7bb8", zIndex: 0 }} />
-            {[
-              { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
-              { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
-              { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
-              { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
-              { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
-            ].map(({ n, title, desc }) => (
-              <div key={n} className="relative z-[1] flex flex-col items-start pr-6">
-                <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: "50%" }}>{n}</div>
-                <div className="pr-3">
-                  <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
-                  <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+ <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
+  {/* connecting line - stops before the 5th step */}
+  <div className="hidden md:block absolute pointer-events-none" style={{ 
+    top: 32, 
+    left: 32, 
+    width: "calc(100% - 216px)",
+    height: 2, 
+    background: "#1c7bb8",
+    zIndex: 0 
+  }} />
+  {[
+    { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
+    { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
+    { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
+    { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
+    { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
+  ].map(({ n, title, desc }) => (
+    <div key={n} className="relative z-[2] flex flex-col items-start pr-6">
+      <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: '50%' }}>{n}</div>
+      <div className="pr-3">
+        <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
+        <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
       {/* ========== FAQ ========== */}
-      <section className="bg-white pt-[80px] px-[6vw] pb-[100px] border-t border-[#eef1f4]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-[80px] items-start">
+     <section className="bg-white pt-[80px] px-[6vw] pb-[100px] border-t border-[#eef1f4]">
+  <div className="max-w-[1240px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-[80px] items-start">
 
-            {/* Left */}
-            <div>
-              <div className="text-[11px] tracking-[0.14em] uppercase text-[#1c7bb8] font-bold mb-4">FAQ</div>
-              <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-[1.2] text-[#0b1e2d] m-0 mb-4">
-                Common questions from operations &amp; compliance teams
-              </h2>
-              <p className="text-[13.5px] leading-[1.65] text-[#6b7b8c] mb-7">
-                Can&apos;t find what you&apos;re looking for? Our enterprise team can walk through CLRA Audit Readiness in the context of your sites.
-              </p>
-              <div className="bg-[#1362a8] rounded-[14px] pt-7 px-[26px] pb-[26px]">
-                <div className="text-[15px] font-bold text-white mb-[10px]">Need a custom compliance review?</div>
-                <div className="text-[13px] leading-[1.6] text-white/[0.72] mb-[18px]">
-                  Our compliance consultants can scope a CLRA audit readiness plan for your sites.
-                </div>
-                <Link href="/contact" className="text-[13.5px] font-bold text-white no-underline inline-flex items-center gap-[6px] hover:opacity-85">
-                  Contact Compliance Team &rarr;
-                </Link>
-              </div>
-            </div>
-
-            {/* Right — accordion */}
-            <div className="flex flex-col">
-              {faqs.map(({ q, a }, i) => (
-                <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-                  <button
-                    className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                  >
-                    {q}
-                    <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                  </button>
-                  {openFaq === i && (
-                    <p className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{a}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-
+      {/* Left */}
+      <div>
+        <div className="text-[11px] tracking-[0.14em] uppercase text-[#1c7bb8] font-bold mb-4">FAQ</div>
+        <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-[1.2] text-[#0b1e2d] m-0 mb-4">
+          Common questions from operations &amp; compliance teams
+        </h2>
+        <p className="text-[13.5px] leading-[1.65] text-[#6b7b8c] mb-7">
+          Can&apos;t find what you&apos;re looking for? Our enterprise team can walk through CLRA Compliance Audit in the context of your sites.
+        </p>
+        <div className="bg-[#1362a8] rounded-[14px] pt-7 px-[26px] pb-[26px]">
+          <div className="text-[15px] font-bold text-white mb-[10px]">Need a custom compliance review?</div>
+          <div className="text-[13px] leading-[1.6] text-white/[0.72] mb-[18px]">
+            Our compliance consultants can scope a CLRA Compliance audit plan for your sites.
           </div>
-
-          {/* Related tags */}
-          <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
-            <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
-            {["Labour Compliance Audit", "Labour Law Compliance", "Compliance Assessment", "Factory Labour Compliance", "Contractor Compliance Audit"].map((tag) => (
-              <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
-            ))}
-          </div>
+          <Link href="/contact" className="text-[13.5px] font-bold text-white no-underline inline-flex items-center gap-[6px] hover:opacity-85">
+            Contact Compliance Team &rarr;
+          </Link>
         </div>
-      </section>
+      </div>
+
+      {/* Right — accordion */}
+      <div className="flex flex-col">
+        {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
+          <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+            <button
+              className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
+              onClick={() => setOpenFaq(openFaq === i ? null : i)}
+              aria-expanded={openFaq === i}
+            >
+              {q}
+              <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
+            </button>
+            {openFaq === i && (
+              <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
+                {a}
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Show More / Show Less Button */}
+        {faqs.length > 6 && (
+          <button
+            onClick={() => setShowAllFaqs(!showAllFaqs)}
+            className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
+          >
+            {showAllFaqs ? (
+              <>
+                Show Less
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </>
+            ) : (
+              <>
+                Show All {faqs.length} Questions
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </>
+            )}
+          </button>
+        )}
+      </div>
+
+    </div>
+
+    {/* Related tags */}
+    <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
+      <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
+      {["Labour Compliance Audit", "Labour Law Compliance", "Compliance Assessment", "Factory Labour Compliance", "Contractor Compliance Audit"].map((tag) => (
+        <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ========== CTA BANNER ========== */}
       <section className="relative bg-[linear-gradient(135deg,#1362a8_0%,#1578c2_50%,#1a8fd1_100%)] pt-[80px] px-[6vw] pb-[90px] text-center overflow-hidden">

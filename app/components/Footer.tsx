@@ -158,7 +158,7 @@ export default function Footer() {
               <div className="w-full max-w-[220px] shrink-0 sm:max-w-[260px] xl:max-w-[290px] 2xl:max-w-[320px]">
                 <Image
                   src="/images/162d25e8-2734-49f7-a567-df2fc8f37e3d.png"
-                  alt="Certifications: ISO 27001, SOC 2 Type 2, GDPR, India data privacy, and Make in India"
+                  alt="Certifications: ISO 27001, SOC 2 Type 2, GDPR & DPDP, India data privacy, and Make in India"
                   width={1536}
                   height={1024}
                   sizes="(max-width: 640px) 220px, 260px"

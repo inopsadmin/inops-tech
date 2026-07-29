@@ -26,7 +26,7 @@ const MODULE_TABS = [
   {
     slug: "background-verification",
     label: "Background Verification",
-    accent: "3-hour onboarding",
+    accent: "Identity & Record Checks",
   },
   {
     slug: "ai-assistance",

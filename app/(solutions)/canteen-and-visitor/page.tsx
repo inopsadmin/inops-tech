@@ -197,30 +197,128 @@ const visitorLobbyHighlights = [
 ] as const;
 
 const smartCanteenFaqItems = [
+  // CANTEEN (1-7)
   {
-    question: "What is a Smart Canteen Management System?",
+    question: "What is a canteen management system for factories?",
     answer:
-      "A Smart Canteen Management System automates meal eligibility, digital meal transactions, attendance-based meal allocation, and vendor reconciliation.",
+      "A canteen management system automates meal entitlement, issuance, and reconciliation in industrial canteens. Instead of coupons and manual registers, entitlement rules follow each worker's shift, contractor, and cost centre; the worker is identified biometrically at the counter; and meal counts roll up automatically into subsidy calculations and contractor billing.",
   },
   {
-    question: "How does canteen management software reduce food wastage?",
+    question: "How does biometric meal issuance stop double-claiming and proxy meals?",
     answer:
-      "By tracking actual consumption and planned meals, organizations can optimize meal preparation and reduce unnecessary food waste.",
+      "Each meal is issued against a verified identity, not a coupon that can be passed on or duplicated. The system checks shift eligibility at the moment of service, so a worker cannot claim twice in a session, claim for a shift they didn't work, or claim on someone else's behalf.",
   },
   {
-    question: "Can the system integrate with employee attendance?",
+    question: "Can meal entitlements differ by shift, contractor, or employee category?",
     answer:
-      "Yes. Meal eligibility can be automatically linked to employee attendance, shifts, and contractor records.",
+      "Yes. Entitlement rules are configured per shift, contractor, employee category, and site — including different pricing for contract workers versus permanent employees — and follow the roster automatically. No manual list-keeping per canteen.",
   },
   {
-    question: "Does the solution support cashless meal transactions?",
-    answer:
-      "Yes. Employees and contractors can access meals using facial recognition, RFID cards, QR codes, or biometric authentication.",
+    question: "How does it reconcile canteen invoices from the caterer or contractor?",
+    answer: (
+      <>
+        Verified meal counts by contractor, category, and date form the basis of the invoice check. Over-counted meals are flagged before approval rather than surfacing in a later audit — the same reconciliation logic used for contractor attendance in{" "}
+        <Link 
+          href="/contract-labour-management" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          contract labour management
+        </Link>
+        .
+      </>
+    ),
   },
   {
-    question: "Is the system suitable for factories and corporate campuses?",
+    question: "Can the system link meal eligibility to attendance?",
     answer:
-      "Yes. It is designed for manufacturing plants, IT campuses, industrial facilities, educational institutions, and large enterprises.",
+      "Yes — that's the core of it. Eligibility derives from actual gate attendance, so a worker who didn't enter that shift isn't eligible for the shift's meal, and a worker blocked at the gate is automatically excluded from canteen eligibility for that shift.",
+  },
+  {
+    question: "Does it support cashless and multi-mode transactions?",
+    answer: (
+      <>
+        Yes. Workers can be identified by face recognition, fingerprint, RFID card, or QR code at the counter, with subsidy and any employee contribution calculated at the point of issue and settled through payroll. See{" "}
+        <Link 
+          href="/biometric-reader" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          biometric readers
+        </Link>{" "}
+        for more details.
+      </>
+    ),
+  },
+  {
+    question: "How does it help reduce food wastage?",
+    answer:
+      "Planned meal counts derive from roster and shift data rather than estimates, and actual consumption is recorded per session. The gap between planned and consumed is visible daily, which is what lets kitchens size preparation to real demand instead of last month's guess.",
+  },
+  // VISITOR (8-12)
+  {
+    question: "What is a visitor management system for industrial sites?",
+    answer:
+      "A visitor management system controls and records who enters a site who isn't part of the workforce — contractors' representatives, auditors, customers, drivers. It replaces the paper register with pre-registration, host approval, digital passes with defined validity, and a timestamped entry-and-exit record for every visit.",
+  },
+  {
+    question: "How does visitor pre-registration work?",
+    answer:
+      "A host initiates the invite; the visitor receives pre-registration details in advance and completes their information before arriving. At the desk, identity is confirmed, the pass is issued, and the host is notified automatically — which removes most of the queue at peak arrival times. Walk-in visitors follow the same flow with approval requested at the desk.",
+  },
+  {
+    question: "Can visitor passes control which areas a visitor can access?",
+    answer: (
+      <>
+        Yes. Passes carry zone permissions, so a visitor cleared for the admin block isn't cleared for the plant floor. Passes work on the same{" "}
+        <Link 
+          href="/turnstiles" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          turnstile access control
+        </Link>{" "}
+        lanes and readers as the workforce, so enforcement is physical rather than advisory.
+      </>
+    ),
+  },
+  {
+    question: "Does it screen visitors against watchlists?",
+    answer:
+      "Yes — the system checks against configured watchlists and blacklists before a pass is issued, including individuals previously flagged at any site in your deployment.",
+  },
+  {
+    question: "How long are visitor records retained, and can they be exported?",
+    answer:
+      "Retention follows your security and data policy and is configurable. Every visit — pre-authorisation, entry, exit, host, zones accessed — is exportable for audit, incident investigation, or regulatory review.",
+  },
+  // BOTH (13-14)
+  {
+    question: "Do canteen and visitor management need separate hardware?",
+    answer: (
+      <>
+        No. Both run on the same identity platform and the same device estate as attendance and gate access — one enrollment covers gate entry, canteen counter, and visitor host lookup. That means one hardware investment and one worker identity, not three parallel systems. See{" "}
+        <Link 
+          href="/biometric-reader" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          biometric readers
+        </Link>{" "}
+        for more details.
+      </>
+    ),
+  },
+  {
+    question: "Can we deploy just the canteen module, or just visitor management?",
+    answer: (
+      <>
+        Yes — either can be deployed independently, and either can be added later to an existing InOps attendance or{" "}
+        <Link 
+          href="/contract-labour-management" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          CLMS
+        </Link>{" "}
+        deployment without new hardware.
+      </>
+    ),
   },
 ] as const;
 
@@ -927,7 +1025,7 @@ export default function CanteenManagementPage() {
         </section>
 
         {/* H2 content sections — SEO depth */}
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="canteen-entitlement-heading">
+        {/* <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="canteen-entitlement-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="canteen-entitlement-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -945,9 +1043,9 @@ export default function CanteenManagementPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
-        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="visitor-pass-to-exit-heading">
+        {/* <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="visitor-pass-to-exit-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="visitor-pass-to-exit-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -958,9 +1056,9 @@ export default function CanteenManagementPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="canteen-one-identity-heading">
+        {/* <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="canteen-one-identity-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="canteen-one-identity-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -978,59 +1076,58 @@ export default function CanteenManagementPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="smart-canteen-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-          <div className="mx-auto max-w-7xl">
-            <motion.div
-              className="mx-auto max-w-3xl text-center"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase }}
-            >
-              {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
-                Smart Canteen FAQ
-              </span> */}
-              <h2 id="smart-canteen-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                Frequently asked questions
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-slate-600">
-                Answers to common questions about digital meal transactions, attendance-linked eligibility, cashless access, and canteen operations.
-              </p>
-            </motion.div>
+  <div className="mx-auto max-w-7xl">
+    <motion.div
+      className="mx-auto max-w-3xl text-center"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={viewport}
+      transition={{ duration: 0.5, ease: smoothEase }}
+    >
+      <h2 id="smart-canteen-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+        Frequently asked questions
+      </h2>
+      <p className="mt-4 text-base leading-relaxed text-slate-600">
+        Answers to common questions about digital meal transactions, attendance-linked eligibility, cashless access, and canteen operations.
+      </p>
+    </motion.div>
 
-            <motion.div
-              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
-            >
-              <div className="divide-y divide-slate-200">
-                {smartCanteenFaqItems.map((item, index) => (
-                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
-                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
-                      <span className="flex min-w-0 gap-4">
-                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
-                      </span>
-                      <span
-                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
-                        aria-hidden
-                      >
-                        +
-                      </span>
-                    </summary>
-                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
-                  </details>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
+    <motion.div
+      className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={viewport}
+      transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+    >
+      <div className="divide-y divide-slate-200">
+        {smartCanteenFaqItems.map((item, index) => (
+          <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+              <span className="flex min-w-0 gap-4">
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+              </span>
+              <span
+                className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                aria-hidden
+              >
+                +
+              </span>
+            </summary>
+            <div className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">
+              {item.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </motion.div>
+  </div>
+</section>
 
         <SolutionPageClosingCta
           headingId="canteen-final-cta-heading"
@@ -1044,7 +1141,7 @@ export default function CanteenManagementPage() {
           }
           primaryLabel="Request a demo"
           secondaryLabel="Talk to a specialist"
-          footnote="No credit card to start · Tailored walkthrough · ~15 min session"
+          footnote="Tailored walkthrough · ~15 min session"
         />
       </div>
     </>

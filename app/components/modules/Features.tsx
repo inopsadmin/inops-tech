@@ -38,7 +38,7 @@ export default function FeaturesSection({ data }: { data: ModuleData }) {
           <AnimatedCardItem direction="bottom" className="h-full">
             <div className="flex h-full flex-col rounded-3xl border border-gray-100 bg-linear-to-br from-white to-gray-50/80 p-8 shadow-sm transition-shadow duration-300 hover:shadow-md">
               <h3 className="mb-2 text-xl font-bold text-gray-900">
-                Core capabilities
+                Iddion RegX Core capabilities
               </h3>
               <p className="mb-6 text-sm leading-relaxed text-gray-500">
                 A comprehensive suite of tools built for complex, multi-site

@@ -9,6 +9,7 @@ import AISection from "./AISection";
 import CTASection from "./CTA";
 import Dashboard from "./Dashboard";
 import FAQSection from "./FAQSection";
+import ContactSection from "./Contact-Section";
 
 interface ModuleTemplateProps {
   data: ModuleData;
@@ -27,6 +28,7 @@ export default function ModuleTemplate({ data }: ModuleTemplateProps) {
       <AISection data={data} />
       <CTASection data={data} />
       <FAQSection data={data} />
+      <ContactSection data={data} />
     </main>
   );
 }

@@ -53,29 +53,54 @@ const featureCards = [
 
 const mobileAttendanceFaqItems = [
   {
-    question: "What is a mobile attendance app?",
+    question: "What is a mobile attendance app for contract workers?",
     answer:
-      "A mobile attendance app allows employees and field staff to record attendance using smartphones with GPS, geofencing, and selfie verification.",
+      "A mobile attendance app lets workers mark attendance from a smartphone using face recognition and GPS validation, instead of a fixed biometric terminal. For contract workforces it solves the sites a gate can't serve — construction corridors, road projects, distributed depots — where attendance evidence is otherwise a paper muster.",
   },
   {
-    question: "Can field employees mark attendance remotely?",
+    question: "How does it stop fake or proxy punches?",
     answer:
-      "Yes. Attendance can be captured from authorized locations using GPS and geofencing policies.",
+      "Three checks run together: on-device face match against the enrolled identity, GPS validation against the site geofence, and timestamp verification. A punch outside the geofence, or by a face that doesn't match, is flagged rather than recorded.",
   },
   {
-    question: "Does the app work for contract workers?",
+    question: "Does it work without internet at remote sites?",
     answer:
-      "Yes. The app supports both employees and contract workers across multiple locations.",
+      "Punches and their verification data are captured on-device when the network drops and sync automatically once connectivity returns — which matters on project sites where coverage is unreliable.",
   },
   {
-    question: "Can mobile attendance integrate with payroll?",
+    question: "Is mobile attendance valid for CLRA and statutory records?",
     answer:
-      "Yes. Attendance records can be synchronized with payroll and HR systems for accurate salary processing.",
+      "Yes. Mobile events carry worker identity, timestamp, and location into the same registers and reports as gate-based attendance, so Form V/XIII records and statutory filings are generated identically regardless of capture method.",
   },
   {
-    question: "Is internet connectivity required?",
+    question: "Can workers use it for leave, payslips, and earned wages?",
     answer:
-      "Attendance can be captured online, and many solutions also support offline synchronization when connectivity is restored.",
+      "Yes — the same app gives workers self-service access to attendance history, leave applications, payslips, and where enabled, earned wage access to withdraw wages already earned before payday.",
+  },
+  {
+    question: "What can supervisors do from the app?",
+    answer:
+      "Approve exceptions, authorise overtime, view live team attendance across sites, and receive push escalations on threshold breaches — without logging into the desktop system.",
+  },
+  {
+    question: "Should we use mobile or fixed readers?",
+    answer:
+      "Fixed readers suit high-density plant gates where throughput and physical enforcement matter — see face recognition attendance. Mobile suits moving or distributed sites. Most infrastructure clients run both on one platform, so a worker's identity and records stay unified whichever method captured the shift.",
+  },
+  {
+    question: "Does it require workers to own smartphones?",
+    answer:
+      "Worker-owned devices are the common case for supervisory and skilled roles. For workforces where phone ownership is inconsistent, supervisor-operated capture on a shared device works the same way — the face match identifies the worker, not the phone.",
+  },
+  {
+    question: "How is location data handled?",
+    answer:
+      "Location is captured at the moment of punch as verification evidence, not tracked continuously. Retention follows your policy, and handling aligns with DPDP Act obligations.",
+  },
+  {
+    question: "Which sites is mobile attendance best suited to?",
+    answer:
+      "Infrastructure and metro construction, road and pipeline projects, distributed warehouses and depots, field service teams, and any BOCW-regulated worksite where the workforce moves between locations weekly and no fixed gate exists.",
   },
 ] as const;
 
@@ -1356,7 +1381,7 @@ export default function MobileAppPage() {
         </div>
 
         {/* H2 content sections — SEO depth */}
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="mobile-face-gps-heading">
+        {/* <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="mobile-face-gps-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="mobile-face-gps-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -1400,7 +1425,7 @@ export default function MobileAppPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="mobile-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
@@ -1457,10 +1482,10 @@ export default function MobileAppPage() {
         <SolutionPageClosingCta
           headingId="mobile-app-final-cta-heading"
           heading="Transform attendance management with a mobile-first solution"
-          description="Join thousands of businesses streamlining their operations with SmartAttendance. Start your 14-day free trial today."
+          description="Start your 14-day free trial today."
           primaryLabel="Get Started Now"
           secondaryLabel="Schedule Demo"
-          footnote="No credit card required · Unlimited users · Instant setup · 14-day free trial"
+          footnote="Unlimited users · Instant setup · 14-day free trial"
         />
       </section>
     </div>
