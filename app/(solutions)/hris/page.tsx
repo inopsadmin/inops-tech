@@ -1333,7 +1333,7 @@ export default function LabourManagementPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-white py-16 md:py-24" aria-labelledby="hris-content-heading">
+        {/* <section className="border-t border-gray-100 bg-white py-16 md:py-24" aria-labelledby="hris-content-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8 flex flex-col gap-14">
             <div>
               <h2 id="hris-content-heading" className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">What does InOps HRIS cover?</h2>
@@ -1369,7 +1369,7 @@ export default function LabourManagementPage() {
               </p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="hris-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
@@ -1425,7 +1425,7 @@ export default function LabourManagementPage() {
 
         <SolutionPageClosingCta
           headingId="labour-final-cta-heading"
-          heading="Run labour and HR with less friction"
+          heading="Run your HR Ops with less friction"
           description={
             <>
               Teams across Indian manufacturing plants use this platform to tighten scheduling, stay compliant, and pay people on time.
@@ -1434,7 +1434,7 @@ export default function LabourManagementPage() {
           }
           primaryLabel="Book a tailored demo"
           secondaryLabel="Get a free consultation"
-          footnote="No commitment · GDPR-ready · Implementation support included"
+          footnote="No commitment · GDPR & DPDP-ready · Implementation support included"
         />
       </div>
     </MotionConfig>

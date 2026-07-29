@@ -4,6 +4,7 @@ import ModuleTemplate from "@/app/components/modules/ModuleTemplate";
 import { modules } from "@/app/lib/module";
 import ModuleSwitcher from "@/app/components/modules/ModuleSwitcher";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { useState } from "react";
 
 export async function generateStaticParams() {
   return modules.map((m) => ({ slug: m.slug }));

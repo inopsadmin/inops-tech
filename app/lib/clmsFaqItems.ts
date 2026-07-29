@@ -8,7 +8,7 @@ export const clmsFaqItems: FAQItem[] = [
   {
     question: "What is a Contract Labour Management System (CLMS)?",
     answer:
-      "A Contract Labour Management System (CLMS) is software that automates the full lifecycle of contract labour: onboarding, gate compliance, biometric attendance, PF/ESI/LWF statutory deductions, payroll processing, and Contract Labour Management for manufacturing plants and industrial facilities.",
+      "A Contract Labour Management System (CLMS) is software that automates the full lifecycle of contract labour: onboarding, gate compliance, biometric attendance, PF/ESI/LWF statutory deductions, payroll processing for manufacturing plants and industrial facilities.",
   },
   {
     question: "How does ghost worker fraud drain contractor spend?",
@@ -31,9 +31,9 @@ export const clmsFaqItems: FAQItem[] = [
       "Spreadsheet-driven statutory checks miss deltas until filing deadlines, and errors compound across branches. InOps automates PF, ESI, and LWF deduction calculations per worker, generates challan-ready reports, and flags reconciliation gaps in real time — eliminating end-of-month scrambles.",
   },
   {
-    question: "Can Iddion RegX Contract Labour Management System (CLMS) manage contractors across multiple factory sites?",
+    question: "Can  Contract Labour Management System (CLMS) manage contractors across multiple factory sites?",
     answer:
-      "Yes. InOps supports multi-site deployments where biometrics, contractor records, and compliance data from each plant are unified in a single dashboard. HR heads and compliance teams get site-level and aggregate visibility without manual stitching across systems.",
+      "Yes. Iddion RegX supports multi-site deployments where biometrics, contractor records, and compliance data from each plant are unified in a single dashboard. HR heads and compliance teams get site-level and aggregate visibility without manual stitching across systems.",
   },
   {
     question: "How does CLMS help with CLRA compliance?",
@@ -43,15 +43,15 @@ export const clmsFaqItems: FAQItem[] = [
   {
     question: "Can CLMS integrate with biometric attendance devices?",
     answer:
-      "Yes. Iddion RegX Contract Labour Management System (CLMS) integrates with ZKTeco face and fingerprint terminals, AI-based CCTV attendance, QR code readers, and card swipe systems. All hardware feeds into the same CLMS attendance engine — per-worker, per-contractor, per-site. Mixed hardware deployments across multiple plant gates are supported without additional configuration.",
+      "Yes.Our Contract Labour Management System (CLMS) integrates with ZKTeco face and fingerprint terminals, AI-based CCTV attendance, QR code readers, and card swipe systems. All hardware feeds into the same CLMS attendance engine — per-worker, per-contractor, per-site. Mixed hardware deployments across multiple plant gates are supported without additional configuration.",
   },
   {
     question: "What is the 9-day continuous attendance rule under CLRA?",
     answer:
-      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some states may acquire employment rights that complicate the principal-employer relationship. Iddion RegX Contract Labour Management System (CLMS) tracks continuous attendance per worker per site and alerts HR to schedule the mandatory off before the threshold is crossed.",
+      "Under the Contract Labour (Regulation & Abolition) Act and corresponding state rules, a contract worker who works for 9 or more consecutive days without a weekly off may be entitled to a compensatory rest day — and in some states may acquire employment rights that complicate the principal-employer relationship. Our Contract Labour Management System (CLMS) tracks continuous attendance per worker per site and alerts HR to schedule the mandatory off before the threshold is crossed.",
   },
   {
-    question: "How does Iddion RegX Contract Labour Management System (CLMS) prevent OT cost leakage?",
+    question: "How does Contract Labour Management System (CLMS) prevent OT cost leakage?",
     answer:
       "Iddion RegX Contract Labour Management System (CLMS) calculates overtime from biometric punch-out times against registered shift end times. Any OT above the configured threshold requires digital supervisor approval before it becomes payable. Contractor invoices are reconciled line-by-line against the CLMS-approved OT record — discrepancies are flagged before payment. This closes the three types of OT leakage: unauthorised OT, ghost OT, and unclaimed legitimate OT.",
   },

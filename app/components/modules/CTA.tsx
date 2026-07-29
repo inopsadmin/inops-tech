@@ -63,7 +63,7 @@ export default function CTASection({ data }: { data: ModuleData }) {
           </AnimatedCardGrid>
         </AnimatedSection>
       </section>
-      <section className="relative bg-white pb-16 md:pb-20 xl:pb-24">
+      {/* <section className="relative bg-white pb-16 md:pb-20 xl:pb-24">
         <AnimatedSection className="mx-auto max-w-7xl px-6 lg:px-8">
           
           <motion.div
@@ -87,7 +87,7 @@ export default function CTASection({ data }: { data: ModuleData }) {
                 {data.cta}
               </p>
               <p className="mt-2 text-sm text-gray-500 xl:mt-3 xl:text-base">
-                Request a live demo tailored to your sites, workforce scale, and
+                Request an Iddion RegX live demo tailored to your sites, workforce scale, and
                 compliance requirements.
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function CTASection({ data }: { data: ModuleData }) {
           </motion.div>
           
         </AnimatedSection>
-      </section>
+      </section> */}
     </>
   );
 }

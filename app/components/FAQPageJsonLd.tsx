@@ -2,7 +2,9 @@ import { jsonLdScriptProps } from "@/app/lib/jsonLd";
 
 export type FAQItem = {
   question: string;
-  answer: string;
+  // answer: string;
+  answer: string | React.ReactNode; // ✅ Allow both string and JSX
+
 };
 
 type Props = {

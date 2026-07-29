@@ -6,29 +6,95 @@ import { useState } from "react";
 // ─── FAQ Data ─────────────────────────────────────────────────────────────────
 const faqs = [
   {
+    q: "What is background verification for contract workers, and who is this service for?",
+    a: "Background verification confirms a worker's identity, criminal record, address, and employment history before deployment to a site. This service is for two buyers: plants verifying incoming contract workers without deploying a platform, and manpower contractors verifying their own bench before bidding. Per-check pricing, bulk upload, no software licence required."
+  },
+  {
+    q: "What checks can we order, and can we choose which ones?",
+    a: "Checks are selected per worker category rather than applied as a fixed package: identity (Aadhaar-based offline verification with consent, PAN, UAN), criminal and court records at current and permanent addresses, address verification (digital or physical), employment history, education and trade certificates, and police verification coordination on the premium tier. A housekeeping worker and a hot-work fitter entering a defence site don't need the same set, and you pay for what the role requires."
+  },
+  {
+    q: "How is it priced?",
+    a: "Per check, with volume rates for bulk batches and package pricing for contractor bench verification. No platform licence and no minimum commitment on the per-check tier; the defence and PSU premium tier is priced on consultation given physical and police verification components."
+  },
+  {
     q: "How long does a single verification take?",
-    a: "Most checks complete within 48 hours; complex or multi-location checks may take slightly longer depending on record availability.",
+    a: "Digital identity and record checks typically return within 48 hours, including for bulk batches. Physical address verification and police verification coordination follow their own timelines, measured in days to weeks depending on jurisdiction. Turnaround is defined per tier."
+  },
+  {
+    q: "Can you verify a few hundred workers at once before a shutdown?",
+    a: "Yes — bulk intake is the normal case, not the exception. Worker details are uploaded in batch, digital checks run in parallel, and cleared workers are released as results return rather than holding the whole batch for the slowest check. This is the difference between verification built for hiring and verification built for industrial mobilisation."
+  },
+  {
+    q: "We're a manpower contractor — can we verify our own workers before a client asks?",
+    a: "Yes, and it's the strongest use of the service. Verify your bench once, present a verified roster in every bid, and deploy without per-client verification delays. Re-attestation replaces re-verification when your workers move between InOps-network sites."
+  },
+  {
+    q: "Does verification have to be repeated at every new site?",
+    a: "No. Because verification attaches to the worker's biometric identity rather than a paper file, a worker verified through InOps carries that verification across sites and contractors in the network — the receiving site sees status, date, and scope, and pays for re-attestation rather than a fresh check. Sensitive sites can still mandate periodic re-verification."
   },
   {
     q: "Do you conduct police verification checks?",
-    a: "Yes, police verification is included as part of our identity verification and pre-employment screening workflow, alongside criminal, education and address checks.",
-  },
-  {
-    q: "Is the process compliant with Indian labour law?",
-    a: "Verification workflows are structured to align with statutory contractor and principal-employer obligations.",
+    a: "Police verification coordination is available for sites that mandate it — typically defence, PSU, and high-security environments — as part of the premium tier. Timelines depend on jurisdiction and local police processes."
   },
   {
     q: "Do you verify workers across multiple states?",
-    a: "Yes, as an industrial background verification we run checks pan-India across identity, address, employment and education records.",
+    a: "Yes. Checks run against both current and permanent addresses across states, which matters for migrant industrial workforces whose records sit in different jurisdictions from where they work."
   },
   {
-    q: "What is background verification for contract workers?",
-    a: "InOps is a background verification company delivering employee background verification, contract worker verification, and industrial background verification for tier 1 factories, vendors, and industrial parks — deployed in days, not weeks.",
+    q: "What happens if a worker fails a check?",
+    a: (
+      <>
+        The report records the finding with its source; the deployment decision remains yours. Where InOps CLMS is deployed, a worker without clearance can be{" "}
+        <Link 
+          href="/contract-labour-management/modules/gate-compliance" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          blocked at the gate
+        </Link>{" "}
+        automatically, and the block persists across contractors — so a flagged worker cannot re-enter by being re-submitted under a different vendor.
+      </>
+    )
+  },
+  {
+    q: "How accurate are the results, and what are the limits?",
+    a: "Reports reflect results as reported by source records — government databases, court records, previous employers, and field verification — at the time of the check. Verification supports, and does not replace, the employer's deployment decision. Where records are incomplete or unavailable, the report states that rather than returning a false clear."
+  },
+  {
+    q: "Is the process compliant with Indian labour law and data protection?",
+    a: "Verification runs on digital consent captured at intake in the worker's language, before any check is initiated. Reports are access-controlled, retention is policy-configurable, and handling aligns with DPDP Act obligations. Verification supports your statutory due-diligence obligations rather than replacing them."
+  },
+  {
+    q: "How do we get started, and what do you need from us?",
+    a: "A worker list with the checks required per category, submitted in bulk or through the portal. Most plants run their first batch within a week of contracting — there's no implementation project, because there's no platform to deploy."
+  },
+  {
+    q: "Do we need to buy the CLMS platform?",
+    a: (
+      <>
+        No. This is a standalone service. If you later deploy{" "}
+        <Link 
+          href="/contract-labour-management" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          Iddion RegX
+        </Link>
+        , your verified workers carry over with their verification history intact — and verification becomes a built-in step via the{" "}
+        <Link 
+          href="/contract-labour-management/modules/background-verification" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          background verification module
+        </Link>
+        .
+      </>
+    )
   },
 ];
 
 export default function BGVPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showAllFaqs, setShowAllFaqs] = useState(false); 
 
   return (
     <main className="bg-[#f4f6f8] font-sans">
@@ -194,31 +260,49 @@ export default function BGVPage() {
           </div>
 
           {/* Steps */}
-          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-x-0 gap-y-10 items-start">
-            {/* dashed connecting line */}
-            <div className="hidden md:block absolute pointer-events-none" style={{ top: 44, left: "12.5%", right: "12.5%", borderTop: "2px dashed rgba(255,255,255,0.28)", zIndex: 1 }} />
-            {[
-              { n: "01", label: "Submit", desc: "Worker details and documents are logged through digital intake.", icon: <><path d="M12 16V4M7 9l5-5 5 5" /><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" /></> },
-              { n: "02", label: "Verify", desc: "Automated and field checks run across identity and history.", icon: <><path d="M4 8V5a1 1 0 0 1 1-1h3M4 16v3a1 1 0 0 0 1 1h3M20 8V5a1 1 0 0 0-1-1h-3M20 16v3a1 1 0 0 1-1 1h-3" /><circle cx="12" cy="12" r="3" /></> },
-              { n: "03", label: "Report", desc: "A digital, audit-ready verification report is generated.", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="13" y2="17" /></> },
-              { n: "04", label: "Deploy", desc: "Cleared workers are released for on-site deployment.", icon: <><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.3 2.3L16 9.5" /></> },
-            ].map(({ n, label, desc, icon }, i) => (
-              <div key={n} className="relative z-[2] flex flex-col items-center text-center" style={i % 2 === 1 ? { paddingTop: 44 } : {}}>
-                <div
-                  className="flex items-center justify-center mb-6 relative flex-shrink-0 border-[2.5px] border-white/55 bg-white/[0.10] shadow-[0_8px_24px_rgba(4,20,36,0.25)]"
-                  style={{ width: 88, height: 88, borderRadius: '50%' }}
-                >
-                  <div
-                    className="absolute bg-[#5de3a5] text-[#05301e] text-[9px] font-extrabold flex items-center justify-center tracking-[0.02em]"
-                    style={{ top: 0, right: 0, width: 22, height: 22, borderRadius: '50%' }}
-                  >{n}</div>
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b1e2d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
-                </div>
-                <div className="text-[15px] font-bold text-white mb-2">{label}</div>
-                <div className="text-[12.5px] leading-[1.6] text-white/75 max-w-[180px]">{desc}</div>
-              </div>
-            ))}
-          </div>
+         <div className="relative grid grid-cols-2 md:grid-cols-4 gap-x-0 gap-y-10 items-start">
+  {/* dashed connecting line */}
+  <div className="hidden md:block absolute pointer-events-none" style={{ top: 44, left: "12.5%", right: "12.5%", borderTop: "2px dashed rgba(255,255,255,0.28)", zIndex: 1 }} />
+  {[
+    { n: "01", label: "Submit", desc: "Worker details and documents are logged through digital intake.", icon: <><path d="M12 16V4M7 9l5-5 5 5" /><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" /></> },
+    { n: "02", label: "Verify", desc: "Automated and field checks run across identity and history.", icon: <><path d="M4 8V5a1 1 0 0 1 1-1h3M4 16v3a1 1 0 0 0 1 1h3M20 8V5a1 1 0 0 0-1-1h-3M20 16v3a1 1 0 0 1-1 1h-3" /><circle cx="12" cy="12" r="3" /></> },
+    { n: "03", label: "Report", desc: "A digital, audit-ready verification report is generated.", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><line x1="8" y1="13" x2="16" y2="13" /><line x1="8" y1="17" x2="13" y2="17" /></> },
+    { 
+      n: "04", 
+      label: "Deploy", 
+      desc: "unverified workers get blocked at gate", 
+      route: "/contract-labour-management/modules/gate-compliance", 
+      icon: <><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.3 2.3L16 9.5" /></> 
+    },
+  ].map(({ n, label, desc, icon, route }, i) => {
+    const isDeploy = n === "04";
+    
+    return (
+      <div key={n} className="relative z-[2] flex flex-col items-center text-center" style={i % 2 === 1 ? { paddingTop: 44 } : {}}>
+        <div
+          className="flex items-center justify-center mb-6 relative flex-shrink-0 border-[2.5px] border-white/55 bg-white/[0.10] shadow-[0_8px_24px_rgba(4,20,36,0.25)]"
+          style={{ width: 88, height: 88, borderRadius: '50%' }}
+        >
+          <div
+            className="absolute bg-[#5de3a5] text-[#05301e] text-[9px] font-extrabold flex items-center justify-center tracking-[0.02em]"
+            style={{ top: 0, right: 0, width: 22, height: 22, borderRadius: '50%' }}
+          >{n}</div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b1e2d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+        </div>
+        <div className="text-[15px] font-bold text-white mb-2">{label}</div>
+        {isDeploy ? (
+          <Link href={route} className="block group">
+            <div className="text-[12.5px] leading-[1.6] text-white/75 max-w-[180px] hover:text-white transition-colors duration-300 cursor-pointer flex items-center gap-1 justify-center">
+              {desc}
+            </div>
+          </Link>
+        ) : (
+          <div className="text-[12.5px] leading-[1.6] text-white/75 max-w-[180px]">{desc}</div>
+        )}
+      </div>
+    );
+  })}
+</div>
         </div>
       </section>
 
@@ -246,7 +330,36 @@ export default function BGVPage() {
                   </svg>
                 </div>
                 <div className="text-[22px] font-extrabold text-white mb-2">60+ Verification Checks</div>
-                <div className="text-[13px] leading-[1.6] text-white/75">Criminal, employment, education and address checks in one pass.</div>
+                {/* <div className="text-[13px] leading-[1.6] text-white/75">
+  <ul className="list-disc pl-4 space-y-1">
+    <li>OTP Based Verification</li>
+    <li>Aadhar, PAN &amp; BANK</li>
+    <li>Criminal &amp; legal checks</li>
+    <li>Address Verification</li>
+    <li>Financial &amp; Education</li>
+    <li>Health &amp; fitness Reports</li>
+  </ul>
+</div> */}
+              <div className="text-[13px] leading-[1.6] text-white/75">
+  <div className="flex flex-wrap gap-2.5 max-w-lg mx-auto">
+    {[
+      "OTP Based Verification",
+      "Aadhar, PAN & BANK",
+      "Criminal & legal checks",
+      "Address Verification",
+      "Financial & Education",
+      "Health & fitness Reports"
+    ].map((item, index) => (
+      <span 
+        key={index}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs font-medium backdrop-blur-sm hover:bg-white/20 hover:border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/5"
+      >
+        <span className="w-2 h-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 animate-pulse shadow-lg shadow-emerald-500/30" />
+        {item}
+      </span>
+    ))}
+  </div>
+</div>
               </div>
               <div className="relative z-[2] mt-[22px] text-[10.5px] tracking-[0.06em] uppercase text-white/55 font-semibold">Core Capability</div>
             </div>
@@ -333,7 +446,7 @@ export default function BGVPage() {
       </section>
 
       {/* ========== INDUSTRIES ========== */}
-      <section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
+      {/* <section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
         <div className="max-w-[1240px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
             <div>
@@ -352,36 +465,42 @@ export default function BGVPage() {
                 desc: "High-volume gate control across shift-based factory workforces.",
                 icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>,
                 offset: false,
+                route: "/industry/automotive" 
               },
               {
                 title: "Automotive",
                 desc: "Tier-1 and 2 plant access aligned to OEM standards.",
                 icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>,
                 offset: true,
+                route: "/industry/electronics" 
               },
               {
                 title: "Electronics",
                 desc: "Cleanroom and assembly sites with tight identity checks.",
                 icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>,
                 offset: false,
+                route: "/industry/logistics" 
               },
               {
                 title: "Warehousing",
                 desc: "Contractor and shift-worker rotation verified in real time.",
                 icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>,
                 offset: true,
+                route: "/industry/logistics" 
               },
               {
                 title: "Engineering",
                 desc: "Project-site staffing verified before contractor mobilisation.",
                 icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>,
                 offset: false,
+                route: "/industry/manufacturing" 
               },
               {
                 title: "Industrial Parks",
                 desc: "Multi-tenant campus access managed under one gate policy.",
                 icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>,
                 offset: true,
+                route: "/industry/logistics" 
               },
             ].map(({ title, desc, icon, offset }) => (
               <div
@@ -401,7 +520,88 @@ export default function BGVPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      {/* ========== INDUSTRIES ========== */}
+<section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
+  <div className="max-w-[1240px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
+      <div>
+        <div className="text-[12px] tracking-[0.10em] uppercase text-[#1c7bb8] font-bold mb-4">Industries</div>
+        <h2 className="text-[clamp(26px,3vw,34px)] leading-[1.2] font-extrabold text-[#0b1e2d] max-w-[440px]">Built for high-volume industrial operations</h2>
+      </div>
+      <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[320px] md:text-right md:justify-self-end pt-2">
+        Deployed across manufacturing, automotive, electronics, logistics and multi-tenant industrial environments.
+      </p>
+    </div>
+
+    <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
+      {[
+        {
+          title: "Manufacturing",
+          desc: "High-volume gate control across shift-based factory workforces.",
+          icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>,
+          offset: false,
+          route: "/industry/manufacturing"
+        },
+        {
+          title: "Automotive",
+          desc: "Tier-1 and 2 plant access aligned to OEM standards.",
+          icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>,
+          offset: true,
+          route: "/industry/automotive"
+        },
+        {
+          title: "Electronics",
+          desc: "Cleanroom and assembly sites with tight identity checks.",
+          icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>,
+          offset: false,
+          route: "/industry/electronics"
+        },
+        {
+          title: "Warehousing",
+          desc: "Contractor and shift-worker rotation verified in real time.",
+          icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>,
+          offset: true,
+          route: "/industry/logistics"
+        },
+        {
+          title: "Engineering",
+          desc: "Project-site staffing verified before contractor mobilisation.",
+          icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>,
+          offset: false,
+          route: "/industry/manufacturing"
+        },
+        {
+          title: "Industrial Parks",
+          desc: "Multi-tenant campus access managed under one gate policy.",
+          icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>,
+          offset: true,
+          route: "/industry/logistics"
+        },
+      ].map(({ title, desc, icon, offset, route }) => (
+        <Link
+          key={title}
+          href={route}
+          className="flex-1 min-w-0 block"
+        >
+          <div
+            className="rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] hover:-translate-y-1 aspect-square cursor-pointer"
+            style={offset ? { marginTop: 60 } : {}}
+          >
+            <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
+            <div className="w-9 h-9 rounded-[10px] bg-white/[0.18] border border-white/30 flex items-center justify-center relative z-[2] flex-shrink-0">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+            </div>
+            <div className="relative z-[2]">
+              <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#5de3a5] transition-colors duration-200">{title}</div>
+              <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ========== SHIFT / COMPARISON ========== */}
       <section className="bg-[#f4f6f8] pt-[80px] px-[6vw] pb-[100px]">
@@ -482,83 +682,117 @@ export default function BGVPage() {
             </p>
           </div>
 
-          <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
-            {/* connecting line */}
-            <div className="hidden md:block absolute pointer-events-none" style={{ top: 32, left: 32, right: 32, height: 2, background: "#1c7bb8", zIndex: 0 }} />
-            {[
-              { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
-              { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
-              { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
-              { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
-              { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
-            ].map(({ n, title, desc }) => (
-              <div key={n} className="relative z-[1] flex flex-col items-start pr-6">
-                <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: '50%' }}>{n}</div>
-                <div className="pr-3">
-                  <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
-                  <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+         <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
+  {/* connecting line - stops before the 5th step */}
+  <div className="hidden md:block absolute pointer-events-none" style={{ 
+    top: 32, 
+    left: 32, 
+    width: "calc(100% - 216px)",
+    height: 2, 
+    background: "#1c7bb8",
+    zIndex: 0 
+  }} />
+  {[
+    { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
+    { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
+    { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
+    { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
+    { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
+  ].map(({ n, title, desc }) => (
+    <div key={n} className="relative z-[2] flex flex-col items-start pr-6">
+      <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: '50%' }}>{n}</div>
+      <div className="pr-3">
+        <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
+        <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
       {/* ========== FAQ ========== */}
-      <section className="bg-white pt-[80px] px-[6vw] pb-[100px] border-t border-[#eef1f4]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-[80px] items-start">
+          {/* ========== FAQ ========== */}
+    <section className="bg-white pt-[80px] px-[6vw] pb-[100px] border-t border-[#eef1f4]">
+      <div className="max-w-[1240px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-[80px] items-start">
 
-            {/* Left */}
-            <div>
-              <div className="text-[11px] tracking-[0.14em] uppercase text-[#1c7bb8] font-bold mb-4">FAQ</div>
-              <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-[1.2] text-[#0b1e2d] m-0 mb-4">
-                Common questions from operations &amp; compliance teams
-              </h2>
-              <p className="text-[13.5px] leading-[1.65] text-[#6b7b8c] mb-7">
-                Can&apos;t find what you&apos;re looking for? Our enterprise team can walk through BGV in the context of your sites.
-              </p>
-              <div className="bg-[#1362a8] rounded-[14px] pt-7 px-[26px] pb-[26px]">
-                <div className="text-[15px] font-bold text-white mb-[10px]">Need a custom verification audit?</div>
-                <div className="text-[13px] leading-[1.6] text-white/[0.72] mb-[18px]">
-                  Our compliance engineering team is ready to scope a background verification program for your sites.
-                </div>
-                <Link href="/contact" className="text-[13.5px] font-bold text-white no-underline inline-flex items-center gap-[6px] hover:opacity-85">
-                  Contact Verification Team &rarr;
-                </Link>
+          {/* Left */}
+          <div>
+            <div className="text-[11px] tracking-[0.14em] uppercase text-[#1c7bb8] font-bold mb-4">FAQ</div>
+            <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-[1.2] text-[#0b1e2d] m-0 mb-4">
+              Common questions from operations &amp; compliance teams
+            </h2>
+            <p className="text-[13.5px] leading-[1.65] text-[#6b7b8c] mb-7">
+              Can&apos;t find what you&apos;re looking for? Our enterprise team can walk through BGV in the context of your sites.
+            </p>
+            <div className="bg-[#1362a8] rounded-[14px] pt-7 px-[26px] pb-[26px]">
+              <div className="text-[15px] font-bold text-white mb-[10px]">Need a custom verification audit?</div>
+              <div className="text-[13px] leading-[1.6] text-white/[0.72] mb-[18px]">
+                Our compliance engineering team is ready to scope a background verification program for your sites.
               </div>
+              <Link href="/contact" className="text-[13.5px] font-bold text-white no-underline inline-flex items-center gap-[6px] hover:opacity-85">
+                Contact Verification Team &rarr;
+              </Link>
             </div>
-
-            {/* Right — accordion */}
-            <div className="flex flex-col">
-              {faqs.map(({ q, a }, i) => (
-                <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-                  <button
-                    className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                  >
-                    {q}
-                    <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                  </button>
-                  {openFaq === i && (
-                    <p className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{a}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-
           </div>
 
-          {/* Related tags */}
-          <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
-            <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
-            {["Employment Verification", "Factory Worker Verification", "Vendor Employee Verification", "Verification Agency", "Identity Verification"].map((tag) => (
-              <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
+          {/* Right — accordion */}
+          <div className="flex flex-col">
+            {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
+              <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+                <button
+                  className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                >
+                  {q}
+                  <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
+                </button>
+                {openFaq === i && (
+                  <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
+                    {a}
+                  </div>
+                )}
+              </div>
             ))}
+
+            {/* Show More / Show Less Button */}
+            {faqs.length > 6 && (
+              <button
+                onClick={() => setShowAllFaqs(!showAllFaqs)}
+                className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
+              >
+                {showAllFaqs ? (
+                  <>
+                    Show Less
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </>
+                ) : (
+                  <>
+                    Show All {faqs.length} Questions
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </>
+                )}
+              </button>
+            )}
           </div>
+
         </div>
-      </section>
+
+        {/* Related tags */}
+        <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
+          <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
+          {["Employment Verification", "Factory Worker Verification", "Vendor Employee Verification", "Verification Agency", "Identity Verification"].map((tag) => (
+            <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* ========== CTA BANNER ========== */}
       <section className="relative bg-[linear-gradient(135deg,#1362a8_0%,#1578c2_50%,#1a8fd1_100%)] pt-[80px] px-[6vw] pb-[90px] text-center overflow-hidden">
@@ -569,7 +803,7 @@ export default function BGVPage() {
             Get Started
           </div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-bold text-white leading-[1.15] m-0 mb-[18px] tracking-[-0.01em]">
-            Looking for background verification for your employee
+            Looking for background verification for your Workforce
           </h2>
           <p className="text-[15px] leading-[1.7] text-white/[0.72] mb-9">
             Talk to our team about deploying Background Verification across your sites —<br className="hidden md:block" />

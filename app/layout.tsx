@@ -120,7 +120,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`} suppressHydrationWarning>
+    // added this data-scroll-behavior="smooth"
+    <html lang="en-IN" className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`}  data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />

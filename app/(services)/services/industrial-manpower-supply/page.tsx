@@ -324,7 +324,7 @@ export default function IndustrialManpowerSupplyPage() {
       </section>
 
       {/* ========== INDUSTRIES ========== */}
-      <section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
+     <section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
         <div className="max-w-[1240px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
             <div>
@@ -337,28 +337,75 @@ export default function IndustrialManpowerSupplyPage() {
           </div>
 
           <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
-            {[
-              { n: "01", title: "Manufacturing", desc: "High-volume plants running multi-shift contract workforces.", offset: false },
-              { n: "02", title: "Automotive", desc: "Tier-1 and OEM plants with strict access and safety controls.", offset: true },
-              { n: "03", title: "Electronics", desc: "Cleanroom and assembly sites with tight identity controls.", offset: false },
-              { n: "04", title: "Warehousing", desc: "Distributed logistics hubs with high workforce turnover.", offset: true },
-              { n: "05", title: "Engineering", desc: "Project sites with rotating, multi-vendor contractor pools.", offset: false },
-              { n: "06", title: "Industrial Parks", desc: "Multi-tenant campuses needing shared access governance.", offset: true },
-            ].map(({ n, title, desc, offset }) => (
-              <div
-                key={title}
-                className="flex-1 min-w-0 rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] cursor-default hover:-translate-y-1 aspect-square"
-                style={offset ? { marginTop: 60 } : {}}
-              >
-                <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
-                <div className="text-[11px] font-bold text-white/50 relative z-[2] tracking-[0.04em]">{n}</div>
-                <div className="relative z-[2]">
-                  <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3]">{title}</div>
-                  <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+  {[
+    { 
+      n: "01", 
+      title: "Manufacturing", 
+      desc: "High-volume plants running multi-shift contract workforces.", 
+      icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>, 
+      offset: false, 
+      route: "/industry/manufacturing" 
+    },
+    { 
+      n: "02", 
+      title: "Automotive", 
+      desc: "Tier-1 and OEM plants with strict access and safety controls.", 
+      icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>, 
+      offset: true,
+      route: "/industry/automotive" 
+    },
+    { 
+      n: "03", 
+      title: "Electronics", 
+      desc: "Cleanroom and assembly sites with tight identity controls.", 
+      icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>, 
+      offset: false,
+      route: "/industry/electronics" 
+    },
+    { 
+      n: "04", 
+      title: "Warehousing", 
+      desc: "Distributed logistics hubs with high workforce turnover.", 
+      icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>, 
+      offset: true,
+      route: "/industry/logistics" 
+    },
+    { 
+      n: "05", 
+      title: "Engineering", 
+      desc: "Project sites with rotating, multi-vendor contractor pools.", 
+      icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>, 
+      offset: false,
+      route: "/industry/manufacturing" 
+    },
+    { 
+      n: "06", 
+      title: "Industrial Parks", 
+      desc: "Multi-tenant campuses needing shared access governance.", 
+      icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>, 
+      offset: true,
+      route: "/industry/logistics" 
+    },
+  ].map(({ n, title, desc, offset, route }) => (
+    <Link
+      key={title}
+      href={route}
+      className="flex-1 min-w-0 block"
+    >
+      <div
+        className="rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] hover:-translate-y-1 aspect-square cursor-pointer"
+        style={offset ? { marginTop: 60 } : {}}
+      >
+        <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
+        <div className="text-[11px] font-bold text-white/50 relative z-[2] tracking-[0.04em]">{n}</div>
+        <div className="relative z-[2]">
+          <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#5de3a5] transition-colors duration-200">{title}</div>
+          <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
         </div>
       </section>
 
@@ -442,23 +489,31 @@ export default function IndustrialManpowerSupplyPage() {
           </div>
 
           <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
-            <div className="hidden md:block absolute pointer-events-none" style={{ top: 32, left: 32, right: 32, height: 2, background: "#1c7bb8", zIndex: 0 }} />
-            {[
-              { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
-              { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
-              { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
-              { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
-              { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
-            ].map(({ n, title, desc }) => (
-              <div key={n} className="relative z-[1] flex flex-col items-start pr-6">
-                <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: "50%" }}>{n}</div>
-                <div className="pr-3">
-                  <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
-                  <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+  {/* connecting line - stops before the 5th step */}
+  <div className="hidden md:block absolute pointer-events-none" style={{ 
+    top: 32, 
+    left: 32, 
+    width: "calc(100% - 216px)",
+    height: 2, 
+    background: "#1c7bb8",
+    zIndex: 0 
+  }} />
+  {[
+    { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
+    { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
+    { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
+    { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
+    { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
+  ].map(({ n, title, desc }) => (
+    <div key={n} className="relative z-[2] flex flex-col items-start pr-6">
+      <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: '50%' }}>{n}</div>
+      <div className="pr-3">
+        <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
+        <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 

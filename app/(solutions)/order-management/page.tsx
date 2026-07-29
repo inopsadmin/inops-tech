@@ -114,9 +114,9 @@ const ctaData = {
   ],
   layout: "centered" as const,
   trustBadges: [
-    {
-      label: "No Credit Card Required",
-    },
+    // {
+    //   label: "No Credit Card Required",
+    // },
     {
       label: "14 day full feature trial",
     },

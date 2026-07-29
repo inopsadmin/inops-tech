@@ -449,7 +449,7 @@ export default function AutomotiveIndustryPage() {
           </div>
 
           <div className="mx-auto mt-14 flex max-w-4xl flex-wrap items-center justify-center gap-10 border-t border-slate-200 pt-10">
-            {[ "ISO 27001", "GDPR COMPLIANT"].map((cert) => (
+            {[ "ISO 27001", "GDPR & DPDP COMPLIANT"].map((cert) => (
               <span key={cert} className="text-sm font-extrabold italic text-slate-400">
                 {cert}
               </span>

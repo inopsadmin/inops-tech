@@ -121,29 +121,94 @@ const powerfulServices = [
 
 const cctvSurveillanceFaqItems = [
   {
-    question: "Why is CCTV important for businesses?",
+    question: "What is a CCTV-based attendance system?",
     answer:
-      "CCTV systems improve workplace security, monitor operations, deter unauthorized activities, and provide recorded evidence when required.",
+      "A CCTV attendance system uses AI face recognition on existing camera feeds to mark attendance as workers walk through gates — no terminal, no queue, no contact. For industrial sites it removes the throughput bottleneck at shift change, when hundreds of workers arrive in minutes.",
   },
   {
-    question: "Can CCTV integrate with facial recognition?",
+    question: "Can we use our existing CCTV cameras?",
     answer:
-      "Yes. Modern CCTV solutions integrate with facial recognition, access control, and AI-based video analytics.",
+      "In most cases yes — cameras are integrated over standard ONVIF/RTSP feeds. What matters is placement, resolution, and lighting at the capture point rather than brand; a site survey confirms which existing cameras qualify and where additions are needed.",
   },
   {
-    question: "What industries use CCTV surveillance systems?",
-    answer:
-      "Manufacturing, warehouses, retail, healthcare, logistics, education, and corporate offices widely use CCTV surveillance.",
+    question: "How accurate is camera-based attendance in factory conditions?",
+    answer: (
+      <>
+        Accuracy depends on camera angle, lighting, and distance — dust, backlight, and helmets all affect it. InOps publishes real deployment data in its{" "}
+        <Link 
+          href="/blog/biometric-attendance-accuracy-report-india-2026" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          biometric attendance accuracy report
+        </Link>{" "}
+        rather than quoting lab figures, and recommends terminals rather than cameras where conditions can't support reliable capture.
+      </>
+    ),
   },
   {
-    question: "Can CCTV footage be monitored remotely?",
-    answer:
-      "Yes. Authorized users can securely access live and recorded footage from desktops and mobile devices.",
+    question: "Does CCTV attendance work for contract workers and contractor billing?",
+    answer: (
+      <>
+        Yes — this is its main industrial use. Camera-captured attendance carries contractor mapping, so verified headcount and hours reconcile against contractor invoices in{" "}
+        <Link 
+          href="/contract-labour-management" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          contract labour management
+        </Link>
+        , and OT is computed from actual capture times rather than contractor-reported rosters.
+      </>
+    ),
   },
   {
-    question: "How long can CCTV footage be stored?",
+    question: "Is camera attendance valid for CLRA registers and statutory records?",
     answer:
-      "Storage duration depends on camera resolution, recording settings, and storage capacity, with options for cloud or on-premise retention.",
+      "Yes. Each capture is a timestamped identity event that feeds the same attendance and register engine as terminal-based reads, so Form V/XIII registers and statutory reports are generated from it identically.",
+  },
+  {
+    question: "How does it prevent proxy attendance?",
+    answer:
+      "Attendance is bound to the worker's face, not a card or PIN, so it cannot be handed to a colleague. Capture happens in natural movement through the gate, which also removes the incentive to cluster and punch for absent workers.",
+  },
+  {
+    question: "Can it run alongside face terminals and fingerprint readers?",
+    answer: (
+      <>
+        Yes. Camera, terminal, fingerprint, and mobile capture all feed one identity engine — a worker enrolled once is recognised by any method, so sites typically use cameras for high-flow gates and{" "}
+        <Link 
+          href="/biometric-reader" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          terminals
+        </Link>{" "}
+        where enforcement must be physical.
+      </>
+    ),
+  },
+  {
+    question: "What about worker consent and biometric data protection?",
+    answer:
+      "Consent is captured digitally at enrollment in the worker's language before any template is created. Templates are access-controlled with configurable retention, and handling aligns with DPDP Act obligations.",
+  },
+  {
+    question: "Can a worker be blocked at the gate through camera attendance?",
+    answer: (
+      <>
+        Camera capture identifies; enforcement needs a physical barrier. Where blocking is required, cameras pair with{" "}
+        <Link 
+          href="/contract-labour-management/modules/gate-compliance" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          turnstiles and gate compliance rules
+        </Link>{" "}
+        so a worker failing induction, medical, or licence checks doesn't get through.
+      </>
+    ),
+  },
+  {
+    question: "How long does deployment take?",
+    answer:
+      "Software configuration on existing, suitable cameras is fast; realistic timelines depend on the site survey, network access to camera feeds, and enrollment of the workforce. Enrollment volume, not software, is usually the critical path.",
   },
 ] as const;
 
@@ -1471,7 +1536,7 @@ export default function TimeAndAttendancePage() {
           description="Stop investing in plastic boxes and start investing in intelligence. Experience the future of workforce operations with OptiCam today."
           primaryLabel="Start Free Trial"
           secondaryLabel="Talk to an Expert"
-          footnote="No credit card needed · Setup in under 48 hours · Cancel anytime"
+          footnote="Setup in under 48 hours · Cancel anytime"
         />
 
       </div>

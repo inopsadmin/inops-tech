@@ -42,9 +42,9 @@ export default function ChallengeSection({ data }: Props) {
         <AnimatedCardGrid className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <AnimatedCardItem direction="bottom" className="h-full">
             <div className="flex h-full flex-col justify-center rounded-3xl border border-gray-100 bg-linear-to-br from-gray-50 to-white p-8 shadow-sm transition-shadow hover:shadow-md">
-              <strong className="text-xl font-semibold leading-snug text-gray-900 md:text-2xl">
-                {data.description}
-              </strong>
+              <p className="text-xl leading-snug text-gray-900 md:text-2xl">
+                {data.subDescription}
+              </p>
             </div>
           </AnimatedCardItem>
           <AnimatedCardItem direction="bottom" className="h-full">

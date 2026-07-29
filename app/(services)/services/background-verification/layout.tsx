@@ -2,7 +2,7 @@ import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Background Verification Services | InOps → Background Verification Services for Contract Workers India | InOps ";
+const PAGE_TITLE = "Background Verification Services for Contract Workers India | InOps ";
 const PAGE_DESCRIPTION =
   "Verify every worker before they cross the gate. InOps RegX delivers instant BGV for employees, contractors, visitors, and vendors — deployed in days, not months.";
 

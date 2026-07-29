@@ -1,3 +1,5 @@
+// app/lib/hrisFaqItems.ts
+
 import type { FAQItem } from "@/app/components/FAQPageJsonLd";
 
 /**
@@ -34,5 +36,55 @@ export const hrisFaqItems: FAQItem[] = [
     question: "How long does implementation take?",
     answer:
       "Typical HRIS implementations run 4–8 weeks depending on workforce size, data migration, and payroll complexity — faster when deployed alongside an existing InOps attendance estate.",
+  },
+  {
+    question: "Can HRIS and CLMS run on the same biometric devices?",
+    answer:
+      "Yes — that's the architecture. The same face terminals, fingerprint readers, and CCTV-based capture that clock permanent staff also record contract workers. One hardware estate, one enrollment per person, two workforce systems drawing from it. Plants running both avoid buying and maintaining duplicate device fleets.",
+  },
+  {
+    question: "Does it handle leave, claims, and reimbursements?",
+    answer:
+      "Yes. Leave policies, accruals, and approval workflows are configured per category and site; claims and travel reimbursements run through the same approval chain and settle in payroll. Employees raise and track both through self-service.",
+  },
+  {
+    question: "Is there an employee self-service app?",
+    answer:
+      "Yes. Employees view payslips, apply for leave, submit claims, check attendance, and update records from mobile — which removes most of the routine queries that otherwise land on the HR desk.",
+  },
+  {
+    question: "How does TDS and tax computation work?",
+    answer:
+      "TDS is computed per employee against declared investments and applicable slabs, with a tax planner for employees to model declarations. Statutory rate changes are maintained centrally so computations stay current without manual reconfiguration.",
+  },
+  {
+    question: "Can we migrate existing employee data from our current system?",
+    answer:
+      "Yes. Migration of employee master data, historical attendance, leave balances, and payroll history is part of implementation, with validation before go-live. Data-migration volume is usually what determines whether implementation lands at four weeks or eight.",
+  },
+  {
+    question: "Does it manage exits and full-and-final settlement?",
+    answer:
+      "Yes — exit workflows cover clearance across departments, notice-period and leave-encashment computation, final settlement, and statutory documentation, with the audit trail retained after the employee leaves.",
+  },
+  {
+    question: "What reporting do HR and management get?",
+    answer:
+      "Standard statutory reports and challan-ready outputs, plus headcount, attendance, overtime, cost and attrition views by site, department, and category — with exports for management review. Multi-site plants get per-plant and consolidated views from the same data.",
+  },
+  {
+    question: "Does it support shift-based and multi-location workforces?",
+    answer:
+      "Yes. Shift patterns, rosters, week-offs, and site-specific policies are configured per location and applied automatically, which is the difference between an HRIS built for manufacturing and one built for offices.",
+  },
+  {
+    question: "What does implementation involve on our side?",
+    answer:
+      "A typical rollout is: data migration, payroll parallel run, policy configuration, and device integration where attendance hardware is involved. Your team's main input is validating policy rules and reconciling the parallel run — most of the rest sits with the implementation team.",
+  },
+  {
+    question: "Is our employee data secure and where is it hosted?",
+    answer:
+      "Access is role-based with audit logging on record changes, and data handling aligns with DPDP Act obligations. On-premise deployment is available where data-residency requirements demand it.",
   },
 ];

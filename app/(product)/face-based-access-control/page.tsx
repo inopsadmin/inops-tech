@@ -297,28 +297,131 @@ const systemFlowSteps = [
 const faceRecognitionAttendanceFaqItems = [
   {
     question: "What is a face recognition attendance system?",
-    answer:
-      "A face recognition attendance system identifies users through facial biometrics to record attendance accurately without physical contact.",
+    answer: (
+      <>
+        A face recognition attendance system identifies a worker by their facial biometrics and records attendance without contact, cards, or PINs. In industrial use it does more than mark time: each recognition event confirms identity at the gate, feeds payroll with verified hours, and checks compliance status before entry is allowed.
+      </>
+    ),
+  },
+  {
+    question: "How accurate is face recognition attendance in factory conditions?",
+    answer: (
+      <>
+        Accuracy in an office lobby and accuracy at a shift-change gate are different problems — dust, backlight, helmets, and hundreds of workers in twenty minutes. InOps publishes real deployment accuracy data in its{" "}
+        <Link href="/blog/biometric-attendance-accuracy-report-india-2026" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          biometric attendance accuracy report
+        </Link>{" "}
+        rather than quoting lab figures.
+      </>
+    ),
   },
   {
     question: "How does facial recognition prevent buddy punching?",
-    answer:
-      "Each attendance event is linked to a unique facial identity, preventing employees from marking attendance on behalf of others.",
+    answer: (
+      <>
+        Every attendance event is bound to a unique facial identity, so one worker cannot punch for another the way a card or PIN allows. This is the core economic case: proxy punching and ghost workers typically drain 3–5% of contractor spend, and biometric verification at the gate closes it at source.
+      </>
+    ),
   },
   {
-    question: "Does facial recognition work with masks or poor lighting?",
-    answer:
-      "Advanced AI-powered devices are designed to perform reliably under varying lighting conditions and can support mask detection depending on the device.",
+    question: "Does it work in low light, direct sunlight, or with masks and helmets?",
+    answer: (
+      <>
+        Yes. Terminals use adaptive fill light for dark gates and infrared sensing for direct sun, and are rated for dust and humidity. Mask and partial-occlusion handling varies by device model — we match terminal selection to each gate's conditions during the site survey.
+      </>
+    ),
   },
   {
-    question: "Can face recognition integrate with access control?",
-    answer:
-      "Yes. It can integrate with door access, attendance, visitor management, and workforce management systems.",
+    question: "Can face recognition work with our existing CCTV cameras?",
+    answer: (
+      <>
+        Yes.{" "}
+        <Link href="/cctv-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          CCTV attendance
+        </Link>{" "}
+        reads your installed camera feeds to recognise workers at gates and shop floors without a terminal at every capture point — useful for wide entrances, large sites, and areas where mounting hardware isn't practical. CCTV-captured attendance carries the same identity and compliance checks as terminal reads.
+      </>
+    ),
   },
   {
-    question: "Is facial recognition suitable for manufacturing plants?",
-    answer:
-      "Yes. Face recognition provides fast, touchless attendance and secure access control for industrial environments.",
+    question: "Can attendance be captured without fixed terminals at every site?",
+    answer: (
+      <>
+        Yes. The{" "}
+        <Link href="/mobile-app-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          mobile attendance app
+        </Link>{" "}
+        captures face-based attendance with GPS validation for distributed or moving worksites. All three capture modes — terminal, CCTV, and mobile — feed one identity engine, so a worker enrolled once is recognised across every method.
+      </>
+    ),
+  },
+  {
+    question: "Does it integrate with our attendance, payroll, and access control systems?",
+    answer: (
+      <>
+        Yes. Recognition events flow directly into{" "}
+        <Link href="/contract-labour-management" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          contract labour management
+        </Link>{" "}
+        and{" "}
+        <Link href="/hris" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          HRIS
+        </Link>{" "}
+        for attendance, payroll, and statutory records, and into{" "}
+        <Link href="/turnstiles" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          turnstile access control
+        </Link>{" "}
+        for physical enforcement. REST APIs are available for integration with existing enterprise systems.
+      </>
+    ),
+  },
+  {
+    question: "What happens when a worker isn't compliant?",
+    answer: (
+      <>
+        The reader identifies; the rules decide. Every recognition event checks induction, medical fitness, licence validity, and BGV clearance via{" "}
+        <Link href="/contract-labour-management/modules/gate-compliance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          gate compliance and auto-blocking
+        </Link>
+        . A failed check denies entry, logs the reason, and excludes the worker from that shift's attendance and payroll automatically.
+      </>
+    ),
+  },
+  {
+    question: "Can hardware be customised for our site?",
+    answer: (
+      <>
+        Yes. InOps supports firmware customisation, integration with existing access control, and mounting or enclosure variations for harsh and high-security environments, with local support and spares rather than import lead times.
+      </>
+    ),
+  },
+  {
+    question: "How is worker consent and biometric data handled?",
+    answer: (
+      <>
+        Consent is captured digitally at enrollment, in the worker's preferred language, before any biometric template is created. Templates are access-controlled with configurable retention, and handling aligns with DPDP Act obligations.
+      </>
+    ),
+  },
+  {
+    question: "Can one enrollment work across multiple sites and devices?",
+    answer: (
+      <>
+        Yes. A single capture activates the worker's identity across every device on site — gate terminals, canteen readers, attendance points — and across plants in a multi-site deployment, with no re-registration when a worker moves between locations or contractors.
+      </>
+    ),
+  },
+  {
+    question: "What support and maintenance is available for the devices?",
+    answer: (
+      <>
+        Devices are covered under{" "}
+        <Link href="/services/biometric-amc" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          biometric AMC services
+        </Link>
+        : SLA-backed preventive and corrective maintenance, remote device-health monitoring, firmware management, and on-site engineer support across every site under one contract.
+      </>
+    ),
   },
 ] as const;
 
@@ -693,20 +796,19 @@ export default function BiometricAccessControlPage() {
                   Visible light facial recognition with advanced anti-spoofing and high-speed authentication for modern access control.
                 </p>
 
-                <div className="mt-6">
+                {/* <div className="mt-6"> */}
                   {/* make a card */}
-                  <div className="rounded-2xl border border-slate-200/80 bg-white shadow-[0_30px_80px_-44px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/5">
+                  {/* <div className="rounded-2xl border border-slate-200/80 bg-white shadow-[0_30px_80px_-44px_rgba(15,23,42,0.35)] ring-1 ring-slate-900/5">
                     <div className="p-4">
                       <h3 className="text-base font-semibold leading-snug tracking-tight text-slate-900 sm:text-lg">
-                        Touchless face recognition
+                        Face terminals for factory gates
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-slate-600/95">
-                        Visible light facial recognition with advanced anti-spoofing and high-speed authentication for modern access control.
-                      </p>
+                        Enterprise face recognition terminals — Outdoor-rated equivalents — built for industrial gates.                      </p>
                     </div>
                   </div>
                 
-                </div>
+                </div> */}
               </motion.div>
 
               <motion.div
@@ -998,25 +1100,29 @@ export default function BiometricAccessControlPage() {
                   subtitle: "Secure turnstiles and gates for mass workforce entry.",
                   image:
                     "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
+                  route: "clms/modules/gate-compliance" 
                 },
                 {
                   title: "Workforce Attendance Tracking",
                   subtitle: "Automated logging for payroll and HR management.",
                   image:
                     "/Gemini_Generated_Image_qpp7k7qpp7k7qpp7.png",
+                  route:"clms/modules/attendence-leave"
                 },
                 {
                   title: "Restricted Area Access",
                   subtitle: "Multi-factor authentication for sensitive zones.",
                   image:
                     "/images/multifactor authentication hero.webp",
+                route:"clms/modules/gate-compliance"
                 },
                 {
                   title: "High-Volume Environments",
                   subtitle: "Reliable performance for shift changes in logistics.",
                   image:
                     "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80",
-                },
+                  route :"industry/logistics"
+                  },
               ].map((card, idx) => (
                 <motion.article
                   key={card.title}
@@ -1036,10 +1142,12 @@ export default function BiometricAccessControlPage() {
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" aria-hidden />
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                    <h3 className="text-white">{card.title}</h3>
-                    <p className="mt-1 text-sm text-white/85">{card.subtitle}</p>
-                  </div>
+                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                 <Link href={card.route} className="hover:underline">
+                    <h3 className="text-white transition-colors hover:text-blue-300">{card.title}</h3>
+                </Link>
+              <p className="mt-1 text-sm text-white/85">{card.subtitle}</p>
+</div>
                 </motion.article>
               ))}
             </div>
@@ -1077,7 +1185,7 @@ export default function BiometricAccessControlPage() {
                   {
                     title: "Rugged Industrial Design",
                     description:
-                      "Encased in aircraft-grade aluminum and impact-resistant glass, our devices are IP65 rated for dust and humidity protection.",
+                      "Encased in industry-grade aluminum and impact-resistant glass, our devices are IP65 rated for dust and humidity protection.",
                     accent: "amber" as const,
                   },
                   {
@@ -1125,159 +1233,167 @@ export default function BiometricAccessControlPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-t border-cyan-200/35 bg-gradient-to-b from-sky-50/50 via-white to-indigo-50/40 py-12 lg:py-16">
-          <div className="pointer-events-none absolute inset-0" aria-hidden>
-            <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-indigo-400/[0.12] blur-3xl" />
-            <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-cyan-400/[0.11] blur-3xl" />
-            <div className="absolute right-1/4 top-1/2 h-48 w-48 rounded-full bg-fuchsia-400/[0.08] blur-3xl" />
-          </div>
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
-            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
-              <motion.div
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase }}
+<section className="relative overflow-hidden border-t border-cyan-200/35 bg-gradient-to-b from-sky-50/50 via-white to-indigo-50/40 py-12 lg:py-16">
+  <div className="pointer-events-none absolute inset-0" aria-hidden>
+    <div className="absolute -left-20 bottom-20 h-80 w-80 rounded-full bg-indigo-400/[0.12] blur-3xl" />
+    <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-cyan-400/[0.11] blur-3xl" />
+    <div className="absolute right-1/4 top-1/2 h-48 w-48 rounded-full bg-fuchsia-400/[0.08] blur-3xl" />
+  </div>
+  <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+    <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={viewport}
+        transition={{ duration: 0.5, ease: smoothEase }}
+      >
+        <span className="inline-flex rounded-full border border-cyan-200/70 bg-gradient-to-r from-white to-sky-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] shadow-sm ring-1 ring-cyan-500/15">
+          <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">Integrations</span>
+        </span>
+        <h2 className="mt-5 text-black">
+          Seamlessly Connected to{" "}
+          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text font-semibold text-transparent">Your Systems</span>
+        </h2>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
+          Modern APIs and native integrations ensure your data moves where you need it, when you need it.
+        </p>
+
+        <ul className="mt-8 list-none space-y-4 p-0">
+          {[
+            {
+              title: "API-Based Integration",
+              description: "RESTful APIs for custom software hooks.",
+            },
+            {
+              title: "Real-time Data Sync",
+              description: "Zero-latency updates for immediate attendance visibility.",
+            },
+            {
+              title: "Centralized Dashboard",
+              description: "Manage all hardware globally from a single browser interface.",
+            },
+          ].map((item) => (
+            <li key={item.title} className="flex gap-4 py-2">
+              <span
+                className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-blue-600"
+                aria-hidden
               >
-                <span className="inline-flex rounded-full border border-cyan-200/70 bg-gradient-to-r from-white to-sky-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] shadow-sm ring-1 ring-cyan-500/15">
-                  <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent">Integrations</span>
-                </span>
-                <h2 className="mt-5 text-black">
-                  Seamlessly Connected to{" "}
-                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text font-semibold text-transparent">Your Systems</span>
-                </h2>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
-                  Modern APIs and native integrations ensure your data moves where you need it, when you need it.
-                </p>
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
+                  <path d="M6 12l4 4 8-8" />
+                </svg>
+              </span>
+              <div className="min-w-0">
+                <p className="text-base font-semibold text-slate-900">{item.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
 
-                <ul className="mt-8 list-none space-y-4 p-0">
-                  {[
-                    {
-                      title: "API-Based Integration",
-                      description: "RESTful APIs for custom software hooks.",
-                    },
-                    {
-                      title: "Real-time Data Sync",
-                      description: "Zero-latency updates for immediate attendance visibility.",
-                    },
-                    {
-                      title: "Centralized Dashboard",
-                      description: "Manage all hardware globally from a single browser interface.",
-                    },
-                  ].map((item) => (
-                    <li key={item.title} className="flex gap-4 py-2">
-                      <span
-                        className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-blue-600"
-                        aria-hidden
-                      >
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                          <path d="M6 12l4 4 8-8" />
-                        </svg>
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-base font-semibold text-slate-900">{item.title}</p>
-                        <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                className="relative mt-10 overflow-hidden rounded-[1.75rem] border border-indigo-200/40 bg-gradient-to-br from-white via-slate-50/50 to-sky-50/60 p-6 shadow-[0_28px_70px_-40px_rgba(79,70,229,0.3)] ring-1 ring-indigo-500/10 backdrop-blur-md sm:p-8 lg:mt-30"
-                initial={{ opacity: 0, x: 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewport}
-                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+      <motion.div
+        className="relative mt-10 overflow-hidden rounded-[1.75rem] border border-indigo-200/40 bg-gradient-to-br from-white via-slate-50/50 to-sky-50/60 p-6 shadow-[0_28px_70px_-40px_rgba(79,70,229,0.3)] ring-1 ring-indigo-500/10 backdrop-blur-md sm:p-8 lg:mt-30"
+        initial={{ opacity: 0, x: 16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={viewport}
+        transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+      >
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyan-400 via-indigo-500 to-fuchsia-500 opacity-95"
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(59,130,246,0.07)_0%,transparent_50%,rgba(139,92,246,0.06)_100%)]" aria-hidden />
+        <p className="relative text-center text-xs font-bold uppercase tracking-[0.22em] text-transparent bg-gradient-to-r from-slate-500 via-indigo-500 to-violet-500 bg-clip-text">
+          Data fabric
+        </p>
+        <div className="relative mt-7 grid grid-cols-2 gap-3">
+          {(
+            [
+              {
+                label: "Mobile App",
+                accent: "cyan" as const,
+                icon: (
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="5" y="2" width="14" height="20" rx="2" strokeWidth="1.75" />
+                    <path d="M12 18h.01" strokeWidth="2" strokeLinecap="round" />
+                    <line x1="9" y1="6" x2="15" y2="6" strokeWidth="1.75" />
+                  </svg>
+                ),
+                route: "/mobile-app-attendance"
+              },
+              {
+                label: "ATTENDANCE",
+                accent: "indigo" as const,
+                icon: (
+                  <>
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7v5l3 2" />
+                  </>
+                ),
+                route: "/module/attendance-leave"
+              },
+              {
+                label: "HRMS/PAYROLL",
+                accent: "fuchsia" as const,
+                icon: (
+                  <>
+                    <rect x="3" y="6" width="18" height="12" rx="2" />
+                    <path d="M3 10h18" />
+                  </>
+                ),
+                route: "/hris"
+              },
+              {
+                label: "REPORTS",
+                accent: "emerald" as const,
+                icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
+                route: "/compliance-report"
+              },
+            ] as const
+          ).map((node) => {
+            const v = readerFeatureAccentVisual[node.accent];
+            return (
+              <Link
+                key={node.label}
+                href={node.route}
+                className={`group relative overflow-hidden rounded-xl border p-4 text-center transition-all duration-300 hover:-translate-y-0.5 ${v.miniCell}`}
               >
                 <div
-                  className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyan-400 via-indigo-500 to-fuchsia-500 opacity-95"
+                  className={`pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r ${v.topBar}`}
                   aria-hidden
                 />
-                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(155deg,rgba(59,130,246,0.07)_0%,transparent_50%,rgba(139,92,246,0.06)_100%)]" aria-hidden />
-                <p className="relative text-center text-xs font-bold uppercase tracking-[0.22em] text-transparent bg-gradient-to-r from-slate-500 via-indigo-500 to-violet-500 bg-clip-text">
-                  Data fabric
+                <div
+                  className={`pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full blur-xl ${v.orb}`}
+                  aria-hidden
+                />
+                <span
+                  className={`relative mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl ${v.iconShell}`}
+                  aria-hidden
+                >
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    {node.icon}
+                  </svg>
+                </span>
+                <p className="relative mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-600 sm:text-xs group-hover:text-slate-900 transition-colors duration-300">
+                  {node.label}
                 </p>
-                <div className="relative mt-7 grid grid-cols-2 gap-3">
-                  {(
-                    [
-                      {
-                        label: "DEVICES",
-                        accent: "cyan" as const,
-                        icon: (
-                          <>
-                            <rect x="3" y="4" width="18" height="12" rx="2" />
-                            <path d="M8 20h8M12 16v4" />
-                          </>
-                        ),
-                      },
-                      {
-                        label: "ATTENDANCE",
-                        accent: "indigo" as const,
-                        icon: (
-                          <>
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 7v5l3 2" />
-                          </>
-                        ),
-                      },
-                      {
-                        label: "HRMS/PAYROLL",
-                        accent: "fuchsia" as const,
-                        icon: (
-                          <>
-                            <rect x="3" y="6" width="18" height="12" rx="2" />
-                            <path d="M3 10h18" />
-                          </>
-                        ),
-                      },
-                      {
-                        label: "REPORTS",
-                        accent: "emerald" as const,
-                        icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
-                      },
-                    ] as const
-                  ).map((node) => {
-                    const v = readerFeatureAccentVisual[node.accent];
-                    return (
-                      <div
-                        key={node.label}
-                        className={`group relative overflow-hidden rounded-xl border p-4 text-center transition-all duration-300 hover:-translate-y-0.5 ${v.miniCell}`}
-                      >
-                        <div
-                          className={`pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r ${v.topBar}`}
-                          aria-hidden
-                        />
-                        <div
-                          className={`pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full blur-xl ${v.orb}`}
-                          aria-hidden
-                        />
-                        <span
-                          className={`relative mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl ${v.iconShell}`}
-                          aria-hidden
-                        >
-                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            {node.icon}
-                          </svg>
-                        </span>
-                        <p className="relative mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-600 sm:text-xs">{node.label}</p>
-                      </div>
-                    );
-                  })}
-                  <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-                    <span
-                      className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500 via-indigo-600 to-fuchsia-600 opacity-35 blur-xl"
-                      aria-hidden
-                    />
-                    <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 via-indigo-600 to-violet-700 text-lg font-bold text-white shadow-xl shadow-indigo-500/45 ring-4 ring-white/90">
-                      →
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+              </Link>
+            );
+          })}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+            <span
+              className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500 via-indigo-600 to-fuchsia-600 opacity-35 blur-xl"
+              aria-hidden
+            />
+            <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 via-indigo-600 to-violet-700 text-lg font-bold text-white shadow-xl shadow-indigo-500/45 ring-4 ring-white/90">
+              →
+            </span>
           </div>
-        </section>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
         <section className="relative overflow-hidden border-t border-violet-200/35 bg-gradient-to-b from-fuchsia-50/20 via-white to-emerald-50/25 pt-12 lg:pt-16 pb-12 lg:pb-0">
           <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -1319,16 +1435,17 @@ export default function BiometricAccessControlPage() {
                     accent: "cyan" as const,
                   },
                   {
-                    title: "Reduced Manual Work",
+                    title: "Support",
                     description:
-                      "Automate the entire logging process, freeing up HR teams for more strategic initiatives.",
+                      "SLA-backed maintenance, remote device monitoring, and on-site engineers — every reader covered under one AMC.",
                     icon: "bolt" as const,
                     accent: "amber" as const,
+                    route:"services/biometric-amc"
                   },
                   {
-                    title: "Global Scalability",
+                    title: "Make in India Hardware",
                     description:
-                      "Easily deploy across multiple locations and manage everything via a centralized cloud hub.",
+                      "Locally manufactured and supported biometric terminals — faster spares, no import lead times, procurement-ready for PSU and defence tenders.",
                     icon: "users" as const,
                     accent: "violet" as const,
                   },
@@ -1429,7 +1546,7 @@ export default function BiometricAccessControlPage() {
         </section>
 
         {/* H2 content sections — SEO depth */}
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="face-terminals-factory-gates-heading">
+        {/* <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="face-terminals-factory-gates-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="face-terminals-factory-gates-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -1443,9 +1560,9 @@ export default function BiometricAccessControlPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
-        <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="face-accuracy-factory-heading">
+        {/* <section className="border-t border-slate-100 bg-slate-50 py-12 lg:py-20" aria-labelledby="face-accuracy-factory-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="face-accuracy-factory-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -1460,9 +1577,9 @@ export default function BiometricAccessControlPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
-        <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="face-one-identity-heading">
+        {/* <section className="border-t border-slate-100 bg-white py-12 lg:py-20" aria-labelledby="face-one-identity-heading">
           <div className="mx-auto max-w-3xl px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewport} transition={{ duration: 0.48, ease: smoothEase }}>
               <h2 id="face-one-identity-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
@@ -1498,7 +1615,7 @@ export default function BiometricAccessControlPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="face-recognition-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">

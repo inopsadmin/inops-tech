@@ -5,26 +5,76 @@ import { useState } from "react";
 
 const faqs = [
   {
+    q: "What is a biometric database audit?",
+    a: "A biometric database audit is a full scan of every enrollment record across your device fleet to find what shouldn't be there: workers who left but were never de-enrolled, the same person enrolled multiple times across devices or sites, and fake or inactive records still capable of marking attendance. It ends with a certified report of what was found, what was removed, and what remains valid.",
+  },
+  {
     q: "What counts as a ghost enrollment?",
-    a: "Any enrollment that is duplicate, inactive, or no longer tied to a verified, current worker — the core target of ghost employee detection.",
+    a: "Any enrolled identity that no longer corresponds to an active, authorised worker — a departed employee still in the device, a contractor's worker who moved on months ago, a test or duplicate record created during setup, or an enrollment with no matching HR or contractor record. Each one is a live credential that can still open a gate and mark attendance.",
+  },
+  {
+    q: "How common is this? Isn't our database clean?",
+    a: "Almost no multi-site fleet is clean, because enrollment is a daily operational task and de-enrollment is nobody's job. Devices accumulate records for years across shift changes, contractor switches, and site expansions. InOps fleet data across industrial deployments shows enrolled record counts running several times higher than active workforce headcount.",
+  },
+  {
+    q: "How does a ghost enrollment cause payroll leakage?",
+    a: "A stale credential that can still be presented at a gate produces attendance records, and attendance records produce contractor invoices and wages. The leakage is invisible in aggregate because the headcount looks plausible — it only surfaces when enrollment records are reconciled against actual active workers, which is what the audit does.",
   },
   {
     q: "Does the audit disrupt daily attendance?",
-    a: "No, this attendance audit runs against exported data and does not interrupt live attendance systems.",
+    a: "No. Extraction and cross-matching run against exported enrollment data, not live devices, so gates keep operating normally. Remediation — de-enrollment of flagged records — is scheduled with your team, typically between shifts, and every removal is logged and reversible if a record is later revalidated.",
   },
   {
-    q: "How does payroll leakage prevention work?",
-    a: "Flagged enrollments are cross-referenced against attendance and payroll patterns to quantify and prevent payroll leakage.",
+    q: "What happens if a valid worker gets flagged?",
+    a: "Flagged records are revalidated before removal, not deleted automatically. Where a worker is genuinely active but their record is incomplete or duplicated, the audit consolidates rather than removes — the goal is a correct database, not a smaller one.",
   },
   {
-    q: "How often should a biometric health check run?",
-    a: "Quarterly biometric database audits are typical for large, high-turnover industrial sites.",
+    q: "How long does an audit take?",
+    a: "Extraction and analysis typically complete within days rather than months, with remediation scheduled around your operations. Duration scales with device count, site spread, and how much revalidation the flagged records need.",
   },
-];
+  {
+    q: "What do we get at the end?",
+    a: "A certified audit report: total records scanned, duplicates found and consolidated, ghost enrollments identified and removed, records revalidated, and the resulting clean-state count per site and device. It's built to satisfy internal audit and, for PSU and defence sites, external scrutiny of who holds access.",
+  },
+  {
+    q: "How often should this run?",
+    a: (
+      <>
+        Annually as a baseline, and after any event that churns the workforce — a shutdown, a contractor change, a site expansion, or a device fleet migration. Sites running{" "}
+        <Link 
+          href="/services/biometric-amc" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          biometric AMC
+        </Link>{" "}
+        get enrollment hygiene monitored continuously as part of fleet health, which reduces how much any single audit finds.
+      </>
+    ),
+  },
+  {
+    q: "Do we need to be an InOps customer?",
+    a: (
+      <>
+        No. The audit runs on any biometric fleet regardless of vendor or which software manages it. Many engagements start here precisely because the plant doesn't yet know what condition its fleet is in. If you later deploy{" "}
+        <Link 
+          href="/contract-labour-management" 
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          contract labour management
+        </Link>
+        , your cleaned database carries over with verified records intact.
+      </>
+    ),
+  },
+  {
+    q: "What about data protection during the audit?",
+    a: "Enrollment data is handled under a defined scope agreement, processed for the audit purpose only, and returned or destroyed per your policy on completion. Handling aligns with DPDP Act obligations.",
+  },
+] as const;
 
 export default function BiometricDatabaseAuditPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
   return (
     <main className="bg-[#f4f6f8] font-sans">
 
@@ -39,7 +89,7 @@ export default function BiometricDatabaseAuditPage() {
               SERVICE 03 / 05 &nbsp;·&nbsp; BIOMETRIC DATABASE AUDIT
             </div>
             <h1 className="text-[clamp(32px,3.8vw,50px)] leading-[1.10] font-medium text-white tracking-[-0.02em] m-0">
-              Find every ghost enrollment before it costs you.
+              Biometric Database Audit for Industrial Sites
             </h1>
             <p className="mt-[22px] text-[15px] leading-[1.7] text-white/[0.78] max-w-[500px]">
               A biometric database audit built for ghost employee detection, duplicate biometric cleanup and payroll leakage prevention — closing the gaps a routine attendance audit misses.
@@ -74,7 +124,7 @@ export default function BiometricDatabaseAuditPage() {
                   Live Status
                 </div>
               </div>
-              <div className="text-[11px] tracking-[0.06em] uppercase text-white/55 mt-4 font-semibold">Fleet Audit · Operations Panel</div>
+              <div className="text-[11px] tracking-[0.06em] uppercase text-white/55 mt-4 font-semibold">Biometric Database Audit · Operations Panel</div>
               <div className="text-[26px] font-bold text-white mt-[6px] mb-[26px]">Fleet &amp; Workforce Overview</div>
               <div className="flex items-end gap-3 h-[120px] mb-7 px-[2px]">
                 {[45, 65, 50, 80, 60, 90, 55].map((h, i) => (
@@ -117,7 +167,7 @@ export default function BiometricDatabaseAuditPage() {
             <div>
               <div className="text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold mb-[14px]">The Operational Problem</div>
               <h2 className="text-[clamp(24px,3vw,32px)] leading-[1.25] font-bold text-[#0b1e2d] max-w-[480px]">
-                What breaks today, before Fleet Audit is in place
+                What breaks today, before Biometric Database Audit is in place
               </h2>
             </div>
             <p className="text-[14.5px] leading-[1.65] text-[#667588] max-w-[420px]">
@@ -237,7 +287,7 @@ export default function BiometricDatabaseAuditPage() {
                   </svg>
                 </div>
                 <div className="text-[22px] font-extrabold text-white mb-2">Biometric Database Audit</div>
-                <div className="text-[13px] leading-[1.6] text-white/75">Full scan of enrollment records across the device fleet.</div>
+                <div className="text-[13px] leading-[1.6] text-white/75">Full scan of enrollment records across all the biometric and face reader devices</div>
               </div>
               <div className="relative z-[2] mt-[22px] text-[10.5px] tracking-[0.06em] uppercase text-white/55 font-semibold">Core Capability</div>
             </div>
@@ -300,7 +350,7 @@ export default function BiometricDatabaseAuditPage() {
               <h2 className="text-[clamp(22px,3vw,28px)] leading-[1.25] font-bold text-white max-w-[420px]">What changes on the ground</h2>
             </div>
             <p className="text-[13.5px] leading-[1.65] text-white/75 max-w-[340px] md:text-right md:justify-self-end">
-              Outcomes reported by enterprises running Fleet Audit across their industrial and contract workforce operations.
+              Outcomes reported by enterprises running Biometric Database Audit across their industrial and contract workforce operations.
             </p>
           </div>
 
@@ -325,42 +375,85 @@ export default function BiometricDatabaseAuditPage() {
 
       {/* ========== INDUSTRIES ========== */}
       <section className="bg-white pt-[72px] px-[6vw] pb-[120px]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
-            <div>
-              <div className="text-[12px] tracking-[0.10em] uppercase text-[#1c7bb8] font-bold mb-4">Industries</div>
-              <h2 className="text-[clamp(26px,3vw,34px)] leading-[1.2] font-extrabold text-[#0b1e2d] max-w-[440px]">Built for high-volume industrial operations</h2>
-            </div>
-            <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[320px] md:text-right md:justify-self-end pt-2">
-              Deployed across manufacturing, automotive, electronics, logistics and multi-tenant industrial environments.
-            </p>
-          </div>
+  <div className="max-w-[1240px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] items-start mb-[52px]">
+      <div>
+        <div className="text-[12px] tracking-[0.10em] uppercase text-[#1c7bb8] font-bold mb-4">Industries</div>
+        <h2 className="text-[clamp(26px,3vw,34px)] leading-[1.2] font-extrabold text-[#0b1e2d] max-w-[440px]">Built for high-volume industrial operations</h2>
+      </div>
+      <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[320px] md:text-right md:justify-self-end pt-2">
+        Deployed across manufacturing, automotive, electronics, logistics and multi-tenant industrial environments.
+      </p>
+    </div>
 
-          <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
-            {[
-              { n: "01", title: "Manufacturing", desc: "High-volume plants running multi-shift contract workforces.", offset: false },
-              { n: "02", title: "Automotive", desc: "Tier-1 and OEM plants with strict access and safety controls.", offset: true },
-              { n: "03", title: "Electronics", desc: "Cleanroom and assembly sites with tight identity controls.", offset: false },
-              { n: "04", title: "Warehousing", desc: "Distributed logistics hubs with high workforce turnover.", offset: true },
-              { n: "05", title: "Engineering", desc: "Project sites with rotating, multi-vendor contractor pools.", offset: false },
-              { n: "06", title: "Industrial Parks", desc: "Multi-tenant campuses needing shared access governance.", offset: true },
-            ].map(({ n, title, desc, offset }) => (
-              <div
-                key={title}
-                className="flex-1 min-w-0 rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] cursor-default hover:-translate-y-1 aspect-square"
-                style={offset ? { marginTop: 60 } : {}}
-              >
-                <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
-                <div className="text-[11px] font-bold text-white/50 relative z-[2] tracking-[0.04em]">{n}</div>
-                <div className="relative z-[2]">
-                  <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3]">{title}</div>
-                  <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
-                </div>
-              </div>
-            ))}
+    <div className="flex gap-[14px] items-start flex-wrap md:flex-nowrap">
+      {[
+        {
+          title: "Manufacturing",
+          desc: "High-volume gate control across shift-based factory workforces.",
+          icon: <><path d="M2 21h20" /><path d="M4 21V9l6-4v16" /><path d="M14 21V4l6 3v14" /></>,
+          offset: false,
+          route: "/industry/manufacturing"
+        },
+        {
+          title: "Automotive",
+          desc: "Tier-1 and 2 plant access aligned to OEM standards.",
+          icon: <><path d="M5 17h14M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" /><path d="M5 17V8l3-4h8l3 4v9" /></>,
+          offset: true,
+          route: "/industry/automotive"
+        },
+        {
+          title: "Electronics",
+          desc: "Cleanroom and assembly sites with tight identity checks.",
+          icon: <><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /></>,
+          offset: false,
+          route: "/industry/electronics"
+        },
+        {
+          title: "Warehousing",
+          desc: "Contractor and shift-worker rotation verified in real time.",
+          icon: <><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z" /><circle cx="7.5" cy="18.5" r="1.5" /><circle cx="17.5" cy="18.5" r="1.5" /></>,
+          offset: true,
+          route: "/industry/logistics"
+        },
+        {
+          title: "Engineering",
+          desc: "Project-site staffing verified before contractor mobilisation.",
+          icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" /></>,
+          offset: false,
+          route: "/industry/manufacturing"
+        },
+        {
+          title: "Industrial Parks",
+          desc: "Multi-tenant campus access managed under one gate policy.",
+          icon: <><path d="M3 21V8l9-5 9 5v13" /><path d="M9 21v-6h6v6" /></>,
+          offset: true,
+          route: "/industry/logistics"
+        },
+      ].map(({ title, desc, icon, offset, route }) => (
+        <Link
+          key={title}
+          href={route}
+          className="flex-1 min-w-0 block"
+        >
+          <div
+            className="rounded-[18px] bg-[linear-gradient(175deg,#2a7fc0_0%,#1059a0_40%,#0b3868_100%)] p-[18px] flex flex-col justify-between relative overflow-hidden transition-transform duration-[220ms] hover:-translate-y-1 aspect-square cursor-pointer"
+            style={offset ? { marginTop: 60 } : {}}
+          >
+            <div className="absolute pointer-events-none" style={{ top: "-30%", right: "-20%", width: 220, height: 220, background: "radial-gradient(circle at center, rgba(255,255,255,0.22), transparent 65%)" }} />
+            <div className="w-9 h-9 rounded-[10px] bg-white/[0.18] border border-white/30 flex items-center justify-center relative z-[2] flex-shrink-0">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
+            </div>
+            <div className="relative z-[2]">
+              <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#5de3a5] transition-colors duration-200">{title}</div>
+              <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
+            </div>
           </div>
-        </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ========== SHIFT / COMPARISON ========== */}
       <section className="bg-[#f4f6f8] pt-[80px] px-[6vw] pb-[100px]">
@@ -371,7 +464,7 @@ export default function BiometricDatabaseAuditPage() {
               <h2 className="text-[clamp(24px,3vw,36px)] leading-[1.2] font-bold text-[#0b1e2d] max-w-[440px]">The shift from manual to managed</h2>
             </div>
             <p className="text-[14px] leading-[1.7] text-[#8696a7] max-w-[340px] md:text-right md:justify-self-end pt-2">
-              A side-by-side view of how Fleet Audit changes day-to-day operations.
+              A side-by-side view of how Biometric Database Audit changes day-to-day operations.
             </p>
           </div>
 
@@ -442,81 +535,116 @@ export default function BiometricDatabaseAuditPage() {
           </div>
 
           <div className="relative grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-10 items-start">
-            <div className="hidden md:block absolute pointer-events-none" style={{ top: 32, left: 32, right: 32, height: 2, background: "#1c7bb8", zIndex: 0 }} />
-            {[
-              { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
-              { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
-              { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
-              { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
-              { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
-            ].map(({ n, title, desc }) => (
-              <div key={n} className="relative z-[1] flex flex-col items-start pr-6">
-                <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: "50%" }}>{n}</div>
-                <div className="pr-3">
-                  <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
-                  <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+  {/* connecting line - stops before the 5th step */}
+  <div className="hidden md:block absolute pointer-events-none" style={{ 
+    top: 32, 
+    left: 32, 
+    width: "calc(100% - 216px)",
+    height: 2, 
+    background: "#1c7bb8",
+    zIndex: 0 
+  }} />
+  {[
+    { n: "01", title: "Consultation", desc: "Understand your operational requirements and workforce scale." },
+    { n: "02", title: "Assessment", desc: "Current-state review of workforce, compliance and infrastructure." },
+    { n: "03", title: "Proposal", desc: "A scoped rollout plan aligned to your sites and timelines." },
+    { n: "04", title: "Deployment", desc: "Services go live across sites with minimal operational disruption." },
+    { n: "05", title: "Ongoing Support", desc: "Continuous monitoring, compliance tracking and dedicated support." },
+  ].map(({ n, title, desc }) => (
+    <div key={n} className="relative z-[2] flex flex-col items-start pr-6">
+      <div className="flex items-center justify-center border-2 border-[#1c7bb8] bg-white text-[14px] font-bold text-[#1c7bb8] mb-[22px] tracking-[0.04em] flex-shrink-0" style={{ width: 64, height: 64, borderRadius: '50%' }}>{n}</div>
+      <div className="pr-3">
+        <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
+        <div className="text-[13px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 
       {/* ========== FAQ ========== */}
-      <section className="bg-white pt-[80px] px-[6vw] pb-[100px] border-t border-[#eef1f4]">
-        <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-[80px] items-start">
+      {/* ========== FAQ ========== */}
+<section className="bg-white pt-[80px] px-[6vw] pb-[100px] border-t border-[#eef1f4]">
+  <div className="max-w-[1240px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-[80px] items-start">
 
-            {/* Left */}
-            <div>
-              <div className="text-[11px] tracking-[0.14em] uppercase text-[#1c7bb8] font-bold mb-4">FAQ</div>
-              <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-[1.2] text-[#0b1e2d] m-0 mb-4">
-                Common questions from operations &amp; compliance teams
-              </h2>
-              <p className="text-[13.5px] leading-[1.65] text-[#6b7b8c] mb-7">
-                Can&apos;t find what you&apos;re looking for? Our enterprise team can walk through Fleet Audit in the context of your sites.
-              </p>
-              <div className="bg-[#1362a8] rounded-[14px] pt-7 px-[26px] pb-[26px]">
-                <div className="text-[15px] font-bold text-white mb-[10px]">Need a custom audit?</div>
-                <div className="text-[13px] leading-[1.6] text-white/[0.72] mb-[18px]">
-                  Our compliance engineering team is ready to provide the greater details you need for your audit requirements.
-                </div>
-                <Link href="/contact" className="text-[13.5px] font-bold text-white no-underline inline-flex items-center gap-[6px] hover:opacity-85">
-                  Contact Compliance Team &rarr;
-                </Link>
-              </div>
-            </div>
-
-            {/* Right — accordion */}
-            <div className="flex flex-col">
-              {faqs.map(({ q, a }, i) => (
-                <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-                  <button
-                    className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                  >
-                    {q}
-                    <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                  </button>
-                  {openFaq === i && (
-                    <p className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{a}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-
+      {/* Left */}
+      <div>
+        <div className="text-[11px] tracking-[0.14em] uppercase text-[#1c7bb8] font-bold mb-4">FAQ</div>
+        <h2 className="text-[clamp(24px,3vw,36px)] font-bold leading-[1.2] text-[#0b1e2d] m-0 mb-4">
+          Common questions from operations &amp; compliance teams
+        </h2>
+        <p className="text-[13.5px] leading-[1.65] text-[#6b7b8c] mb-7">
+          Can&apos;t find what you&apos;re looking for? Our enterprise team can walk through Biometric Database Audit in the context of your sites.
+        </p>
+        <div className="bg-[#1362a8] rounded-[14px] pt-7 px-[26px] pb-[26px]">
+          <div className="text-[15px] font-bold text-white mb-[10px]">Need a custom audit?</div>
+          <div className="text-[13px] leading-[1.6] text-white/[0.72] mb-[18px]">
+            Our compliance engineering team is ready to provide the greater details you need for your audit requirements.
           </div>
-
-          {/* Related tags */}
-          <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
-            <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
-            {["Biometric Database Cleanup", "Ghost Enrollment Cleanup", "Identity Audit", "Attendance Audit", "Biometric Health Check"].map((tag) => (
-              <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
-            ))}
-          </div>
+          <Link href="/contact" className="text-[13.5px] font-bold text-white no-underline inline-flex items-center gap-[6px] hover:opacity-85">
+            Contact Compliance Team &rarr;
+          </Link>
         </div>
-      </section>
+      </div>
+
+      {/* Right — accordion */}
+      <div className="flex flex-col">
+        {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
+          <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+            <button
+              className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
+              onClick={() => setOpenFaq(openFaq === i ? null : i)}
+              aria-expanded={openFaq === i}
+            >
+              {q}
+              <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
+            </button>
+            {openFaq === i && (
+              <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
+                {a}
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Show More / Show Less Button */}
+        {faqs.length > 6 && (
+          <button
+            onClick={() => setShowAllFaqs(!showAllFaqs)}
+            className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
+          >
+            {showAllFaqs ? (
+              <>
+                Show Less
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </>
+            ) : (
+              <>
+                Show All {faqs.length} Questions
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </>
+            )}
+          </button>
+        )}
+      </div>
+
+    </div>
+
+    {/* Related tags */}
+    <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
+      <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
+      {["Biometric Database Cleanup", "Ghost Enrollment Cleanup", "Identity Audit", "Attendance Audit", "Biometric Health Check"].map((tag) => (
+        <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ========== CTA BANNER ========== */}
       <section className="relative bg-[linear-gradient(135deg,#1362a8_0%,#1578c2_50%,#1a8fd1_100%)] pt-[80px] px-[6vw] pb-[90px] text-center overflow-hidden">
@@ -530,7 +658,7 @@ export default function BiometricDatabaseAuditPage() {
             Need Biometric Database Audit?
           </h2>
           <p className="text-[15px] leading-[1.7] text-white/[0.72] mb-9">
-            Talk to our team about deploying Biometric Fleet Audit &amp; Ghost Enrollment Cleanup across your sites —<br className="hidden md:block" />
+            Talk to our team about deploying Biometric Biometric Database Audit &amp; Ghost Enrollment Cleanup across your sites —<br className="hidden md:block" />
             from a single plant to a nationwide rollout.
           </p>
           <div className="flex gap-[14px] justify-center flex-wrap">

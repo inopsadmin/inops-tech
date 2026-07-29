@@ -859,6 +859,8 @@ export default function Home() {
           <CollaborateCtaBand />
         </div>
       </SectionFade>
+    
+
 
       <SectionFade className="border-t border-slate-100 bg-white">
         <section aria-labelledby="home-faq-heading" className="py-10 lg:py-14">
