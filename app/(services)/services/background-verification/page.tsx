@@ -274,7 +274,7 @@ export default function BGVPage() {
       route: "/contract-labour-management/modules/gate-compliance", 
       icon: <><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.3 2.3L16 9.5" /></> 
     },
-  ].map(({ n, label, desc, icon, route }, i) => {
+  ].map(({ n, label, desc, icon, route }, i):any => {
     const isDeploy = n === "04";
     
     return (
@@ -291,7 +291,7 @@ export default function BGVPage() {
         </div>
         <div className="text-[15px] font-bold text-white mb-2">{label}</div>
         {isDeploy ? (
-          <Link href={route} className="block group">
+          <Link href={route!} className="block group">
             <div className="text-[12.5px] leading-[1.6] text-white/75 max-w-[180px] hover:text-white transition-colors duration-300 cursor-pointer flex items-center gap-1 justify-center">
               {desc}
             </div>
