@@ -38,7 +38,7 @@ export const clmsFaqItems: FAQItem[] = [
   {
     question: "How does CLMS help with CLRA compliance?",
     answer:
-      "Iddion RegX Contract Labour Management System (CLMS) automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/contract-labour-management/modules/compliance-report) for the full register and licence capabilities.",
+      "Iddion RegX Contract Labour Management System (CLMS) automates CLRA compliance by maintaining digital Form V and Form XIII registers, tracking each contractor's licence expiry and headcount limits per establishment, alerting on the 9-day continuous attendance threshold that creates permanent employment risk, and generating audit-ready statutory reports. Every gate event is a compliance record — not just an attendance log. See our CLRA compliance software module (/contract-labour-management/iddion-regx-modules/compliance-report) for the full register and licence capabilities.",
   },
   {
     question: "Can CLMS integrate with biometric attendance devices?",

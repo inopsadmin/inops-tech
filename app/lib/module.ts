@@ -69,7 +69,7 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "Shift, OT and leave policies applied automatically",
-        body: 'Shift windows, OT thresholds, and leave policies are configured per contractor, per category, and per site, and apply to every punch automatically — state-aware minimum hours and statutory OT rules included. OT beyond threshold requires supervisor approval, and verified hours flow directly to <a href="/contract-labour-management/modules/wage-payroll" class="text-blue-600 underline">contractor payroll</a>.',
+        body: 'Shift windows, OT thresholds, and leave policies are configured per contractor, per category, and per site, and apply to every punch automatically — state-aware minimum hours and statutory OT rules included. OT beyond threshold requires supervisor approval, and verified hours flow directly to <a href="/contract-labour-management/iddion-regx-modules/wage-payroll" class="text-blue-600 underline">contractor payroll</a>.',
       },
       {
         h2: "How is contract worker attendance different from employee attendance?",
@@ -77,7 +77,7 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "Feeding the 9-day rule and CLRA registers",
-        body: 'Continuous attendance is tracked per worker, with alerts before the threshold is crossed so HR can schedule the rest day in time. These alerts feed the same engine as our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a> — and the data behind them is the same attendance record that populates Form V and Form XIII.',
+        body: 'Continuous attendance is tracked per worker, with alerts before the threshold is crossed so HR can schedule the rest day in time. These alerts feed the same engine as our <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a> — and the data behind them is the same attendance record that populates Form V and Form XIII.',
       },
     ],
 
@@ -375,7 +375,7 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "What gets verified before first entry?",
-        body: 'Aadhaar-linked identity, criminal and court records, medical fitness certification, and induction completion — a worker without clearance on any of these criteria is gate-blocked until the outstanding step resolves. BGV-pending status is enforced at the barrier via <a href="/contract-labour-management/modules/gate-compliance" class="text-blue-600 underline">gate compliance and auto-blocking</a>.',
+        body: 'Aadhaar-linked identity, criminal and court records, medical fitness certification, and induction completion — a worker without clearance on any of these criteria is gate-blocked until the outstanding step resolves. BGV-pending status is enforced at the barrier via <a href="/contract-labour-management/iddion-regx-modules/gate-compliance" class="text-blue-600 underline">gate compliance and auto-blocking</a>.',
       },
       {
         h2: "Records built for audits",
@@ -526,7 +526,7 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "Licences, caps and renewals",
-        body: 'CLRA licence validity and permitted headcount limits are tracked per establishment, with alerts before expiry and flags when deployment approaches the licensed cap. Licence data syncs with the registers maintained in our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>, so Form V headcount always reflects the current licensed limit. A lapsed licence can trigger auto-blocking at the gate via <a href="/contract-labour-management/modules/gate-compliance" class="text-blue-600 underline">gate compliance</a>.',
+        body: 'CLRA licence validity and permitted headcount limits are tracked per establishment, with alerts before expiry and flags when deployment approaches the licensed cap. Licence data syncs with the registers maintained in our <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>, so Form V headcount always reflects the current licensed limit. A lapsed licence can trigger auto-blocking at the gate via <a href="/contract-labour-management/iddion-regx-modules/gate-compliance" class="text-blue-600 underline">gate compliance</a>.',
       },
       {
         h2: "What should a principal employer track per contractor?",
@@ -677,15 +677,15 @@ export const modules: ModuleData[] = [
       },
       {
         h2: "OT with approval workflow",
-        body: 'When hours breach the configured OT threshold, the system creates a digital approval request for the supervisor — OT that goes unapproved never enters the payable calculation. This is the structural answer to ghost OT: the gate knows what was worked; the rule knows what was approved; the invoice can only carry the intersection. See also <a href="/contract-labour-management/modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> for the statutory-deduction side.',
+        body: 'When hours breach the configured OT threshold, the system creates a digital approval request for the supervisor — OT that goes unapproved never enters the payable calculation. This is the structural answer to ghost OT: the gate knows what was worked; the rule knows what was approved; the invoice can only carry the intersection. See also <a href="/contract-labour-management/iddion-regx-modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> for the statutory-deduction side.',
       },
       {
         h2: "Why compute contractor payroll from gate data?",
-        body: 'Contractor-submitted rosters are where leakage lives: inflated headcount, unworked OT credited, wrong rate codes applied. Computing wages from gate data ends the argument at source — the record is the gate log, not the spreadsheet. Deductions computed from the same record flow automatically to <a href="/contract-labour-management/modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> for PF/ESI filing.',
+        body: 'Contractor-submitted rosters are where leakage lives: inflated headcount, unworked OT credited, wrong rate codes applied. Computing wages from gate data ends the argument at source — the record is the gate log, not the spreadsheet. Deductions computed from the same record flow automatically to <a href="/contract-labour-management/iddion-regx-modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> for PF/ESI filing.',
       },
       {
         h2: "Statutory deductions built in",
-        body: 'PF, ESI, and LWF are computed per worker against each payroll cycle, with challan-ready outputs for filing. Deduction gaps and mismatches surface in real time rather than at filing deadlines. The same records feed the registers maintained in our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>.',
+        body: 'PF, ESI, and LWF are computed per worker against each payroll cycle, with challan-ready outputs for filing. Deduction gaps and mismatches surface in real time rather than at filing deadlines. The same records feed the registers maintained in our <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>.',
       },
     ],
 
