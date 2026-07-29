@@ -13,8 +13,8 @@ const LABEL_BY_PATH: Record<string, string> = {
   "/contact": "Contact",
   "/blog": "Blog",
   "/brochures": "Brochures",
-  "/biometric-reader": "Biometric Access Control",
-  "/turnstiles": "Turnstiles",
+  "/face-based-access-control": "Biometric Access Control",
+  "/turnstiles-access": "Turnstiles",
   "/accessories": "Accessories",
   "/contract-labour-management": "Contract Labour Management",
   "/hris": "HR Information System",
@@ -55,13 +55,13 @@ export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
     "/visitor-management",
     "/fixed-asset-management",
   ]);
-  const productPaths = new Set(["/biometric-reader", "/turnstiles", "/accessories"]);
+  const productPaths = new Set(["/face-based-access-control", "/turnstiles-access", "/accessories"]);
 
   if (solutionPaths.has(normalized)) {
     return [HOME, { name: "Solutions", path: "/#solutions" }, { name: label, path: normalized }];
   }
   if (productPaths.has(normalized)) {
-    return [HOME, { name: "Products", path: "/biometric-reader" }, { name: label, path: normalized }];
+    return [HOME, { name: "Products", path: "/face-based-access-control" }, { name: label, path: normalized }];
   }
 
   return [HOME, { name: label, path: normalized }];

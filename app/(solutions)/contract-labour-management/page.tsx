@@ -543,7 +543,7 @@ function OurModuleCard({ slide, palette, slug }: { slide: OurModuleSlide; palett
         </p>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-auto pt-3">
           <Link
-            href={`/contract-labour-management/modules/${slug}`}
+            href={`/contract-labour-management/iddion-regx-modules/${slug}`}
             className="inline-flex h-9 w-full items-center justify-center rounded-lg bg-[color:var(--inops-blue)] text-xs font-semibold text-white shadow-sm transition-[filter,box-shadow] duration-300 hover:brightness-110 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--inops-blue)]"
           >
             Know more
@@ -1024,7 +1024,7 @@ export default function PayrollSolutionsPage() {
                   Contact us
                 </Link>
                 <Link
-                  href="/turnstiles"
+                  href="/turnstiles-access"
                   className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-transparent px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/5"
                 >
                   Gate hardware

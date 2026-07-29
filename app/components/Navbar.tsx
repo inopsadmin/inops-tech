@@ -42,8 +42,8 @@ const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 2
 const linkStagger = 0.05;
 
 const productRoutes: Record<string, string> = {
-  "Biometric Access Control": "/biometric-reader",
-  "Turnstiles": "/turnstiles",
+  "Biometric Access Control": "/face-based-access-control",
+  "Turnstiles": "/turnstiles-access",
   "Accessories": "/accessories",
 };
 
@@ -70,8 +70,8 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/mobile-app-attendance") ||
     path.startsWith("/visitor-management") ||
     path.startsWith("/accessories") ||
-    path.startsWith("/biometric-reader") ||
-    path.startsWith("/turnstiles") ||
+    path.startsWith("/face-based-access-control") ||
+    path.startsWith("/turnstiles-access") ||
     path.startsWith("/warehouse-management") ||
     path.startsWith("/delivery-management") ||
     path.startsWith("/order-management")

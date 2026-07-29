@@ -68,7 +68,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       type: "tile",
       title: "Face Reader",
       description: "Biometric face recognition for secure access and time logs.",
-      href: "/biometric-reader",
+      href: "/face-based-access-control",
     },
   ],
   // [
@@ -89,7 +89,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
   //     type: "tile",
   //     title: "Turnstiles",
   //     description: "Speed gates and turnstiles for orderly, high-throughput access.",
-  //     href: "/turnstiles",
+  //     href: "/turnstiles-access",
   //   },
   //   {
   //     type: "tile",
@@ -143,7 +143,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     //   type: "tile",
     //   title: "Turnstiles",
     //   description: "Speed gates and turnstiles for orderly, high-throughput access.",
-    //   href: "/turnstiles",
+    //   href: "/turnstiles-access",
     // },
     // {
     //   type: "tile",

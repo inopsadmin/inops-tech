@@ -1066,7 +1066,7 @@ export default function CanteenManagementPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 A single enrollment covers every touchpoint: gate entry, canteen counter, and visitor host lookup all resolve against the same identity record. Visitors use the same{" "}
-                <a href="/turnstiles" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/turnstiles-access" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   turnstile access control
                 </a>{" "}
                 lanes as workers, so security sees everyone on site — permanent staff, contract workers, and visitors — in one live view.

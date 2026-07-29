@@ -21,7 +21,7 @@ export async function generateMetadata({
   return routeMetadata({
     title: mod.seoTitle ?? `${mod.badge} | CLMS Module — InOps Solutions`,
     description: mod.seoDescription ?? mod.description,
-    path: `/contract-labour-management/modules/${slug}`,
+    path: `/contract-labour-management/iddion-regx-modules/${slug}`,
     extraKeywords: mod.seoKeywords ?? ["CLMS module", "contract labour software India", mod.badge],
   });
 }
@@ -43,7 +43,7 @@ export default async function ModulePage({
   }
 
   return(
-    <main className="pt-[calc(var(--home-nav-offset)+var(--module-nav-height,0px))]">
+    <main className="pt-[calc(var(--home-nav-offset)+var(--module-nav-height,0px))] transition-[padding-top] duration-300 ease-in-out">
       <ModuleSwitcher activeSlug={slug}/>
       <ModuleTemplate data={selectedModule} />
     </main>

@@ -1418,7 +1418,7 @@ export default function MobileAppPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
                 Fixed biometric readers suit high-density factory gates where throughput and fraud prevention are primary — see{" "}
-                <a href="/biometric-reader" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                <a href="/face-based-access-control" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                   face recognition attendance
                 </a>
                 . Mobile attendance suits moving or distributed sites where a fixed terminal isn't viable. Most InOps infrastructure clients run both on one platform, so a worker's identity and attendance record are unified regardless of which capture method was used on any given shift.
