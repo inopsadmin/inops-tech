@@ -136,10 +136,10 @@ const cctvSurveillanceFaqItems = [
       <>
         Accuracy depends on camera angle, lighting, and distance — dust, backlight, and helmets all affect it. InOps publishes real deployment data in its{" "}
         <Link 
-          href="/blog/biometric-attendance-accuracy-report-india-2026" 
+          href="/face-based-access-control" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
-          biometric attendance accuracy report
+          biometric attendance
         </Link>{" "}
         rather than quoting lab figures, and recommends terminals rather than cameras where conditions can't support reliable capture.
       </>
@@ -176,7 +176,7 @@ const cctvSurveillanceFaqItems = [
       <>
         Yes. Camera, terminal, fingerprint, and mobile capture all feed one identity engine — a worker enrolled once is recognised by any method, so sites typically use cameras for high-flow gates and{" "}
         <Link 
-          href="/biometric-reader" 
+          href="/face-based-access-control" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           terminals
@@ -196,7 +196,7 @@ const cctvSurveillanceFaqItems = [
       <>
         Camera capture identifies; enforcement needs a physical barrier. Where blocking is required, cameras pair with{" "}
         <Link 
-          href="/contract-labour-management/modules/gate-compliance" 
+          href="/turnstiles-access" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           turnstiles and gate compliance rules

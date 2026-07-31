@@ -239,7 +239,7 @@ const smartCanteenFaqItems = [
       <>
         Yes. Workers can be identified by face recognition, fingerprint, RFID card, or QR code at the counter, with subsidy and any employee contribution calculated at the point of issue and settled through payroll. See{" "}
         <Link 
-          href="/biometric-reader" 
+          href="/face-based-access-control" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           biometric readers
@@ -270,7 +270,7 @@ const smartCanteenFaqItems = [
       <>
         Yes. Passes carry zone permissions, so a visitor cleared for the admin block isn't cleared for the plant floor. Passes work on the same{" "}
         <Link 
-          href="/turnstiles" 
+          href="/turnstiles-access" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           turnstile access control

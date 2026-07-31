@@ -47,7 +47,7 @@ const faqs = [
       <>
         The report records the finding with its source; the deployment decision remains yours. Where InOps CLMS is deployed, a worker without clearance can be{" "}
         <Link 
-          href="/contract-labour-management/modules/gate-compliance" 
+          href="/turnstiles-access" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           blocked at the gate
@@ -81,7 +81,7 @@ const faqs = [
         </Link>
         , your verified workers carry over with their verification history intact — and verification becomes a built-in step via the{" "}
         <Link 
-          href="/contract-labour-management/modules/background-verification" 
+          href="/services/background-verification" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           background verification module
