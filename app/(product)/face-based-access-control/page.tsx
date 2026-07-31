@@ -368,7 +368,7 @@ const faceRecognitionAttendanceFaqItems = [
           HRIS
         </Link>{" "}
         for attendance, payroll, and statutory records, and into{" "}
-        <Link href="/turnstiles" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+        <Link href="/turnstiles-access" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
           turnstile access control
         </Link>{" "}
         for physical enforcement. REST APIs are available for integration with existing enterprise systems.
@@ -380,7 +380,7 @@ const faceRecognitionAttendanceFaqItems = [
     answer: (
       <>
         The reader identifies; the rules decide. Every recognition event checks induction, medical fitness, licence validity, and BGV clearance via{" "}
-        <Link href="/contract-labour-management/modules/gate-compliance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+        <Link href="/turnstiles-access" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
           gate compliance and auto-blocking
         </Link>
         . A failed check denies entry, logs the reason, and excludes the worker from that shift's attendance and payroll automatically.
@@ -1100,21 +1100,21 @@ export default function BiometricAccessControlPage() {
                   subtitle: "Secure turnstiles and gates for mass workforce entry.",
                   image:
                     "/images/77820a_f483a36175aa4407b8e94126cafb9e71~mv2.avif",
-                  route: "clms/modules/gate-compliance" 
+                  route: "/turnstiles-access" 
                 },
                 {
                   title: "Workforce Attendance Tracking",
                   subtitle: "Automated logging for payroll and HR management.",
                   image:
                     "/Gemini_Generated_Image_qpp7k7qpp7k7qpp7.png",
-                  route:"clms/modules/attendence-leave"
+                  route:"cctv-attendance"
                 },
                 {
                   title: "Restricted Area Access",
                   subtitle: "Multi-factor authentication for sensitive zones.",
                   image:
                     "/images/multifactor authentication hero.webp",
-                route:"clms/modules/gate-compliance"
+                route:"/turnstiles-access"
                 },
                 {
                   title: "High-Volume Environments",
@@ -1330,7 +1330,7 @@ export default function BiometricAccessControlPage() {
                     <path d="M12 7v5l3 2" />
                   </>
                 ),
-                route: "/module/attendance-leave"
+                route: "/cctv-attendance"
               },
               {
                 label: "HRMS/PAYROLL",
@@ -1347,7 +1347,7 @@ export default function BiometricAccessControlPage() {
                 label: "REPORTS",
                 accent: "emerald" as const,
                 icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
-                route: "/compliance-report"
+                route: "/face-based-access-control"
               },
             ] as const
           ).map((node) => {

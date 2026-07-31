@@ -30,7 +30,7 @@ const faqs = [
       <>
         Yes. The report prioritises remediation by risk, and where gaps are structural — registers reconstructed monthly instead of maintained live, licences tracked in spreadsheets, no gate-level enforcement — remediation may mean process or system change rather than paperwork. Those recommendations map to{" "}
         <Link 
-          href="/contract-labour-management/modules/compliance-report" 
+          href="/services/clra-compliance-audit" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           CLRA compliance software
