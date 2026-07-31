@@ -1,80 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-
-const faqs = [
-  {
-    q: "What is a biometric database audit?",
-    a: "A biometric database audit is a full scan of every enrollment record across your device fleet to find what shouldn't be there: workers who left but were never de-enrolled, the same person enrolled multiple times across devices or sites, and fake or inactive records still capable of marking attendance. It ends with a certified report of what was found, what was removed, and what remains valid.",
-  },
-  {
-    q: "What counts as a ghost enrollment?",
-    a: "Any enrolled identity that no longer corresponds to an active, authorised worker — a departed employee still in the device, a contractor's worker who moved on months ago, a test or duplicate record created during setup, or an enrollment with no matching HR or contractor record. Each one is a live credential that can still open a gate and mark attendance.",
-  },
-  {
-    q: "How common is this? Isn't our database clean?",
-    a: "Almost no multi-site fleet is clean, because enrollment is a daily operational task and de-enrollment is nobody's job. Devices accumulate records for years across shift changes, contractor switches, and site expansions. InOps fleet data across industrial deployments shows enrolled record counts running several times higher than active workforce headcount.",
-  },
-  {
-    q: "How does a ghost enrollment cause payroll leakage?",
-    a: "A stale credential that can still be presented at a gate produces attendance records, and attendance records produce contractor invoices and wages. The leakage is invisible in aggregate because the headcount looks plausible — it only surfaces when enrollment records are reconciled against actual active workers, which is what the audit does.",
-  },
-  {
-    q: "Does the audit disrupt daily attendance?",
-    a: "No. Extraction and cross-matching run against exported enrollment data, not live devices, so gates keep operating normally. Remediation — de-enrollment of flagged records — is scheduled with your team, typically between shifts, and every removal is logged and reversible if a record is later revalidated.",
-  },
-  {
-    q: "What happens if a valid worker gets flagged?",
-    a: "Flagged records are revalidated before removal, not deleted automatically. Where a worker is genuinely active but their record is incomplete or duplicated, the audit consolidates rather than removes — the goal is a correct database, not a smaller one.",
-  },
-  {
-    q: "How long does an audit take?",
-    a: "Extraction and analysis typically complete within days rather than months, with remediation scheduled around your operations. Duration scales with device count, site spread, and how much revalidation the flagged records need.",
-  },
-  {
-    q: "What do we get at the end?",
-    a: "A certified audit report: total records scanned, duplicates found and consolidated, ghost enrollments identified and removed, records revalidated, and the resulting clean-state count per site and device. It's built to satisfy internal audit and, for PSU and defence sites, external scrutiny of who holds access.",
-  },
-  {
-    q: "How often should this run?",
-    a: (
-      <>
-        Annually as a baseline, and after any event that churns the workforce — a shutdown, a contractor change, a site expansion, or a device fleet migration. Sites running{" "}
-        <Link 
-          href="/services/biometric-amc" 
-          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
-        >
-          biometric AMC
-        </Link>{" "}
-        get enrollment hygiene monitored continuously as part of fleet health, which reduces how much any single audit finds.
-      </>
-    ),
-  },
-  {
-    q: "Do we need to be an InOps customer?",
-    a: (
-      <>
-        No. The audit runs on any biometric fleet regardless of vendor or which software manages it. Many engagements start here precisely because the plant doesn't yet know what condition its fleet is in. If you later deploy{" "}
-        <Link 
-          href="/contract-labour-management" 
-          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
-        >
-          contract labour management
-        </Link>
-        , your cleaned database carries over with verified records intact.
-      </>
-    ),
-  },
-  {
-    q: "What about data protection during the audit?",
-    a: "Enrollment data is handled under a defined scope agreement, processed for the audit purpose only, and returned or destroyed per your policy on completion. Handling aligns with DPDP Act obligations.",
-  },
-] as const;
+import { biometricDatabaseAuditFaqItems } from "@/app/lib/biometricDatabaseAuditFaqItems";
 
 export default function BiometricDatabaseAuditPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [showAllFaqs, setShowAllFaqs] = useState(false);
   return (
     <main className="bg-[#f4f6f8] font-sans">
 
@@ -591,47 +518,18 @@ export default function BiometricDatabaseAuditPage() {
 
       {/* Right — accordion */}
       <div className="flex flex-col">
-        {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
-          <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-            <button
-              className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-              onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              aria-expanded={openFaq === i}
-            >
-              {q}
-              <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-            </button>
-            {openFaq === i && (
-              <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
-                {a}
-              </div>
-            )}
-          </div>
+        {biometricDatabaseAuditFaqItems.map((item, i) => (
+          <details key={item.question} className={`group border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+            <summary className="w-full cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150 marker:hidden [&::-webkit-details-marker]:hidden">
+              {item.question}
+              <span className="text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 group-open:rotate-45">+</span>
+            </summary>
+            <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
+              {item.answer}
+            </div>
+          </details>
         ))}
 
-        {/* Show More / Show Less Button */}
-        {faqs.length > 6 && (
-          <button
-            onClick={() => setShowAllFaqs(!showAllFaqs)}
-            className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
-          >
-            {showAllFaqs ? (
-              <>
-                Show Less
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </>
-            ) : (
-              <>
-                Show All {faqs.length} Questions
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </>
-            )}
-          </button>
-        )}
       </div>
 
     </div>

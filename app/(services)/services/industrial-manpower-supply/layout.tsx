@@ -1,5 +1,6 @@
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { industrialManpowerSupplyFaqItems } from "@/app/lib/industrialManpowerSupplyFaqItems";
 import type { Metadata } from "next";
 
 const PAGE_TITLE = "Industrial Manpower Supply | InOps";
@@ -33,6 +34,7 @@ export default function IndustrialManpowerSupplyLayout({ children }: { children:
         path="/services/industrial-manpower-supply"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
+        faqItems={industrialManpowerSupplyFaqItems}
       />
       {children}
     </>

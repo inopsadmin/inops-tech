@@ -195,10 +195,10 @@ export function ServicesMegaMenuDesktop({
         }}
       >
         {/* Services label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
-         
-          {/* <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "} */}
-          <span style={{ color: "#3a3f4b" }}>SERVICES</span>
+        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", borderBottom: "1px solid #ececee" }}>
+          <Link href="/services" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
+            SERVICES
+          </Link>
         </div>
 
         {/* Services grid — 3 cols matching reference workforce grid */}
@@ -209,10 +209,10 @@ export function ServicesMegaMenuDesktop({
         </div>
 
         {/* Industries label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", color: "#8a8f9c", borderBottom: "1px solid #ececee" }}>
-
-          {/* <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span>{" "} */}
-          <span style={{ color: "#3a3f4b" }}>INDUSTRIES</span>
+        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", borderBottom: "1px solid #ececee" }}>
+          <Link href="/industry/manufacturing" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
+            INDUSTRIES
+          </Link>
         </div>
 
         {/* Industries grid — 4 cols matching reference */}
@@ -230,8 +230,11 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
   return (
     <div style={{ borderTop: "1px solid #ececee" }}>
       {/* Services label */}
-      <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", color: "#8a8f9c", background: "#f7f8fa", borderBottom: "1px solid #ececee" }}>
-        <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span> <span style={{ color: "#3a3f4b" }}>SERVICES</span>
+      <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", background: "#f7f8fa", borderBottom: "1px solid #ececee" }}>
+        <span style={{ margin: "0 6px 0 0", color: "#c7cad1" }}>›</span>
+        <Link href="/services" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
+          SERVICES
+        </Link>
       </div>
       <div style={{ padding: "8px 8px 4px" }}>
         {serviceItems.map((item) => (
@@ -251,8 +254,11 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
       </div>
 
       {/* Industries label */}
-      <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", color: "#8a8f9c", background: "#f7f8fa", borderTop: "1px solid #ececee", borderBottom: "1px solid #ececee" }}>
-        <span style={{ margin: "0 6px", color: "#c7cad1" }}>›</span> <span style={{ color: "#3a3f4b" }}>INDUSTRIES</span>
+      <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", background: "#f7f8fa", borderTop: "1px solid #ececee", borderBottom: "1px solid #ececee" }}>
+        <span style={{ margin: "0 6px 0 0", color: "#c7cad1" }}>›</span>
+        <Link href="/industry/manufacturing" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
+          INDUSTRIES
+        </Link>
       </div>
       <div style={{ padding: "8px 8px 12px" }}>
         {industryItems.map((item) => (

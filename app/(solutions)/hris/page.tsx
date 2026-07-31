@@ -1365,7 +1365,7 @@ export default function LabourManagementPage() {
             <div>
               <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Multi-site by default</h2>
               <p className="mt-4 text-base leading-relaxed text-gray-600">
-                Employee records, attendance, leave, and payroll consolidate across plants and offices with site-level and aggregate reporting. InOps runs workforce management across 163+ industrial sites — the multi-site architecture is not an add-on; it is how the platform is built.
+                Employee records, attendance, leave, and payroll consolidate across plants and offices with site-level and aggregate reporting. InOps runs workforce management across 70+ industrial sites — the multi-site architecture is not an add-on; it is how the platform is built.
               </p>
             </div>
           </div>

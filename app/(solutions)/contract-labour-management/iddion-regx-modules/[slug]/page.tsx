@@ -4,6 +4,7 @@ import ModuleTemplate from "@/app/components/modules/ModuleTemplate";
 import { modules } from "@/app/lib/module";
 import ModuleSwitcher from "@/app/components/modules/ModuleSwitcher";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 
 export async function generateStaticParams() {
   return modules.map((m) => ({ slug: m.slug }));
@@ -43,6 +44,9 @@ export default async function ModulePage({
 
   return(
     <main className="pt-[calc(var(--home-nav-offset)+var(--module-nav-height,0px))] transition-[padding-top] duration-300 ease-in-out">
+      {selectedModule.faq && selectedModule.faq.length > 0 && (
+        <FAQPageJsonLd items={selectedModule.faq} />
+      )}
       <ModuleSwitcher activeSlug={slug}/>
       <ModuleTemplate data={selectedModule} />
     </main>

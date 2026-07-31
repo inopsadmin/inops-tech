@@ -1,5 +1,6 @@
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { clraComplianceAuditFaqItems } from "@/app/lib/clraComplianceAuditFaqItems";
 import type { Metadata } from "next";
 
 const PAGE_TITLE = "CLRA Compliance Audit | InOps RegX";
@@ -33,6 +34,7 @@ export default function CLRAComplianceAuditLayout({ children }: { children: Reac
         path="/services/clra-compliance-audit"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
+        faqItems={clraComplianceAuditFaqItems}
       />
       {children}
     </>

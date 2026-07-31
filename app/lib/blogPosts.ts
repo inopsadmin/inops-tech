@@ -46,6 +46,170 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "what-is-contract-labour-management-system",
+    title: "What Is a Contract Labour Management System (CLMS)? A Guide for Indian Manufacturers",
+    description:
+      "A contract labour management system governs the full contractor workforce lifecycle — onboarding, gate compliance, attendance, CLRA registers and contractor payroll. Here's what it does, who needs one, and how it differs from HRMS.",
+    author: "Satish Sinha",
+    personAuthor: true,
+    date: "July 31, 2026",
+    dateIso: "2026-07-31",
+    category: "CLMS",
+    readMinutes: 8,
+    image:
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Factory floor with industrial workers — replace with a real plant or gate photograph before publishing",
+    summary:
+      "A CLMS governs contract workers from onboarding through offboarding — covering gate compliance, biometric attendance, CLRA statutory registers, and contractor invoice reconciliation. It is not an HRMS add-on; it is a separate system designed for a different legal relationship, a different compliance surface, and a different commercial flow.",
+    sections: [
+      {
+        paragraphs: [
+          "A contract labour management system (CLMS) is software that governs the entire lifecycle of contract workers at an industrial establishment: onboarding and verification, gate entry and compliance enforcement, biometric attendance, statutory registers under the Contract Labour (Regulation &amp; Abolition) Act, contractor payroll, and invoice reconciliation. It exists because contract workers are not employees — they are supplied by third-party contractors, governed by different law, and invisible to the HR systems built for permanent staff.",
+          "For a plant running 2,000 contract workers across 30 contractors, this is not a convenience problem. It is the difference between knowing who is on site and hoping the contractor's register is accurate.",
+        ],
+      },
+      {
+        heading: "Why HRMS software cannot do this job",
+        paragraphs: [
+          "An HRMS or HRIS manages people your company employs. It assumes one employer, one employment contract, one payroll, one set of statutory obligations.",
+          "Contract labour breaks all of those assumptions:",
+          "<strong>The worker is employed by someone else.</strong> The contractor pays them; you don't. But under CLRA, you carry liability if the contractor defaults.",
+          "<strong>The compliance surface is different.</strong> Form V and Form XIII registers, contractor licences with headcount caps, weekly-off obligations, statutory remittance evidence — none of this exists in an HRMS.",
+          "<strong>The commercial relationship runs through an invoice, not a payslip.</strong> You pay the contractor, who pays the worker. Verifying that invoice against actual attendance is a core CLMS function with no HRMS equivalent.",
+          "<strong>Workers move.</strong> The same individual may work under three contractors in a year, across two of your plants. Their identity, verification, and blacklist status need to persist even as the contractor relationship changes.",
+          'Most large plants run both systems. The distinction matters when buying: an HRMS vendor adding a "contractor module" is solving a different problem than a purpose-built <a href="/contract-labour-management" class="underline font-medium hover:opacity-75">contract labour management system</a>.',
+        ],
+      },
+      {
+        heading: "What a CLMS actually does",
+        paragraphs: [],
+      },
+      {
+        subheading: "1. Onboarding and verification",
+        paragraphs: [
+          "Before a worker reaches the gate: identity capture, background verification, medical fitness, safety induction, and assignment to a contractor, site, shift and work order. In a paper process this takes days per worker and collapses entirely during shutdown mobilisation, when 500 workers arrive in a week.",
+        ],
+      },
+      {
+        subheading: "2. Gate compliance and entry control",
+        paragraphs: [
+          'This is where a CLMS differs most visibly from an attendance system. Every entry is evaluated against rules before the barrier opens — is the contractor\'s licence valid, is the establishment within its permitted headcount, is this worker\'s induction current, is medical fitness on file, is background verification cleared. A worker failing any check is refused entry and the denial is logged with its reason. See our <a href="/contract-labour-management/iddion-regx-modules/gate-compliance" class="underline font-medium hover:opacity-75">gate pass management system</a> for how this works in practice.',
+          "Attendance systems count people. A CLMS decides whether they should be there.",
+        ],
+      },
+      {
+        subheading: "3. Attendance and overtime",
+        paragraphs: [
+          'Biometric capture — face, fingerprint, camera or mobile — feeding verified hours per worker, per contractor, per site. Overtime is computed against registered shift ends rather than contractor declarations, and requires approval before becoming payable. The <a href="/contract-labour-management/iddion-regx-modules/attendance-leave" class="underline font-medium hover:opacity-75">attendance and leave module</a> handles this automatically across mixed hardware deployments.',
+        ],
+      },
+      {
+        subheading: "4. Statutory registers and CLRA compliance",
+        paragraphs: [
+          'Form V and Form XIII maintained as live outputs of gate events rather than reconstructed monthly. Contractor licence validity and headcount caps tracked per establishment. Continuous-attendance thresholds monitored — see <a href="/blog/9-day-continuous-attendance-clra-risk-india" class="underline font-medium hover:opacity-75">the 9-day continuous attendance rule</a> for why this specific one matters.',
+        ],
+      },
+      {
+        subheading: "5. Payroll and invoice reconciliation",
+        paragraphs: [
+          'Wages computed from verified attendance with PF, ESI and LWF deductions per worker. Then the part that pays for the system: contractor invoices matched line by line against gate-verified headcount and approved overtime, before payment rather than after audit. The <a href="/contract-labour-management/iddion-regx-modules/wage-payroll" class="underline font-medium hover:opacity-75">wage and payroll module</a> closes this loop automatically.',
+        ],
+      },
+      {
+        subheading: "6. Offboarding",
+        paragraphs: [
+          "Gate access revoked, biometric enrolment deactivated, assets recovered, final settlement computed. Skipped almost universally in manual processes, which is why plants accumulate active credentials for workers who left years ago.",
+        ],
+      },
+      {
+        heading: "Who needs one",
+        paragraphs: [
+          "A CLMS earns its cost when three conditions hold, and most Indian manufacturing plants meet all three:",
+        ],
+        list: [
+          "Contract workers outnumber permanent staff, or form a large enough share that a spreadsheet stops working",
+          "Multiple contractors operate simultaneously, each with their own licence, headcount cap and compliance status",
+          "Compliance is audited — by labour inspectors, by OEM customers, by CVC or CAG in PSU environments, or by the principal employer's own risk function",
+        ],
+      },
+      {
+        paragraphs: [
+          "Automotive, electronics manufacturing, steel, cement, heavy engineering, pharmaceuticals, logistics and infrastructure all sit squarely in that description.",
+        ],
+      },
+      {
+        heading: "What it costs when you don't have one",
+        paragraphs: [
+          "The costs are rarely visible as a line item, which is why they persist:",
+        ],
+        list: [
+          "Ghost workers and proxy attendance — industry estimates put the drain at roughly 3–5% of contractor spend",
+          "Invoice discrepancy — commonly 25–30% of line items before automated matching",
+          "Finance time — 80–120 hours a month reconciling invoices against musters by hand at a mid-sized plant",
+          "Compliance exposure — under CLRA, contractor defaults on wages and statutory dues can fall back on the principal employer",
+          "Audit response — days of reconstruction versus an export, every time an inspector visits",
+        ],
+      },
+      {
+        heading: "What to look for when evaluating",
+        paragraphs: [
+          "Questions that separate a real CLMS from an attendance system with contractor fields:",
+          "<strong>1. Can it block entry, or only report?</strong> Reporting tells you a licence lapsed. Enforcement stops the workers. The gap between the two is where inspection findings live.",
+          "<strong>2. Does it compute payroll from gate data or contractor submissions?</strong> If the contractor's roster is the input, the leakage stays.",
+          "<strong>3. Are registers generated from events, or uploaded?</strong> Most compliance failures are timing failures — records accurate on the day they were compiled and wrong by the day they were needed.",
+          "<strong>4. Does worker identity persist across contractors?</strong> If not, a blocked worker returns next month under a different vendor.",
+          "<strong>5. Does it handle mixed hardware and multiple sites?</strong> Plants buy devices over years from different suppliers. A system that only works with its own hardware forces a rip-and-replace.",
+          "<strong>6. What happens at offboarding?</strong> Ask specifically. It is the most commonly missing function.",
+        ],
+      },
+      {
+        heading: "Where to start",
+        paragraphs: [
+          'If you are assessing whether your current process has gaps, a structured review is more useful than a demo. A <a href="/services/clra-compliance-audit" class="underline font-medium hover:opacity-75">CLRA compliance audit</a> scores registers, licences, records and gate enforceability across your sites and tells you where you actually stand — which is usually narrower and more specific than the fear suggests.',
+        ],
+        ctaLabel: "Request a CLRA compliance audit",
+        ctaHref: "/services/clra-compliance-audit",
+      },
+      {
+        paragraphs: [
+          "<em>This article is general information about contract labour compliance in India and is not legal advice. Specific obligations vary by state and establishment; confirm your position with qualified counsel.</em>",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What does CLMS stand for?",
+        answer:
+          "CLMS stands for Contract Labour Management System — software governing the lifecycle of contract workers at industrial establishments, from onboarding and gate compliance through attendance, statutory registers and contractor payroll.",
+      },
+      {
+        question: "Is a CLMS the same as workforce management software?",
+        answer:
+          "No. Workforce management software typically handles scheduling and time tracking for employees. A CLMS additionally handles contractor licences, CLRA statutory registers, gate-level compliance enforcement, and contractor invoice verification — none of which apply to direct employees.",
+      },
+      {
+        question: "Do we need a CLMS if our contractors maintain their own registers?",
+        answer:
+          "Under CLRA the principal employer carries obligations that cannot be delegated by relying on contractor records. If a contractor's register is incomplete or a statutory payment is missed, the exposure lands on the principal employer regardless of who maintained the paperwork.",
+      },
+      {
+        question: "Can a CLMS work with our existing biometric devices?",
+        answer:
+          "A purpose-built CLMS should integrate with mixed-vendor hardware — face terminals, fingerprint readers, camera-based capture and mobile — rather than requiring a single device brand. Ask for specifics during evaluation.",
+      },
+      {
+        question: "How long does implementation take?",
+        answer:
+          "Where biometric hardware already exists, deployment is largely configuration and data migration. Where gates and devices are being added, hardware installation determines the timeline. The longest step is usually agreeing which compliance rules run as hard blocks versus warnings — a policy decision, not a technical one.",
+      },
+      {
+        question: "What is the difference between CLMS and CLRA compliance software?",
+        answer:
+          "CLRA compliance software is a component of a CLMS — the part that maintains statutory registers, tracks licences and generates returns. A full CLMS also covers onboarding, gate control, attendance, payroll and invoice reconciliation.",
+      },
+    ],
+  },
+  {
     slug: "access-control-trends-2024",
     title: "Top 8 Access Control Technology Trends For 2024 (Updated 2026)",
     description:

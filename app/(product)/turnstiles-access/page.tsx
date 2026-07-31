@@ -90,7 +90,7 @@ const turnstileFaqItems = [
       <>
         Yes — that's the difference between access control and compliance enforcement. Connected to a rules engine, the lane checks induction validity, medical fitness, licence status, and BGV clearance at the moment of entry; a failed check means the arm doesn't turn and the denial is logged with its reason. See{" "}
         <Link 
-          href="/contract-labour-management/modules/gate-compliance" 
+          href="/contract-labour-management/iddion-regx-modules/gate-compliance"
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           gate pass management and auto-blocking
@@ -175,7 +175,6 @@ function CheckIcon({ className }: { className?: string }) {
 }
 
 export default function TurnstilesPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <>

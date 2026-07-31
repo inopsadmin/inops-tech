@@ -199,9 +199,9 @@ const visitorLobbyHighlights = [
 const smartCanteenFaqItems = [
   // CANTEEN (1-7)
   {
-    question: "What is a canteen management system for factories?",
+    question: "What is a canteen and visitor management system for industrial sites?",
     answer:
-      "A canteen management system automates meal entitlement, issuance, and reconciliation in industrial canteens. Instead of coupons and manual registers, entitlement rules follow each worker's shift, contractor, and cost centre; the worker is identified biometrically at the counter; and meal counts roll up automatically into subsidy calculations and contractor billing.",
+      "A canteen and visitor management system combines two gate-adjacent functions: automated meal entitlement and issuance for workers in the industrial canteen, and structured visitor registration, pass issuance, and access control for contractors and guests entering the facility. Both are managed through the same biometric and identity layer — workers are identified at the meal counter, visitors are verified at the gate — eliminating paper-based coupons, manual visitor logs, and the compliance gaps they create.",
   },
   {
     question: "How does biometric meal issuance stop double-claiming and proxy meals?",
@@ -1091,7 +1091,7 @@ export default function CanteenManagementPage() {
         Frequently asked questions
       </h2>
       <p className="mt-4 text-base leading-relaxed text-slate-600">
-        Answers to common questions about digital meal transactions, attendance-linked eligibility, cashless access, and canteen operations.
+        Answers to common questions about industrial canteen management, visitor pass control, biometric meal issuance, attendance-linked eligibility, and access coordination for contractors and guests.
       </p>
     </motion.div>
 

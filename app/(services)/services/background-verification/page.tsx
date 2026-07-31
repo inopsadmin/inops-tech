@@ -1,100 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-
-// ─── FAQ Data ─────────────────────────────────────────────────────────────────
-const faqs = [
-  {
-    q: "What is background verification for contract workers, and who is this service for?",
-    a: "Background verification confirms a worker's identity, criminal record, address, and employment history before deployment to a site. This service is for two buyers: plants verifying incoming contract workers without deploying a platform, and manpower contractors verifying their own bench before bidding. Per-check pricing, bulk upload, no software licence required."
-  },
-  {
-    q: "What checks can we order, and can we choose which ones?",
-    a: "Checks are selected per worker category rather than applied as a fixed package: identity (Aadhaar-based offline verification with consent, PAN, UAN), criminal and court records at current and permanent addresses, address verification (digital or physical), employment history, education and trade certificates, and police verification coordination on the premium tier. A housekeeping worker and a hot-work fitter entering a defence site don't need the same set, and you pay for what the role requires."
-  },
-  {
-    q: "How is it priced?",
-    a: "Per check, with volume rates for bulk batches and package pricing for contractor bench verification. No platform licence and no minimum commitment on the per-check tier; the defence and PSU premium tier is priced on consultation given physical and police verification components."
-  },
-  {
-    q: "How long does a single verification take?",
-    a: "Digital identity and record checks typically return within 48 hours, including for bulk batches. Physical address verification and police verification coordination follow their own timelines, measured in days to weeks depending on jurisdiction. Turnaround is defined per tier."
-  },
-  {
-    q: "Can you verify a few hundred workers at once before a shutdown?",
-    a: "Yes — bulk intake is the normal case, not the exception. Worker details are uploaded in batch, digital checks run in parallel, and cleared workers are released as results return rather than holding the whole batch for the slowest check. This is the difference between verification built for hiring and verification built for industrial mobilisation."
-  },
-  {
-    q: "We're a manpower contractor — can we verify our own workers before a client asks?",
-    a: "Yes, and it's the strongest use of the service. Verify your bench once, present a verified roster in every bid, and deploy without per-client verification delays. Re-attestation replaces re-verification when your workers move between InOps-network sites."
-  },
-  {
-    q: "Does verification have to be repeated at every new site?",
-    a: "No. Because verification attaches to the worker's biometric identity rather than a paper file, a worker verified through InOps carries that verification across sites and contractors in the network — the receiving site sees status, date, and scope, and pays for re-attestation rather than a fresh check. Sensitive sites can still mandate periodic re-verification."
-  },
-  {
-    q: "Do you conduct police verification checks?",
-    a: "Police verification coordination is available for sites that mandate it — typically defence, PSU, and high-security environments — as part of the premium tier. Timelines depend on jurisdiction and local police processes."
-  },
-  {
-    q: "Do you verify workers across multiple states?",
-    a: "Yes. Checks run against both current and permanent addresses across states, which matters for migrant industrial workforces whose records sit in different jurisdictions from where they work."
-  },
-  {
-    q: "What happens if a worker fails a check?",
-    a: (
-      <>
-        The report records the finding with its source; the deployment decision remains yours. Where InOps CLMS is deployed, a worker without clearance can be{" "}
-        <Link 
-          href="/turnstiles-access" 
-          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
-        >
-          blocked at the gate
-        </Link>{" "}
-        automatically, and the block persists across contractors — so a flagged worker cannot re-enter by being re-submitted under a different vendor.
-      </>
-    )
-  },
-  {
-    q: "How accurate are the results, and what are the limits?",
-    a: "Reports reflect results as reported by source records — government databases, court records, previous employers, and field verification — at the time of the check. Verification supports, and does not replace, the employer's deployment decision. Where records are incomplete or unavailable, the report states that rather than returning a false clear."
-  },
-  {
-    q: "Is the process compliant with Indian labour law and data protection?",
-    a: "Verification runs on digital consent captured at intake in the worker's language, before any check is initiated. Reports are access-controlled, retention is policy-configurable, and handling aligns with DPDP Act obligations. Verification supports your statutory due-diligence obligations rather than replacing them."
-  },
-  {
-    q: "How do we get started, and what do you need from us?",
-    a: "A worker list with the checks required per category, submitted in bulk or through the portal. Most plants run their first batch within a week of contracting — there's no implementation project, because there's no platform to deploy."
-  },
-  {
-    q: "Do we need to buy the CLMS platform?",
-    a: (
-      <>
-        No. This is a standalone service. If you later deploy{" "}
-        <Link 
-          href="/contract-labour-management" 
-          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
-        >
-          Iddion RegX
-        </Link>
-        , your verified workers carry over with their verification history intact — and verification becomes a built-in step via the{" "}
-        <Link 
-          href="/services/background-verification" 
-          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
-        >
-          background verification module
-        </Link>
-        .
-      </>
-    )
-  },
-];
+import { bgvFaqItems } from "@/app/lib/bgvFaqItems";
 
 export default function BGVPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [showAllFaqs, setShowAllFaqs] = useState(false); 
 
   return (
     <main className="bg-[#f4f6f8] font-sans">
@@ -271,7 +178,7 @@ export default function BGVPage() {
       n: "04", 
       label: "Deploy", 
       desc: "unverified workers get blocked at gate", 
-      route: "/contract-labour-management/modules/gate-compliance", 
+      route: "/contract-labour-management/iddion-regx-modules/gate-compliance",
       icon: <><circle cx="12" cy="12" r="9" /><path d="M8.5 12.5l2.3 2.3L16 9.5" /></> 
     },
   ].map(({ n, label, desc, icon, route }, i):any => {
@@ -739,47 +646,18 @@ export default function BGVPage() {
 
           {/* Right — accordion */}
           <div className="flex flex-col">
-            {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
-              <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-                <button
-                  className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                >
-                  {q}
-                  <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                </button>
-                {openFaq === i && (
-                  <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
-                    {a}
-                  </div>
-                )}
-              </div>
+            {bgvFaqItems.map((item, i) => (
+              <details key={item.question} className={`group border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+                <summary className="w-full cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150 marker:hidden [&::-webkit-details-marker]:hidden">
+                  {item.question}
+                  <span className="text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
+                  {item.answer}
+                </div>
+              </details>
             ))}
 
-            {/* Show More / Show Less Button */}
-            {faqs.length > 6 && (
-              <button
-                onClick={() => setShowAllFaqs(!showAllFaqs)}
-                className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
-              >
-                {showAllFaqs ? (
-                  <>
-                    Show Less
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    Show All {faqs.length} Questions
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </>
-                )}
-              </button>
-            )}
           </div>
 
         </div>

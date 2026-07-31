@@ -1,5 +1,6 @@
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { bgvFaqItems } from "@/app/lib/bgvFaqItems";
 import type { Metadata } from "next";
 
 const PAGE_TITLE = "Background Verification Services for Contract Workers India | InOps ";
@@ -34,6 +35,7 @@ export default function BGVLayout({ children }: { children: React.ReactNode }) {
         path="/services/background-verification"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
+        faqItems={bgvFaqItems}
       />
       {children}
     </>

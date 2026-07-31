@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BreadcrumbJsonLd from "@/app/components/BreadcrumbJsonLd";
 import BlogPostingJsonLd from "@/app/components/BlogPostingJsonLd";
+import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import HowToJsonLd from "@/app/components/HowToJsonLd";
 import { blogPosts, getBlogPost, getBlogPostHref } from "@/app/lib/blogPosts";
 import { routeMetadata } from "@/app/lib/seoMetadata";
@@ -42,6 +43,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       <BlogPostingJsonLd post={post} />
       <BreadcrumbJsonLd path={`/blog/${post.slug}`} />
       {post.howTo ? <HowToJsonLd {...post.howTo} /> : null}
+      {post.faqs && post.faqs.length > 0 ? <FAQPageJsonLd items={post.faqs} /> : null}
 
       <header className="border-b border-slate-200/80 bg-white px-4 pt-24 pb-10 sm:px-6 lg:px-12">
         <div className="mx-auto max-w-3xl">

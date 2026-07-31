@@ -1,5 +1,6 @@
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { biometricAmcFaqItems } from "@/app/lib/biometricAmcFaqItems";
 import type { Metadata } from "next";
 
 const PAGE_TITLE = "Biometric AMC Services India | Attendance & Access Control Device AMC — InOps";
@@ -30,9 +31,10 @@ export default function BiometricLayout({ children }: { children: React.ReactNod
   return (
     <>
       <SolutionSchemaInjector
-        path="/services/biometric"
+        path="/services/biometric-amc"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
+        faqItems={biometricAmcFaqItems}
       />
       {children}
     </>

@@ -1,5 +1,6 @@
 import ProductSchemaInjector from "@/app/components/ProductSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { turnstilesFaqItems } from "@/app/lib/turnstilesFaqItems";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
@@ -18,7 +19,7 @@ export const metadata: Metadata = routeMetadata({
 export default function TurnstilesLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <ProductSchemaInjector path="/turnstiles" />
+      <ProductSchemaInjector path="/turnstiles-access" faqItems={turnstilesFaqItems} />
       {children}
     </>
   );

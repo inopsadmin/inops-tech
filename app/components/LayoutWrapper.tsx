@@ -2,10 +2,10 @@
 
 import dynamic from "next/dynamic";
 import SmoothScroll from "./SmoothScroll";
+import ScrollRevealEnhancer from "./ScrollRevealEnhancer";
 import Navbar from "./Navbar";
 
 const Footer = dynamic(() => import("./Footer"), { ssr: true });
-const ScrollRevealEnhancer = dynamic(() => import("./ScrollRevealEnhancer"), { ssr: false });
 
 interface LayoutWrapperProps {
   children: React.ReactNode;

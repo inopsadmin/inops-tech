@@ -1,79 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-
-const faqs = [
-  {
-    q: "What is a CLRA compliance audit?",
-    a:
-      "A CLRA compliance audit reviews a principal employer's contract labour operations against the Contract Labour (Regulation & Abolition) Act and applicable state rules: contractor licences and headcount caps, statutory registers, wage and attendance records, statutory remittance evidence, and welfare obligations. It produces a scored gap report with prioritised remediation, not just a list of findings.",
-  },
-  {
-    q: "What does the audit actually cover?",
-    a:
-      "Contractor licence validity and cap headroom per establishment; Form V and Form XIII register completeness; wage records and minimum-wage compliance; attendance and OT records; PF/ESI remittance evidence from contractors; welfare facility obligations; and whether gate-level controls can actually enforce what your policy claims. Gaps are ranked by exposure, not listed alphabetically.",
-  },
-  {
-    q: "Who is responsible when a contractor doesn't comply — us or them?",
-    a:
-      "Both, but the exposure lands differently. Under CLRA the principal employer carries responsibility for ensuring contractors meet obligations and can be liable for defaults such as unpaid wages or statutory dues. That asymmetry is why the audit maps every obligation to an owner — it's usually the single most useful output for a plant that has never separated the two.",
-  },
-  {
-    q: "How long does an assessment take?",
-    a:
-      "Site assessment and documentation review typically complete in days rather than weeks, with duration scaling by site count, contractor count, and how much documentation is retrievable. Multi-site engagements run site-by-site with a consolidated scorecard at the end.",
-  },
-  {
-    q: "Do you help fix the gaps you find?",
-    a: (
-      <>
-        Yes. The report prioritises remediation by risk, and where gaps are structural — registers reconstructed monthly instead of maintained live, licences tracked in spreadsheets, no gate-level enforcement — remediation may mean process or system change rather than paperwork. Those recommendations map to{" "}
-        <Link 
-          href="/services/clra-compliance-audit" 
-          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
-        >
-          CLRA compliance software
-        </Link>{" "}
-        capabilities where automation is the fix.
-      </>
-    ),
-  },
-  {
-    q: "Is this useful ahead of a labour department inspection?",
-    a:
-      "That's the common trigger. The audit surfaces what an inspector would find, in the same order they'd find it, while you still have time to close it. For PSU and defence sites facing CVC or CAG-style scrutiny, the certified report also documents that due diligence was performed.",
-  },
-  {
-    q: "Will you tell us we need to buy your software?",
-    a:
-      "Not necessarily. Many findings are process and documentation issues fixable without any system. The audit's job is to tell you where you stand — where automation is genuinely the a, the report says so and explains why; where it isn't, it doesn't.",
-  },
-  {
-    q: "What's the difference between this and our internal compliance review?",
-    a:
-      "Internal reviews check whether documents exist. This checks whether the documents are current, whether they reconcile against actual attendance and wage data, and whether the controls they describe are enforceable at the gate. Most failures we find aren't missing paperwork — they're timing failures, where records are reconstructed after the fact rather than maintained as events happen.",
-  },
-  {
-    q: "Do you audit our contractors directly?",
-    a:
-      "The audit reviews contractor documentation and compliance evidence as held and required by you as principal employer. Direct contractor engagement — collecting missing licences, remittance proofs, or registers — can be included in scope where you want the gaps closed rather than just identified.",
-  },
-  {
-    q: "Is the audit report legal advice?",
-    a:
-      "No. The audit assesses compliance posture against statutory requirements and industry practice, and is intended to support your legal and compliance teams' decisions rather than replace them. Specific legal positions should be confirmed with counsel.",
-  },
-  {
-    q: "How often should a compliance audit run?",
-    a:
-      "Annually as a baseline, plus after any material change — a new contractor, a site expansion, a shutdown with surge workforce, or a change in state rules. Sites running automated registers need it less often, because the underlying records stay current by design rather than by effort.",
-  },
-] as const;
+import { clraComplianceAuditFaqItems } from "@/app/lib/clraComplianceAuditFaqItems";
 
 export default function CLRAComplianceAuditPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-   const [showAllFaqs, setShowAllFaqs] = useState(false);
 
   return (
     <main className="bg-[#f4f6f8] font-sans">
@@ -593,47 +521,16 @@ export default function CLRAComplianceAuditPage() {
 
       {/* Right — accordion */}
       <div className="flex flex-col">
-        {(showAllFaqs ? faqs : faqs.slice(0, 6)).map(({ q, a }, i) => (
-          <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-            <button
-              className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-              onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              aria-expanded={openFaq === i}
-            >
-              {q}
-              <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-            </button>
-            {openFaq === i && (
-              <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">
-                {a}
-              </div>
-            )}
-          </div>
+        {clraComplianceAuditFaqItems.map((item, i) => (
+          <details key={item.question} className={`group border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+            <summary className="w-full cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150 marker:hidden [&::-webkit-details-marker]:hidden">
+              {item.question}
+              <span className="text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 group-open:rotate-45">+</span>
+            </summary>
+            <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{item.answer}</div>
+          </details>
         ))}
 
-        {/* Show More / Show Less Button */}
-        {faqs.length > 6 && (
-          <button
-            onClick={() => setShowAllFaqs(!showAllFaqs)}
-            className="mt-4 text-[14px] font-semibold text-[#1c7bb8] hover:text-[#1362a8] transition-colors duration-200 flex items-center gap-2 self-start"
-          >
-            {showAllFaqs ? (
-              <>
-                Show Less
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M18 15l-6-6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </>
-            ) : (
-              <>
-                Show All {faqs.length} Questions
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </>
-            )}
-          </button>
-        )}
       </div>
 
     </div>

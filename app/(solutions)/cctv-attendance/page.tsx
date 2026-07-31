@@ -1473,7 +1473,7 @@ export default function TimeAndAttendancePage() {
           </div>
         </section>
 
-        <section aria-labelledby="cctv-surveillance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+        <section aria-labelledby="cctv-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -1482,14 +1482,11 @@ export default function TimeAndAttendancePage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase }}
             >
-              {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
-                CCTV Surveillance FAQ
-              </span> */}
-              <h2 id="cctv-surveillance-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+              <h2 id="cctv-attendance-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
                 Frequently asked questions
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
-                Answers to common questions about CCTV security, facial recognition integration, remote monitoring, industry use, and footage retention.
+                Answers to common questions about CCTV-based attendance, camera accuracy in factory conditions, contract labour billing, CLRA register validity, and deployment timelines.
               </p>
             </motion.div>
 

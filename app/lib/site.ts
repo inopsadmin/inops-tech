@@ -91,29 +91,32 @@ export const KEYWORDS_BRAND = ["InOps", "InOps Solutions"] as const;
 
 export const KEYWORDS_BASE = [
   ...KEYWORDS_BRAND,
-  // Tier 1 — pillar keywords every page should carry
+  // Broadly applicable to all pages
+  "biometric attendance system",
+  "biometric attendance system manufacturing",
+  "workforce management India",
+  "access control systems",
+  "industrial attendance",
+  "payroll compliance India",
+  // Geo
+  "Bommasandra Industrial Area",
+  "Bengaluru workforce software",
+  "Karnataka enterprise software",
+] as const;
+
+/**
+ * CLMS-specific keywords — add via extraKeywords in CLMS-related layouts only.
+ * Removed from KEYWORDS_BASE so they don't appear on unrelated pages (biometrics, accessories, etc.).
+ */
+export const KEYWORDS_CLMS = [
   "CLMS software",
   "contract labour management software India",
   "contract labour management system",
   "contract labor management India",
   "contractor compliance software India",
-  // Tier 2 — product and compliance cluster
   "CLRA compliance software",
-  "biometric attendance system",
-  "biometric attendance system manufacturing",
-  "workforce management India",
   "PF ESI compliance software",
   "contractor payroll automation India",
-  // Supporting
-  "access control systems",
-  "turnstiles India",
-  "visitor management system",
-  "canteen management system",
-  "payroll compliance India",
-  "industrial attendance",
-  "Bommasandra Industrial Area",
-  "Bengaluru workforce software",
-  "Karnataka enterprise software",
 ] as const;
 
 /**

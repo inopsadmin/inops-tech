@@ -478,39 +478,39 @@ faq: [
       "Government identity databases, court and criminal record databases, EPFO records for employment history, and field verification for physical address checks. Each result carries its source and date, so a report can be assessed on what was actually checked rather than a single pass/fail flag.",
   },
   {
-    question: "What happens if a check returns an adverse finding?",
+    question: "How does a verified status translate to gate access?",
     answer:
-      "The finding is recorded with its source; the deployment decision remains yours. A worker flagged for a serious finding can be blocked across every site in your deployment, and because the block attaches to biometric identity, resubmission by a different contractor doesn't bypass it.",
+      "Once a worker's background check clears, Iddion RegX writes the result to their biometric identity record — the same identity the gate terminal reads at every entry. A cleared worker enters; a pending or adverse worker is blocked at the barrier without any manual security check. The gate acts on live status, not on a report someone remembered to look at.",
   },
   {
-    question: "What if records are incomplete or unavailable?",
+    question: "What does 'unable to verify' mean for a worker's gate status?",
     answer:
-      "The report says so rather than returning a false clear — common for migrant workers with limited documentation history. Iddion RegX distinguishes 'verified clear,' 'unable to verify,' and 'adverse finding,' because treating the middle case as clean is how unverified workers reach the gate.",
+      "A record that returns 'unable to verify' is held as pending rather than cleared — the worker's gate pass is not activated until the outstanding item resolves or a manager permits entry under an overridden status with a recorded reason. The system distinguishes all three outcomes — clear, adverse, unable to verify — so security is never making a judgement call on an ambiguous result.",
   },
   {
-    question: "Does verification expire?",
+    question: "How does re-verification work when a check expires?",
     answer:
-      "Results reflect records as of the check date. Sensitive sites — defence, PSU, high-security — typically mandate periodic re-verification, which can be scheduled per worker category with expiry driving the same gate enforcement as a lapsed medical.",
+      "Re-verification schedules are configured per worker category and trigger automatically. When a check nears expiry, Iddion RegX alerts and starts the re-verification workflow. If the check expires before a new result returns, gate access is suspended automatically — the same enforcement mechanism as an expired medical clearance.",
   },
   {
     question: "How does verification status control site access?",
     answer:
-      "BGV status is a blocking rule in gate compliance: pending or expired means no entry, checked at the barrier rather than in a monthly report.",
+      "BGV status is a live gate rule: pending or expired means no entry, enforced at the barrier rather than tracked in a monthly report. Status changes take effect at the next gate attempt without any manual update to security.",
   },
   {
     question: "Can we set different verification requirements by role or site?",
     answer:
-      "Yes. A housekeeping worker, a hot-work fitter, and a worker entering a defence establishment carry different requirement sets, configured per category and site rather than applied uniformly.",
+      "Yes. A housekeeping worker, a hot-work fitter, and a worker entering a defence establishment carry different requirement sets, configured per category and site. Required checks are hard blocks; informational checks log findings without stopping deployment.",
   },
   {
     question: "How does this relate to InOps standalone BGV service?",
     answer:
-      "This module is verification built into the platform. If you want checks without deploying CLMS — per-check pricing, bulk upload, contractor bench packages — see background verification services.",
+      "This module is verification built into the platform — checks run automatically as part of onboarding and results enforce gate rules without a separate process. If you need checks without deploying the full CLMS — per-check pricing, bulk upload, contractor bench packages — see background verification services.",
   },
   {
-    question: "Where does verification sit in the onboarding flow?",
+    question: "Can verification run in parallel with other onboarding steps?",
     answer:
-      "It runs in parallel with medical fitness and induction during contractor onboarding, which is what compresses the timeline. This module covers what's checked; the onboarding module covers the flow around it.",
+      "Yes — running verification concurrently with medical fitness and induction is how Iddion RegX compresses onboarding from days to hours. Workers are cleared as results return rather than waiting for all steps to complete sequentially. See the onboarding module for how the parallel steps are managed end to end.",
   },
 ],
 
@@ -1626,7 +1626,7 @@ faq: [
   {
     question: "What about visitors, drivers, and vehicles?",
     answer:
-      "Visitor passes issued through visitor management run on the same lanes and rules engine with their own zone permissions and host approval. Vehicle access is handled separately through barriers and ANPR. (Confirm vehicle capability before publishing.)",
+      "Visitor passes issued through visitor management run on the same lanes and rules engine with their own zone permissions and host approval. Vehicle access is handled separately through barriers and ANPR.",
   },
   {
     question: "How long does it take to deploy at an existing plant?",

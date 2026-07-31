@@ -3,22 +3,27 @@ import { absoluteUrl, getSiteUrl } from "@/app/lib/site";
 
 type BreadcrumbItem = { name: string; path: string };
 
+type FaqEntry = { question: string; answer: string };
+
 type Props = {
   path: string;
   title: string;
   description: string;
   breadcrumbs?: BreadcrumbItem[];
+  faqItems?: FaqEntry[];
 };
 
 /**
- * WebPage + BreadcrumbList for inner routes — signals hierarchy under the root WebSite
- * (supports grouped sitelinks vs. separate brand SERP listings).
+ * WebPage + BreadcrumbList (+ optional FAQPage) for inner routes.
+ * All entities share one @graph so only one <script> tag is emitted —
+ * avoiding Next.js App Router inline-script deduplication stripping FAQPage.
  */
 export default function SecondaryPageJsonLd({
   path,
   title,
   description,
   breadcrumbs,
+  faqItems,
 }: Props) {
   const siteUrl = getSiteUrl();
   const pageUrl = absoluteUrl(path);
@@ -49,6 +54,18 @@ export default function SecondaryPageJsonLd({
       })),
     },
   ];
+
+  if (faqItems && faqItems.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faqpage`,
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    });
+  }
 
   return <script {...jsonLdScriptProps({ "@context": "https://schema.org", "@graph": graph })} />;
 }

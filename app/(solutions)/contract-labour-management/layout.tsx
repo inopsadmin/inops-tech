@@ -2,6 +2,7 @@
 import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import { clmsFaqItems } from "@/app/lib/clmsFaqItems";
+import { KEYWORDS_CLMS } from "@/app/lib/site";
 import type { Metadata } from "next";
 
 const PAGE_TITLE = "Contract Labour Management System (CLMS) | Payroll, PF/ESI & Attendance — InOps";
@@ -13,14 +14,14 @@ export const metadata: Metadata = routeMetadata({
   description: PAGE_DESCRIPTION,
   path: "/contract-labour-management",
   extraKeywords: [
-    "CLMS software",
-    "contract labour management system",
-    "contract labour management software India",
-    "CLRA compliance software",
+    ...KEYWORDS_CLMS,
     "biometric attendance CLMS",
     "contractor payroll",
     "Form V Form XIII",
     "multi-site contractor management",
+    "turnstiles India",
+    "visitor management system",
+    "canteen management system",
   ],
 });
 

@@ -1,30 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-
-// ─── FAQ Data ─────────────────────────────────────────────────────────────────
-const faqs = [
-  {
-    q: "How long does a single verification take?",
-    a: "Most checks complete within 48 hours; complex or multi-location checks may take slightly longer depending on record availability.",
-  },
-  {
-    q: "Do you conduct police verification checks?",
-    a: "Yes, police verification is included as part of our identity verification and pre-employment screening workflow, alongside criminal, education and address checks.",
-  },
-  {
-    q: "Is the process compliant with Indian labour law?",
-    a: "Verification workflows are structured to align with statutory contractor and principal-employer obligations.",
-  },
-  {
-    q: "Do you verify workers across multiple states?",
-    a: "Yes, as an industrial background verification we run checks pan-India across identity, address, employment and education records.",
-  },
-];
+import { bgvServiceFaqItems } from "@/app/lib/bgvServiceFaqItems";
 
 export default function BGVPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <main className="bg-[#f4f6f8] font-sans">
@@ -527,21 +504,16 @@ export default function BGVPage() {
 
             {/* Right — accordion */}
             <div className="flex flex-col">
-              {faqs.map(({ q, a }, i) => (
-                <div key={i} className={`border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
-                  <button
-                    className="w-full bg-transparent border-none cursor-pointer flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150"
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                  >
-                    {q}
-                    <span className={`text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                  </button>
-                  {openFaq === i && (
-                    <p className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{a}</p>
-                  )}
-                </div>
+              {bgvServiceFaqItems.map((item, i) => (
+                <details key={item.question} className={`group border-b border-[#eef1f4] ${i === 0 ? "border-t" : ""}`}>
+                  <summary className="w-full cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-[15px] font-semibold text-[#0b1e2d] text-left hover:text-[#1c7bb8] transition-colors duration-150 marker:hidden [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                    <span className="text-[22px] font-light text-[#1c7bb8] flex-shrink-0 leading-none transition-transform duration-200 group-open:rotate-45">+</span>
+                  </summary>
+                  <div className="text-[13.5px] leading-[1.7] text-[#6b7b8c] pb-5">{item.answer}</div>
+                </details>
               ))}
+
             </div>
 
           </div>

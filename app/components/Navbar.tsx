@@ -199,29 +199,31 @@ export default function Navbar() {
                   onMouseEnter={() => setOpenDropdown(item.label)}
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <motion.button
-                    type="button"
+                  <div
                     id="nav-services-menu-button"
-                    className={`relative flex items-center gap-1 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors xl:px-[1.125rem] xl:py-2.5 xl:text-[1.03rem] 2xl:px-5 2xl:py-3 2xl:text-[1.08rem] ${
+                    className={`relative flex items-center gap-0.5 px-4 py-2.5 text-base font-medium tracking-wide rounded-lg transition-colors xl:px-[1.125rem] xl:py-2.5 xl:text-[1.03rem] 2xl:px-5 2xl:py-3 2xl:text-[1.08rem] ${
                       scrolled ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100" : "text-white hover:text-white/90 hover:bg-white/10"
                     }`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
                     aria-expanded={openDropdown === "Services"}
                     aria-haspopup="true"
                     aria-controls={SERVICES_MENU_PANEL_ID}
                   >
-                    {item.label}
-                    <motion.span
+                    <Link href="/services" className="no-underline text-inherit font-medium pr-1">
+                      {item.label}
+                    </Link>
+                    <motion.button
+                      type="button"
+                      className="flex items-center p-0.5 rounded"
                       animate={{ rotate: openDropdown === item.label ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                       aria-hidden
+                      onClick={(e) => { e.stopPropagation(); setOpenDropdown(openDropdown === item.label ? null : item.label); }}
                     >
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
-                    </motion.span>
-                  </motion.button>
+                    </motion.button>
+                  </div>
 
                   <AnimatePresence>
                     {openDropdown === item.label ? (
@@ -478,20 +480,28 @@ export default function Navbar() {
                       const isOpen = mobileSection === item.label;
                       return (
                         <div key={item.label} className="rounded-xl border border-gray-200 bg-white shadow-sm">
-                          <button
-                            type="button"
-                            className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800"
-                            aria-expanded={isOpen}
-                            aria-controls="mobile-services-mega-panel"
-                            onClick={() => setMobileSection((prev) => (prev === item.label ? null : item.label))}
-                          >
-                            <span>{item.label}</span>
-                            <span className={`text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden>
-                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                              </svg>
-                            </span>
-                          </button>
+                          <div className="flex w-full items-center justify-between px-4 py-3">
+                            <Link
+                              href="/services"
+                              className="text-sm font-semibold text-gray-800 no-underline flex-1"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              type="button"
+                              className="p-1 text-gray-500"
+                              aria-expanded={isOpen}
+                              aria-controls="mobile-services-mega-panel"
+                              onClick={() => setMobileSection((prev) => (prev === item.label ? null : item.label))}
+                            >
+                              <span className={`block transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden>
+                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </span>
+                            </button>
+                          </div>
                           <AnimatePresence initial={false}>
                             {isOpen && (
                               <motion.div
