@@ -52,8 +52,8 @@ export const blogPosts: BlogPost[] = [
       "A contract labour management system governs the full contractor workforce lifecycle — onboarding, gate compliance, attendance, CLRA registers and contractor payroll. Here's what it does, who needs one, and how it differs from HRMS.",
     author: "Satish Sinha",
     personAuthor: true,
-    date: "July 31, 2026",
-    dateIso: "2026-07-31",
+    date: "August 3, 2026",
+    dateIso: "2026-08-03",
     category: "CLMS",
     readMinutes: 8,
     image:
@@ -205,7 +205,166 @@ export const blogPosts: BlogPost[] = [
       {
         question: "What is the difference between CLMS and CLRA compliance software?",
         answer:
-          "CLRA compliance software is a component of a CLMS — the part that maintains statutory registers, tracks licences and generates returns. A full CLMS also covers onboarding, gate control, attendance, payroll and invoice reconciliation.",
+          'CLRA compliance software is a component of a CLMS — the part that maintains statutory registers, tracks licences and generates returns. A full CLMS also covers onboarding, gate control, attendance, payroll and invoice reconciliation. See our <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="underline font-medium hover:opacity-75">CLRA compliance module</a>.',
+      },
+    ],
+  },
+  {
+    slug: "factory-gate-entry-rules-contract-workers",
+    title: "Factory Gate Entry Rules for Contract Workers: The 19 Checks That Should Run Before Anyone Walks In",
+    description:
+      "Most factory gates check identity. Compliance requires checking nineteen things — licence validity, headcount caps, induction currency, medical fitness, shift windows and more. Here is the full list, and how to score your own gate.",
+    author: "Satish Sinha",
+    personAuthor: true,
+    date: "August 3, 2026",
+    dateIso: "2026-08-03",
+    category: "Gate Compliance",
+    readMinutes: 9,
+    image:
+      "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Industrial factory gate with turnstile and access control reader — replace with a real plant gate photograph before publishing",
+    summary:
+      "A gate that checks identity alone will admit a correctly-identified worker whose contractor's licence lapsed three weeks ago. Compliance requires nineteen checks — statutory, safety, deployment, and integrity. Here is the full list and how to score your own gate.",
+    sections: [
+      {
+        paragraphs: [
+          'Most factory gates answer one question: is this person who they claim to be? Identity, verified by a card, a fingerprint or a face.',
+          'Compliance requires answering nineteen. Whether the contractor supplying this worker holds a valid licence. Whether the establishment is within its permitted headcount. Whether this worker\'s safety induction is still current. Whether their medical fitness certificate has expired. Whether they are cleared for the zone they are heading to, on the shift they are entering, on a day they are legally permitted to work.',
+          'A gate that checks identity alone will admit a correctly-identified worker whose contractor\'s licence lapsed three weeks ago. That is not an attendance problem. It is a compliance failure that an inspector will find in your own records, because your gate created the evidence. This is the compliance layer a purpose-built <a href="/contract-labour-management" class="underline font-medium hover:opacity-75">contract labour management system</a> enforces at the barrier — before entry, not after audit.',
+          'Below is the full set of checks, grouped by what they protect. Score your own gate against them: for each, ask whether it happens automatically at entry, manually sometimes, or not at all.',
+        ],
+      },
+      {
+        heading: "Family 1 — Statutory checks (CLRA and Factories Act)",
+        paragraphs: [
+          "These protect against the compliance findings that carry penalties and, in serious cases, prosecution.",
+          '<strong>1. Contractor licence validity.</strong> Is the contractor\'s CLRA licence current on the date of entry? A lapsed licence means every worker they deploy is unlicensed labour on your premises. The <a href="/contract-labour-management/iddion-regx-modules/contractor-management" class="underline font-medium hover:opacity-75">contractor management module</a> tracks licence expiry and flags approaching renewals before they become a gate event.',
+          "<strong>2. Establishment headcount cap.</strong> The licence permits a maximum number of workers. Is this entry within it? Most plants discover a breach only when an inspector counts.",
+          "<strong>3. Form V registration currency.</strong> Is the contractor properly registered against your establishment for the work being performed?",
+          '<strong>4. Continuous attendance threshold.</strong> Has this worker attended continuously without a weekly off? See <a href="/blog/9-day-continuous-attendance-clra-risk-india" class="underline font-medium hover:opacity-75">the 9-day continuous attendance rule</a> for why this specific count creates liability.',
+          "<strong>5. Work order validity.</strong> Is the worker being deployed against a live work order, or one that closed last month?",
+          "<strong>6. Statutory age verification.</strong> Is the worker above the legal minimum age for the work and the establishment?",
+        ],
+      },
+      {
+        heading: "Family 2 — Safety checks",
+        paragraphs: [
+          "These protect people. They are also the family most often absent entirely, and the one an HSE head will react to first.",
+          "<strong>7. Safety induction completion.</strong> Has this worker completed site induction? Not \"has induction been conducted\" — has <em>this individual</em> completed it, with a record.",
+          "<strong>8. Induction validity period.</strong> Inductions expire. Is this one still within its refresh window?",
+          "<strong>9. Medical fitness certificate.</strong> Is a current fitness certificate on file for the work being performed?",
+          "<strong>10. Job-specific certification.</strong> Hot work, confined space, working at height, electrical work — does this worker hold the certification the task requires?",
+          "<strong>11. PPE issuance record.</strong> Has the worker been issued the protective equipment their zone requires?",
+          "<em>As one HSE head put it: if a non-inducted person can walk past the gate, the induction is documentation, not a control.</em>",
+        ],
+      },
+      {
+        heading: "Family 3 — Shift and deployment checks",
+        paragraphs: [
+          "These protect operational integrity and prevent the quiet accumulation of unauthorised time.",
+          "<strong>12. Shift window.</strong> Is the worker entering during their rostered shift, or three hours early?",
+          "<strong>13. Zone authorisation.</strong> Is this worker cleared for the area they are heading into? A housekeeping worker in a hot-work zone is a safety incident waiting for its trigger.",
+          "<strong>14. Site authorisation.</strong> Multi-plant employers: is this worker authorised for <em>this</em> site, or another one?",
+          "<strong>15. Overtime pre-approval.</strong> If entry extends beyond permitted hours, has the overtime been approved before it starts accruing?",
+        ],
+      },
+      {
+        heading: "Family 4 — Identity and integrity checks",
+        paragraphs: [
+          "These protect against the fraud that quietly drains contractor spend.",
+          '<strong>16. Background verification status.</strong> Is BGV cleared, pending, or expired? At defence and PSU sites this is a precondition, not a preference. The <a href="/contract-labour-management/iddion-regx-modules/background-verification" class="underline font-medium hover:opacity-75">background verification module</a> holds this status per worker and surfaces it at the gate.',
+          "<strong>17. Blacklist status.</strong> Has this worker been blocked for a safety violation or security incident? Critically — does that block survive the worker being resubmitted by a different contractor next month?",
+          "<strong>18. Duplicate identity detection.</strong> Is the same person enrolled twice under different worker IDs, drawing two sets of wages?",
+          "<strong>19. Biometric match confidence.</strong> Did the reader actually match this worker, or accept a low-confidence read at a crowded shift change?",
+        ],
+      },
+      {
+        heading: "Score your own gate",
+        paragraphs: [
+          "Run through the nineteen. For each, mark:",
+        ],
+        list: [
+          "A — checked automatically at entry, entry refused on failure",
+          "M — checked manually, sometimes, by a person who may or may not be at the gate today",
+          "N — not checked",
+        ],
+      },
+      {
+        paragraphs: [
+          "Most plants score A on one to three of nineteen: identity, sometimes shift window, occasionally licence validity. The rest sit in M or N — which means they are policies rather than controls.",
+          "The distinction matters because an inspector does not ask whether you have a policy. They ask for evidence it was applied to a specific worker on a specific day.",
+        ],
+      },
+      {
+        heading: "Hard, soft, and override — why this is deployable",
+        paragraphs: [
+          "The objection to gate-level enforcement is always the same, and it is a fair one: <em>we cannot stop production because someone's medical certificate expired at 6am.</em>",
+          "Which is why rules should not run as a single mode. In practice a workable configuration has three:",
+        ],
+        list: [
+          "Hard block — entry refused outright, no override. Typically statutory checks and critical safety items: lapsed licence, missing induction, expired hot-work certification.",
+          "Soft warn — entry proceeds, the exception is logged and escalated for follow-up. Typically documentation gaps that don't create immediate risk.",
+          "Supervisor override — a named authoriser permits entry with a recorded reason and timestamp. The override itself becomes the audit record.",
+        ],
+      },
+      {
+        paragraphs: [
+          "The third mode is what makes the system survivable in a real plant, and it produces something paper never does: a log of every exception, who authorised it, and why. During an audit, that log is often more valuable than the entry record.",
+        ],
+      },
+      {
+        heading: "What a rejection record is worth",
+        paragraphs: [
+          "The counterintuitive part: for compliance purposes, <strong>the denials matter more than the entries.</strong>",
+          "An entry log proves people came to work. A denial log — worker, contractor, gate, timestamp, the specific rule that failed, any override and its authoriser — proves the control was operating. It demonstrates that when a lapsed licence appeared, the system caught it. That is the evidence an inspector, an OEM auditor, or a CVC review is actually looking for.",
+          "Plants that run gate compliance properly find the denial rate drops sharply within the first few weeks — not because the rules relaxed, but because contractors start arriving compliant once they discover the gate is checking.",
+        ],
+      },
+      {
+        heading: "Where the checks come from",
+        paragraphs: [
+          'Everything above runs on data the plant already has — contractor licences, induction records, medical certificates, verification status — but which normally sits in files nobody consults at 6am when 800 workers arrive in twenty minutes. Automated gate compliance is not new information. It is the existing information, applied at the moment it matters.',
+          'If you want to know how your current gate scores, a <a href="/services/clra-compliance-audit" class="underline font-medium hover:opacity-75">CLRA compliance audit</a> includes gate enforceability as one of its assessment areas — not just whether the records exist, but whether they can stop anyone.',
+        ],
+        ctaLabel: "Request a CLRA compliance audit",
+        ctaHref: "/services/clra-compliance-audit",
+      },
+      {
+        paragraphs: [
+          "<em>This article is general information about contract labour compliance in India and is not legal advice. Requirements vary by state, industry and establishment; confirm your obligations with qualified counsel.</em>",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are the legal requirements for contract worker entry to a factory?",
+        answer:
+          "Under CLRA and the Factories Act, a principal employer must ensure contract workers are supplied by a licensed contractor within the permitted headcount, are within statutory working-hours and weekly-rest provisions, and meet the establishment's safety requirements including induction and medical fitness where applicable. Specific requirements vary by state and industry.",
+      },
+      {
+        question: "Can a factory refuse entry to a contractor's worker?",
+        answer:
+          "Yes. A principal employer controls access to their own premises and can refuse entry where compliance requirements are unmet. Refusal grounds and escalation should be defined in the contractor agreement so refusals are contractual rather than disputed.",
+      },
+      {
+        question: "What is a gate pass system for contract workers?",
+        answer:
+          "A gate pass system issues and enforces digital entry authorisation tied to a worker's identity, contractor, permitted zones and shift window. Unlike a paper pass, it can be validated against live compliance data at the moment of entry.",
+      },
+      {
+        question: "Do we need turnstiles to enforce gate rules?",
+        answer:
+          "No, though they help. With turnstiles or flap barriers enforcement is physical — the arm does not turn. Without them, the terminal denies and alerts security, which works where a guard controls the gate. The rules engine is the same either way.",
+      },
+      {
+        question: "How do PSU and defence tender requirements differ?",
+        answer:
+          "They typically mandate prerequisites explicitly — training completed before gate pass issuance, background verification before first entry, periodic re-verification. The requirement is not just to have the process but to evidence it per worker, which is why automated enforcement is increasingly the practical route to compliance.",
+      },
+      {
+        question: "What happens if a worker is blocked at the gate?",
+        answer:
+          "The entry is refused and logged with its reason. Because no entry record is created, no attendance record follows, and the hours never reach contractor payroll — which closes the gap where non-compliant deployment quietly becomes a paid invoice line.",
       },
     ],
   },
