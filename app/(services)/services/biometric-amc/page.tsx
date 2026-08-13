@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { biometricAmcFaqItems } from "@/app/lib/biometricAmcFaqItems";
+import AmcContactForm from "./AmcContactForm";
 
 export default function BiometricPage() {
 
@@ -38,38 +39,9 @@ export default function BiometricPage() {
             </div>
           </div>
 
-          {/* Card */}
+          {/* Contact Form Card */}
           <div className="relative flex justify-center items-center min-h-[580px] mt-12 lg:mt-0">
-            <div className="w-full max-w-[540px] bg-white/[0.08] backdrop-blur-xl border border-white/[0.18] rounded-3xl p-9 shadow-[0_30px_60px_rgba(4,20,36,0.35)]">
-              <div className="flex items-center justify-between mb-1">
-                <div className="w-[34px] h-[34px] rounded-[9px] bg-white/[0.15] flex items-center justify-center">
-                  <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" />
-                  </svg>
-                </div>
-                <div className="flex items-center gap-[6px] text-[11px] font-semibold text-[#baf3d1] bg-[rgba(127,224,176,0.15)] border border-[rgba(127,224,176,0.3)] py-1 px-[10px] rounded-full">
-                  <span className="w-[5px] h-[5px] rounded-full bg-[#7fe0b0]" />
-                  Live Status
-                </div>
-              </div>
-              <div className="text-[11px] tracking-[0.06em] uppercase text-white/55 mt-4 font-semibold">AMC · Operations Panel</div>
-              <div className="text-[26px] font-bold text-white mt-[6px] mb-[26px]">Fleet &amp; Workforce Overview</div>
-              <div className="flex items-end gap-3 h-[120px] mb-7 px-[2px]">
-                {[45, 65, 50, 80, 60, 90, 55].map((h, i) => (
-                  <div key={i} className="w-[18px] flex-shrink-0 bg-gradient-to-b from-white/85 to-white/35 rounded-t" style={{ height: `${h}%` }} />
-                ))}
-              </div>
-              <div className="flex flex-col gap-3 mb-2">
-                {["Preventive & Corrective Maintenance", "Remote Diagnostics", "On-site Engineer Support"].map((label) => (
-                  <div key={label} className="flex items-center gap-[10px] text-[13px] text-white font-medium">
-                    <span className="w-5 h-5 rounded-full bg-[rgba(127,224,176,0.2)] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-[11px] h-[11px]" viewBox="0 0 24 24" fill="none" stroke="#7fe0b0" strokeWidth="3"><path d="M4 12l5 5L20 6" /></svg>
-                    </span>
-                    {label}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <AmcContactForm />
 
             {/* Float badges */}
             <div className="absolute bg-[#0b2438] text-white rounded-xl py-3 px-4 shadow-[0_20px_40px_rgba(4,20,36,0.4)] text-left" style={{ top: -14, right: -10 }}>

@@ -13,6 +13,7 @@ import {
   siteIconUrl,
 } from "@/app/lib/site";
 import LayoutWrapper from "./components/LayoutWrapper";
+import FloatingActions from "./components/FloatingActions";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -136,6 +137,7 @@ export default function RootLayout({
       >
         <OrganizationJsonLd />
         <LayoutWrapper>{children}</LayoutWrapper>
+        <FloatingActions />
       </body>
     </html>
   );
