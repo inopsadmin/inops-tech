@@ -56,7 +56,7 @@ export default function AmcContactForm() {
     setErrors(validate(fields));
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const allTouched = { fullName: true, businessEmail: true, phone: true, message: true };
     setTouched(allTouched);
@@ -66,20 +66,52 @@ export default function AmcContactForm() {
 
     setSubmitting(true);
 
-    const text = [
-      `👋 *New AMC Enquiry*`,
-      ``,
-      `*Name:* ${fields.fullName}`,
-      `*Email:* ${fields.businessEmail}`,
-      `*Phone:* ${fields.phone}`,
-      `*Message:* ${fields.message}`,
-    ].join("\n");
+    try {
+      // 1️⃣ Send email via Resend
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fields.fullName,
+          email: fields.businessEmail,
+          phone: fields.phone,
+          message: fields.message,
+          source: "biometric-amc",
+        }),
+      });
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        throw new Error(json.error ?? "Something went wrong.");
+      }
 
-    const waUrl = `https://wa.me/918088602602?text=${encodeURIComponent(text)}`;
-    window.open(waUrl, "_blank", "noopener,noreferrer");
+      // 2️⃣ Email sent — open WhatsApp with pre-filled message
+      const text = [
+        `👋 *New AMC Enquiry from inops.tech*`,
+        ``,
+        `*Name:* ${fields.fullName}`,
+        `*Email:* ${fields.businessEmail}`,
+        `*Phone:* ${fields.phone}`,
+        `*Message:* ${fields.message}`,
+      ].join("\n");
+      window.open(`https://wa.me/918088602602?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
 
-    setSubmitting(false);
-    setSubmitted(true);
+      setSubmitted(true);
+    } catch (err) {
+      console.error("[AmcContactForm]", err);
+      // Still open WhatsApp as fallback so the lead is never lost
+      const text = [
+        `👋 *New AMC Enquiry from inops.tech*`,
+        ``,
+        `*Name:* ${fields.fullName}`,
+        `*Email:* ${fields.businessEmail}`,
+        `*Phone:* ${fields.phone}`,
+        `*Message:* ${fields.message}`,
+      ].join("\n");
+      window.open(`https://wa.me/918088602602?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   /* ── Shared input class builder ── */
