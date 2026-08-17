@@ -1,34 +1,37 @@
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 
-// ─── Zoho SMTP transporter ────────────────────────────────────────────
+// ─── Zoho SMTP — exact match to Java mailDetails config ───────────────
+// host:     smtppro.zoho.in
+// port:     587  (STARTTLS — matches mail_smtp_starttls_enable: true)
+// secure:   false + requireTLS: true  (matches mail_smtp_starttls_required)
+// tls trust: "*"  (matches mail_smtp_ssl_trust: "*")
+// ─────────────────────────────────────────────────────────────────────
+
 const transporter = nodemailer.createTransport({
   host: "smtppro.zoho.in",
-  port: 465,
-  secure: true,                      // SSL on port 465
+  port: 587,
+  secure: false,        // false = STARTTLS (not SSL)
+  requireTLS: true,     // mail_smtp_starttls_required: true
   auth: {
-    user: process.env.SMTP_USER,     // clms@inops.tech
-    pass: process.env.SMTP_PASS,     // Zoho password
+    user: process.env.SMTP_USER,   // clms@inops.tech
+    pass: process.env.SMTP_PASS,   // Bpk9NGd4j1Qv
   },
   tls: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: false,     // mail_smtp_ssl_trust: "*"
   },
-  connectionTimeout: 8000,           // 8s — stay under Vercel's 10s limit
-  greetingTimeout: 8000,
-  socketTimeout: 8000,
+  connectionTimeout: 8000,
+  greetingTimeout:   8000,
+  socketTimeout:     8000,
 });
 
 const FROM = `InOps Contact <${process.env.SMTP_USER}>`;
 const TO   = process.env.CONTACT_TO_EMAIL ?? (process.env.SMTP_USER as string);
 
 export async function POST(req: NextRequest) {
-  // ── Guard: make sure env vars are actually loaded ──────────────────
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error("[contact] SMTP_USER or SMTP_PASS env var is missing");
-    return NextResponse.json(
-      { error: "Email server is not configured. Contact support." },
-      { status: 500 }
-    );
+    console.error("[contact] SMTP_USER or SMTP_PASS env var missing");
+    return NextResponse.json({ error: "Email server not configured." }, { status: 500 });
   }
 
   try {
@@ -95,22 +98,12 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({ from: FROM, to: TO, replyTo: email, subject: subjectLine, html });
 
-    console.log(`[contact] ✅ Email sent to ${TO} from ${name} <${email}>`);
+    console.log(`[contact] ✅ Email sent — ${name} <${email}>`);
     return NextResponse.json({ success: true });
 
   } catch (err: unknown) {
-    // Log the FULL error so you can read it in Vercel → Functions → Logs
-    const message  = err instanceof Error ? err.message  : String(err);
-    const code     = (err as Record<string, unknown>).code     ?? "—";
-    const command  = (err as Record<string, unknown>).command  ?? "—";
-    const response = (err as Record<string, unknown>).response ?? "—";
-
-    console.error("[contact] ❌ SMTP error:", { message, code, command, response });
-
-    // Return the real error so it shows in the browser during debugging
-    return NextResponse.json(
-      { error: `SMTP error: ${message}` },
-      { status: 500 }
-    );
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("[contact] ❌ SMTP error:", msg);
+    return NextResponse.json({ error: `SMTP error: ${msg}` }, { status: 500 });
   }
 }
