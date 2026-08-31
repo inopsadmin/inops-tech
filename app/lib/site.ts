@@ -53,9 +53,9 @@ export const KNOWS_ABOUT = [
 ] as const;
 
 /** E.164 for schema.org / tel: links */
-export const PHONE_E164 = "+918088602602";
+export const PHONE_E164 = "+918027745220";
 
-export const PHONE_DISPLAY = "+91 80886 02602";
+export const PHONE_DISPLAY = "+91 80277 45220";
 
 /** X (Twitter) handle for `twitter:site` / `twitter:creator` metadata. */
 export const TWITTER_HANDLE = "@InOpstweets";

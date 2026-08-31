@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 const PAGE_TITLE = "Book a Demo | InOps — CLMS, Biometrics & Workforce Compliance";
 const PAGE_DESCRIPTION =
-  "Book a demo, talk to sales, or visit our Bengaluru office. Phone +91 80886 02602 · contact@inops.tech · Bommasandra Industrial Area.";
+  "Book a demo, talk to sales, or visit our Bengaluru office. Phone +91 80277 45220 · contact@inops.tech · Bommasandra Industrial Area.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

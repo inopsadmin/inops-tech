@@ -1,36 +1,29 @@
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 
-// ─── Zoho SMTP — exact match to Java mailDetails config ───────────────
-// host:     smtppro.zoho.in
-// port:     587  (STARTTLS — matches mail_smtp_starttls_enable: true)
-// secure:   false + requireTLS: true  (matches mail_smtp_starttls_required)
-// tls trust: "*"  (matches mail_smtp_ssl_trust: "*")
+// ─── Gmail SMTP ───────────────────────────────────────────────────────
+// Works on Vercel — no IP blocking like Zoho.
+// Required env vars:
+//   GMAIL_USER      e.g. inopsindia@gmail.com
+//   GMAIL_APP_PASS  16-char App Password (NOT your Gmail login password)
+//                   Generate at: myaccount.google.com/apppasswords
+//   CONTACT_TO_EMAIL  inbox where submissions land
 // ─────────────────────────────────────────────────────────────────────
 
 const transporter = nodemailer.createTransport({
-  host: "smtppro.zoho.in",
-  port: 587,
-  secure: false,        // false = STARTTLS (not SSL)
-  requireTLS: true,     // mail_smtp_starttls_required: true
+  service: "gmail",
   auth: {
-    user: process.env.SMTP_USER,   // clms@inops.tech
-    pass: process.env.SMTP_PASS,   // Bpk9NGd4j1Qv
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASS,
   },
-  tls: {
-    rejectUnauthorized: false,     // mail_smtp_ssl_trust: "*"
-  },
-  connectionTimeout: 8000,
-  greetingTimeout:   8000,
-  socketTimeout:     8000,
 });
 
-const FROM = `InOps Contact <${process.env.SMTP_USER}>`;
-const TO   = process.env.CONTACT_TO_EMAIL ?? (process.env.SMTP_USER as string);
+const FROM = `InOps Contact <${process.env.GMAIL_USER}>`;
+const TO   = process.env.CONTACT_TO_EMAIL ?? (process.env.GMAIL_USER as string);
 
 export async function POST(req: NextRequest) {
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error("[contact] SMTP_USER or SMTP_PASS env var missing");
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASS) {
+    console.error("[contact] GMAIL_USER or GMAIL_APP_PASS env var missing");
     return NextResponse.json({ error: "Email server not configured." }, { status: 500 });
   }
 
@@ -103,7 +96,7 @@ export async function POST(req: NextRequest) {
 
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.error("[contact] ❌ SMTP error:", msg);
-    return NextResponse.json({ error: `SMTP error: ${msg}` }, { status: 500 });
+    console.error("[contact] ❌ Gmail error:", msg);
+    return NextResponse.json({ error: `Email error: ${msg}` }, { status: 500 });
   }
 }

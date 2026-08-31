@@ -86,7 +86,7 @@ export default function FloatingActions() {
         `*Phone:* ${fields.phone}`,
         `*Message:* ${fields.message}`,
       ].join("\n");
-      window.open(`https://wa.me/918088602602?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+      window.open(`https://wa.me/919986221151?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
 
       setSubmitted(true);
     } catch (err) {

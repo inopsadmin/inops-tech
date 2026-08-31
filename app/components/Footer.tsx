@@ -227,7 +227,7 @@ export default function Footer() {
                     </svg>
                   </span>
                   <a href="tel:+918088602602" className="font-medium text-slate-300 transition hover:text-white">
-                    +91 80886 02602
+                    +91 80277 45220
                   </a>
                 </div>
               </div>
