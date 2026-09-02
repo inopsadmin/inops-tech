@@ -55,7 +55,7 @@ export const heroSlides: readonly HeroSlide[] = [
     src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1280&q=70",
     alt: "Employee reviewing earnings and financial planning documents",
     headline: "Building Financial Resilience for the Workforce",
-    solutionHref: "/early-wage-access",
+    solutionHref: "/earned-wage-access",
   },
 ];
 

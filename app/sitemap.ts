@@ -14,7 +14,8 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/about", priority: 0.55, changeFrequency: "monthly" },
   { path: "/blog", priority: 0.5, changeFrequency: "weekly" },
   { path: "/brochures", priority: 0.45, changeFrequency: "monthly" },
-  { path: "/face-based-access-control", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/face-recognition-attendance", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/self-service-kiosk", priority: 0.65, changeFrequency: "monthly" },
   { path: "/turnstiles-access", priority: 0.65, changeFrequency: "monthly" },
   { path: "/accessories", priority: 0.6, changeFrequency: "monthly" },
   { path: "/cctv-attendance", priority: 0.6, changeFrequency: "monthly" },
@@ -23,7 +24,7 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/hris", priority: 0.7, changeFrequency: "monthly" },
   { path: "/mobile-app-attendance", priority: 0.6, changeFrequency: "monthly" },
   { path: "/enterprise-solution", priority: 0.6, changeFrequency: "monthly" },
-  { path: "/early-wage-access", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/earned-wage-access", priority: 0.85, changeFrequency: "monthly" },
   { path: "/visitor-management", priority: 0.6, changeFrequency: "monthly" },
   { path: "/fixed-asset-management", priority: 0.55, changeFrequency: "monthly" },
   { path: "/delivery-management", priority: 0.6, changeFrequency: "monthly" },
@@ -31,6 +32,7 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/warehouse-management", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
 ];
+
 
 /** Boost sitemap priority for declared sitelink targets. */
 function priorityFor(path: string, base: number): number {
@@ -75,6 +77,7 @@ const CLUSTER_SLUGS = new Set([
   "zkteco-clms-integration-multi-site-attendance-india",
   "contractor-overbilling-prevention-biometric-india",
   "ewa-contract-workers-biometric-attendance-india",
+  "10-signs-factory-outgrown-spreadsheet-contractor-management",
 ]);
 
 const blogRoutes = blogPosts.map((post) => ({

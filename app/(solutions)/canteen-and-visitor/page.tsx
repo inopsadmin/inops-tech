@@ -239,7 +239,7 @@ const smartCanteenFaqItems = [
       <>
         Yes. Workers can be identified by face recognition, fingerprint, RFID card, or QR code at the counter, with subsidy and any employee contribution calculated at the point of issue and settled through payroll. See{" "}
         <Link 
-          href="/face-based-access-control" 
+          href="/face-recognition-attendance" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           biometric readers
@@ -289,6 +289,23 @@ const smartCanteenFaqItems = [
     answer:
       "Retention follows your security and data policy and is configurable. Every visit — pre-authorisation, entry, exit, host, zones accessed — is exportable for audit, incident investigation, or regulatory review.",
   },
+  {
+    question: "Can visitors check themselves in at a kiosk?",
+    answer: (
+      <>
+        Yes. A visitor kiosk at reception or the gate handles self check-in — visitor details, host notification, photo capture and watchlist
+        screening — and issues a pass carrying zone permissions that works on the same turnstile lanes as workforce credentials. Hosts are
+        notified automatically, which removes most of the queue at peak arrival times. See{" "}
+        <Link
+          href="/self-service-kiosk"
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          self-service kiosks
+        </Link>
+        .
+      </>
+    ),
+  },
   // BOTH (13-14)
   {
     question: "Do canteen and visitor management need separate hardware?",
@@ -310,13 +327,28 @@ const smartCanteenFaqItems = [
     answer: (
       <>
         Yes — either can be deployed independently, and either can be added later to an existing InOps attendance or{" "}
-        <Link 
-          href="/contract-labour-management" 
+        <Link
+          href="/contract-labour-management"
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           CLMS
         </Link>{" "}
         deployment without new hardware.
+      </>
+    ),
+  },
+  {
+    question: "Can meals be issued through a self-service kiosk?",
+    answer: (
+      <>
+        Yes. A canteen kiosk validates entitlement against the worker&apos;s shift and contractor at the point of issue, calculates any subsidy or employee contribution, and records the transaction for invoice reconciliation — without a counter operator checking a list. See{" "}
+        <Link
+          href="/self-service-kiosk"
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          self-service kiosks
+        </Link>
+        .
       </>
     ),
   },

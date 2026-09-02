@@ -1,4 +1,11 @@
-import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
+/**
+ * /earned-wage-access (was /early-wage-access — 301 in next.config.ts)
+ *
+ * Organic volume: zero for any EWA variant in India. No organic market yet.
+ * Role: sales collateral and AI-citation asset only. Do not invest further in SEO.
+ * noindex is intentional.
+ */
+
 import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
@@ -7,19 +14,16 @@ const PAGE_TITLE = "Earned Wage Access (EWA) for Factory Workers | InOps Salary+
 const PAGE_DESCRIPTION =
   "Earned wage access for India's industrial workforce: workers withdraw wages already earned, verified against biometric attendance — no loans, no employer liability, settlement automated with payroll.";
 
-export const metadata: Metadata = routeMetadata({
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
-  path: "/early-wage-access",
-  extraKeywords: [
-    "earned wage access India",
-    "EWA platform",
-    "on-demand wages",
-    "salary advance alternative",
-    "blue collar financial wellness",
-    "EWA factory workers",
-  ],
-});
+export const metadata: Metadata = {
+  ...routeMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    path: "/earned-wage-access",
+  }),
+  // Zero organic search volume for EWA in India. noindex intentional.
+  // Page serves sales collateral and AI-citation; not an organic growth asset.
+  robots: { index: false, follow: false },
+};
 
 const FAQ_ITEMS = [
   {
@@ -52,7 +56,6 @@ const FAQ_ITEMS = [
 export default function EwaLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SolutionSchemaInjector path="/early-wage-access" pageTitle={PAGE_TITLE} pageDescription={PAGE_DESCRIPTION} />
       <FAQPageJsonLd items={FAQ_ITEMS} />
       {children}
     </>

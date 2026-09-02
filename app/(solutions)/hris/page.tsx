@@ -696,7 +696,7 @@ export default function LabourManagementPage() {
                     className="home-display-heading inops-type-hero mt-4 flex flex-col gap-1 text-slate-900 sm:mt-5 sm:gap-1.5"
                   >
                     <span className="text-slate-900 whitespace-nowrap">
-                      HRIS Built for <span className="text-[color:var(--inops-blue)]">Indian Manufacturing</span>
+                      HR Software Built for <span className="text-[color:var(--inops-blue)]">Indian Manufacturing</span>
                     </span>
                   </FlyInText>
 
@@ -1333,43 +1333,73 @@ export default function LabourManagementPage() {
           </div>
         </section>
 
-        {/* <section className="border-t border-gray-100 bg-white py-16 md:py-24" aria-labelledby="hris-content-heading">
-          <div className="mx-auto max-w-3xl px-6 lg:px-8 flex flex-col gap-14">
-            <div>
-              <h2 id="hris-content-heading" className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">What does InOps HRIS cover?</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                Employee records and documents · Digital onboarding and document collection · Attendance and shift tracking via biometric hardware · Leave management and approval workflows · Statutory payroll (PF, ESI, PT, LWF, TDS) · Claims and expense management · Exit and full-and-final settlement.
+        {/* ====== EDITORIAL H2 SECTIONS: cloud-based HR software / HRMS multi-site / attendance management ====== */}
+        <section aria-labelledby="hris-editorial-heading" className="border-t border-slate-100 bg-slate-50 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl">
+
+            {/* Cloud-based HR software */}
+            <motion.div
+              className="mx-auto max-w-3xl"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 id="hris-editorial-heading" className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                Cloud-based HR software
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Cloud-based HR software puts employee records, payroll, attendance and compliance on a hosted platform that every authorised stakeholder — plant HR, finance, group CHRO — can access from any location without a VPN or server room. For Indian manufacturers running plants in multiple states, that means a single system of record regardless of where a worker is based or which state&apos;s statutory rules apply to them.
               </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Statutory payroll for India</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                PF, ESI, Professional Tax, LWF, and TDS computed per employee with state-aware logic; challan-ready outputs for every filing cycle; audit trail on each computation. Statutory rate tables are maintained centrally — changes in notified rates update calculations without manual reconfiguration.
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                InOps HRMS runs on a cloud infrastructure with role-based access controls, audit logging on every record change, and data handling aligned with DPDP Act obligations. On-premise deployment is available where plant data-residency requirements demand it. Either way, the functional footprint is identical — biometric attendance integration, statutory payroll, and the CLMS linkage that makes InOps the platform most manufacturers don&apos;t outgrow.
               </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">One engine for permanent and contract workforces</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                InOps HRIS and <Link href="/contract-labour-management" className="text-blue-600 underline">contract labour management system</Link> share the same biometric attendance and identity infrastructure. The face terminals, fingerprint readers, and CCTV-based attendance devices that clock your permanent staff also govern your contract workforce — no separate hardware estate, no manual data bridging between two systems.
+            </motion.div>
+
+            <div className="my-12 border-t border-slate-200" />
+
+            {/* HRMS for multi-site manufacturing */}
+            <motion.div
+              className="mx-auto max-w-3xl"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                HRMS for multi-site manufacturing
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                A manufacturing HRMS must work the same way in a plant in Tamil Nadu, a distribution centre in Maharashtra, and a corporate office in Delhi — with state-specific statutory rules, different shift patterns, different device estates at each gate, and different contractor mixes at each site, all consolidated into one payroll run and one compliance view.
               </p>
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                Plant HR sees total headcount — permanent via HRIS, contractors via CLMS — in one dashboard. Compliance officers see both workforces' statutory status together. This is the integration story that a single-workforce HR platform cannot offer.
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                InOps HRMS is built multi-site from the ground up: workforce data, attendance, leave, and payroll are managed per site with aggregate reporting available at group level. Plant HR sees their site; corporate HR sees all sites. Permanent employees who move between sites carry their records with them. InOps currently manages workforces across 70+ industrial sites — the multi-site architecture is the default, not an add-on.
               </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">HRIS vs CLMS: which do you need?</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                HRIS is for your own employees — permanent and fixed-term staff on your payroll. <Link href="/contract-labour-management" className="text-blue-600 underline">CLMS</Link> is for contractors' workers — third-party labour with their own employer, governed by CLRA licences, Form V/XIII registers, and contractor invoices that an HRIS is not designed to handle. Most large manufacturing plants need both. InOps runs them on one platform.
+            </motion.div>
+
+            <div className="my-12 border-t border-slate-200" />
+
+            {/* Attendance management software */}
+            <motion.div
+              className="mx-auto max-w-3xl"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+                Attendance management software
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Attendance management software in a manufacturing environment does more than record punch-in and punch-out times. It assigns each punch to a shift, validates OT against a threshold and approval rule, computes late-mark and half-day logic per shift policy, reconciles the result against leave records, and produces a wage-input that payroll can process without manual adjustment.
               </p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Multi-site by default</h2>
-              <p className="mt-4 text-base leading-relaxed text-gray-600">
-                Employee records, attendance, leave, and payroll consolidate across plants and offices with site-level and aggregate reporting. InOps runs workforce management across 70+ industrial sites — the multi-site architecture is not an add-on; it is how the platform is built.
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                InOps attendance management integrates with ZKTeco, eSSL, and Realtime biometric hardware — face terminals, fingerprint readers, CCTV-based AI attendance, and RFID card readers. The same attendance engine covers permanent employees (HRIS) and contract workers (<Link href="/contract-labour-management" className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200">CLMS</Link>) on shared hardware, so there is one device estate, one enrolment per person, and one attendance record that both workforce systems draw from. See <Link href="/biometric-devices" className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200">biometric devices</Link> for supported hardware.
               </p>
-            </div>
+            </motion.div>
+
           </div>
-        </section> */}
+        </section>
 
         <section aria-labelledby="hris-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">

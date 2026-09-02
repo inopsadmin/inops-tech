@@ -22,9 +22,9 @@ import { mediaVideos } from "@/app/lib/mediaAssets";
 const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
 
 const timeAttendanceProductVideo = mediaVideos.timeAttendanceProduct;
-const optiCamSolutionImage =
+const cctvSolutionImage =
   "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.png";
-const optiCamSolutionVideo = mediaVideos.opticamSolutionDemo;
+const cctvSolutionVideo = mediaVideos.opticamSolutionDemo;
 
 const authAccessGalleryImages = [
   {
@@ -136,7 +136,7 @@ const cctvSurveillanceFaqItems = [
       <>
         Accuracy depends on camera angle, lighting, and distance — dust, backlight, and helmets all affect it. InOps publishes real deployment data in its{" "}
         <Link 
-          href="/face-based-access-control" 
+          href="/face-recognition-attendance" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           biometric attendance
@@ -176,7 +176,7 @@ const cctvSurveillanceFaqItems = [
       <>
         Yes. Camera, terminal, fingerprint, and mobile capture all feed one identity engine — a worker enrolled once is recognised by any method, so sites typically use cameras for high-flow gates and{" "}
         <Link 
-          href="/face-based-access-control" 
+          href="/face-recognition-attendance" 
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           terminals
@@ -346,8 +346,8 @@ const comparisonRows = [
   {
     feature: "Setup Cost",
     icon: "wallet",
-    traditional: "₹5,000+ per device",
-    opticam: "₹0 (Existing Hardware)",
+    traditional: "₹5,000+ per dedicated terminal",
+    opticam: "₹0 (Existing CCTV Hardware)",
     highlight: "Reuse CCTV",
   },
   {
@@ -368,7 +368,7 @@ const comparisonRows = [
     feature: "Scalability",
     icon: "infinity",
     traditional: "Linear Cost per Location",
-    opticam: "Infinite Cloud Scaling",
+    opticam: "Unlimited Camera Feeds",
     highlight: "Multi-site ready",
   },
 ] as const;
@@ -376,8 +376,8 @@ const comparisonRows = [
 const trustStripMetrics = [
   { value: "45%", label: "Lower hardware TCO" },
   { value: "100%", label: "Buddy-punch reduction" },
-  { value: "SOC2", label: "Enterprise-ready security" },
-  { value: "99%", label: "Employee satisfaction" },
+  { value: "DPDP", label: "Data privacy aligned" },
+  { value: "70+", label: "Sites live on InOps" },
 ] as const;
 
 export default function TimeAndAttendancePage() {
@@ -646,10 +646,10 @@ export default function TimeAndAttendancePage() {
                       loop
                       playsInline
                       preload="metadata"
-                      poster={optiCamSolutionImage}
-                      aria-label="OptiCam attendance dashboard"
+                      poster={cctvSolutionImage}
+                      aria-label="InOps camera-based attendance dashboard"
                     >
-                      <source src={optiCamSolutionVideo} type="video/mp4" />
+                      <source src={cctvSolutionVideo} type="video/mp4" />
                     </video>
                     <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/40" aria-hidden />
                   </div>
@@ -696,8 +696,8 @@ export default function TimeAndAttendancePage() {
                   delay={0.06}
                   className="mt-4 text-slate-900"
                 >
-                  The{" "}
-                  <span className="text-blue-800">OptiCam</span> Solution
+                  Camera-Based{" "}
+                  <span className="text-blue-800">Attendance</span>
                 </FlyInText>
 
                 <FlyInText
@@ -715,7 +715,7 @@ export default function TimeAndAttendancePage() {
                     {
                       title: "Existing IP Cameras",
                       description:
-                        "No new hardware required. OptiCam integrates directly with your existing CCTV network via ONVIF/RTSP.",
+                        "No new hardware required. InOps integrates directly with your existing CCTV network via ONVIF/RTSP.",
                       icon: "camera" as const,
                       iconWrap: "bg-blue-50 text-blue-600",
                     },
@@ -833,7 +833,7 @@ export default function TimeAndAttendancePage() {
                   {
                     step: "01",
                     title: "Connect Cameras",
-                    description: "Plug in your RTSP feeds into the OptiCam cloud portal.",
+                    description: "Connect your RTSP camera feeds to the InOps attendance engine.",
                     icon: "monitor" as const,
                     accentText: "text-blue-600",
                     accentRing: "ring-blue-500/20",
@@ -1044,7 +1044,7 @@ export default function TimeAndAttendancePage() {
                 duration={0.6}
                 className="mt-3 text-base text-slate-600 sm:text-lg"
               >
-                Why the world&apos;s most innovative offices are switching to OptiCam.
+                Why factories add camera-based attendance alongside biometric terminals.
               </FlyInText>
             </div>
 
@@ -1085,7 +1085,7 @@ export default function TimeAndAttendancePage() {
                         </svg>
                       </span>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">OptiCam AI</p>
+                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">InOps AI</p>
                         <p className="mt-0.5 text-sm font-semibold leading-snug text-slate-900">{row.opticam}</p>
                         <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-emerald-700 ring-1 ring-emerald-500/20">
                           {row.highlight}
@@ -1105,7 +1105,7 @@ export default function TimeAndAttendancePage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.05 }}
             >
-              {/* "Recommended" ribbon over OptiCam column */}
+              {/* "Recommended" ribbon over InOps column */}
               <div className="pointer-events-none absolute right-6 top-0 z-10 hidden lg:block">
                 <span className="inline-flex items-center gap-1.5 rounded-b-xl bg-gradient-to-br from-emerald-500 to-teal-500 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-md">
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -1135,7 +1135,7 @@ export default function TimeAndAttendancePage() {
                 <div className="flex items-center justify-between gap-3 border-l border-slate-200 bg-gradient-to-br from-blue-50/80 via-white to-emerald-50/40 px-6 py-5">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Today</p>
-                    <p className="mt-0.5 text-sm font-bold text-slate-900">OptiCam AI</p>
+                    <p className="mt-0.5 text-sm font-bold text-slate-900">InOps AI</p>
                   </div>
                   <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -1255,7 +1255,7 @@ export default function TimeAndAttendancePage() {
                 duration={0.6}
                 className="mt-3 text-base leading-relaxed text-slate-400 sm:text-lg"
               >
-                Hard numbers, not promises ,  what enterprises see after switching to OptiCam.
+                What plants report after adding camera-based attendance to their gate estate.
               </FlyInText>
             </div>
 
@@ -1293,15 +1293,15 @@ export default function TimeAndAttendancePage() {
                       trendChipColor: "text-rose-300 bg-rose-500/10 ring-rose-400/20",
                     },
                     {
-                      value: "SOC2",
-                      label: "Enterprise Data Security",
-                      detail: "Audited controls, encryption at rest & in transit, full event log.",
+                      value: "DPDP",
+                      label: "Data Privacy Aligned",
+                      detail: "Role-based access, encrypted event log, aligned with DPDP Act obligations.",
                       icon: "shield" as const,
                       accentBar: "from-emerald-400 to-teal-500",
                       iconWrap: "bg-emerald-500/15 text-emerald-300 ring-emerald-400/30",
                       hoverGlow: "hover:shadow-[0_24px_60px_-26px_rgba(16,185,129,0.55)]",
                       hoverBg: "from-emerald-500/20 via-teal-500/10 to-transparent",
-                      trendChip: "Audited",
+                      trendChip: "Compliant",
                       trendChipColor: "text-emerald-300 bg-emerald-500/10 ring-emerald-400/20",
                     },
                     {
@@ -1403,7 +1403,7 @@ export default function TimeAndAttendancePage() {
                   Enterprise <span className="text-blue-800">Deployment Readiness</span>
                 </FlyInText>
                 <p className="relative mt-1.5 text-sm leading-relaxed text-slate-600">
-                  OptiCam ships secure-by-default with the integrations and codecs your IT team already trusts.
+                  InOps camera attendance ships integration-ready with the codecs and protocols your IT team already runs.
                 </p>
 
                 <ul className="relative mt-4 space-y-2">
@@ -1445,7 +1445,7 @@ export default function TimeAndAttendancePage() {
 
                 <div className="relative mt-4 flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-4">
                   <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Compliance</span>
-                  {["SOC2", "GDPR", "PDPA", "ISO 27001"].map((tag) => (
+                  {["DPDP Act", "ONVIF", "RTSP", "Multi-site"].map((tag) => (
                     <span
                       key={tag}
                       className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-semibold text-slate-700"
@@ -1530,10 +1530,9 @@ export default function TimeAndAttendancePage() {
               <span className="font-semibold text-sky-100">without changing your infrastructure</span>.
             </>
           }
-          description="Stop investing in plastic boxes and start investing in intelligence. Experience the future of workforce operations with OptiCam today."
-          primaryLabel="Start Free Trial"
-          secondaryLabel="Talk to an Expert"
-          footnote="Setup in under 48 hours · Cancel anytime"
+          description="Already have CCTV cameras on site? InOps can use them for attendance — no new hardware, connected to the same CLMS that handles your biometric terminals and contractor compliance."
+          primaryLabel="Get In Touch"
+          secondaryLabel="See Biometric Devices"
         />
 
       </div>

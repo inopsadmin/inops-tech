@@ -66,9 +66,9 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     },
     {
       type: "tile",
-      title: "Face Reader",
-      description: "Biometric face recognition for secure access and time logs.",
-      href: "/face-based-access-control",
+      title: "Face Recognition Attendance",
+      description: "Face recognition attendance system and biometric attendance machines for factory gates.",
+      href: "/face-recognition-attendance",
     },
   ],
   // [
@@ -129,9 +129,9 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     {
       type: "tile",
       accent: true,
-      title: "EWA (Early Wage Access)",
+      title: "EWA (Earned Wage Access)",
       description: "Early access to earned wages when employees need financial flexibility.",
-      href: "/early-wage-access",
+      href: "/earned-wage-access",
     },
     // {
     //   type: "tile",

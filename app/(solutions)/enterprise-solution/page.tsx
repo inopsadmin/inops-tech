@@ -1384,7 +1384,7 @@ export default function EnterpriseSolutionPage() {
                 <h3 className="text-lg font-semibold text-slate-900">Attendance capture</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Every capture mode on one engine:{" "}
-                  <Link href="/face-based-access-control" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/face-recognition-attendance" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     face recognition attendance
                   </Link>
                   ,{" "}
@@ -1420,7 +1420,7 @@ export default function EnterpriseSolutionPage() {
                 <h3 className="text-lg font-semibold text-slate-900">Worker financial wellness</h3>
                 <p className="mt-2 text-base leading-relaxed text-slate-600">
                   Contract and factory workers withdraw wages they have already earned — validated against biometric attendance, settled at the next payroll cycle, zero employer liability.{" "}
-                  <Link href="/early-wage-access" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
+                  <Link href="/earned-wage-access" className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2">
                     Earned wage access
                   </Link>
                 </p>

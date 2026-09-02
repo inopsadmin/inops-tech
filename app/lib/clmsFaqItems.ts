@@ -55,4 +55,34 @@ export const clmsFaqItems: FAQItem[] = [
     answer:
       "Iddion RegX calculates overtime from biometric punch-out times against registered shift end times. Any OT above the configured threshold requires digital supervisor approval before it becomes payable. Contractor invoices are reconciled line-by-line against the approved OT record — discrepancies are flagged before payment. This closes the three types of OT leakage: unauthorised OT, ghost OT, and unclaimed legitimate OT.",
   },
+  {
+    question: "What is contract labour attendance software?",
+    answer:
+      "Contract labour attendance software captures and records attendance specifically for contract workers — tracking gate entry and exit per contractor, shift and site, and feeding that data into payroll, statutory registers and contractor invoice reconciliation. Unlike general attendance tools, it enforces contractor-specific rules: CLRA headcount caps, 9-day continuous attendance thresholds, and shift eligibility per work order.",
+  },
+  {
+    question: "What is a contract labour attendance system?",
+    answer:
+      "A contract labour attendance system is the combination of biometric hardware at the gate and software that assigns each punch to a worker, contractor and shift — and turns that record into a compliance input rather than just a headcount. In Iddion RegX, every gate event writes to Form XIII, updates deployed headcount, and triggers any configured compliance check simultaneously.",
+  },
+  {
+    question: "What is contract workmen management?",
+    answer:
+      "Contract workmen management covers the full lifecycle of workers engaged through contractors at a principal employer's site: onboarding and verification, gate access and compliance, daily attendance, wage computation, statutory deductions, and offboarding — all governed under the Contract Labour (Regulation & Abolition) Act and its state rules. The principal employer carries compliance liability for every contractor's workmen on their premises.",
+  },
+  {
+    question: "What is a casual labour management system?",
+    answer:
+      "A casual labour management system manages daily-wage or temporary workers who may not have fixed contracts or permanent assignments — common in seasonal manufacturing, construction, and logistics. It handles day-by-day attendance, variable wage computation, and basic statutory compliance for workers who may work intermittently across different contractors or work orders. Iddion RegX manages both regular contract workers and casual daily-wage workforces on the same platform.",
+  },
+  {
+    question: "What is an e-contract labour management system?",
+    answer:
+      "An e-contract labour management system is a digital platform for managing contract labour — replacing paper registers, physical gate passes, and manual invoice matching with electronic workflows. Under the Code on Social Security 2020 and CLRA rules, many registrations, returns and challans are now expected digitally. An e-CLMS produces the electronic records that satisfy both internal audit and statutory inspection requirements.",
+  },
+  {
+    question: "What is a contract manpower management system?",
+    answer:
+      "A contract manpower management system tracks the supply, deployment and compliance of contract workers across one or more sites — covering contractor onboarding and licence management, worker verification and gate access, attendance and payroll, and statutory compliance under CLRA and the Minimum Wages Act. It is the operational layer between a principal employer and their contractor ecosystem.",
+  },
 ];

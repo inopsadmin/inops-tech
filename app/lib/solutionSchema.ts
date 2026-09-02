@@ -3,7 +3,7 @@ export const solutionSchemaByPath: Record<
   string,
   { name: string; description: string }
 > = {
-  "/early-wage-access": {
+  "/earned-wage-access": {
     name: "InOps Earned Wage Access (EWA)",
     description:
       "Payroll-connected earned wage access with real-time attendance validation and compliant withdrawals for industrial workforces.",

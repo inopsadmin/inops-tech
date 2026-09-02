@@ -3,11 +3,11 @@ export const productSchemaByPath: Record<
   string,
   { name: string; description: string; category?: string }
 > = {
-  "/face-based-access-control": {
-    name: "InOps Biometric Access Control",
+  "/face-recognition-attendance": {
+    name: "InOps Face Recognition Attendance System",
     description:
-      "Enterprise face and fingerprint readers, controllers, and attendance integrations for Indian industrial sites.",
-    category: "Biometric Access Control Hardware",
+      "Industrial face recognition attendance terminals, fingerprint readers, and biometric attendance machines for Indian factory gates.",
+    category: "Biometric Attendance Hardware",
   },
   "/turnstiles-access": {
     name: "InOps Turnstiles & Speed Gates",

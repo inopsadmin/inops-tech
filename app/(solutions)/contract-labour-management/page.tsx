@@ -870,7 +870,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.5}
                     className="mt-4 text-sm font-semibold tracking-wide text-slate-700 lg:mt-5"
                   >
-                    Contract Labour Management System for Indian Manufacturers
+                    Labour Management System Software for Contract Workforces
                   </FlyInText>
 
                   <FlyInText
@@ -881,7 +881,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Iddion RegX - A contract labour management system built for Indian plants — gate to payroll, compliance included, on one platform.
+                    Iddion RegX — a contract labour management system built for Indian plants. Gate to payroll, CLRA compliance included, on one platform.
                   </FlyInText>
 
                   <FlyInText
@@ -1492,6 +1492,74 @@ export default function PayrollSolutionsPage() {
 
         {/* ====== INDUSTRIES SLIDER (ABOVE FAQ) ====== */}
         <ClmsIndustriesSlider />
+
+        {/* ====== WHAT IS A LABOUR MANAGEMENT SYSTEM SOFTWARE ====== */}
+        <section aria-labelledby="lms-definition-heading" className="bg-slate-50 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 id="lms-definition-heading" className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                What is a labour management system software?
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                A labour management system software is a platform that tracks, governs and optimises a workforce from gate entry to wage payment — covering both permanent employees and contract workers on one system of record.
+              </p>
+            </motion.div>
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-start">
+              {/* Copy */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase }}
+                className="space-y-5 text-sm leading-relaxed text-slate-600 sm:text-base"
+              >
+                <p>
+                  In Indian manufacturing, labour management system software must handle two workforces simultaneously: permanent employees under the Industrial Disputes Act, and contract workers governed by the Contract Labour (Regulation &amp; Abolition) Act. The compliance obligations, wage structures and statutory deductions differ — but both workforces pass through the same gate and work on the same shop floor.
+                </p>
+                <p>
+                  A labour management system brings them onto one platform so the principal employer has a single attendance record, a single compliance dashboard and a single source for payroll inputs — regardless of whether a worker is on rolls or engaged through a contractor.
+                </p>
+                <p>
+                  Core capabilities include biometric attendance and gate access, shift and workforce scheduling, statutory deductions (PF/ESI/LWF/PT), payroll processing, statutory register generation (Forms V, XIII, XVI and XXII under CLRA), and real-time compliance monitoring against headcount caps and contractor licence conditions.
+                </p>
+                <p>
+                  For contract labour specifically, labour management software adds contractor onboarding and licence management, worker-level deployment tracking per work order, contractor invoice reconciliation against verified attendance, and OT approval workflows — closing the gaps where contractor spend typically leaks.
+                </p>
+              </motion.div>
+
+              {/* Stat tiles */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                {[
+                  { value: "3–5%", label: "Contractor spend lost to ghost workers without a labour management system", accent: "bg-violet-50 border-violet-200 text-violet-700" },
+                  { value: "80–120 hrs", label: "Monthly invoice reconciliation time eliminated by automated matching", accent: "bg-amber-50 border-amber-200 text-amber-700" },
+                  { value: "Form XIII", label: "CLRA statutory register generated automatically from gate attendance", accent: "bg-emerald-50 border-emerald-200 text-emerald-700" },
+                  { value: "9-day rule", label: "Continuous attendance threshold tracked per worker to prevent employment liability", accent: "bg-indigo-50 border-indigo-200 text-indigo-700" },
+                ].map((tile) => (
+                  <div
+                    key={tile.value}
+                    className={`rounded-2xl border p-5 ${tile.accent}`}
+                  >
+                    <p className="text-2xl font-bold tracking-tight">{tile.value}</p>
+                    <p className="mt-1.5 text-xs leading-snug text-slate-600">{tile.label}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </section>
 
         <section aria-labelledby="clms-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">

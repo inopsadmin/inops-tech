@@ -5,9 +5,9 @@ import { clmsFaqItems } from "@/app/lib/clmsFaqItems";
 import { KEYWORDS_CLMS } from "@/app/lib/site";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Contract Labour Management System (CLMS) | Payroll, PF/ESI & Attendance — InOps";
+const PAGE_TITLE = "Labour Management System Software for Indian Manufacturers | Contract Labour Management — InOps";
 const PAGE_DESCRIPTION =
-  "Automate contract labour payroll, PF/ESI compliance, and biometric attendance for Indian manufacturers — fewer errors, faster cycles, audit-ready reporting.";
+  "Labour management system software for contract workforces — gate compliance, biometric attendance, PF/ESI statutory deductions and payroll for Indian manufacturers. Audit-ready, multi-site, built for the Contract Labour (R&A) Act.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
@@ -15,13 +15,19 @@ export const metadata: Metadata = routeMetadata({
   path: "/contract-labour-management",
   extraKeywords: [
     ...KEYWORDS_CLMS,
+    "labour management system software",
+    "labour management software",
+    "contract labour attendance software",
+    "contract labour attendance system",
+    "contract workmen management",
+    "casual labour management system",
+    "e-contract labour management system",
+    "contract manpower management system",
+    "contract employee management system",
     "biometric attendance CLMS",
     "contractor payroll",
     "Form V Form XIII",
     "multi-site contractor management",
-    "turnstiles India",
-    "visitor management system",
-    "canteen management system",
   ],
 });
 

@@ -145,7 +145,7 @@ const whyCardHrefByTitle: Record<string, string> = {
   HRIS: "/hris",
   "Contract Workforce Governance": "/contract-labour-management",
   "Logistics Solutions": "/enterprise-solution",
-  EWA: "/early-wage-access",
+  EWA: "/earned-wage-access",
 };
 
 /** Contract workforce governance is default featured → numbered from 01. */

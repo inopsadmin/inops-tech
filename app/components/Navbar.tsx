@@ -42,7 +42,7 @@ const dropdownTransition = { type: "spring" as const, stiffness: 300, damping: 2
 const linkStagger = 0.05;
 
 const productRoutes: Record<string, string> = {
-  "Biometric Access Control": "/face-based-access-control",
+  "Face Recognition Attendance": "/face-recognition-attendance",
   "Turnstiles": "/turnstiles-access",
   "Accessories": "/accessories",
 };
@@ -55,7 +55,7 @@ const resourceRoutes: Record<string, string> = {
 function pathUsesSolidNavBar(path: string) {
   return (
     path.startsWith("/contact") ||
-    path.startsWith("/early-wage-access") ||
+    path.startsWith("/earned-wage-access") ||
     path.startsWith("/about") ||
     path.startsWith("/product") ||
     path.startsWith("/blog") ||
@@ -64,17 +64,20 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/cctv-attendance") ||
     path.startsWith("/contract-labour-management") ||
     path.startsWith("/enterprise-solution") ||
-    path.startsWith("/early-wage-access") ||
+    path.startsWith("/earned-wage-access") ||
     path.startsWith("/fixed-asset-management") ||
     path.startsWith("/hris") ||
     path.startsWith("/mobile-app-attendance") ||
     path.startsWith("/visitor-management") ||
     path.startsWith("/accessories") ||
-    path.startsWith("/face-based-access-control") ||
+    path.startsWith("/face-recognition-attendance") ||
     path.startsWith("/turnstiles-access") ||
     path.startsWith("/warehouse-management") ||
     path.startsWith("/delivery-management") ||
-    path.startsWith("/order-management")
+    path.startsWith("/order-management") ||
+    path.startsWith("/biometric-devices") ||
+    path.startsWith("/self-service-kiosk") ||
+    path.startsWith("/zkteco")
   );
 }
 

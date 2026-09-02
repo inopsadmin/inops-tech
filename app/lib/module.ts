@@ -1633,6 +1633,11 @@ faq: [
     answer:
       "Where biometric terminals and gates already exist, deployment is largely configuration — mapping rules to gates and loading contractor and worker records. Where hardware is being added, timelines follow the gate installation. The longer path is usually agreeing which rules run hard versus soft, which is a policy conversation rather than a technical one.",
   },
+  {
+    question: "Can safety induction be completed at the gate?",
+    answer:
+      "Yes. Induction content and assessment can be delivered at a kiosk, with completion written directly to the worker's record — so the induction rule that blocks entry is satisfied by the same system that enforces it. This closes the common gap where induction is documented but not verifiable per worker. See self-service kiosks.",
+  },
 ],
 
     metrics: [
@@ -1825,6 +1830,11 @@ faq: [
     question: "Does final settlement include statutory closure?",
     answer:
       "Final settlement is computed from verified attendance and wage records, with statutory components — PF, ESI, and gratuity where applicable — calculated from the same source rather than re-entered. Finance receives the computed closure without a manual handoff from HR.",
+  },
+  {
+    question: "Can contractor onboarding be done at a kiosk during bulk intake?",
+    answer:
+      "Yes. During shutdown and ramp mobilisation, an onboarding kiosk at the gate handles document capture, biometric enrolment and work-order assignment for large batches, so intake happens where the workers arrive rather than through the HR office. See self-service kiosks.",
   },
 ],
 

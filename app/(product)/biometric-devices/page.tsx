@@ -71,25 +71,25 @@ const accentVisual: Record<
   },
 };
 
-/* ─── 6 platform strength cards (4 product groups + 2 operational pillars) ─── */
+/* ─── 6 platform strength cards (5 product types + AMC) ─── */
 const platformCards = [
   {
     title: "Face Recognition Terminals",
-    description: "Contactless recognition in under a second, built for gate throughput at shift change. Outdoor-rated options for plant entrances.",
+    description: "Contactless recognition in under a second. Built for throughput at shift change, with outdoor-rated options for plant gates — the right default for most Indian factory environments.",
     icon: "face" as const,
     tone: "sky" as const,
     tag: "Touchless",
   },
   {
-    title: "Fingerprint Readers",
-    description: "The workhorse of Indian industrial attendance. Suited to indoor gates, offices and lower-throughput entry points where cost per lane matters.",
+    title: "Fingerprint Attendance Machines",
+    description: "The established workhorse of Indian attendance. Lower cost per point, well suited to offices, admin blocks and lower-throughput indoor entries.",
     icon: "grid" as const,
     tone: "indigo" as const,
     tag: "Workhorse",
   },
   {
     title: "RFID & Card Readers",
-    description: "For sites standardised on cards, or as a second factor alongside biometrics. Integrates with existing card estates.",
+    description: "For sites already standardised on cards, or as a second factor alongside biometrics. Integrates with existing card estates rather than replacing them.",
     icon: "shieldCheck" as const,
     tone: "emerald" as const,
     tag: "Flexible",
@@ -102,11 +102,11 @@ const platformCards = [
     tag: "Secure",
   },
   {
-    title: "Mixed-Brand Estates",
-    description: "ZKTeco, eSSL and Realtime on one attendance engine — we maintain and integrate devices regardless of who supplied them.",
-    icon: "monitor" as const,
+    title: "Self-service Kiosks",
+    description: "Enrolment, attendance regularisation, payslip access and leave requests — for workforces without company laptops.",
+    icon: "kiosk" as const,
     tone: "cyan" as const,
-    tag: "Unified",
+    tag: "Self-service",
   },
   {
     title: "Biometric AMC",
@@ -139,8 +139,8 @@ function PlatformGlyph({ name, className }: { name: PlatformIcon; className: str
     return <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><rect x="4" y="5" width="16" height="14" rx="2" strokeWidth={2} /><circle cx="9" cy="11" r="2" strokeWidth={2} /><path strokeLinecap="round" strokeWidth={2} d="M13 10h4M13 14h4" /></svg>;
   if (name === "users")
     return <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><rect x="3" y="4" width="5" height="16" rx="1" strokeWidth={2} /><rect x="16" y="4" width="5" height="16" rx="1" strokeWidth={2} /><path strokeLinecap="round" strokeWidth={2} d="M8 12h8" /></svg>;
-  if (name === "monitor")
-    return <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>;
+  if (name === "kiosk")
+    return <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><rect x="5" y="2" width="14" height="20" rx="2" strokeWidth={2} /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 6h6M9 10h6M12 18h.01" /></svg>;
   return <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>;
 }
 
@@ -198,13 +198,13 @@ function SpecGlyph({ name }: { name: SpecIcon }) {
   );
 }
 
-/* ─── FAQ — exact text from brief ─── */
+/* ─── FAQ — 14 items from brief ─── */
 const faqItems = [
   {
     question: "What is a biometric device and how does it work for attendance?",
     answer: (
       <>
-        A biometric device identifies a person by a physical characteristic — face, fingerprint or iris — rather than a card or PIN. For attendance it captures the worker&apos;s identity at entry and exit and records the timestamp, so hours are tied to a verified person rather than a transferable credential.
+        A biometric device identifies a person by a physical characteristic — most commonly face or fingerprint — rather than by a card or PIN. For attendance it captures that identity at entry and exit and records the timestamp, so working hours are tied to a verified person rather than a transferable credential. The device sends each event to attendance software, where it becomes a shift record and eventually a payroll input.
       </>
     ),
   },
@@ -212,7 +212,7 @@ const faqItems = [
     question: "Which is better for factories — fingerprint or face recognition?",
     answer: (
       <>
-        Face recognition, in most industrial settings. Fingerprint readers fail on damaged, dry, oily or dirty fingers, which describes most manual work — and every failure becomes a manual attendance entry and a payroll dispute. Fingerprint remains reasonable for offices and low-throughput indoor points.
+        Face recognition, in most industrial settings. Fingerprint readers fail on dry, damaged, oily or dirty fingers, which describes the hands of most manual workers by mid-shift. Every failed punch becomes a manual entry, and every manual entry becomes a payroll dispute. Fingerprint devices remain sensible for offices and low-throughput indoor points where hands are clean and volumes are modest.
       </>
     ),
   },
@@ -220,7 +220,7 @@ const faqItems = [
     question: "How much does a biometric attendance machine cost?",
     answer: (
       <>
-        Price depends on modality, throughput, environment rating and volume. Fingerprint readers sit at the entry level; face terminals cost more per unit but reduce disputes and queue time. We quote against a site survey rather than a list, because gate conditions change which device is appropriate.
+        Cost depends on modality, throughput, environment rating and volume. Fingerprint readers sit at the entry level, face terminals cost more per unit, and turnstile-integrated installations carry civil and installation costs alongside the device. We quote against a site survey rather than a price list, because the same headcount at two different gates often needs different hardware.
       </>
     ),
   },
@@ -228,39 +228,65 @@ const faqItems = [
     question: "Which biometric device brands do you supply?",
     answer: (
       <>
-        ZKTeco, eSSL and Realtime, plus turnstiles and controllers. We also maintain and integrate mixed-brand estates that were supplied by others.
+        ZKTeco, eSSL and Realtime, plus turnstiles, flap barriers and access controllers. We also maintain and integrate mixed-brand estates originally supplied by others, which is the normal situation at plants that have bought hardware over several years.
       </>
     ),
   },
   {
-    question: "Can biometric devices work with our existing attendance or HR software?",
+    question: "Can biometric devices integrate with our existing attendance or HR software?",
     answer: (
       <>
-        Yes — devices integrate with the InOps attendance engine, and data can be exported to existing HR and payroll systems.
+        Yes. Devices feed the InOps attendance engine, and verified data can be exported to existing HR and payroll systems. Where a plant already runs an HRMS, the devices become the capture layer rather than a parallel system.
       </>
     ),
   },
   {
-    question: "How many devices does one site need?",
+    question: "How many devices does a site need?",
     answer: (
       <>
-        Determined by peak throughput, not headcount. A gate handling 800 workers in a 20-minute shift change needs multiple lanes or camera-based capture; the same headcount arriving over two hours may need one. The site survey sizes this.
+        Determined by peak throughput, not headcount. A gate handling 800 workers within a 20-minute shift change needs several lanes or camera-based capture; the same 800 arriving across two hours may need one device. The site survey sizes this, and getting it wrong is the most common cause of queue complaints after deployment.
       </>
     ),
   },
   {
-    question: "Do biometric devices work without internet?",
+    question: "Do biometric devices work without internet connectivity?",
     answer: (
       <>
-        Yes — devices store punches locally and sync when connectivity returns, which matters at remote plants and project sites.
+        Yes. Devices store punches locally and sync when the connection returns, which matters at remote plants, project sites and locations with unreliable links.
       </>
     ),
   },
   {
-    question: "What about worker consent and biometric data protection?",
+    question: "What happens if a device fails at a critical gate?",
     answer: (
       <>
-        Consent is captured digitally at enrolment in the worker&apos;s language before any template is created. Templates are access-controlled with configurable retention, aligned with DPDP Act obligations.
+        Multi-lane gates continue on the remaining readers. Single-reader gates are the real risk, which is why identifying single points of failure is part of both deployment planning and{" "}
+        <Link href="/services/biometric-amc" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">AMC</Link>{" "}
+        onboarding. Sites running mobile or camera-based capture can also fall back to those methods while a terminal is down.
+      </>
+    ),
+  },
+  {
+    question: "Can one worker be enrolled once and recognised everywhere?",
+    answer: (
+      <>
+        Yes. A single enrolment activates the worker&apos;s identity across every device on site — gate terminals, canteen counters, attendance points — and across plants in a multi-site deployment. Workers moving between sites or contractors are not re-enrolled, which matters most in contract workforces where movement is constant.
+      </>
+    ),
+  },
+  {
+    question: "How is worker consent and biometric data handled?",
+    answer: (
+      <>
+        Consent is captured digitally at enrolment, in the worker&apos;s preferred language, before any biometric template is created. Templates are access-controlled with configurable retention, and handling aligns with DPDP Act obligations. Workers can raise queries through the same channel used for enrolment.
+</>
+    ),
+  },
+  {
+    question: "Are biometric templates the same as storing fingerprints or photographs?",
+    answer: (
+      <>
+        No. Devices store a mathematical template derived from the biometric, not the image itself, and the template cannot be reversed into a usable fingerprint or photograph. This distinction matters when explaining the system to workers and works committees.
       </>
     ),
   },
@@ -273,6 +299,22 @@ const faqItems = [
           biometric AMC
         </Link>{" "}
         — preventive maintenance, remote monitoring, firmware updates and on-site engineer support across every site under one contract, including devices originally supplied by other vendors.
+      </>
+    ),
+  },
+  {
+    question: "Can we add devices later without redoing everything?",
+    answer: (
+      <>
+        Yes. Devices are added to the existing estate and inherit the same worker identities and rules. Adding a gate does not mean re-enrolling a workforce, which is one of the practical reasons to standardise the platform even when hardware brands differ.
+      </>
+    ),
+  },
+  {
+    question: "What is a registered device (RD service) and do we need one?",
+    answer: (
+      <>
+        Registered Device service applies to Aadhaar-based biometric authentication, where UIDAI requires devices to be registered and encrypted at source. It is relevant where Aadhaar authentication is specifically required; standard attendance and access control do not depend on it.
       </>
     ),
   },
@@ -372,7 +414,7 @@ export default function BiometricDevicesPage() {
                   </motion.p>
 
                   <motion.div
-                    className="mt-8 sm:mt-9"
+                    className="mt-8 flex flex-wrap items-center gap-3 sm:mt-9"
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
@@ -381,8 +423,15 @@ export default function BiometricDevicesPage() {
                       href="/contact"
                       className="group inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-600/30 transition hover:bg-blue-700 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
                     >
-                      Request a site survey
+                      Get a device recommendation
                     </Link>
+                    <a
+                      href="tel:+918088602602"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-8 py-3.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 hover:-translate-y-0.5"
+                    >
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" /></svg>
+                      Call +91 80886 02602
+                    </a>
                   </motion.div>
                 </div>
               </div>
@@ -391,8 +440,52 @@ export default function BiometricDevicesPage() {
         </motion.section>
 
         {/* ══════════════════════════════════════════
+            H2 — What is a biometric device?
+        ══════════════════════════════════════════ */}
+        <section className="border-t border-slate-100 bg-white py-8 lg:py-10" aria-labelledby="what-is-biometric-heading">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 lg:items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase }}
+              >
+                <h2 id="what-is-biometric-heading" className="text-slate-900">What is a biometric device?</h2>
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
+                  A biometric device identifies a person by a physical characteristic — face, fingerprint or iris — instead of a card, PIN or signature. In attendance and access control that matters for one reason: a card can be handed to a colleague and a PIN can be shared, but a face cannot. Every punch is tied to a verified individual, which is what turns attendance from a count into a record.
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
+                  Industrial deployments use four device classes: face recognition terminals, fingerprint readers, RFID and card readers, and turnstiles that physically enforce the decision. Self-service kiosks extend the same identity to worker-facing functions like payslips, leave and attendance queries.
+                </p>
+              </motion.div>
+              <motion.div
+                className="grid grid-cols-2 gap-4"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.5, ease: smoothEase, delay: 0.06 }}
+              >
+                {[
+                  { label: "Face recognition", stat: "< 1 sec", sub: "per identity check" },
+                  { label: "User capacity", stat: "50,000+", sub: "faces per terminal" },
+                  { label: "Punch storage", stat: "200,000", sub: "logs offline per device" },
+                  { label: "Auth modes", stat: "Face / FP / Card / PIN", sub: "in one estate" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-xl border border-slate-200/80 bg-slate-50/60 p-4">
+                    <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{item.label}</p>
+                    <p className="mt-1 text-lg font-bold text-slate-900">{item.stat}</p>
+                    <p className="text-xs text-slate-500">{item.sub}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════
             H2 — What biometric devices do we supply?
-            (ThroughputMetricCard grid — 4 groups + 2)
+            (ThroughputMetricCard grid — 5 types + AMC)
         ══════════════════════════════════════════ */}
         <section
           id="devices"
@@ -443,19 +536,22 @@ export default function BiometricDevicesPage() {
               })}
             </div>
 
-            {/* Quick links for face & turnstile detail pages */}
+            {/* Quick links */}
             <motion.div
-              className="mt-8 flex flex-wrap justify-center gap-4"
+              className="mt-8 flex flex-wrap justify-center gap-3"
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewport}
               transition={{ duration: 0.4, ease: smoothEase, delay: 0.1 }}
             >
-              <Link href="/face-based-access-control" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-semibold text-sky-700 transition hover:bg-sky-100">
-                Face recognition attendance system →
+              <Link href="/face-recognition-attendance" className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-semibold text-sky-700 transition hover:bg-sky-100">
+                Face recognition attendance →
               </Link>
               <Link href="/turnstiles-access" className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-5 py-2 text-xs font-semibold text-violet-700 transition hover:bg-violet-100">
                 Access control systems →
+              </Link>
+              <Link href="/self-service-kiosk" className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-5 py-2 text-xs font-semibold text-cyan-700 transition hover:bg-cyan-100">
+                Self-service kiosks →
               </Link>
             </motion.div>
           </div>
@@ -892,8 +988,14 @@ export default function BiometricDevicesPage() {
               </span>
               <h2 id="supply-heading" className="mt-5 text-black">Supply, installation and support</h2>
               <p className="mt-3 max-w-2xl mx-auto text-base text-slate-600">
-                Site survey → device selection per gate → installation and commissioning → enrolment → integration. Post-deployment, devices are covered under{" "}
-                <Link href="/services/biometric-amc" className="font-medium text-blue-600 hover:underline">biometric AMC</Link>.
+                Site survey → device selection per gate → installation and commissioning → enrolment → integration with attendance and payroll. After deployment, devices are covered under{" "}
+                <Link href="/services/biometric-amc" className="font-medium text-blue-600 hover:underline">biometric AMC</Link>
+                {" "}— preventive maintenance, remote health monitoring, firmware management and on-site engineers, with spares held in India.
+              </p>
+              <p className="mt-3 max-w-2xl mx-auto text-base text-slate-600">
+                For estates in unknown condition — the usual situation after a few years of ad-hoc purchasing — a{" "}
+                <Link href="/services/biometric-database-audit" className="font-medium text-blue-600 hover:underline">biometric database audit</Link>
+                {" "}establishes what is actually deployed and working before anything is contracted.
               </p>
             </motion.div>
 

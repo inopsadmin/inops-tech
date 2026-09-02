@@ -3,27 +3,24 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Camera-Based Attendance for Contract Workers | CCTV & AI Attendance with CLRA Compliance";
+const PAGE_TITLE = "CCTV Attendance System | Camera-Based Attendance for Factory Sites — InOps";
 const PAGE_DESCRIPTION =
-  "Camera and AI-based attendance for contract worker manufacturing sites — links face recognition and existing CCTV to CLRA compliance, OT verification, and contractor billing. Multi-site, biometric-integrated, audit-ready.";
+  "CCTV attendance system for Indian factories: use existing IP cameras for face recognition attendance alongside biometric terminals. Supports CLMS, CLRA compliance, and contractor billing verification.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   path: "/cctv-attendance",
   extraKeywords: [
-    // Owned — zero competition, high ICP relevance
-    "camera based attendance contract workers manufacturing India",
-    "face recognition attendance CLRA compliance",
-    "AI attendance biometric integration CLMS",
-    "camera attendance OT verification manufacturing",
+    "cctv attendance system",
+    "camera based attendance system",
+    "cctv based attendance system",
+    "camera attendance system",
+    "face recognition camera for attendance",
+    "attendance camera",
+    "camera attendance contract workers manufacturing India",
     "existing CCTV attendance contract labour India",
     "face attendance contractor billing verification",
-    "proxy attendance prevention contract workers India",
-    "CCTV attendance CLRA compliance manufacturing",
-    // Supporting
-    "camera attendance system manufacturing India",
-    "AI attendance multi-site manufacturing",
   ],
 });
 

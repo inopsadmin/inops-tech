@@ -14,16 +14,22 @@ const services = [
   { label: "Industrial Manpower Supply", href: "/services/industrial-manpower-supply" },
 ];
 
+const products = [
+  { label: "Face Reader", href: "/face-recognition-attendance" },
+  { label: "Biometric Devices", href: "/biometric-devices" },
+  { label: "Accessories", href: "/accessories" },
+  { label: "Gate Access Control", href: "/turnstiles-access" },
+  { label: "Self-Service Kiosk", href: "/self-service-kiosk" },
+];
+
 const solutions = [
-  { label: "Contract Labour Management Solution", href: "/contract-labour-management" },
+  { label: "Contract Labour Management", href: "/contract-labour-management" },
   { label: "HR Information System", href: "/hris" },
   { label: "Canteen & Visitor Management", href: "/canteen-and-visitor" },
-  { label: "Identity & Face Solution", href: "/mobile-app-attendance" },
   { label: "Mobile App", href: "/mobile-app-attendance" },
   { label: "CCTV Attendance", href: "/cctv-attendance" },
-  { label: "Face Reader", href: "/face-based-access-control" },
-  { label: "Supply Chain Management", href: "/enterprise-solution" },
-  { label: "EWA (Early Wage Access)", href: "/early-wage-access" },
+  // { label: "Supply Chain Management", href: "/enterprise-solution" },
+  { label: "EWA (Earned Wage Access)", href: "/earned-wage-access" },
 ];
 
 const company = [
@@ -134,7 +140,7 @@ export default function Footer() {
                 Schedule a demo
               </Link>
               <a
-                href="tel:+918088602602"
+                href="tel:+918027745220"
                 className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white backdrop-blur transition hover:border-white/25 hover:bg-white/10 xl:px-6 xl:py-3 xl:text-[0.96rem] 2xl:text-base"
               >
                 Call sales
@@ -169,7 +175,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <SectionTitle>Services</SectionTitle>
             <ul className="mt-5 grid gap-3">
               {services.map((item) => (
@@ -180,8 +186,20 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Products */}
+          <div className="lg:col-span-2">
+            <SectionTitle>Products</SectionTitle>
+            <ul className="mt-5 grid gap-3">
+              {products.map((item) => (
+                <li key={item.href} className="min-w-0">
+                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Solutions */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <SectionTitle>Solutions</SectionTitle>
             <ul className="mt-5 grid gap-3">
               {solutionItems.map((item) => (
@@ -226,7 +244,7 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </span>
-                  <a href="tel:+918088602602" className="font-medium text-slate-300 transition hover:text-white">
+                  <a href="tel:+918027745220" className="font-medium text-slate-300 transition hover:text-white">
                     +91 80277 45220
                   </a>
                 </div>

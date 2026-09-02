@@ -60,7 +60,7 @@ export const platformShowcaseSlides = [
   {
     id: "face-reader",
     tabLabel: "Face & devices",
-    href: "/face-based-access-control",
+    href: "/face-recognition-attendance",
     title: "Smart access. Secure workforce.",
     badge: "Biometric hardware",
     text:
@@ -83,7 +83,7 @@ export const platformShowcaseSlides = [
   {
     id: "ewa",
     tabLabel: "EWA",
-    href: "/early-wage-access",
+    href: "/earned-wage-access",
     title: "Instant access to earned wages",
     badge: "Early wage access",
     text:

@@ -130,13 +130,13 @@ export const SCHEMA_SITE_NAV_PAGES = [
     description: "Automate payroll, PF/ESI & biometric attendance",
   },
   {
-    path: "/early-wage-access",
-    name: "Early Wage Access (EWA)",
+    path: "/earned-wage-access",
+    name: "Earned Wage Access (EWA)",
     description: "On-demand wages for factory workers",
   },
   {
-    path: "/face-based-access-control",
-    name: "Biometric Access Control",
+    path: "/face-recognition-attendance",
+    name: "Face Recognition Attendance",
     description: "Face readers, turnstiles & attendance hardware",
   },
   {
@@ -187,8 +187,8 @@ export const SITEMAP_LAST_MODIFIED: Record<string, string> = {
   "/contact": "2026-05-01",
   "/contract-labour-management": "2026-04-15",
   "/hris": "2026-04-15",
-  "/early-wage-access": "2026-04-15",
-  "/face-based-access-control": "2026-04-15",
+  "/earned-wage-access": "2026-09-02",
+  "/face-recognition-attendance": "2026-09-02",
   "/cctv-attendance": "2026-04-15",
   "/canteen-and-visitor": "2026-04-15",
 };

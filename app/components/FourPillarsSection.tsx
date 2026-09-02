@@ -39,7 +39,7 @@ const inOpsPillars = [
         rowIcon: "faceId" as const,
         name: "Face Recognition",
         blurb: "High-accuracy touchless attendance.",
-        href: "/face-based-access-control",
+        href: "/face-recognition-attendance",
       },
       {
         rowIcon: "cctv" as const,

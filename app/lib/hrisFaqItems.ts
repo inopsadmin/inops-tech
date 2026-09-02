@@ -87,4 +87,9 @@ export const hrisFaqItems: FAQItem[] = [
     answer:
       "Access is role-based with audit logging on record changes, and data handling aligns with DPDP Act obligations. On-premise deployment is available where data-residency requirements demand it.",
   },
+  {
+    question: "Can employees access self-service without a laptop or smartphone?",
+    answer:
+      "Yes. Employee self-service is available through a web portal, the mobile app, and a shop-floor kiosk. The kiosk matters most in manufacturing, where the majority of the workforce has neither a company laptop nor a company email address — payslips, leave balances and attendance history become self-serviceable rather than an HR queue. See self-service kiosks.",
+  },
 ];

@@ -666,7 +666,7 @@ export default function ZKTecoPage() {
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { label: "All biometric devices", href: "/biometric-devices", desc: "Face, fingerprint, RFID and turnstiles across all brands.", img: "/images/zkteco/zkteco-fingerprint.jpg" },
-              { label: "Face recognition attendance", href: "/face-based-access-control", desc: "Industrial face terminals for factory gates.", img: "/images/zkteco/zkteco-face-terminal.jpg" },
+              { label: "Face recognition attendance", href: "/face-recognition-attendance", desc: "Industrial face terminals for factory gates.", img: "/images/zkteco/zkteco-face-terminal.jpg" },
               { label: "Access control & turnstiles", href: "/turnstiles-access", desc: "Physical gate enforcement with any reader type.", img: "/images/zkteco/zkteco-access-gate.jpg" },
               { label: "Biometric AMC", href: "/services/biometric-amc", desc: "Maintenance contracts for ZKTeco and mixed estates.", img: "/images/zkteco/zkteco-hero-industrial.jpg" },
             ].map((link, i) => (

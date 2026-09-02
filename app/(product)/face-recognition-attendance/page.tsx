@@ -603,7 +603,7 @@ export default function BiometricAccessControlPage() {
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" aria-hidden />
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.7)]" aria-hidden />
                       </span>
-                      Face based attendance
+                      Face recognition attendance system
                     </span>
                   </motion.div>
                   <motion.h1 className="home-display-heading inops-type-hero mt-5 text-slate-900 sm:mt-6"
@@ -611,9 +611,9 @@ export default function BiometricAccessControlPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.1 }}
                   >
-                    Face Recognition Attendance{" "}
+                    Face Recognition Attendance System{" "}
                     <span className="font-semibold text-[color:var(--inops-blue)]">
-                      for Industrial Workforces
+                      for Industrial Sites
                     </span>
                   </motion.h1>
                   <motion.p
@@ -1347,7 +1347,7 @@ export default function BiometricAccessControlPage() {
                 label: "REPORTS",
                 accent: "emerald" as const,
                 icon: <path d="M4 19h16M7 16V8M12 16V5M17 16v-4" />,
-                route: "/face-based-access-control"
+                route: "/face-recognition-attendance"
               },
             ] as const
           ).map((node) => {

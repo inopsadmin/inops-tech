@@ -30,6 +30,10 @@ const nextConfig: NextConfig = {
   experimental: {},
   async redirects() {
     return [
+      { source: "/face-based-access-control", destination: "/face-recognition-attendance", permanent: true },
+      { source: "/face-based-access-control/:path*", destination: "/face-recognition-attendance/:path*", permanent: true },
+      { source: "/early-wage-access", destination: "/earned-wage-access", permanent: true },
+      { source: "/early-wage-access/:path*", destination: "/earned-wage-access/:path*", permanent: true },
       { source: "/solutions/labourmanagement", destination: "/hris", permanent: true },
       { source: "/solutions/labourmanagement/:path*", destination: "/hris", permanent: true },
       { source: "/clms", destination: "/contract-labour-management", permanent: true },
