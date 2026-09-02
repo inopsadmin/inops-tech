@@ -65,7 +65,7 @@ const accentVisual: Record<
 
 /* ─── What workers can do ─── */
 const workerActions: { title: string; detail: string; icon: "calendar" | "doc" | "leave" | "flag" | "claim" | "user" | "wallet" | "badge"; accent: FeatureAccent; link?: string }[] = [
-  { title: "Check attendance & shift history", detail: "Days worked, hours, overtime, absences, and the reason recorded against each — without asking HR.", icon: "calendar", accent: "sky" as FeatureAccent },
+  { title: "Check attendance & shift history", detail: "Days worked, hours, overtime, absences, and the reason recorded against each — without asking HR.", icon: "calendar", accent: "cyan" },
   { title: "Download payslips", detail: "Current and historical payslips, printed or saved, without asking HR or waiting for distribution.", icon: "doc", accent: "emerald" },
   { title: "Apply for leave", detail: "Balance visible before applying, status visible after — no separate query to find out if a request was approved.", icon: "leave", accent: "indigo" },
   { title: "Raise attendance queries", detail: "A missed punch flagged and routed to the supervisor with an audit trail — instead of an argument at month-end.", icon: "flag", accent: "amber" },
