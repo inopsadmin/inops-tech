@@ -25,6 +25,7 @@ const LABEL_BY_PATH: Record<string, string> = {
   "/enterprise-solution": "Enterprise Solution",
   "/visitor-management": "Visitor Management",
   "/fixed-asset-management": "Fixed Asset Management",
+  "/biometric-devices":"Biometric Devices"
 };
 
 export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
@@ -54,6 +55,7 @@ export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
     "/enterprise-solution",
     "/visitor-management",
     "/fixed-asset-management",
+    "/biometric-devices"
   ]);
   const productPaths = new Set(["/face-based-access-control", "/turnstiles-access", "/accessories"]);
 

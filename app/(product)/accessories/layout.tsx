@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     path: "/accessories",
     extraKeywords: ["exit button access control", "RTE button India", "proximity card accessories"],
   }),
-  robots: { index: false, follow: true },
+  robots: { index: false, follow: false },
 };
 
 export default function AccessoriesLayout({ children }: { children: React.ReactNode }) {
