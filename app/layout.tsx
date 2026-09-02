@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import OrganizationJsonLd from "./components/OrganizationJsonLd";
 import {
@@ -132,19 +132,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
-      {/* Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-87Z9WJBRMM"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-87Z9WJBRMM');
-        `}
-      </Script>
       <body
         className="flex min-h-screen flex-col overflow-x-hidden bg-white font-sans text-gray-900 antialiased"
         suppressHydrationWarning
@@ -152,6 +139,7 @@ export default function RootLayout({
         <OrganizationJsonLd />
         <LayoutWrapper>{children}</LayoutWrapper>
         <FloatingActions />
+        <GoogleAnalytics gaId="G-87Z9WJBRMM" />
       </body>
     </html>
   );
