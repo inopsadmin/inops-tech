@@ -231,7 +231,7 @@ export default function SelfServiceKioskPage() {
               <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-blue-500/15 to-indigo-600/20 blur-2xl lg:block lg:rounded-l-[2rem] lg:rounded-r-none" aria-hidden />
               <div className="relative h-full overflow-hidden lg:h-full">
                 <Image
-                  src="/images/kiosk/kiosk-factory-worker.jpg"
+                  src="/kiosk/inops-1.avif"
                   alt="Self-service kiosk for factory workers — biometric attendance, payslips and leave on shop floor"
                   fill
                   className="object-cover object-center"
@@ -347,7 +347,7 @@ export default function SelfServiceKioskPage() {
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/kiosk/kiosk-shop-floor.jpg"
+                  src="/kiosk/inops-2.avif"
                   alt="Shop floor workers at manufacturing plant"
                   fill
                   className="object-cover"
@@ -488,7 +488,7 @@ export default function SelfServiceKioskPage() {
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/kiosk/kiosk-self-service.jpg"
+                  src="/kiosk/inops-3.avif"
                   alt="Employee accessing self-service terminal"
                   fill
                   className="object-cover"
@@ -558,7 +558,7 @@ export default function SelfServiceKioskPage() {
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/kiosk/kiosk-hr-team.jpg"
+                  src="/kiosk/Digital-Signage-inops.jpg"
                   alt="HR team at industrial plant — workload reduction through self-service"
                   fill
                   className="object-cover"
@@ -761,10 +761,10 @@ export default function SelfServiceKioskPage() {
           </motion.h2>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Biometric devices", href: "/biometric-devices", desc: "Face, fingerprint and RFID devices — the identity layer the kiosk uses.", img: "/images/kiosk/kiosk-office.jpg" },
-              { label: "HRIS & HR software", href: "/hris", desc: "The system of record behind employee self-service.", img: "/images/kiosk/kiosk-self-service.jpg" },
-              { label: "Mobile attendance app", href: "/mobile-app-attendance", desc: "Same functions on smartphone for field and supervisory staff.", img: "/images/kiosk/kiosk-factory-worker.jpg" },
-              { label: "Canteen management", href: "/canteen-and-visitor", desc: "Kiosk-based meal issuance and entitlement validation.", img: "/images/kiosk/kiosk-hr-team.jpg" },
+              { label: "Biometric devices", href: "/biometric-devices", desc: "Face, fingerprint and RFID devices — the identity layer the kiosk uses.", img: "/kiosk/Biometric-Devices.avif" },
+              { label: "HRIS & HR software", href: "/hris", desc: "The system of record behind employee self-service.", img: "/kiosk/HR-Software-Built-for-India-Manufacturing.avif" },
+              { label: "Mobile attendance app", href: "/mobile-app-attendance", desc: "Same functions on smartphone for field and supervisory staff.", img: "/kiosk/Mobile-Attendance-app.jpg" },
+              { label: "Canteen management", href: "/canteen-and-visitor", desc: "Kiosk-based meal issuance and entitlement validation.", img: "/kiosk/Canteen-and-Visitor-Management.jpg" },
             ].map((link, i) => (
               <motion.div
                 key={link.label}

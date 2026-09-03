@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 
 type Fields = { fullName: string; businessEmail: string; phone: string; message: string };
 type Errors = Partial<Record<keyof Fields, string>>;
@@ -27,17 +27,6 @@ export default function FloatingActions() {
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
 
-  /* Open when hero leaves viewport, close when it comes back */
-  useEffect(() => {
-    const hero = document.querySelector("section");
-    if (!hero) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setFormOpen(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, []);
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const updated = { ...fields, [e.target.name]: e.target.value };
@@ -203,7 +192,7 @@ export default function FloatingActions() {
                 </div>
 
                 <a
-                  href="https://wa.me/918088602602"
+                  href="https://wa.me/919986221151"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 py-[10px] rounded-lg text-[12.5px] font-bold text-white bg-[#25D366] hover:bg-[#20c05a] transition-colors duration-150 flex items-center justify-center gap-1.5"

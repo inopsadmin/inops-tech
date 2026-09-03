@@ -270,6 +270,102 @@ export default function AccessoriesPage() {
           </div>
         </section>
 
+        {/* ══════════════════════════════════════════
+            FAQ — details/summary accordion
+        ══════════════════════════════════════════ */}
+        <section aria-labelledby="accessories-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-7xl">
+            <motion.div
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 id="accessories-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                Frequently asked questions
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Common questions about exit buttons, electromagnetic locks, RF cards, and fingerprint sensors.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
+            >
+              <div className="divide-y divide-slate-200">
+                {([
+                  {
+                    q: "What accessories does an access control system need?",
+                    a: "Beyond the reader itself: a locking device (electromagnetic lock or electric strike), a request-to-exit device so people can leave without a credential, a power supply, and credentials such as RF cards. Which combination you need depends on the door type and the fire-safety requirement for that opening.",
+                  },
+                  {
+                    q: "What is a request-to-exit (RTE) button and why is it required?",
+                    a: "An RTE device releases the lock from the secure side so a person can exit without presenting a credential. It matters for safety as much as convenience — most fire and building codes require free egress from a secured area, and a maglock with no exit release can trap people inside.",
+                  },
+                  {
+                    q: "What is the difference between a push button and a touchless exit switch?",
+                    a: "A push button is pressed physically; a touchless switch uses motion detection to release the lock when a hand approaches. Touchless units are used in cleanrooms, hospitals and food-processing areas where surface contact is restricted, and in high-traffic doors where mechanical buttons wear out.",
+                  },
+                  {
+                    q: "How much holding force does an electromagnetic lock need?",
+                    a: "600 lbs suits most standard interior and glass doors. Higher-traffic or external doors, and doors that see forced-entry risk, need proportionally more. Double-leaf openings need a maglock per leaf — our DL-600 delivers 600 lbs on each.",
+                  },
+                  {
+                    q: "Will a maglock work on a glass door?",
+                    a: "Yes, with the correct mounting bracket — glass doors need a U-bracket or L-bracket assembly rather than direct fixing. The same lock works across wooden, glass, metal and fire-rated doors provided the mounting hardware matches.",
+                  },
+                  {
+                    q: "What happens to a maglock during a power failure or fire alarm?",
+                    a: "Electromagnetic locks are fail-safe by design: they release when power is cut, so a power failure or fire-alarm trigger frees the door for egress. This is why maglocks are common on escape routes, and why the power supply and alarm interface matter as much as the lock itself.",
+                  },
+                  {
+                    q: "Which RFID cards work with your readers?",
+                    a: "Cards supporting ISO-format proximity at 125 kHz and 13.56 MHz, covering common proximity and MIFARE deployments. Cards are printable on both sides for use as employee ID, so one credential serves access, attendance, canteen and visitor identification.",
+                  },
+                  {
+                    q: "Can we keep our existing cards when we change readers?",
+                    a: "Usually yes, if the existing cards run on 125 kHz or 13.56 MHz standards. Re-issuing credentials to a large workforce is expensive and disruptive, so we check card compatibility during the site survey before recommending readers.",
+                  },
+                  {
+                    q: "Do fingerprint sensors work as standalone devices or do they need a controller?",
+                    a: (<>Sensors integrate into an access control system rather than operating alone — the sensor captures, the controller decides, the lock or lane responds. For sites wanting a self-contained unit, a <Link href="/biometric-devices" className="font-medium text-blue-600 underline-offset-2 hover:underline">biometric terminal</Link> combines all three.</>),
+                  },
+                  {
+                    q: "Can accessories be added to an existing access control installation?",
+                    a: "Yes. Exit buttons, maglocks and card readers are commonly retrofitted to doors already under access control, and to lanes where the original installation covered entry but not egress or secondary doors. Compatibility depends on the existing controller and voltage.",
+                  },
+                  {
+                    q: "Do you supply accessories separately, or only with a full system?",
+                    a: (<>Both. Accessories are supplied standalone for sites completing or extending an existing installation, and as part of a full deployment alongside <Link href="/biometric-devices" className="font-medium text-blue-600 underline-offset-2 hover:underline">biometric devices</Link> and <Link href="/turnstiles-access" className="font-medium text-blue-600 underline-offset-2 hover:underline">turnstiles</Link>.</>),
+                  },
+                  {
+                    q: "Are accessories covered under AMC?",
+                    a: (<>Yes — exit devices, locks and readers are covered alongside biometric terminals and turnstiles under <Link href="/services/biometric-amc" className="font-medium text-blue-600 underline-offset-2 hover:underline">biometric AMC</Link>, which matters because maglocks and exit buttons are among the highest-wear components in an access installation.</>),
+                  },
+                ] as { q: string; a: React.ReactNode }[]).map((item, index) => (
+                  <details key={item.q} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                      <span className="flex min-w-0 gap-4">
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.q}</span>
+                      </span>
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700" aria-hidden>+</span>
+                    </summary>
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:text-base">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         <SolutionPageClosingCta
           headingId="accessories-final-cta-heading"
           heading="Complete your access install with the right accessories"
