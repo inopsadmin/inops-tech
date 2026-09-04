@@ -268,7 +268,7 @@ function WhyInopsMosaicPainCard({
 const ourModulesSlides = [
   {
     slug: "attendance-leave",
-    title: "Time Attendance and Leave",
+    title: "Attendance Management Software",
     description:
       "Track attendance in real time, apply shift and leave policies automatically, and push verified hours directly to payroll.",
     image:
@@ -279,7 +279,7 @@ const ourModulesSlides = [
   },
   {
     slug: "wage-payroll",
-    title: " Wage & Invoice",
+    title: "Contractor Payroll Software",
     description:
       "Calculate wages, statutory deductions, and overtime with audit trails that stay compliant across every pay cycle.",
     image:
@@ -290,7 +290,7 @@ const ourModulesSlides = [
   },
   {
     slug: "contractor-management",
-    title: "Contractor Management",
+    title: "Vendor & Contractor Management",
     description:
       "Manage vendor profiles, manpower allocation, renewals, and site-level accountability from one centralized view.",
     image:
@@ -301,7 +301,7 @@ const ourModulesSlides = [
   },
   {
     slug: "cxo-dashboard",
-    title: "CXO Dashboard",
+    title: "HR Dashboard & Workforce Analytics",
     description:
       "Give leadership real-time visibility into headcount, productivity, compliance posture, and cost leakages.",
     image:
@@ -312,7 +312,7 @@ const ourModulesSlides = [
   },
   {
     slug: "background-verification",
-    title: "Background Verification",
+    title: "Worker Verification & BGV",
     description:
       "Verify contractor identity and documents before onboarding, with complete records ready for audits and renewals.",
     image:
@@ -334,7 +334,7 @@ const ourModulesSlides = [
   },
   {
     slug: "compliance-report",
-    title: "CLRA Compliance & Registers",
+    title: "Compliance Management & CLRA Registers",
     description:
       "Digital Form V/XIII registers, licence tracking, and audit-ready returns.",
     image:
@@ -367,7 +367,7 @@ const ourModulesSlides = [
   },
   {
     slug: "onboarding-offboarding",
-    title: "Onboarding & Offboarding",
+    title: "Contractor Onboarding Software",
     description:
       "Digitise the full contractor lifecycle — collect documents, run BGV, issue gate passes on day one, and close exits cleanly with asset recovery and final settlement.",
     image:

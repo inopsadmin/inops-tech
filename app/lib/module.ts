@@ -51,7 +51,7 @@ export const modules: ModuleData[] = [
   {
     slug: "attendance-leave",
     badge: " Iddion RegX - Attendance & Leave",
-    title: "Contract Worker Attendance & Leave Management",
+    title: "	Attendance Management Software",
     subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
     description:
@@ -242,7 +242,7 @@ export const modules: ModuleData[] = [
   {
     slug: "compliance-report",
     badge: "Iddion RegX - CLRA Compliance",
-    title: "CLRA Compliance Software for Principal Employers",
+    title: "	Compliance Management & CLRA Registers",
     description:
       "InOps CLRA compliance software automates every obligation a principal employer carries under the Contract Labour (Regulation & Abolition) Act: digital Form V and Form XIII registers maintained in real time, contractor licence expiry and headcount-cap tracking per establishment, alerts on the 9-day continuous attendance threshold, and statutory returns generated directly from biometric gate data. Every register entry traces to a verified gate event — so audit day is a report export, not a records hunt. Iddion RegX captures every punch as both an attendance record and a compliance record.",
     subDescription:
@@ -433,7 +433,7 @@ export const modules: ModuleData[] = [
   {
     slug: "background-verification",
     badge: "Iddion RegX - Background Verification",
-    title: "Background Verification for Contract Workers",
+    title: "Worker Verification & BGV",
     description:
       "Background verification contract workers, worker verification module, criminal record check India, UAN employment verification, blue collar BGV, re-verification",
     subDescription:
@@ -614,7 +614,7 @@ faq: [
   {
     slug: "contractor-management",
     badge: "Iddion RegX - Contractor Core",
-    title: "Contractor Compliance & Lifecycle Management",
+    title: "Vendor & Contractor Management",
     description:
       "Manage contractor compliance centrally: licences, CLRA registrations, headcount limits, document expiry alerts, and contractor scorecards across every vendor and site from one dashboard. Iddion RegX captures every punch as both an attendance record and a compliance record.",
      subDescription:
@@ -802,7 +802,7 @@ faq: [
  {
     slug: "wage-payroll",
     badge: "Iddion RegX - Wage & Invoice",
-    title: "Contract Labour Wage & Invoice Reconciliation",
+    title: "Contractor Payroll Software",
     description:
       "InOps automates contract labour payroll wage calculations, OT approvals, and PF/ESI deductions and reconciles contractor invoices against biometric attendance records before finance sign-off. Iddion RegX captures every punch as both an attendance record and a compliance record.",
     subDescription:
@@ -990,7 +990,7 @@ faq: [
   {
     slug: "cxo-dashboard",
     badge: "Iddion RegX - CXO Dashboard",
-    title: "Contractor Workforce Analytics & CXO Dashboard",
+    title: "HR Dashboard & Workforce Analytics",
     description:
       "Real time contractor workforce analytics for leadership: headcount by site, compliance scores, cost leakage, and vendor benchmarking without waiting for month-end reporting packs. Iddion RegX captures every punch as both an attendance record and a compliance record.",
      subDescription:
@@ -1735,7 +1735,7 @@ faq: [
   {
     slug: "onboarding-offboarding",
     badge: "Iddion RegX - Onboarding & Offboarding",
-    title: "Contractor Onboarding & Offboarding Lifecycle Management",
+    title: "Contractor Onboarding Software",
     description:
       "InOps digitises the full contractor lifecycle from document collection, BGV, and induction on day one, to structured exits with asset recovery, final settlement, and statutory closure so every entry and departure is compliant, traceable, and audit-ready. Iddion RegX captures every punch as both an attendance record and a compliance record.",
      subDescription:
