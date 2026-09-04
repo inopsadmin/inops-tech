@@ -16,7 +16,7 @@ export default function CollaborateCtaBand() {
       primaryLabel="Book a Demo"
       secondaryLabel="Get a Call Back"
       primaryHref="/contact"
-      secondaryHref="tel:+918088602602"
+      secondaryHref="tel:+918027745220"
     />
   );
 }

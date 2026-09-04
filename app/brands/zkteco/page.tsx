@@ -133,7 +133,7 @@ const deviceCategories = [
     category: "Face Recognition Terminals",
     accentBar: "from-sky-400 via-blue-500 to-indigo-500",
     iconBg: "bg-sky-50 text-sky-600",
-    img: "/images/zkteco/zkteco-face-terminal.jpg",
+    img: "/ZKTeco/man-with-digital-facial-recognition.jpg",
     description: "Sub-second visible-light facial recognition with liveness detection and anti-spoofing. Suitable for outdoor plant entrances and high-throughput shift-change gates.",
     models: [
       { name: "SpeedFace Series", spec: "Face + fingerprint + card, outdoor-rated, large capacity" },
@@ -145,7 +145,7 @@ const deviceCategories = [
     category: "Fingerprint Terminals",
     accentBar: "from-violet-400 via-fuchsia-500 to-pink-500",
     iconBg: "bg-violet-50 text-violet-600",
-    img: "/images/zkteco/zkteco-fingerprint.jpg",
+    img: "/ZKTeco/fingerprint-Terminals.jpg",
     description: "Optical and capacitive fingerprint readers for indoor gates, offices and lower-throughput entry points. Entry-level cost per lane.",
     models: [
       { name: "K40/K50 Series", spec: "Fingerprint + card + PIN, high user capacity, indoor rated" },
@@ -157,7 +157,7 @@ const deviceCategories = [
     category: "Face + Fingerprint Hybrid",
     accentBar: "from-emerald-400 via-teal-500 to-cyan-500",
     iconBg: "bg-emerald-50 text-emerald-600",
-    img: "/images/zkteco/zkteco-tech-board.jpg",
+    img: "/ZKTeco/face-hingerprint-hybrid.avif",
     description: "Multi-modal terminals combining face, fingerprint, RFID and PIN. Suited to sites requiring flexible fallback or high-security dual-factor entry.",
     models: [
       { name: "SpeedFace V5L", spec: "Face + fingerprint + card, multi-modal, 50,000 face capacity" },
@@ -168,7 +168,7 @@ const deviceCategories = [
     category: "Access Control Panels & Controllers",
     accentBar: "from-indigo-400 via-blue-500 to-sky-500",
     iconBg: "bg-indigo-50 text-indigo-600",
-    img: "/images/zkteco/zkteco-access-gate.jpg",
+    img: "/ZKTeco/access-control-panels-ontrollers.webp",
     description: "Single and multi-door controllers for networked access control deployments. Integrates with readers, electric strikes, and turnstiles.",
     models: [
       { name: "C3 Series", spec: "1/2/4-door controllers, TCP/IP, Wiegand and RS485" },
@@ -179,7 +179,7 @@ const deviceCategories = [
     category: "Turnstiles & Flap Barriers",
     accentBar: "from-amber-400 via-orange-500 to-rose-500",
     iconBg: "bg-amber-50 text-amber-700",
-    img: "/images/zkteco/zkteco-hero-industrial.jpg",
+    img: "/ZKTeco/turnstiles-Flap-Barriers.jpg",
     description: "Tripod turnstiles, flap barriers and full-height turnstiles with reader mounts for any ZKTeco biometric terminal. Physical access enforcement at the lane.",
     models: [
       { name: "TS2000/TS3000", spec: "Tripod turnstile, reader-agnostic, compact footprint" },
@@ -233,7 +233,7 @@ export default function ZKTecoPage() {
               <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-blue-500/15 to-indigo-600/20 blur-2xl lg:block lg:rounded-l-[2rem] lg:rounded-r-none" aria-hidden />
               <div className="relative h-full overflow-hidden lg:h-full">
                 <Image
-                  src="/images/zkteco/zkteco-hero-industrial.jpg"
+                  src="/ZKTeco/Linkedin newsletter Banner.jpg"
                   alt="ZKTeco biometric devices at industrial facility gate — face recognition terminals and access control"
                   fill
                   className="object-cover object-center"
@@ -243,12 +243,12 @@ export default function ZKTecoPage() {
                 <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-8 bg-gradient-to-r from-white via-white/80 to-transparent sm:w-12 lg:block lg:w-32 lg:from-white lg:via-white/90" aria-hidden />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/[0.06] to-transparent lg:hidden" aria-hidden />
               </div>
-              <VideoLivePopups
+              {/* <VideoLivePopups
                 popups={[
                   { position: "top-left", label: "Live", className: "top-10 -left-10 sm:-top-10 sm:-left-10 lg:-top-10 lg:-left-10 xl:top-7 xl:-left-15", title: "Access secured", accent: "emerald" },
                   { position: "bottom-right", className: "bottom-10 right-10 sm:-bottom-10 sm:-right-10 lg:-bottom-10 lg:-right-10 xl:bottom-0 xl:-right-2", label: "Verified", title: "ZKTeco · eSSL · Realtime", subtitle: "3,000+ devices managed", variant: "icon", icon: "fingerprint", accent: "blue" },
                 ]}
-              />
+              /> */}
             </div>
 
             {/* Copy */}
@@ -335,25 +335,26 @@ export default function ZKTecoPage() {
             </p>
           </motion.div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-6">
-            {deviceCards.map((card, i) => {
-              const t = platformThroughput[card.tone];
-              return (
-                <ThroughputMetricCard
-                  key={card.title}
-                  title={card.title}
-                  description={card.description}
-                  chip={card.tag}
-                  metric={String(i + 1).padStart(2, "0")}
-                  accentBar={t.accentBar}
-                  iconWrap={t.iconWrap}
-                  hoverGlow={t.hoverGlow}
-                  index={i}
-                  icon={<DeviceGlyph name={card.icon} className="text-current" />}
-                />
-              );
-            })}
-          </div>
+          <div className="mt-10 flex flex-wrap justify-center gap-6 lg:mt-12 lg:gap-6">
+  {deviceCards.map((card, i) => {
+    const t = platformThroughput[card.tone];
+    return (
+      <div key={card.title} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+        <ThroughputMetricCard
+          title={card.title}
+          description={card.description}
+          chip={card.tag}
+          metric={String(i + 1).padStart(2, "0")}
+          accentBar={t.accentBar}
+          iconWrap={t.iconWrap}
+          hoverGlow={t.hoverGlow}
+          index={i}
+          icon={<DeviceGlyph name={card.icon} className="text-current" />}
+        />
+      </div>
+    );
+  })}
+</div>
         </div>
       </section>
 

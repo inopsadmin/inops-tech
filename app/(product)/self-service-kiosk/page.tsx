@@ -720,7 +720,7 @@ export default function SelfServiceKioskPage() {
           Why the application matters more than the enclosure
       ══════════════════════════════════════════ */}
       <section className="border-t border-slate-200/80 bg-white py-10 lg:py-14" aria-labelledby="kiosk-application-heading">
-        <div className="mx-auto max-w-3xl px-6 lg:px-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -732,7 +732,7 @@ export default function SelfServiceKioskPage() {
             </h2>
             <div className="mt-3 h-1 w-14 rounded-full bg-blue-600" aria-hidden />
             <p className="mt-6 text-base leading-relaxed text-slate-600">
-              Kiosk hardware is largely commoditised — a touchscreen, an enclosure, a reader, a printer. What separates a useful kiosk from an expensive noticeboard is whether it is connected to anything.
+             What separates a useful kiosk from an expensive noticeboard is whether it is connected to anything.
             </p>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
               A visitor kiosk that captures details but cannot check a blacklist, issue a zone-limited pass or open a turnstile has moved the paper register onto a screen. A canteen kiosk that records meals but cannot validate entitlement against the shift a worker actually attended has automated the wrong half of the problem.

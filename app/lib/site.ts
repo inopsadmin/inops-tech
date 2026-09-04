@@ -63,7 +63,7 @@ export const TWITTER_HANDLE = "@InOpstweets";
 /** Full postal address (matches footer / Google Business profile style). */
 export const OFFICE_ADDRESS = {
   streetAddress:
-    "60B, Bommasandra Link Road, near Karnataka Bank, Bommasandra Industrial Area, Bommasandra",
+    "60B, Bommasandra Link Road, Bommasandra Industrial Area",
   addressLocality: "Bengaluru",
   addressRegion: "Karnataka",
   postalCode: "560099",

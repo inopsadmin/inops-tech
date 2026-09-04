@@ -71,4 +71,19 @@ export const biometricAmcFaqItems: FAQItem[] = [
     answer:
       "No. AMC is available as a standalone service for any biometric and access-control fleet. If you later deploy contract labour management or HRIS, the same device estate feeds it — but the AMC stands on its own.",
   },
+  {
+    question: "Our biometric machine has stopped working. What now?",
+    answer:
+      "Start with the basics — power, network, and sensor cleaning resolve a surprising share of failures. If the device is unresponsive after that, or if the same problem recurs across several devices, it usually points to firmware or a fleet-level issue rather than one faulty unit. We diagnose remotely first and dispatch an engineer where the fix needs hands.",
+  },
+  {
+    question: "Can you repair a device that's out of warranty?",
+    answer:
+      "Yes. Out-of-warranty repair is covered under AMC, and available as a one-off for estates not yet under contract — though for anything beyond a handful of devices, an annual contract is usually cheaper than repeated call-outs.",
+  },
+  {
+    question: "Do you have a service centre for biometric attendance devices?",
+    answer:
+      "We operate as a service provider rather than a walk-in centre — engineers travel to the site, because industrial devices are gate-mounted and taking them offline for a workshop visit means manual attendance for the duration.",
+  },
 ];

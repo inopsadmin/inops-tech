@@ -77,7 +77,7 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/order-management") ||
     path.startsWith("/biometric-devices") ||
     path.startsWith("/self-service-kiosk") ||
-    path.startsWith("/zkteco")
+    path.startsWith("/brands/zkteco")
   );
 }
 

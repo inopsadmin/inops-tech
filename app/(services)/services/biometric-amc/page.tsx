@@ -174,10 +174,10 @@ export default function BiometricPage() {
 
             <div>
   <h2 className="text-[clamp(24px,3vw,32px)] leading-[1.25] font-bold text-[#0b1e2d] max-w-[480px]">
-    Everything the service runs on
+    What do biometric AMC services cover?
   </h2>
   <div className="mt-2 text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold">
-    What do biometric AMC services cover?
+    Everything the service runs on
   </div>
 </div>
             <p className="text-[14.5px] leading-[1.65] text-[#667588] max-w-[380px] md:text-right md:justify-self-end">
