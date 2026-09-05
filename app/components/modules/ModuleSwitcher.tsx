@@ -35,7 +35,7 @@ const MODULE_TABS = [
   },
   {
     slug: "compliance-report",
-    label: "Compliance Report",
+    label: "Compliance Management & CLRA Registers",
     accent: "Audit-ready India stack",
   },
   {
