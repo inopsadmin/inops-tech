@@ -5,27 +5,27 @@ import { useEffect, useRef, useState } from "react";
 const MODULE_TABS = [
   {
     slug: "attendance-leave",
-    label: "Time Attendance and Leave",
+    label: "Attendance Management Software",
     accent: "Fraud-proof visibility",
   },
   {
     slug: "wage-payroll",
-    label: "Wage & Invoice",
+    label: "Contractor Payroll Software",
     accent: "Finance automation",
   },
   {
     slug: "contractor-management",
-    label: "Contractor Management",
+    label: "Vendor & Contractor Management",
     accent: "Command center",
   },
   {
     slug: "cxo-dashboard",
-    label: "CXO Dashboard",
+    label: "HR Dashboard & Workforce Analytics",
     accent: "Boardroom visibility",
   },
   {
     slug: "background-verification",
-    label: "Background Verification",
+    label: "Worker Verification & BGV",
     accent: "Identity & Record Checks",
   },
   {
@@ -50,7 +50,7 @@ const MODULE_TABS = [
   },
   {
     slug: "onboarding-offboarding",
-    label: "Onboarding & Offboarding",
+    label: "Contractor Onboarding Software",
     accent: "Full lifecycle management",
   },
 ] as const;
