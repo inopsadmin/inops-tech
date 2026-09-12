@@ -6,6 +6,11 @@ import type { FAQItem } from "@/app/components/FAQPageJsonLd";
  */
 export const clmsFaqItems: FAQItem[] = [
   {
+    question: "What is Iddion RegX?",
+    answer:
+      "Iddion RegX is InOps's Contract Labour Management System (CLMS) built for Indian manufacturing, infrastructure, and industrial sites. RegX automates the full contractor lifecycle — digital onboarding, gate compliance (19 automated entry rules), biometric attendance, CLRA-mandated registers (Form V/XIII), PF/ESI/LWF statutory deductions, contractor payroll, invoice reconciliation, and OT governance — on a single platform. The name reflects its core purpose: regulating the contract workforce with the precision and auditability that Indian labour law requires.",
+  },
+  {
     question: "What is a Contract Labour Management System (CLMS)?",
     answer:
       "A Contract Labour Management System (CLMS) is software that automates the full lifecycle of contract labour: onboarding, gate compliance, biometric attendance, PF/ESI/LWF statutory deductions, payroll processing for manufacturing plants, and contractor governance.",

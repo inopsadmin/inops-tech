@@ -20,13 +20,13 @@ const posts = [...blogPosts]
 const blogBanner = {
   src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85",
   alt: "Editorial workspace ,  professional typing on a laptop for journal content",
-  tagline: "Insights on workforce security, identity, and operations",
+  tagline: "Practical guides on CLRA compliance, biometric attendance, contract labour management, and early wage access — written for Indian manufacturers and HR leaders.",
 } as const;
 
 const featuredHighlights = [
-  "Physical security signals",
-  "Identity-led operations",
-  "Modern access workflows",
+  "CLRA compliance",
+  "Biometric attendance",
+  "Contract labour management",
 ] as const;
 
 function ArrowRightIcon({ className }: { className?: string }) {
@@ -71,16 +71,43 @@ export default function BlogPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className={inopsUi.heroKicker}>InOps</p>
-                  <h1 className="home-display-heading inops-type-hero mt-4 text-white">Blog</h1>
-                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{blogBanner.tagline}</p>
+                  <p className={inopsUi.heroKicker}>Blog</p>
+                  <h1 className="home-display-heading inops-type-hero mt-4 text-white text-center">
+                    Contract Labour Compliance &amp; Workforce Technology Insights
+                  </h1>
+                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-xl text-center`}>{blogBanner.tagline}</p>
                 </div>
               </div>
             </div>
           </motion.header>
 
+          {/* Topic clusters — visible scope label for readers and AI crawlers */}
           <motion.div
-            className="mb-8 mt-14 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
+            className="mt-10 flex flex-wrap items-center justify-center gap-2 text-sm text-slate-600"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.45, ease: smoothEase }}
+            aria-label="Topic areas covered in this journal"
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest text-slate-400 mr-1">Topics covered:</span>
+            {[
+              "CLRA compliance",
+              "Biometric attendance",
+              "Contract labour management (CLMS)",
+              "Early wage access (EWA)",
+            ].map((topic) => (
+              <span
+                key={topic}
+                className="rounded-full border border-slate-200 bg-white px-3.5 py-1 text-xs font-medium text-slate-700 shadow-sm"
+              >
+                {topic}
+              </span>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="mb-8 mt-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -95,7 +122,7 @@ export default function BlogPage() {
               </FlyInText>
             </div>
             <FlyInText as="p" direction="up" delay={0.08} className={`max-w-lg ${inopsUi.lead}`}>
-              Our editor&apos;s pick on what is changing across physical security, identity, and connected access.
+              Our editor&apos;s pick on what is changing in contract labour compliance, CLRA enforcement, and workforce technology for Indian manufacturers.
             </FlyInText>
           </motion.div>
 

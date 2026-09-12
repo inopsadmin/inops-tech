@@ -30,8 +30,8 @@ const heroData = {
   bgPosition: "72% 40%",
   gradientCenter: "18% 22%",
   eyebrow: "Last-Mile Logistics Solution",
-  titleLine1: "Delivery Management",
-  titleLine2: "Perfected.",
+  titleLine1: "Delivery Management Software",
+  titleLine2: "for Last-Mile Logistics",
   description:
     "Smart dispatch, live tracking, and digital proof-of-delivery for reliable last-mile operations that keep customers coming back.",
   buttons: [
@@ -142,31 +142,41 @@ const ctaData = {
   ],
 };
 
-const deliveryWarehouseFaqItems = [
+const deliveryFaqItems = [
   {
-    question: "What is Delivery and Warehouse Management Software?",
+    question: "What is delivery management software?",
     answer:
-      "It helps organizations manage inbound deliveries, outbound dispatches, warehouse operations, vehicle movement, inventory visibility, and gate processes.",
+      "Delivery management software is a platform that orchestrates the dispatch, routing, tracking, and proof-of-delivery for outbound shipments. It replaces manual dispatch boards and phone-based driver coordination with automated route assignment, live GPS tracking, customer notifications, and a digital record of every delivery — from order release to confirmed receipt.",
   },
   {
-    question: "How does warehouse management software improve efficiency?",
+    question: "How does digital proof-of-delivery (POD) work?",
     answer:
-      "It automates receiving, storage, picking, dispatch, and inventory tracking, reducing errors and improving operational productivity.",
+      "When a driver completes a delivery, they capture a digital confirmation on their mobile device: a recipient signature, photo of the delivered goods, or a QR/OTP acknowledgement. The POD is timestamped, geotagged, and uploaded automatically to the delivery record. Dispatch teams and customers can view it instantly, eliminating disputes over whether a delivery was made and providing an audit trail for billing and claims.",
   },
   {
-    question: "Can the solution track delivery vehicles?",
+    question: "What is last-mile delivery and why is it the most expensive stage?",
     answer:
-      "Yes. Vehicle entry, exit, loading status, and delivery movements can be monitored in real time.",
+      "Last-mile delivery is the final leg of the supply chain — from a distribution hub to the end customer or delivery point. It accounts for 41–53% of total logistics costs because routes are geographically dispersed, individual stops are small, failed deliveries require re-attempts, and real-time coordination between dispatcher, driver, and customer is hard to maintain at scale. InOps delivery management addresses each of these with AI route optimization, automated customer notifications, and live exception handling.",
   },
   {
-    question: "Does warehouse management integrate with ERP?",
+    question: "How does AI route optimization reduce delivery costs?",
     answer:
-      "Yes. Warehouse Management Software integrates with ERP systems for inventory, procurement, and order management.",
+      "The InOps routing engine evaluates thousands of variable combinations — stop sequence, vehicle capacity, time windows, traffic patterns, and driver shift hours — to compute the most efficient route across an entire fleet simultaneously. Optimised routes reduce total kilometres driven, lower fuel consumption, increase the number of deliveries per vehicle shift, and reduce driver overtime. Customers report an average 28% reduction in fuel costs after deployment.",
   },
   {
-    question: "Which industries use warehouse management solutions?",
+    question: "Can customers receive real-time tracking updates?",
     answer:
-      "Manufacturing, logistics, distribution, retail, FMCG, pharmaceuticals, and e-commerce companies widely use warehouse management software.",
+      "Yes. The platform generates a shareable live-tracking link for each shipment, which can be sent to the customer via SMS or WhatsApp automatically when the driver departs. Customers see the driver's real-time location, estimated arrival time, and delivery status without needing to call dispatch — reducing inbound WISMO (Where Is My Order?) calls significantly.",
+  },
+  {
+    question: "How does InOps delivery management integrate with our ERP or order management system?",
+    answer:
+      "InOps connects to ERP and OMS platforms via REST API and standard data connectors. Orders flow in from the ERP automatically, are dispatched through InOps, and delivery confirmations (including POD records and timestamps) are written back to the source system. This eliminates manual re-entry, keeps order status in sync, and ensures billing can be triggered on confirmed delivery.",
+  },
+  {
+    question: "Is it suitable for multi-branch or franchise delivery operations?",
+    answer:
+      "Yes. The platform supports multi-depot, multi-branch deployments where each branch manages its own fleet and routes but group-level operations can see consolidated performance across all branches. Access controls let branch managers see only their deliveries; logistics heads and group ops see the full network. This makes it well suited to manufacturers, distributors, and franchise chains running deliveries from multiple fulfilment points.",
   },
 ] as const;
 
@@ -449,7 +459,7 @@ export default function DeliveryPage() {
             {/* </AnimateOnScroll> */}
             <FlyInText
               as="h2"
-              id="delivery-warehouse-faq-heading"
+              id="delivery-faq-heading"
               direction="up"
               delay={0.05}
               className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
@@ -462,7 +472,7 @@ export default function DeliveryPage() {
               delay={0.1}
               className="mt-4 text-base leading-relaxed text-slate-600"
             >
-              Answers to common questions about deliveries, dispatches, warehouse operations, vehicle tracking, ERP integration, and inventory visibility.
+              Answers to common questions about delivery management software, digital proof-of-delivery, AI route optimisation, last-mile logistics costs, customer tracking, and ERP integration.
             </FlyInText>
           </div>
 
@@ -472,7 +482,7 @@ export default function DeliveryPage() {
             className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]"
           >
             <div className="divide-y divide-slate-200">
-              {deliveryWarehouseFaqItems.map((item, index) => (
+              {deliveryFaqItems.map((item, index) => (
                 <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
                     <span className="flex min-w-0 gap-4">

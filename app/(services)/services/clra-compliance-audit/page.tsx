@@ -20,7 +20,7 @@ export default function CLRAComplianceAuditPage() {
               CLRA Compliance Audit for Principal Employers
             </h1>
             <p className="mt-[22px] text-[15px] leading-[1.7] text-white/[0.78] max-w-[500px]">
-              A CLRA compliance audit and labour compliance audit built for contract labour compliance and principal employer compliance, with a scored, actionable path to labour law compliance.
+              We review your contractor registers, Form V and Form XIII filings, contractor licence validity, and principal-employer statutory obligations under CLRA — and deliver a scored gap report with a prioritised action plan before your next labour inspection.
             </p>
             <div className="flex gap-3 mt-9 flex-wrap">
               <Link href="/contact" className="inline-flex items-center gap-2 py-[14px] px-6 rounded-lg text-[14.5px] font-bold no-underline border-2 border-white/30 bg-white/[0.18] text-white transition-all duration-150 hover:-translate-y-px hover:opacity-90 hover:bg-white/[0.26]">
@@ -535,11 +535,23 @@ export default function CLRAComplianceAuditPage() {
 
     </div>
 
-    {/* Related tags */}
+    {/* Related tags — linked to real internal pages / blog posts */}
     <div className="border-t border-[#eef1f4] mt-12 pt-5 flex items-center gap-3 flex-wrap">
       <span className="text-[10.5px] tracking-[0.10em] uppercase text-[#9aa8b6] font-bold mr-[6px]">Related</span>
-      {["Labour Compliance Audit", "Labour Law Compliance", "Compliance Assessment", "Factory Labour Compliance", "Contractor Compliance Audit"].map((tag) => (
-        <span key={tag} className="text-[12.5px] text-[#4a5766] border border-[#d8e0e8] rounded-full py-[5px] px-[14px] bg-[#f0f2f4]">{tag}</span>
+      {[
+        { label: "Labour Compliance Audit",    href: "/blog/clra-compliance-checklist-india-2026" },
+        { label: "Labour Law Compliance",      href: "/contract-labour-management" },
+        { label: "Compliance Assessment",      href: "/services" },
+        { label: "Factory Labour Compliance",  href: "/blog/camera-attendance-clra-compliance-manufacturing" },
+        { label: "Contractor Compliance Audit",href: "/blog/form-v-form-xiii-clra-guide-india" },
+      ].map(({ label, href }) => (
+        <Link
+          key={label}
+          href={href}
+          className="text-[12.5px] text-[#1c7bb8] border border-[#c0d4e8] rounded-full py-[5px] px-[14px] bg-[#eef6fc] hover:bg-[#dbeeff] transition-colors duration-150 no-underline"
+        >
+          {label}
+        </Link>
       ))}
     </div>
   </div>

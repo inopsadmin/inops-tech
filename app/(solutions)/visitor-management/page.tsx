@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
@@ -98,6 +99,21 @@ const visitorManagementFaqItems = [
     question: "Which organizations use Visitor Management Software?",
     answer:
       "Manufacturing companies, corporate offices, educational institutions, hospitals, warehouses, and industrial facilities commonly use Visitor Management Systems.",
+  },
+  {
+    question: "Can contractor or vendor visitors be checked against the CLMS compliance register at entry?",
+    answer:
+      "Yes. InOps Visitor Management integrates with InOps CLMS (Iddion RegX) to validate contractor and vendor visitors at the gate. At check-in, the system verifies whether the visitor's company holds a current contractor licence, whether the establishment is active on the compliance register, and whether the visitor is on an approved vendor list — before a gate pass is issued. Contractor companies whose licences have lapsed or whose compliance documents are overdue can be blocked from entry automatically, closing a security and compliance gap that paper-based visitor registers routinely miss.",
+  },
+  {
+    question: "How does InOps Visitor Management differ from the canteen and visitor module?",
+    answer:
+      "InOps Visitor Management is the standalone platform for any industrial or enterprise site that needs digital check-in, badge printing, host notifications, and access-control integration. The canteen and visitor management module adds meal-subsidy and canteen-access workflows for campuses that manage both visitor entry and employee meal entitlements on one platform. Standalone visitor management works wherever visitor control is the primary requirement; the integrated module is better suited to campuses where the same gate governs both visitor access and canteen entry.",
+  },
+  {
+    question: "Can the system block blacklisted individuals or suspended contractor companies at entry?",
+    answer:
+      "Yes. InOps Visitor Management maintains a watchlist that security teams can update; when a visitor's identity matches a flagged record at check-in, the system withholds the gate pass and alerts the security desk. For industrial sites integrated with InOps CLMS, the watchlist is extended with contractor-level compliance data — so a contractor company whose licence has been suspended is automatically flagged when any of their staff attempt visitor entry.",
   },
 ] as const;
 
@@ -223,13 +239,16 @@ export default function VisitorManagementPage() {
                 transition={{ duration: 0.6, ease: smoothEase, delay: 0.1 }}
               >
                 <h2 className="text-gray-900">
-                  Visitor Management
+                  Visitor Management System for Industrial &amp; Enterprise Sites
                 </h2>
                 <p className="mt-6 w-full max-w-none text-lg leading-relaxed text-gray-600 sm:text-xl lg:text-xl lg:leading-relaxed">
-                  Welcome to the future of visitor management with an innovative Visitor Management System. Designed to
-                  revolutionize how organizations handle visitor tracking and security, our system offers a comprehensive
-                  suite of features tailored to meet the unique needs of modern businesses. Let&apos;s explore the eight key
-                  features and their corresponding benefits:
+                  InOps Visitor Management is the standalone platform for sites that need digital check-in, badge printing, host
+                  notifications, and access-control integration — without tying it to canteen or meal workflows. For campuses that
+                  also manage employee meal entitlements, the{" "}
+                  <Link href="/canteen-and-visitor" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors duration-200">
+                    canteen and visitor management module
+                  </Link>{" "}
+                  combines both on one platform. Key capabilities of the standalone system:
                 </p>
               </motion.div>
             </div>
@@ -284,15 +303,16 @@ export default function VisitorManagementPage() {
                 transition={{ duration: 0.5, ease: smoothEase }}
               >
                 <h2 className="text-gray-900">
-                  Visitor Management System
+                  The Visitor Check-In Process: Scheduled and Walk-Up Visits
                 </h2>
                 <div
                   className="mt-2 h-0.5 w-24 rounded-full bg-blue-500 lg:mx-0"
                   aria-hidden
                 />
                 <p className="mx-auto mt-6 text-gray-600 leading-relaxed text-base sm:text-lg lg:mx-0 lg:max-w-none">
-                  Visitor Management is a holistic solution for tracking and securing every visit. From streamlined check-in to
-                  real-time monitoring, we deliver efficiency and peace of mind. Experience the future of visitor management today.
+                  The process covers both pre-scheduled visitors — host-approved digital passes issued before arrival — and
+                  spontaneous walk-ins captured and verified on the spot. Every step feeds the same audit log, so security has
+                  a complete, timestamped visitor record across all entry points.
                 </p>
               </motion.div>
               <motion.div
@@ -366,7 +386,7 @@ export default function VisitorManagementPage() {
                 Frequently asked questions
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
-                Answers to common questions about visitor registration, identity checks, pre-registration, access control, and visitor tracking.
+                Answers to common questions about visitor registration, identity checks, pre-registration, access control, CLMS compliance validation, and how standalone visitor management differs from the canteen and visitor module.
               </p>
             </motion.div>
 

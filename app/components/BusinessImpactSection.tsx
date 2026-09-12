@@ -148,7 +148,7 @@ export default function BusinessImpactSection() {
                       <span className="h-2 w-2 rounded-full bg-emerald-500" />
 
                       <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-emerald-700">
-                        Automated
+                        Automated Workflows
                       </span>
                     </div>
                   </div>
@@ -194,7 +194,7 @@ export default function BusinessImpactSection() {
                       <span className="h-2 w-2 rounded-full bg-sky-500" />
 
                       <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-sky-700">
-                        Analytics
+                        Workforce Analytics
                       </span>
                     </div>
                   </div>

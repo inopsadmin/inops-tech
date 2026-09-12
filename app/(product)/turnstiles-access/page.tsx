@@ -227,6 +227,57 @@ export default function TurnstilesPage() {
           </div>
         </section>
 
+        {/* Flap Barrier Turnstiles */}
+        <section className="py-5 lg:py-8 border-t border-gray-200 bg-slate-50/60">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-10 lg:items-center">
+              <motion.div
+                className="order-1 lg:order-1 lg:col-span-8 lg:pr-2 xl:pr-6"
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.7, ease: smoothEase }}
+              >
+                <h2 className="text-gray-900">Flap Barrier Turnstiles</h2>
+                <p className="mt-6 max-w-none text-gray-600 leading-relaxed text-base sm:text-xl">
+                  Flap barriers provide fast, wide-lane passage for office-to-plant transitions, visitor lanes, and facilities where a wider accessible lane is required alongside standard workforce lanes. The hinged flap mechanism opens fully on a valid credential and retracts instantly — delivering higher per-lane throughput than a tripod arm and a cleaner passage profile for workers in PPE or carrying equipment.
+                </p>
+                <ul className="mt-6 space-y-2">
+                  {[
+                    "Wide-lane and standard-lane variants for mixed workforce needs",
+                    "Integrated face, fingerprint, RFID or QR readers — same credential, same rules engine",
+                    "Fail-safe open on power loss and fire-alarm signal",
+                    "Anti-tailgate sensor with alarm relay",
+                    "Suitable for office lobbies, visitor reception, and plant-to-office transition points",
+                  ].map((point) => (
+                    <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-gray-600">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" aria-hidden />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+              <motion.div
+                className="relative order-2 flex justify-center lg:order-2 lg:col-span-4 lg:justify-end"
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
+              >
+                <div className="relative aspect-[4/3] w-full max-w-[16rem] overflow-hidden sm:max-w-xs lg:max-w-[30rem]">
+                  <Image
+                    src="/images/Turnstiles2.jpg"
+                    alt="Stainless steel flap barrier turnstile with wide lane for factory access"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 640px) 16rem, (max-width: 1024px) 20rem, 24rem"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Features – three numbered blocks */}
         <section className="py-5 lg:py-8 border-t border-gray-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -264,7 +315,7 @@ export default function TurnstilesPage() {
                   viewport={viewport}
                   transition={{ duration: 0.5, ease: smoothEase }}
                 >
-                  Features
+                  Turnstile Features: Reliability, Safety &amp; Reader Integration
                 </motion.h2>
                 <motion.div
                   className="mx-auto mt-3 h-1 w-14 origin-center rounded-full bg-blue-600 lg:mx-0 lg:origin-left"
@@ -335,6 +386,38 @@ export default function TurnstilesPage() {
                 </motion.dl>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Accessories cross-link callout */}
+        <section className="border-t border-slate-200/80 bg-slate-50/70 py-7 lg:py-9">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              className="flex flex-col gap-4 rounded-2xl border border-blue-100 bg-white px-6 py-5 shadow-sm ring-1 ring-blue-500/[0.07] sm:flex-row sm:items-center sm:justify-between sm:px-8"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.45, ease: smoothEase }}
+            >
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">Complete your install</p>
+                <p className="mt-1 text-base font-semibold text-slate-900">
+                  Exit buttons, RF cards, push-to-exit plates &amp; electromagnetic locks
+                </p>
+                <p className="mt-1 text-sm text-slate-500">
+                  The hardware that goes alongside every turnstile lane — sourced, specified and supported by the same team.
+                </p>
+              </div>
+              <Link
+                href="/accessories"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-600/20 transition hover:bg-blue-700 hover:-translate-y-0.5"
+              >
+                Browse accessories
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />
+                </svg>
+              </Link>
+            </motion.div>
           </div>
         </section>
 
@@ -427,7 +510,7 @@ function WhyChooseUsSection() {
           viewport={viewport}
           transition={{ duration: 0.5, ease: smoothEase }}
         >
-          Why Choose Us
+          Why Choose InOps for Turnstile Access Control
         </motion.h2>
         <div className="mx-auto mt-1.5 h-0.5 w-20 rounded-full bg-blue-500" aria-hidden />
         <div className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-12 lg:items-center lg:gap-5 xl:gap-6">

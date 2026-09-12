@@ -5,6 +5,7 @@ const services = [
     n: "01",
     label: "Background Verification",
     href: "/services/background-verification",
+    productLink: { href: "/contract-labour-management/iddion-regx-modules/background-verification", label: "BGV enforcement module in InOps CLMS →" },
     tag: "Identity & Screening",
     desc: "Aadhaar-linked identity, criminal records, employment history, and address checks for contract and industrial workers — verified before they reach your gate.",
     outcomes: ["Ghost employee detection", "Gate-enforced BGV status", "Audit-ready reports"],
@@ -20,6 +21,7 @@ const services = [
     n: "02",
     label: "Biometric AMC",
     href: "/services/biometric-amc",
+    productLink: { href: "/fixed-asset-management", label: "Biometric device fleet & AMC tracking →" },
     tag: "Hardware Lifecycle",
     desc: "SLA-backed biometric AMC across every site — preventive maintenance, remote diagnostics, firmware lifecycle management, and on-site engineer support under one contract.",
     outcomes: ["99.5% fleet uptime SLA", "Pan-India coverage", "24-hr response time"],
@@ -34,6 +36,7 @@ const services = [
     n: "03",
     label: "Biometric Database Audit",
     href: "/services/biometric-database-audit",
+    productLink: { href: "/face-recognition-attendance", label: "Face biometric attendance hardware →" },
     tag: "Data Integrity",
     desc: "Ghost employee detection, duplicate biometric cleanup, and payroll leakage prevention — a structured audit of your biometric fleet across all plants and warehouses.",
     outcomes: ["Ghost enrollment detection", "Duplicate template cleanup", "Payroll leakage prevention"],
@@ -49,6 +52,7 @@ const services = [
     n: "04",
     label: "CLRA Compliance Audit",
     href: "/services/clra-compliance-audit",
+    productLink: { href: "/contract-labour-management", label: "InOps CLMS — ongoing CLRA compliance →" },
     tag: "Statutory Compliance",
     desc: "End-to-end CLRA compliance audit covering contractor licence validity, statutory register accuracy, Form V/XIII checks, and principal-employer liability exposure.",
     outcomes: ["Licence & Form V checks", "Register accuracy audit", "Principal-employer liability review"],
@@ -62,6 +66,7 @@ const services = [
     n: "05",
     label: "Industrial Manpower Supply",
     href: "/services/industrial-manpower-supply",
+    productLink: { href: "/contract-labour-management", label: "InOps CLMS — contractor workforce management →" },
     tag: "Workforce Supply",
     desc: "Verified, trained, and compliance-ready contract workers for manufacturing, logistics, and industrial operations — deployed with full documentation and gate-ready status.",
     outcomes: ["Pre-verified workforce", "Compliance-ready deployment", "Statutory documentation included"],
@@ -107,11 +112,11 @@ export default function ServicesPage() {
             {/* Left — headline + CTA */}
             <div>
               <h1 className="text-[clamp(36px,4.5vw,62px)] leading-[1.04] font-bold text-white tracking-[-0.03em] m-0">
-                Workforce Compliance<br />
+                Workforce Compliance{" "}<br />
                 <span style={{ background: "linear-gradient(90deg, #5de3a5, #4fa3d8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                   Services
                 </span>{" "}
-                for Industrial<br />
+                for Industrial{" "}<br />
                 Enterprises
               </h1>
               <p className="mt-6 text-[15.5px] leading-[1.75] text-white/60 max-w-[480px]">
@@ -223,6 +228,9 @@ export default function ServicesPage() {
                   <div className="text-[10.5px] tracking-[0.14em] uppercase text-[#5de3a5] font-bold mb-3">{services[0].tag}</div>
                   <div className="text-[24px] font-bold text-white leading-[1.2] mb-4 group-hover:text-[#a8deff] transition-colors duration-150">{services[0].label}</div>
                   <p className="text-[13.5px] leading-[1.7] text-white/70 max-w-[420px] m-0">{services[0].desc}</p>
+                  <Link href={services[0].productLink.href} className="inline-block mt-4 text-[12px] font-semibold text-[#5de3a5] hover:text-[#a8deff] transition-colors duration-150 no-underline">
+                    {services[0].productLink.label}
+                  </Link>
                 </div>
                 <div className="flex items-end justify-between mt-7">
                   <div className="flex flex-wrap gap-2">
@@ -262,6 +270,9 @@ export default function ServicesPage() {
                     </div>
                   ))}
                 </div>
+                <Link href={services[1].productLink.href} className="block mt-1 mb-4 text-[11.5px] font-semibold text-[#1c7bb8] hover:text-[#0f5a96] transition-colors duration-150 no-underline">
+                  {services[1].productLink.label}
+                </Link>
                 <div className="flex items-center justify-between pt-4 border-t border-[#f0f3f6]">
                   <span className="text-[12px] font-semibold text-[#1c7bb8]">View service</span>
                   <svg className="w-4 h-4 text-[#1c7bb8] transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
@@ -299,7 +310,14 @@ export default function ServicesPage() {
                         </div>
                       ))}
                     </div>
-                    <div className="flex items-center gap-1 mt-5 text-[12px] font-semibold text-[#1c7bb8] group-hover:gap-2 transition-all duration-150">
+                    <Link
+                      href={svc.productLink.href}
+                      onClick={(e) => e.stopPropagation()}
+                      className="block mt-4 text-[11.5px] font-semibold text-[#8696a7] hover:text-[#1c7bb8] transition-colors duration-150 no-underline"
+                    >
+                      {svc.productLink.label}
+                    </Link>
+                    <div className="flex items-center gap-1 mt-3 text-[12px] font-semibold text-[#1c7bb8] group-hover:gap-2 transition-all duration-150">
                       View service
                       <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
                     </div>
@@ -366,6 +384,83 @@ export default function ServicesPage() {
                 <div className="text-[15px] font-bold text-[#0b1e2d] mb-2">{title}</div>
                 <div className="text-[13.5px] leading-[1.6] text-[#6b7b8c]">{desc}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== FAQ ========== */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              { "@type": "Question", name: "What compliance services does InOps offer for industrial enterprises?", acceptedAnswer: { "@type": "Answer", text: "InOps offers five services: Background Verification (BGV) for contract workers, Biometric AMC for hardware lifecycle management, Biometric Database Audit for ghost-employee detection, CLRA Compliance Audit for statutory register accuracy, and Industrial Manpower Supply of pre-verified contract workers. Each can be deployed independently or as an integrated compliance stack." } },
+              { "@type": "Question", name: "Are InOps compliance services available across multiple plant locations?", acceptedAnswer: { "@type": "Answer", text: "Yes. All five services are designed for multi-site, multi-plant deployments under a single contract and SLA. InOps operates across pan-India industrial sites — manufacturing, logistics, FMCG, and construction — with consistent standards at every location." } },
+              { "@type": "Question", name: "What is the difference between a CLRA Compliance Audit and the InOps CLMS software?", acceptedAnswer: { "@type": "Answer", text: "A CLRA Compliance Audit is a one-time or periodic professional service — InOps consultants review your contractor registers, Form V/XIII, licence validity, and principal-employer exposure, and deliver a gap report. InOps CLMS (Contract Labour Management System) is the software product that automates ongoing CLRA compliance: live contractor registers, automated challan reconciliation, and gate-enforced statutory checks every day. The audit identifies gaps; the software prevents them from recurring." } },
+              { "@type": "Question", name: "How quickly can InOps deploy services for a new site?", acceptedAnswer: { "@type": "Answer", text: "On-ground operations typically begin within days of engagement for service contracts (BGV, manpower supply). Biometric AMC engagements include a fleet survey and scheduling within the first week. Audit engagements are scoped and kicked off within 5–7 business days. Software-integrated deployments (CLMS, HRIS) take 4–6 weeks for a single site." } },
+              { "@type": "Question", name: "Does InOps conduct background verification for contract workers, not just permanent employees?", acceptedAnswer: { "@type": "Answer", text: "Yes — contract and casual workers are the primary ICP. InOps BGV covers Aadhaar-linked identity, criminal records, employment history, and address verification specifically for high-turnover contract labour environments. Results are gate-enforced: workers who fail verification are flagged and blocked at the biometric terminal before entering the site." } },
+              { "@type": "Question", name: "How do the five services work together as an integrated compliance stack?", acceptedAnswer: { "@type": "Answer", text: "BGV status flows directly into gate-blocking rules managed by InOps CLMS — a worker who fails verification is denied entry. The Biometric Database Audit cleans the enrollment records that attendance and payroll depend on. Biometric AMC keeps the hardware that runs those checks online and SLA-backed. The CLRA Audit validates the statutory registers that CLMS populates automatically. Industrial Manpower Supply delivers workers who arrive already BGV-cleared and documentation-complete. Each service strengthens the others." } },
+            ],
+          }),
+        }}
+      />
+      <section className="bg-white pt-[72px] px-[6vw] pb-[96px]">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-[40px] items-end mb-[52px]">
+            <div>
+              <div className="text-[12px] tracking-[0.08em] uppercase text-[#1c7bb8] font-bold mb-[14px]">FAQ</div>
+              <h2 className="text-[clamp(24px,3vw,34px)] leading-[1.2] font-bold text-[#0b1e2d] max-w-[480px]">
+                Common questions about InOps compliance services
+              </h2>
+            </div>
+            <p className="text-[14.5px] leading-[1.65] text-[#667588] max-w-[380px] md:text-right md:justify-self-end">
+              Questions about our services, multi-site deployment, CLRA vs. CLMS, and how the five services work together.
+            </p>
+          </div>
+          <div className="divide-y divide-[#e6eaee] border border-[#e6eaee] rounded-2xl overflow-hidden">
+            {[
+              {
+                q: "What compliance services does InOps offer for industrial enterprises?",
+                a: "InOps offers five services: Background Verification (BGV) for contract workers, Biometric AMC for hardware lifecycle management, Biometric Database Audit for ghost-employee detection, CLRA Compliance Audit for statutory register accuracy, and Industrial Manpower Supply of pre-verified contract workers. Each can be deployed independently or as an integrated compliance stack.",
+              },
+              {
+                q: "Are InOps compliance services available across multiple plant locations?",
+                a: "Yes. All five services are designed for multi-site, multi-plant deployments under a single contract and SLA. InOps operates across pan-India industrial sites — manufacturing, logistics, FMCG, and construction — with consistent standards at every location.",
+              },
+              {
+                q: "What is the difference between a CLRA Compliance Audit and the InOps CLMS software?",
+                a: "A CLRA Compliance Audit is a one-time or periodic professional service — InOps consultants review your contractor registers, Form V/XIII, licence validity, and principal-employer exposure, and deliver a gap report. InOps CLMS is the software product that automates ongoing CLRA compliance: live contractor registers, automated challan reconciliation, and gate-enforced statutory checks every day. The audit identifies gaps; the software prevents them from recurring.",
+              },
+              {
+                q: "How quickly can InOps deploy services for a new site?",
+                a: "On-ground operations typically begin within days of engagement for service contracts (BGV, manpower supply). Biometric AMC engagements include a fleet survey and scheduling within the first week. Audit engagements are scoped and kicked off within 5–7 business days. Software-integrated deployments (CLMS, HRIS) take 4–6 weeks for a single site.",
+              },
+              {
+                q: "Does InOps conduct background verification for contract workers, not just permanent employees?",
+                a: "Yes — contract and casual workers are the primary ICP. InOps BGV covers Aadhaar-linked identity, criminal records, employment history, and address verification specifically for high-turnover contract labour environments. Results are gate-enforced: workers who fail verification are flagged and blocked at the biometric terminal before entering the site.",
+              },
+              {
+                q: "How do the five services work together as an integrated compliance stack?",
+                a: "BGV status flows directly into gate-blocking rules managed by InOps CLMS — a worker who fails verification is denied entry. The Biometric Database Audit cleans the enrollment records that attendance and payroll depend on. Biometric AMC keeps the hardware that runs those checks online and SLA-backed. The CLRA Audit validates the statutory registers that CLMS populates automatically. Industrial Manpower Supply delivers workers who arrive already BGV-cleared and documentation-complete. Each service strengthens the others.",
+              },
+            ].map(({ q, a }, index) => (
+              <details key={q} className="group bg-white px-7 py-5 open:bg-[#f8fafc]">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                  <span className="flex min-w-0 gap-4">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[rgba(28,123,184,0.08)] text-[11px] font-bold tabular-nums text-[#1c7bb8]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[15px] font-semibold leading-snug text-[#0b1e2d]">{q}</span>
+                  </span>
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#e6eaee] bg-white text-lg leading-none text-[#8696a7] transition group-open:rotate-45 group-open:border-[#1c7bb8] group-open:text-[#1c7bb8]" aria-hidden>
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 pl-11 text-[13.5px] leading-[1.7] text-[#667588]">{a}</p>
+              </details>
             ))}
           </div>
         </div>

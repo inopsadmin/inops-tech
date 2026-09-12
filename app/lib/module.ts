@@ -51,11 +51,11 @@ export const modules: ModuleData[] = [
   {
     slug: "attendance-leave",
     badge: " Iddion RegX - Attendance & Leave",
-    title: "	Attendance Management Software",
+    title: "Contract Worker Attendance & Leave Management Software (CLRA 9-Day Rule)",
     subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
     description:
-      "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Iddion RegX captures every punch as both an attendance record and a compliance record. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Iddion RegX captures every punch as both an attendance record and a compliance record.",
     seoTitle: "Contract Worker Attendance & Leave Management |  Iddion RegX CLMS",
     seoKeywords: [
       "contract worker attendance",
@@ -65,24 +65,16 @@ export const modules: ModuleData[] = [
       "9 day attendance rule CLRA",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "Real-time capture from every device",
-    //     body: "Face terminals, fingerprint readers, AI-based CCTV attendance, QR, card, and the InOps mobile app with GPS all feed one attendance stream un",
-    //   },
-    //   {
-    //     h2: "Shift, OT and leave policies applied automatically",
-    //     body: 'Shift windows, OT thresholds, and leave policies are configured per contractor, per category, and per site, and apply to every punch automatically — state-aware minimum hours and statutory OT rules included. OT beyond threshold requires supervisor approval, and verified hours flow directly to <a href="/contract-labour-management/modules/wage-payroll" class="text-blue-600 underline">contractor payroll</a>.',
-    //   },
-    //   {
-    //     h2: "How is contract worker attendance different from employee attendance?",
-    //     body: "Every punch carries a contractor mapping — agency, contract, site, cost centre — and each gate pass is checked for current validity before the record is written. An employee attendance system tracks time; a CLMS attendance module creates compliance records: headcount against the licensed contractor strength, the inputs for Form XIII, and the audit trail that survives a labour inspector visit.",
-    //   },
-    //   {
-    //     h2: "Feeding the 9-day rule and CLRA registers",
-    //     body: 'Continuous attendance is tracked per worker, with alerts before the threshold is crossed so HR can schedule the rest day in time. These alerts feed the same engine as our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a> — and the data behind them is the same attendance record that populates Form V and Form XIII.',
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "Biometric Attendance & Leave Tracking for Contract Workers",
+        body: "Every punch from face terminals, fingerprint readers, AI-based CCTV, QR, mobile GPS, and card readers feeds one Iddion RegX attendance stream under a single worker identity. Mixed hardware across gates and sites needs no additional configuration — a worker enrolled once is recognised by every method. Attendance and leave share one record, so an approved absence does not count toward shift headcount and does not reach payroll as a worked shift.",
+      },
+      {
+        h2: "9-Day Continuous Attendance Rule Explained",
+        body: "The Contract Labour (Regulation and Abolition) Act requires that any worker employed for nine or more continuous days must be given a weekly rest day before the count resets — a breach makes the principal employer liable. Iddion RegX tracks continuous days worked per worker per site in real time and alerts HR before the threshold is crossed, leaving time to schedule the mandatory rest day rather than discovering the violation at month-end. The same attendance data that triggers this alert also populates Form XIII and the contractor headcount registers that labour inspectors review.",
+      },
+    ],
 
     faq: [
       {
@@ -242,11 +234,11 @@ export const modules: ModuleData[] = [
   {
     slug: "compliance-report",
     badge: "Iddion RegX - CLRA Compliance",
-    title: "	Compliance Management & CLRA Registers",
+    title: "CLRA Compliance Reporting & Register Management",
     description:
-      "InOps CLRA compliance software automates every obligation a principal employer carries under the Contract Labour (Regulation & Abolition) Act: digital Form V and Form XIII registers maintained in real time, contractor licence expiry and headcount-cap tracking per establishment, alerts on the 9-day continuous attendance threshold, and statutory returns generated directly from biometric gate data. Every register entry traces to a verified gate event — so audit day is a report export, not a records hunt. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Maintain digital CLRA registers, generate statutory returns, and stay audit-ready across every site and state. Iddion RegX builds compliance records from live gate events — so every register entry traces to a verified punch, not a manual entry.",
     subDescription:
-      "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
+      "Maintain digital CLRA registers, generate statutory returns, and stay audit-ready across every site and state.",
     seoTitle: "CLRA Compliance Software — Digital Registers, Licences & Statutory Returns | InOps",
     seoDescription:
       "CLRA compliance software for principal employers: automated Form V & Form XIII registers, contractor licence tracking, 9-day rest-rule alerts, and audit-ready statutory returns — generated from live gate data.",
@@ -316,24 +308,24 @@ export const modules: ModuleData[] = [
   },
 ],
 
-    // contentSections: [
-    //   {
-    //     h2: "What does CLRA compliance software automate?",
-    //     body: "InOps automates the four obligation categories every principal employer faces under CLRA: statutory registers (Form V, Form XIII, muster rolls, wage registers); contractor licence verification and headcount-cap monitoring per establishment; the 9-day continuous attendance threshold that creates compensatory rest and potential employment-rights exposure; and statutory returns filed directly from live gate and payroll data — with no manual compilation between the gate event and the filed document.",
-    //   },
-    //   {
-    //     h2: "Form V and Form XIII registers, maintained from gate data",
-    //     body: "Traditional compliance treats Form V and Form XIII as month-end paperwork. InOps treats them as live outputs of gate operations: every contractor deployment, headcount change, or work-commencement event writes to the register in real time. When an inspector arrives or an audit is called, the register is current to the last gate punch — not reconstructed from memory. This is the structural difference between CLRA compliance software and a document-filing tool.",
-    //   },
-    //   {
-    //     h2: "Licence, headcount and 9-day rule monitoring",
-    //     body: "InOps tracks each contractor's CLRA licence number, expiry date, and permitted headcount per establishment. Deployments that would breach a licensed headcount cap are flagged before the worker enters. The 9-day continuous attendance rule — where a contract worker working nine or more consecutive days without a weekly off may acquire compensatory rest entitlements and, in some states, permanent employment risk — is monitored per worker per site, with HR alerts before the threshold is crossed.",
-    //   },
-    //   {
-    //     h2: "Built for audits and inspections",
-    //     body: "Principal employers at PSUs, defence establishments, and large manufacturing plants face periodic CLRA inspections with short notice. InOps stores every register, licence, Form V, and gate event in a single audit repository, tagged by site, contractor, and period. An inspection request is answered with a filtered export — not a records search across files and emails. Compliance officers report audit response time dropping from days to under an hour.",
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "What is CLRA Compliance Software?",
+        body: "CLRA compliance software automates the obligations a principal employer carries under the Contract Labour (Regulation &amp; Abolition) Act: maintaining Form V and Form XIII registers, tracking contractor licence validity and headcount caps per establishment, monitoring continuous-attendance thresholds, and generating statutory returns. Iddion RegX does this from live gate data, so registers are outputs of operations rather than month-end reconstruction.",
+      },
+      {
+        h2: "Form V and Form XIII Registers, Maintained from Gate Data",
+        body: "Traditional compliance treats Form V and Form XIII as month-end paperwork. Iddion RegX treats them as live outputs of gate operations: every contractor deployment, headcount change, or work-commencement event writes to the register in real time. When an inspector arrives or an audit is called, the register is current to the last gate punch — not reconstructed from memory. This is the structural difference between CLRA compliance software and a document-filing tool.",
+      },
+      {
+        h2: "Licence, Headcount Cap, and 9-Day Rule Monitoring",
+        body: "Iddion RegX tracks each contractor's CLRA licence number, expiry date, and permitted headcount per establishment. Deployments that would breach a licensed headcount cap are flagged before the worker enters. The 9-day continuous attendance rule — where a contract worker employed for nine or more consecutive days acquires entitlement to a weekly rest day — is monitored per worker per site, with HR alerts before the threshold is crossed.",
+      },
+      {
+        h2: "Built for Labour Inspections and Compliance Audits",
+        body: "Principal employers at PSUs, defence establishments, and large manufacturing plants face periodic CLRA inspections with short notice. Iddion RegX stores every register, licence, Form V, and gate event in a single audit repository, tagged by site, contractor, and period. An inspection request is answered with a filtered export — not a records search across files and emails.",
+      },
+    ],
 
     metrics: [
       "Reduced Compliance Effort",
@@ -433,9 +425,9 @@ export const modules: ModuleData[] = [
   {
     slug: "background-verification",
     badge: "Iddion RegX - Background Verification",
-    title: "Worker Verification & BGV",
+    title: "Background Verification for Contract Workers (BGV)",
     description:
-      "Background verification contract workers, worker verification module, criminal record check India, UAN employment verification, blue collar BGV, re-verification",
+      "Run criminal record checks, UAN employment history verification, and blue-collar BGV for every contract worker — with automatic re-verification on expiry and gate-blocking on adverse or pending status. Part of Iddion RegX, InOps' contract labour management system.",
     subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
      seoTitle: "Contractor Onboarding & Background Verification Module | Iddion RegX CLMS Module",
@@ -447,24 +439,24 @@ export const modules: ModuleData[] = [
       "digital worker onboarding",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "Onboarding in hours, not weeks",
-    //     body: "Digital intake captures documents in the worker's language and handles batch flows for shutdown and surge volumes — hundreds of workers processed in parallel rather than one by one. Onboarding that previously took days compresses to hours, with no proportional increase in HR headcount.",
-    //   },
-    //   {
-    //     h2: "What gets verified before first entry?",
-    //     body: 'Aadhaar-linked identity, criminal and court records, medical fitness certification, and induction completion — a worker without clearance on any of these criteria is gate-blocked until the outstanding step resolves. BGV-pending status is enforced at the barrier via <a href="/contract-labour-management/modules/gate-compliance" class="text-blue-600 underline">gate compliance and auto-blocking</a>.',
-    //   },
-    //   {
-    //     h2: "Records built for audits",
-    //     body: "Every worker carries a per-worker verification trail: what was checked, when, by which authority, with what result. Records are structured for defence and PSU audit requirements and available on demand — no manual collation before an inspection visit.",
-    //   },
-    //   {
-    //     h2: "Verification beyond the platform",
-    //     body: 'Need background checks without deploying the full CLMS? InOps offers standalone background verification as a service — see <a href="/services/background-verification" class="text-blue-600 underline">background verification services</a> when the service page is live.',
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "What Gets Verified Before First Entry?",
+        body: "Aadhaar-linked identity, criminal and court records, PAN and UAN validation, address verification, employment history, and medical fitness — a worker without clearance on any of these criteria is gate-blocked until the outstanding step resolves. BGV-pending status is enforced at the barrier automatically; no manual security check is required.",
+      },
+      {
+        h2: "Onboarding in Hours, Not Weeks",
+        body: "Digital intake captures documents in the worker's language and handles batch flows for shutdown and surge volumes — hundreds of workers processed in parallel rather than one by one. Onboarding that previously took days compresses to hours, with no proportional increase in HR headcount.",
+      },
+      {
+        h2: "Automatic Re-Verification on Expiry",
+        body: "Re-verification schedules are configured per worker category and trigger automatically. When a check nears expiry, Iddion RegX alerts and starts the re-verification workflow. If the check expires before a new result returns, gate access is suspended — the same enforcement mechanism as an expired medical clearance.",
+      },
+      {
+        h2: "Background Verification Records Built for Audits",
+        body: 'Every worker carries a per-worker verification trail: what was checked, when, by which authority, with what result. Records are structured for defence and PSU audit requirements and available on demand. Need background checks without deploying the full CLMS? InOps also offers <a href="/services/background-verification" class="text-blue-600 underline">standalone background verification as a service</a>.',
+      },
+    ],
 
 faq: [
   {
@@ -614,9 +606,9 @@ faq: [
   {
     slug: "contractor-management",
     badge: "Iddion RegX - Contractor Core",
-    title: "Vendor & Contractor Management",
+    title: "Contractor Compliance & Vendor Management Software",
     description:
-      "Manage contractor compliance centrally: licences, CLRA registrations, headcount limits, document expiry alerts, and contractor scorecards across every vendor and site from one dashboard. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Manage contractor compliance centrally: licences, CLRA registrations, headcount limits, document expiry alerts, and contractor scorecards across every vendor and site from one dashboard.",
      subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
       seoTitle: "Contractor Management & Compliance Software | Licences, Renewals — InOps",
@@ -628,24 +620,24 @@ faq: [
       "multi-site contractor management",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "Every contractor, one governed view",
-    //     body: "Contractor profiles, commercial agreements, insurance certificates, key contacts, and site deployments consolidate in one record — updated as documents renew and workers are added or removed. No more chasing attachment emails or rebuilding context at audit time.",
-    //   },
-    //   {
-    //     h2: "Licences, caps and renewals",
-    //     body: 'CLRA licence validity and permitted headcount limits are tracked per establishment, with alerts before expiry and flags when deployment approaches the licensed cap. Licence data syncs with the registers maintained in our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>, so Form V headcount always reflects the current licensed limit. A lapsed licence can trigger auto-blocking at the gate via <a href="/contract-labour-management/modules/gate-compliance" class="text-blue-600 underline">gate compliance</a>.',
-    //   },
-    //   {
-    //     h2: "What should a principal employer track per contractor?",
-    //     body: "Valid CLRA licence and remaining headroom against the cap · PF/ESI challan evidence per cycle · insurance certificate and agreement validity dates · deployment strength vs. work-order scope · incident and compliance history. These are the fields a labour inspector or internal audit will request — keeping them current in one system is the difference between a 30-minute audit response and a three-week reconstruction.",
-    //   },
-    //   {
-    //     h2: "Manpower allocation and accountability",
-    //     body: "Workers are allocated against work orders and site assignments, so deployment strength and scope are always comparable. Site-level performance comparisons — attendance reliability, compliance flags, OT patterns — make the difference between contractors visible before it becomes a production issue.",
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "Every Contractor, One Governed View",
+        body: "Contractor profiles, commercial agreements, insurance certificates, key contacts, and site deployments consolidate in one record — updated as documents renew and workers are added or removed. No more chasing attachment emails or rebuilding context at audit time.",
+      },
+      {
+        h2: "CLRA Licences, Headcount Caps, and Renewal Alerts",
+        body: 'CLRA licence validity and permitted headcount limits are tracked per establishment, with alerts before expiry and flags when deployment approaches the licensed cap. Licence data syncs with the registers maintained in <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance reporting</a>, so Form V headcount always reflects the current licensed limit. A lapsed licence triggers auto-blocking at the gate.',
+      },
+      {
+        h2: "What a Principal Employer Should Track Per Contractor",
+        body: "Valid CLRA licence and remaining headroom against the cap · PF/ESI challan evidence per cycle · insurance certificate and agreement validity dates · deployment strength vs. work-order scope · incident and compliance history. These are the fields a labour inspector will request — keeping them current in one system is the difference between a 30-minute audit response and a three-week reconstruction.",
+      },
+      {
+        h2: "Labour Inspection Readiness",
+        body: "Every field an inspector asks for — licences, registers, headcount against cap, remittance evidence, worker-to-contractor mapping — is current in one system and exportable by site, contractor, and period. Principal employers at PSUs, defence establishments, and large manufacturing plants report same-day audit response instead of multi-week reconstruction from emails and folders.",
+      },
+    ],
 
 faq: [
   {
@@ -802,9 +794,9 @@ faq: [
  {
     slug: "wage-payroll",
     badge: "Iddion RegX - Wage & Invoice",
-    title: "Contractor Payroll Software",
+    title: "Contract Labour Wage & Payroll Compliance Software",
     description:
-      "InOps automates contract labour payroll wage calculations, OT approvals, and PF/ESI deductions and reconciles contractor invoices against biometric attendance records before finance sign-off. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Automate contract labour wage calculations, OT approvals, and PF/ESI deductions — and reconcile contractor invoices against biometric attendance records before finance sign-off.",
     subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
       seoTitle: "Contract Labour Payroll Software | Wages, OT & Statutory Deductions — InOps",
@@ -816,24 +808,24 @@ faq: [
       "OT management contract labour",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "Wages computed from gate-verified hours",
-    //     body: "Wage rates are configured per worker category, contractor, and state minimum-wage schedule, and applied only to hours verified by the attendance engine — not the contractor's submitted roster. Every rupee in the payroll run traces back to a biometric punch or approved attendance event.",
-    //   },
-    //   {
-    //     h2: "OT with approval workflow",
-    //     body: 'When hours breach the configured OT threshold, the system creates a digital approval request for the supervisor — OT that goes unapproved never enters the payable calculation. This is the structural answer to ghost OT: the gate knows what was worked; the rule knows what was approved; the invoice can only carry the intersection. See also <a href="/contract-labour-management/modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> for the statutory-deduction side.',
-    //   },
-    //   {
-    //     h2: "Why compute contractor payroll from gate data?",
-    //     body: 'Contractor-submitted rosters are where leakage lives: inflated headcount, unworked OT credited, wrong rate codes applied. Computing wages from gate data ends the argument at source — the record is the gate log, not the spreadsheet. Deductions computed from the same record flow automatically to <a href="/contract-labour-management/modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> for PF/ESI filing.',
-    //   },
-    //   {
-    //     h2: "Statutory deductions built in",
-    //     body: 'PF, ESI, and LWF are computed per worker against each payroll cycle, with challan-ready outputs for filing. Deduction gaps and mismatches surface in real time rather than at filing deadlines. The same records feed the registers maintained in our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>.',
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "Wages Computed from Gate-Verified Hours",
+        body: "Wage rates are configured per worker category, contractor, and state minimum-wage schedule, and applied only to hours verified by the attendance engine — not the contractor's submitted roster. Every rupee in the payroll run traces back to a biometric punch or approved attendance event.",
+      },
+      {
+        h2: "OT Approval Workflow — No Approval, No Payment",
+        body: 'When hours breach the configured OT threshold, the system creates a digital approval request for the supervisor — OT that goes unapproved never enters the payable calculation. The gate knows what was worked, the rule knows what was approved, and the payable amount can only be the intersection. That structure closes unauthorised OT, ghost OT, and unclaimed legitimate OT together.',
+      },
+      {
+        h2: "State-Wise Minimum Wage & PF/ESI Compliance",
+        body: 'Minimum-wage schedules are maintained per state and worker category, applied automatically by site — which matters for multi-state operations where the same trade carries different statutory rates across plants, and where a missed revision becomes an arrears liability. PF, ESI, and LWF are computed per worker each payroll cycle, with challan-ready outputs for filing and mismatches surfacing in real time rather than at filing deadlines. The same deduction records feed <a href="/contract-labour-management/iddion-regx-modules/challan-reconciliation" class="text-blue-600 underline">challan reconciliation</a> and CLRA compliance registers.',
+      },
+      {
+        h2: "Why Compute Contractor Payroll from Gate Data?",
+        body: 'Contractor-submitted rosters are where leakage lives: inflated headcount, unworked OT credited, wrong rate codes applied. Computing wages from gate data ends the argument at source — the record is the gate log, not the spreadsheet. Under CLRA, contractor defaults on wages and statutory dues can fall back on the principal employer; holding independent evidence of what was owed and what was remitted is the difference between a defensible position and exposure.',
+      },
+    ],
 
    faq: [
   {
@@ -990,9 +982,9 @@ faq: [
   {
     slug: "cxo-dashboard",
     badge: "Iddion RegX - CXO Dashboard",
-    title: "HR Dashboard & Workforce Analytics",
+    title: "CXO Dashboard for Contract Workforce Compliance",
     description:
-      "Real time contractor workforce analytics for leadership: headcount by site, compliance scores, cost leakage, and vendor benchmarking without waiting for month-end reporting packs. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Real-time contractor workforce analytics for leadership: headcount by site, compliance posture, cost leakage, and vendor scorecards — without waiting for month-end reporting packs. Built specifically for contract labour visibility, not permanent-employee HRIS.",
      subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
     seoTitle: "CXO Dashboard — Contractor Workforce Analytics & Cost Leakage | InOps",
@@ -1004,20 +996,24 @@ faq: [
       "cost leakage monitoring CLMS",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "From gate events to board answers",
-    //     body: "Every number on the CXO dashboard traces to the same attendance engine that drives gate access, contractor payroll, and CLRA registers — no manual stitching, no month-end compilation. Live data means the headcount you see at 9 AM reflects what the gates recorded at shift change, not last week's export.",
-    //   },
-    //   {
-    //     h2: "What does contractor cost leakage look like at the executive level?",
-    //     body: 'Headcount vs. invoiced deltas across sites, OT trend anomalies by plant and contractor, compliance-risk heatmaps flagging licence gaps and register failures — surfaced for leadership before they become audit findings or invoice disputes. The OT side is quantified in our <a href="/blog/ot-leakage-benchmarks-indian-factories-2026" class="text-blue-600 underline">OT leakage benchmarks report</a>.',
-    //   },
-    //   {
-    //     h2: "Views per audience",
-    //     body: "CXOs see the enterprise rollup: total headcount, spend, compliance posture, and cross-site anomalies. Plant heads drill to their site. Finance sees the invoice and deduction picture. Board exports are scheduled or on-demand — same numbers the plant sees, aggregated without reformatting.",
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "From Gate Events to Board Answers",
+        body: "Every number on the CXO dashboard traces to the same attendance engine that drives gate access, contractor payroll, and CLRA registers — no manual stitching, no month-end compilation. Live data means the headcount you see at 9 AM reflects what the gates recorded at shift change, not last week's export. This is contract-labour visibility specifically: contractor headcount, CLRA compliance posture, vendor licence status, and cost leakage — data the permanent-employee HRIS does not carry.",
+      },
+      {
+        h2: "What Contractor Cost Leakage Looks Like at the Executive Level",
+        body: 'Leakage is invisible in aggregate because totals look plausible. The CXO dashboard surfaces the deltas instead: invoiced headcount against gate-verified headcount, OT claimed against OT approved, and site-to-site variance on the same metrics. A plant running 15% higher OT than its peers with the same output is a question worth asking — and it only appears when sites are compared on the same definitions.',
+      },
+      {
+        h2: "Role-Based Views Across the Organisation",
+        body: "CXOs see the enterprise rollup: total headcount, spend, compliance posture, and cross-site anomalies. Plant heads drill into their own site. Finance sees the invoice and deduction picture. Compliance sees register and licence status. Everyone reads from one dataset, which removes the reconciliation meetings that exist purely to agree on whose number is right.",
+      },
+      {
+        h2: "Board-Ready Reporting & Data Export",
+        body: "Scheduled and on-demand board exports use the same numbers the plant sees, aggregated rather than reformatted. Because the source is one attendance and compliance engine, the figure in the board pack matches the figure the plant head can defend in the same meeting. Historical data is retained for trend analysis and statutory periods, so year-on-year and pre-versus-post-deployment comparisons run on your own records rather than estimates.",
+      },
+    ],
 
  faq: [
   {
@@ -1172,7 +1168,7 @@ faq: [
     badge: "Iddion RegX - AI Assistant",
     title: "AI Workforce Compliance Assistant",
     description:
-      "Ask InOps AI questions about attendance, compliance, payroll, or contractor status and get instant answers, anomaly alerts, and automated report generation across all your CLMS data. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Ask InOps AI questions about attendance, compliance, payroll, or contractor status and get instant answers, anomaly alerts, and automated report generation — across all your CLMS data, processed within your own environment.",
      subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
     seoTitle: "AI Assistance for Contractor Compliance | Anomaly Detection — InOps",
@@ -1184,20 +1180,24 @@ faq: [
       "CLMS AI assistant",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "Grounded in gate-verified data",
-    //     body: "Every AI flag traces to a verified gate event, attendance record, or compliance register — not an estimate or benchmark average. When the system surfaces an anomaly, the underlying events are attached; there is no 'the AI said so' without evidence.",
-    //   },
-    //   {
-    //     h2: "What anomalies can AI detect in contractor attendance?",
-    //     body: "Proxy-punch patterns — impossible travel between punches, synchronized entries across multiple workers; OT clustering in the final days of the billing cycle; headcount-vs-invoice drift across contractor agencies; and compliance deadlines at risk based on the current register state. Each flag includes the specific events that triggered it.",
-    //   },
-    //   {
-    //     h2: "Assistance, not autopilot",
-    //     body: "AI surfaces anomalies and recommends actions — supervisors and HR approve before anything changes. Every control remains human-owned and audit-logged. In enterprise and PSU environments, automated decisions on workforce records require human accountability at each step; the system is designed around that constraint.",
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "Natural-Language Compliance Queries & Anomaly Detection",
+        body: "Ask questions in plain language — 'which contractors billed above approved OT last month' or 'show workers with expired medical fitness at Plant 2' — and get answers with the underlying records attached, so the answer can be checked rather than trusted. Anomaly detection runs continuously: proxy-punch patterns (impossible travel between punches, synchronised entries across workers), OT clustering in the final days of a billing cycle, headcount-versus-invoice drift across contractor agencies, and compliance deadlines at risk given the current register state. Every flag includes the specific events that triggered it.",
+      },
+      {
+        h2: "Grounded in Gate-Verified Data",
+        body: "Every AI flag traces to a verified gate event, attendance record, or compliance register — not an estimate or industry benchmark. Patterns are specific to your own sites and contractors: a normal OT profile at a three-shift automotive plant looks nothing like one at a seasonal cement site, so site-specific baselines produce fewer false positives than generic models. When the system surfaces an anomaly, the underlying events are attached; there is no 'the AI said so' without evidence.",
+      },
+      {
+        h2: "Assistance, Not Autopilot",
+        body: "Iddion RegX AI surfaces anomalies, drafts reports, and recommends next steps — supervisors and HR approve before anything changes to a workforce record. Every control stays human-owned and audit-logged. In PSU, defence, and enterprise environments, automated decisions on workforce records require human accountability at each step; the system is built around that requirement rather than around it.",
+      },
+      {
+        h2: "Data Privacy & AI Governance",
+        body: "Your workforce data is processed for your queries and your anomaly detection only — it is not used to train external or shared models. Deployment options include on-premise installation where data-residency regulations require it, which is the standard configuration for defence establishments and PSU clients. Every AI action on a record is audit-logged with its evidence, so governance obligations on automated processing are met rather than assumed.",
+      },
+    ],
 
    faq: [
   {
@@ -1355,7 +1355,7 @@ faq: [
     badge: "Iddion RegX - Challan Recon",
     title: "Challan & Invoice Reconciliation for Contract Labour",
     description:
-      "InOps automatically matches PF and ESI challans against attendance and payroll records, catching the 25–30% discrepancy rate typical of manual contractor billing before it reaches the statutory deadline. Iddion RegX captures every punch as both an attendance record and a compliance record.",
+      "Automatically match PF and ESI challans against attendance and payroll records, catching the 25–30% discrepancy rate typical of manual contractor billing — before it reaches the statutory deadline or the finance team.",
     subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
       seoTitle: "Challan & Invoice Reconciliation for Contract Labour | InOps",
@@ -1367,24 +1367,24 @@ faq: [
       "PF ESI challan reconciliation",
     ],
 
-    // contentSections: [
-    //   {
-    //     h2: "Invoices vs gates, line by line",
-    //     body: "Contractor invoices are matched against gate-verified headcount, hours, and approved OT before payment — not after. Discrepancies carry the underlying gate evidence: the specific worker, the specific punch or absence, and the approved versus billed amount.",
-    //   },
-    //   {
-    //     h2: "Why do contractor invoices and attendance never match?",
-    //     body: 'Three mismatch sources dominate: headcount — workers billed who never presented at the gate; hours — rounded or fabricated shift lengths; OT — claimed at rates or volumes that never received supervisor approval. Each is structural and repeating, not a one-time error. The wage side is governed by <a href="/contract-labour-management/modules/wage-payroll" class="text-blue-600 underline">contract labour payroll software</a>.',
-    //   },
-    //   {
-    //     h2: "Statutory challans checked too",
-    //     body: 'PF and ESI challans are matched against computed deductions per worker, per cycle — gaps between what was deducted and what was remitted surface before the statutory deadline, not after. Principal-employer liability from contractor remittance defaults is visible in real time, feeding the same registers as our <a href="/contract-labour-management/modules/compliance-report" class="text-blue-600 underline">CLRA compliance software</a>.',
-    //   },
-    //   {
-    //     h2: "What finance gets back",
-    //     body: "Finance teams report recovering 80–120 hours per month previously spent on manual invoice review and reconciliation. Cycle close moves from a weekend exercise to a routine handoff. Discrepancy rates of 25–30% on invoice line items — typical before deployment — contract sharply within the first billing cycles as contractors learn what the gate data will catch.",
-    //   },
-    // ],
+    contentSections: [
+      {
+        h2: "Invoices vs Gates, Line by Line",
+        body: 'Contractor invoices are matched against gate-verified headcount, hours, and approved OT before payment — not after. Three mismatch sources dominate: headcount (workers billed who never presented at the gate), hours (rounded or fabricated shift lengths), and OT (claimed at rates or volumes that never received supervisor approval). Each is structural and repeating, not a one-time error. Discrepancies carry the underlying gate evidence: the specific worker, the specific punch or absence, and the approved versus billed amount — so resolution is a records conversation, not a negotiation. The wage computation side is handled in <a href="/contract-labour-management/iddion-regx-modules/wage-payroll" class="text-blue-600 underline">contract labour payroll software</a>.',
+      },
+      {
+        h2: "PF & ESI Challan Matching",
+        body: 'PF and ESI challans — including ECR files — are matched against computed deductions per worker, per cycle. Gaps between what was deducted and what was remitted surface before the statutory deadline, not after. State-wise ESI thresholds and applicable rules are configured per site, so multi-state operations reconcile against the correct parameters for each establishment. The same deduction records feed the registers maintained in <a href="/contract-labour-management/iddion-regx-modules/compliance-report" class="text-blue-600 underline">CLRA compliance reporting</a>.',
+      },
+      {
+        h2: "Principal Employer Liability",
+        body: "Under CLRA, contractor defaults on PF and ESI dues can fall back on the principal employer. Matching challans against computed liabilities means you hold independent evidence of what was owed and what was actually remitted — rather than relying on the contractor's assurance. Unresolved variances stay visible against the contractor's record, so a pattern of shortfalls becomes a procurement question at renewal rather than a surprise at audit.",
+      },
+      {
+        h2: "What Finance Gets Back",
+        body: "Finance teams report recovering significant time previously spent on manual invoice review and reconciliation — cycle close moves from a weekend exercise to a routine handoff. Discrepancy rates of 25–30% on contractor invoice line items are typical before automated matching is deployed; the rate contracts sharply within the first billing cycles as contractors learn what the gate data will catch. Verified invoices flow to your existing AP or finance system with the reconciliation evidence attached, so approval happens on checked numbers rather than trust.",
+      },
+    ],
 
   faq: [
   {

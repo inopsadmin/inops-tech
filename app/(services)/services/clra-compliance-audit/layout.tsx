@@ -3,9 +3,9 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import { clraComplianceAuditFaqItems } from "@/app/lib/clraComplianceAuditFaqItems";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "CLRA Compliance Audit | InOps RegX";
+const PAGE_TITLE = "CLRA Compliance Audit for Principal Employers | Contractor Licence & Form V/XIII Review — InOps";
 const PAGE_DESCRIPTION =
-  "CLRA compliance audit and labour compliance audit built for contract labour compliance and principal employer compliance, with a scored, actionable path to labour law compliance.";
+  "CLRA compliance audit built for principal employers — contractor licence validity, Form V/XIII accuracy, statutory register review, and principal-employer liability exposure assessment across industrial plants.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
@@ -20,7 +20,7 @@ export const metadata: Metadata = routeMetadata({
     "contractor documentation review",
     "labour compliance audit",
     "compliance gap analysis",
-    "InOps RegX compliance",
+    "Form V Form XIII review",
     "factory labour compliance",
     "contractor compliance audit",
     "CLRA statutory compliance",

@@ -19,6 +19,7 @@ import {
   IconShield,
 } from "@/app/components/solution/Icons";
 import Image from "next/image";
+import Link from "next/link";
 
 
 const heroData = {
@@ -26,11 +27,11 @@ const heroData = {
   bgImageAlt: "Warehouse worker reviewing the order management dashboard",
   bgPosition: "72% 40%",
   gradientCenter: "18% 22%",
-  eyebrow: "Enterprise Solutions",
-  titleLine1: "Order Management",
-  titleLine2: "Solution",
+  eyebrow: "InOps · Industrial Operations",
+  titleLine1: "Order Management for Manufacturing",
+  titleLine2: "& Industrial Supply Chains",
   description:
-    "Streamline order capture, fulfillment, tracking and returns in one platform. Orchestrate complex global commerce from a single source of truth.",
+    "InOps OMS captures, validates, and routes production orders, dispatch notes, and customer fulfilment across your plant and warehouse network — connected to the same workforce-compliance layer as InOps CLMS and HRIS.",
   buttons: [{ label: "Request Demo", href: "/contact", variant: "primary" as const }],
 };
 
@@ -107,7 +108,7 @@ const lifecycleData = {
 
 const ctaData = {
   heading: "Streamline your order operations today.",
-  subheading: "Join 500+ global brands optimising their fulfillment with LogiStream's enterprise order management platform.",
+  subheading: "Join manufacturers and industrial operations teams optimising their fulfilment with the InOps enterprise order management platform.",
   buttons: [
     { label: "Request Demo", href: "#", variant: "white" as const },
     { label: "Start Free Trial", href: "#", variant: "outline-white" as const },
@@ -425,6 +426,65 @@ export default function OrdersPage() {
             ))}
           </div>
         </AnimateOnScroll>
+        </div>
+      </AnimatedSection>
+      {/* Connected InOps modules cross-links */}
+      <AnimatedSection className="border-t border-slate-100 bg-slate-50 py-14 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <AnimateOnScroll variant="fade-up" className="mx-auto max-w-3xl text-center mb-10">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-600 mb-2">Part of the InOps platform</p>
+            <FlyInText as="h2" direction="up" className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              Order Management is One Layer of the Stack
+            </FlyInText>
+            <FlyInText as="p" direction="up" delay={0.07} className="mt-3 text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
+              Orders feed warehouses, warehouses dispatch to delivery, and delivery POD closes the loop back into
+              the ERP. InOps connects all three — and ties physical throughput to the workforce layer so contractor
+              headcount, compliance status, and operational output appear on one dashboard.
+            </FlyInText>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {[
+              {
+                href: "/warehouse-management",
+                eyebrow: "Upstream",
+                title: "Warehouse Management",
+                body: "Inventory slotting, picking, packing, and gate control for the plant stores and distribution centres that fulfil your orders.",
+                linkLabel: "Explore warehouse management →",
+              },
+              {
+                href: "/delivery-management",
+                eyebrow: "Downstream",
+                title: "Delivery Management Software",
+                body: "AI route optimisation, live fleet tracking, and digital POD for the last-mile leg once orders leave the warehouse.",
+                linkLabel: "Explore delivery management →",
+              },
+              {
+                href: "/enterprise-solution",
+                eyebrow: "Platform overview",
+                title: "Enterprise Operations Platform",
+                body: "Asset intelligence, route optimisation, and warehouse execution — unified across all your industrial sites and connected to CLMS and HRIS.",
+                linkLabel: "See the full platform →",
+              },
+            ].map((card, i) => (
+              <AnimateOnScroll
+                key={card.href}
+                variant="fade-up"
+                delay={i * 80}
+                className="relative flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-widest text-blue-600 mb-1">{card.eyebrow}</p>
+                <h3 className="text-base font-bold text-gray-900 leading-snug mb-3">{card.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed flex-1">{card.body}</p>
+                <Link
+                  href={card.href}
+                  className="mt-5 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                >
+                  {card.linkLabel}
+                </Link>
+              </AnimateOnScroll>
+            ))}
+          </div>
         </div>
       </AnimatedSection>
       <CTASection {...ctaData} />

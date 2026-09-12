@@ -11,46 +11,52 @@ const viewport = { once: true, amount: 0.15 };
 
 const brochures = [
   {
-    title: "Biometric Access Control",
-    description: "Overview of our biometric access control solutions, features, and benefits for secure facility management.",
+    title: "Biometric Attendance & Access Control for Factories",
+    description: "Fingerprint and face recognition terminals, turnstiles, and fleet management — how InOps covers every gate from enrolment to shift-close. Includes device selection guide for Indian industrial sites.",
     category: "Product",
+    href: "/biometric-devices",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=85",
-    accent: "Security",
+    accent: "Biometrics",
   },
   {
-    title: "Time & Attendance",
-    description: "Streamline workforce management with our time and attendance solutions. Key features and integration options.",
+    title: "Contract Labour Management System (CLMS)",
+    description: "Gate compliance, CLRA statutory registers, contractor invoice reconciliation, and multi-site visibility — the full lifecycle for contract workforces at Indian manufacturing plants.",
     category: "Solutions",
+    href: "/contract-labour-management",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=85",
-    accent: "Workforce",
+    accent: "CLMS",
   },
   {
-    title: "Visitor Management System",
-    description: "Complete guide to our visitor management system: check-in, badges, reporting, and security integration.",
+    title: "Visitor Management System for Industrial Sites",
+    description: "Pre-registration, watchlist screening, zone-limited passes, and kiosk self-check-in. How InOps replaces the paper register with an audit-ready visitor control layer.",
     category: "Solutions",
+    href: "/visitor-management",
     image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85",
-    accent: "Front desk",
+    accent: "Access",
   },
   {
-    title: "Canteen Management",
-    description: "Transform your workplace dining with our canteen management system. Menus, payments, and analytics.",
+    title: "Canteen Management & Cashless Meal Systems",
+    description: "Biometric or RFID meal booking, cashless payment, subsidy management, and consumption analytics — integrated with attendance so deductions happen automatically.",
     category: "Solutions",
+    href: "/canteen-and-visitor",
     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=85",
-    accent: "Experience",
+    accent: "Canteen",
   },
   {
-    title: "Payroll Solutions",
-    description: "End-to-end payroll processing, tax compliance, and employee self-service. Features and benefits.",
+    title: "HRIS & Payroll Compliance for Manufacturing",
+    description: "Permanent-employee HRIS with PF, ESI, and LWF statutory outputs, leave management, and payslip generation — designed to run alongside CLMS for a unified workforce view.",
     category: "Solutions",
+    href: "/hris",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=85",
-    accent: "Finance",
+    accent: "HRIS",
   },
   {
-    title: "Fixed Asset Management",
-    description: "Track, maintain, and report on fixed assets. Asset register, depreciation, and lifecycle management.",
+    title: "Fixed Asset Register & Lifecycle Tracking",
+    description: "Asset tagging, depreciation schedules, maintenance records, and disposal management — giving finance and operations a single source of truth across multi-plant estates.",
     category: "Solutions",
+    href: "/fixed-asset-management",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85",
-    accent: "Operations",
+    accent: "Assets",
   },
 ] as const;
 
@@ -113,9 +119,11 @@ export default function BrochuresPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className={inopsUi.heroKicker}>InOps</p>
-                  <h1 className="home-display-heading inops-type-hero mt-4 text-white">Brochures</h1>
-                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{brochureBanner.tagline}</p>
+                  <p className={inopsUi.heroKicker}>Brochures</p>
+                  <h1 className="home-display-heading inops-type-hero mt-4 text-white text-center">
+                    Product &amp; Solution Brochures for Contract Labour Compliance, Biometric Attendance &amp; HRIS
+                  </h1>
+                  <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-xl text-center`}>{brochureBanner.tagline}</p>
                 </div>
               </div>
             </div>
@@ -183,7 +191,7 @@ export default function BrochuresPage() {
                   >
                     {brochure.description}
                   </FlyInText>
-                  <FlyInText as="div" direction="up" delay={0.16 + i * 0.04} className="mt-6">
+                  <FlyInText as="div" direction="up" delay={0.16 + i * 0.04} className="mt-6 flex flex-col gap-2">
                     <a
                       href="#"
                       className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--inops-navy)] px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-slate-900/15 transition hover:bg-[var(--inops-blue)] hover:shadow-blue-600/25"
@@ -191,6 +199,13 @@ export default function BrochuresPage() {
                       <DownloadIcon className="h-4 w-4" />
                       Download PDF
                     </a>
+                    <Link
+                      href={brochure.href}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-[var(--inops-blue)] transition hover:border-[var(--inops-blue)] hover:bg-blue-50"
+                    >
+                      View product page
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </Link>
                   </FlyInText>
                 </div>
               </motion.article>

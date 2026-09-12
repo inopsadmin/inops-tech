@@ -31,6 +31,14 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/order-management", priority: 0.6, changeFrequency: "monthly" },
   { path: "/warehouse-management", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
+  // Services hub + sub-pages (were absent — confirmed missing 2026-09-11)
+  { path: "/services", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/services/background-verification", priority: 0.6, changeFrequency: "monthly" },
+  // /services/biometric-amc is intentionally noindexed (paid-search landing page, zero organic volume)
+  // — excluded from sitemap to avoid mixed-signal anti-pattern; see its layout.tsx for context.
+  { path: "/services/biometric-database-audit", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/services/clra-compliance-audit", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/services/industrial-manpower-supply", priority: 0.6, changeFrequency: "monthly" },
 ];
 
 

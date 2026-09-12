@@ -7,6 +7,7 @@ import CTASection from "@/app/components/solution/CTASection";
 import { AnimatedSection } from "@/app/components/AnimatedSection";
 import { FlyInText } from "@/app/components/FlyInText";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
+import Link from "next/link";
 import {
   IconBox,
   IconTag,
@@ -82,7 +83,7 @@ const featuresData = {
     {
       icon: <IconTag />,
       title: "Asset Tracking",
-      description: "Live tracking of pallets, forklifts, and equipment with real-time location services.",
+      description: "Live tracking of pallets, forklifts, and movable equipment within the warehouse. For enterprise-grade fixed asset management — biometric devices, machinery, AMC scheduling, and depreciation — see the InOps Fixed Asset Management module.",
     },
     {
       icon: <IconScan />,
@@ -120,37 +121,48 @@ const ctaData = {
 };
 
 const integrations = [
-  { icon: IconChip,     name: "WMS+",        color: "#2563eb" },
-  { icon: IconDatabase, name: "ERP Core",     color: "#2563eb" },
-  { icon: IconScan,     name: "RFID Pro",     color: "#f97316" },
-  { icon: IconTruck,    name: "TMS Connect",  color: "#0d9488" },
+  { icon: IconDatabase, name: "ERP Systems (SAP, Oracle, Tally)", color: "#2563eb" },
+  { icon: IconScan,     name: "Barcode & RFID Hardware",          color: "#f97316" },
+  { icon: IconTruck,    name: "InOps Delivery Management",        color: "#0d9488" },
+  { icon: IconChip,     name: "REST API & Webhooks",              color: "#9333ea" },
 ];
 
-const deliveryWarehouseFaqItems = [
+const warehouseFaqItems = [
   {
-    question: "What is Delivery and Warehouse Management Software?",
+    question: "What is warehouse management software?",
     answer:
-      "It helps organizations manage inbound deliveries, outbound dispatches, warehouse operations, vehicle movement, inventory visibility, and gate processes.",
+      "Warehouse management software (WMS) is a platform that controls and optimises the movement of goods through a warehouse or distribution centre — from goods receipt and putaway through to picking, packing, and dispatch. A WMS tracks stock location and quantity in real time, automates task assignment to warehouse staff, integrates with barcodes and RFID readers, and feeds live inventory data back to connected ERP and order management systems.",
   },
   {
-    question: "How does warehouse management software improve efficiency?",
+    question: "How does barcode and QR code tracking work in a warehouse?",
     answer:
-      "It automates receiving, storage, picking, dispatch, and inventory tracking, reducing errors and improving operational productivity.",
+      "Each stock-keeping unit (SKU), pallet, and bin location is labelled with a barcode or QR code at the point of receiving. Warehouse staff scan these labels with handheld mobile devices or fixed readers at key movement points — receiving, putaway, pick, pack, and dispatch. Each scan creates a timestamped transaction record that updates the live inventory position instantly, eliminating the lag and error of paper-based stock cards. The InOps platform supports standard 1D barcodes, QR codes, and RFID tags on the same mobile device.",
   },
   {
-    question: "Can the solution track delivery vehicles?",
+    question: "What is putaway, and how does InOps optimise it?",
     answer:
-      "Yes. Vehicle entry, exit, loading status, and delivery movements can be monitored in real time.",
+      "Putaway is the process of moving goods from the receiving dock to their designated storage location in the warehouse. InOps optimises putaway by assigning the nearest available bin based on SKU velocity (fast-moving items closer to the pick face), weight restrictions, and zone rules — all calculated at the moment of receipt. The mobile device guides the operative to the exact bin, eliminating search time and preventing misplacement that causes downstream inventory inaccuracies.",
   },
   {
-    question: "Does warehouse management integrate with ERP?",
+    question: "How does InOps warehouse management integrate with ERP systems?",
     answer:
-      "Yes. Warehouse Management Software integrates with ERP systems for inventory, procurement, and order management.",
+      "InOps WMS connects to ERP platforms — including SAP, Oracle, and Tally — via REST API and standard file-based connectors. Purchase orders and sales orders flow from the ERP into InOps automatically; stock movements, inventory balances, and despatch confirmations are written back in real time. This two-way sync means the ERP always reflects live warehouse stock without manual re-entry, and WMS task queues are always up to date with the latest orders.",
   },
   {
-    question: "Which industries use warehouse management solutions?",
+    question: "What is the difference between zone picking, batch picking, and wave picking?",
     answer:
-      "Manufacturing, logistics, distribution, retail, FMCG, pharmaceuticals, and e-commerce companies widely use warehouse management software.",
+      "Zone picking splits the warehouse into areas and assigns each picker to a fixed zone — orders are assembled across zones and consolidated at a merge point. Batch picking groups multiple orders into a single picker run, reducing travel for similar items. Wave picking releases a coordinated set of picks timed to a despatch window so picking, packing, and loading are synchronised. InOps supports all three strategies, and the dispatcher can configure which method applies to each order type or time window.",
+  },
+  {
+    question: "How does InOps handle inventory accuracy and cycle counts?",
+    answer:
+      "InOps enables rolling cycle counts — systematic spot-checks of a subset of locations each day — rather than requiring a full annual stock-take. The system prioritises locations by discrepancy risk (high-velocity SKUs, locations flagged by recent scan anomalies) and generates count tasks automatically. Operatives scan and confirm quantities on their mobile device; variances are highlighted for supervisor approval before the inventory record is adjusted. InOps partners report 99.9% inventory accuracy after three months of live cycle counting.",
+  },
+  {
+    question: "Can InOps WMS track fixed assets like forklifts and biometric devices?",
+    answer:
+      "InOps warehouse management tracks the real-time location of movable warehouse equipment — forklifts, pallet trucks, scanners — within the warehouse floor. For enterprise fixed asset management covering AMC scheduling, depreciation, statutory audit records, and multi-site biometric device fleets, the dedicated",
+    // Rendered with a Link in JSX — see FAQ render block
   },
 ] as const;
 
@@ -191,23 +203,20 @@ export default function WarehousePage() {
         </div>
       </AnimatedSection>
 
-      <section aria-labelledby="delivery-warehouse-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+      <section aria-labelledby="warehouse-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            {/* <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-blue-800">
-              Delivery & Warehouse Management FAQ
-            </span> */}
-            <h2 id="delivery-warehouse-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+            <h2 id="warehouse-faq-heading" className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
               Frequently asked questions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Answers to common questions about delivery tracking, warehouse operations, vehicle movement, ERP integration, and inventory visibility.
+              Answers to common questions about warehouse management software, barcode and QR tracking, putaway and picking strategies, ERP integration, cycle counts, and fixed asset tracking.
             </p>
           </div>
 
           <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-slate-50/70 shadow-[0_24px_70px_-46px_rgba(15,23,42,0.35)]">
             <div className="divide-y divide-slate-200">
-              {deliveryWarehouseFaqItems.map((item, index) => (
+              {warehouseFaqItems.map((item, index) => (
                 <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
                     <span className="flex min-w-0 gap-4">
@@ -223,7 +232,20 @@ export default function WarehousePage() {
                       +
                     </span>
                   </summary>
-                  <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                  {index === 6 ? (
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">
+                      {item.answer}{" "}
+                      <Link
+                        href="/fixed-asset-management"
+                        className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors duration-200"
+                      >
+                        InOps Fixed Asset Management module
+                      </Link>{" "}
+                      handles all of that.
+                    </p>
+                  ) : (
+                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                  )}
                 </details>
               ))}
             </div>

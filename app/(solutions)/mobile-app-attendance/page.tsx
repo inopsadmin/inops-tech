@@ -586,7 +586,8 @@ export default function MobileAppPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: smoothEase, delay: 0.14 }}
                 >
-                  GPS-validated face attendance for sites without fixed hardware — verified at punch-in, fed into CLMS payroll, with worker self-service for leave, payslips, and earned wages.
+                  GPS-validated face attendance for sites without fixed hardware — verified at punch-in, fed into CLMS payroll, with worker self-service for leave, payslips, and earned wages. For high-throughput plant gates where fixed biometric terminals are the right fit, see{" "}
+                  <Link href="/face-recognition-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors duration-200">face recognition attendance</Link>.
                 </motion.p>
                 <motion.div
                   className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
@@ -1028,7 +1029,7 @@ export default function MobileAppPage() {
                 </span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                SmartAttendance connects effortlessly with your existing HR ecosystem, ensuring data flows where you need it most.
+                InOps Mobile Attendance connects effortlessly with your existing HR ecosystem, ensuring data flows where you need it most.
               </p>
             </motion.div>
 
@@ -1238,7 +1239,7 @@ export default function MobileAppPage() {
         <div className="w-full border-t border-slate-200/90 pb-12 pt-12 lg:pb-16 lg:pt-16">
           <motion.section
             className="relative overflow-hidden border-y border-white/[0.06] bg-gradient-to-b from-[#010409] via-[#0b1220] to-[#020617] py-10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.85)] sm:py-14 lg:py-16"
-            aria-labelledby="why-smartattendance-heading"
+            aria-labelledby="why-inops-mobile-heading"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
@@ -1259,9 +1260,9 @@ export default function MobileAppPage() {
                     Operations-ready
                   </span>
                 </div>
-                <h2 id="why-smartattendance-heading" className="mt-5 text-balance text-center">
+                <h2 id="why-inops-mobile-heading" className="mt-5 text-balance text-center">
                   <span className="text-white">
-                    Why Modern Teams Choose SmartAttendance
+                    Why Modern Teams Choose InOps Mobile Attendance
                   </span>
                 </h2>
                 <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-slate-400 sm:text-lg">
@@ -1471,7 +1472,14 @@ export default function MobileAppPage() {
                         +
                       </span>
                     </summary>
-                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                    {index === 6 ? (
+                      <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">
+                        Fixed readers suit high-density plant gates where throughput and physical enforcement matter — see{" "}
+                        <Link href="/face-recognition-attendance" className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200">face recognition attendance</Link>. Mobile suits moving or distributed sites. Most infrastructure clients run both on one platform, so a worker&apos;s identity and records stay unified whichever method captured the shift.
+                      </p>
+                    ) : (
+                      <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                    )}
                   </details>
                 ))}
               </div>

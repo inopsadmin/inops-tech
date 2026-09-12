@@ -1,12 +1,12 @@
 /**
  * /services/background-verification
  *
- * Primary: background verification software — 500/mo, Low, ₹34–238
- * Intent note: volume is for *software*, page sells a *service*.
- * Resolution: frame InOps RegX as background verification software with managed
- * deployment — accurate (RegX is a platform, not a bureau), and closes the intent gap.
+ * Positioned as a per-check managed service, not a SaaS product.
+ * "InOps RegX" is the Iddion CLMS module's sub-brand and does not belong on this
+ * standalone service page — removed from title and description per audit #23.
  *
- * Secondary: background check software (500) · verification solutions (500) · vendor verification (50)
+ * Primary kw: background verification services India (500/mo)
+ * Secondary: background check service · contractor BGV · industrial background verification
  */
 
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
@@ -14,9 +14,9 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import { bgvFaqItems } from "@/app/lib/bgvFaqItems";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Background Verification Software for Contract Workers | InOps RegX";
+const PAGE_TITLE = "Background Verification Service for Contract Workers — InOps";
 const PAGE_DESCRIPTION =
-  "InOps RegX is background verification software for Indian manufacturers — instant digital BGV for contract workers, employees, visitors, and vendors, integrated with gate access and CLMS. Deployed and managed by InOps.";
+  "InOps verifies contract and industrial workers before site entry — Aadhaar-linked identity, criminal records, employment history, and address checks, integrated with gate access and CLMS. Deployable within days.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

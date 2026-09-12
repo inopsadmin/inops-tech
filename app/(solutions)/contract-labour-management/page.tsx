@@ -1561,6 +1561,58 @@ export default function PayrollSolutionsPage() {
           </div>
         </section>
 
+        {/* ====== TRUSTED BY ANCHOR CLIENTS ====== */}
+        <section className="border-t border-slate-200/80 bg-slate-50/60 py-8 lg:py-10" aria-label="Trusted by">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+            <motion.div
+              className="flex flex-col items-center gap-5"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Trusted by</p>
+              <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+                {["Ashok Leyland", "Foxconn", "HAL", "BHEL", "Apollo", "Ramky"].map((name) => (
+                  <span
+                    key={name}
+                    className="text-sm font-bold tracking-tight text-slate-500 transition-colors duration-200 hover:text-slate-700"
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ====== CLMS VS HRMS ====== */}
+        <section aria-labelledby="clms-vs-hrms-heading" className="border-t border-slate-100 bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.5, ease: smoothEase }}
+            >
+              <h2 id="clms-vs-hrms-heading" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                CLMS vs HRMS: why contract labour needs its own system
+              </h2>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-slate-600">
+                <p>
+                  An HRMS and a Contract Labour Management System share surface features — both track people and payroll — but address different compliance frameworks. An HRMS is designed for permanent employees under the Industrial Disputes Act: standard pay structures, leave management, and centralised HR workflows. A CLMS is designed for the CLRA framework: principal employer liability, contractor licence tracking, per-contractor headcount caps, Form&nbsp;V and Form&nbsp;XIII registers, and invoice reconciliation against a contractor&apos;s claimed headcount.
+                </p>
+                <p>
+                  The practical gap shows at the gate and at the audit. An HRMS records whether someone was present; a CLMS verifies whether they were <em>authorised</em> to be present — checking induction status, medical clearance, BGV completion, and work order validity before the turnstile opens. At invoice time, an HRMS has attendance totals; a CLMS has contractor-wise verified hours that reconcile directly against the vendor bill, flagging over-claims before payment.
+                </p>
+                <p>
+                  Most Indian manufacturers run both: HRMS for permanent staff, CLMS for the contract workforce that often outnumbers them on the shop floor. Iddion RegX integrates with major HRMS platforms so data flows in one direction without duplication.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         <section aria-labelledby="clms-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
             <motion.div

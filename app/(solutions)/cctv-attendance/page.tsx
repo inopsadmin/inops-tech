@@ -174,12 +174,19 @@ const cctvSurveillanceFaqItems = [
     question: "Can it run alongside face terminals and fingerprint readers?",
     answer: (
       <>
-        Yes. Camera, terminal, fingerprint, and mobile capture all feed one identity engine — a worker enrolled once is recognised by any method, so sites typically use cameras for high-flow gates and{" "}
-        <Link 
-          href="/face-recognition-attendance" 
+        Yes. Camera, terminal, fingerprint, and mobile capture all feed one identity engine — a worker enrolled once is recognised by any method, so sites typically use cameras for high-flow gates,{" "}
+        <Link
+          href="/face-recognition-attendance"
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
-          terminals
+          face recognition terminals
+        </Link>
+        , or{" "}
+        <Link
+          href="/biometric-devices"
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          fingerprint readers
         </Link>{" "}
         where enforcement must be physical.
       </>
@@ -456,8 +463,7 @@ export default function TimeAndAttendancePage() {
                     duration={0.68}
                     className="home-display-heading inops-type-hero mt-4 text-slate-900 sm:mt-5"
                   >
-                    Attendance without devices,{" "}
-                    <span className="text-blue-800">powered by AI</span>
+                    CCTV-Based Attendance: Turn Existing Cameras into an AI Attendance System
                   </FlyInText>
                   <FlyInText
                     as="p"
@@ -467,8 +473,7 @@ export default function TimeAndAttendancePage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer
-                    vision. No queues, no contact, no excuses.
+                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system — powered by AI. No queues, no contact, no excuses.
                   </FlyInText>
                   <FlyInText
                     as="div"
@@ -696,8 +701,8 @@ export default function TimeAndAttendancePage() {
                   delay={0.06}
                   className="mt-4 text-slate-900"
                 >
-                  Camera-Based{" "}
-                  <span className="text-blue-800">Attendance</span>
+                  The OptiCam Solution:{" "}
+                  <span className="text-blue-800">AI-Powered CCTV Attendance</span>
                 </FlyInText>
 
                 <FlyInText

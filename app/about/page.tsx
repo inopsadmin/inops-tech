@@ -335,9 +335,9 @@ export default function AboutPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, ease: smoothEase, delay: 0.12 }}
                   >
-                    Bringing{" "}
-                    <span className="text-[color:var(--inops-blue)]">Control &amp; Transparency</span> to Enterprise
-                    Operations.
+                    InOps:{" "}
+                    <span className="text-[color:var(--inops-blue)]">Bengaluru-Based Workforce Compliance Technology</span>{" "}
+                    for Indian Manufacturing, Defence &amp; Infrastructure.
                   </motion.h1>
                   <motion.p
                     className={`${aboutLead} mt-4 max-w-xl`}
@@ -517,10 +517,10 @@ export default function AboutPage() {
                 Timeline
               </div>
               <h2 id="our-evolution-heading" className={`${aboutH2} mt-4`}>
-                Our Evolution
+                Our Story: From 2014 to a 3,000+ Device Compliance Platform
               </h2>
               <p className={`${aboutLead} mx-auto mt-4 max-w-xl`}>
-                A decade of engineering excellence and workforce transformation.
+                A decade of engineering excellence and workforce transformation — from enterprise IT to India's leading contract labour compliance platform.
               </p>
               <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
             </motion.div>
@@ -920,6 +920,69 @@ export default function AboutPage() {
                   </button>
                 </div>
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* About FAQ */}
+        <section
+          className={`relative border-t border-slate-200/80 ${aboutSectionBg} py-10 lg:py-14`}
+          aria-labelledby="about-faq-heading"
+        >
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-12">
+            <div>
+              <h2
+                id="about-faq-heading"
+                className={`${aboutH2} mt-3`}
+              >
+                Frequently asked questions
+              </h2>
+              <p className={`${aboutLead} mt-3`}>
+                Entity facts, founding story, and coverage details about InOps IT Solutions.
+              </p>
+            </div>
+
+            <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white/80 shadow-[0_18px_50px_-42px_rgba(15,23,42,0.28)]">
+              {[
+                {
+                  question: "Who founded InOps and when?",
+                  answer:
+                    "InOps IT Solutions was founded in 2014 by Satish Sinha in Bengaluru, Karnataka. The company began as an enterprise IT and product-services firm before specialising in biometric access, Contract Labour Management Systems (CLMS), and CLRA statutory compliance for Indian manufacturing.",
+                },
+                {
+                  question: "Where is InOps headquartered?",
+                  answer:
+                    "InOps IT Solutions is headquartered in Bommasandra Industrial Area, Bengaluru, Karnataka — at the heart of South India's manufacturing corridor. The team deploys and supports on-site installations across plants in multiple states.",
+                },
+                {
+                  question: "Which industries does InOps serve?",
+                  answer:
+                    "InOps serves Indian manufacturing (automotive, electronics, pharma, FMCG), defence and aerospace, logistics and warehousing, and large-scale infrastructure projects. The platform is purpose-built for industrial sites with contract and multi-vendor workforces subject to CLRA compliance requirements.",
+                },
+                {
+                  question: "How many devices and plants does InOps manage?",
+                  answer:
+                    "As of 2026, InOps manages over 3,000 hardware devices — biometric readers, CCTV-based attendance cameras, access controllers, and kiosk terminals — across 75+ plant locations operated by 25+ enterprise clients, with over 1 lakh (100,000) verified workers on the platform.",
+                },
+                {
+                  question: "Is InOps compliant with Indian labour laws?",
+                  answer:
+                    "Yes. InOps is designed around the Contract Labour (Regulation and Abolition) Act, 1970 (CLRA), the Employees' Provident Fund Act, the ESI Act, and state-specific labour regulations. The platform auto-generates Form XIII, Form XIV, and muster rolls, and flags contractor licence renewals and PF/ESI due dates so clients stay audit-ready.",
+                },
+              ].map((item) => (
+                <details key={item.question} className="group p-5 open:bg-white/95 sm:p-6">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left text-base font-semibold text-slate-950 marker:hidden">
+                    <span>{item.question}</span>
+                    <span
+                      className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition group-open:rotate-45 group-open:text-blue-700"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className={`mt-3 pr-10 ${aboutLead}`}>{item.answer}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>

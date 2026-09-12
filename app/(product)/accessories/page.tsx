@@ -109,8 +109,8 @@ export default function AccessoriesPage() {
     <>
       <div className="solution-product-section-gap min-h-screen bg-white text-gray-900">
         <SolutionLandingHero
-          title="Access control accessories"
-          subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks, everything you need to complete lanes, doors, and secure zones."
+          title="Access Control Accessories: Exit Buttons, RF Cards & Electromagnetic Locks for Factory Gates"
+          subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks — everything you need to complete turnstile lanes, doors, and secure zones at industrial and commercial sites."
           imageSrc="/images/solution-hero-clms-worker.png"
           imageAlt="Industrial site operations ,  access hardware and workforce context"
         />
@@ -270,6 +270,50 @@ export default function AccessoriesPage() {
           </div>
         </section>
 
+        {/* Cross-links — turnstiles and face recognition */}
+        <section className="border-t border-slate-200/80 bg-slate-50/60 py-8 lg:py-10">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.45, ease: smoothEase }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Used alongside</p>
+              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Link
+                  href="/turnstiles-access"
+                  className="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+                >
+                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-500/15" aria-hidden>
+                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="4" height="18" rx="1"/><rect x="17" y="3" width="4" height="18" rx="1"/><path d="M7 12h10"/>
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-slate-900 group-hover:text-blue-700">Turnstile Access Control for Factory Gates</p>
+                    <p className="mt-0.5 text-xs text-slate-500">Exit buttons, maglocks and RF cards complete every turnstile lane — see the full gate system.</p>
+                  </div>
+                </Link>
+                <Link
+                  href="/face-recognition-attendance"
+                  className="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+                >
+                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-500/15" aria-hidden>
+                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-slate-900 group-hover:text-blue-700">Face Recognition Attendance System for Industrial Sites</p>
+                    <p className="mt-0.5 text-xs text-slate-500">Fingerprint sensors and RF cards integrate with face terminals — one enrolled identity across every reader.</p>
+                  </div>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* ══════════════════════════════════════════
             FAQ — details/summary accordion
         ══════════════════════════════════════════ */}
@@ -326,6 +370,10 @@ export default function AccessoriesPage() {
                   {
                     q: "Which RFID cards work with your readers?",
                     a: "Cards supporting ISO-format proximity at 125 kHz and 13.56 MHz, covering common proximity and MIFARE deployments. Cards are printable on both sides for use as employee ID, so one credential serves access, attendance, canteen and visitor identification.",
+                  },
+                  {
+                    q: "Can the same RF card work across multiple sites?",
+                    a: (<>Yes, where all sites run on the same access control platform. A card issued at one plant is recognised at any reader connected to the same system — useful for staff and contractors who move between locations. Where sites run on different legacy controllers, multi-site card use depends on whether the card format and frequency are shared; we check this during the survey. For organisations running <Link href="/face-recognition-attendance" className="font-medium text-blue-600 underline-offset-2 hover:underline">face recognition attendance</Link> across sites, biometric identity removes the card dependency entirely — one enrolled face works at every gate with no card to lose or forget.</>),
                   },
                   {
                     q: "Can we keep our existing cards when we change readers?",

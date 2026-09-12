@@ -166,27 +166,52 @@ const ewaFaqItems = [
   {
     question: "What is Earned Wage Access (EWA)?",
     answer:
-      "Earned Wage Access allows employees to access a portion of their earned salary before the regular payday without disrupting payroll processes.",
+      "Earned Wage Access (EWA) allows employees to withdraw a portion of their already-earned salary before the regular payday — without disrupting payroll processes. Unlike an advance or a loan, the amount is calculated from verified attendance and shift data, so workers only access money they have genuinely earned.",
+  },
+  {
+    question: "Is earned wage access a loan?",
+    answer:
+      "Structurally, EWA is an advance on earned-but-unpaid wages rather than credit against future income. The distinction matters under Indian law: an advance on wages does not trigger the Money Lenders Act, does not create a credit liability, and does not require consent under the Credit Information Companies Act. InOps EWA (Salary++) is disbursed through a regulated NBFC partner and recovered at source at the next payroll cycle — no rollovers, no accruing interest, no separate repayment schedule. For the worker it is access to money they have already earned; for the employer it is a payroll timing adjustment with zero additional liability.",
+  },
+  {
+    question: "Is EWA regulated in India?",
+    answer:
+      "EWA in India sits within a transitional regulatory landscape. The Reserve Bank of India has issued digital-lending guidelines that apply to wage-advance products: disbursements must route through a regulated entity (bank or NBFC), any fee must be disclosed upfront, and rollovers are not permitted. InOps Salary++ disburses through a licensed NBFC partner and recovers advances at source from the employer's payroll cycle — aligned with current RBI digital-lending norms and the evolving Code on Social Security framework.",
+  },
+  {
+    question: "How does EWA interact with PF and ESI deductions?",
+    answer:
+      "PF and ESI are computed on the full statutory wage for the period — the advance withdrawal does not reduce the base used for contribution calculations. When the advance is recovered at the next payroll cycle, net take-home is adjusted but statutory deductions (PF, ESI, PT, TDS) remain on the gross wage. Workers retain their full social-security entitlements and employers have no change in statutory filing or challan amounts.",
   },
   {
     question: "How does Earned Wage Access benefit employees?",
     answer:
-      "EWA improves financial flexibility, reduces dependence on high-interest loans, and supports employee financial well-being.",
+      "EWA improves financial flexibility, reduces dependence on high-interest informal loans, and lowers attrition driven by cash-flow stress between paydays. Workers with access to Salary++ report fewer absenteeism events and higher engagement — because financial emergencies no longer require borrowing at predatory rates or taking leave to chase cash.",
+  },
+  {
+    question: "What is the maximum amount a worker can withdraw before payday?",
+    answer:
+      "The withdrawal limit is set by employer policy — typically 40–50% of verified earned wages for the current cycle. InOps Salary++ calculates the eligible amount from biometric attendance records and shift-wage data in real time, so the limit always reflects actual work done rather than an estimate. Employers can set site-level or worker-category caps independently.",
   },
   {
     question: "Does Earned Wage Access affect payroll?",
     answer:
-      "No. Approved salary advances are automatically reconciled during the regular payroll cycle.",
+      "No. Approved salary advances are automatically reconciled during the regular payroll cycle — the gross wage, statutory deductions, and payroll register are unchanged. The advance simply reduces the net disbursement at month end by the amount already withdrawn.",
   },
   {
     question: "Is Earned Wage Access suitable for contract workers?",
     answer:
-      "Yes. Organizations can extend EWA benefits to eligible employees and contract workers based on policies.",
+      "Yes. InOps Salary++ extends to contract workers managed through InOps CLMS — eligibility is based on verified biometric attendance rather than employment type, so contractors on daily or weekly wages can access earned wages on the same platform as permanent employees.",
+  },
+  {
+    question: "Is there a cost to the employer for offering EWA?",
+    answer:
+      "No capital outlay is required. InOps Salary++ is funded by an NBFC partner; the employer's role is to recover the advance in the next payroll cycle, which it already runs. There are no float costs, no advance-funding account, and no credit risk for the employer. The platform fee is per-disbursement and is typically absorbed as a retention benefit or passed through as a nominal convenience charge to the worker.",
   },
   {
     question: "Can Earned Wage Access integrate with HRMS and payroll?",
     answer:
-      "Yes. EWA platforms integrate with HRMS, attendance, and payroll systems for secure and accurate wage calculations.",
+      "Yes. InOps Salary++ integrates with HRMS, attendance, and payroll systems for secure and accurate wage calculations. It runs on the same attendance engine as InOps CLMS and HRIS, so every withdrawal is validated against the same verified records that drive your contractor and permanent-employee payroll.",
   },
 ] as const;
 
@@ -461,7 +486,7 @@ export default function EwaPage() {
               The platform
             </span>
             <h2 className="mt-6 text-slate-900">
-              A smarter way to access{" "}
+              Salary++ — a smarter way to access{" "}
               <span className="font-semibold text-[color:var(--inops-blue)]">
                 earned wages
               </span>
@@ -1262,7 +1287,7 @@ export default function EwaPage() {
               Frequently asked questions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Answers to common questions about earned salary access, payroll reconciliation, workforce eligibility, and HRMS integrations.
+              Answers to common questions about Salary++ earned wage access — including Indian regulatory context, PF/ESI interaction, payroll reconciliation, and contract-worker eligibility.
             </p>
           </motion.div>
 

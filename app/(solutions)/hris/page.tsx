@@ -23,6 +23,19 @@ import { hrisFaqItems } from "@/app/lib/hrisFaqItems";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
+const hrisFaqGroups = (() => {
+  const defs = [
+    { label: "Compliance & payroll", indices: [0, 1, 2, 7, 9, 11] },
+    { label: "Integration & platform", indices: [3, 4, 6, 8, 12, 13, 16] },
+    { label: "Implementation", indices: [5, 10, 14, 15] },
+  ];
+  let n = 0;
+  return defs.map((g) => ({
+    label: g.label,
+    items: g.indices.map((gIdx) => ({ gIdx, item: hrisFaqItems[gIdx], num: ++n })),
+  }));
+})();
+
 const labourHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.24.11 PM.jpeg";
 const labourHeroRightVideo = mediaVideos.labourManagementHero;
 
@@ -816,9 +829,9 @@ export default function LabourManagementPage() {
                 End to end flow
               </span>
               <h2 id="labour-e2e-flow-heading" className="mt-5 text-balance text-slate-900">
-                Simple.{" "}
-                <span className="font-semibold text-[color:var(--inops-blue)]">Automated.</span>{" "}
-                Accurate.
+                Automated Payroll, Attendance &amp;{" "}
+                <span className="font-semibold text-[color:var(--inops-blue)]">Compliance</span>{" "}
+                in One HRIS.
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                 A four-step pipeline from first record to payroll insight—designed to run{" "}
@@ -1428,25 +1441,42 @@ export default function LabourManagementPage() {
               viewport={viewport}
               transition={{ duration: 0.5, ease: smoothEase, delay: 0.08 }}
             >
-              <div className="divide-y divide-slate-200">
-                {hrisFaqItems.map((item, index) => (
-                  <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
-                    <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
-                      <span className="flex min-w-0 gap-4">
-                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
-                      </span>
-                      <span
-                        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
-                        aria-hidden
-                      >
-                        +
-                      </span>
-                    </summary>
-                    <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
-                  </details>
+              <div className="divide-y-0">
+                {hrisFaqGroups.map((group) => (
+                  <div key={group.label}>
+                    <div className="border-b border-slate-200 bg-slate-100/60 px-5 py-3 sm:px-7">
+                      <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-slate-400">{group.label}</h3>
+                    </div>
+                    <div className="divide-y divide-slate-200">
+                      {group.items.map(({ gIdx, item, num }) => (
+                        <details key={item.question} className="group bg-white/70 px-5 py-5 open:bg-white sm:px-7 sm:py-6">
+                          <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                            <span className="flex min-w-0 gap-4">
+                              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                                {String(num).padStart(2, "0")}
+                              </span>
+                              <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                            </span>
+                            <span
+                              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                              aria-hidden
+                            >
+                              +
+                            </span>
+                          </summary>
+                          {gIdx === 1 ? (
+                            <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">
+                              An HRIS manages your own employees; a CLMS governs contract workers supplied by third-party contractors — licences, gate compliance, CLRA registers, and contractor invoice verification, which an HRIS is not designed to handle. Most large plants run both. InOps is one of the few platforms where HRIS and CLMS share a single attendance and identity engine, so permanent and contract workforces are visible together without duplicate hardware or data stitching.{" "}
+                              <Link href="/contract-labour-management" className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200">See how InOps CLMS handles contract labour</Link>, or read the{" "}
+                              <Link href="/blog/clms-vs-hrms" className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200">CLMS vs HRMS breakdown on our blog</Link>.
+                            </p>
+                          ) : (
+                            <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:pl-12 sm:text-base">{item.answer}</p>
+                          )}
+                        </details>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>

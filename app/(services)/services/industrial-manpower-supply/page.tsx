@@ -17,7 +17,7 @@ export default function IndustrialManpowerSupplyPage() {
               SERVICE 05 / 05 &nbsp;·&nbsp; INDUSTRIAL MANPOWER SUPPLY
             </div>
             <h1 className="text-[clamp(32px,3.8vw,50px)] leading-[1.10] font-medium text-white tracking-[-0.02em] m-0">
-              Workers, verified and ready before Day One.
+              Industrial Manpower Supply: Workers Verified and Ready Before Day One.
             </h1>
             <p className="mt-[22px] text-[15px] leading-[1.7] text-white/[0.78] max-w-[500px]">
               Industrial manpower supply and contract labour deployment built around a compliance ready workforce — background-verified, digitally onboarded and biometrically enrolled before they report on site.

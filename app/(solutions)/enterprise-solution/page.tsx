@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Fragment, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { FlyInText } from "@/app/components/FlyInText";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 import { inopsUi } from "@/app/lib/inopsUi";
@@ -157,15 +156,6 @@ export default function EnterpriseSolutionPage() {
     return () => window.removeEventListener("hashchange", scrollToHashTarget);
   }, [pathname]);
 
-  const moduleVisuals = {
-    sensorStatus:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
-    efficiencyGain:
-      "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1400&q=80",
-    inventoryAccuracy:
-      "https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=1400",
-  } as const;
-
   const industryVisuals = {
     Manufacturing:
       "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=80",
@@ -184,7 +174,7 @@ export default function EnterpriseSolutionPage() {
       title: "Warehouse Management",
       description:
         "Optimize inventory, assets, and warehouse operations with real-time tracking, barcode automation, and analytics for improved efficiency.",
-      href: "#warehouse-management",
+      href: "/warehouse-management",
       borderGradient: "from-violet-600 via-fuchsia-500 to-indigo-600",
       topBarGradient: "from-violet-500 via-purple-500 to-fuchsia-500",
       iconWrap:
@@ -204,7 +194,7 @@ export default function EnterpriseSolutionPage() {
       title: "Delivery Management",
       description:
         "Ensure faster deliveries through route optimization, fleet tracking, transport management, and digital proof of delivery.",
-      href: "#asset-management",
+      href: "/delivery-management",
       borderGradient: "from-blue-600 via-indigo-500 to-violet-600",
       topBarGradient: "from-blue-500 via-indigo-500 to-sky-400",
       iconWrap:
@@ -223,7 +213,7 @@ export default function EnterpriseSolutionPage() {
       title: "Order Management",
       description:
         "Streamline order processing, fulfillment, tracking, and returns with automated workflows and real-time visibility.",
-      href: "#delivery-management",
+      href: "/order-management",
       borderGradient: "from-cyan-500 via-teal-500 to-emerald-600",
       topBarGradient: "from-cyan-400 via-teal-500 to-emerald-500",
       iconWrap:
@@ -262,11 +252,11 @@ export default function EnterpriseSolutionPage() {
         }
         title={
           <>
-            One Platform for{" "}
-            <span className="text-blue-600">Workforce Compliance and Access</span>
+            Enterprise Operations Platform:{" "}
+            <span className="text-blue-600">Asset, Route &amp; Warehouse Management</span>
           </>
         }
-        subtitle="CLMS, HRIS, biometric attendance, and gate access control — unified across all your industrial sites so permanent and contract workforces are governed from a single platform."
+        subtitle="Warehouse management, delivery routing, and order fulfilment — unified across all your industrial sites, and connected to the same workforce-visibility layer as InOps CLMS and HRIS."
         videoSrc="/videos/Enterprise_Solutions_digitizing_202605062212.mp4"
         imageAlt="Warehouse and logistics operations ,  enterprise visibility"
         livePopups={[
@@ -327,8 +317,13 @@ export default function EnterpriseSolutionPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Asset intelligence, fleet routing, and warehouse execution, three connected surfaces that
-              share data so enterprise ops stay aligned from yard to shelf.
+              Asset intelligence, fleet routing, and warehouse execution — three connected surfaces that
+              share data so enterprise ops stay aligned from yard to shelf. All three modules feed into
+              the same operational layer as{" "}
+              <Link href="/contract-labour-management" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors duration-200">InOps CLMS</Link>{" "}
+              and{" "}
+              <Link href="/hris" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors duration-200">HRIS</Link>,
+              so contractor headcount, labour costs, and physical throughput appear on one consolidated dashboard.
             </p>
           </motion.div>
 
@@ -351,7 +346,7 @@ export default function EnterpriseSolutionPage() {
                 whileHover={hoverLift}
                 className={`rounded-2xl bg-gradient-to-br p-px shadow-[0_18px_44px_-28px_rgba(15,23,42,0.14)] ${module.borderGradient}`}
               >
-                <article className="group relative flex h-full flex-col overflow-hidden rounded-[0.95rem] border border-white/70 bg-white/95 p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-sm sm:rounded-[1rem] sm:p-6">
+                <article className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[0.95rem] border border-white/70 bg-white/95 p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-sm sm:rounded-[1rem] sm:p-6">
                   <div
                     className="pointer-events-none absolute inset-x-0 top-0 z-10 h-1 overflow-hidden rounded-t-[0.9rem] sm:rounded-t-[0.95rem]"
                     aria-hidden
@@ -378,7 +373,9 @@ export default function EnterpriseSolutionPage() {
                   </div>
 
                   <h3 className="relative mt-4 text-base font-semibold tracking-tight text-slate-900 sm:text-lg">
-                    {module.title}
+                    <Link href={module.href} className="hover:text-[color:var(--inops-blue)] transition-colors duration-200 after:absolute after:inset-0">
+                      {module.title}
+                    </Link>
                   </h3>
                   <p className="relative mt-2.5 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">
                     {module.description}
@@ -392,329 +389,109 @@ export default function EnterpriseSolutionPage() {
 
       <section
         id="asset-management"
-        className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
+        className="scroll-mt-24 border-t border-slate-100 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase }}
-            >
-              <FlyInText
-                as="span"
-                direction="up"
-                duration={0.55}
-                className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600"
-              >
-                Module 01
-              </FlyInText>
-
-              <FlyInText
-                as="h2"
-                direction="up"
-                delay={0.06}
-                duration={0.62}
-                className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-              >
+          <motion.div
+            className="mx-auto max-w-3xl"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5, ease: smoothEase }}
+          >
+            <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+              Module 01
+            </span>
+            <h2 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <Link href="/warehouse-management" className="hover:text-[color:var(--inops-blue)] transition-colors duration-200">
                 Warehouse Management
-              </FlyInText>
-
-              <FlyInText
-                as="p"
-                direction="left"
-                delay={0.11}
-                duration={0.58}
-                className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg"
-              >
-                Optimize warehouse operations with real-time inventory control, asset tracking, barcode/QR automation, and analytics to improve accuracy and efficiency.
-              </FlyInText>
-
-              <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {[
-                  "Inventory Management",
-                  "Barcode & QR Tracking",
-                  "Asset Tracking",
-                  "Warehouse Analytics",
-                ].map((point, i) => (
-                  <FlyInText
-                    key={point}
-                    as="div"
-                    direction="up"
-                    delay={0.14 + i * 0.05}
-                    duration={0.5}
-                    className="flex items-center gap-2.5 text-sm font-medium text-gray-700 sm:text-base"
-                  >
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-gray-500">
-                      <svg className="h-3 w-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m5 10 3 3 7-7" />
-                      </svg>
-                    </span>
-                    {point}
-                  </FlyInText>
-                ))}
-              </div>
-
-              <FlyInText as="div" direction="up" delay={0.34} duration={0.55} className="mt-8">
-                <Link
-                  href="/warehouse-management"
-                  className="inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:scale-95"
-                >
-                  Explore Warehouse Features
-                </Link>
-              </FlyInText>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              whileHover={hoverLift}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase, delay: 0.05 }}
+              </Link>
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg">
+              Optimize warehouse operations with real-time inventory control, asset tracking, barcode/QR automation, and analytics to improve accuracy and efficiency.
+            </p>
+            <Link
+              href="/warehouse-management"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200"
             >
-              <div
-                className="relative overflow-hidden rounded-2xl border border-gray-200 bg-cover bg-center shadow-[0_18px_50px_-30px_rgba(15,23,42,0.45)]"
-                style={{ backgroundImage: `url(${moduleVisuals.sensorStatus})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/15 to-slate-100/15" aria-hidden />
-
-                <div className="relative aspect-[16/9]">
-                  <FlyInText
-                    direction="left"
-                    delay={0.1}
-                    duration={0.65}
-                    className="absolute left-4 top-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur sm:left-6 sm:top-6"
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
-                      Inventory Accuracy
-                    </p>
-                    <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
-                      99.9% Reliable Tracking
-                    </p>
-                  </FlyInText>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              Learn more about Warehouse Management
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       <section
         id="delivery-management"
-        className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
+        className="scroll-mt-24 border-t border-slate-100 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.05fr] lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              whileHover={hoverLift}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase }}
-            >
-              <div
-                className="relative overflow-hidden rounded-2xl border border-blue-200/40 bg-cover bg-center shadow-[0_18px_50px_-30px_rgba(15,23,42,0.45)]"
-                style={{ backgroundImage: `url(${moduleVisuals.efficiencyGain})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/45 via-slate-900/20 to-transparent" aria-hidden />
-                <div className="relative aspect-[16/9]">
-                  <FlyInText
-                    direction="up"
-                    delay={0.12}
-                    duration={0.65}
-                    className="absolute bottom-6 left-6 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur"
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
-                      On-time Delivery
-                    </p>
-                    <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
-                      +24% Faster Delivery
-                    </p>
-                  </FlyInText>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              whileHover={hoverLift}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase, delay: 0.05 }}
-            >
-              <FlyInText
-                as="span"
-                direction="up"
-                duration={0.55}
-                className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600"
-              >
-                Module 02
-              </FlyInText>
-
-              <FlyInText
-                as="h2"
-                direction="up"
-                delay={0.06}
-                duration={0.62}
-                className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-              >
+          <motion.div
+            className="mx-auto max-w-3xl"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5, ease: smoothEase }}
+          >
+            <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+              Module 02
+            </span>
+            <h2 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <Link href="/delivery-management" className="hover:text-[color:var(--inops-blue)] transition-colors duration-200">
                 Delivery Management
-              </FlyInText>
-
-              <FlyInText
-                as="p"
-                direction="right"
-                delay={0.11}
-                duration={0.58}
-                className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg"
-              >
-                Streamline delivery operations with intelligent route optimization, transport management, real-time fleet tracking, and proof of delivery for reliable results.
-              </FlyInText>
-
-              <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {[
-                  "Route Optimzation",
-                  "Fleet Tracking",
-                  "Transport Management",
-                  "Proof of Delivery",
-                ].map((point, i) => (
-                  <FlyInText
-                    key={point}
-                    as="div"
-                    direction="up"
-                    delay={0.14 + i * 0.05}
-                    duration={0.5}
-                    className="flex items-center gap-2.5 text-sm font-medium text-gray-700 sm:text-base"
-                  >
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-gray-500">
-                      <svg className="h-3 w-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m5 10 3 3 7-7" />
-                      </svg>
-                    </span>
-                    {point}
-                  </FlyInText>
-                ))}
-              </div>
-
-              <FlyInText as="div" direction="up" delay={0.34} duration={0.55} className="mt-8">
-                <Link
-                  href="/delivery-management"
-                  className="inline-flex items-center rounded-xl bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md active:scale-95"
-                >
-                  Explore Delivery Features
-                </Link>
-              </FlyInText>
-            </motion.div>
-          </div>
+              </Link>
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg">
+              Streamline delivery operations with intelligent route optimization, transport management, real-time fleet tracking, and proof of delivery for reliable results.
+            </p>
+            <Link
+              href="/delivery-management"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200"
+            >
+              Learn more about Delivery Management
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       <section
         id="warehouse-management"
-        className="scroll-mt-24 bg-white py-10 lg:py-12 lg:scroll-mt-28"
+        className="scroll-mt-24 border-t border-slate-100 bg-white py-10 lg:py-12 lg:scroll-mt-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase }}
-            >
-              <FlyInText
-                as="span"
-                direction="up"
-                duration={0.55}
-                className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600"
-              >
-                Module 03
-              </FlyInText>
-
-              <FlyInText
-                as="h2"
-                direction="up"
-                delay={0.06}
-                duration={0.62}
-                className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-              >
+          <motion.div
+            className="mx-auto max-w-3xl"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.5, ease: smoothEase }}
+          >
+            <span className="inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+              Module 03
+            </span>
+            <h2 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <Link href="/order-management" className="hover:text-[color:var(--inops-blue)] transition-colors duration-200">
                 Order Management
-              </FlyInText>
-
-              <FlyInText
-                as="p"
-                direction="left"
-                delay={0.11}
-                duration={0.58}
-                className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg"
-              >
-                Manage the complete order lifecycle with efficient order processing, fulfillment management, real-time order tracking, and seamless returns handling.
-              </FlyInText>
-
-              <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {[
-                  "Order Processing",
-                  "Order Tracking",
-                  "Fulfillment Management",
-                  "Returns Management",
-                ].map((point, i) => (
-                  <FlyInText
-                    key={point}
-                    as="div"
-                    direction="up"
-                    delay={0.14 + i * 0.05}
-                    duration={0.5}
-                    className="flex items-center gap-2.5 text-sm font-medium text-gray-700 sm:text-base"
-                  >
-                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-gray-300 text-gray-500">
-                      <svg className="h-3 w-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m5 10 3 3 7-7" />
-                      </svg>
-                    </span>
-                    {point}
-                  </FlyInText>
-                ))}
-              </div>
-
-              <FlyInText as="div" direction="up" delay={0.34} duration={0.55} className="mt-8">
-                <Link
-                  href="/order-management"
-                  className="inline-flex items-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:scale-95"
-                >
-                  Explore Order Features
-                </Link>
-              </FlyInText>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={viewport}
-              transition={{ duration: 0.4, ease: smoothEase, delay: 0.05 }}
+              </Link>
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 sm:text-lg">
+              Manage the complete order lifecycle with efficient order processing, fulfillment management, real-time order tracking, and seamless returns handling.
+            </p>
+            <Link
+              href="/order-management"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200"
             >
-              <div
-                className="relative overflow-hidden rounded-2xl border border-gray-200 bg-cover bg-center shadow-[0_18px_50px_-30px_rgba(15,23,42,0.45)]"
-                style={{ backgroundImage: `url(${moduleVisuals.inventoryAccuracy})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/15 to-transparent" aria-hidden />
-                <div className="relative aspect-[16/9]">
-                  <FlyInText
-                    direction="right"
-                    delay={0.12}
-                    duration={0.65}
-                    className="absolute right-4 top-4 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 shadow-lg backdrop-blur sm:right-6 sm:top-6"
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
-                      Order Accuracy
-                    </p>
-                    <p className="mt-1 text-base font-bold text-gray-900 sm:text-lg">
-                      98% On-time Fulfillment
-                    </p>
-                  </FlyInText>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+              Learn more about Order Management
+              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -787,7 +564,7 @@ export default function EnterpriseSolutionPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 sm:text-xl">
-              NexusOps connects every facet of your physical operations into a single, cohesive
+              InOps connects every facet of your physical operations into a single, cohesive
               digital nervous system.
             </p>
           </motion.div>
@@ -1124,7 +901,7 @@ export default function EnterpriseSolutionPage() {
               </span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Benchmark-style deltas teams report after wiring NexusOps across assets, logistics, and
+              Benchmark-style deltas teams report after wiring InOps across assets, logistics, and
               fulfillment, fewer blind spots, faster cycles, sharper calls on the floor.
             </p>
           </motion.div>

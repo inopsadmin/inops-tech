@@ -158,6 +158,18 @@ const faqItems: { q: string; a: React.ReactNode }[] = [
     ),
   },
   {
+    q: "Can workers view their own CLRA attendance and wage records at the kiosk?",
+    a: (
+      <>
+        Yes. For contract workers, the kiosk surfaces the same records the{" "}
+        <Link href="/contract-labour-management" className="font-medium text-blue-600 underline-offset-2 hover:underline">
+          contract labour management system
+        </Link>
+        {" "}uses to generate CLRA statutory registers and contractor invoices — daily attendance log, shift-wise hours, approved overtime, and computed wages per pay period. A worker can see exactly what the contractor's invoice will be based on, which removes the most common source of end-of-month payroll disputes at the gate. They cannot edit the underlying record; they can raise a query against a specific day, which routes for supervisor review with both records retained.
+      </>
+    ),
+  },
+  {
     q: "What languages does it support?",
     a: "The interface is available in multiple Indian languages so workers use it in the language they read most comfortably.",
   },
@@ -749,22 +761,23 @@ export default function SelfServiceKioskPage() {
       ══════════════════════════════════════════ */}
       <section className="border-t border-slate-200/80 bg-gradient-to-b from-slate-50/60 via-white to-white py-10 lg:py-12" aria-labelledby="kiosk-related-heading">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <motion.h2
-            id="kiosk-related-heading"
-            className="text-xl font-bold text-slate-900"
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewport}
             transition={{ duration: 0.4, ease: smoothEase }}
           >
-            Related
-          </motion.h2>
+            <h2 id="kiosk-related-heading" className="text-xl font-bold text-slate-900">
+              Related Solutions: Visitor Management, Canteen &amp; Contractor Onboarding
+            </h2>
+            <p className="mt-2 text-sm text-slate-500">The kiosk applications most often deployed alongside employee self-service at factory sites.</p>
+          </motion.div>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Biometric devices", href: "/biometric-devices", desc: "Face, fingerprint and RFID devices — the identity layer the kiosk uses.", img: "/kiosk/Biometric-Devices.avif" },
-              { label: "HRIS & HR software", href: "/hris", desc: "The system of record behind employee self-service.", img: "/kiosk/HR-Software-Built-for-India-Manufacturing.avif" },
-              { label: "Mobile attendance app", href: "/mobile-app-attendance", desc: "Same functions on smartphone for field and supervisory staff.", img: "/kiosk/Mobile-Attendance-app.jpg" },
-              { label: "Canteen management", href: "/canteen-and-visitor", desc: "Kiosk-based meal issuance and entitlement validation.", img: "/kiosk/Canteen-and-Visitor-Management.jpg" },
+              { label: "Visitor management system", href: "/visitor-management", desc: "Self check-in, watchlist screening, zone-limited passes, and host notification at the gate kiosk.", img: "/kiosk/Canteen-and-Visitor-Management.jpg" },
+              { label: "Canteen management", href: "/canteen-and-visitor", desc: "Kiosk-based meal issuance with entitlement validated against the shift the worker actually attended.", img: "/kiosk/Canteen-and-Visitor-Management.jpg" },
+              { label: "Contractor onboarding", href: "/contract-labour-management/iddion-regx-modules/onboarding-offboarding", desc: "Bulk intake at the gate: document capture, biometric enrolment, and work-order assignment.", img: "/kiosk/Biometric-Devices.avif" },
+              { label: "Contract labour management", href: "/contract-labour-management", desc: "The CLMS engine behind contractor attendance, CLRA registers, and invoice reconciliation.", img: "/kiosk/HR-Software-Built-for-India-Manufacturing.avif" },
             ].map((link, i) => (
               <motion.div
                 key={link.label}

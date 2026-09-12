@@ -197,7 +197,7 @@ export default function ContactPage() {
                   Bengaluru office
                 </FlyInText>
                 <FlyInText as="h3" direction="up" delay={0.06} className={`mt-2 ${inopsUi.sectionHeading} !text-black`}>
-                  Bommasandra Industrial Area
+                  Our Bengaluru Office — Bommasandra Industrial Area
                 </FlyInText>
               </div>
               <a
@@ -245,6 +245,66 @@ export default function ContactPage() {
               className="hidden w-full grayscale-[15%] transition duration-500 hover:grayscale-0 md:block"
             />
           </motion.div>
+          {/* FAQ */}
+          <motion.section
+            aria-labelledby="contact-faq-heading"
+            className="mt-10 overflow-hidden rounded-[1.75rem] border border-white bg-white shadow-[0_24px_80px_-48px_rgba(15,47,87,0.55)] ring-1 ring-slate-900/[0.04]"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 0.6, ease: smoothEase }}
+          >
+            <div className="border-b border-slate-200/80 bg-gradient-to-r from-white via-slate-50 to-[#eaf7fc] px-6 py-5 sm:px-8">
+              <FlyInText as="p" direction="right" className={inopsUi.eyebrowBrand}>
+                Quick answers
+              </FlyInText>
+              <FlyInText as="h2" id="contact-faq-heading" direction="up" delay={0.06} className={`mt-2 ${inopsUi.sectionHeading} !text-black`}>
+                Frequently asked questions
+              </FlyInText>
+            </div>
+            <div className="divide-y divide-slate-200/80">
+              {[
+                {
+                  question: "How do I request a demo?",
+                  answer:
+                    "Fill in the form on this page and select “Product Demo” as your enquiry type — our sales team will confirm a slot within one business day. Alternatively, call +91 80277 45220 or email contact@inops.tech directly. Demos are conducted over video call and typically run 30–45 minutes, covering the modules most relevant to your site.",
+                },
+                {
+                  question: "Does InOps offer on-site factory assessments?",
+                  answer:
+                    "Yes. For enterprise engagements — particularly where you are deploying biometric attendance hardware, CLMS, or warehouse management across multiple plant locations — our implementation team conducts a paid on-site assessment before go-live. The assessment covers gate infrastructure, network readiness, shift patterns, contractor categories, and existing HR or ERP systems. Mention this in your message and we will include it in the initial scoping call.",
+                },
+                {
+                  question: "How long does implementation typically take?",
+                  answer:
+                    "A single-site CLMS or HRIS deployment is typically live within 4–6 weeks. Multi-site rollouts with biometric hardware, custom integrations, or warehouse management modules are scoped individually — most complete within 8–16 weeks depending on site count and ERP complexity. All implementations include dedicated onboarding support and a hypercare period.",
+                },
+                {
+                  question: "Is support available after go-live?",
+                  answer:
+                    "Yes. InOps provides ongoing support via phone, email, and a dedicated account manager for enterprise accounts. Support is available in English, Hindi, and Kannada. Critical issues (attendance system down, payroll processing blocked) are triaged immediately; standard issues are resolved within one business day under our SLA.",
+                },
+              ].map((item, index) => (
+                <details key={item.question} className="group px-6 py-5 open:bg-slate-50/60 sm:px-8 sm:py-6">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left marker:hidden">
+                    <span className="flex min-w-0 gap-4">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xs font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{item.question}</span>
+                    </span>
+                    <span
+                      className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-lg leading-none text-slate-600 transition group-open:rotate-45 group-open:border-blue-200 group-open:text-blue-700"
+                      aria-hidden
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-4 pl-12 text-sm leading-relaxed text-slate-600 sm:text-base">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </motion.section>
         </div>
       </section>
     </div>

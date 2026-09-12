@@ -423,6 +423,22 @@ const faceRecognitionAttendanceFaqItems = [
       </>
     ),
   },
+  {
+    question: "Which type of biometric attendance for factories works best — face recognition, fingerprint, or CCTV?",
+    answer: (
+      <>
+        The right choice for biometric attendance for factories depends on the gate conditions and workforce type. Face recognition handles shift-change crowds at 25–30 people per minute per lane and is unaffected by worn or dirty fingertips — making it the default for most Indian industrial sites. Fingerprint remains adequate for low-volume indoor points such as admin blocks. For wide plant entrances, large yards, or shop floors where mounting a terminal at every capture point isn't practical,{" "}
+        <Link href="/cctv-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          CCTV-based attendance
+        </Link>{" "}
+        reads installed cameras without extra hardware. For distributed or moving worksites,{" "}
+        <Link href="/mobile-app-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+          mobile app attendance
+        </Link>{" "}
+        captures face verification with GPS. All three modes feed one identity engine, so the choice can be made gate by gate rather than site-wide.
+      </>
+    ),
+  },
 ] as const;
 
 function ReaderFeatureGlyph({ name, accent }: { name: ReaderFeatureIcon; accent: ReaderFeatureAccent }) {
@@ -1616,6 +1632,45 @@ export default function BiometricAccessControlPage() {
             </motion.div>
           </div>
         </section> */}
+
+        {/* Bridging section — broader biometric attendance theme, cross-links to CCTV and mobile */}
+        <section
+          aria-labelledby="biometric-attendance-manufacturing-heading"
+          className="border-t border-slate-100 bg-slate-50/60 px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
+        >
+          <div className="mx-auto max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewport}
+              transition={{ duration: 0.48, ease: smoothEase }}
+            >
+              <h2
+                id="biometric-attendance-manufacturing-heading"
+                className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Biometric Attendance for Manufacturing: Face Recognition vs. Fingerprint vs. CCTV
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Face recognition terminals are the primary capture mode for most Indian manufacturing gates — contactless, fast, and unaffected by the worn or oil-covered fingertips common in manual work. But a site-wide biometric attendance strategy rarely stops at one method.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                For wide plant entrances, yard areas, or shop floors where mounting a terminal at every capture point isn't practical,{" "}
+                <Link href="/cctv-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+                  CCTV-based attendance
+                </Link>{" "}
+                reads your existing camera feeds — the same face identity, without additional hardware at every gate. For distributed worksites, remote construction zones, or workforce that moves between locations,{" "}
+                <Link href="/mobile-app-attendance" className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-800">
+                  mobile app attendance
+                </Link>{" "}
+                captures face verification with GPS validation and no fixed infrastructure at all.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                All three modes — face terminal, CCTV, and mobile — feed the same identity engine. A worker enrolled once is recognised by every capture method, their attendance consolidated into a single record per shift, with the same compliance checks and payroll output regardless of where or how the recognition happened.
+              </p>
+            </motion.div>
+          </div>
+        </section>
 
         <section aria-labelledby="face-recognition-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">

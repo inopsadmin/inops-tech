@@ -7,7 +7,9 @@
  * Do NOT optimise for organic search. noindex is intentional.
  */
 
+import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
 import { routeMetadata } from "@/app/lib/seoMetadata";
+import { biometricAmcFaqItems } from "@/app/lib/biometricAmcFaqItems";
 import type { Metadata } from "next";
 
 const PAGE_TITLE = "Biometric AMC & Repair Services India | ZKTeco, eSSL & Multi-Brand Device Maintenance — InOps";
@@ -26,5 +28,15 @@ export const metadata: Metadata = {
 };
 
 export default function BiometricAmcLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <SolutionSchemaInjector
+        path="/services/biometric-amc"
+        pageTitle={PAGE_TITLE}
+        pageDescription={PAGE_DESCRIPTION}
+        faqItems={biometricAmcFaqItems}
+      />
+      {children}
+    </>
+  );
 }

@@ -500,7 +500,7 @@ export default function Home() {
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <AnimatedHeading as="h2" className="home-display-heading text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-                  Contract Labour Management
+                  Automated Contract Labour Management Workflows
                 </AnimatedHeading>
               </motion.div>
             </motion.div>

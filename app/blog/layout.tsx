@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Resources — Contract Labour Compliance, CLRA & Workforce Tech | InOps",
+  title: "Contract Labour Compliance & Workforce Technology Insights | InOps",
   description:
     "Insights on contract labour compliance, CLRA, biometric attendance, CLMS, payroll automation, and HR technology — written from our Bengaluru team.",
   path: "/blog",

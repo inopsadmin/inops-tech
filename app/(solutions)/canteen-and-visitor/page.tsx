@@ -214,6 +214,46 @@ const smartCanteenFaqItems = [
       "Yes. Entitlement rules are configured per shift, contractor, employee category, and site — including different pricing for contract workers versus permanent employees — and follow the roster automatically. No manual list-keeping per canteen.",
   },
   {
+    question: "How is the per-meal subsidy amount calculated — can different worker categories get different rates?",
+    answer: (
+      <>
+        Yes. Subsidy rules are configured per employee category, contractor, shift type, and even meal type — a permanent employee might receive a full subsidy, a contract worker a partial subsidy, and a visitor-category worker the caterer rate with no subsidy applied. The rule engine reads the worker&apos;s category and contractor mapping from the{" "}
+        <Link
+          href="/contract-labour-management"
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          contract labour management system
+        </Link>{" "}
+        at the point of issue, so there is no manual list-keeping per canteen or per shift.
+      </>
+    ),
+  },
+  {
+    question: "How does the canteen subsidy settle in payroll — is it a deduction, a reimbursement, or both?",
+    answer:
+      "The platform supports all three settlement modes. An employer-paid subsidy is recorded as a benefit against the payroll record; an employee-contribution meal (where the worker pays part of the cost) generates a deduction; and reimbursement workflows can be configured for field-based staff who eat off-site. All transactions accrue in real time against the shift, so the payroll-period close requires no manual consolidation from a canteen log.",
+  },
+  {
+    question: "How are contractor workers' meal rates handled separately from permanent employees?",
+    answer: (
+      <>
+        Contractor workers are mapped to their principal employer and contractor in the{" "}
+        <Link
+          href="/contract-labour-management"
+          className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
+        >
+          CLMS
+        </Link>
+        . Canteen entitlement reads that mapping at service time — different pricing tiers, different subsidy percentages, and separate cost-centre allocation flow automatically. Invoice reconciliation separates contractor meal counts from permanent employee counts, so the caterer invoice and the contractor billing adjustment are both traceable to individual verified meals.
+      </>
+    ),
+  },
+  {
+    question: "Can a contractor worker's canteen access be blocked automatically if their compliance documents lapse?",
+    answer:
+      "Yes. If a contractor worker fails a gate compliance check — expired induction, lapsed medical, or missing safety certification — the same identity event that blocks them at the turnstile also suspends their canteen eligibility for that shift. No separate canteen block is needed; the shared identity layer propagates the restriction automatically.",
+  },
+  {
     question: "How does it reconcile canteen invoices from the caterer or contractor?",
     answer: (
       <>
@@ -448,8 +488,8 @@ export default function CanteenManagementPage() {
           }
           title={
             <>
-              <span className="block text-slate-900">Canteen and Visitor Management</span>
-              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">for Industrial Sites</span>
+              <span className="block text-slate-900">Canteen Management, Meal Subsidies &amp; Visitor Check-In</span>
+              <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">on One Platform</span>
             </>
           }
           subtitle="InOps handles biometric meal entitlement, payroll-linked subsidies, and waste tracking — plus visitor passes and lobby flows — on one platform across your campus."
@@ -785,19 +825,28 @@ export default function CanteenManagementPage() {
                 <div className="shrink-0">
                   <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--inops-blue)] shadow-sm backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--inops-blue)]" aria-hidden />
-                    Lobby &amp; access
+                    Visitor check-in &amp; canteen access
                   </span>
 
                   <h2 id="visitor-desk-heading" className="mt-5 text-balance text-slate-900">
-                    Visitor desk &amp; lobby on the{" "}
+                    Visitor Check-In{" "}
                     <span className="font-semibold text-[color:var(--inops-blue)]">
-                      same campus stack
+                      Linked to Canteen Access
                     </span>
                   </h2>
 
                   <p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-lg">
-                    The facility story doesn&apos;t stop at the serving line. Layer visitor workflows beside canteen and
-                    attendance so security, HR, and the front desk pull from one trail, not parallel spreadsheets.
+                    The facility story doesn&apos;t stop at the serving line. Visitor passes carry canteen entitlements
+                    — a contractor representative approved for the plant can access the canteen on the same credential,
+                    with the same subsidy rules as your contractor workforce. Security, HR, and the front desk pull from
+                    one trail, not parallel spreadsheets. For a standalone deployment see our dedicated{" "}
+                    <Link
+                      href="/visitor-management"
+                      className="font-medium text-[color:var(--inops-blue)] underline underline-offset-2 hover:text-[color:var(--inops-navy)] transition-colors duration-200"
+                    >
+                      visitor management system
+                    </Link>
+                    .
                   </p>
                 </div>
 

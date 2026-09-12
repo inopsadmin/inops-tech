@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import { biometricDatabaseAuditFaqItems } from "@/app/lib/biometricDatabaseAuditFaqItems";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Biometric Database Audit | InOps RegX";
+const PAGE_TITLE = "Biometric Database Audit for Industrial Plants | Ghost Employee & Payroll Leakage Detection — InOps";
 const PAGE_DESCRIPTION =
   "Biometric database audit service built for ghost employee detection, duplicate biometric cleanup and payroll leakage prevention across industrial plants, warehouses and multi-site environments.";
 
@@ -22,8 +22,8 @@ export const metadata: Metadata = routeMetadata({
     "biometric health check",
     "identity audit India",
     "bulk de-enrollment",
-    "InOps RegX fleet audit",
     "biometric database cleanup",
+    "payroll fraud prevention India",
   ],
 });
 
