@@ -312,7 +312,6 @@ export default function ServicesPage() {
                     </div>
                     <Link
                       href={svc.productLink.href}
-                      onClick={(e) => e.stopPropagation()}
                       className="block mt-4 text-[11.5px] font-semibold text-[#8696a7] hover:text-[#1c7bb8] transition-colors duration-150 no-underline"
                     >
                       {svc.productLink.label}
