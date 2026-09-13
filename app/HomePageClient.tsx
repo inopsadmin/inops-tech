@@ -628,7 +628,7 @@ export default function Home() {
                       >
                         <div className="flex h-full gap-3 sm:gap-3.5">
                           <div className="relative h-14 w-16 flex-none overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:h-[3.7rem] sm:w-[4.2rem]">
-                            <Image src={card.imageUrl} alt="" fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="64px" />
+                            <Image src={card.imageUrl} alt={card.description?.trim() || card.title} fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="64px" />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
                           </div>
 

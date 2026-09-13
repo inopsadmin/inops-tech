@@ -489,6 +489,7 @@ export default function CanteenManagementPage() {
           title={
             <>
               <span className="block text-slate-900">Canteen Management, Meal Subsidies &amp; Visitor Check-In</span>
+              {" "}
               <span className="mt-1.5 block text-[color:var(--inops-blue)] sm:mt-2">on One Platform</span>
             </>
           }

@@ -13,7 +13,7 @@
   PF/ESI statutory deductions, minimum wage compliance, OT cost control, and biometric
   integration for Indian manufacturing enterprises.
 
-- [Earned Wage Access / Salary++](https://inops.tech/ewa):
+- [Earned Wage Access / Salary++](https://inops.tech/earned-wage-access):
   EWA platform enabling contract workers to draw earned wages before payday.
   Disbursement is validated against CLMS attendance data and compliant with Indian
   labour law and RBI digital lending guidelines. Zero financial liability for employers.
@@ -29,7 +29,7 @@
 
 ## Hardware & Physical Security
 
-- [Biometric Face Recognition Terminals](https://inops.tech/face):
+- [Biometric Face Recognition Terminals](https://inops.tech/face-recognition-attendance):
   Industrial-grade face recognition devices for contractor attendance and gate access
   control. Supports liveness detection and operates in high-ambient-light factory
   environments. Integrates directly with InOps CLMS.
@@ -38,7 +38,7 @@
   Factory gate access control hardware — tripod turnstiles, flap barriers, and
   full-height turnstiles integrated with InOps biometric attendance.
 
-- [CCTV & Video Surveillance](https://inops.tech/cctv):
+- [CCTV & Video Surveillance](https://inops.tech/cctv-attendance):
   IP camera systems and AI-based attendance capture for factory floor safety
   and perimeter security.
 
@@ -67,7 +67,7 @@
   Visitor pre-registration, lobby check-in, and campus access aligned with
   contractor and employee identity records.
 
-- [Mobile Workforce App](https://inops.tech/mobile-app):
+- [Mobile Workforce App](https://inops.tech/mobile-app-attendance):
   Worker self-service for attendance, leave, payslips, and supervisor workflows
   with GPS validation.
 
