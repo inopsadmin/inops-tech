@@ -60,7 +60,6 @@ export const PHONE_DISPLAY = "+91 80277 45220";
 /** X (Twitter) handle for `twitter:site` / `twitter:creator` metadata. */
 export const TWITTER_HANDLE = "@InOpstweets";
 
-/** Full postal address (matches footer / Google Business profile style). */
 export const OFFICE_ADDRESS = {
   streetAddress:
     "60A, Bommasandra Link Road, Bommasandra Industrial Area",
