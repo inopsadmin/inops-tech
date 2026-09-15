@@ -1347,10 +1347,9 @@ export default function LabourManagementPage() {
         </section>
 
         {/* ====== EDITORIAL H2 SECTIONS: cloud-based HR software / HRMS multi-site / attendance management ====== */}
-        <section aria-labelledby="hris-editorial-heading" className="border-t border-slate-100 bg-slate-50 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+        {/* <section aria-labelledby="hris-editorial-heading" className="border-t border-slate-100 bg-slate-50 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
 
-            {/* Cloud-based HR software */}
             <motion.div
               className="mx-auto max-w-3xl"
               initial={{ opacity: 0, y: 18 }}
@@ -1371,7 +1370,7 @@ export default function LabourManagementPage() {
 
             <div className="my-12 border-t border-slate-200" />
 
-            {/* HRMS for multi-site manufacturing */}
+            
             <motion.div
               className="mx-auto max-w-3xl"
               initial={{ opacity: 0, y: 18 }}
@@ -1392,7 +1391,7 @@ export default function LabourManagementPage() {
 
             <div className="my-12 border-t border-slate-200" />
 
-            {/* Attendance management software */}
+            
             <motion.div
               className="mx-auto max-w-3xl"
               initial={{ opacity: 0, y: 18 }}
@@ -1412,7 +1411,7 @@ export default function LabourManagementPage() {
             </motion.div>
 
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="hris-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">

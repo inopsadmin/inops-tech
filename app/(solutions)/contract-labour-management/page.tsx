@@ -1494,7 +1494,7 @@ export default function PayrollSolutionsPage() {
         <ClmsIndustriesSlider />
 
         {/* ====== WHAT IS A LABOUR MANAGEMENT SYSTEM SOFTWARE ====== */}
-        <section aria-labelledby="lms-definition-heading" className="bg-slate-50 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+        {/* <section aria-labelledby="lms-definition-heading" className="bg-slate-50 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <motion.div
               className="mx-auto max-w-3xl text-center"
@@ -1512,7 +1512,7 @@ export default function PayrollSolutionsPage() {
             </motion.div>
 
             <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-start">
-              {/* Copy */}
+              
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1534,7 +1534,6 @@ export default function PayrollSolutionsPage() {
                 </p>
               </motion.div>
 
-              {/* Stat tiles */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1559,7 +1558,7 @@ export default function PayrollSolutionsPage() {
               </motion.div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ====== TRUSTED BY ANCHOR CLIENTS ====== */}
         <section className="border-t border-slate-200/80 bg-slate-50/60 py-8 lg:py-10" aria-label="Trusted by">

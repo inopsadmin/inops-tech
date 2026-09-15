@@ -50,7 +50,7 @@ export const blogPosts: BlogPost[] = [
   "slug": "what-is-rd-service-registered-device-aadhaar",
   "title": "What Is RD Service? Registered Devices for Aadhaar Biometric Authentication Explained",
   "description": "RD Service means Registered Device Service — UIDAI's requirement that biometric devices used for Aadhaar authentication be registered and encrypt data at source. Here's what it means, when you need it, and how it differs from ordinary attendance devices.",
-  "author": "Satish Sinha",
+  "author": "",
   "personAuthor": true,
   "date": "September 4, 2026",
   "dateIso": "2026-09-04",
