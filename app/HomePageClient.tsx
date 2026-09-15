@@ -148,7 +148,6 @@ const whyCardHrefByTitle: Record<string, string> = {
   EWA: "/earned-wage-access",
 };
 
-/** Contract workforce governance is default featured → numbered from 01. */
 const whyCards: WhyCard[] = [
   {
     title: "Contract Workforce Governance",
