@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, ChangeEvent } from "react";
+import { useMathCaptcha, MathCaptchaField } from "@/app/components/MathCaptcha";
 
 type Fields = {
   fullName: string;
@@ -40,6 +41,7 @@ export default function AmcContactForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const captcha = useMathCaptcha();
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
@@ -63,6 +65,7 @@ export default function AmcContactForm() {
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
+    if (!captcha.validate()) return;
 
     setSubmitting(true);
 
@@ -251,6 +254,15 @@ export default function AmcContactForm() {
             </span>
           </div>
         </div>
+
+        <MathCaptchaField
+          variant="dark"
+          question={captcha.question}
+          value={captcha.value}
+          onChange={captcha.setValue}
+          error={captcha.error}
+          onRefresh={captcha.refresh}
+        />
 
         {/* Submit */}
         <button

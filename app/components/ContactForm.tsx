@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { inopsUi } from "@/app/lib/inopsUi";
+import { useMathCaptcha, MathCaptchaField } from "./MathCaptcha";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
@@ -11,6 +12,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const captcha = useMathCaptcha();
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,6 +35,11 @@ export default function ContactForm() {
       return;
     }
 
+    if (!captcha.validate()) {
+      setStatus("idle");
+      return;
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -47,6 +54,7 @@ export default function ContactForm() {
 
       setStatus("success");
       form.reset();
+      captcha.reset();
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
@@ -67,7 +75,7 @@ export default function ContactForm() {
           Thanks for reaching out. We'll get back to you within one business day.
         </p>
         <button
-          onClick={() => setStatus("idle")}
+          onClick={() => { setStatus("idle"); captcha.reset(); }}
           className="text-[13.5px] font-semibold text-[var(--inops-blue)] hover:underline"
         >
           Send another message →
@@ -166,6 +174,15 @@ export default function ContactForm() {
           </svg>
         </span>
       </label>
+
+      <MathCaptchaField
+        variant="light"
+        question={captcha.question}
+        value={captcha.value}
+        onChange={captcha.setValue}
+        error={captcha.error}
+        onRefresh={captcha.refresh}
+      />
 
       {/* Error banner */}
       {status === "error" && (

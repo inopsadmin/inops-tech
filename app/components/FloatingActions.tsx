@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent } from "react";
+import { useMathCaptcha, MathCaptchaField } from "./MathCaptcha";
 
 type Fields = { fullName: string; businessEmail: string; phone: string; message: string };
 type Errors = Partial<Record<keyof Fields, string>>;
@@ -26,6 +27,7 @@ export default function FloatingActions() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
+  const captcha = useMathCaptcha();
 
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -46,6 +48,7 @@ export default function FloatingActions() {
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
+    if (!captcha.validate()) return;
 
     setSubmitting(true);
     setServerError("");
@@ -92,6 +95,7 @@ export default function FloatingActions() {
     setErrors({});
     setTouched({});
     setServerError("");
+    captcha.reset();
   }
 
   const inputCls = (name: keyof Fields) =>
@@ -162,6 +166,15 @@ export default function FloatingActions() {
                   <p className="mt-[3px] text-[10.5px] text-red-500">{errors.message}</p>
                 )}
               </div>
+
+              <MathCaptchaField
+                variant="compact"
+                question={captcha.question}
+                value={captcha.value}
+                onChange={captcha.setValue}
+                error={captcha.error}
+                onRefresh={captcha.refresh}
+              />
 
               {serverError && (
                 <p className="text-[11px] text-red-500 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{serverError}</p>
