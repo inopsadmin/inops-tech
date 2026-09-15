@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent } from "react";
-import { useMathCaptcha, MathCaptchaField } from "./MathCaptcha";
+import { useImageCaptcha, ImageCaptchaField } from "./ImageCaptcha";
 
 type Fields = { fullName: string; businessEmail: string; phone: string; message: string };
 type Errors = Partial<Record<keyof Fields, string>>;
@@ -27,7 +27,7 @@ export default function FloatingActions() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
-  const captcha = useMathCaptcha();
+  const captcha = useImageCaptcha();
 
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -62,10 +62,13 @@ export default function FloatingActions() {
           phone: fields.phone,
           message: fields.message,
           source: "floating-form",
+          captchaToken: captcha.token,
+          captchaAnswer: captcha.value,
         }),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
+        if (json.code === "CAPTCHA_INVALID") captcha.reset();
         throw new Error(json.error ?? "Something went wrong.");
       }
 
@@ -167,13 +170,14 @@ export default function FloatingActions() {
                 )}
               </div>
 
-              <MathCaptchaField
+              <ImageCaptchaField
                 variant="compact"
-                question={captcha.question}
+                svg={captcha.svg}
+                loading={captcha.loading}
                 value={captcha.value}
                 onChange={captcha.setValue}
                 error={captcha.error}
-                onRefresh={captcha.refresh}
+                onRefresh={captcha.reset}
               />
 
               {serverError && (

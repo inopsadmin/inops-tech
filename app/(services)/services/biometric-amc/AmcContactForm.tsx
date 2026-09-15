@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, ChangeEvent } from "react";
-import { useMathCaptcha, MathCaptchaField } from "@/app/components/MathCaptcha";
+import { useImageCaptcha, ImageCaptchaField } from "@/app/components/ImageCaptcha";
 
 type Fields = {
   fullName: string;
@@ -41,7 +41,7 @@ export default function AmcContactForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const captcha = useMathCaptcha();
+  const captcha = useImageCaptcha();
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
@@ -80,10 +80,13 @@ export default function AmcContactForm() {
           phone: fields.phone,
           message: fields.message,
           source: "biometric-amc",
+          captchaToken: captcha.token,
+          captchaAnswer: captcha.value,
         }),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
+        if (json.code === "CAPTCHA_INVALID") captcha.reset();
         throw new Error(json.error ?? "Something went wrong.");
       }
 
@@ -255,13 +258,14 @@ export default function AmcContactForm() {
           </div>
         </div>
 
-        <MathCaptchaField
+        <ImageCaptchaField
           variant="dark"
-          question={captcha.question}
+          svg={captcha.svg}
+          loading={captcha.loading}
           value={captcha.value}
           onChange={captcha.setValue}
           error={captcha.error}
-          onRefresh={captcha.refresh}
+          onRefresh={captcha.reset}
         />
 
         {/* Submit */}

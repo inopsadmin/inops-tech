@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { inopsUi } from "@/app/lib/inopsUi";
-import { useMathCaptcha, MathCaptchaField } from "./MathCaptcha";
+import { useImageCaptcha, ImageCaptchaField } from "./ImageCaptcha";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
@@ -12,7 +12,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const captcha = useMathCaptcha();
+  const captcha = useImageCaptcha();
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,15 +40,19 @@ export default function ContactForm() {
       return;
     }
 
+    const captchaToken = captcha.token;
+    const captchaAnswer = captcha.value;
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, captchaToken, captchaAnswer }),
       });
 
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
+        if (json.code === "CAPTCHA_INVALID") captcha.reset();
         throw new Error(json.error ?? "Something went wrong. Please try again.");
       }
 
@@ -175,13 +179,14 @@ export default function ContactForm() {
         </span>
       </label>
 
-      <MathCaptchaField
+      <ImageCaptchaField
         variant="light"
-        question={captcha.question}
+        svg={captcha.svg}
+        loading={captcha.loading}
         value={captcha.value}
         onChange={captcha.setValue}
         error={captcha.error}
-        onRefresh={captcha.refresh}
+        onRefresh={captcha.reset}
       />
 
       {/* Error banner */}
