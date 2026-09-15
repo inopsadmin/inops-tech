@@ -9,6 +9,39 @@ import { NextRequest, NextResponse } from "next/server";
 //                     Generate at: myaccount.google.com/apppasswords
 //   CONTACT_TO_EMAIL  comma-separated list of recipient inboxes
 //                     e.g. alice@inops.tech,bob@inops.tech
+//   NEXT_PUBLIC_SITE_URL  canonical origin, e.g. https://inops.tech
+//                         Used for CORS — requests from other origins are rejected.
+// ─────────────────────────────────────────────────────────────────────
+
+// ─── CORS ─────────────────────────────────────────────────────────────
+// Allow the deployed origin + localhost for local dev.
+// Set NEXT_PUBLIC_SITE_URL=https://inops.tech in your env.
+const ALLOWED_ORIGINS = new Set<string>(
+  [
+    process.env.NEXT_PUBLIC_SITE_URL,          // e.g. https://inops.tech
+    "http://localhost:3000",
+    "http://localhost:3001",
+  ].filter(Boolean) as string[]
+);
+
+function corsHeaders(origin: string | null): Record<string, string> {
+  const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : "";
+  return {
+    "Access-Control-Allow-Origin": allowed,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Vary": "Origin",
+  };
+}
+
+/** Handle pre-flight OPTIONS requests from the browser. */
+export async function OPTIONS(req: NextRequest) {
+  const origin = req.headers.get("origin");
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return new NextResponse(null, { status: 403 });
+  }
+  return new NextResponse(null, { status: 204, headers: corsHeaders(origin) });
+}
 // ─────────────────────────────────────────────────────────────────────
 
 const transporter = nodemailer.createTransport({
@@ -37,9 +70,26 @@ function parseRecipients(): string[] {
 const TO_LIST = parseRecipients();
 
 export async function POST(req: NextRequest) {
+  const origin = req.headers.get("origin");
+
+  // ── CORS gate ──────────────────────────────────────────────────────
+  // Reject requests from origins not in the allow-list.
+  // Server-side calls (no Origin header) are allowed through.
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    console.warn(`[contact] CORS blocked — origin: ${origin}`);
+    return NextResponse.json(
+      { error: "CORS: origin not allowed." },
+      { status: 403, headers: { "Access-Control-Allow-Origin": "" } }
+    );
+  }
+  // ──────────────────────────────────────────────────────────────────
+
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASS) {
     console.error("[contact] GMAIL_USER or GMAIL_APP_PASS env var missing");
-    return NextResponse.json({ error: "Email server not configured." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Email server not configured." },
+      { status: 500, headers: corsHeaders(origin) }
+    );
   }
 
   try {
@@ -56,7 +106,7 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Name, email and message are required." },
-        { status: 400 }
+        { status: 400, headers: corsHeaders(origin) }
       );
     }
 
@@ -107,11 +157,14 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({ from: FROM, to: TO_LIST, replyTo: email, subject: subjectLine, html });
 
     console.log(`[contact] ✅ Email sent — ${name} <${email}>`);
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { headers: corsHeaders(origin) });
 
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("[contact] ❌ Gmail error:", msg);
-    return NextResponse.json({ error: `Email error: ${msg}` }, { status: 500 });
+    return NextResponse.json(
+      { error: `Email error: ${msg}` },
+      { status: 500, headers: corsHeaders(origin) }
+    );
   }
 }
