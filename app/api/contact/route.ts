@@ -14,15 +14,17 @@ import { NextRequest, NextResponse } from "next/server";
 // ─────────────────────────────────────────────────────────────────────
 
 // ─── CORS ─────────────────────────────────────────────────────────────
-// Allow the deployed origin + localhost for local dev.
-// Set NEXT_PUBLIC_SITE_URL=https://inops.tech in your env.
-const ALLOWED_ORIGINS = new Set<string>(
-  [
-    process.env.NEXT_PUBLIC_SITE_URL,          // e.g. https://inops.tech
-    "http://localhost:3000",
-    "http://localhost:3001",
-  ].filter(Boolean) as string[]
-);
+// Allow one or more deployed origins + localhost for local dev.
+// NEXT_PUBLIC_SITE_URL supports a comma-separated list, e.g.:
+//   NEXT_PUBLIC_SITE_URL=https://inops.tech,https://www.inops.tech,https://staging.inops.tech
+const ALLOWED_ORIGINS = new Set<string>([
+  ...(process.env.NEXT_PUBLIC_SITE_URL ?? "")
+    .split(",")
+    .map((o) => o.trim())
+    .filter(Boolean),
+  "http://localhost:3000",
+  "http://localhost:3001",
+]);
 
 function corsHeaders(origin: string | null): Record<string, string> {
   const allowed = origin && ALLOWED_ORIGINS.has(origin) ? origin : "";

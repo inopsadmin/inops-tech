@@ -1,10 +1,9 @@
 /**
  * /services/biometric-amc
  *
- * Organic keyword volume: zero across all AMC variants tested.
- * Role: paid search landing page (eSSL / ZKTeco / Realtime brand terms + AMC/service/repair
- * modifiers, takeover angle) and sales collateral.
- * Do NOT optimise for organic search. noindex is intentional.
+ * Serves both organic search and paid search (eSSL / ZKTeco / Realtime brand terms
+ * + AMC/service/repair modifiers). Page has strong content (FAQs, SLA stats,
+ * schema-ready structure) — indexed for organic reach.
  */
 
 import SolutionSchemaInjector from "@/app/components/SolutionSchemaInjector";
@@ -16,16 +15,11 @@ const PAGE_TITLE = "Biometric AMC & Repair Services India | ZKTeco, eSSL & Multi
 const PAGE_DESCRIPTION =
   "SLA-backed AMC and repair for eSSL, ZKTeco, and Realtime biometric devices — face terminals, fingerprint readers, and RFID access hardware. Multi-site, single-vendor service across India.";
 
-export const metadata: Metadata = {
-  ...routeMetadata({
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-    path: "/services/biometric-amc",
-  }),
-  // No organic volume exists for any AMC keyword variant — noindex intentional.
-  // Page serves paid search (brand + AMC/service modifiers) and sales collateral.
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = routeMetadata({
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  path: "/services/biometric-amc",
+});
 
 export default function BiometricAmcLayout({ children }: { children: React.ReactNode }) {
   return (
