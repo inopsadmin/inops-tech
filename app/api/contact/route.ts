@@ -4,10 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 // ─── Gmail SMTP ───────────────────────────────────────────────────────
 // Works on Vercel — no IP blocking like Zoho.
 // Required env vars:
-//   GMAIL_USER      e.g. inopsindia@gmail.com
-//   GMAIL_APP_PASS  16-char App Password (NOT your Gmail login password)
-//                   Generate at: myaccount.google.com/apppasswords
-//   CONTACT_TO_EMAIL  inbox where submissions land
+//   GMAIL_USER        e.g. inopsindia@gmail.com
+//   GMAIL_APP_PASS    16-char App Password (NOT your Gmail login password)
+//                     Generate at: myaccount.google.com/apppasswords
+//   CONTACT_TO_EMAIL  comma-separated list of recipient inboxes
+//                     e.g. alice@inops.tech,bob@inops.tech
 // ─────────────────────────────────────────────────────────────────────
 
 const transporter = nodemailer.createTransport({
@@ -19,7 +20,21 @@ const transporter = nodemailer.createTransport({
 });
 
 const FROM = `InOps Contact <${process.env.GMAIL_USER}>`;
-const TO   = process.env.CONTACT_TO_EMAIL ?? (process.env.GMAIL_USER as string);
+
+/**
+ * Parse CONTACT_TO_EMAIL into a cleaned array of addresses.
+ * Supports a single address or a comma-separated list.
+ * Falls back to GMAIL_USER if the env var is absent.
+ */
+function parseRecipients(): string[] {
+  const raw = process.env.CONTACT_TO_EMAIL ?? process.env.GMAIL_USER ?? "";
+  return raw
+    .split(",")
+    .map((addr) => addr.trim())
+    .filter(Boolean);
+}
+
+const TO_LIST = parseRecipients();
 
 export async function POST(req: NextRequest) {
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASS) {
@@ -89,7 +104,7 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
-    await transporter.sendMail({ from: FROM, to: TO, replyTo: email, subject: subjectLine, html });
+    await transporter.sendMail({ from: FROM, to: TO_LIST, replyTo: email, subject: subjectLine, html });
 
     console.log(`[contact] ✅ Email sent — ${name} <${email}>`);
     return NextResponse.json({ success: true });
