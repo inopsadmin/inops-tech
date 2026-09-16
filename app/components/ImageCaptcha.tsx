@@ -103,23 +103,25 @@ export function ImageCaptchaField({ svg, loading, value, onChange, error, onRefr
         <label className="block text-[11.5px] font-semibold text-white/65 mb-[6px] tracking-[0.03em]">
           Verification <span className="text-red-400">*</span>
         </label>
-        <div className="flex items-center gap-2">
-          <div className="flex-shrink-0 w-[130px] h-[42px] rounded-lg overflow-hidden border border-white/[0.2] bg-white/[0.05]">
+        {/* Image row */}
+        <div className="flex items-center gap-2 mb-[8px]">
+          <div className="flex-1 h-[72px] rounded-lg overflow-hidden border border-white/[0.2] bg-white/[0.05]">
             <CaptchaImage svg={svg} loading={loading} />
           </div>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="Type code"
-            autoComplete="off"
-            className={`w-full bg-white/[0.08] border rounded-lg px-3 py-[10px] text-[13.5px] text-white placeholder-white/40 outline-none transition-all duration-150 focus:bg-white/[0.13] ${error ? "border-red-400/70 focus:border-red-400" : "border-white/[0.18] focus:border-white/50"}`}
-          />
           <button type="button" onClick={onRefresh} title="New code" disabled={loading}
             className="flex-shrink-0 w-5 h-5 text-white/50 hover:text-white transition-colors disabled:opacity-30">
             {refreshIcon}
           </button>
         </div>
+        {/* Input row */}
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Type the code above"
+          autoComplete="off"
+          className={`w-full bg-white/[0.08] border rounded-lg px-3 py-[10px] text-[13.5px] text-white placeholder-white/40 outline-none transition-all duration-150 focus:bg-white/[0.13] ${error ? "border-red-400/70 focus:border-red-400" : "border-white/[0.18] focus:border-white/50"}`}
+        />
         {error && <p className="mt-[5px] text-[11.5px] text-red-400 leading-tight">{error}</p>}
       </div>
     );
@@ -131,23 +133,25 @@ export function ImageCaptchaField({ svg, loading, value, onChange, error, onRefr
         <label className="block text-[11px] font-semibold text-[#4a5766] mb-[4px]">
           Verification <span className="text-red-500">*</span>
         </label>
-        <div className="flex items-center gap-2">
-          <div className="flex-shrink-0 w-[110px] h-[36px] rounded-lg overflow-hidden border border-[#e2e8ee] bg-[#eef2f6]">
+        {/* Image row */}
+        <div className="flex items-center gap-2 mb-[6px]">
+          <div className="flex-1 h-[60px] rounded-lg overflow-hidden border border-[#e2e8ee] bg-[#eef2f6]">
             <CaptchaImage svg={svg} loading={loading} />
           </div>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="Type code"
-            autoComplete="off"
-            className={`w-full bg-[#f4f6f8] border rounded-lg px-3 py-[8px] text-[12.5px] text-[#0b1e2d] placeholder-[#aab4bf] outline-none transition-all duration-150 focus:bg-white focus:border-[#1c7bb8] ${error ? "border-red-400" : "border-[#e2e8ee]"}`}
-          />
           <button type="button" onClick={onRefresh} title="New code" disabled={loading}
             className="flex-shrink-0 w-4 h-4 text-[#6b7b8c] hover:text-[#1362a8] transition-colors disabled:opacity-30">
             {refreshIcon}
           </button>
         </div>
+        {/* Input row */}
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Type the code above"
+          autoComplete="off"
+          className={`w-full bg-[#f4f6f8] border rounded-lg px-3 py-[8px] text-[12.5px] text-[#0b1e2d] placeholder-[#aab4bf] outline-none transition-all duration-150 focus:bg-white focus:border-[#1c7bb8] ${error ? "border-red-400" : "border-[#e2e8ee]"}`}
+        />
         {error && <p className="mt-[3px] text-[10.5px] text-red-500">{error}</p>}
       </div>
     );
@@ -159,23 +163,25 @@ export function ImageCaptchaField({ svg, loading, value, onChange, error, onRefr
       <div className="block text-sm font-medium text-slate-700 mb-1.5">
         Verification <span className="text-red-500">*</span>
       </div>
-      <div className="flex items-center gap-3">
-        <div className="flex-shrink-0 w-[160px] h-[50px] rounded-2xl overflow-hidden border border-slate-200 bg-slate-50">
+      {/* Image row */}
+      <div className="flex items-center gap-3 mb-2">
+        <div className="flex-1 h-[76px] rounded-2xl overflow-hidden border border-slate-200 bg-slate-50">
           <CaptchaImage svg={svg} loading={loading} />
         </div>
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="Type the code above"
-          autoComplete="off"
-          className={`w-full rounded-2xl border bg-white/90 py-3.5 px-4 text-slate-900 shadow-sm placeholder:text-slate-400 transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-4 focus:ring-blue-500/10 ${error ? "border-red-400 focus:border-red-400" : "border-slate-200 focus:border-[var(--inops-blue)]"}`}
-        />
         <button type="button" onClick={onRefresh} title="New code" disabled={loading}
           className="flex-shrink-0 w-[18px] h-[18px] text-slate-400 hover:text-[var(--inops-blue)] transition-colors disabled:opacity-30">
           {refreshIcon}
         </button>
       </div>
+      {/* Input row */}
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="Type the code above"
+        autoComplete="off"
+        className={`w-full rounded-2xl border bg-white/90 py-3.5 px-4 text-slate-900 shadow-sm placeholder:text-slate-400 transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-4 focus:ring-blue-500/10 ${error ? "border-red-400 focus:border-red-400" : "border-slate-200 focus:border-[var(--inops-blue)]"}`}
+      />
       {error && <p className="mt-1.5 text-[13px] text-red-500">{error}</p>}
     </div>
   );

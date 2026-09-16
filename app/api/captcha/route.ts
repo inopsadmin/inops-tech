@@ -5,8 +5,8 @@ export const runtime = "nodejs";
 
 const CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
 const FONTS = ["Georgia,serif", '"Times New Roman",serif', "Palatino,serif", "Garamond,serif"];
-const W = 220;
-const H = 70;
+const W = 320;
+const H = 100;
 
 function rnd(min: number, max: number) {
   return min + Math.random() * (max - min);
@@ -47,10 +47,10 @@ function generateSvgCaptcha(text: string): string {
     const char = text[i];
     const cx = 14 + i * slotW + slotW / 2 + rnd(-4, 4);
     // sine-wave baseline so characters curve up and down
-    const wave = Math.sin((i / (n - 1)) * Math.PI * 1.8 - 0.4) * 10;
-    const cy = H / 2 + 9 + wave + rnd(-4, 4);
+    const wave = Math.sin((i / (n - 1)) * Math.PI * 1.8 - 0.4) * 14;
+    const cy = H / 2 + 12 + wave + rnd(-5, 5);
     const rot = rnd(-28, 28).toFixed(1);
-    const fs = rnd(26, 38).toFixed(1);
+    const fs = rnd(38, 54).toFixed(1);
     const font = FONTS[Math.floor(rnd(0, FONTS.length))];
     const fw = Math.random() > 0.4 ? "bold" : "900";
     // slight color variation within dark navy palette
