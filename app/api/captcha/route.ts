@@ -68,7 +68,7 @@ function generateSvgCaptcha(text: string): string {
   }
 
   return (
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">` +
+    `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">` +
     `<defs><linearGradient id="ng" x1="0" y1="0" x2="0" y2="1">` +
     `<stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#8cb8c8"/>` +
     `</linearGradient></defs>` +

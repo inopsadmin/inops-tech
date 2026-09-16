@@ -58,7 +58,6 @@ export function useImageCaptcha() {
   };
 }
 
-// SVG rendered as a safe <img> data URI so it never executes inline scripts
 function CaptchaImage({ svg, loading }: { svg: string; loading: boolean }) {
   if (loading || !svg) {
     return (
@@ -70,13 +69,12 @@ function CaptchaImage({ svg, loading }: { svg: string; loading: boolean }) {
       </div>
     );
   }
+  // Inline SVG — safe because the markup is generated entirely by our server
+  // with no user input; renders correctly in all browsers without data-URI encoding.
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`}
-      alt="Verification code — type the characters you see"
-      draggable={false}
-      className="w-full h-full object-contain select-none pointer-events-none"
+    <div
+      className="w-full h-full select-none pointer-events-none [&>svg]:w-full [&>svg]:h-full [&>svg]:display-block"
+      dangerouslySetInnerHTML={{ __html: svg }}
     />
   );
 }
