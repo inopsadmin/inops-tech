@@ -1033,9 +1033,9 @@ export const blogPosts: BlogPost[] = [
 },
   {
     slug: "what-is-contract-labour-management-system",
-    title: "What Is a Contract Labour Management System (CLMS)? A Guide for Indian Manufacturers",
+    title: "Contract Labour Management System (CLMS) Explained",
     description:
-      "A contract labour management system governs the full contractor workforce lifecycle — onboarding, gate compliance, attendance, CLRA registers and contractor payroll. Here's what it does, who needs one, and how it differs from HRMS.",
+      "CLMS meaning, modules & how it differs from HRMS — onboarding, gate compliance, attendance & CLRA registers for Indian manufacturing plants.",
     author: "",
     personAuthor: true,
     date: "August 3, 2026",

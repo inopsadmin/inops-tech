@@ -30,6 +30,16 @@ const nextConfig: NextConfig = {
   experimental: {},
   async redirects() {
     return [
+      // ── Canonical host: www → non-www ──────────────────────────────────
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.inops.tech" }],
+        destination: "https://inops.tech/:path*",
+        permanent: true,
+      },
+      // ── Old/duplicate URLs ─────────────────────────────────────────────
+      { source: "/payroll-solution", destination: "/contract-labour-management", permanent: true },
+      { source: "/payroll-solution/", destination: "/contract-labour-management", permanent: true },
       { source: "/labour-management-system", destination: "/contract-labour-management", permanent: true },
       { source: "/labour-management-system/", destination: "/contract-labour-management", permanent: true },
       { source: "/biometric-reader", destination: "/biometric-devices", permanent: true },

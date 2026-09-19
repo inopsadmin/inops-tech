@@ -25,7 +25,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/all-pages",
+        disallow: [
+          "/all-pages",
+          "/logosliderwp/",     // thin client-logo pages
+          "/accessories/demo/", // leftover demo page
+          "/access/",           // thin stub page
+        ],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
