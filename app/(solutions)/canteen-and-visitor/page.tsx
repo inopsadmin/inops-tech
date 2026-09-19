@@ -353,7 +353,7 @@ const smartCanteenFaqItems = [
       <>
         No. Both run on the same identity platform and the same device estate as attendance and gate access — one enrollment covers gate entry, canteen counter, and visitor host lookup. That means one hardware investment and one worker identity, not three parallel systems. See{" "}
         <Link 
-          href="/biometric-reader" 
+          href="/biometric-devices"
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           biometric readers

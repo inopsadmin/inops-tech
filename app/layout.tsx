@@ -139,7 +139,7 @@ export default function RootLayout({
         <OrganizationJsonLd />
         <LayoutWrapper>{children}</LayoutWrapper>
         <FloatingActions />
-        <GoogleAnalytics gaId="G-87Z9WJBRMM" />
+        <GoogleAnalytics gaId="G-51D40FE68V" />
       </body>
     </html>
   );

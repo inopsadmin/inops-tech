@@ -110,7 +110,7 @@ const turnstileFaqItems = [
       <>
         Face terminals, fingerprint readers, RFID and card readers, and QR scanners mount to the lane without a separate controller. Events feed the same attendance engine as{" "}
         <Link 
-          href="/biometric-reader" 
+          href="/biometric-devices"
           className="text-[#1c7bb8] font-medium underline underline-offset-2 hover:text-[#1362a8] transition-colors duration-200"
         >
           face recognition attendance
