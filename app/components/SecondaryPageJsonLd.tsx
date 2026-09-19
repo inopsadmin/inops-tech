@@ -55,17 +55,23 @@ export default function SecondaryPageJsonLd({
     },
   ];
 
-  if (faqItems && faqItems.length > 0) {
-    graph.push({
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faqpage`,
-      mainEntity: faqItems.map(({ question, answer }) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: { "@type": "Answer", text: answer },
-      })),
-    });
-  }
+  const faqSchema =
+    faqItems && faqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map(({ question, answer }) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: { "@type": "Answer", text: answer },
+          })),
+        }
+      : null;
 
-  return <script {...jsonLdScriptProps({ "@context": "https://schema.org", "@graph": graph })} />;
+  return (
+    <>
+      <script {...jsonLdScriptProps({ "@context": "https://schema.org", "@graph": graph })} />
+      {faqSchema && <script {...jsonLdScriptProps(faqSchema)} />}
+    </>
+  );
 }

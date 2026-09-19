@@ -41,6 +41,7 @@ export default function AmcContactForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof Fields, boolean>>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [captchaError, setCaptchaError] = useState("");
   const captcha = useImageCaptcha();
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -65,12 +66,18 @@ export default function AmcContactForm() {
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    if (!captcha.validate()) return;
+
+    const captchaToken = captcha.getToken();
+    if (!captchaToken) {
+      setCaptchaError("Please complete the verification.");
+      return;
+    }
+    setCaptchaError("");
 
     setSubmitting(true);
 
     try {
-      // 1️⃣ Send email via Resend
+      // 1️⃣ Send email
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -80,13 +87,15 @@ export default function AmcContactForm() {
           phone: fields.phone,
           message: fields.message,
           source: "biometric-amc",
-          captchaToken: captcha.token,
-          captchaAnswer: captcha.value,
+          captchaToken,
         }),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
-        if (json.code === "CAPTCHA_INVALID") captcha.reset();
+        if (json.code === "CAPTCHA_INVALID") {
+          captcha.reset();
+          setCaptchaError("Verification failed. Please try again.");
+        }
         throw new Error(json.error ?? "Something went wrong.");
       }
 
@@ -260,12 +269,8 @@ export default function AmcContactForm() {
 
         <ImageCaptchaField
           variant="dark"
-          question={captcha.question}
-          loading={captcha.loading}
-          value={captcha.value}
-          onChange={captcha.setValue}
-          error={captcha.error}
-          onRefresh={captcha.reset}
+          recaptchaRef={captcha.ref}
+          error={captchaError}
         />
 
         {/* Submit */}

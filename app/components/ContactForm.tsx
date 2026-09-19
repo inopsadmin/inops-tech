@@ -12,12 +12,14 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [captchaError, setCaptchaError] = useState("");
   const captcha = useImageCaptcha();
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     setErrorMsg("");
+    setCaptchaError("");
 
     const form = e.currentTarget;
     const data = {
@@ -35,7 +37,9 @@ export default function ContactForm() {
       return;
     }
 
-    if (!captcha.validate()) {
+    const captchaToken = captcha.getToken();
+    if (!captchaToken) {
+      setCaptchaError("Please complete the verification.");
       setStatus("idle");
       return;
     }
@@ -44,12 +48,15 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, captchaToken: captcha.token, captchaAnswer: captcha.value }),
+        body: JSON.stringify({ ...data, captchaToken }),
       });
 
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
-        if (json.code === "CAPTCHA_INVALID") captcha.reset();
+        if (json.code === "CAPTCHA_INVALID") {
+          captcha.reset();
+          setCaptchaError("Verification failed. Please try again.");
+        }
         throw new Error(json.error ?? "Something went wrong. Please try again.");
       }
 
@@ -178,12 +185,8 @@ export default function ContactForm() {
 
       <ImageCaptchaField
         variant="light"
-        question={captcha.question}
-        loading={captcha.loading}
-        value={captcha.value}
-        onChange={captcha.setValue}
-        error={captcha.error}
-        onRefresh={captcha.reset}
+        recaptchaRef={captcha.ref}
+        error={captchaError}
       />
 
       {/* Error banner */}

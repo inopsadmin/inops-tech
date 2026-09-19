@@ -1,173 +1,63 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
-type CaptchaData = { question: string; token: string };
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 
 export function useImageCaptcha() {
-  const [data, setData] = useState<CaptchaData | null>(null);
-  const [value, setValue] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const ref = useRef<ReCAPTCHA>(null);
 
-  const fetchCaptcha = useCallback(async () => {
-    setLoading(true);
-    try {
-      const res = await fetch("/api/captcha");
-      const json: CaptchaData = await res.json();
-      setData(json);
-      setValue("");
-      setError("");
-    } catch {
-      setError("Failed to load captcha — please refresh.");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchCaptcha();
-  }, [fetchCaptcha]);
-
-  function validate(): boolean {
-    if (!value.trim()) {
-      setError("Please enter the answer.");
-      return false;
-    }
-    if (!data?.token) {
-      setError("Captcha not loaded. Please refresh.");
-      return false;
-    }
-    return true;
+  function getToken(): string | null {
+    return ref.current?.getValue() ?? null;
   }
 
   function reset() {
-    fetchCaptcha();
+    ref.current?.reset();
   }
 
-  return {
-    question: data?.question ?? "",
-    token: data?.token ?? "",
-    value,
-    setValue,
-    error,
-    setError,
-    validate,
-    reset,
-    loading,
-  };
+  return { ref, getToken, reset };
 }
 
-const refreshIcon = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M23 4v6h-6M1 20v-6h6" />
-    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
-  </svg>
-);
-
 type FieldProps = {
-  question: string;
-  loading: boolean;
-  value: string;
-  onChange: (v: string) => void;
+  recaptchaRef: React.RefObject<ReCAPTCHA | null>;
   error: string;
-  onRefresh: () => void;
   variant: "light" | "dark" | "compact";
 };
 
-export function ImageCaptchaField({ question, loading, value, onChange, error, onRefresh, variant }: FieldProps) {
-  if (variant === "dark") {
+export function ImageCaptchaField({ recaptchaRef, error, variant }: FieldProps) {
+  if (!SITE_KEY) {
     return (
-      <div>
-        <label className="block text-[11.5px] font-semibold text-white/65 mb-[6px] tracking-[0.03em]">
-          Verification <span className="text-red-400">*</span>
-        </label>
-        <div className="flex items-center gap-2">
-          <div className="flex-shrink-0 h-[42px] px-3 rounded-lg border border-white/[0.2] bg-white/[0.05] flex items-center justify-center">
-            {loading ? (
-              <span className="text-white/40 text-sm">…</span>
-            ) : (
-              <span className="text-white text-base font-bold tracking-widest select-none whitespace-nowrap">{question} = ?</span>
-            )}
-          </div>
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="Answer"
-            autoComplete="off"
-            className={`min-w-0 flex-1 bg-white/[0.08] border rounded-lg px-3 py-[10px] text-[13.5px] text-white placeholder-white/40 outline-none transition-all duration-150 focus:bg-white/[0.13] ${error ? "border-red-400/70 focus:border-red-400" : "border-white/[0.18] focus:border-white/50"}`}
-          />
-          <button type="button" onClick={onRefresh} title="New question" disabled={loading}
-            className="flex-shrink-0 w-5 h-5 text-white/50 hover:text-white transition-colors disabled:opacity-30">
-            {refreshIcon}
-          </button>
-        </div>
-        {error && <p className="mt-[5px] text-[11.5px] text-red-400 leading-tight">{error}</p>}
-      </div>
+      <p className="text-xs text-amber-500 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+        reCAPTCHA not configured — add <code>NEXT_PUBLIC_RECAPTCHA_SITE_KEY</code> to .env
+      </p>
     );
   }
 
   if (variant === "compact") {
     return (
       <div>
-        <label className="block text-[11px] font-semibold text-[#4a5766] mb-[4px]">
-          Verification <span className="text-red-500">*</span>
-        </label>
-        <div className="flex items-center gap-2">
-          <div className="flex-shrink-0 h-[38px] px-3 rounded-lg border border-[#e2e8ee] bg-[#eef2f6] flex items-center justify-center">
-            {loading ? (
-              <span className="text-[#8696a7] text-xs">…</span>
-            ) : (
-              <span className="text-[#0b1e2d] text-sm font-bold tracking-widest select-none whitespace-nowrap">{question} = ?</span>
-            )}
-          </div>
-          <input
-            type="number"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            placeholder="Answer"
-            autoComplete="off"
-            className={`min-w-0 flex-1 bg-[#f4f6f8] border rounded-lg px-3 py-[8px] text-[12.5px] text-[#0b1e2d] placeholder-[#aab4bf] outline-none transition-all duration-150 focus:bg-white focus:border-[#1c7bb8] ${error ? "border-red-400" : "border-[#e2e8ee]"}`}
-          />
-          <button type="button" onClick={onRefresh} title="New question" disabled={loading}
-            className="flex-shrink-0 w-4 h-4 text-[#6b7b8c] hover:text-[#1362a8] transition-colors disabled:opacity-30">
-            {refreshIcon}
-          </button>
+        <div style={{ transform: "scale(0.82)", transformOrigin: "left top", height: "54px", overflow: "hidden" }}>
+          <ReCAPTCHA ref={recaptchaRef} sitekey={SITE_KEY} theme="light" size="normal" />
         </div>
-        {error && <p className="mt-[3px] text-[10.5px] text-red-500">{error}</p>}
+        {error && <p className="mt-1 text-[10.5px] text-red-500">{error}</p>}
       </div>
     );
   }
 
-  // light
   return (
     <div>
-      <div className="block text-sm font-medium text-slate-700 mb-1.5">
-        Verification <span className="text-red-500">*</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <div className="flex-shrink-0 h-[50px] px-4 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-center">
-          {loading ? (
-            <span className="text-slate-400 text-sm">…</span>
-          ) : (
-            <span className="text-slate-800 text-lg font-bold tracking-widest select-none whitespace-nowrap">{question} = ?</span>
-          )}
-        </div>
-        <input
-          type="number"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="Answer"
-          autoComplete="off"
-          className={`min-w-0 flex-1 rounded-2xl border bg-white/90 py-3.5 px-4 text-slate-900 shadow-sm placeholder:text-slate-400 transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-4 focus:ring-blue-500/10 ${error ? "border-red-400 focus:border-red-400" : "border-slate-200 focus:border-[var(--inops-blue)]"}`}
-        />
-        <button type="button" onClick={onRefresh} title="New question" disabled={loading}
-          className="flex-shrink-0 w-[18px] h-[18px] text-slate-400 hover:text-[var(--inops-blue)] transition-colors disabled:opacity-30">
-          {refreshIcon}
-        </button>
-      </div>
-      {error && <p className="mt-1.5 text-[13px] text-red-500">{error}</p>}
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={SITE_KEY}
+        theme={variant === "dark" ? "dark" : "light"}
+        size="normal"
+      />
+      {error && (
+        <p className={`mt-1.5 text-red-500 text-[13px]`}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }
