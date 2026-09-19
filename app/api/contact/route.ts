@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
+import { verifyCaptcha } from "@/app/lib/verifyCaptcha";
 
 // ─── Gmail SMTP ───────────────────────────────────────────────────────
 // Works on Vercel — no IP blocking like Zoho.
@@ -112,15 +113,10 @@ export async function POST(req: NextRequest) {
         { status: 400, headers: corsHeaders(origin) }
       );
     }
-    const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${encodeURIComponent(process.env.RECAPTCHA_SECRET_KEY ?? "")}&response=${encodeURIComponent(captchaToken)}`,
-    });
-    const verifyData = await verifyRes.json() as { success: boolean };
-    if (!verifyData.success) {
+    const [token, answer] = captchaToken.split("::");
+    if (!token || !answer || !verifyCaptcha(token, answer)) {
       return NextResponse.json(
-        { error: "Verification failed. Please try again.", code: "CAPTCHA_INVALID" },
+        { error: "Incorrect answer. Please try again.", code: "CAPTCHA_INVALID" },
         { status: 400, headers: corsHeaders(origin) }
       );
     }
