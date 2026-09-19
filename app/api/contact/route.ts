@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
+import { verifyCaptcha } from "@/app/lib/verifyCaptcha";
 
 // ─── Gmail SMTP ───────────────────────────────────────────────────────
 // Works on Vercel — no IP blocking like Zoho.
@@ -96,7 +97,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { name, email, phone, subject, message, source, captchaToken } = body as {
+    const { name, email, phone, subject, message, source, captchaToken, captchaAnswer } = body as {
       name?: string;
       email?: string;
       phone?: string;
@@ -104,30 +105,12 @@ export async function POST(req: NextRequest) {
       message?: string;
       source?: string;
       captchaToken?: string;
+      captchaAnswer?: string;
     };
 
-    if (!captchaToken) {
+    if (!verifyCaptcha(captchaToken ?? "", captchaAnswer ?? "")) {
       return NextResponse.json(
-        { error: "Verification required.", code: "CAPTCHA_INVALID" },
-        { status: 400, headers: corsHeaders(origin) }
-      );
-    }
-
-    const projectId = process.env.RECAPTCHA_PROJECT_ID ?? "";
-    const apiKey = process.env.RECAPTCHA_API_KEY ?? "";
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
-    const verifyRes = await fetch(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ event: { token: captchaToken, siteKey, expectedAction: "SUBMIT" } }),
-      }
-    );
-    const verifyData = await verifyRes.json() as { tokenProperties?: { valid: boolean }; riskAnalysis?: { score: number } };
-    if (!verifyData.tokenProperties?.valid || (verifyData.riskAnalysis?.score ?? 0) < 0.5) {
-      return NextResponse.json(
-        { error: "Verification failed. Please try again.", code: "CAPTCHA_INVALID" },
+        { error: "Incorrect verification code. Please try again.", code: "CAPTCHA_INVALID" },
         { status: 400, headers: corsHeaders(origin) }
       );
     }

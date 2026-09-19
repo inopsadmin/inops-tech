@@ -1,48 +1,173 @@
 "use client";
 
-declare global {
-  interface Window {
-    grecaptcha: {
-      enterprise: {
-        ready: (cb: () => void) => void;
-        execute: (siteKey: string, options: { action: string }) => Promise<string>;
-      };
-    };
-  }
-}
+import { useState, useEffect, useCallback } from "react";
 
-const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
+type CaptchaData = { question: string; token: string };
 
 export function useImageCaptcha() {
-  async function getToken(): Promise<string | null> {
-    if (!SITE_KEY || typeof window === "undefined" || !window.grecaptcha?.enterprise) {
-      return null;
+  const [data, setData] = useState<CaptchaData | null>(null);
+  const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const fetchCaptcha = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/captcha");
+      const json: CaptchaData = await res.json();
+      setData(json);
+      setValue("");
+      setError("");
+    } catch {
+      setError("Failed to load captcha — please refresh.");
+    } finally {
+      setLoading(false);
     }
-    return new Promise((resolve) => {
-      window.grecaptcha.enterprise.ready(async () => {
-        try {
-          const token = await window.grecaptcha.enterprise.execute(SITE_KEY, { action: "SUBMIT" });
-          resolve(token);
-        } catch {
-          resolve(null);
-        }
-      });
-    });
+  }, []);
+
+  useEffect(() => {
+    fetchCaptcha();
+  }, [fetchCaptcha]);
+
+  function validate(): boolean {
+    if (!value.trim()) {
+      setError("Please enter the answer.");
+      return false;
+    }
+    if (!data?.token) {
+      setError("Captcha not loaded. Please refresh.");
+      return false;
+    }
+    return true;
   }
 
   function reset() {
-    // Enterprise v3 is stateless — nothing to reset
+    fetchCaptcha();
   }
 
-  return { getToken, reset };
+  return {
+    question: data?.question ?? "",
+    token: data?.token ?? "",
+    value,
+    setValue,
+    error,
+    setError,
+    validate,
+    reset,
+    loading,
+  };
 }
 
-// No visible widget — Enterprise v3 is invisible
-export function ImageCaptchaField(_props: { recaptchaRef?: unknown; error: string; variant: string }) {
-  if (!_props.error) return null;
+const refreshIcon = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M23 4v6h-6M1 20v-6h6" />
+    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+  </svg>
+);
+
+type FieldProps = {
+  question: string;
+  loading: boolean;
+  value: string;
+  onChange: (v: string) => void;
+  error: string;
+  onRefresh: () => void;
+  variant: "light" | "dark" | "compact";
+};
+
+export function ImageCaptchaField({ question, loading, value, onChange, error, onRefresh, variant }: FieldProps) {
+  if (variant === "dark") {
+    return (
+      <div>
+        <label className="block text-[11.5px] font-semibold text-white/65 mb-[6px] tracking-[0.03em]">
+          Verification <span className="text-red-400">*</span>
+        </label>
+        <div className="flex items-center gap-2">
+          <div className="flex-shrink-0 h-[42px] px-3 rounded-lg border border-white/[0.2] bg-white/[0.05] flex items-center justify-center">
+            {loading ? (
+              <span className="text-white/40 text-sm">…</span>
+            ) : (
+              <span className="text-white text-base font-bold tracking-widest select-none whitespace-nowrap">{question} = ?</span>
+            )}
+          </div>
+          <input
+            type="number"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder="Answer"
+            autoComplete="off"
+            className={`min-w-0 flex-1 bg-white/[0.08] border rounded-lg px-3 py-[10px] text-[13.5px] text-white placeholder-white/40 outline-none transition-all duration-150 focus:bg-white/[0.13] ${error ? "border-red-400/70 focus:border-red-400" : "border-white/[0.18] focus:border-white/50"}`}
+          />
+          <button type="button" onClick={onRefresh} title="New question" disabled={loading}
+            className="flex-shrink-0 w-5 h-5 text-white/50 hover:text-white transition-colors disabled:opacity-30">
+            {refreshIcon}
+          </button>
+        </div>
+        {error && <p className="mt-[5px] text-[11.5px] text-red-400 leading-tight">{error}</p>}
+      </div>
+    );
+  }
+
+  if (variant === "compact") {
+    return (
+      <div>
+        <label className="block text-[11px] font-semibold text-[#4a5766] mb-[4px]">
+          Verification <span className="text-red-500">*</span>
+        </label>
+        <div className="flex items-center gap-2">
+          <div className="flex-shrink-0 h-[38px] px-3 rounded-lg border border-[#e2e8ee] bg-[#eef2f6] flex items-center justify-center">
+            {loading ? (
+              <span className="text-[#8696a7] text-xs">…</span>
+            ) : (
+              <span className="text-[#0b1e2d] text-sm font-bold tracking-widest select-none whitespace-nowrap">{question} = ?</span>
+            )}
+          </div>
+          <input
+            type="number"
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder="Answer"
+            autoComplete="off"
+            className={`min-w-0 flex-1 bg-[#f4f6f8] border rounded-lg px-3 py-[8px] text-[12.5px] text-[#0b1e2d] placeholder-[#aab4bf] outline-none transition-all duration-150 focus:bg-white focus:border-[#1c7bb8] ${error ? "border-red-400" : "border-[#e2e8ee]"}`}
+          />
+          <button type="button" onClick={onRefresh} title="New question" disabled={loading}
+            className="flex-shrink-0 w-4 h-4 text-[#6b7b8c] hover:text-[#1362a8] transition-colors disabled:opacity-30">
+            {refreshIcon}
+          </button>
+        </div>
+        {error && <p className="mt-[3px] text-[10.5px] text-red-500">{error}</p>}
+      </div>
+    );
+  }
+
+  // light
   return (
-    <p className={`text-red-500 ${_props.variant === "compact" ? "text-[10.5px]" : "text-[13px]"}`}>
-      {_props.error}
-    </p>
+    <div>
+      <div className="block text-sm font-medium text-slate-700 mb-1.5">
+        Verification <span className="text-red-500">*</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <div className="flex-shrink-0 h-[50px] px-4 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-center">
+          {loading ? (
+            <span className="text-slate-400 text-sm">…</span>
+          ) : (
+            <span className="text-slate-800 text-lg font-bold tracking-widest select-none whitespace-nowrap">{question} = ?</span>
+          )}
+        </div>
+        <input
+          type="number"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Answer"
+          autoComplete="off"
+          className={`min-w-0 flex-1 rounded-2xl border bg-white/90 py-3.5 px-4 text-slate-900 shadow-sm placeholder:text-slate-400 transition-[border-color,box-shadow] duration-200 focus:outline-none focus:ring-4 focus:ring-blue-500/10 ${error ? "border-red-400 focus:border-red-400" : "border-slate-200 focus:border-[var(--inops-blue)]"}`}
+        />
+        <button type="button" onClick={onRefresh} title="New question" disabled={loading}
+          className="flex-shrink-0 w-[18px] h-[18px] text-slate-400 hover:text-[var(--inops-blue)] transition-colors disabled:opacity-30">
+          {refreshIcon}
+        </button>
+      </div>
+      {error && <p className="mt-1.5 text-[13px] text-red-500">{error}</p>}
+    </div>
   );
 }

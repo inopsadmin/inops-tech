@@ -27,7 +27,6 @@ export default function FloatingActions() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
-  const [captchaError, setCaptchaError] = useState("");
   const captcha = useImageCaptcha();
 
 
@@ -49,13 +48,7 @@ export default function FloatingActions() {
     const errs = validate(fields);
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-
-    const captchaToken = await captcha.getToken();
-    if (!captchaToken) {
-      setCaptchaError("Please complete the verification.");
-      return;
-    }
-    setCaptchaError("");
+    if (!captcha.validate()) return;
 
     setSubmitting(true);
     setServerError("");
@@ -69,15 +62,13 @@ export default function FloatingActions() {
           phone: fields.phone,
           message: fields.message,
           source: "floating-form",
-          captchaToken,
+          captchaToken: captcha.token,
+          captchaAnswer: captcha.value,
         }),
       });
       if (!res.ok) {
         const json = await res.json().catch(() => ({}));
-        if (json.code === "CAPTCHA_INVALID") {
-          captcha.reset();
-          setCaptchaError("Verification failed. Please try again.");
-        }
+        if (json.code === "CAPTCHA_INVALID") captcha.reset();
         throw new Error(json.error ?? "Something went wrong.");
       }
 
@@ -107,7 +98,6 @@ export default function FloatingActions() {
     setErrors({});
     setTouched({});
     setServerError("");
-    setCaptchaError("");
     captcha.reset();
   }
 
@@ -182,7 +172,12 @@ export default function FloatingActions() {
 
               <ImageCaptchaField
                 variant="compact"
-                error={captchaError}
+                question={captcha.question}
+                loading={captcha.loading}
+                value={captcha.value}
+                onChange={captcha.setValue}
+                error={captcha.error}
+                onRefresh={captcha.reset}
               />
 
               {serverError && (
