@@ -1586,7 +1586,7 @@ export default function PayrollSolutionsPage() {
         </section>
 
         {/* ====== CLMS VS HRMS ====== */}
-        <section aria-labelledby="clms-vs-hrms-heading" className="border-t border-slate-100 bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        {/* <section aria-labelledby="clms-vs-hrms-heading" className="border-t border-slate-100 bg-white px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
@@ -1610,7 +1610,7 @@ export default function PayrollSolutionsPage() {
               </div>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="clms-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">

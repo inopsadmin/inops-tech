@@ -1634,7 +1634,7 @@ export default function BiometricAccessControlPage() {
         </section> */}
 
         {/* Bridging section — broader biometric attendance theme, cross-links to CCTV and mobile */}
-        <section
+        {/* <section
           aria-labelledby="biometric-attendance-manufacturing-heading"
           className="border-t border-slate-100 bg-slate-50/60 px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
         >
@@ -1670,7 +1670,7 @@ export default function BiometricAccessControlPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         <section aria-labelledby="face-recognition-attendance-faq-heading" className="bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-7xl">
