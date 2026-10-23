@@ -750,7 +750,7 @@ export default function EwaPage() {
       </section>
 
       {/* Legal clarity section — pending final legal review before publishing */}
-      <section
+      {/* <section
         className="border-t border-slate-100 bg-white py-12 lg:py-20"
         aria-labelledby="ewa-loan-question-heading"
       >
@@ -772,7 +772,7 @@ export default function EwaPage() {
             </p>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <section
         className="relative overflow-hidden border-y border-slate-200/70 bg-gradient-to-b from-slate-50/95 via-white to-white py-12 lg:py-20"
