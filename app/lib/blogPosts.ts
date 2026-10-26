@@ -4324,7 +4324,7 @@ export const blogPosts: BlogPost[] = [
     title: "Contract Labour Management System (CLMS) Explained",
     description:
       "CLMS meaning, modules & how it differs from HRMS — onboarding, gate compliance, attendance & CLRA registers for Indian manufacturing plants.",
-    author: "",
+    author: "Satish Sinha",
     personAuthor: true,
     date: "August 3, 2026",
     dateIso: "2026-08-03",
@@ -4500,7 +4500,7 @@ export const blogPosts: BlogPost[] = [
     title: "Factory Gate Entry Rules for Contract Workers: The 19 Checks That Should Run Before Anyone Walks In",
     description:
       "Most factory gates check identity. Compliance requires checking nineteen things — licence validity, headcount caps, induction currency, medical fitness, shift windows and more. Here is the full list, and how to score your own gate.",
-    author: "",
+    author: "Satish Sinha",
     personAuthor: true,
     date: "August 3, 2026",
     dateIso: "2026-08-03",

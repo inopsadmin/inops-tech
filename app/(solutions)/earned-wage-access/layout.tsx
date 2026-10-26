@@ -20,9 +20,6 @@ export const metadata: Metadata = {
     description: PAGE_DESCRIPTION,
     path: "/earned-wage-access",
   }),
-  // Zero organic search volume for EWA in India. noindex intentional.
-  // Page serves sales collateral and AI-citation; not an organic growth asset.
-  robots: { index: false, follow: false },
 };
 
 const FAQ_ITEMS = [
