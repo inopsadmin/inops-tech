@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
   { label: "Platform", href: "#solutions", solutionsMega: true },
   { label: "Services", href: "#services-menu", servicesMega: true },
   { label: "About", href: "/about" },
-  { label: "Resources", href: "#resources", dropdown: ["Blog", "Brochures"] },
+  { label: "Resources", href: "#resources", dropdown: ["Blog", "Brochures", "Research & Insights", "CLMS Pricing", "Glossary"] },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -50,6 +50,9 @@ const productRoutes: Record<string, string> = {
 const resourceRoutes: Record<string, string> = {
   Blog: "/blog",
   Brochures: "/brochures",
+  "Research & Insights": "/research-insights",
+  "CLMS Pricing": "/clms-pricing",
+  Glossary: "/glossary",
 };
 
 function pathUsesSolidNavBar(path: string) {
@@ -77,7 +80,10 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/order-management") ||
     path.startsWith("/biometric-devices") ||
     path.startsWith("/self-service-kiosk") ||
-    path.startsWith("/brands/zkteco")
+    path.startsWith("/brands/zkteco") ||
+    path.startsWith("/clms-pricing") ||
+    path.startsWith("/glossary") ||
+    path.startsWith("/research-insights")
   );
 }
 

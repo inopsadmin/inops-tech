@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent } from "react";
+import { usePathname } from "next/navigation";
 import { useImageCaptcha, ImageCaptchaField } from "./ImageCaptcha";
 
 type Fields = { fullName: string; businessEmail: string; phone: string; message: string };
@@ -19,7 +20,10 @@ function validate(f: Fields): Errors {
   return e;
 }
 
+const STANDALONE_ROUTES = ["/clms-pricing", "/glossary", "/research-insights"];
+
 export default function FloatingActions() {
+  const pathname = usePathname();
   const [formOpen, setFormOpen] = useState(false);
   const [fields, setFields] = useState<Fields>(INIT);
   const [errors, setErrors] = useState<Errors>({});
@@ -30,6 +34,8 @@ export default function FloatingActions() {
   const [captchaError, setCaptchaError] = useState("");
   const captcha = useImageCaptcha();
 
+
+  if (STANDALONE_ROUTES.includes(pathname)) return null;
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const updated = { ...fields, [e.target.name]: e.target.value };

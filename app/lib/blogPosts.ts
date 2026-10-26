@@ -13,6 +13,8 @@ export type BlogPostFaq = {
   answer: string;
 };
 
+export type BlogTabId = "all" | "ewa" | "clra" | "biometric" | "clms";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -21,6 +23,7 @@ export type BlogPost = {
   date: string;
   dateIso: string;
   category: string;
+  tab: BlogTabId;
   readMinutes: number;
   image: string;
   imageAlt: string;
@@ -45,7 +48,3282 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
-  
+
+  {
+    slug: "salary-plus-plus-nbfc-partner-model",
+    title: "How the Salary++ NBFC Partner Model Works",
+    description: "Who funds a Salary++ advance, who recovers it, and who carries the risk? A plain explanation of the NBFC partner model behind Salary++ Earned Wage Access.",
+    author: "InOps",
+    date: "September 28, 2026",
+    dateIso: "2026-09-28",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Fintech payment partnership diagram on a screen — how the Salary++ NBFC partner model funds earned wage access",
+    summary: "Salary++ advances are funded by a regulated NBFC partner, not by the employer. InOps provides the technology, attendance and wage data, and the worker app. The employer recovers advances through payroll.",
+    sections: [
+      {
+        paragraphs: [
+          "Salary++ advances are funded by a regulated NBFC partner, not by the employer. InOps provides the technology, attendance and wage data, and the worker app. The employer recovers advances through payroll. Here is how each part works.",
+        ],
+      },
+      {
+        heading: "The four parties",
+        paragraphs: [],
+        table: {
+          headers: ["Party", "Role"],
+          rows: [
+            ["Worker", "Requests a withdrawal from earned wages through the app"],
+            ["Employer or contractor", "Shares attendance and payroll data; deducts advances at payroll"],
+            ["InOps (Salary++)", "Calculates earned wages, runs the app, connects the parties"],
+            ["NBFC partner", "Funds the advance to the worker's bank account; receives repayment"],
+          ],
+        },
+      },
+      {
+        heading: "The flow, step by step",
+        paragraphs: [],
+        list: [
+          "Attendance is captured through biometric devices, face readers or the app.",
+          "Salary++ calculates the worker's earned wages and withdrawal limit.",
+          "The worker requests an amount in the app and confirms the fee.",
+          "The NBFC partner transfers the money to the worker's verified bank account.",
+          "At payroll, the employer deducts the total withdrawn.",
+          "The employer settles that amount with the NBFC partner.",
+        ],
+      },
+      {
+        heading: "Who carries what",
+        paragraphs: [],
+        list: [
+          "Capital: the NBFC partner",
+          "Credit risk: not the employer. Limits tied to earned wages keep exposure low.",
+          "Operations: InOps runs the platform and supports workers",
+          "Payroll recovery: the employer or contractor",
+        ],
+      },
+      {
+        heading: "Why this model",
+        paragraphs: [],
+        list: [
+          "Employers offer EWA without using working capital",
+          "Workers get money from a regulated entity, not an informal source",
+          "Limits based on verified attendance keep withdrawals within earned wages",
+        ],
+        ctaLabel: "Want to see the model in detail? Talk to us",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does the employer sign an agreement with the NBFC?",
+        answer: "This depends on the programme structure. Discuss with us during setup.",
+      },
+      {
+        question: "What happens if payroll is delayed?",
+        answer: "Settlement follows the payroll date. Discuss your payroll calendar during setup.",
+      },
+    ],
+  },
+
+  {
+    slug: "salary-plus-plus-iso-27001-worker-data-security",
+    title: "Salary++ and ISO 27001: How We Protect Worker Data",
+    description: "Earned Wage Access uses sensitive attendance, payroll and bank data. How InOps protects that data, and what ISO/IEC 27001 certification means for employers using Salary++.",
+    author: "InOps",
+    date: "September 29, 2026",
+    dateIso: "2026-09-29",
+    category: "Policy & Compliance",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Data security lock on a digital screen — ISO 27001 certification and worker data protection for Salary++",
+    summary: "Earned Wage Access runs on some of the most sensitive data a company holds: who worked when, what they earned, and where their salary goes. InOps is certified to ISO/IEC 27001, the international standard for information security management.",
+    sections: [
+      {
+        paragraphs: [
+          "Earned Wage Access runs on some of the most sensitive data a company holds: who worked when, what they earned, and where their salary goes. InOps, the company behind Salary++, is certified to ISO/IEC 27001, the international standard for information security management. Here is what that means for employers and workers.",
+        ],
+      },
+      {
+        heading: "What data Salary++ uses",
+        paragraphs: [],
+        list: [
+          "Worker identity and contact details",
+          "Attendance records from biometric devices, face readers or apps",
+          "Earned wage calculations",
+          "Bank account details for transfers",
+          "Withdrawal and recovery records",
+        ],
+      },
+      {
+        heading: "What ISO/IEC 27001 means",
+        paragraphs: ["ISO/IEC 27001 certifies that an organisation runs a managed system for information security. It covers:"],
+        list: [
+          "Identifying and assessing information security risks",
+          "Access controls, so only authorised people see data",
+          "Secure handling, storage and transfer of data",
+          "Incident management and response",
+          "Regular internal audits and independent external audits",
+        ],
+      },
+      {
+        heading: "How we apply it to Salary++",
+        paragraphs: [],
+        list: [
+          "Role-based access for employer, contractor and InOps staff",
+          "Encryption of data in transit and at rest",
+          "Data shared with the lending partner only as needed, with worker consent",
+          "Logging of access and changes",
+          "Defined processes for data correction and deletion requests",
+        ],
+      },
+      {
+        heading: "Data protection and consent",
+        paragraphs: [
+          "Workers are told what data is used, why, and with whom it is shared. Consent is taken at enrolment. This follows the principles of India's Digital Personal Data Protection Act.",
+        ],
+      },
+      {
+        heading: "Questions employers should ask any EWA provider",
+        paragraphs: [],
+        list: [
+          "Are you ISO/IEC 27001 certified? Can we see the certificate scope?",
+          "Where is data stored?",
+          "Who can access worker data, and how is access logged?",
+          "What data goes to the lender?",
+          "How are security incidents reported to us?",
+        ],
+        ctaLabel: "Talk to us about security and compliance for Salary++",
+        ctaHref: "/contact",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does the lender see all attendance data?",
+        answer: "The lender receives only what is needed to fund and recover advances.",
+      },
+      {
+        question: "Can we get a copy of the ISO certificate?",
+        answer: "Yes, on request.",
+      },
+    ],
+  },
+
+  {
+    slug: "attendance-data-credit-access-blue-collar-workers",
+    title: "Credit From Work Data: How Attendance History Opens Credit Access",
+    description: "Millions of blue-collar workers have no credit score but years of verified attendance. How work data can help them access fair credit, and what it takes to do it responsibly.",
+    author: "InOps",
+    date: "September 30, 2026",
+    dateIso: "2026-09-30",
+    category: "Policy & Compliance",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Data analytics dashboard on a screen — using attendance history to open credit access for blue-collar workers",
+    summary: "Many of India's blue-collar and contract workers have never had a loan or credit card, so they have no credit score. Yet many have years of verified attendance and wage records that show a lender what a credit score cannot: steady work and regular earnings.",
+    sections: [
+      {
+        paragraphs: [
+          "Many of India's blue-collar and contract workers have never had a loan or credit card, so they have no credit score. Yet many have years of verified attendance and wage records. That work history can show a lender something a credit score cannot: steady work and regular earnings.",
+        ],
+      },
+      {
+        heading: "The \"new to credit\" problem",
+        paragraphs: [],
+        list: [
+          "No credit score, because there is no credit history",
+          "No credit history, because no lender will lend without a score",
+          "So workers turn to moneylenders, who need no score but charge heavily",
+        ],
+      },
+      {
+        heading: "What work data shows",
+        paragraphs: ["Attendance and payroll systems already record:"],
+        list: [
+          "How long a worker has been employed",
+          "How regularly they attend",
+          "What they earn each cycle",
+          "Whether earnings are stable or seasonal",
+        ],
+      },
+      {
+        heading: "How it can work in practice",
+        paragraphs: [],
+        list: [
+          "Start with Earned Wage Access. Workers use EWA, and recovery happens through payroll. This builds a record of responsible use.",
+          "Add small formal credit. With the worker's consent, verified work history supports a small loan.",
+          "Build a credit history. Repaid formal loans reported to credit bureaus give the worker a score over time.",
+        ],
+      },
+      {
+        heading: "Doing it responsibly",
+        paragraphs: [],
+        list: [
+          "Consent first. Work data is shared only with the worker's clear consent.",
+          "Purpose limits. Data is used for credit decisions, not for other purposes.",
+          "Fair limits. Loan sizes match earnings.",
+          "Data protection. Storage and sharing follow India's data protection law.",
+        ],
+      },
+      {
+        heading: "Why this matters to employers",
+        paragraphs: [
+          "Workers with access to fair credit are less exposed to moneylenders and the stress that follows. Employers with good attendance data, such as from biometric systems and a CLMS, are well placed to support this.",
+        ],
+        ctaLabel: "Your attendance data can do more for workers — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does the employer share data without the worker's knowledge?",
+        answer: "No. Responsible models require the worker's explicit consent.",
+      },
+      {
+        question: "Will EWA use improve a worker's credit score?",
+        answer: "That depends on whether the lending partner reports it to bureaus. Ask your provider.",
+      },
+    ],
+  },
+
+  {
+    slug: "safe-credit-for-workers-employer-guide",
+    title: "Safe Credit for Workers: What Employers Should Know",
+    description: "Workers are being offered loans by apps, moneylenders and lenders tied to employers. What employers should know before endorsing any credit or wage access product for their workforce.",
+    author: "InOps",
+    date: "October 1, 2026",
+    dateIso: "2026-10-01",
+    category: "Policy & Compliance",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Business professional reviewing a document — what employers should know about safe credit products for workers",
+    summary: "When an employer endorses a credit or wage access product, workers trust it because the employer chose it. That puts responsibility on the employer to choose carefully.",
+    sections: [
+      {
+        paragraphs: [
+          "When an employer endorses a credit or wage access product, workers trust it because the employer chose it. That puts responsibility on the employer to choose carefully. Here is what to check before offering any financial product to your workforce.",
+        ],
+      },
+      {
+        heading: "Why employers get involved",
+        paragraphs: [
+          "Workers will borrow whether or not the employer helps. The question is from whom. Without a safe option, many turn to moneylenders and unregulated loan apps. Their debt then shows up at work as absenteeism, garnishment requests, recovery calls and attrition.",
+        ],
+      },
+      {
+        heading: "Seven questions to ask any provider",
+        paragraphs: [],
+        list: [
+          "Who is the lender? It should be a regulated entity, named in the agreement and shown to workers.",
+          "What does the worker pay? Total cost in rupees, shown before every transaction.",
+          "How are limits set? Based on verified earnings or attendance, not just a credit score.",
+          "How is recovery done? Through payroll deduction agreed upfront, with no harassment.",
+          "What happens when a worker leaves? Is the outstanding amount covered by final settlement?",
+          "How is data used? Only for the stated purpose, with worker consent, stored securely.",
+          "What is the employer's liability? Ideally none for credit losses.",
+        ],
+      },
+      {
+        heading: "Red flags",
+        paragraphs: [],
+        list: [
+          "Fees or interest not shown clearly",
+          "Access to the worker's phone contacts or photos",
+          "Recovery through calls to colleagues or family",
+          "Lender not named, or not regulated",
+          "Pressure on the employer to guarantee repayments",
+        ],
+      },
+      {
+        heading: "EWA versus employer-linked loans",
+        paragraphs: [],
+        table: {
+          headers: ["", "Earned Wage Access", "Employer-linked personal loan"],
+          rows: [
+            ["Based on", "Wages already earned", "Credit assessment"],
+            ["Typical amount", "Small, within earned wages", "Larger"],
+            ["Recovery", "Next payroll", "Instalments over months"],
+            ["Risk of over-borrowing", "Low", "Higher"],
+            ["Best for", "Short timing gaps", "Planned larger needs"],
+          ],
+        },
+        ctaLabel: "Offer a safe, earned-wage option first — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Should employers deduct loan repayments from salary?",
+        answer: "Only if agreed in writing by the worker and permitted under wage law. Check with your compliance team.",
+      },
+      {
+        question: "Does offering EWA make the employer a lender?",
+        answer: "In an NBFC-funded model, the NBFC is the lender. The employer provides data and payroll recovery.",
+      },
+    ],
+  },
+
+  {
+    slug: "post-diwali-attrition-workers-return",
+    title: "Post-Festival Attrition: How EWA Brings Workers Back",
+    description: "Every year, many blue-collar and migrant workers go home for festivals and do not come back. Why post-festival attrition happens, and how Earned Wage Access helps bring workers back.",
+    author: "InOps",
+    date: "September 16, 2026",
+    dateIso: "2026-09-16",
+    category: "Seasonal",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Workers walking out of a factory gate — post-festival attrition and how EWA helps workers return",
+    summary: "After Diwali, Chhath, Pongal or harvest season, many plants and warehouses see the same pattern: workers go home and a share do not return. Earned Wage Access addresses the money side of that.",
+    sections: [
+      {
+        paragraphs: [
+          "After Diwali, Chhath, Pongal or harvest season, many plants and warehouses see the same pattern: workers go home and a share do not return. Production slows, hiring starts again, and new workers need training. Some of these exits are linked to money: debt taken for the festival, or a better-paying offer near home. Earned Wage Access addresses part of that.",
+        ],
+      },
+      {
+        heading: "Why workers don't come back",
+        paragraphs: [],
+        list: [
+          "Festival debt. Workers who borrowed heavily may take work closer to home to repay.",
+          "Unpaid dues. Workers unsure whether they will be paid for days worked before leaving may not return.",
+          "Better offers. Local employers or other cities recruit during the break.",
+          "Family needs. Farming or family responsibilities keep them at home.",
+        ],
+      },
+      {
+        heading: "How EWA helps",
+        paragraphs: [
+          "Less festival debt. Workers can use their own earned wages for festival costs instead of borrowing.",
+          "Confidence about earnings. Workers can see exactly what they have earned before leaving, and what will be paid.",
+          "A reason to return. Workers who value instant access to earnings are less likely to switch to an employer without it.",
+        ],
+      },
+      {
+        heading: "A return plan for employers",
+        paragraphs: [],
+        list: [
+          "Before the festival: confirm workers' earned wages and final dues before they leave.",
+          "During the break: keep in touch through WhatsApp or SMS with the return date and any return incentive.",
+          "On return: quick re-onboarding, so work restarts on day one.",
+          "After return: remind workers that EWA is available from their first shift back.",
+        ],
+      },
+      {
+        heading: "Measure it",
+        paragraphs: [
+          "Track the share of workers who return within 15 and 30 days after the festival. Compare EWA users with non-users. Use your own data to judge the effect.",
+        ],
+        ctaLabel: "Bring more workers back after every festival — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is post-festival attrition only about money?",
+        answer: "No. Family, farming and local offers matter too. Money is the part employers can most directly help with.",
+      },
+      {
+        question: "When should we remind workers about EWA?",
+        answer: "Three to four weeks before the festival, and again on the first day back.",
+      },
+    ],
+  },
+
+  {
+    slug: "emergency-salary-advance-workers-school-fees-medical",
+    title: "School Fees, Medical Bills, Monsoon: When Workers Need EWA Most",
+    description: "Some months hit workers harder: school admissions, monsoon illness, family emergencies. A calendar of high-need periods and how employers can prepare with Earned Wage Access.",
+    author: "InOps",
+    date: "September 17, 2026",
+    dateIso: "2026-09-17",
+    category: "Seasonal",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Parent with child at a school — workers facing school fees, medical bills and seasonal expenses",
+    summary: "Workers' financial pressure is not spread evenly across the year. School admissions, monsoon illness, harvest seasons and festivals bring predictable spikes. Earned Wage Access helps in both cases.",
+    sections: [
+      {
+        paragraphs: [
+          "Workers' financial pressure is not spread evenly across the year. School admissions, monsoon illness, harvest seasons and festivals bring predictable spikes. Emergencies arrive without warning. Earned Wage Access helps in both cases, and employers can plan around the predictable peaks.",
+        ],
+      },
+      {
+        heading: "The worker's year: predictable pressure points",
+        paragraphs: [],
+        table: {
+          headers: ["Period", "Typical pressure"],
+          rows: [
+            ["April–June", "School admissions, fees, books and uniforms"],
+            ["June–September", "Monsoon illness, house repairs, travel disruption"],
+            ["Sowing and harvest seasons", "Farm costs for workers from rural families"],
+            ["September–November", "Major festivals and travel home"],
+            ["December–January", "Year-end festivals, weddings"],
+            ["Any time", "Medical emergencies, accidents, deaths in the family"],
+          ],
+        },
+      },
+      {
+        heading: "How EWA helps with planned costs",
+        paragraphs: [
+          "School fees and festival costs are known in advance but often due before payday. EWA lets workers pay on time from wages already earned, avoiding late fees or loans.",
+        ],
+      },
+      {
+        heading: "How EWA helps in emergencies",
+        paragraphs: [
+          "A hospital visit or accident needs money the same day. Workers can withdraw from earned wages immediately, instead of waiting for approval or borrowing at high cost. ESI and insurance remain the main protection for large medical costs.",
+        ],
+      },
+      {
+        heading: "What employers can do",
+        paragraphs: [],
+        list: [
+          "Remind workers before peak periods. A message before school admission season and before the monsoon.",
+          "Keep the process simple. Workers in an emergency need one-tap access, not forms.",
+          "Pair with insurance. Make sure ESI cards work and group cover is active.",
+          "Train supervisors. They should point workers to EWA rather than handling cash advances.",
+        ],
+        ctaLabel: "Help your workers through every high-need month — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "What if an emergency costs more than the EWA limit?",
+        answer: "EWA covers the first need. For larger costs, ESI, insurance or a formal advance policy should apply.",
+      },
+      {
+        question: "Can workers use EWA on a holiday?",
+        answer: "The app is available any time. Transfer timing depends on banking channels.",
+      },
+    ],
+  },
+
+  {
+    slug: "festival-advance-employees-earned-wage-access",
+    title: "Festival Advances Without Debt: EWA for Diwali and Harvest Festivals",
+    description: "Festival advances are a tradition in Indian workplaces, but they strain cash flow and often lead to debt. How Earned Wage Access helps workers meet festival costs from their own earnings.",
+    author: "InOps",
+    date: "September 18, 2026",
+    dateIso: "2026-09-18",
+    category: "Seasonal",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1605292356183-a77d0a9c9d1d?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Diwali lights and diyas — festival advances without debt using Earned Wage Access",
+    summary: "Festival advances are a long tradition in Indian workplaces. Earned Wage Access offers a better way: workers draw from what they have already earned, with no large cash outflow for the employer and no long recovery for workers.",
+    sections: [
+      {
+        paragraphs: [
+          "Festival advances are a long tradition in Indian workplaces. Before Diwali, Durga Puja, Onam, Pongal, Sankranti or Eid, workers ask for money for travel, gifts and celebrations. For employers and contractors, this means large cash outflows at one time. For workers, it often means a deficit the following month. Earned Wage Access offers a better way.",
+        ],
+      },
+      {
+        heading: "The problem with traditional festival advances",
+        paragraphs: [],
+        list: [
+          "Cash crunch for employers. Advances for hundreds of workers fall in the same week.",
+          "Recovery over months. Large advances are recovered in instalments, leaving workers short long after the festival.",
+          "Workers leave after the festival. Some do not return, and the advance is lost.",
+          "Informal borrowing anyway. Workers who do not get enough borrow from moneylenders.",
+        ],
+      },
+      {
+        heading: "How EWA helps during festival season",
+        paragraphs: [
+          "Access to earned wages before the festival. Workers can draw from what they have earned in the cycle, when they need it.",
+          "No large lump-sum outflow. An NBFC partner funds the withdrawals, not the employer.",
+          "No long recovery. Amounts are adjusted in the next payroll, so workers do not carry festival debt for months.",
+          "Fewer losses. Withdrawals are limited to wages already earned.",
+        ],
+      },
+      {
+        heading: "EWA plus a festival policy",
+        paragraphs: [],
+        table: {
+          headers: ["Need", "Option"],
+          rows: [
+            ["Routine festival spending", "Earned Wage Access"],
+            ["Statutory or contractual bonus", "Paid on schedule, as usual"],
+            ["Large one-off needs", "Formal advance under a written policy"],
+          ],
+        },
+      },
+      {
+        heading: "Timing tips for employers",
+        paragraphs: [],
+        list: [
+          "Launch or remind before the season. Tell workers about EWA three to four weeks before the festival.",
+          "Check withdrawal limits. Decide whether limits stay the same during festival months.",
+          "Plan payroll dates. If pay falls just after the festival, workers need access before it.",
+          "Watch for exits. Track who returns after the festival.",
+        ],
+        ctaLabel: "Make this festival season debt-free for your workers — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does EWA replace the festival bonus?",
+        answer: "No. Bonus payments continue as per law or policy. EWA only gives early access to earned wages.",
+      },
+      {
+        question: "Can we raise the limit for festivals?",
+        answer: "Limits are set by the employer within the programme's rules. Discuss seasonal settings during setup.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-migrant-workers-remittance",
+    title: "EWA for Migrant Workers: Sending Money Home Without Waiting",
+    description: "Migrant workers send money home regularly and face extra costs in a new city. How Earned Wage Access helps them meet family needs on time, and why it matters to employers.",
+    author: "InOps",
+    date: "September 19, 2026",
+    dateIso: "2026-09-19",
+    category: "Industry: Logistics",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Migrant workers at a train station — sending money home without waiting using Earned Wage Access",
+    summary: "India's factories, construction sites, warehouses and delivery fleets rely heavily on migrant workers. Many send a large part of their earnings home, and family needs do not wait for payday.",
+    sections: [
+      {
+        paragraphs: [
+          "India's factories, construction sites, warehouses and delivery fleets rely heavily on migrant workers. Many send a large part of their earnings home, and family needs do not wait for payday. Earned Wage Access lets migrant workers send money home when it is needed, from wages they have already earned.",
+        ],
+      },
+      {
+        heading: "What migrant workers face",
+        paragraphs: [],
+        list: [
+          "Family needs back home. School fees, medical bills, farming costs and festivals.",
+          "Setup costs in a new city. Deposit, rent and travel before the first salary.",
+          "Distance from support. No local family to borrow from.",
+          "Reliance on informal lenders. Often the only option for quick cash.",
+          "Travel home. Festivals and harvests mean travel costs at fixed times of year.",
+        ],
+      },
+      {
+        heading: "How EWA helps",
+        paragraphs: [],
+        list: [
+          "Send money on time. Workers can draw earned wages and transfer them home when needed.",
+          "Get through the first month. New arrivals can access earnings from their first days of work.",
+          "Avoid informal loans. Less need to borrow from moneylenders or contractors.",
+          "Plan travel home. Access to earned wages before festival travel.",
+        ],
+      },
+      {
+        heading: "What employers gain",
+        paragraphs: [],
+        list: [
+          "Lower attrition, especially in the first months",
+          "More workers returning after festival and harvest breaks",
+          "Fewer advance requests to contractors and supervisors",
+          "A benefit that matters greatly to a large part of the workforce",
+        ],
+      },
+      {
+        heading: "Rollout tips",
+        paragraphs: [],
+        list: [
+          "Language. Onboarding in the workers' home languages, such as Hindi, Odia, Bengali or Assamese.",
+          "Bank accounts. Help workers open or link accounts in their own name.",
+          "Trusted channels. Use supervisors or coordinators from the same region to explain the benefit.",
+          "Safety tips. Remind workers never to share their OTP or app access.",
+        ],
+        ctaLabel: "Support the migrant workers who keep your sites running — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can workers send EWA money directly to family?",
+        answer: "The withdrawal goes to the worker's own bank account. From there, they can transfer it by UPI or bank transfer.",
+      },
+      {
+        question: "Does EWA work for workers without a local address?",
+        answer: "Eligibility is based on verified identity and attendance. Check enrolment requirements during setup.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-warehouse-3pl-workers",
+    title: "EWA for Warehouses, Dark Stores and 3PL Workers",
+    description: "Warehouse, dark store and 3PL workers face peak-season pressure, shift work and high churn. How Earned Wage Access helps logistics operators keep pickers, packers and loaders.",
+    author: "InOps",
+    date: "September 20, 2026",
+    dateIso: "2026-09-20",
+    category: "Industry: Logistics",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Workers in a warehouse handling packages — EWA for warehouse, dark store and 3PL logistics workers",
+    summary: "Warehouses, dark stores and 3PL operations depend on pickers, packers, loaders and forklift operators. Peak seasons stretch these workforces and churn rises. Earned Wage Access helps keep them working.",
+    sections: [
+      {
+        paragraphs: [
+          "Warehouses, dark stores and 3PL operations depend on pickers, packers, loaders and forklift operators. Many come through staffing agencies or contractors, on weekly, 15-day or monthly cycles. Peak seasons stretch these workforces and churn rises. Earned Wage Access helps keep them working.",
+        ],
+      },
+      {
+        heading: "The workforce challenge",
+        paragraphs: [],
+        list: [
+          "Peak-season spikes. Festival sales and quick-commerce growth need extra workers at short notice.",
+          "Agency and contract staff. Pay runs through agencies, so workers often wait longer.",
+          "Night and split shifts. Higher travel and food costs.",
+          "High churn. Workers move for small differences in pay or pay timing.",
+        ],
+      },
+      {
+        heading: "How EWA helps",
+        paragraphs: [
+          "Keeps peak-season workers. Peak periods coincide with festival spending. Workers who can access earned wages are more likely to stay through the peak.",
+          "Helps new joiners. New workers often have no buffer. Access to earnings from the first days helps them through the first cycle.",
+          "Works with agency payroll. EWA can be deducted by the agency or contractor at payout.",
+          "Uses existing attendance data. Biometric or face reader attendance at the warehouse gate is the base for earned wages.",
+        ],
+      },
+      {
+        heading: "What operators should set up",
+        paragraphs: [],
+        list: [
+          "Digital attendance at every warehouse or dark store",
+          "Clear wage rates per role and shift",
+          "Agreement with agencies on deductions and settlement",
+          "Onboarding at the start of each peak season",
+        ],
+      },
+      {
+        heading: "Measuring impact",
+        paragraphs: [],
+        list: [
+          "Peak-season retention: workers still active at the end of the peak",
+          "Early churn: new joiners leaving within 30 days",
+          "No-show rate per shift",
+          "Advance requests to agencies and supervisors",
+        ],
+        ctaLabel: "Keep your warehouse workforce through every peak — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does EWA work for temporary peak-season workers?",
+        answer: "Yes, as long as their attendance and wage rates are recorded.",
+      },
+      {
+        question: "Who manages EWA when workers come through agencies?",
+        answer: "The agency usually handles deduction and settlement. The operator provides attendance data.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-security-facility-management",
+    title: "EWA for Security, Housekeeping and Facility Management Staff",
+    description: "Security guards and housekeeping staff work across many client sites and are often paid late. How Earned Wage Access helps facility management companies retain staff and win contracts.",
+    author: "InOps",
+    date: "September 21, 2026",
+    dateIso: "2026-09-21",
+    category: "Industry: Facility Management",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Security professional at a facility entrance — EWA for security and facility management staff",
+    summary: "Security and facility management companies employ large workforces spread across many client sites, often on tight margins. Earned Wage Access gives these workers access to earned wages without the company funding advances.",
+    sections: [
+      {
+        paragraphs: [
+          "Security and facility management companies employ large workforces spread across many client sites, often on tight margins. Guards and housekeeping staff frequently ask for advances, and attrition is high. Earned Wage Access gives these workers access to earned wages without the company funding advances. That makes it a practical retention tool for the sector.",
+        ],
+      },
+      {
+        heading: "Why this sector struggles with pay timing",
+        paragraphs: [],
+        list: [
+          "Client payments drive payroll. Many FM firms are paid by clients after 30 to 60 days, so cash is always tight.",
+          "Many sites, many supervisors. Advance requests are handled by site supervisors, inconsistently.",
+          "Long shifts, low margins. Workers have little savings, and small differences in pay timing push them to rivals.",
+          "Night shifts and travel. Extra costs that workers pay upfront.",
+        ],
+      },
+      {
+        heading: "How EWA works for FM and security firms",
+        paragraphs: [],
+        list: [
+          "Attendance is captured at each site through biometric, face reader or app check-ins.",
+          "Earned wages are calculated centrally.",
+          "Workers withdraw a share of earned wages from an app.",
+          "An NBFC partner funds the withdrawal.",
+          "The FM company deducts the amount at payroll and settles.",
+        ],
+      },
+      {
+        heading: "Benefits for FM and security companies",
+        paragraphs: [],
+        list: [
+          "Lower attrition in a sector where staff move often",
+          "Fewer advance requests to site supervisors",
+          "No working capital tied up in advances",
+          "A differentiator in tenders. A worker welfare benefit can strengthen bids for corporate and government contracts.",
+          "Better attendance data, since EWA depends on reliable check-ins",
+        ],
+      },
+      {
+        heading: "Getting started",
+        paragraphs: [
+          "Start with one large client site with reliable attendance capture. Expand across sites once the payroll deduction process runs smoothly.",
+        ],
+        ctaLabel: "Run a security or FM workforce? Talk to us about Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can EWA work across hundreds of small sites?",
+        answer: "Yes, if attendance from each site is captured digitally and centrally.",
+      },
+      {
+        question: "Can we use EWA in our tender proposals?",
+        answer: "Yes. You can describe it as a worker welfare measure. Check what each tender asks for.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-implementation-checklist",
+    title: "Launching EWA in 7 Days: An Employer Rollout Checklist",
+    description: "A practical day-by-day checklist for launching an Earned Wage Access pilot in a week: data, policy, contractors, worker onboarding and the first payroll.",
+    author: "InOps",
+    date: "September 22, 2026",
+    dateIso: "2026-09-22",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Person with a clipboard and checklist — 7-day EWA employer rollout checklist",
+    summary: "An Earned Wage Access pilot can be live within a week if attendance and payroll data are in order. The work is mostly about policy decisions and worker communication, not technology.",
+    sections: [
+      {
+        paragraphs: [
+          "An Earned Wage Access pilot can be live within a week if attendance and payroll data are in order. The work is mostly about policy decisions and worker communication, not technology. Use this checklist to plan a pilot at one site or with one contractor.",
+        ],
+      },
+      {
+        heading: "Before day 1: Decide the scope",
+        paragraphs: [],
+        list: [
+          "Pilot site or contractor chosen",
+          "Worker groups included (payroll, contract, gig)",
+          "Pilot owner named in HR or operations",
+          "Success measures agreed (adoption, advance requests, attrition)",
+        ],
+      },
+      {
+        heading: "Day 1–2: Data and integration",
+        paragraphs: [],
+        list: [
+          "Attendance source confirmed: biometric, face reader or app",
+          "Wage rates per worker or category shared",
+          "Payroll cycle and pay dates confirmed",
+          "Worker master data checked: name, ID, mobile, bank account",
+        ],
+      },
+      {
+        heading: "Day 3: Policy",
+        paragraphs: [],
+        list: [
+          "Withdrawal limit set as a share of earned wages",
+          "Fee policy decided: absorbed, passed on or mixed",
+          "Withdrawal frequency rules, if any",
+          "Exit and final settlement process agreed",
+        ],
+      },
+      {
+        heading: "Day 4: Contractors and payroll",
+        paragraphs: [],
+        list: [
+          "Contractors briefed on how deductions work",
+          "Deduction file format agreed",
+          "Settlement timeline with the NBFC partner agreed",
+        ],
+      },
+      {
+        heading: "Day 5–6: Worker onboarding",
+        paragraphs: [],
+        list: [
+          "Notices in local languages at the gate and canteen",
+          "Short demo sessions by shift",
+          "Help desk or coordinator named for questions",
+          "Worker consent captured at enrolment",
+          "Do's and don'ts shared: use for real needs, check fees, never share OTP",
+        ],
+      },
+      {
+        heading: "Day 7: Go live",
+        paragraphs: [],
+        list: [
+          "First withdrawals tested with a few workers",
+          "Daily usage report checked",
+          "Issues logged and fixed",
+        ],
+      },
+      {
+        heading: "First payroll after launch",
+        paragraphs: [],
+        list: [
+          "Deduction file reviewed before payroll",
+          "Deductions applied and reconciled",
+          "Settlement completed",
+          "Worker feedback collected",
+        ],
+        ctaLabel: "Start a Salary++ pilot this month — talk to us",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the most common delay?",
+        answer: "Incomplete worker data, especially bank account and mobile number mismatches. Check these first.",
+      },
+      {
+        question: "How long should the pilot run?",
+        answer: "At least two to three pay cycles, to see adoption and effects on attendance and advance requests.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-fraud-risk-controls",
+    title: "EWA Fraud and Abuse Controls: What to Ask Any Provider",
+    description: "How do Earned Wage Access programmes prevent fake attendance, over-withdrawal and account misuse? The controls employers should expect, and the questions to ask any EWA provider.",
+    author: "InOps",
+    date: "September 23, 2026",
+    dateIso: "2026-09-23",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Digital security shield on a screen — fraud and abuse controls for Earned Wage Access programmes",
+    summary: "Earned Wage Access is only as safe as the data behind it. A well-designed programme uses several layers of control: verified attendance, limits, identity checks and reconciliation. Here is what to expect, and what to ask.",
+    sections: [
+      {
+        paragraphs: [
+          "Earned Wage Access is only as safe as the data behind it. If attendance can be faked or accounts misused, withdrawals can be abused. A well-designed programme uses several layers of control: verified attendance, limits, identity checks and reconciliation. Here is what to expect, and what to ask.",
+        ],
+      },
+      {
+        heading: "The main risks",
+        paragraphs: [],
+        list: [
+          "Fake attendance. Proxy punches or ghost workers inflate earned wages.",
+          "Over-withdrawal. Workers draw more than they have earned, then leave.",
+          "Account takeover. Someone else uses a worker's app or changes the bank account.",
+          "Pressure on workers. Supervisors or others pushing workers to withdraw and hand over money.",
+          "Payroll mismatch. Withdrawals not deducted correctly at payroll.",
+        ],
+      },
+      {
+        heading: "Controls to expect",
+        paragraphs: [],
+        table: {
+          headers: ["Risk", "Control"],
+          rows: [
+            ["Fake attendance", "Biometric or face verification at the gate; no manual attendance without approval"],
+            ["Ghost workers", "Worker identity verified at enrolment; one ID per worker"],
+            ["Over-withdrawal", "Limit set as a share of verified earned wages; buffer for pending corrections"],
+            ["Account takeover", "OTP login; bank account verified in the worker's name; alerts on changes"],
+            ["Pressure on workers", "Withdrawals only to the worker's own account; private app access"],
+            ["Payroll mismatch", "Auto-generated deduction file; reconciliation report each cycle"],
+          ],
+        },
+      },
+      {
+        heading: "Questions to ask any provider",
+        paragraphs: [],
+        list: [
+          "How is attendance verified before it counts towards earned wages?",
+          "How are manual attendance corrections handled?",
+          "What share of earned wages can be withdrawn, and can we change it?",
+          "How is the bank account verified?",
+          "What alerts do we get for unusual activity?",
+          "How is reconciliation done at payroll?",
+          "What happens to outstanding withdrawals when a worker exits?",
+        ],
+      },
+      {
+        heading: "Why attendance quality matters most",
+        paragraphs: [
+          "Most EWA risks start with weak attendance data. Sites with reliable biometric or face reader attendance, connected to a CLMS, start with a strong base. Sites using paper or manual attendance should fix that first.",
+        ],
+        ctaLabel: "See the controls built into Salary++ — request a demo",
+        ctaHref: "/contact",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can a worker withdraw after they have stopped coming to work?",
+        answer: "Only from wages already earned and verified. The limit does not grow without attendance.",
+      },
+      {
+        question: "Who carries the loss if fraud happens?",
+        answer: "This depends on the cause and the agreement. Discuss it during setup.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-cost-to-employer",
+    title: "Does EWA Cost the Employer Anything?",
+    description: "Does offering Earned Wage Access cost the employer money? What employers pay, what they don't, and the hidden costs of not offering it.",
+    author: "InOps",
+    date: "September 24, 2026",
+    dateIso: "2026-09-24",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1730789701634-5386e7271462?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Finance team reviewing cost reports — understanding the cost of EWA to employers",
+    summary: "With an NBFC-funded EWA model like Salary++, the employer puts up no capital and carries no credit risk. The main costs are a per-withdrawal fee, which the employer can absorb or pass to workers, and a small amount of setup time.",
+    sections: [
+      {
+        paragraphs: [
+          "With an NBFC-funded EWA model like Salary++, the employer puts up no capital and carries no credit risk. The main costs are a per-withdrawal fee, which the employer can absorb or pass to workers, and a small amount of setup time. Against this, employers often already pay hidden costs for informal advances and pay-related attrition.",
+        ],
+      },
+      {
+        heading: "What the employer does not pay",
+        paragraphs: [],
+        list: [
+          "No capital. The NBFC partner funds every withdrawal.",
+          "No credit losses. Withdrawals are limited to earned wages, and the lender carries the funding risk.",
+          "No change to salaries. Total pay stays the same.",
+          "No change to pay dates. Payroll runs on its usual cycle.",
+        ],
+      },
+      {
+        heading: "What the employer may pay",
+        paragraphs: [],
+        table: {
+          headers: ["Cost", "Who bears it", "Notes"],
+          rows: [
+            ["Per-withdrawal fee", "Employer or worker, by choice", "Shown to the worker before each withdrawal if they pay it"],
+            ["Setup and integration", "Shared", "Attendance and payroll data connection"],
+            ["Payroll deduction step", "Employer or contractor", "Using the deduction file provided"],
+            ["Worker communication", "Employer", "Onboarding sessions and notices"],
+          ],
+        },
+      },
+      {
+        heading: "Absorb the fee or pass it on?",
+        paragraphs: [
+          "Absorbing the fee makes EWA a true benefit. It is best when retention is the main goal.",
+          "Passing it to workers keeps employer cost near zero. It works when the fee is small and clearly shown.",
+          "Some employers absorb the fee for one or two withdrawals a month and pass on the rest.",
+        ],
+      },
+      {
+        heading: "The cost of not offering EWA",
+        paragraphs: [],
+        list: [
+          "Time spent on informal advance requests",
+          "Advances lost when workers leave",
+          "Absenteeism when workers run short of cash",
+          "Attrition to employers who pay faster",
+          "Contractor cash tied up in advances",
+        ],
+        ctaLabel: "Get a cost view for your workforce — talk to us",
+        ctaHref: "/contact",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is there a minimum workforce size?",
+        answer: "EWA works best where attendance data is reliable and payroll is regular. Ask us for your site.",
+      },
+      {
+        question: "Does EWA affect our accounts?",
+        answer: "Withdrawals are funded by the NBFC and recovered through payroll. Discuss the accounting treatment with your finance team.",
+      },
+    ],
+  },
+
+  {
+    slug: "worker-self-service-app-attendance-payslip-ewa",
+    title: "One App for Workers: Attendance, Payslip and Wage Access",
+    description: "Blue-collar and contract workers juggle paper payslips, attendance disputes and advance requests. Why a single worker app for attendance, payslips and wage access works better.",
+    author: "InOps",
+    date: "September 25, 2026",
+    dateIso: "2026-09-25",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Worker using a smartphone — single app for attendance, payslip and wage access for blue-collar workers",
+    summary: "Blue-collar and contract workers rarely get good self-service tools. A single worker app brings attendance, payslips and earned wage access together, so workers see the full picture in one place.",
+    sections: [
+      {
+        paragraphs: [
+          "Blue-collar and contract workers rarely get good self-service tools. Attendance is on one system, payslips are on paper or WhatsApp, and advances depend on the contractor. A single worker app brings attendance, payslips and earned wage access together, so workers see the full picture in one place.",
+        ],
+      },
+      {
+        heading: "What workers need from an app",
+        paragraphs: [],
+        list: [
+          "My attendance: days and shifts recorded, missed punches flagged",
+          "My earnings: what I have earned so far this cycle",
+          "My payslip: pay, overtime and deductions, explained",
+          "My money: withdraw from earned wages when I need to",
+          "My requests: raise a correction or grievance",
+          "My documents: ID, PF and ESI details",
+        ],
+      },
+      {
+        heading: "Why one app works better than several",
+        paragraphs: [],
+        list: [
+          "One login. Workers with basic smartphones do not want several apps.",
+          "Connected data. Attendance feeds earnings, which feeds wage access and payslips. Errors are visible across all of them.",
+          "Less support load. Fewer calls to HR and contractors asking \"how much will I get?\"",
+          "Higher adoption. A worker who opens the app to check earnings also sees their payslip and grievance options.",
+        ],
+      },
+      {
+        heading: "Design for blue-collar users",
+        paragraphs: [],
+        list: [
+          "Local languages. Hindi, Kannada, Tamil, Telugu and others, depending on the site.",
+          "Large, simple screens. One main number per screen.",
+          "Works on low-end phones. Small download size, works on weak networks.",
+          "Easy login. Mobile number with OTP rather than complex passwords.",
+          "Assisted support. Help from a site or contractor coordinator for first use.",
+        ],
+      },
+      {
+        heading: "What employers gain",
+        paragraphs: [],
+        list: [
+          "Fewer attendance and pay disputes",
+          "Faster correction of missed punches",
+          "Lower HR and contractor admin",
+          "A modern experience that helps hiring and retention",
+        ],
+        ctaLabel: "Give workers one place for attendance, pay and wage access — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does the app work for contract workers?",
+        answer: "Yes, when attendance and payroll data are managed through a CLMS.",
+      },
+      {
+        question: "Do workers need to download separate apps for EWA and payslips?",
+        answer: "No. The InOps worker app is designed to bring these together.",
+      },
+    ],
+  },
+
+  {
+    slug: "replace-informal-contractor-advances-ewa",
+    title: "Replacing Informal Contractor Advances With Traceable EWA",
+    description: "Informal cash advances from contractors cause disputes, underpayment and audit risk. How principal employers can replace them with traceable Earned Wage Access.",
+    author: "InOps",
+    date: "September 26, 2026",
+    dateIso: "2026-09-26",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Cash and mobile payment side by side — replacing informal contractor cash advances with traceable EWA",
+    summary: "In many Indian plants, contract workers get advances from their contractor in cash or by UPI, recorded in a notebook if at all. Earned Wage Access replaces them with a system where every withdrawal is recorded and recovered transparently.",
+    sections: [
+      {
+        paragraphs: [
+          "In many Indian plants, contract workers get advances from their contractor in cash or by UPI, recorded in a notebook if at all. These informal advances lead to disputes over how much was taken and recovered. Earned Wage Access replaces them with a system where every withdrawal is recorded and recovered transparently.",
+        ],
+      },
+      {
+        heading: "How informal advances usually work",
+        paragraphs: [],
+        list: [
+          "A worker asks the contractor or supervisor for money.",
+          "The contractor decides how much to give, often based on relationship rather than days worked.",
+          "The amount is noted on paper or remembered.",
+          "At payroll, the contractor deducts what they believe is owed.",
+        ],
+      },
+      {
+        heading: "What goes wrong",
+        paragraphs: [],
+        list: [
+          "Disputes over amounts. Workers and contractors remember different figures.",
+          "Over-deduction. Workers sometimes find more deducted than they borrowed.",
+          "Advances beyond earned wages. Contractors lose money when workers leave.",
+          "Favouritism. Some workers get advances easily, others do not.",
+          "Audit risk. The principal employer has no record of deductions from wages paid for work at its site.",
+        ],
+      },
+      {
+        heading: "How EWA changes this",
+        paragraphs: [],
+        table: {
+          headers: ["Informal advance", "Earned Wage Access"],
+          rows: [
+            ["Decided by the contractor", "Limit calculated from attendance"],
+            ["Paid from the contractor's cash", "Funded by an NBFC partner"],
+            ["Recorded on paper, if at all", "Every withdrawal logged digitally"],
+            ["Deduction based on memory", "Deduction file generated automatically"],
+            ["Visible only to the contractor", "Visible to worker, contractor and principal employer"],
+          ],
+        },
+      },
+      {
+        heading: "A transition plan",
+        paragraphs: [],
+        list: [
+          "Announce the change. Explain to contractors and workers that EWA will replace informal advances for routine needs.",
+          "Settle old advances. Clear outstanding informal advances before starting.",
+          "Onboard workers. Short app demos at the gate or canteen, in the local language.",
+          "Set a policy. Large emergency advances above EWA limits can still be given, but recorded formally.",
+          "Review after two cycles. Check disputes, deductions and worker feedback.",
+        ],
+        ctaLabel: "Make every advance at your site traceable — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Will contractors resist this?",
+        answer: "Some may, at first. Most welcome no longer funding advances from their own cash.",
+      },
+      {
+        question: "Can we ban informal advances completely?",
+        answer: "It is better to make EWA the easy option and require formal records for anything else.",
+      },
+    ],
+  },
+
+  {
+    slug: "ewa-contract-labour-contractor-payroll",
+    title: "EWA for Contract Labour: Routing Advances Through the Contractor",
+    description: "Contract workers are paid by the contractor, not the principal employer. How Earned Wage Access works when the contractor runs payroll, and how to avoid disputes between worker, contractor and site.",
+    author: "InOps",
+    date: "September 27, 2026",
+    dateIso: "2026-09-27",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Contract workers at an industrial site — routing EWA advances through contractor payroll",
+    summary: "Contract workers are paid by their contractor, so EWA for contract labour has to work through the contractor's payroll. The principal employer's attendance system provides the earned-wage data. Set up correctly, this removes advance-related disputes instead of creating new ones.",
+    sections: [
+      {
+        paragraphs: [
+          "Contract workers are paid by their contractor, so EWA for contract labour has to work through the contractor's payroll. The principal employer's attendance system provides the earned-wage data. The contractor deducts and settles advances at payroll. Set up correctly, this removes advance-related disputes instead of creating new ones.",
+        ],
+      },
+      {
+        heading: "Why contract labour needs a different model",
+        paragraphs: [],
+        list: [
+          "Payroll sits with the contractor. The principal employer does not pay contract workers directly.",
+          "Attendance sits with the site. Biometric devices and the CLMS at the principal employer's site record attendance.",
+          "Many contractors per site. A large plant may have dozens of contractors, each with its own payroll process.",
+          "Informal advances are common. Many contractors already give cash advances, often without proper records.",
+        ],
+      },
+      {
+        heading: "How the model works",
+        paragraphs: [],
+        table: {
+          headers: ["Step", "Who does it"],
+          rows: [
+            ["Record attendance", "Principal employer's biometric or face reader system"],
+            ["Calculate earned wages", "Salary++, using attendance and the contractor's wage rates"],
+            ["Fund the withdrawal", "NBFC partner"],
+            ["Deduct at payroll", "Contractor"],
+            ["Settle with the NBFC", "Contractor"],
+            ["Monitor and audit", "Principal employer, through the CLMS"],
+          ],
+        },
+      },
+      {
+        heading: "What each party gets",
+        paragraphs: [
+          "Workers get access to earned wages without asking the contractor for cash.",
+          "Contractors stop funding advances from their own cash flow, and get a clean record of every withdrawal.",
+          "Principal employers get a benefit for contract workers, lower attrition at the site, and visibility into advances that were previously informal.",
+        ],
+      },
+      {
+        heading: "Avoiding disputes",
+        paragraphs: [],
+        list: [
+          "Agree the wage rates upfront. Earned wages must use the same rates the contractor pays.",
+          "Share the deduction file before payroll. Contractors see exactly what to deduct for each worker.",
+          "Reconcile attendance first. Fix missed punches before the cycle closes.",
+          "Explain it to workers. Workers should understand that withdrawals reduce their final pay.",
+          "Keep one source of truth. Worker, contractor and site all see the same CLMS data.",
+        ],
+      },
+      {
+        heading: "Where to start",
+        paragraphs: [
+          "Start with one or two contractors who already have clean payroll processes. Run two cycles, then add more contractors.",
+        ],
+        ctaLabel: "Bring EWA to your contract workforce — talk to us about Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does the principal employer carry any risk?",
+        answer: "No credit risk. The NBFC partner funds advances and the contractor recovers them through payroll.",
+      },
+      {
+        question: "What if a contractor does not deduct correctly?",
+        answer: "The deduction file and CLMS records make mismatches visible. Agree on correction steps in the contractor onboarding.",
+      },
+      {
+        question: "Can workers of different contractors use the same app?",
+        answer: "Yes. Each worker sees their own earnings and limit, regardless of contractor.",
+      },
+    ],
+  },
+
+  {
+    slug: "union-budget-gig-workers-india",
+    title: "Union Budget and Gig Workers: What Changed",
+    description: "What recent Union Budgets announced for India's gig and platform workers: ID cards, e-Shram registration and PM-JAY health cover. What it means for platforms and employers.",
+    author: "InOps",
+    date: "October 2, 2026",
+    dateIso: "2026-10-02",
+    category: "Policy & Compliance",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Indian Parliament building — Union Budget announcements for gig workers and platform workers",
+    summary: "The Union Budget 2025-26 was the first to announce specific support for India's platform workers, covering identity cards, e-Shram registration and health cover under PM Jan Arogya Yojana for about one crore workers.",
+    sections: [
+      {
+        paragraphs: [
+          "The Union Budget 2025-26 was the first to announce specific support for India's platform workers. It covered identity cards, e-Shram registration and health cover under PM Jan Arogya Yojana, for about one crore workers. This post explains what was announced and what platforms and employers should do.",
+        ],
+      },
+      {
+        heading: "What Budget 2025-26 announced",
+        paragraphs: ["Presented on 1 February 2025, the Budget said the government would:"],
+        list: [
+          "Arrange identity cards for gig workers on online platforms",
+          "Register them on the e-Shram portal",
+          "Provide healthcare cover under PM Jan Arogya Yojana",
+          "Cover nearly one crore gig workers through this scheme",
+        ],
+      },
+      {
+        heading: "The legal backdrop",
+        paragraphs: [
+          "The Code on Social Security, 2020 recognised gig and platform workers in law for the first time. Several states, including Karnataka, have also passed their own gig worker welfare laws.",
+        ],
+      },
+      {
+        heading: "What platforms and employers should do",
+        paragraphs: [],
+        list: [
+          "Help workers register on e-Shram. Registration is the gateway to the health and welfare benefits announced.",
+          "Keep clean worker records. ID, contact and earnings data will be needed for scheme enrolment and reporting.",
+          "Track state laws. State-level requirements may go further than central schemes.",
+          "Fill the gaps yourself. Government schemes cover health and social security. Day-to-day cash flow, the most immediate stress for gig workers, is not covered. Earned Wage Access fills that gap.",
+        ],
+        ctaLabel: "Give gig workers support they feel every week — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do gig workers automatically get PM-JAY cover?",
+        answer: "No. Workers need to register on the e-Shram portal to access benefits.",
+      },
+      {
+        question: "Do employers need to contribute under the Budget announcements?",
+        answer: "The Budget announcements did not set employer contributions. Contributions under the Code on Social Security and state laws are separate.",
+      },
+    ],
+  },
+
+  {
+    slug: "karnataka-gig-workers-act-platforms-guide",
+    title: "Karnataka's Gig Workers Law: What Platforms Should Know",
+    description: "Karnataka's Platform-based Gig Workers (Social Security and Welfare) law sets up a welfare board, worker registration and a welfare fee on aggregators. What platforms operating in Karnataka should know.",
+    author: "InOps",
+    date: "October 2, 2026",
+    dateIso: "2026-10-02",
+    category: "Policy & Compliance",
+    tab: "ewa",
+    readMinutes: 7,
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Government building with columns — Karnataka gig workers welfare law and compliance for platforms",
+    summary: "Karnataka has passed a law to give platform-based gig workers social security and welfare protection. It sets up a Gig Workers Welfare Board, requires worker and aggregator registration, and places a welfare fee on aggregators.",
+    sections: [
+      {
+        paragraphs: [
+          "Karnataka has passed a law to give platform-based gig workers social security and welfare protection. It sets up a Gig Workers Welfare Board, requires registration of workers and aggregators, and places a welfare fee on aggregators. Platforms operating in Karnataka, including Bengaluru, should prepare now.",
+        ],
+      },
+      {
+        heading: "Who it covers",
+        paragraphs: [
+          "The law covers gig workers whose work comes through a digital platform, such as ride-sharing, food delivery, and content and media services. An aggregator is the platform that connects customers with these workers.",
+        ],
+      },
+      {
+        heading: "Key provisions",
+        paragraphs: [],
+        table: {
+          headers: ["Area", "What the law provides"],
+          rows: [
+            ["Welfare Board", "A state Gig Workers Welfare Board with government, worker, aggregator and civil society representatives"],
+            ["Worker registration", "Each worker gets a unique ID valid across platforms; registration within 30 days of onboarding"],
+            ["Aggregator registration", "Aggregators register with the Board within 45 days of the law's commencement and share worker data"],
+            ["Welfare fee", "Aggregators pay 1% to 5% of the payout to the worker, rate set by category"],
+            ["Payment reporting", "Payments and welfare fees reported to a state system"],
+            ["Termination", "Reasons stated in the contract, with 14 days' prior notice"],
+            ["Grievances", "Internal dispute committee first, then the Board; appeals within 90 days"],
+            ["Penalties", "Rs 5,000 to Rs 1 lakh for contraventions; 12% annual interest on unpaid fees"],
+          ],
+        },
+      },
+      {
+        heading: "What platforms should do now",
+        paragraphs: [],
+        list: [
+          "Map your Karnataka workforce. Know who works through your platform in the state, directly or via fleet partners.",
+          "Get payout data in order. Transaction-level payout data will be needed for fee calculation and reporting.",
+          "Review contracts. Termination reasons, notice periods and the right to refuse tasks need to be clear.",
+          "Set up an internal dispute process. Grievances on payouts and deductions go to your committee first.",
+          "Budget for the welfare fee. Plan for the rate that applies to your category.",
+        ],
+      },
+      {
+        heading: "Where worker welfare benefits fit",
+        paragraphs: [
+          "The law focuses on social security through a state fund. Platforms can add their own measures, such as transparent earnings and Earned Wage Access. These address the day-to-day financial stress that a welfare fund does not.",
+        ],
+        ctaLabel: "Strengthen worker welfare beyond compliance — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does this law apply to logistics and delivery fleet partners?",
+        answer: "It applies to platform-based gig work. Check how your operating model is classified, with legal advice.",
+      },
+      {
+        question: "Is the welfare fee deducted from the worker?",
+        answer: "The law describes it as paid by aggregators, calculated on the payout to the worker. Confirm with the notified rules.",
+      },
+    ],
+  },
+
+  {
+    slug: "responsible-credit-gig-workers-framework",
+    title: "Responsible Credit for Gig Workers: A Framework",
+    description: "Gig workers need credit, but the wrong kind can trap them in debt. Five principles for platforms, employers and lenders offering credit or wage access to gig and blue-collar workers.",
+    author: "InOps",
+    date: "October 3, 2026",
+    dateIso: "2026-10-03",
+    category: "Policy & Compliance",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Person reviewing financial documents — responsible credit framework for gig and blue-collar workers",
+    summary: "Gig and blue-collar workers need access to money, but much of the credit offered to them is costly, unclear or aggressive in recovery. Responsible credit starts by matching the product to the need.",
+    sections: [
+      {
+        paragraphs: [
+          "Gig and blue-collar workers need access to money, but much of the credit offered to them is costly, unclear or aggressive in recovery. Responsible credit starts by matching the product to the need. Use earned wages for short gaps, and transparent formal credit for larger needs. Here is a framework for platforms, employers and lenders.",
+        ],
+      },
+      {
+        heading: "Principle 1: Match the product to the need",
+        paragraphs: [],
+        table: {
+          headers: ["Need", "Right product"],
+          rows: [
+            ["A few days' gap before payout", "Earned Wage Access"],
+            ["Emergency larger than earned wages", "Small formal loan with clear terms"],
+            ["Vehicle, phone or equipment for work", "Asset finance with repayment matched to earnings"],
+            ["Large life events", "Planned savings plus formal credit"],
+          ],
+        },
+      },
+      {
+        heading: "Principle 2: Base limits on verified earnings",
+        paragraphs: [
+          "Limits should come from actual work data: attendance, orders or hours. This keeps borrowing within what the worker can repay, and serves workers with no credit history.",
+        ],
+      },
+      {
+        heading: "Principle 3: Full transparency before the worker confirms",
+        paragraphs: [],
+        list: [
+          "Total cost in rupees, not only a rate",
+          "Repayment amount and date",
+          "What happens if repayment is late",
+          "In the worker's language",
+        ],
+      },
+      {
+        heading: "Principle 4: Recovery without harassment",
+        paragraphs: [
+          "Recovery through payroll or payout deduction, agreed upfront, avoids collection calls and visits. Workers should never face pressure at the workplace or through their contacts.",
+        ],
+      },
+      {
+        heading: "Principle 5: Protect worker data",
+        paragraphs: [
+          "Work and payout data should be used only for the stated purpose, with consent. Workers should know what is shared, with whom, and why.",
+        ],
+      },
+      {
+        heading: "Roles in the system",
+        paragraphs: [],
+        list: [
+          "Platforms and employers provide verified work data, enable payroll recovery and choose responsible partners.",
+          "Lenders set fair terms, disclose costs clearly and avoid aggressive recovery.",
+          "Technology providers connect the data securely and show workers clear information.",
+        ],
+        ctaLabel: "Offer workers a responsible alternative to costly loans — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Why should an employer care about workers' credit?",
+        answer: "Workers in debt miss shifts and leave. Responsible options reduce that.",
+      },
+      {
+        question: "Is EWA a form of credit?",
+        answer: "It depends on how a product is structured and regulated. EWA is designed to give access to earnings already made, recovered at payroll.",
+      },
+    ],
+  },
+
+  {
+    slug: "trust-transparency-earned-wage-access",
+    title: "Trust and Transparency: How EWA Improves Employer-Worker Relations",
+    description: "Pay disputes and opaque deductions erode trust between workers, contractors and employers. How transparent earnings and Earned Wage Access rebuild it.",
+    author: "InOps",
+    date: "October 4, 2026",
+    dateIso: "2026-10-04",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Two people shaking hands in an office — trust and transparency in employer-worker relations through EWA",
+    summary: "For blue-collar and contract workers, trust in an employer often comes down to one question: 'Am I being paid correctly?' Unclear attendance, overtime and deductions breed suspicion. Earned Wage Access, built on transparent attendance data, answers that question every day.",
+    sections: [
+      {
+        paragraphs: [
+          "For blue-collar and contract workers, trust in an employer often comes down to one question: \"Am I being paid correctly?\" Unclear attendance, overtime and deductions breed suspicion. Earned Wage Access, built on transparent attendance data, answers that question every day.",
+        ],
+      },
+      {
+        heading: "Where trust breaks down",
+        paragraphs: [],
+        list: [
+          "Missed punches that reduce pay",
+          "Overtime worked but not paid",
+          "Deductions not explained",
+          "Contractors paying less than what the principal employer was billed",
+          "Advances given informally and recovered without records",
+        ],
+      },
+      {
+        heading: "How transparency rebuilds it",
+        paragraphs: [
+          "Daily earnings visibility. With EWA, workers see their earned wages update after each shift. Any missing day is spotted immediately, not at month-end.",
+          "Faster correction. A worker who sees a missing punch on Tuesday can raise it on Wednesday. Problems are fixed before payroll.",
+          "Clear records of advances. Every withdrawal is logged with date and amount. No disputes at settlement.",
+          "Same data for everyone. Worker, contractor and principal employer see figures from the same attendance system.",
+        ],
+      },
+      {
+        heading: "What this means for contractors",
+        paragraphs: [
+          "Transparency protects good contractors. It shows that they pay correctly, and makes it harder for anyone to underpay workers.",
+        ],
+      },
+      {
+        heading: "What this means for principal employers",
+        paragraphs: [
+          "Transparent earnings reduce grievances, industrial relations issues and audit risk. When workers trust the numbers, they are more likely to stay.",
+        ],
+        ctaLabel: "Build trust through transparent pay — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Will showing daily earnings create more disputes?",
+        answer: "In the short term, it may surface old issues. Over time, it reduces disputes because errors are fixed quickly.",
+      },
+      {
+        question: "Can contractors see their workers' EWA withdrawals?",
+        answer: "Access depends on how the programme is set up. Withdrawal records are needed for payroll settlement.",
+      },
+    ],
+  },
+
+  {
+    slug: "financial-safety-net-for-workforce",
+    title: "How to Build a Financial Safety Net for Your Workforce",
+    description: "Most blue-collar and gig workers have no savings to fall back on. Four layers employers can put in place to build a financial safety net, from pay access to insurance.",
+    author: "InOps",
+    date: "October 5, 2026",
+    dateIso: "2026-10-05",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1434494817513-cc112a976e36?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Umbrella protecting a group of people — building a financial safety net for blue-collar and gig workers",
+    summary: "Many blue-collar and gig workers have no savings to absorb a shock. One hospital visit or a family emergency can push them into debt. Employers cannot solve this alone, but they can build a safety net with four practical layers.",
+    sections: [
+      {
+        paragraphs: [
+          "Many blue-collar and gig workers have no savings to absorb a shock. One hospital visit or a family emergency can push them into debt. Employers cannot solve this alone, but they can build a safety net with four practical layers.",
+        ],
+      },
+      {
+        heading: "Layer 1: Reliable, accurate pay",
+        paragraphs: ["The base of any safety net is pay that arrives on time and is correct."],
+        list: [
+          "Accurate attendance capture",
+          "Correct overtime and deductions",
+          "Fixed, reliable pay dates",
+        ],
+      },
+      {
+        heading: "Layer 2: Access to earned wages",
+        paragraphs: [
+          "Earned Wage Access lets workers draw from wages already earned when a need arises. It is the first line of defence for small, urgent needs, without borrowing.",
+        ],
+      },
+      {
+        heading: "Layer 3: Insurance",
+        paragraphs: [],
+        list: [
+          "ESI for eligible workers, with working cards",
+          "Group health cover where ESI does not apply",
+          "Accident cover during working hours",
+          "Help registering for government schemes where workers are eligible",
+        ],
+      },
+      {
+        heading: "Layer 4: Savings habits",
+        paragraphs: [],
+        list: [
+          "Optional small savings from each payout",
+          "Simple budgeting guidance",
+          "Information on safe savings options",
+        ],
+      },
+      {
+        heading: "How the layers work together",
+        paragraphs: [],
+        table: {
+          headers: ["Need", "Layer that helps"],
+          rows: [
+            ["Rent due before payday", "Earned Wage Access"],
+            ["Hospital admission", "ESI or health insurance"],
+            ["Accident at work", "Accident cover, ESI"],
+            ["Festival or school fees", "Savings, Earned Wage Access"],
+            ["Large planned expense", "Savings, formal credit"],
+          ],
+        },
+      },
+      {
+        heading: "Where to start",
+        paragraphs: [
+          "Start with layers 1 and 2. They are fully within the employer's control and show results in weeks. Add insurance and savings as the next step.",
+        ],
+        ctaLabel: "Start with layer 2 — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is EWA a replacement for savings?",
+        answer: "No. EWA helps with timing. Savings and insurance protect against larger shocks.",
+      },
+      {
+        question: "Can contract workers be covered?",
+        answer: "Yes. Principal employers can require contractors to provide statutory cover and can offer EWA through a CLMS.",
+      },
+    ],
+  },
+
+  {
+    slug: "employee-benefits-review-checklist-plant-hr",
+    title: "Time to Review Your Employee Benefits: A Checklist for Plant HR",
+    description: "A practical checklist for plant HR to review benefits for blue-collar and contract workers: statutory basics, pay access, health, safety and communication.",
+    author: "InOps",
+    date: "October 6, 2026",
+    dateIso: "2026-10-06",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "HR professional reviewing a checklist at a desk — employee benefits review for plant and factory workers",
+    summary: "Most benefits for blue-collar and contract workers were set up years ago and rarely reviewed. A yearly review shows what workers actually use, what is broken and what is missing.",
+    sections: [
+      {
+        paragraphs: [
+          "Most benefits for blue-collar and contract workers were set up years ago and rarely reviewed. A yearly review shows what workers actually use, what is broken and what is missing. Use this checklist with your HR, admin and contractor teams.",
+        ],
+      },
+      {
+        heading: "1. Statutory basics",
+        paragraphs: [],
+        list: [
+          "PF deducted and credited on time for all eligible workers, including contract workers",
+          "ESI registration active, and workers can use their cards at hospitals",
+          "Bonus, leave and overtime paid as per law",
+          "Contractors' statutory payments verified each month",
+        ],
+      },
+      {
+        heading: "2. Pay accuracy and timing",
+        paragraphs: [],
+        list: [
+          "Attendance captured accurately, with few manual corrections",
+          "Overtime calculated correctly and shown on payslips",
+          "Wages paid on time, every cycle",
+          "Digital payslips available in the worker's language",
+        ],
+      },
+      {
+        heading: "3. Access to money",
+        paragraphs: [],
+        list: [
+          "Workers can access earned wages before payday, for example through Earned Wage Access",
+          "Salary advance policy written, if advances are still given",
+          "Number of informal advance requests tracked",
+        ],
+      },
+      {
+        heading: "4. Health and safety",
+        paragraphs: [],
+        list: [
+          "Accident cover in place for working hours",
+          "First aid, safety gear and training in place",
+          "Safe transport for night shifts, especially for women workers",
+        ],
+      },
+      {
+        heading: "5. Daily experience",
+        paragraphs: [],
+        list: [
+          "Canteen quality and pricing reviewed",
+          "Drinking water, rest areas and toilets maintained",
+          "Grievance channel available and used",
+        ],
+      },
+      {
+        heading: "6. Communication",
+        paragraphs: [],
+        list: [
+          "Workers know what benefits they have",
+          "Information available in local languages",
+          "Contractors brief their workers on benefits",
+        ],
+      },
+      {
+        heading: "How to run the review",
+        paragraphs: [],
+        list: [
+          "Collect data: attendance, payroll, grievances, exits and advance requests.",
+          "Run short worker conversations or anonymous surveys.",
+          "Score each item: working, partly working, missing.",
+          "Fix the broken basics first, then add new benefits.",
+        ],
+        ctaLabel: "Add Earned Wage Access to your benefits — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "How often should we review benefits?",
+        answer: "Once a year in full, with quick checks on statutory items every month.",
+      },
+      {
+        question: "Which new benefit gives the most impact for low cost?",
+        answer: "Earned Wage Access is among the easiest to add. It needs no employer capital with an NBFC-funded model and helps workers from the first week.",
+      },
+    ],
+  },
+
+  {
+    slug: "roi-employee-financial-wellness-program",
+    title: "The ROI of Employee Financial Wellness Programs",
+    description: "How to build the business case for a financial wellness programme for blue-collar and contract workers: which costs it reduces, how to measure them, and a simple ROI method.",
+    author: "InOps",
+    date: "October 7, 2026",
+    dateIso: "2026-10-07",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 7,
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Financial analyst reviewing ROI charts on a screen — business case for employee financial wellness programs",
+    summary: "A financial wellness programme pays for itself when it reduces costs you are already carrying: attrition, absenteeism, hiring and the admin of informal advances. The way to prove it is to measure those costs before you start, then compare.",
+    sections: [
+      {
+        paragraphs: [
+          "A financial wellness programme pays for itself when it reduces costs you are already carrying: attrition, absenteeism, hiring and the admin of informal advances. The way to prove it is to measure those costs before you start, then compare. Here is a simple method finance and HR teams can use.",
+        ],
+      },
+      {
+        heading: "Step 1: List the costs financial stress creates",
+        paragraphs: [],
+        table: {
+          headers: ["Cost", "How to estimate it"],
+          rows: [
+            ["Attrition", "Exits per month × cost to replace one worker (hiring, verification, training, lost output)"],
+            ["Absenteeism", "Unplanned absent days × cost of cover (overtime, temporary staff, lost output)"],
+            ["Advance admin", "Requests per month × time spent per request × staff cost"],
+            ["Advances written off", "Advances not recovered when workers leave"],
+            ["Overtime to cover gaps", "Overtime hours caused by short staffing"],
+          ],
+        },
+      },
+      {
+        heading: "Step 2: Pick the programme elements",
+        paragraphs: ["Common elements for blue-collar and contract workforces:"],
+        list: [
+          "Earned Wage Access — access to earned wages before payday",
+          "Financial education — short sessions on budgeting and safe borrowing",
+          "Insurance — group health or accident cover",
+          "Savings nudges — optional small savings from each payout",
+        ],
+      },
+      {
+        heading: "Step 3: Count the programme cost",
+        paragraphs: [
+          "With an NBFC-funded EWA model, the employer puts up no capital. Costs are mainly:",
+        ],
+        list: [
+          "Per-withdrawal fees, if the employer chooses to absorb them",
+          "Setup and integration time",
+          "Communication and training",
+        ],
+      },
+      {
+        heading: "Step 4: Measure the change",
+        paragraphs: [
+          "Run a pilot at one site or with one contractor for two or three pay cycles. Compare with a similar site that has not started. ROI = (Cost reduction − Programme cost) ÷ Programme cost.",
+        ],
+      },
+      {
+        heading: "Six ways the programme pays back",
+        paragraphs: [],
+        list: [
+          "Fewer exits, so lower hiring and training costs",
+          "Fewer unplanned absences",
+          "Less time spent handling advance requests",
+          "Fewer advances lost when workers leave",
+          "Less overtime needed to cover gaps",
+          "A stronger employer brand for hiring",
+        ],
+        ctaLabel: "Run a measurable Salary++ pilot at one site — talk to us",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "How long before we see ROI?",
+        answer: "Measure over at least two or three pay cycles. Attrition effects take longer to show than admin savings.",
+      },
+      {
+        question: "What if we cannot measure attrition cost precisely?",
+        answer: "Use a conservative estimate and state your assumptions. Even rough numbers make the case clearer.",
+      },
+    ],
+  },
+
+  {
+    slug: "employee-financial-wellness-hr-retention-metric",
+    title: "Financial Wellness Is Becoming an HR Retention Metric",
+    description: "HR teams track attrition, absenteeism and engagement. Financial stress drives all three. Why financial wellness is becoming an HR metric, and how to measure it for a blue-collar workforce.",
+    author: "InOps",
+    date: "October 8, 2026",
+    dateIso: "2026-10-08",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "HR professional reviewing analytics on a laptop — financial wellness as a retention metric",
+    summary: "HR teams already track attrition, absenteeism and engagement. Financial stress sits behind all three, especially for blue-collar and contract workers. That is why more HR leaders are treating financial wellness as a metric in its own right.",
+    sections: [
+      {
+        paragraphs: [
+          "HR teams already track attrition, absenteeism and engagement. Financial stress sits behind all three, especially for blue-collar and contract workers. That is why more HR leaders are treating financial wellness as a metric in its own right, not as a perk.",
+        ],
+      },
+      {
+        heading: "How financial stress shows up at work",
+        paragraphs: [],
+        list: [
+          "Absenteeism. Workers miss shifts to sort out money problems or avoid lenders.",
+          "Attrition. Workers leave for small pay increases or faster pay.",
+          "Safety. Distracted workers make more mistakes on the shop floor and on the road.",
+          "Advance requests. HR and supervisors spend time handling them.",
+          "Grievances. Pay disputes rise when workers are under pressure.",
+        ],
+      },
+      {
+        heading: "How to measure financial wellness",
+        paragraphs: ["You do not need a complex survey. Start with signals you already have:"],
+        table: {
+          headers: ["Indicator", "Where to find it"],
+          rows: [
+            ["Salary advance requests per month", "HR or contractor records"],
+            ["Loan-related wage attachments or recovery calls", "HR records, security desk"],
+            ["Absenteeism in the last week before payday", "Attendance system"],
+            ["Exit interviews citing pay timing", "Exit data"],
+            ["Pay-related grievances", "Grievance logs"],
+          ],
+        },
+      },
+      {
+        heading: "What improves financial wellness",
+        paragraphs: [],
+        list: [
+          "Accurate, on-time pay. The foundation.",
+          "Earned Wage Access. Removes the gap between earning and getting paid.",
+          "Statutory benefits that work. PF and ESI credited on time.",
+          "Simple financial education. Budgeting, safe borrowing and savings, in the local language.",
+          "Insurance. Health and accident cover reduce the shock of emergencies.",
+        ],
+      },
+      {
+        heading: "Reporting it to leadership",
+        paragraphs: [
+          "Tie financial wellness to the numbers leadership already watches: attrition, absenteeism and hiring cost. Show the trend before and after a change such as introducing EWA.",
+        ],
+        ctaLabel: "Make financial wellness measurable — see how Salary++ helps",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is financial wellness the employer's responsibility?",
+        answer: "Employers are not responsible for workers' personal finances. But they bear the cost of financial stress through absenteeism and attrition, so it makes business sense to help.",
+      },
+      {
+        question: "What is the quickest way to improve it?",
+        answer: "Accurate, on-time pay and Earned Wage Access give the fastest visible results.",
+      },
+    ],
+  },
+
+  {
+    slug: "flexible-pay-for-blue-collar-workers",
+    title: "Flexible Pay Matters as Much as Flexible Work",
+    description: "Flexible work is mostly a white-collar benefit. For blue-collar workers, who need to be on site, flexible pay may matter more. What flexible pay means and how to offer it.",
+    author: "InOps",
+    date: "October 9, 2026",
+    dateIso: "2026-10-09",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Workers discussing benefits at a factory — flexible pay as an alternative to flexible work for blue-collar employees",
+    summary: "Flexible work became a top benefit for office workers. Blue-collar workers rarely get it. What they can get is flexible pay — access to wages they have earned when they need them. For many workers, that matters more.",
+    sections: [
+      {
+        paragraphs: [
+          "Flexible work became a top benefit for office workers. Blue-collar workers rarely get it: a machine operator, guard or picker has to be on site, on shift. What they can get is flexible pay, meaning access to wages they have earned when they need them. For many workers, that matters more.",
+        ],
+      },
+      {
+        heading: "What flexible pay means",
+        paragraphs: ["Flexible pay does not mean changing salaries or pay dates. It means:"],
+        list: [
+          "Workers can access a share of earned wages before payday",
+          "They choose when and how much, within a set limit",
+          "The rest is paid on the regular payday",
+        ],
+      },
+      {
+        heading: "Why blue-collar workers need it more",
+        paragraphs: [],
+        list: [
+          "Tighter budgets. Less room for unexpected costs.",
+          "Irregular expenses. Medical needs, family events and festivals do not follow pay dates.",
+          "Fewer credit options. Many workers cannot get a credit card or bank loan.",
+          "Less flexibility elsewhere. Fixed shifts leave little scope to take extra work when money is short.",
+        ],
+      },
+      {
+        heading: "What flexible pay does for employers",
+        paragraphs: [],
+        list: [
+          "Reduces attrition linked to pay timing",
+          "Cuts informal advance requests",
+          "Improves attendance, since every shift adds to accessible earnings",
+          "Gives the company a modern benefit to talk about in hiring",
+        ],
+      },
+      {
+        heading: "How to offer flexible pay without disrupting payroll",
+        paragraphs: [],
+        list: [
+          "Keep the current payroll cycle. EWA works on top of it.",
+          "Use attendance as the base. Biometric or app attendance tells you exactly what each worker has earned.",
+          "Set a clear limit. A share of earned wages, so enough remains for statutory deductions and month-end.",
+          "Work with a funding partner. An NBFC funds the advances, so company cash is not used.",
+          "Communicate simply. Explain how it works, what it costs and how it is recovered.",
+        ],
+        ctaLabel: "Give shop-floor workers the flexibility they can actually use — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does flexible pay change the salary amount?",
+        answer: "No. The worker's total pay stays the same. Only the timing of access changes.",
+      },
+      {
+        question: "Is this the same as a salary advance?",
+        answer: "No. A salary advance may exceed what has been earned. Flexible pay through EWA only gives access to earned wages.",
+      },
+    ],
+  },
+
+  {
+    slug: "why-blue-collar-workers-switch-jobs-benefits",
+    title: "Why Blue-Collar Workers Switch Jobs for Better Benefits",
+    description: "Blue-collar workers in India often leave for small differences in pay or benefits. What they actually value, and which low-cost benefits keep them on the shop floor.",
+    author: "InOps",
+    date: "October 10, 2026",
+    dateIso: "2026-10-10",
+    category: "Blue-Collar HR",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Blue-collar workers at a construction or factory site — why workers switch jobs and what benefits matter most",
+    summary: "Blue-collar workers in Indian factories, warehouses and service firms switch jobs often, sometimes for a few hundred rupees a month. But pay is rarely the only reason. Workers weigh how and when they are paid, how they are treated, and what support they get when things go wrong.",
+    sections: [
+      {
+        paragraphs: [
+          "Blue-collar workers in Indian factories, warehouses and service firms switch jobs often, sometimes for a few hundred rupees a month. But pay is rarely the only reason. Workers weigh how and when they are paid, how they are treated, and what support they get when things go wrong. Some of the most valued benefits cost employers very little.",
+        ],
+      },
+      {
+        heading: "What blue-collar workers value most",
+        paragraphs: [],
+        list: [
+          "Getting paid on time, every time. Delayed or incorrect salaries break trust fast. Workers talk, and a site known for late pay struggles to hire.",
+          "Access to money when needed. Many workers live month to month. A worker who can draw earned wages for an emergency has less reason to look elsewhere.",
+          "Correct attendance and overtime. Disputes over missed punches and unpaid overtime are a top complaint. Accurate biometric attendance and clear payslips prevent them.",
+          "Statutory benefits that actually work. PF and ESI deducted but not credited, or ESI cards that do not work at the hospital, drive workers away.",
+          "Respect and fair treatment. How supervisors and contractors treat workers matters as much as any benefit.",
+          "Canteen, transport and safety. Subsidised meals, safe transport for night shifts and proper safety gear shape daily experience.",
+        ],
+      },
+      {
+        heading: "Benefits that cost little but matter a lot",
+        paragraphs: [],
+        table: {
+          headers: ["Benefit", "Cost to employer", "Why workers value it"],
+          rows: [
+            ["Earned Wage Access", "No capital with an NBFC-funded model", "Money for emergencies without borrowing"],
+            ["Digital payslips", "Low", "Clear view of pay and deductions"],
+            ["Accurate attendance", "One-time setup", "No disputes over missed days"],
+            ["PF and ESI tracking", "Low", "Confidence that statutory dues are paid"],
+            ["Grievance channel", "Low", "A way to raise problems without fear"],
+          ],
+        },
+      },
+      {
+        heading: "The contractor factor",
+        paragraphs: [
+          "For contract workers, the experience is shaped largely by the contractor. A principal employer can still set standards: timely wage payment, correct statutory deductions and access to benefits like EWA. Making EWA available to contract workers through a CLMS shows workers that the site cares about them, not only the contractor.",
+        ],
+        ctaLabel: "Offer a benefit your workers will feel from day one — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is pay the main reason blue-collar workers leave?",
+        answer: "Pay matters, but timing, accuracy and treatment are often just as important. Fixing these is usually cheaper than raising wages.",
+      },
+      {
+        question: "Can contract workers get the same benefits as payroll employees?",
+        answer: "Many can, including EWA, if attendance and wages are tracked through a CLMS.",
+      },
+    ],
+  },
+
+  {
+    slug: "gig-worker-daily-expenses-fuel-recharge-rent",
+    title: "Fuel, Recharge, Rent: The Costs Gig Workers Can't Wait 15 Days For",
+    description: "Gig workers pay for fuel, mobile data, food and vehicle costs every day, but are paid every week or two. A look at the daily costs of gig work and how early access to earnings helps.",
+    author: "InOps",
+    date: "October 11, 2026",
+    dateIso: "2026-10-11",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 5,
+    image: "https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Motorcycle at a petrol pump — gig workers pay for fuel and daily costs before their next payout",
+    summary: "Gig work has a cost of doing business, and the worker pays it upfront. Fuel, data, food and vehicle upkeep come out of the worker's pocket every day, long before payout. Earned Wage Access lets workers fund today's costs from what they have already earned.",
+    sections: [
+      {
+        paragraphs: [
+          "Gig work has a cost of doing business, and the worker pays it upfront. Fuel, data, food and vehicle upkeep come out of the worker's pocket every day, long before payout. When that pocket is empty, the worker cannot work. Earned Wage Access lets workers fund today's costs from what they have already earned.",
+        ],
+      },
+      {
+        heading: "The daily and weekly costs of gig work",
+        paragraphs: ["Daily:"],
+        list: [
+          "Fuel or EV charging",
+          "Food and water during shifts",
+          "Mobile data",
+        ],
+      },
+      {
+        heading: "",
+        paragraphs: ["Weekly or monthly:"],
+        list: [
+          "Vehicle EMI or rental",
+          "Phone EMI or recharge plan",
+          "Vehicle servicing, tyres and repairs",
+          "Parking and traffic fines",
+          "Rent and household bills",
+        ],
+      },
+      {
+        heading: "",
+        paragraphs: ["Unexpected:"],
+        list: [
+          "Accidents and medical costs",
+          "Phone damage",
+          "Family emergencies",
+        ],
+      },
+      {
+        heading: "Why these costs create a cash crunch",
+        paragraphs: [
+          "These costs cannot wait. A rider without fuel cannot take orders. A worker without data cannot log in. A worker who misses a vehicle EMI risks losing the vehicle. Payout, though, comes after a week or two.",
+        ],
+      },
+      {
+        heading: "What workers do today",
+        paragraphs: [],
+        list: [
+          "Borrow from friends and family",
+          "Take small loans from moneylenders or apps",
+          "Ask the fleet partner or hub manager for an advance",
+          "Work fewer hours until payout",
+          "Switch to another platform that pays sooner",
+        ],
+      },
+      {
+        heading: "How EWA solves this",
+        paragraphs: [
+          "With Earned Wage Access, a worker who has completed three days of work can draw part of those three days' earnings. They use it to fill the tank, recharge, and keep working. The amount is adjusted against the next payout.",
+        ],
+        list: [
+          "Today's work funds today's costs.",
+          "No new debt for routine expenses.",
+          "More active hours, because cash shortages no longer stop work.",
+        ],
+        ctaLabel: "Help your workers fund every shift — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can EWA be used only for work expenses?",
+        answer: "No. Workers can use their earnings as they choose. Many use it first for fuel and data, because those keep them earning.",
+      },
+      {
+        question: "How much can a worker withdraw?",
+        answer: "A share of earned wages, set by the employer or platform.",
+      },
+    ],
+  },
+
+  {
+    slug: "weekly-vs-fortnightly-vs-monthly-payout-workers",
+    title: "Weekly, 15-Day or Monthly Payouts: Which Fits Your Workforce?",
+    description: "Should you pay your workforce weekly, every 15 days or monthly? The trade-offs in admin, cost and retention, and how Earned Wage Access changes the decision.",
+    author: "InOps",
+    date: "October 12, 2026",
+    dateIso: "2026-10-12",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Payroll spreadsheet open on a laptop — comparing weekly, fortnightly and monthly payout cycles",
+    summary: "There is no single best pay frequency. Weekly pay suits workers but adds admin. Monthly pay is easiest to run but hardest on workers. Earned Wage Access lets you keep the cycle that suits your operations, while workers get access to earnings when they need it.",
+    sections: [
+      {
+        paragraphs: [
+          "There is no single best pay frequency. Weekly pay suits workers but adds admin. Monthly pay is easiest to run but hardest on workers. Fifteen-day pay sits in between. Earned Wage Access lets you keep the cycle that suits your operations, while workers get access to earnings when they need it.",
+        ],
+        table: {
+          headers: ["", "Weekly", "15-day", "Monthly"],
+          rows: [
+            ["Payroll runs per year", "52", "24", "12"],
+            ["Admin and reconciliation effort", "High", "Medium", "Low"],
+            ["Longest wait for earned pay", "About a week", "About two weeks", "About a month"],
+            ["Common in", "Gig and delivery platforms, daily-wage work", "Staffing agencies, fleet partners, some contractors", "Factories, payroll employees, most contract labour"],
+            ["Worker preference", "High", "Medium", "Low"],
+          ],
+        },
+      },
+      {
+        heading: "Weekly payouts",
+        paragraphs: [
+          "Pros: Workers value it, and it helps attract talent in competitive markets.",
+          "Cons: Four times the payroll runs of a monthly cycle. More reconciliation, more bank transfers and more room for errors. Statutory deductions and compliance reports still follow monthly calendars, which adds complexity.",
+        ],
+      },
+      {
+        heading: "15-day payouts",
+        paragraphs: [
+          "Pros: A middle path. Manageable admin, with shorter waits for workers.",
+          "Cons: Workers still face a two-week gap. Expenses in the second week often push them to borrow.",
+        ],
+      },
+      {
+        heading: "Monthly payouts",
+        paragraphs: [
+          "Pros: Simplest to run. Aligns with statutory filings and accounting.",
+          "Cons: The longest wait. Monthly-paid blue-collar workers are the most likely to ask for advances and borrow informally.",
+        ],
+      },
+      {
+        heading: "How Earned Wage Access changes the decision",
+        paragraphs: [
+          "With EWA, workers can draw part of their earned wages on any day. The official pay cycle matters less to them. This means you can:",
+        ],
+        list: [
+          "Keep a monthly or 15-day cycle for simpler operations",
+          "Offer workers the flexibility of daily access to their earnings",
+          "Avoid moving to weekly payroll just to compete for workers",
+        ],
+      },
+      {
+        heading: "How to choose",
+        paragraphs: [],
+        list: [
+          "Start with what your operations and compliance can support reliably.",
+          "Ask how often workers request advances. Frequent requests mean the gap is too long.",
+          "Check what competitors for the same workers offer.",
+          "Add EWA to close the gap instead of shortening the cycle.",
+        ],
+        ctaLabel: "Keep your payroll cycle and give workers flexibility — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can we have different cycles for different worker groups?",
+        answer: "Yes, many companies do. EWA can work with each of them.",
+      },
+      {
+        question: "Does EWA replace weekly pay?",
+        answer: "For many workers, yes in practice. They get access to earnings when needed, while payroll stays on its current cycle.",
+      },
+    ],
+  },
+
+  {
+    slug: "15-day-payout-gap-gig-workers",
+    title: "The 15-Day Payout Gap: What Gig Workers Do Between Paydays",
+    description: "Many gig workers in India are paid every 15 days, but their expenses come daily. What happens in that gap, what it costs workers and companies, and how Earned Wage Access closes it.",
+    author: "InOps",
+    date: "October 13, 2026",
+    dateIso: "2026-10-13",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Calendar on a desk marking pay dates — the 15-day payout gap gig workers face between paydays",
+    summary: "Many gig workers in India are paid every 15 days. Their costs arrive every day. The two weeks in between are where workers borrow, cut hours or start looking for another job.",
+    sections: [
+      {
+        paragraphs: [
+          "Many gig workers in India are paid every 15 days. Their costs arrive every day. The two weeks in between are where workers borrow, cut hours or start looking for another job. Earned Wage Access lets them draw from what they have already earned, so the gap stops being a crisis.",
+        ],
+      },
+      {
+        heading: "Why 15-day cycles are common",
+        paragraphs: [
+          "Companies that employ gig workers through staffing agencies, fleet partners or contractors often pay fortnightly. Fortnightly pay balances admin effort against worker needs. It is better than a monthly cycle, but it still leaves a long wait for workers with daily expenses.",
+        ],
+      },
+      {
+        heading: "A worker's 15 days",
+        paragraphs: [],
+        table: {
+          headers: ["Days", "What happens"],
+          rows: [
+            ["1–3", "Payout received. Rent, loan repayments and money home are paid."],
+            ["4–7", "Daily fuel, food and data spending begins. Savings run down."],
+            ["8–11", "Cash runs out for many. Borrowing from friends, moneylenders or apps begins."],
+            ["12–15", "Some cut hours to save fuel or take side work. Some look for platforms that pay faster."],
+            ["Payout", "A large share goes to repaying what was borrowed. The cycle restarts with less."],
+          ],
+        },
+      },
+      {
+        heading: "What the gap costs companies",
+        paragraphs: [],
+        list: [
+          "Lower activity at the end of the cycle. Workers short of fuel or travel money log fewer hours.",
+          "Churn. Workers move to wherever pays faster.",
+          "Advance requests. Hub managers and agencies field constant requests.",
+          "Stress-related issues. Workers under money pressure make more mistakes and take more risks on the road.",
+        ],
+      },
+      {
+        heading: "Why not just pay weekly or daily?",
+        paragraphs: [
+          "Shorter cycles help, but they increase payroll runs, reconciliation and bank costs. They also do not cover a sudden expense on day three of a seven-day cycle. Earned Wage Access keeps your existing payout cycle and gives workers access to earned wages in between.",
+        ],
+      },
+      {
+        heading: "How EWA works on a 15-day cycle",
+        paragraphs: [],
+        list: [
+          "Shifts, orders or hours are recorded each day.",
+          "The worker's app shows what they have earned so far in the cycle.",
+          "The worker can withdraw a share of it, up to a limit set by the employer.",
+          "The amount is adjusted against the 15-day payout.",
+        ],
+        ctaLabel: "Close the 15-day gap for your workforce — talk to us about Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can EWA work with weekly as well as 15-day payouts?",
+        answer: "Yes. EWA works with any cycle. The longer the cycle, the more workers value it.",
+      },
+      {
+        question: "Who adjusts the advance at payout?",
+        answer: "The organisation that runs the payout: the platform, agency or fleet partner. The EWA system provides the deduction file.",
+      },
+      {
+        question: "How quickly can we start?",
+        answer: "A Salary++ pilot can start in under 7 days once attendance and payout data are available.",
+      },
+    ],
+  },
+
+  {
+    slug: "women-gig-workers-india-earned-wage-access",
+    title: "Women in India's Gig Workforce: Why Access to Earnings Matters",
+    description: "More women are joining India's gig and blue-collar workforce. Why control over their own earnings matters, and how employers can make work more financially secure for them.",
+    author: "InOps",
+    date: "October 14, 2026",
+    dateIso: "2026-10-14",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Woman professional at work — women in India's gig and blue-collar workforce gaining financial independence",
+    summary: "More women are joining India's gig and blue-collar workforce. For many, it is their first independent income. Control over that income, and when they can use it, matters a great deal.",
+    sections: [
+      {
+        paragraphs: [
+          "More women are joining India's gig and blue-collar workforce: in beauty and home services, delivery, warehousing, retail, garment manufacturing and electronics assembly. For many, it is their first independent income. Control over that income, and when they can use it, matters a great deal.",
+        ],
+      },
+      {
+        heading: "What women workers often face",
+        paragraphs: [],
+        list: [
+          "Less control over money. Earnings may be managed by a family member.",
+          "Household and childcare costs. These often fall on women and arrive unpredictably.",
+          "Safety and travel costs. Safer transport often costs more.",
+          "Less access to formal credit. Many have no credit history or assets in their name.",
+          "Hesitation to ask for advances. Asking a male supervisor or contractor for money can feel uncomfortable.",
+        ],
+      },
+      {
+        heading: "How Earned Wage Access helps",
+        paragraphs: [
+          "Privacy and dignity. Women can access their earnings from an app, without asking anyone or explaining why.",
+          "Money in their own account. Withdrawals go to the worker's own bank account, which supports financial independence.",
+          "A buffer for unexpected costs. A child's illness, school expenses or a travel need can be met from their own earnings.",
+          "No new debt. EWA draws on wages already earned, so it does not add to household debt.",
+        ],
+      },
+      {
+        heading: "What employers can do",
+        paragraphs: [],
+        list: [
+          "Make sure every woman worker has a bank account in her own name.",
+          "Offer EWA as a standard benefit, explained at onboarding.",
+          "Offer onboarding and support through women staff where possible.",
+          "Pair EWA with simple financial literacy sessions.",
+          "Review safety and transport arrangements alongside pay access.",
+        ],
+      },
+      {
+        heading: "Why it matters for business",
+        paragraphs: [
+          "Industries like electronics assembly and garments depend heavily on women workers. Retaining them reduces hiring and training costs. Financial security is one of the most practical ways to support retention.",
+        ],
+        ctaLabel: "Give women in your workforce more control over their earnings — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can a worker's family see her EWA withdrawals?",
+        answer: "Withdrawals appear in the worker's own app and bank account.",
+      },
+      {
+        question: "Is EWA suitable for part-time women workers?",
+        answer: "Yes. Earned wages are calculated from actual attendance, whatever the hours.",
+      },
+    ],
+  },
+
+  {
+    slug: "gig-workers-tier-2-tier-3-cities-pay-access",
+    title: "Gig Work in Tier 2 and Tier 3 Cities: Why Pay Access Matters More",
+    description: "Gig work is growing fast in India's Tier 2 and Tier 3 cities. Lower savings, fewer formal credit options and family obligations make access to earnings even more important there.",
+    author: "InOps",
+    date: "October 15, 2026",
+    dateIso: "2026-10-15",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Busy street in an Indian Tier 2 city — gig workers in smaller cities face greater pay access challenges",
+    summary: "Gig work in India is no longer only a metro story. Workers in Tier 2 and Tier 3 cities often have fewer savings and fewer formal credit options. That makes timely access to earned wages even more important.",
+    sections: [
+      {
+        paragraphs: [
+          "Gig work in India is no longer only a metro story. Delivery, logistics, field services and warehousing are expanding into Tier 2 and Tier 3 cities. Workers there often have fewer savings and fewer formal credit options than metro workers. That makes timely access to earned wages even more important.",
+        ],
+      },
+      {
+        heading: "What is different about smaller cities",
+        paragraphs: [],
+        list: [
+          "Fewer formal credit options. Many workers have no credit history or salary slip, so banks and NBFCs rarely lend to them.",
+          "More informal lending. Local moneylenders and chit funds fill the gap, often at high cost.",
+          "Family obligations. Many workers support extended families and send money to villages.",
+          "Seasonal pulls. Agriculture and local festivals pull workers away at certain times of year.",
+          "Fewer job alternatives. Gig work may be the main source of cash income in the household.",
+        ],
+      },
+      {
+        heading: "Why pay timing matters more here",
+        paragraphs: [
+          "A metro worker who runs short may have a credit card or a friend with spare cash. A Tier 3 worker more often turns to a moneylender. A weekly or 15-day payout cycle leaves long gaps, and each gap is a chance to borrow at high cost.",
+        ],
+      },
+      {
+        heading: "How Earned Wage Access helps",
+        paragraphs: [],
+        list: [
+          "Workers access their own earnings without borrowing",
+          "No credit history is needed, since the limit is based on work done",
+          "Money goes to their bank account, building a digital transaction record",
+          "Clear, app-based records help workers track their earnings",
+        ],
+      },
+      {
+        heading: "Rollout tips for smaller cities",
+        paragraphs: [],
+        list: [
+          "Use the local language. App screens, onboarding and support should be in the worker's language.",
+          "Train hub and site managers. Workers trust a familiar face more than an app notification.",
+          "Keep it simple. One screen showing earned wages, the limit, the fee and a withdraw button.",
+          "Help with bank accounts. Some workers need help linking or updating a bank account.",
+        ],
+        ctaLabel: "Expanding into smaller cities? See how Salary++ supports your workforce",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do workers need a smartphone for EWA?",
+        answer: "Most EWA products use a mobile app. Assisted options, such as help from a site manager, may be needed for some workers.",
+      },
+      {
+        question: "Does EWA work without a credit score?",
+        answer: "Yes. The limit is based on verified earned wages, not credit history.",
+      },
+    ],
+  },
+
+  {
+    slug: "sustainable-gig-jobs-flexibility-security",
+    title: "Sustainable Gig Jobs: Flexibility Without Financial Insecurity",
+    description: "Gig work offers flexibility, but often at the cost of financial security. What a sustainable gig job looks like, and the role employers and platforms can play.",
+    author: "InOps",
+    date: "October 16, 2026",
+    dateIso: "2026-10-16",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Person working on a laptop from a flexible location — sustainable gig jobs combining flexibility and financial security",
+    summary: "Gig work gives people flexibility over when and how much they work. A sustainable gig job keeps that flexibility and adds basic security. Employers and platforms can take practical steps towards this.",
+    sections: [
+      {
+        paragraphs: [
+          "Gig work gives people flexibility over when and how much they work. It also often leaves them without the financial security of a regular job. A sustainable gig job keeps the flexibility and adds basic security. Employers and platforms can take practical steps towards this.",
+        ],
+      },
+      {
+        heading: "What gig workers lose compared to regular jobs",
+        paragraphs: [],
+        list: [
+          "Predictable monthly income",
+          "Paid leave and sick days",
+          "Access to formal credit, because there is no salary slip",
+          "Health and accident cover in many cases",
+          "A clear path to higher earnings",
+        ],
+      },
+      {
+        heading: "Five building blocks of a sustainable gig job",
+        paragraphs: [],
+        list: [
+          "Transparent earnings. Workers should see how earnings are calculated, what is deducted and when they will be paid.",
+          "Timely access to earnings. Waiting a week or 15 days for money already earned creates a cycle of borrowing. Earned Wage Access lets workers draw their own earnings when needed.",
+          "Basic protection. Accident insurance during working hours is a minimum. Health cover, through government schemes or group policies, adds more.",
+          "Help with government registration. Helping workers register on government portals for gig and unorganised workers connects them to welfare benefits.",
+          "A path to progress. Ratings, skills training or a route to supervisor or full-time roles give workers a reason to stay.",
+        ],
+      },
+      {
+        heading: "Why this is good business",
+        paragraphs: [
+          "Sustainable gig jobs are not only about welfare. They reduce churn, improve service quality and make it easier to hire in tight markets. Several states are also introducing gig worker welfare laws, so early adopters will find compliance easier.",
+        ],
+      },
+      {
+        heading: "Where to start",
+        paragraphs: [],
+        list: [
+          "Make earnings visible and clear in the worker app.",
+          "Offer Earned Wage Access so workers are not stuck waiting for payout.",
+          "Provide accident cover for working hours.",
+          "Hold a registration drive for government welfare portals.",
+        ],
+        ctaLabel: "Add financial security to flexible work — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Does offering benefits reduce flexibility?",
+        answer: "No. Benefits like EWA and insurance do not require fixed hours.",
+      },
+      {
+        question: "Who pays for these benefits?",
+        answer: "It varies. EWA through an NBFC partner requires no platform capital. Insurance can be shared, or bought as a group policy.",
+      },
+    ],
+  },
+
+  {
+    slug: "build-resilient-gig-workforce",
+    title: "How to Build a Resilient Gig Workforce",
+    description: "Demand spikes, festival seasons and monsoons test every gig workforce. Five practical ways to build one that holds up, from onboarding to pay access.",
+    author: "InOps",
+    date: "October 17, 2026",
+    dateIso: "2026-10-17",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Team members in a planning meeting — building a resilient gig workforce through operations and HR practices",
+    summary: "A resilient gig workforce can absorb demand spikes, seasonal exits and sudden disruptions without service falling apart. It is built through steady, everyday practices, not emergency hiring.",
+    sections: [
+      {
+        paragraphs: [
+          "A resilient gig workforce can absorb demand spikes, seasonal exits and sudden disruptions without service falling apart. It is built through steady, everyday practices, not emergency hiring. Here are five.",
+        ],
+      },
+      {
+        heading: "1. Make onboarding fast and complete",
+        paragraphs: ["Workers who wait days for verification or an ID often take another job in the meantime."],
+        list: [
+          "Digital document collection and background verification",
+          "A short, practical first-day orientation",
+          "App, ID and equipment ready on day one",
+        ],
+      },
+      {
+        heading: "2. Keep a reliable core and a flexible layer",
+        paragraphs: [
+          "Track which workers turn up consistently. Recognise them with preferred slots, small incentives or first access to peak-period work. Keep a trained flexible pool for spikes, and keep in touch with them between peaks.",
+        ],
+      },
+      {
+        heading: "3. Remove money stress during the cycle",
+        paragraphs: [
+          "Money stress is one of the most common reasons gig workers miss shifts or leave. Weekly or 15-day payouts leave long gaps. Earned Wage Access lets workers draw part of what they have earned, when they need it. This keeps them working through the cycle instead of stopping to find cash.",
+        ],
+      },
+      {
+        heading: "4. Plan for known disruptions",
+        paragraphs: ["Some disruptions come every year:"],
+        list: [
+          "Festival periods, when demand rises but many workers go home",
+          "Monsoon months, when delivery and outdoor work become harder",
+          "Harvest seasons, when rural workers return to farms",
+          "Exam and school admission periods, when family expenses rise",
+        ],
+      },
+      {
+        heading: "5. Listen and act on feedback",
+        paragraphs: [
+          "Run short surveys in the workers' language. Ask about pay, safety, app issues and how they are treated. Act on the top issues and tell workers what changed.",
+        ],
+        ctaLabel: "Build a workforce that stays through every season — see Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the biggest driver of gig workforce resilience?",
+        answer: "Early retention. Workers who get through their first month are far more likely to stay through peaks.",
+      },
+      {
+        question: "Does EWA help during peak season?",
+        answer: "Yes. Peak periods often coincide with festival spending. Access to earned wages helps workers stay through the peak instead of leaving early.",
+      },
+    ],
+  },
+
+  {
+    slug: "signs-of-healthy-gig-workforce",
+    title: "5 Signs of a Healthy Gig Workforce",
+    description: "How do you know if your gig workforce is healthy? Five signs operations and HR leaders should track, from first-month retention to earnings visibility.",
+    author: "InOps",
+    date: "October 18, 2026",
+    dateIso: "2026-10-18",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Operations team reviewing workforce metrics on a screen — signs of a healthy gig workforce",
+    summary: "A healthy gig workforce shows up, stays, and trusts how it is paid. You can track all three. Here are five signs operations and HR leaders should watch, with the metric behind each one.",
+    sections: [
+      {
+        paragraphs: [
+          "A healthy gig workforce shows up, stays, and trusts how it is paid. You can track all three. Here are five signs operations and HR leaders should watch, with the metric behind each one.",
+        ],
+      },
+      {
+        heading: "1. New workers stay past the first month",
+        paragraphs: [
+          "The first 30 days are when most gig workers drop out. They are learning the work, have no savings buffer, and are waiting for their first payout.",
+          "What to track: share of new joiners still active at 30 and 90 days.",
+          "What helps: a clear first-week experience, quick first earnings and access to earnings before the first payout.",
+        ],
+      },
+      {
+        heading: "2. Active days per worker are stable",
+        paragraphs: [
+          "In a healthy workforce, regular workers log a steady number of active days each cycle. Sharp drops mid-cycle often mean workers ran out of money for fuel or travel, or took up other work.",
+          "What to track: average active days per worker per cycle, and how it moves within the cycle.",
+        ],
+      },
+      {
+        heading: "3. Workers understand their earnings",
+        paragraphs: [
+          "Workers who cannot see or understand how earnings are calculated assume they are being short-changed. That mistrust drives complaints and exits.",
+          "What to track: earnings-related support tickets per 100 workers.",
+          "What helps: earnings visible in an app after each shift or order, with deductions explained.",
+        ],
+      },
+      {
+        heading: "4. Few informal advance requests",
+        paragraphs: [
+          "If hub managers, supervisors or fleet partners regularly field requests for advances, workers are struggling with pay timing.",
+          "What to track: advance requests per month, formal and informal.",
+          "What helps: a structured way for workers to access earned wages, such as Earned Wage Access.",
+        ],
+      },
+      {
+        heading: "5. Workers come back after breaks",
+        paragraphs: [
+          "Gig workers take breaks for festivals, harvest or family events. A healthy workforce sees many of them return.",
+          "What to track: share of workers who return within 60 days after an inactive period.",
+          "What helps: keeping their account, documents and app access ready, so returning is easy.",
+        ],
+      },
+      {
+        heading: "Putting it together",
+        paragraphs: [],
+        table: {
+          headers: ["Sign", "Metric", "Warning signal"],
+          rows: [
+            ["Early retention", "Active at 30 and 90 days", "Large drop in the first month"],
+            ["Stable activity", "Active days per cycle", "Drop in the last days of a cycle"],
+            ["Earnings trust", "Pay-related tickets", "Rising complaints"],
+            ["Pay timing", "Advance requests", "Frequent requests to managers"],
+            ["Return rate", "Return after a break", "Few workers return"],
+          ],
+        },
+        ctaLabel: "Improve early retention and earnings trust with Salary++ — learn more",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "How often should we review these metrics?",
+        answer: "Monthly, with a deeper review each quarter.",
+      },
+      {
+        question: "Which metric should we start with?",
+        answer: "Early retention. It has the biggest effect on hiring cost.",
+      },
+    ],
+  },
+
+  {
+    slug: "gig-worker-debt-moneylenders-earned-wage-access",
+    title: "Why Gig Workers Borrow From Moneylenders, and How EWA Breaks the Cycle",
+    description: "Many gig workers borrow at high interest just to get through the pay cycle. Why the debt cycle starts, what it costs workers and employers, and how Earned Wage Access helps.",
+    author: "InOps",
+    date: "October 19, 2026",
+    dateIso: "2026-10-19",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Person looking at financial documents with concern — gig worker debt cycle and how EWA breaks it",
+    summary: "Many gig and blue-collar workers borrow not because they earn too little, but because they are paid too late. That timing gap is what pushes workers to moneylenders and instant loan apps. Earned Wage Access closes it.",
+    sections: [
+      {
+        paragraphs: [
+          "Many gig and blue-collar workers borrow not because they earn too little, but because they are paid too late. Expenses arrive daily while pay arrives weekly, fortnightly or monthly. That timing gap is what pushes workers to moneylenders and instant loan apps. Earned Wage Access closes it.",
+        ],
+      },
+      {
+        heading: "How the debt cycle starts",
+        paragraphs: [],
+        list: [
+          "A worker runs short a few days before payout.",
+          "They borrow from a local moneylender, a friend or a loan app.",
+          "On payday, a large part of their earnings goes to repaying the loan plus interest.",
+          "They run short again, sooner than before.",
+          "They borrow again, often more.",
+        ],
+      },
+      {
+        heading: "Why informal loans are risky",
+        paragraphs: [],
+        list: [
+          "High interest. Informal lenders often charge far more than formal credit.",
+          "Unclear terms. Repayment amounts and penalties are often verbal.",
+          "Pressure tactics. Recovery can involve calls to family or visits to the workplace.",
+          "Unregulated loan apps. Some apps have hidden charges and misuse contact data.",
+        ],
+      },
+      {
+        heading: "Why this matters to employers",
+        paragraphs: ["A worker in debt is more likely to:"],
+        list: [
+          "Miss shifts to arrange money or avoid lenders",
+          "Take on second jobs, which affects rest and safety",
+          "Leave for any job that pays a little sooner",
+          "Ask supervisors and contractors for advances",
+        ],
+      },
+      {
+        heading: "How Earned Wage Access breaks the cycle",
+        paragraphs: [],
+        list: [
+          "It solves the timing problem. Workers draw from wages already earned when a need arises, instead of borrowing.",
+          "No interest-bearing debt. EWA usually carries a small per-withdrawal fee, not compounding interest.",
+          "Built-in limits. Workers can only draw a share of what they have earned, so they cannot over-borrow.",
+          "Automatic recovery. The amount is adjusted at payroll. There are no collection calls.",
+        ],
+      },
+      {
+        heading: "Pair EWA with simple money guidance",
+        paragraphs: [],
+        list: [
+          "A short session at onboarding on how EWA works and what it costs",
+          "Tips on budgeting between paydays, in the local language",
+          "Guidance on spotting unsafe loan apps",
+        ],
+        ctaLabel: "Help your workers stay out of the debt cycle — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can EWA fully replace loans for workers?",
+        answer: "No. EWA covers short-term needs from earned wages. Larger needs, such as a vehicle or a wedding, need formal credit.",
+      },
+      {
+        question: "Won't workers just use EWA every week?",
+        answer: "Some will. Limits based on earned wages make sure they never draw more than they have earned in the cycle.",
+      },
+      {
+        question: "Can employers see why a worker withdrew money?",
+        answer: "No. Workers do not need to give a reason, which is part of what makes EWA better than asking for an advance.",
+      },
+    ],
+  },
+
+  {
+    slug: "reduce-rider-churn-earned-wage-access",
+    title: "How to Reduce Rider Churn With Earned Wage Access",
+    description: "Rider churn drives up hiring and onboarding costs for delivery platforms. Why riders leave, and how giving them access to earnings before payout keeps them active.",
+    author: "InOps",
+    date: "October 20, 2026",
+    dateIso: "2026-10-20",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Rows of delivery scooters parked at a logistics hub — reducing rider churn with earned wage access",
+    summary: "Rider churn is one of the biggest hidden costs for delivery and logistics companies. Every rider who leaves has to be replaced, verified, trained and equipped. Earned Wage Access addresses one of the most common reasons riders leave: running out of money before payout.",
+    sections: [
+      {
+        paragraphs: [
+          "Rider churn is one of the biggest hidden costs for delivery and logistics companies. Every rider who leaves has to be replaced, verified, trained and equipped. Earned Wage Access addresses one of the most common reasons riders leave: running out of money before payout.",
+        ],
+      },
+      {
+        heading: "What rider churn really costs",
+        paragraphs: ["When a rider leaves, the company pays for:"],
+        list: [
+          "Recruitment: referral bonuses, job portal ads, agency fees",
+          "Onboarding: background verification, document checks, training",
+          "Equipment: bags, T-shirts, ID cards",
+          "Lost capacity while the slot is empty",
+          "Slower deliveries from new riders still learning routes",
+        ],
+      },
+      {
+        heading: "Why riders leave",
+        paragraphs: ["Pay rate matters, but riders also leave for reasons that are easier to fix:"],
+        list: [
+          "Pay timing. A rival platform pays sooner, and the rider has bills due now.",
+          "Cash flow at the start. New riders often have no savings to cover fuel and data in the first cycle.",
+          "Debt. A rider who borrowed to get through a cycle may move to wherever pays fastest.",
+          "Lack of trust. Unclear earnings and deductions make riders feel short-changed.",
+        ],
+      },
+      {
+        heading: "How EWA helps",
+        paragraphs: [
+          "It removes pay timing as a reason to switch. Riders can access what they have earned any day. A rival's faster payout is no longer a strong pull.",
+          "It helps new riders through the first cycle. The first weeks are when churn is highest. Access to earnings from the first days lets new riders cover fuel and data.",
+          "It makes earnings visible. Seeing earnings update after each shift builds trust in the numbers.",
+          "It reduces informal borrowing. Riders who can draw their own earnings need fewer high-interest loans.",
+        ],
+      },
+      {
+        heading: "How to measure the impact",
+        paragraphs: ["Before launching EWA, record a baseline for:"],
+        list: [
+          "Monthly rider churn rate",
+          "Share of new riders still active after 30 and 90 days",
+          "Average active days per rider per cycle",
+          "Number of informal advance requests",
+        ],
+      },
+      {
+        heading: "Rollout tips",
+        paragraphs: [],
+        list: [
+          "Introduce EWA at onboarding, so new riders know about it from day one",
+          "Explain fees and limits clearly in the rider's language",
+          "Use hub managers to demo the app",
+          "Keep the withdrawal limit simple and predictable",
+        ],
+        ctaLabel: "Keep your riders on the road — start a Salary++ pilot",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Will riders who use EWA work less, since they already have cash?",
+        answer: "EWA only gives access to what has been earned. Each extra shift adds to what the rider can draw, which encourages active days.",
+      },
+      {
+        question: "Is EWA expensive for the platform?",
+        answer: "In an NBFC-funded model, the platform puts up no capital. The per-withdrawal fee can be absorbed or passed to riders.",
+      },
+      {
+        question: "How soon can we see results?",
+        answer: "Measure over at least two or three pay cycles to see a reliable effect on churn.",
+      },
+    ],
+  },
+
+  {
+    slug: "earned-wage-access-delivery-partners-india",
+    title: "How Earned Wage Access Helps Delivery Partners in India",
+    description: "Delivery partners spend on fuel, phone data and vehicle EMIs every day but are paid weekly or every 15 days. How Earned Wage Access closes that gap for riders and platforms.",
+    author: "InOps",
+    date: "October 21, 2026",
+    dateIso: "2026-10-21",
+    category: "Gig Workforce",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Delivery person carrying a package — earned wage access for delivery partners and gig riders in India",
+    summary: "Delivery partners spend money every working day but are often paid weekly or every 15 days. Earned Wage Access lets them draw part of what they have already earned, the same day, from an app.",
+    sections: [
+      {
+        paragraphs: [
+          "Delivery partners spend money every working day but are often paid weekly or every 15 days. Earned Wage Access lets them draw part of what they have already earned, the same day, from an app. For platforms and logistics firms, it is a way to keep riders active without changing payout cycles.",
+        ],
+      },
+      {
+        heading: "A rider's week, in money terms",
+        paragraphs: [
+          "A delivery partner's costs start before the first order:",
+        ],
+        list: [
+          "Fuel or vehicle charging, every day",
+          "Mobile data and phone recharge",
+          "Vehicle EMI or rental, often weekly",
+          "Repairs, tyres and servicing",
+          "Food on the road",
+          "Rent and money sent home",
+        ],
+      },
+      {
+        heading: "How EWA works for delivery partners",
+        paragraphs: [],
+        list: [
+          "Completed orders or logged hours are recorded by the platform or the fleet partner.",
+          "Earnings for the current cycle are calculated and shown in the rider's app.",
+          "The rider can withdraw a share of those earnings at any time, up to a set limit.",
+          "Money reaches the rider's bank account.",
+          "The amount drawn is adjusted against the regular payout.",
+        ],
+      },
+      {
+        heading: "What changes for the rider",
+        paragraphs: [],
+        list: [
+          "Fuel and vehicle costs can be paid from their own earnings, the same day",
+          "No need for high-interest borrowing to bridge the cycle",
+          "A clear view of what they have earned so far",
+          "Control over when they get paid, without asking a fleet manager",
+        ],
+      },
+      {
+        heading: "What changes for the platform or fleet operator",
+        paragraphs: [],
+        list: [
+          "Riders stay active. A rider who can fund fuel from today's earnings does not need to stop working mid-cycle.",
+          "Less switching. Pay timing is a common reason riders move between platforms. EWA removes it without changing the payout calendar.",
+          "Fewer advance requests. Fleet managers stop handling informal cash advances.",
+          "No funding burden. With an NBFC-funded EWA model, the platform does not put up its own cash.",
+        ],
+      },
+      {
+        heading: "Who should consider EWA",
+        paragraphs: [],
+        list: [
+          "Food and grocery delivery platforms",
+          "Quick-commerce companies with in-house or fleet riders",
+          "E-commerce last-mile logistics firms",
+          "Fleet partners and staffing agencies that pay riders on behalf of platforms",
+          "Ride-hailing and bike-taxi fleet operators",
+        ],
+        ctaLabel: "Run a delivery or logistics fleet? Talk to us about Salary++ for riders",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can EWA work if riders are paid by a fleet partner, not the platform?",
+        answer: "Yes. EWA can sit with whoever runs the payout: the platform, the fleet partner or the staffing agency. What matters is reliable earnings data and a payout that the advance can be adjusted against.",
+      },
+      {
+        question: "Does EWA change the payout cycle?",
+        answer: "No. The regular weekly or 15-day payout continues. EWA only lets riders draw part of it early.",
+      },
+      {
+        question: "What if a rider stops working mid-cycle?",
+        answer: "The rider can only draw from earnings already recorded. So the amount drawn is covered by what they have earned.",
+      },
+    ],
+  },
+
+  {
+    slug: "benefits-of-early-salary-access-workers",
+    title: "10 Benefits of Early Salary Access for Gig and Blue-Collar Workers",
+    description: "Early salary access helps workers meet bills on time, avoid moneylenders and plan better. Ten benefits for gig and blue-collar workers, and what they mean for employers.",
+    author: "InOps",
+    date: "October 23, 2026",
+    dateIso: "2026-10-23",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1529539795054-3c162aab037a?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Delivery worker on a motorcycle — gig and blue-collar workers benefit from early salary access",
+    summary: "Early salary access, or Earned Wage Access, lets workers draw wages they have already earned before payday. For gig and blue-collar workers, who often live close to the edge between paydays, the benefits are practical and immediate.",
+    sections: [
+      {
+        paragraphs: [
+          "Early salary access, or Earned Wage Access, lets workers draw wages they have already earned before payday. For gig and blue-collar workers, who often live close to the edge between paydays, the benefits are practical and immediate. Here are ten.",
+        ],
+      },
+      {
+        heading: "For workers",
+        paragraphs: [],
+        list: [
+          "Bills paid on time. Rent, electricity and school fees rarely fall on payday. Early access lets workers pay when the bill is due, avoiding late fees and difficult conversations.",
+          "Less dependence on moneylenders. Local moneylenders and informal lenders charge high interest. Drawing from one's own earnings removes the need for many of these loans.",
+          "A buffer for emergencies. A hospital visit, a vehicle repair or a family emergency needs money the same day. Early access gives workers a first response without borrowing.",
+          "Dignity and privacy. Workers no longer have to ask a supervisor or contractor for an advance and explain why. They use an app, privately.",
+          "Clear view of earnings. Seeing earnings update after each shift helps workers track what they have made and plan the rest of the month.",
+          "Less stress at work. Money worries follow workers onto the shop floor and into their delivery shifts. Fewer worries mean better focus and fewer accidents.",
+        ],
+      },
+      {
+        heading: "For employers",
+        paragraphs: [],
+        list: [
+          "Lower attrition. Blue-collar and gig workers often move for small differences in pay timing. Early access removes one big reason to switch.",
+          "Better attendance. When every shift adds to an amount the worker can access, there is a direct reason to show up.",
+          "Less admin. HR and contractors spend less time on informal advance requests, cash handling and disputes.",
+          "An easy benefit to offer. EWA funded by a partner NBFC requires no employer capital and no change to pay dates or salary structure.",
+        ],
+      },
+      {
+        heading: "What makes early salary access work well",
+        paragraphs: [],
+        list: [
+          "Limits tied to attendance. Workers draw only from what they have earned, so they do not end the month in deficit.",
+          "Transparent fees. Any fee should be shown before the worker confirms a withdrawal.",
+          "Simple onboarding. Instructions in the worker's language, with a short demo at the site.",
+          "Usage guidance. A short note on using EWA for real needs, not every small purchase.",
+        ],
+        ctaLabel: "Give your workforce early access to their earnings — start a Salary++ pilot",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Will workers draw their whole salary early?",
+        answer: "No. The employer sets a limit on the share of earned wages that can be withdrawn. This keeps part of the salary for month-end.",
+      },
+      {
+        question: "Is early salary access only for gig workers?",
+        answer: "No. It works for any worker whose attendance and earned wages can be tracked: payroll employees, contract workers and gig workers.",
+      },
+      {
+        question: "How quickly do workers get the money?",
+        answer: "Transfers go to the worker's verified bank account, usually within minutes.",
+      },
+    ],
+  },
+
+  {
+    slug: "advance-salary-for-employees-without-cash-flow",
+    title: "How to Give Employees a Salary Advance Without Hurting Cash Flow",
+    description: "Employees keep asking for salary advances, and each one ties up company cash. How Indian employers and contractors can offer early pay without funding it themselves.",
+    author: "InOps",
+    date: "October 22, 2026",
+    dateIso: "2026-10-22",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Business professional reviewing financial documents at a desk — managing salary advance cash flow",
+    summary: "You can give employees early access to their pay without using company cash. An Earned Wage Access programme funded by an NBFC partner pays workers from their earned wages, recovered at the next payroll so your working capital stays untouched.",
+    sections: [
+      {
+        paragraphs: [
+          "You can give employees early access to their pay without using company cash. An Earned Wage Access (EWA) programme funded by an NBFC partner pays workers from their earned wages. The amount is recovered at the next payroll, so your working capital stays untouched.",
+        ],
+      },
+      {
+        heading: "Why salary advances strain employers",
+        paragraphs: [
+          "For most Indian factories, contractors and service firms, advance requests are a monthly routine. They peak around festivals, school admissions and harvest season. Each one has a cost:",
+        ],
+        list: [
+          "Cash tied up. For a contractor with hundreds of workers, small advances add up to a large sum funded from the contractor's own pocket.",
+          "Approval effort. A supervisor, HR person or contractor has to decide who gets how much, often under pressure.",
+          "Recovery risk. If a worker leaves after taking an advance larger than their earned pay, the money is often lost.",
+          "Disputes. Advances recorded in registers or WhatsApp messages lead to arguments at salary time.",
+        ],
+      },
+      {
+        heading: "Option 1: A written salary advance policy",
+        paragraphs: [
+          "If you keep giving advances yourself, put the rules in writing:",
+        ],
+        list: [
+          "Who is eligible (for example, after a minimum period of service)",
+          "Maximum amount, ideally tied to days already worked",
+          "How often a worker can request one",
+          "How and when it is recovered",
+          "Who approves, and how it is recorded",
+        ],
+      },
+      {
+        heading: "Option 2: Earned Wage Access through a partner",
+        paragraphs: [
+          "With EWA, the worker requests money from an app. The amount is limited to a share of wages already earned, based on verified attendance. A regulated NBFC partner pays the worker. At payroll, the amount is deducted and settled with the partner.",
+          "What changes for you:",
+        ],
+        list: [
+          "No company cash used. The NBFC partner funds the advance.",
+          "No approvals. The limit is calculated from attendance, so nobody has to judge each request.",
+          "Little recovery risk. A worker can only draw what they have already earned.",
+          "Clean records. Every withdrawal is logged with date, amount and worker ID.",
+        ],
+      },
+      {
+        heading: "What you need to set up EWA",
+        paragraphs: [],
+        list: [
+          "Reliable attendance data: biometric, face reader or app check-ins",
+          "A payroll process that can deduct and settle advances each cycle",
+          "A clear withdrawal limit policy",
+          "A short worker onboarding: how to use the app and what it costs",
+        ],
+      },
+      {
+        heading: "A note for contractors",
+        paragraphs: [
+          "Contractors carry the heaviest advance burden, because they deal with workers directly and pay them from their own cash flow. Routing advances through an EWA programme takes this off the contractor's books. It also gives the principal employer a clear record.",
+        ],
+        ctaLabel: "Stop funding advances from your own cash — see how Salary++ works",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is it legal to deduct a salary advance from wages?",
+        answer: "Recovery of advances from wages is a recognised deduction under Indian wage law, subject to limits. Check the current rules with your compliance team.",
+      },
+      {
+        question: "What if a worker leaves before payday?",
+        answer: "With EWA, the worker can only draw from wages already earned. So the amount due is covered by their final settlement.",
+      },
+      {
+        question: "Can we still give large one-off advances?",
+        answer: "Yes. Keep a policy-based advance for large needs, and use EWA for routine, small ones.",
+      },
+    ],
+  },
+
+  {
+    slug: "ewa-vs-salary-advance-vs-payday-loan",
+    title: "EWA vs Salary Advance vs Payday Loan: What's the Difference?",
+    description: "Earned Wage Access, salary advances and payday loans all put cash in a worker's hands before payday. They differ on who funds them, what they cost and what happens if things go wrong.",
+    author: "InOps",
+    date: "October 24, 2026",
+    dateIso: "2026-10-24",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 6,
+    image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Spread of Indian currency notes and coins on a surface — comparing wage access options for workers",
+    summary: "Earned Wage Access, salary advances and payday loans all solve the same problem: a worker needs money before payday. They differ on three points — whose money it is, what it costs, and what happens if the worker cannot repay on time.",
+    sections: [
+      {
+        paragraphs: [
+          "Earned Wage Access, salary advances and payday loans all solve the same problem: a worker needs money before payday. They differ on three points. Whose money it is. What it costs. What happens if the worker cannot repay on time.",
+        ],
+        table: {
+          headers: ["", "Earned Wage Access", "Employer salary advance", "Payday or instant loan app"],
+          rows: [
+            ["What the worker gets", "Part of wages already earned", "Part of next month's salary, earned or not", "A loan, unrelated to wages"],
+            ["Who funds it", "Usually an NBFC partner", "The employer or contractor", "A lender or loan app"],
+            ["Limit", "A share of verified earned wages", "Set case by case", "Based on the lender's credit check"],
+            ["Recovery", "Deducted from the next salary", "Deducted from salary, often over months", "Repaid by the worker directly"],
+            ["Missed repayment", "Not usually an issue, since recovery is from earned pay", "Carries over to the next month", "Late fees, credit score damage, collection calls"],
+            ["Admin for the employer", "Low once integrated", "High: approvals, cash, records", "None, but problems surface at work"],
+          ],
+        },
+      },
+      {
+        heading: "Earned Wage Access",
+        paragraphs: [
+          "EWA lets workers draw money they have already earned. Because the limit is tied to wages already earned, the worker cannot draw more than they have earned in the cycle. Recovery happens automatically at payroll. For the worker, the cost is usually a small per-withdrawal fee, shown before they confirm.",
+        ],
+      },
+      {
+        heading: "Employer salary advance",
+        paragraphs: [
+          "Many Indian companies and contractors give salary advances on request. This is common for festivals, medical needs and family events. The problems are practical:",
+        ],
+        list: [
+          "Someone has to approve each request, often the supervisor or contractor",
+          "Advances can exceed what the worker has earned, so recovery stretches across months",
+          "Records are kept in registers or spreadsheets, and disputes are common",
+          "The employer's or contractor's own cash is tied up",
+        ],
+      },
+      {
+        heading: "Payday and instant loan apps",
+        paragraphs: [
+          "Instant loan apps lend money unrelated to wages. Interest and fees can be high, and terms are not always clear. A missed payment can hurt the worker's credit score and bring collection calls, sometimes to the workplace.",
+          "Workers in financial stress are more likely to miss shifts or leave. So a worker's debt problem can soon become the employer's attendance problem.",
+        ],
+      },
+      {
+        heading: "Which should an employer offer?",
+        paragraphs: [
+          "For regular, small, short-term needs, EWA is the cleanest option. It is tied to work already done, recovered automatically, and needs no employer cash. Formal salary advances still have a place for large one-off needs, under a written policy. The aim is to give workers a better option than an unregulated loan app.",
+        ],
+        ctaLabel: "Replace informal advances with a structured EWA benefit — explore Salary++",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is EWA cheaper than a payday loan?",
+        answer: "EWA usually carries a small flat fee per withdrawal instead of interest. Compare the total cost a worker pays for the same amount and period.",
+      },
+      {
+        question: "Can we offer both EWA and salary advances?",
+        answer: "Yes. Many employers use EWA for routine needs and keep a policy-based salary advance for emergencies above the EWA limit.",
+      },
+      {
+        question: "Does EWA affect a worker's credit score?",
+        answer: "This depends on how the lending partner reports. Ask your provider.",
+      },
+    ],
+  },
+
+  {
+    slug: "what-is-earned-wage-access-india",
+    title: "What Is Earned Wage Access? A Guide for Indian Employers",
+    description: "Earned Wage Access lets workers draw part of the wages they have already earned before payday. How it works in India, who pays, and what employers need to set it up.",
+    author: "InOps",
+    date: "October 25, 2026",
+    dateIso: "2026-10-25",
+    category: "Earned Wage Access",
+    tab: "ewa",
+    readMinutes: 7,
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Indian worker checking mobile phone for salary information — earned wage access app on smartphone",
+    summary: "Earned Wage Access (EWA) lets a worker withdraw part of the wages they have already earned, before the regular payday. The amount is recovered from the next salary. There is no new debt, because the worker only draws money they have already worked for.",
+    sections: [
+      {
+        paragraphs: [
+          "Earned Wage Access (EWA) lets a worker withdraw part of the wages they have already earned, before the regular payday. The amount is recovered from the next salary. There is no new debt, because the worker only draws money they have already worked for.",
+          "For Indian employers with large blue-collar, contract or gig workforces, EWA has become one of the simplest benefits to offer. It costs little to set up, and workers feel it within days.",
+        ],
+      },
+      {
+        heading: "Why the payday gap exists",
+        paragraphs: [
+          "Most Indian workers are paid monthly. Gig and platform workers are often paid weekly or every 15 days. Expenses do not follow that calendar. Rent falls due on the 5th. A child's school fee is due mid-month. A medical bill arrives without warning.",
+          "When money runs out before payday, workers have three common options:",
+        ],
+        list: [
+          "Ask the supervisor or contractor for an informal advance",
+          "Borrow from a local moneylender at high interest",
+          "Skip work to find cash, or quit for a job that pays sooner",
+        ],
+      },
+      {
+        heading: "How Earned Wage Access works",
+        paragraphs: ["A typical EWA flow has five steps:"],
+        list: [
+          "Attendance is recorded. The worker's shifts are captured through biometric devices, face readers or a mobile app.",
+          "Earned wages are calculated. The system works out how much the worker has earned so far in the current pay cycle.",
+          "A withdrawal limit is set. The employer decides what share of earned wages a worker can draw. A limit keeps enough pay for statutory deductions and month-end needs.",
+          "The worker requests money. From a mobile app, the worker picks an amount within the limit. Money goes to their verified bank account.",
+          "Recovery happens at payroll. The amount drawn is deducted from the next salary. PF, ESI and other statutory deductions are calculated as usual.",
+        ],
+      },
+      {
+        heading: "Who funds the advance?",
+        paragraphs: [
+          "In India, EWA is usually funded by a regulated NBFC partner, not by the employer. The employer shares attendance and payroll data and recovers the advance through payroll. With Salary++, the employer puts in no capital and carries no credit risk.",
+        ],
+      },
+      {
+        heading: "What employers gain",
+        paragraphs: [],
+        list: [
+          "Lower attrition. Workers are less likely to leave for a job that pays weekly when they can access earnings any day.",
+          "Fewer informal advances. HR and contractors stop handling cash advances and the paperwork that comes with them.",
+          "Better attendance. When earned wages are visible after every shift, each shift worked has a clear, immediate value.",
+          "A benefit that costs little to offer. EWA needs no change to salary structure or pay dates.",
+        ],
+      },
+      {
+        heading: "What workers gain",
+        paragraphs: [],
+        list: [
+          "Access to their own money when they need it, without asking anyone",
+          "No interest-bearing loan for small, short-term needs",
+          "Less dependence on moneylenders",
+          "A clear view of what they have earned in the current cycle",
+        ],
+      },
+      {
+        heading: "What to check before choosing an EWA provider",
+        paragraphs: [],
+        list: [
+          "Is the advance funded by a regulated lender, and is that lender named?",
+          "Is the withdrawal limit tied to verified attendance, or to a fixed salary figure?",
+          "Does it work for contract workers, not only payroll employees?",
+          "How is the advance recovered, and does recovery fit your payroll cycle?",
+          "What does the worker pay per withdrawal, and is it shown before they confirm?",
+          "How is worker data stored and protected?",
+        ],
+        ctaLabel: "See how Salary++ works for your workforce — talk to us about a pilot",
+        ctaHref: "/earned-wage-access",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Earned Wage Access a loan?",
+        answer: "EWA gives workers access to wages they have already earned, recovered from the next salary. How a specific product is classified depends on its structure and lending partner. Ask your provider how their model is set up.",
+      },
+      {
+        question: "Can contract workers use EWA?",
+        answer: "Yes, if the provider calculates earned wages from attendance records. Salary++ works for contract workers whose attendance is managed through InOps CLMS.",
+      },
+      {
+        question: "Does the employer have to pay for EWA?",
+        answer: "With Salary++, there is no capital outlay or credit risk for the employer. The employer can choose to absorb the per-withdrawal fee as a benefit or let workers pay it.",
+      },
+    ],
+  },
+
   {
   "slug": "what-is-rd-service-registered-device-aadhaar",
   "title": "What Is RD Service? Registered Devices for Aadhaar Biometric Authentication Explained",
@@ -55,6 +3333,7 @@ export const blogPosts: BlogPost[] = [
   "date": "September 4, 2026",
   "dateIso": "2026-09-04",
   "category": "Biometrics",
+  "tab": "biometric",
   "readMinutes": 8,
   "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Biometric fingerprint scanner connected to a secure device — replace with real registered-device hardware photography before publishing",
@@ -162,6 +3441,7 @@ export const blogPosts: BlogPost[] = [
   "date": "September 3, 2026",
   "dateIso": "2026-09-03",
   "category": "Biometrics",
+  "tab": "biometric",
   "readMinutes": 7,
   "image": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Worker authenticating at a face recognition terminal at a factory gate — replace with real plant gate photography before publishing",
@@ -268,6 +3548,7 @@ export const blogPosts: BlogPost[] = [
   "date": "September 2, 2026",
   "dateIso": "2026-09-02",
   "category": "Biometrics",
+  "tab": "biometric",
   "readMinutes": 7,
   "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Rack of biometric attendance terminals from multiple vendors — replace with real device photography before publishing",
@@ -361,6 +3642,7 @@ export const blogPosts: BlogPost[] = [
   "date": "September 1, 2026",
   "dateIso": "2026-09-01",
   "category": "Biometrics",
+  "tab": "biometric",
   "readMinutes": 7,
   "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Biometric attendance terminal with pricing and specification documents — replace with real device photography before publishing",
@@ -452,6 +3734,7 @@ export const blogPosts: BlogPost[] = [
   "date": "August 31, 2026",
   "dateIso": "2026-08-31",
   "category": "HR technology",
+  "tab": "clms",
   "readMinutes": 8,
   "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "HR manager reviewing shift and attendance dashboards on a manufacturing site — replace with real plant photography before publishing",
@@ -566,6 +3849,7 @@ export const blogPosts: BlogPost[] = [
   "date": "August 30, 2026",
   "dateIso": "2026-08-30",
   "category": "Access control",
+  "tab": "clms",
   "readMinutes": 7,
   "image": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Visitor checking in at a factory gate kiosk — replace with real site photography before publishing",
@@ -661,6 +3945,7 @@ export const blogPosts: BlogPost[] = [
   "date": "August 29, 2026",
   "dateIso": "2026-08-29",
   "category": "CLMS",
+  "tab": "clms",
   "readMinutes": 7,
   "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "HR and compliance team reviewing contractor documentation for a manufacturing site — replace with real site photography before publishing",
@@ -754,6 +4039,7 @@ export const blogPosts: BlogPost[] = [
   "date": "August 28, 2026",
   "dateIso": "2026-08-28",
   "category": "HR technology",
+  "tab": "clms",
   "readMinutes": 7,
   "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "HR leadership reviewing a multi-plant workforce dashboard — replace with real dashboard or office photography before publishing",
@@ -838,6 +4124,7 @@ export const blogPosts: BlogPost[] = [
   "date": "August 27, 2026",
   "dateIso": "2026-08-27",
   "category": "Biometrics",
+  "tab": "biometric",
   "readMinutes": 8,
   "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Technician inspecting a biometric attendance terminal at a factory gate — replace with real service photography before publishing",
@@ -936,6 +4223,7 @@ export const blogPosts: BlogPost[] = [
   "date": "August 26, 2026",
   "dateIso": "2026-08-26",
   "category": "CLMS",
+  "tab": "clms",
   "readMinutes": 9,
   "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Manufacturing plant workforce management dashboard on a tablet — replace with real plant or dashboard photography before publishing",
@@ -1041,6 +4329,7 @@ export const blogPosts: BlogPost[] = [
     date: "August 3, 2026",
     dateIso: "2026-08-03",
     category: "CLMS",
+    tab: "clms",
     readMinutes: 8,
     image:
       "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
@@ -1216,6 +4505,7 @@ export const blogPosts: BlogPost[] = [
     date: "August 3, 2026",
     dateIso: "2026-08-03",
     category: "Gate Compliance",
+    tab: "clms",
     readMinutes: 9,
     image:
       "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1400&q=85",
@@ -1406,6 +4696,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2026-06-03",
     dateModifiedIso: "2026-06-20",
     category: "Access control",
+    tab: "clms",
     readMinutes: 9,
     image:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=85",
@@ -1510,6 +4801,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2026-05-03",
     dateModifiedIso: "2026-09-12",
     category: "Biometrics",
+    tab: "biometric",
     readMinutes: 10,
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=85",
@@ -1608,6 +4900,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2026-04-03",
     dateModifiedIso: "2026-09-12",
     category: "Time & attendance",
+    tab: "biometric",
     readMinutes: 10,
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
@@ -1699,6 +4992,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2026-03-03",
     dateModifiedIso: "2026-09-12",
     category: "HR technology",
+    tab: "clms",
     readMinutes: 10,
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
@@ -1790,6 +5084,7 @@ export const blogPosts: BlogPost[] = [
     date: "February 2026",
     dateIso: "2026-02-03",
     category: "Biometrics",
+    tab: "biometric",
     readMinutes: 11,
     image:
       "https://images.unsplash.com/photo-1561489413-985b06da5bee?auto=format&fit=crop&w=1400&q=85",
@@ -1892,6 +5187,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2026-01-03",
     dateModifiedIso: "2026-09-12",
     category: "CLRA Compliance",
+    tab: "clra",
     readMinutes: 9,
     image:
       "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=85",
@@ -2019,6 +5315,7 @@ export const blogPosts: BlogPost[] = [
     date: "December 2025",
     dateIso: "2025-12-03",
     category: "CLRA Compliance",
+    tab: "clra",
     readMinutes: 7,
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85",
@@ -2093,6 +5390,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-11-03",
     dateModifiedIso: "2026-09-12",
     category: "OT Cost Control",
+    tab: "clms",
     readMinutes: 8,
     image:
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1400&q=85",
@@ -2166,6 +5464,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-10-03",
     dateModifiedIso: "2026-09-12",
     category: "CLRA Compliance",
+    tab: "clra",
     readMinutes: 6,
     image:
       "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1400&q=85",
@@ -2240,6 +5539,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-09-03",
     dateModifiedIso: "2026-09-12",
     category: "CLMS",
+    tab: "clms",
     readMinutes: 9,
     image:
       "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85",
@@ -2334,6 +5634,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-08-03",
     dateModifiedIso: "2026-09-12",
     category: "Biometrics",
+    tab: "biometric",
     readMinutes: 9,
     image:
       "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=1400&q=85",
@@ -2426,6 +5727,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-07-03",
     dateModifiedIso: "2026-09-12",
     category: "Biometrics",
+    tab: "biometric",
     readMinutes: 8,
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=85",
@@ -2506,6 +5808,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-06-03",
     dateModifiedIso: "2026-09-12",
     category: "OT Cost Control",
+    tab: "clms",
     readMinutes: 7,
     image:
       "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1400&q=85",
@@ -2592,6 +5895,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-05-03",
     dateModifiedIso: "2026-09-12",
     category: "EWA",
+    tab: "ewa",
     readMinutes: 8,
     image:
       "https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=1400&q=85",
@@ -2675,6 +5979,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 2025",
     dateIso: "2025-05-03",
     category: "Research",
+    tab: "all",
     readMinutes: 12,
     image:
       "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85",
@@ -2763,6 +6068,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-03-03",
     dateModifiedIso: "2026-09-12",
     category: "Research",
+    tab: "all",
     readMinutes: 10,
     image:
       "https://www.elimparcial.com/resizer/v2/I5RBX5QZXFDYTNAXBP2SI4TNUA.png?auth=82dd3dc4bb4b37bc4b5511ae7766389e91256978fe8d2080ce70bc33eb881d29&height=800&quality=70&smart=true&width=1200",
@@ -2842,6 +6148,7 @@ export const blogPosts: BlogPost[] = [
     date: "July 24, 2026",
     dateIso: "2026-07-24",
     category: "CLMS",
+    tab: "clms",
     readMinutes: 11,
     image: "/images/clms-vs-hrms.jpg",
     imageAlt:
@@ -3289,6 +6596,7 @@ export const blogPosts: BlogPost[] = [
     dateIso: "2025-02-03",
     dateModifiedIso: "2026-09-12",
     category: "Research",
+    tab: "all",
     readMinutes: 9,
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85",
@@ -3368,6 +6676,7 @@ export const blogPosts: BlogPost[] = [
     date: "September 2, 2026",
     dateIso: "2026-09-02",
     category: "CLMS",
+    tab: "clms",
     readMinutes: 9,
     image: "/images/workforce-analytics-dashboard.jpg",
     imageAlt: "Workforce analytics dashboard — contractor management visibility replacing spreadsheets in manufacturing",

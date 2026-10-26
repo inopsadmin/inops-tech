@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 import SmoothScroll from "./SmoothScroll";
 import ScrollRevealEnhancer from "./ScrollRevealEnhancer";
@@ -7,11 +8,21 @@ import Navbar from "./Navbar";
 
 const Footer = dynamic(() => import("./Footer"), { ssr: true });
 
+const STANDALONE_ROUTES = ["/clms-pricing", "/glossary", "/research-insights"];
+
 interface LayoutWrapperProps {
   children: React.ReactNode;
 }
 
 export default function LayoutWrapper({ children }: LayoutWrapperProps) {
+  const pathname = usePathname();
+  if (STANDALONE_ROUTES.includes(pathname)) return (
+    <>
+      <Navbar />
+      <div style={{ paddingTop: "var(--home-nav-offset, 72px)" }}>{children}</div>
+    </>
+  );
+
   return (
     <SmoothScroll>
       <div className="site-shell relative flex min-h-screen w-full flex-col">
