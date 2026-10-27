@@ -870,7 +870,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.5}
                     className="mt-4 text-sm font-semibold tracking-wide text-slate-700 lg:mt-5"
                   >
-                    Labour Management System Software for Contract Workforces
+                    Contract Labour Management System (CLMS) Software for Indian Plants
                   </FlyInText>
 
                   <FlyInText
@@ -881,7 +881,7 @@ export default function PayrollSolutionsPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Iddion RegX — a contract labour management system built for Indian plants. Gate to payroll, CLRA compliance included, on one platform.
+                    Iddion RegX by InOps is a contract labour management system (CLMS) for Indian manufacturing plants. It handles contractor onboarding, gate passes, biometric attendance, wages, PF/ESI and statutory registers on one platform, across every site. Principal employers use it to stay inspection-ready and to reconcile contractor invoices against real attendance.
                   </FlyInText>
 
                   <FlyInText

@@ -4,9 +4,9 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import { hrisFaqItems } from "@/app/lib/hrisFaqItems";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "HR Software for Indian Manufacturing | HRMS with Payroll & Attendance — InOps";
+const PAGE_TITLE = "HRIS Software India for Manufacturing | Payroll & Attendance";
 const PAGE_DESCRIPTION =
-  "HR software built for Indian manufacturing: biometric attendance, statutory payroll (PF, ESI, PT, LWF), leave, claims and HRIS records — cloud-based HRMS for permanent workforces across multi-site plants.";
+  "HRIS software for Indian manufacturers: biometric attendance, PF, ESI, PT and LWF payroll, leave and employee records across plants. Works with InOps CLMS.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

@@ -120,7 +120,7 @@ export default function ServicesPage() {
                 Enterprises
               </h1>
               <p className="mt-6 text-[15.5px] leading-[1.75] text-white/60 max-w-[480px]">
-                From background screening and biometric maintenance to CLRA audits and manpower deployment — every service engineered for multi-site, contractor-heavy industrial operations.
+                InOps provides five workforce compliance services for industrial sites in India: worker background verification, biometric device AMC, biometric database audits, CLRA compliance audits and industrial manpower supply. Each is built for multi-site, contractor-heavy plants and can run with the InOps CLMS platform or on its own.
               </p>
 
               {/* CTA row */}

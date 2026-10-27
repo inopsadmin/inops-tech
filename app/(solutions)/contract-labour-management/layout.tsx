@@ -4,11 +4,10 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import { clmsFaqItems } from "@/app/lib/clmsFaqItems";
 import type { Metadata } from "next";
 
-const PAGE_TITLE =
-  "Labour Management System Software for Indian Manufacturers | Contract Labour Management — InOps";
+const PAGE_TITLE = "Contract Labour Management System Software India | InOps";
 
 const PAGE_DESCRIPTION =
-  "Labour management system software for contract workforces — gate compliance, biometric attendance, PF/ESI statutory deductions and payroll for Indian manufacturers. Audit-ready, multi-site, built for the Contract Labour (R&A) Act.";
+  "Contract labour management system for Indian plants: gate pass, biometric attendance, PF/ESI, wages and CLRA registers on one platform. Book a demo.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import SecondaryPageJsonLd from "@/app/components/SecondaryPageJsonLd";
 
-const PAGE_TITLE = "Services | InOps — Workforce Compliance & Biometric Solutions";
+const PAGE_TITLE = "InOps Services | BGV, Biometric AMC, CLRA Audit, Manpower";
 const PAGE_DESCRIPTION =
-  "InOps delivers end-to-end workforce compliance services for industrial enterprises — background verification, biometric AMC, CLRA audits, database audits, and industrial manpower supply.";
+  "Background verification, biometric AMC, CLRA compliance audits, biometric database audits and industrial manpower supply for multi-site plants in India.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

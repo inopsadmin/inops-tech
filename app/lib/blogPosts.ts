@@ -38,6 +38,8 @@ export type BlogPost = {
   personAuthor?: boolean;
   /** ISO date of most recent content refresh — used in Article schema dateModified and visible "Last Updated" label. */
   dateModifiedIso?: string;
+  /** When set, overrides post.title as the visible page H1 (title remains the SEO <title>). */
+  h1?: string;
   /** When present, emits HowTo schema — for step-by-step process articles. */
   howTo?: {
     name: string;
@@ -3326,9 +3328,10 @@ export const blogPosts: BlogPost[] = [
 
   {
   "slug": "what-is-rd-service-registered-device-aadhaar",
-  "title": "What Is RD Service? Registered Devices for Aadhaar Biometric Authentication Explained",
-  "description": "RD Service means Registered Device Service — UIDAI's requirement that biometric devices used for Aadhaar authentication be registered and encrypt data at source. Here's what it means, when you need it, and how it differs from ordinary attendance devices.",
-  "author": "",
+  "title": "RD Service Full Form & Meaning: Registered Device Explained",
+  "h1": "What Is RD Service? Full Form, Meaning and When You Need It",
+  "description": "RD Service means Registered Device Service: UIDAI's rule that Aadhaar biometric devices encrypt data at capture. When you need it, and when you don't.",
+  "author": "Satish Sinha",
   "personAuthor": true,
   "date": "September 4, 2026",
   "dateIso": "2026-09-04",
@@ -3341,6 +3344,7 @@ export const blogPosts: BlogPost[] = [
   "sections": [
     {
       "paragraphs": [
+        "RD Service (Registered Device Service) is UIDAI-mandated software that runs on a certified fingerprint or iris scanner. It encrypts each scan at the moment of capture, before it is sent for Aadhaar authentication. You need an RD device only for Aadhaar eKYC or authentication; attendance machines that match workers against their own enrolled templates do not.",
         "RD Service stands for Registered Device Service — UIDAI's framework requiring that any biometric device used for Aadhaar authentication is individually registered, and encrypts the captured biometric at the point of capture rather than passing it in the open.",
         "If you have searched for it, you have probably hit one of two situations: a device that has stopped working after a driver update, or a procurement requirement demanding \"RD-enabled\" devices without explaining why. Both are worth understanding, because the answer determines whether you need these devices at all."
       ]
@@ -3403,6 +3407,10 @@ export const blogPosts: BlogPost[] = [
     }
   ],
   "faqs": [
+    {
+      "question": "Which component connects biometric devices to the UIDAI server?",
+      "answer": "RD Service (Registered Device Service). It runs on the host machine alongside the device driver and handles device registration, biometric encryption at capture, and signed transaction packaging before the data is submitted to UIDAI for authentication."
+    },
     {
       "question": "What does RD service stand for?",
       "answer": "Registered Device Service — UIDAI's framework requiring biometric devices used for Aadhaar authentication to be individually registered and to encrypt biometric data at the point of capture."
@@ -4118,8 +4126,8 @@ export const blogPosts: BlogPost[] = [
   ]
 },{
   "slug": "biometric-machine-not-working-troubleshooting",
-  "title": "Biometric Machine Not Working? Troubleshooting Guide for Attendance Devices",
-  "description": "Fingerprint not detecting, face not recognised, device offline, or data not syncing — here's how to diagnose the common biometric attendance machine faults, and how to tell when it's one device versus a fleet-wide problem.",
+  "title": "Biometric Machine Not Working? Fixes for Attendance Devices",
+  "description": "Fingerprint not detected, face not recognised, device offline or not syncing? Step-by-step fixes for ZKTeco and eSSL machines, and when to call AMC.",
   "author": "InOps Editorial",
   "date": "August 27, 2026",
   "dateIso": "2026-08-27",
@@ -4132,31 +4140,32 @@ export const blogPosts: BlogPost[] = [
   "sections": [
     {
       "paragraphs": [
+        "A biometric attendance machine stops working for one of five reasons: power, network, sensor condition, enrolment quality, or a sync failure between the device and the software. This guide covers each in the order worth checking, and draws the line between a single device fix and a fleet-wide problem.",
         "A biometric attendance machine that stops working usually fails in one of a handful of predictable ways. Most of these are fixable without a service call — a few genuinely are not. This guide walks through the common faults in the order worth checking them, and flags where the problem stops being about one device and starts being about the whole fleet."
       ]
     },
     {
-      "heading": "Why Is the Biometric Device Unresponsive?",
+      "heading": "1. Power and Adapter",
       "paragraphs": [
         "Start with power — a loose connector or a tripped socket accounts for more \"dead\" devices than any hardware fault. Confirm the network link if the device relies on one for real-time sync. If both check out, a restart resolves a surprising share of unresponsive devices, particularly ones that have been running continuously for weeks without a reboot."
       ]
     },
     {
-      "heading": "Why Is My Fingerprint Not Being Detected?",
+      "heading": "2. Network Link to the Server",
+      "paragraphs": [
+        "Confirm the device still has a valid IP address and that nothing has changed on the network side — a DHCP lease expiry or a firewall rule update are common, quiet causes. Corporate firewalls blocking the ports a device needs for sync are a frequent culprit, particularly after a network security review that nobody thought to check against the attendance device list."
+      ]
+    },
+    {
+      "heading": "3. Clean and Dry Sensor",
       "paragraphs": [
         "Check the sensor surface first — dust, grease or residue on the scanning glass is the most common and the easiest to fix, and should be part of routine cleaning rather than a fault-response step. If the sensor is clean and detection still fails for a specific worker, the issue is usually enrolment quality or the underlying condition described in our comparison of fingerprint and face recognition attendance: worn, dry or damaged ridges from manual work. Re-enrolment with a better-quality capture resolves most of these; workers whose ridges are too worn for reliable fingerprint capture are candidates for a face-recognition device instead."
       ]
     },
     {
-      "heading": "Why Is Face Recognition Not Working?",
+      "heading": "4. Worker Enrolment",
       "paragraphs": [
         "Check lighting and angle before assuming an enrolment problem — direct backlighting or a steep camera angle causes more face-recognition failures than any single other factor. If positioning is correct and the same worker still fails to authenticate, the enrolment image itself is usually the cause: a single low-quality enrolment photo, or one captured months before a significant change in the worker's appearance, produces unreliable matching. Re-enrolling with two or three images under normal working-light conditions typically fixes this."
-      ]
-    },
-    {
-      "heading": "Device offline",
-      "paragraphs": [
-        "Confirm the device still has a valid IP address and that nothing has changed on the network side — a DHCP lease expiry or a firewall rule update are common, quiet causes. Corporate firewalls blocking the ports a device needs for sync are a frequent culprit, particularly after a network security review that nobody thought to check against the attendance device list."
       ]
     },
     {
@@ -4182,7 +4191,7 @@ export const blogPosts: BlogPost[] = [
       "heading": "When to Call an Engineer",
       "paragraphs": [
         "Power, network, cleaning and re-enrolment cover the majority of faults and can be handled on-site without specialist support. A hardware fault inside the sensor or camera module, a device that won't hold a firmware update, or a fault that recurs immediately after a fix are the signals that it's a hardware or engineering issue rather than a configuration one.",
-        "If you need structured, scheduled support across your biometric fleet — including devices not originally supplied by us — an AMC covers preventive maintenance visits, firmware management, spares, and a defined response SLA so a gate fault at 06:00 has a guaranteed response time rather than a support ticket queue."
+        "If you need structured, scheduled support across your biometric fleet — including devices not originally supplied by us — a <a href=\"/services/biometric-amc\" class=\"text-blue-600 underline\">biometric AMC</a> covers preventive maintenance visits, firmware management, spares, and a defined response SLA so a gate fault at 06:00 has a guaranteed response time rather than a support ticket queue."
       ],
       "ctaLabel": "See Biometric AMC & Device Support",
       "ctaHref": "/services/biometric-amc"
@@ -4321,9 +4330,10 @@ export const blogPosts: BlogPost[] = [
 },
   {
     slug: "what-is-contract-labour-management-system",
-    title: "Contract Labour Management System (CLMS) Explained",
+    title: "CLMS Full Form: Contract Labour Management System Explained",
+    h1: "CLMS Full Form: Contract Labour Management System (CLMS) Explained",
     description:
-      "CLMS meaning, modules & how it differs from HRMS — onboarding, gate compliance, attendance & CLRA registers for Indian manufacturing plants.",
+      "CLMS stands for Contract Labour Management System: software that runs contract workers from gate to payroll and keeps CLRA registers audit-ready.",
     author: "Satish Sinha",
     personAuthor: true,
     date: "August 3, 2026",
@@ -4339,6 +4349,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         paragraphs: [
+          "CLMS stands for Contract Labour Management System. It is software that manages contract workers from onboarding to exit: gate passes, biometric attendance, wages, PF/ESI and the statutory contract labour registers. In HR, a CLMS is kept separate from the HRMS because contract workers are employed by the contractor, not the principal employer.",
           "A contract labour management system (CLMS) is software that governs the entire lifecycle of contract workers at an industrial establishment: onboarding and verification, gate entry and compliance enforcement, biometric attendance, statutory registers under the Contract Labour (Regulation &amp; Abolition) Act, contractor payroll, and invoice reconciliation. It exists because contract workers are not employees — they are supplied by third-party contractors, governed by different law, and invisible to the HR systems built for permanent staff.",
           "For a plant running 2,000 contract workers across 30 contractors, this is not a convenience problem. It is the difference between knowing who is on site and hoping the contractor's register is accurate.",
           'InOps\' CLMS is <a href="/contract-labour-management" class="underline font-medium hover:opacity-75">Iddion RegX</a> — built specifically for Indian manufacturing, infrastructure and defence establishments. Each section of this guide maps to a module in Iddion RegX, from gate compliance and biometric attendance through CLRA registers and contractor payroll.',
@@ -4463,6 +4474,11 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     faqs: [
+      {
+        question: "What is the full form of CLMS in HR?",
+        answer:
+          'CLMS stands for Contract Labour Management System — the full form used in HR for dedicated <a href="/contract-labour-management" class="underline font-medium hover:opacity-75">contract labour management system software</a> built to run contract workers at industrial sites. It is kept separate from an HRMS because contract workers are employed by the contractor, not the principal employer, and require a different compliance and commercial workflow: gate passes, CLRA registers, contractor invoice reconciliation and statutory remittances.',
+      },
       {
         question: "What does CLMS stand for?",
         answer:

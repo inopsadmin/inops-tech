@@ -86,7 +86,7 @@ export default function ContactPage() {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
                   <p className={inopsUi.heroKicker}>InOps</p>
-                  <h1 className="home-display-heading inops-type-hero mt-4 text-white">Contact</h1>
+                  <h1 className="home-display-heading inops-type-hero mt-4 text-white">Contact InOps: Book a Demo or Get Support</h1>
                   <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{contactBanner.tagline}</p>
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               </FlyInText>
             </div>
             <FlyInText as="p" direction="up" delay={0.08} className={`max-w-lg ${inopsUi.lead}`}>
-              Send a message or reach us directly for product demos, implementation questions, and support requests.
+              Reach InOps IT Solutions at +91 80277 45220 or contact@inops.tech, or visit our office in Bommasandra Industrial Area, Bengaluru. Use the form below to book a CLMS or biometric demo, ask about implementation, or raise an AMC support request.
             </FlyInText>
           </div>
 

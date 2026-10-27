@@ -709,7 +709,7 @@ export default function LabourManagementPage() {
                     className="home-display-heading inops-type-hero mt-4 flex flex-col gap-1 text-slate-900 sm:mt-5 sm:gap-1.5"
                   >
                     <span className="text-slate-900 whitespace-nowrap">
-                      HR Software Built for <span className="text-[color:var(--inops-blue)]">Indian Manufacturing</span>
+                      HRIS Software for <span className="text-[color:var(--inops-blue)]">Indian Manufacturing</span>
                     </span>
                   </FlyInText>
 
@@ -721,7 +721,7 @@ export default function LabourManagementPage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    InOps HRIS manages onboarding, attendance, payroll, and compliance for your permanent workforce — one engine with InOps CLMS, one dashboard.
+                    InOps HRIS is HR software for Indian manufacturers' permanent workforce. It covers onboarding, biometric attendance, statutory payroll (PF, ESI, PT, LWF), leave and employee records across multiple plants, and runs on the same engine as InOps CLMS, so permanent and contract workers appear on one dashboard.
                   </FlyInText>
 
                   <FlyInText

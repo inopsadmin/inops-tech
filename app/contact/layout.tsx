@@ -3,9 +3,9 @@ import SecondaryPageJsonLd from "@/app/components/SecondaryPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Book a Demo | InOps — CLMS, Biometrics & Workforce Compliance";
+const PAGE_TITLE = "Contact InOps IT Solutions | Book a CLMS Demo, Bengaluru";
 const PAGE_DESCRIPTION =
-  "Book a demo, talk to sales, or visit our Bengaluru office. Phone +91 80277 45220 · contact@inops.tech · Bommasandra Industrial Area.";
+  "Call +91 80277 45220 or email contact@inops.tech to book a CLMS or biometric demo. Office: Bommasandra Industrial Area, Bengaluru. AMC support too.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

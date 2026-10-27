@@ -57,7 +57,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             {post.category}
           </p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {post.title}
+            {post.h1 ?? post.title}
           </h1>
           <p className="mt-4 text-sm text-slate-600">
             <time dateTime={post.dateIso}>{post.date}</time>
