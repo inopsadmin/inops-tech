@@ -15,10 +15,4 @@ export const productSchemaByPath: Record<
       "High-throughput turnstiles and speed gates integrated with biometric identity and workforce attendance.",
     category: "Physical Access Control",
   },
-  "/accessories": {
-    name: "InOps Access Control Accessories",
-    description:
-      "Cards, mounts, cables, and deployment accessories for biometric readers and perimeter control.",
-    category: "Access Control Accessories",
-  },
 };

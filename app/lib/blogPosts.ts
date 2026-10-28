@@ -3335,12 +3335,13 @@ export const blogPosts: BlogPost[] = [
   "personAuthor": true,
   "date": "September 4, 2026",
   "dateIso": "2026-09-04",
+  "dateModifiedIso": "2026-10-28",
   "category": "Biometrics",
   "tab": "biometric",
   "readMinutes": 8,
   "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=85",
   "imageAlt": "Biometric fingerprint scanner connected to a secure device — replace with real registered-device hardware photography before publishing",
-  "summary": "RD Service (Registered Device Service) is UIDAI's requirement that biometric devices used for Aadhaar authentication be individually registered and encrypt data at the point of capture. Ordinary attendance systems that match workers against their own enrolled templates never touch this framework — the distinction determines whether you need these devices at all.",
+  "summary": "RD Service (Registered Device Service) is UIDAI-mandated software that encrypts each biometric scan at the moment of capture before it is sent for Aadhaar authentication. You need it only when performing Aadhaar authentication — not for ordinary factory attendance, which matches against locally enrolled templates.",
   "sections": [
     {
       "paragraphs": [
@@ -3948,7 +3949,7 @@ export const blogPosts: BlogPost[] = [
   "slug": "vendor-management-contractors-manufacturing",
   "title": "Vendor Management for Contractors in Manufacturing: What It Actually Covers",
   "description": "Vendor management for a manufacturer's contractor base means licences, insurance, renewals, headcount caps and performance — not procurement software. Here's what to track and why it matters under CLRA.",
-  "author": "",
+  "author": "Satish Sinha",
   "personAuthor": true,
   "date": "August 29, 2026",
   "dateIso": "2026-08-29",
@@ -4227,7 +4228,7 @@ export const blogPosts: BlogPost[] = [
   "slug": "labour-management-system-software-guide",
   "title": "Labour Management System Software: A Complete Guide for Indian Manufacturers",
   "description": "Labour management system software governs both permanent and contract workforces on one platform — attendance, compliance, payroll and multi-site visibility. Here's what it is, what it should do, and how it differs from HRMS.",
-  "author": "",
+  "author": "Satish Sinha",
   "personAuthor": true,
   "date": "August 26, 2026",
   "dateIso": "2026-08-26",
@@ -4338,6 +4339,7 @@ export const blogPosts: BlogPost[] = [
     personAuthor: true,
     date: "August 3, 2026",
     dateIso: "2026-08-03",
+    dateModifiedIso: "2026-10-28",
     category: "CLMS",
     tab: "clms",
     readMinutes: 8,
@@ -4345,7 +4347,7 @@ export const blogPosts: BlogPost[] = [
       "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=85",
     imageAlt: "Factory floor with industrial workers — replace with a real plant or gate photograph before publishing",
     summary:
-      "A CLMS governs contract workers from onboarding through offboarding — covering gate compliance, biometric attendance, CLRA statutory registers, and contractor invoice reconciliation. It is not an HRMS add-on; it is a separate system designed for a different legal relationship, a different compliance surface, and a different commercial flow.",
+      "CLMS stands for Contract Labour Management System — software that manages contract workers from onboarding to exit: gate passes, biometric attendance, wages, PF/ESI and the statutory contract labour registers. It is kept separate from the HRMS because contract workers are employed by the contractor, not the principal employer.",
     sections: [
       {
         paragraphs: [
@@ -5324,9 +5326,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "form-v-form-xiii-clra-guide-india",
-    title: "Form V and Form XIII Under CLRA: What They Are, Who Files Them, and When",
+    title: "Form V and Form XIII Under CLRA: Filing Guide India",
     description:
-      "A complete guide to Form V (commencement certificate) and Form XIII (Register of Contractors) under the Contract Labour (Regulation & Abolition) Act, 1970 — mandatory documentation every Indian principal employer must maintain.",
+      "Form V (commencement certificate) and Form XIII (Register of Contractors) under CLRA 1970 — who files each, when, and what changes under the OSH Code 2020.",
     author: "InOps Editorial",
     date: "December 2025",
     dateIso: "2025-12-03",

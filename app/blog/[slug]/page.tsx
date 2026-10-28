@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Article not found" };
 
   return routeMetadata({
-    title: `${post.title} | ${SITE_NAME} Blog`,
+    title: `${post.title} | InOps`,
     description: post.description,
     path: `/blog/${post.slug}`,
     extraKeywords: [post.category, "workforce blog", "InOps insights"],

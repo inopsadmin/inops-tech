@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 const PAGE_TITLE = "About InOps | Contract Workforce Compliance Since 2014";
 const PAGE_DESCRIPTION =
-  "Enterprise CLMS, workforce automation, and digital operations partnership, headquartered in Bommasandra Industrial Area, Bengaluru, Karnataka.";
+  "InOps IT Solutions — contract labour management, biometric attendance & CLRA compliance for Indian manufacturing. Headquartered in Bommasandra, Bengaluru.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

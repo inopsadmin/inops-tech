@@ -6,14 +6,14 @@
 export const SITE_NAME = "InOps Solutions";
 
 /** Default `<title>` for the homepage (matches brand + high-intent queries + geo). */
-export const HOME_PAGE_TITLE = `${SITE_NAME} | CLMS, Biometrics & Workforce Compliance | Bengaluru`;
+export const HOME_PAGE_TITLE = `InOps | CLMS, Biometrics & Workforce Compliance | Bengaluru`;
 
 export const SITE_TAGLINE =
   "Enterprise contract labour management, biometric attendance, PF/ESI compliance, payroll automation, and earned wage access for Indian manufacturers.";
 
 /** Meta description: optimized for SERP snippet (reference: contract labour, biometrics, PF ESI, EWA, geo). */
 export const DEFAULT_DESCRIPTION =
-  "Enterprise contract labour management software with biometric attendance, PF ESI compliance, payroll automation, and earned wage access for Indian manufacturers. Bengaluru.";
+  "Contract labour management, biometric attendance, PF/ESI compliance, payroll automation & earned wage access for Indian manufacturers. Based in Bengaluru.";
 
 export const CONTACT_EMAIL = "contact@inops.tech";
 
