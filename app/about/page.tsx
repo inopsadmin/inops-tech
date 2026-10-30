@@ -345,6 +345,14 @@ export default function AboutPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: smoothEase, delay: 0.18 }}
                   >
+                    InOps IT Solutions Pvt. Ltd. is a Bengaluru-based workforce compliance technology company founded in 2014. We build and support contract labour management, biometric attendance, HRIS and compliance systems for Indian manufacturing, defence and infrastructure enterprises, and manage 3,000+ devices across 70+ sites.
+                  </motion.p>
+                  <motion.p
+                    className={`${aboutLead} mt-3 max-w-xl`}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, ease: smoothEase, delay: 0.24 }}
+                  >
                     Founded in 2014, InOps unifies attendance, compliance, and Contract Labour Management — gate biometrics to finance close — for industrial operators across India.
                   </motion.p>
                 </div>

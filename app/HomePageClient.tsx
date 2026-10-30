@@ -351,6 +351,13 @@ export default function Home() {
                   </AnimatePresence>
                 </motion.div>
                 
+                <motion.p
+                  variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 20 } }}
+                  transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.04 }}
+                  className="mx-auto mt-5 max-w-xl px-2 text-center text-sm leading-relaxed text-white/80 sm:mt-6 sm:text-base"
+                >
+                  InOps is a Bengaluru company that builds contract labour management (CLMS), biometric attendance and compliance systems for Indian manufacturing, defence and infrastructure plants. Since 2014 we have managed 3,000+ attendance devices across 70+ sites, connecting the factory gate to payroll and statutory registers on one platform.
+                </motion.p>
                 <motion.div
                   variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 28 } }}
                   transition={{ duration: 0.58, ease: [0.33, 1, 0.68, 1], delay: 0.05 }}

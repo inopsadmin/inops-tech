@@ -3947,12 +3947,13 @@ export const blogPosts: BlogPost[] = [
   ]
 }, {
   "slug": "vendor-management-contractors-manufacturing",
-  "title": "Vendor Management for Contractors in Manufacturing: What It Actually Covers",
-  "description": "Vendor management for a manufacturer's contractor base means licences, insurance, renewals, headcount caps and performance — not procurement software. Here's what to track and why it matters under CLRA.",
+  "title": "Contractor Vendor Management in Manufacturing",
+  "description": "Contractor vendor management for manufacturers: licences, insurance, headcount caps, statutory remittances and scorecards across sites. What to track.",
   "author": "Satish Sinha",
   "personAuthor": true,
   "date": "August 29, 2026",
   "dateIso": "2026-08-29",
+  "dateModifiedIso": "2026-10-30",
   "category": "CLMS",
   "tab": "clms",
   "readMinutes": 7,
@@ -4226,12 +4227,13 @@ export const blogPosts: BlogPost[] = [
   ]
 },{
   "slug": "labour-management-system-software-guide",
-  "title": "Labour Management System Software: A Complete Guide for Indian Manufacturers",
-  "description": "Labour management system software governs both permanent and contract workforces on one platform — attendance, compliance, payroll and multi-site visibility. Here's what it is, what it should do, and how it differs from HRMS.",
+  "title": "Labour Management System Software for Indian Plants",
+  "description": "Labour management system software runs permanent and contract workers on one platform: attendance, compliance, payroll. How it differs from HRMS.",
   "author": "Satish Sinha",
   "personAuthor": true,
   "date": "August 26, 2026",
   "dateIso": "2026-08-26",
+  "dateModifiedIso": "2026-10-30",
   "category": "CLMS",
   "tab": "clms",
   "readMinutes": 9,
