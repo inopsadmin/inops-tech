@@ -908,13 +908,13 @@ main section img.impact-bullet-tick.site-img-hover:hover {
 /* ===== Global page template unification ===== */
 /* #contact / .section-flush-footer: last sections above footer — skip bottom padding to avoid a white gap. */
 .inops-template > div > section:not(.hero-tight):not(#contact):not(.section-flush-footer) {
-  padding-top: clamp(2.25rem, 2rem + 0.6vw, 3rem) !important;
+  padding-top: 0 !important;
   padding-bottom: clamp(2.25rem, 2rem + 0.6vw, 3rem) !important;
 }
 
 @media (min-width: 1024px) {
   .inops-template > div > section:not(.hero-tight):not(#contact):not(.section-flush-footer) {
-    padding-top: clamp(2.75rem, 2.35rem + 0.8vw, 3.5rem) !important;
+    padding-top: 0 !important;
     padding-bottom: clamp(2.75rem, 2.35rem + 0.8vw, 3.5rem) !important;
   }
 }

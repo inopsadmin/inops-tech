@@ -69,16 +69,15 @@ const RESOURCE_MENU = {
   ],
 };
 
-function pathUsesSolidNavBar(path: string) {
-  // Only the homepage gets the transparent/hero navbar; every other path is solid.
-  return path !== "/";
+function pathUsesSolidNavBar(_path: string) {
+  return true;
 }
 
 export default function Navbar() {
   const pathname = usePathname();
   /** White bar + fixed sticky (true after home hero ends, or inner pages after small scroll). */
-  const [scrolled, setScrolled] = useState(() => pathUsesSolidNavBar(pathname));
-  /** Home only: navbar in document flow while hero is on screen ,  scrolls up with the page. */
+  const [scrolled, setScrolled] = useState(true);
+  /** Home only: navbar in document flow while hero is on screen, no spacer needed. */
   const [navStaticHero, setNavStaticHero] = useState(pathname === "/");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -180,7 +179,7 @@ export default function Navbar() {
           </Link>
         </motion.div>
 
-        <nav className="hidden items-center gap-3 md:flex xl:gap-4 2xl:gap-5" aria-label="Primary">
+        <nav className="hidden items-center gap-1 md:flex xl:gap-2" aria-label="Primary">
           {navItems.map((item, i) =>
             hasServicesMega(item) ? (
               <motion.div

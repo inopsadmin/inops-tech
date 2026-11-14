@@ -35,7 +35,7 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
 
         <Navbar />
 
-        <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans">
+        <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans" style={{ paddingTop: "calc(var(--home-nav-offset, 72px) - 16px)" }}>
           {children}
           <ScrollRevealEnhancer />
         </main>
