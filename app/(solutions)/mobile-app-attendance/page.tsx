@@ -18,7 +18,7 @@ import { mediaVideos } from "@/app/lib/mediaAssets";
 import { inopsUi } from "@/app/lib/inopsUi";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 
-const mobileAppHeroImage = "/WhatsApp Image 2026-05-04 at 12.24.06 PM.jpeg";
+const mobileAppHeroImage = "/WhatsApp Image 2026-05-04 at 12.24.06 PM.webp";
 
 const mobileAppHeroVideo = mediaVideos.mobileAppHero;
 const smartAttendanceWhySectionVideo = mediaVideos.smartAttendanceMobile;
@@ -1342,7 +1342,7 @@ export default function MobileAppPage() {
                           loop
                           playsInline
                           preload="metadata"
-                          poster="/Gemini_Generated_Image_34d3gr34d3gr34d3-removebg-preview.png"
+                          poster="/Gemini_Generated_Image_34d3gr34d3gr34d3-removebg-preview.webp"
                           aria-label="SmartAttendance mobile and workforce experience ,  dual phone mockups showing attendance and activity in the app."
                         >
                           <source src={smartAttendanceWhySectionVideo} type="video/mp4" />

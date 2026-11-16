@@ -182,7 +182,7 @@ export default function AutomotiveIndustryPage() {
     <div className="min-h-screen bg-white text-slate-900">
       <section className="relative min-h-[540px] overflow-hidden bg-slate-100 text-white">
         <Image
-          src="/images/manufacturing-shop-floor-generated.png"
+          src="/images/manufacturing-shop-floor-generated.webp"
           alt=""
           fill
           priority
@@ -248,7 +248,7 @@ export default function AutomotiveIndustryPage() {
               <div className="absolute -right-7 -top-7 h-28 w-28 border-r-2 border-t-2 border-teal-300" aria-hidden />
               <div className="relative border border-slate-200 bg-white p-3 shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
                 <Image
-                  src="/images/automotive-assembly-line.jpg"
+                  src="/images/automotive-assembly-line.webp"
                   alt="Automotive assembly line with robotic arms"
                   width={1024}
                   height={682}
@@ -307,7 +307,7 @@ export default function AutomotiveIndustryPage() {
           <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Image
-                src="/images/Hardware Integration.jpg"
+                src="/images/Hardware Integration.webp"
                 alt="Automotive access governance checkpoint"
                 width={500}
                 height={500}
@@ -406,7 +406,7 @@ export default function AutomotiveIndustryPage() {
           <div className="lg:col-span-6">
             <div className="relative mx-auto max-w-[680px]">
               <Image
-                src="/images/workforce-analytics-dashboard.jpg"
+                src="/images/workforce-analytics-dashboard.webp"
                 alt="Workforce analytics and compliance dashboard"
                 width={900}
                 height={600}
@@ -460,7 +460,7 @@ export default function AutomotiveIndustryPage() {
 
       <section className="relative overflow-hidden bg-[#0b69b3] py-16 text-white">
         <Image
-          src="/images/manufacturing-shop-floor-generated.png"
+          src="/images/manufacturing-shop-floor-generated.webp"
           alt=""
           fill
           sizes="100vw"

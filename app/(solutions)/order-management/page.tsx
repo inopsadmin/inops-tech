@@ -23,7 +23,7 @@ import Link from "next/link";
 
 
 const heroData = {
-  bgImage: "/images/solutions/order-management.jpeg", 
+  bgImage: "/images/solutions/order-management.webp", 
   bgImageAlt: "Warehouse worker reviewing the order management dashboard",
   bgPosition: "72% 40%",
   gradientCenter: "18% 22%",
@@ -352,7 +352,7 @@ export default function OrdersPage() {
                     </div>
                     <div className="mx-2 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden" style={{ height: '130px' }}>
                       <Image
-                        src="/images/solutions/Order-image.png"
+                        src="/images/solutions/Order-image.webp"
                         alt="Canon EOS R5"
                         width={110}
                         height={110}

@@ -3,22 +3,22 @@
  */
 
 export const industryLeaderClientLogos = [
-  "/client2.png",
-  "/clients/skf.png",
-  "/client7.png",
+  "/client2.webp",
+  "/clients/skf.webp",
+  "/client7.webp",
   "/bfw.avif",
-  "/wheels.png",
-  "/client18.png",
-  "/client19.jpg",
-  "/automotive-axle.png",
-  "/client29.png",
+  "/wheels.webp",
+  "/client18.webp",
+  "/client19.webp",
+  "/automotive-axle.webp",
+  "/client29.webp",
 ] as const;
 
 /** Logos that render in a larger frame (fill parent box — see ClientMarqueeLogo). */
 export const enlargedMarqueeLogoSrcs = new Set<string>([
-  "/client7.png",
+  "/client7.webp",
   "/bfw.avif",
-  "/automotive-axle.png",
+  "/automotive-axle.webp",
 ]);
 
 /** Same height/width for every slot so logos share one horizontal alignment axis. */
@@ -44,10 +44,10 @@ export const CLIENT_LOGO_MARQUEE_FRAME_XL =
   "relative h-[8rem] w-[15.5rem] sm:h-[8.5rem] sm:w-[18.5rem]";
 
 /** Logos that need the XL frame + zoom to offset empty PNG padding */
-export const extraLargeMarqueeLogoSrcs = new Set<string>(["/automotive-axle.png"]);
+export const extraLargeMarqueeLogoSrcs = new Set<string>(["/automotive-axle.webp"]);
 
 /** Logos exported on white — keeps marquee strip seamless */
-export const whiteBackgroundMarqueeLogoSrcs = new Set<string>(["/clients/skf.png", "/skf.png"]);
+export const whiteBackgroundMarqueeLogoSrcs = new Set<string>(["/clients/skf.webp", "/skf.webp"]);
 
 export const CLIENT_LOGO_MARQUEE_IMAGE_CLASS = "object-contain object-center";
 
@@ -73,18 +73,18 @@ export function getClientMarqueeLogoSizing(src: string) {
 }
 
 const logoAltBySrc: Record<string, string> = {
-  "/client2.png": "Ashok Leyland",
-  "/client6.png": "Ashok Leyland",
-  "/auto.png": "Automotive Axle",
-  "/clients/skf.png": "SKF",
-  "/skf.png": "SKF",
-  "/skf2.jpg": "SKF",
+  "/client2.webp": "Ashok Leyland",
+  "/client6.webp": "Ashok Leyland",
+  "/auto.webp": "Automotive Axle",
+  "/clients/skf.webp": "SKF",
+  "/skf.webp": "SKF",
+  "/skf2.webp": "SKF",
   "/bfw.avif": "BFW",
-  "/wheels.png": "Wheels India",
-  "/client18.png": "BHEL",
-  "/client19.jpg": "HAL",
-  "/automotive-axle.png": "Automotive Axle",
-  "/client29.png": "Foxconn",
+  "/wheels.webp": "Wheels India",
+  "/client18.webp": "BHEL",
+  "/client19.webp": "HAL",
+  "/automotive-axle.webp": "Automotive Axle",
+  "/client29.webp": "Foxconn",
   "/clients/ashok-leyland.svg": "Ashok Leyland",
   "/clients/automotive-axle.svg": "Automotive Axle",
   "/clients/bhel.svg": "BHEL",

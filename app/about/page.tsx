@@ -41,7 +41,7 @@ const visionMissionCardItem = {
 
 const cardHoverLift = { y: -6, transition: { duration: 0.28, ease: smoothEase } } as const;
 
-const aboutHeroOfficeImage = "/WhatsApp Image 2026-05-05 at 8.15.34 PM.jpeg";
+const aboutHeroOfficeImage = "/WhatsApp Image 2026-05-05 at 8.15.34 PM.webp";
 
 /** Unified kicker / heading / body on light sections (About). */
 const aboutKickerStyle = {
@@ -62,14 +62,14 @@ const aboutLead = "text-base leading-relaxed text-slate-600";
 const aboutLabelUpper = "text-xs font-medium uppercase tracking-widest text-slate-600";
 
 const cultureCards: { title: string; imageSrc: string }[] = [
-  { title: "Face Recognition System", imageSrc: "/images/7a6a2a07-b8a7-48d1-ac83-4201e948805e.png" },
-  { title: "HR Information System", imageSrc: "/hrinfromationsystem.jpeg" },
-  { title: "Contract Labour Management System", imageSrc: "/contractworkforcemanagemtsystem.jpeg" },
-  { title: "EWA", imageSrc: "/ewa.jpeg" },
-  { title: "Enterprise Solution", imageSrc: "/enterprise-solution.png" },
-  { title: "CCTV Solution", imageSrc: "/cctvsolution.png" },
-  { title: "Mobile Application", imageSrc: "/mobile-application.png" },
-  { title: "Canteen & Visitor Management", imageSrc: "/canteen-visitor-management.png" },
+  { title: "Face Recognition System", imageSrc: "/images/7a6a2a07-b8a7-48d1-ac83-4201e948805e.webp" },
+  { title: "HR Information System", imageSrc: "/hrinfromationsystem.webp" },
+  { title: "Contract Labour Management System", imageSrc: "/contractworkforcemanagemtsystem.webp" },
+  { title: "EWA", imageSrc: "/ewa.webp" },
+  { title: "Enterprise Solution", imageSrc: "/enterprise-solution.webp" },
+  { title: "CCTV Solution", imageSrc: "/cctvsolution.webp" },
+  { title: "Mobile Application", imageSrc: "/mobile-application.webp" },
+  { title: "Canteen & Visitor Management", imageSrc: "/canteen-visitor-management.webp" },
 ];
 
 // const differentiators = [
@@ -497,7 +497,7 @@ export default function AboutPage() {
             >
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-slate-200 ring-2 ring-white shadow-md sm:h-16 sm:w-16">
                 <Image
-                  src="/Gemini_Generated_Image_fze4eqfze4eqfze4.png"
+                  src="/Gemini_Generated_Image_fze4eqfze4eqfze4.webp"
                   alt="Portrait of Satish Sinha, Founder of InOps IT Solutions"
                   fill
                   className="object-cover object-top"
@@ -822,7 +822,7 @@ export default function AboutPage() {
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_34%_12%,rgba(57,189,232,0.16),transparent_34%)]" aria-hidden />
                 <div className="relative min-h-[20rem] w-full sm:min-h-[26rem] lg:min-h-[32rem]">
                   <Image
-                    src="/t2-removed.png"
+                    src="/t2-removed.webp"
                     alt="Why choose us visual"
                     fill
                     className="object-contain object-center px-6 pt-6 drop-shadow-[0_24px_36px_rgba(29,95,191,0.16)] transition-transform duration-500 group-hover:scale-[1.025] sm:p-8"

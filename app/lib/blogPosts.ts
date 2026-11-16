@@ -6183,7 +6183,7 @@ export const blogPosts: BlogPost[] = [
     category: "CLMS",
     tab: "clms",
     readMinutes: 11,
-    image: "/images/clms-vs-hrms.jpg",
+    image: "/images/clms-vs-hrms.webp",
     imageAlt:
       "Comparison of a Contract Labour Management System (CLMS) and an HRMS for workforce management",
     summary:
@@ -6711,7 +6711,7 @@ export const blogPosts: BlogPost[] = [
     category: "CLMS",
     tab: "clms",
     readMinutes: 9,
-    image: "/images/workforce-analytics-dashboard.jpg",
+    image: "/images/workforce-analytics-dashboard.webp",
     imageAlt: "Workforce analytics dashboard — contractor management visibility replacing spreadsheets in manufacturing",
     summary:
       "When a manufacturing plant has multiple contractors, hundreds of contract workers, different shifts and multiple locations, spreadsheet-based contractor management stops working. Here are 10 signs your factory has outgrown it.",

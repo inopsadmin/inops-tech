@@ -12,7 +12,7 @@ const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
 const contactBanner = {
-  src: "/images/contact-hero.png",
+  src: "/images/contact-hero.webp",
   alt: "InOps support specialist with headset ,  friendly, professional customer assistance",
   tagline: "Sales, support & partnerships · Bengaluru",
 } as const;

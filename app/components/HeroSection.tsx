@@ -1,9 +1,7 @@
 const css = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-.ih{font-family:Inter,system-ui,sans-serif;position:relative;min-height:100vh;width:100%;display:flex;align-items:center}
+.ih{font-family:var(--font-inter),Inter,system-ui,sans-serif;position:relative;min-height:100vh;width:100%;display:flex;align-items:center}
 .ih *{box-sizing:border-box;margin:0;padding:0}
 .ih .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.ih .overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,12,26,.92) 0%,rgba(6,12,26,.82) 45%,rgba(6,12,26,.35) 75%,transparent 100%)}
 .ih .content{position:relative;z-index:2;padding:0 64px;max-width:680px}
 .ih .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#7dd3fc;background:rgba(29,95,209,.18);border:1px solid rgba(56,189,248,.3);padding:7px 16px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px}
 .ih .eyebrow i{width:6px;height:6px;border-radius:50%;background:#38bdf8;flex:none;animation:pulse 2s ease-in-out infinite}
@@ -35,8 +33,7 @@ export default function HeroSection() {
     <div style={{ marginTop: "-72px" }}>
       <style dangerouslySetInnerHTML={{ __html: css }} />
       <div className="ih">
-        <img className="bg" src="/images/image%20(3).png" alt="" aria-hidden />
-        <div className="overlay" aria-hidden />
+        <img className="bg" src="/images/image%20(3).webp" alt="" aria-hidden fetchPriority="high" />
         <div className="content">
           <span className="eyebrow">
             <i />

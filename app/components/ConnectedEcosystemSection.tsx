@@ -7,31 +7,31 @@ const steps = [
   {
     id: "entry",
     label: "Worker Entry",
-    imageSrc: "/ecosystem-icons/worker-entry.png",
+    imageSrc: "/ecosystem-icons/worker-entry.webp",
     imageAlt: "Notebook and pencil ,  worker entry and records",
   },
   {
     id: "attendance",
     label: "Attendance Capture",
-    imageSrc: "/ecosystem-icons/attendance-capture.png",
+    imageSrc: "/ecosystem-icons/attendance-capture.webp",
     imageAlt: "Checklist ,  attendance capture",
   },
   {
     id: "workforce",
     label: "Workforce System",
-    imageSrc: "/ecosystem-icons/workforce-system.png",
+    imageSrc: "/ecosystem-icons/workforce-system.webp",
     imageAlt: "Team at workstations ,  workforce system",
   },
   {
     id: "compliance",
     label: "Compliance & Payroll",
-    imageSrc: "/ecosystem-icons/compliance-payroll.png",
+    imageSrc: "/ecosystem-icons/compliance-payroll.webp",
     imageAlt: "Handshake ,  compliance and payroll",
   },
   {
     id: "finance",
     label: "Ops & Finance",
-    imageSrc: "/ecosystem-icons/ops-finance.png",
+    imageSrc: "/ecosystem-icons/ops-finance.webp",
     imageAlt: "Growth chart ,  operations and finance",
   },
 ] as const;

@@ -23,7 +23,7 @@ import {
 
 
 const heroData = {
-  bgImage: "/images/solutions/Warehouse-management.jpeg", 
+  bgImage: "/images/solutions/Warehouse-management.webp", 
   bgImageAlt: "Warehouse manager reviewing inventory data on a laptop",
   bgPosition: "72% 40%",
   gradientCenter: "28% 22%",
@@ -54,8 +54,8 @@ const painData = {
   heading: "The Cost of Operational Inefficiency",
   description:
     "Manual processes and fragmented data lead to invisible leaks in your bottom line. We solve the core friction points that slow down your growth.",
-  imageSrc:"/images/solutions/warehouse-employee.jpg",
-  imageSrc2: "/images/solutions/Warehouse-PainPoint.jpg",
+  imageSrc:"/images/solutions/warehouse-employee.webp",
+  imageSrc2: "/images/solutions/Warehouse-PainPoint.webp",
     points: [
     { title: "Inventory Inaccuracies", description: "Shrinkage and ghost stock lead to missed sales and capital bloat." },
     { title: "Slow Receiving & Putaway", description: "Bottlenecks at the dock prevent stock from becoming sellable quickly." },

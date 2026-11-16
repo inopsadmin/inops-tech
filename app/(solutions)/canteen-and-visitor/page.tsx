@@ -21,8 +21,8 @@ const interactiveSurfaceHover =
 const buttonHover =
   "transition-all duration-300 ease-out hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg";
 
-/** Scheduled vs walk-up process ,  `public/images/Visitor-Management-Process (1).png` */
-const visitorManagementProcessImage = "/images/Visitor-Management-Process (1).png";
+/** Scheduled vs walk-up process ,  `public/images/Visitor-Management-Process (1).webp` */
+const visitorManagementProcessImage = "/images/Visitor-Management-Process (1).webp";
 const digitalCanteenSubsidyControlVideo = "/Digital_canteen_subsidy_control_202605080015.mp4";
 const visitorDeskLobbyCampusStackVideo = "/Visitor_desk_lobby_campus_stack_202605080018.mp4";
 const visitorManagementSystemVideo = mediaVideos.visitorManagementSystem;
@@ -496,7 +496,7 @@ export default function CanteenManagementPage() {
           subtitle="InOps handles biometric meal entitlement, payroll-linked subsidies, and waste tracking — plus visitor passes and lobby flows — on one platform across your campus."
           subtitleClassName="text-xs leading-relaxed text-slate-600 sm:text-base"
           splitHeroCopyStackClassName={`max-w-3xl lg:max-w-xl lg:pr-6 ${SPLIT_HERO_COPY_ML}`}
-          imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg"
+          imageSrc="/WhatsApp Image 2026-05-04 at 12.31.38 PM.webp"
           imageAlt="Digital canteen, visitor desk, and analytics on an industrial campus"
           videoSrc={mediaVideos.canteenHeroDemo}
           // videoSrcClipClassName="pt-12"
@@ -649,7 +649,7 @@ export default function CanteenManagementPage() {
                       loop
                       playsInline
                       preload="metadata"
-                      poster="/images/cmsy.jpg"
+                      poster="/images/cmsy.webp"
                       aria-label="Digital canteen dashboard ,  biometric meal verification, subsidy and payroll-linked rules, inventory signals, and contractor vs employee entitlements"
                     >
                       <source src={digitalCanteenSubsidyControlVideo} type="video/mp4" />
@@ -909,7 +909,7 @@ export default function CanteenManagementPage() {
                       loop
                       playsInline
                       preload="metadata"
-                      poster="/images/visitor.jpg"
+                      poster="/images/visitor.webp"
                       aria-label="Visitor management and lobby reception"
                     >
                       <source src={visitorDeskLobbyCampusStackVideo} type="video/mp4" />

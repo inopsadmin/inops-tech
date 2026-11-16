@@ -11,7 +11,7 @@ export const platformShowcaseSlides = [
     badge: "CCTV attendance",
     text:
       "Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system with computer vision. No queues, no contact, no excuses.",
-    imageUrl: "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg",
+    imageUrl: "/WhatsApp Image 2026-04-27 at 3.53.36 PM.webp",
     imageAlt: "CCTV-based attendance and computer vision monitoring on site",
   },
   {
@@ -21,7 +21,7 @@ export const platformShowcaseSlides = [
     title: "Redefining contract workforce ,  Management system",
     badge: "CLMS",
     text: "One Unified Platform for Complete Control",
-    imageUrl: "/WhatsApp Image 2026-05-04 at 12.41.37 PM.jpeg",
+    imageUrl: "/WhatsApp Image 2026-05-04 at 12.41.37 PM.webp",
     imageAlt: "Payroll and contract workforce operations",
   },
   {
@@ -32,7 +32,7 @@ export const platformShowcaseSlides = [
     badge: "HR Information System",
     text:
       "Manage employee data, attendance, payroll, and workforce operations all in one unified platform built for speed and compliance.",
-    imageUrl: "/WhatsApp Image 2026-05-04 at 12.24.11 PM.jpeg",
+    imageUrl: "/WhatsApp Image 2026-05-04 at 12.24.11 PM.webp",
     imageAlt: "Labour management and HRIS ,  unified workforce, attendance, and payroll",
   },
   {
@@ -43,7 +43,7 @@ export const platformShowcaseSlides = [
     badge: "Canteen & visitor",
     text:
       "Centralize meal issuance, biometric verification, and subsidy rules from the serving line to payroll, aligned with visitor check-in and lobby workflows when you need one campus story.",
-    imageUrl: "/WhatsApp Image 2026-05-04 at 12.31.38 PM.jpeg",
+    imageUrl: "/WhatsApp Image 2026-05-04 at 12.31.38 PM.webp",
     imageAlt: "Digital canteen and subsidy operations on an industrial campus",
   },
   {
@@ -54,7 +54,7 @@ export const platformShowcaseSlides = [
     badge: "Mobile attendance",
     text:
       "Punch in, submit leave, and see who is on shift, from the phones your team already uses. Self-service without extra hardware for everyday work.",
-    imageUrl: "/WhatsApp Image 2026-05-04 at 12.24.06 PM.jpeg",
+    imageUrl: "/WhatsApp Image 2026-05-04 at 12.24.06 PM.webp",
     imageAlt: "Mobile app for attendance and workforce self-service on the go",
   },
   {
@@ -65,7 +65,7 @@ export const platformShowcaseSlides = [
     badge: "Biometric hardware",
     text:
       "Advanced biometric devices engineered for high-precision attendance, access control, and seamless workforce management across industrial environments.",
-    imageUrl: "/WhatsApp Image 2026-04-29 at 3.18.32 PM.jpeg",
+    imageUrl: "/WhatsApp Image 2026-04-29 at 3.18.32 PM.webp",
     imageAlt: "Enterprise biometric access devices in a modern secure facility",
   },
   {
@@ -88,7 +88,7 @@ export const platformShowcaseSlides = [
     badge: "Early wage access",
     text:
       "Enable your workforce to access wages they've already earned, powered by real-time attendance and payroll data.",
-    imageUrl: "/images/ewa-hero.png",
+    imageUrl: "/images/ewa-hero.webp",
     imageAlt: "Workforce on site ,  earned wage access aligned to verified attendance",
   },
 ] as const;

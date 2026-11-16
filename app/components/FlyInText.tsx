@@ -1,37 +1,17 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-
-const ease = [0.2, 0.85, 0.22, 1] as const;
-
-/** Shared viewport: first scroll into view, then fly in (once). */
-export const flyInViewport = {
-  once: true as const,
-  amount: 0.2 as const,
-  margin: "0px 0px -8% 0px" as const,
-};
+import { useRef, useEffect } from "react";
 
 const offsets = {
-  up: { x: 0, y: 56 },
-  down: { x: 0, y: -44 },
-  left: { x: 48, y: 6 },
-  right: { x: -48, y: 6 },
+  up: "translateY(56px)",
+  down: "translateY(-44px)",
+  left: "translateX(48px) translateY(6px)",
+  right: "translateX(-48px) translateY(6px)",
 } as const;
 
 export type FlyDirection = keyof typeof offsets;
 
 type Tag = "h1" | "h2" | "h3" | "h4" | "p" | "span" | "div" | "li";
-
-const motionTags: Record<Tag, (typeof motion)[Tag]> = {
-  h1: motion.h1,
-  h2: motion.h2,
-  h3: motion.h3,
-  h4: motion.h4,
-  p: motion.p,
-  span: motion.span,
-  div: motion.div,
-  li: motion.li,
-};
 
 export type FlyInTextProps = {
   as?: Tag;
@@ -41,15 +21,11 @@ export type FlyInTextProps = {
   className?: string;
   id?: string;
   children: React.ReactNode;
-  /**
-   * `view` (default): animate when the element scrolls into view.
-   * `mount`: animate on first paint ,  use for above-the-fold copy on page load.
-   */
   trigger?: "view" | "mount";
 };
 
 export function FlyInText({
-  as = "div",
+  as: Tag = "div",
   direction = "up",
   delay = 0,
   duration = 0.7,
@@ -58,36 +34,51 @@ export function FlyInText({
   children,
   trigger = "view",
 }: FlyInTextProps) {
-  const reduce = useReducedMotion();
-  const { x, y } = offsets[direction];
-  const Cmp = motionTags[as];
+  const ref = useRef<HTMLElement>(null);
 
-  const initial = reduce ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x, y };
-  const animate = { opacity: 1, x: 0, y: 0 };
-  const transition = {
-    duration: reduce ? 0 : duration,
-    ease,
-    delay: reduce ? 0 : delay,
-  };
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
 
-  if (trigger === "mount") {
-    return (
-      <Cmp id={id} className={className} initial={initial} animate={animate} transition={transition}>
-        {children}
-      </Cmp>
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ease = "cubic-bezier(0.2, 0.85, 0.22, 1)";
+    const transition = `opacity ${duration}s ${ease} ${delay}s, transform ${duration}s ${ease} ${delay}s`;
+
+    el.style.opacity = "0";
+    el.style.transform = offsets[direction];
+
+    if (trigger === "mount") {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          el.style.transition = transition;
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.transition = transition;
+          el.style.opacity = "1";
+          el.style.transform = "none";
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
     );
-  }
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [trigger, direction, delay, duration]);
 
   return (
-    <Cmp
-      id={id}
-      className={className}
-      initial={initial}
-      whileInView={animate}
-      viewport={flyInViewport}
-      transition={transition}
-    >
+    // @ts-expect-error – ref type varies by tag, safe here
+    <Tag ref={ref} id={id} className={className}>
       {children}
-    </Cmp>
+    </Tag>
   );
 }

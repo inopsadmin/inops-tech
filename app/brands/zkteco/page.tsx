@@ -133,7 +133,7 @@ const deviceCategories = [
     category: "Face Recognition Terminals",
     accentBar: "from-sky-400 via-blue-500 to-indigo-500",
     iconBg: "bg-sky-50 text-sky-600",
-    img: "/ZKTeco/man-with-digital-facial-recognition.jpg",
+    img: "/ZKTeco/man-with-digital-facial-recognition.webp",
     description: "Sub-second visible-light facial recognition with liveness detection and anti-spoofing. Suitable for outdoor plant entrances and high-throughput shift-change gates.",
     models: [
       { name: "SpeedFace Series", spec: "Face + fingerprint + card, outdoor-rated, large capacity" },
@@ -145,7 +145,7 @@ const deviceCategories = [
     category: "Fingerprint Terminals",
     accentBar: "from-violet-400 via-fuchsia-500 to-pink-500",
     iconBg: "bg-violet-50 text-violet-600",
-    img: "/ZKTeco/fingerprint-Terminals.jpg",
+    img: "/ZKTeco/fingerprint-Terminals.webp",
     description: "Optical and capacitive fingerprint readers for indoor gates, offices and lower-throughput entry points. Entry-level cost per lane.",
     models: [
       { name: "K40/K50 Series", spec: "Fingerprint + card + PIN, high user capacity, indoor rated" },
@@ -179,7 +179,7 @@ const deviceCategories = [
     category: "Turnstiles & Flap Barriers",
     accentBar: "from-amber-400 via-orange-500 to-rose-500",
     iconBg: "bg-amber-50 text-amber-700",
-    img: "/ZKTeco/turnstiles-Flap-Barriers.jpg",
+    img: "/ZKTeco/turnstiles-Flap-Barriers.webp",
     description: "Tripod turnstiles, flap barriers and full-height turnstiles with reader mounts for any ZKTeco biometric terminal. Physical access enforcement at the lane.",
     models: [
       { name: "TS2000/TS3000", spec: "Tripod turnstile, reader-agnostic, compact footprint" },
@@ -233,7 +233,7 @@ export default function ZKTecoPage() {
               <div className="pointer-events-none absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-blue-500/15 to-indigo-600/20 blur-2xl lg:block lg:rounded-l-[2rem] lg:rounded-r-none" aria-hidden />
               <div className="relative h-full overflow-hidden lg:h-full">
                 <Image
-                  src="/ZKTeco/Linkedin newsletter Banner.jpg"
+                  src="/ZKTeco/Linkedin newsletter Banner.webp"
                   alt="ZKTeco biometric devices at industrial facility gate — face recognition terminals and access control"
                   fill
                   className="object-cover object-center"
@@ -374,7 +374,7 @@ export default function ZKTecoPage() {
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/zkteco/zkteco-face-terminal.jpg"
+                  src="/images/zkteco/zkteco-face-terminal.webp"
                   alt="ZKTeco face recognition biometric terminal"
                   fill
                   className="object-cover"
@@ -606,7 +606,7 @@ export default function ZKTecoPage() {
               >
                 <div className="relative aspect-[16/7]">
                   <Image
-                    src="/images/zkteco/zkteco-access-gate.jpg"
+                    src="/images/zkteco/zkteco-access-gate.webp"
                     alt="Industrial access gate with ZKTeco biometric reader"
                     fill
                     className="object-cover"
@@ -666,10 +666,10 @@ export default function ZKTecoPage() {
           </motion.div>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "All biometric devices", href: "/biometric-devices", desc: "Face, fingerprint, RFID and turnstiles across all brands.", img: "/images/zkteco/zkteco-fingerprint.jpg" },
-              { label: "Face recognition attendance", href: "/face-recognition-attendance", desc: "Industrial face terminals for factory gates.", img: "/images/zkteco/zkteco-face-terminal.jpg" },
-              { label: "Access control & turnstiles", href: "/turnstiles-access", desc: "Physical gate enforcement with any reader type.", img: "/images/zkteco/zkteco-access-gate.jpg" },
-              { label: "Biometric AMC", href: "/services/biometric-amc", desc: "Maintenance contracts for ZKTeco and mixed estates.", img: "/images/zkteco/zkteco-hero-industrial.jpg" },
+              { label: "All biometric devices", href: "/biometric-devices", desc: "Face, fingerprint, RFID and turnstiles across all brands.", img: "/images/zkteco/zkteco-fingerprint.webp" },
+              { label: "Face recognition attendance", href: "/face-recognition-attendance", desc: "Industrial face terminals for factory gates.", img: "/images/zkteco/zkteco-face-terminal.webp" },
+              { label: "Access control & turnstiles", href: "/turnstiles-access", desc: "Physical gate enforcement with any reader type.", img: "/images/zkteco/zkteco-access-gate.webp" },
+              { label: "Biometric AMC", href: "/services/biometric-amc", desc: "Maintenance contracts for ZKTeco and mixed estates.", img: "/images/zkteco/zkteco-hero-industrial.webp" },
             ].map((link, i) => (
               <motion.div
                 key={link.label}

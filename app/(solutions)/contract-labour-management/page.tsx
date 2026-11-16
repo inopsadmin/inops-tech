@@ -55,7 +55,7 @@ const ourModulesCardVariant = {
   },
 } as const;
 
-const payrollHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.41.37 PM.jpeg";
+const payrollHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.41.37 PM.webp";
 const accessGovernanceLeftVideo = mediaVideos.accessGovernanceDemo;
 
 const comprehensiveControlCards = [
@@ -754,7 +754,7 @@ function AccessGovernanceVisual() {
           loop
           playsInline
           preload="metadata"
-          poster="/images/77913ee0-6e66-4c3b-bdad-da60ad90e710.jpg"
+          poster="/images/77913ee0-6e66-4c3b-bdad-da60ad90e710.webp"
           aria-label="Contract worker using an industrial turnstile with integrated biometric access hardware"
         >
           <source src={accessGovernanceLeftVideo} type="video/mp4" />
@@ -1109,7 +1109,7 @@ export default function PayrollSolutionsPage() {
                       />
                       <div className="relative min-h-[220px] flex-1 sm:min-h-[240px]">
                         <Image
-                          src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.jpg"
+                          src="/f0068b65-0c95-43aa-9c59-65cf6c5dea47.webp"
                           alt="Supervisor in safety helmet and vest at an industrial site"
                           fill
                           className="object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
@@ -1144,7 +1144,7 @@ export default function PayrollSolutionsPage() {
         <OurModulesCarousel />
 
         {/* ====== PLATFORM IN ACTION (SCREENSHOTS) ====== */}
-        <section aria-labelledby="screenshots-heading" className="border-t border-slate-100 bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+        {/* <section aria-labelledby="screenshots-heading" className="border-t border-slate-100 bg-white px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <motion.div
               className="text-center"
@@ -1164,22 +1164,22 @@ export default function PayrollSolutionsPage() {
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:gap-8">
               {[
                 {
-                  src: "/images/labour-management-ui-showcase.png",
+                  src: "/images/labour-management-ui-showcase.webp",
                   alt: "CLMS workforce analytics dashboard — workforce headcount, compliance status and contractor spend at a glance",
                   caption: "Live workforce dashboard",
                 },
                 {
-                  src: "/images/module-auth-access-control.png",
+                  src: "/images/module-auth-access-control.webp",
                   alt: "Iddion RegX gate compliance screen — 19 automated entry checks before a contract worker is admitted to site",
                   caption: "Gate pass & compliance checks",
                 },
                 {
-                  src: "/images/module-compliance-payroll.png",
+                  src: "/images/module-compliance-payroll.webp",
                   alt: "CLRA wage register in Iddion RegX — Form V and Form XIII auto-populated from verified attendance data",
                   caption: "Statutory wage register (Form V / Form XIII)",
                 },
                 {
-                  src: "/images/module-biometric-attendance.png",
+                  src: "/images/module-biometric-attendance.webp",
                   alt: "Biometric attendance dashboard — per-contractor, per-site punch records synced in real time for payroll processing",
                   caption: "Biometric attendance — per site",
                 },
@@ -1207,7 +1207,7 @@ export default function PayrollSolutionsPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ====== DIRECT & CONTRACT WORKFORCE ====== */}
         <section aria-labelledby="direct-contract-heading" className="border-t border-slate-100 bg-slate-50/60 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">

@@ -570,7 +570,7 @@ export default function SelfServiceKioskPage() {
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/kiosk/Digital-Signage-inops.jpg"
+                  src="/kiosk/Digital-Signage-inops.webp"
                   alt="HR team at industrial plant — workload reduction through self-service"
                   fill
                   className="object-cover"
@@ -774,8 +774,8 @@ export default function SelfServiceKioskPage() {
           </motion.div>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Visitor management system", href: "/visitor-management", desc: "Self check-in, watchlist screening, zone-limited passes, and host notification at the gate kiosk.", img: "/kiosk/Canteen-and-Visitor-Management.jpg" },
-              { label: "Canteen management", href: "/canteen-and-visitor", desc: "Kiosk-based meal issuance with entitlement validated against the shift the worker actually attended.", img: "/kiosk/Canteen-and-Visitor-Management.jpg" },
+              { label: "Visitor management system", href: "/visitor-management", desc: "Self check-in, watchlist screening, zone-limited passes, and host notification at the gate kiosk.", img: "/kiosk/Canteen-and-Visitor-Management.webp" },
+              { label: "Canteen management", href: "/canteen-and-visitor", desc: "Kiosk-based meal issuance with entitlement validated against the shift the worker actually attended.", img: "/kiosk/Canteen-and-Visitor-Management.webp" },
               { label: "Contractor onboarding", href: "/contract-labour-management/iddion-regx-modules/onboarding-offboarding", desc: "Bulk intake at the gate: document capture, biometric enrolment, and work-order assignment.", img: "/kiosk/Biometric-Devices.avif" },
               { label: "Contract labour management", href: "/contract-labour-management", desc: "The CLMS engine behind contractor attendance, CLRA registers, and invoice reconciliation.", img: "/kiosk/HR-Software-Built-for-India-Manufacturing.avif" },
             ].map((link, i) => (
