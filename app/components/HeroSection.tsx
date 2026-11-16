@@ -26,6 +26,23 @@ const css = `
  .ih .stats{gap:24px}
  .ih .stats b{font-size:22px}
 }
+
+/* Lifecycle strip */
+.ih-strip{background:#fff;border-top:1px solid #e3e8f0;padding:30px 56px 34px;font-family:var(--font-inter),Inter,system-ui,sans-serif}
+.ih-strip *{box-sizing:border-box;margin:0;padding:0}
+.ih-strip .lbl{font-size:15px;font-weight:700;color:#0b1f3a;margin-bottom:16px}
+.ih-strip .cov{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ih-strip .seg{border:1px solid #e3e8f0;background:#f7f9fc;border-radius:12px;padding:14px 14px 16px}
+.ih-strip .seg i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#94a3b8;display:block;margin-bottom:8px}
+.ih-strip .seg b{display:block;font-size:16px;font-weight:800;color:#475569;letter-spacing:-.2px}
+.ih-strip .seg span{font-size:12.5px;color:#64748b;line-height:1.45;display:block;margin-top:4px}
+.ih-strip .seg.add{background:#eef4fd;border-color:#bcd2fb}
+.ih-strip .seg.add i{color:#1d5fd1}
+.ih-strip .seg.add b{color:#0b1f3a}
+@media(max-width:860px){
+ .ih-strip{padding:26px 16px}
+ .ih-strip .cov{grid-template-columns:1fr 1fr}
+}
 `;
 
 import Image from "next/image";
@@ -61,6 +78,34 @@ export default function HeroSection() {
           <div className="btns">
             <a href="/contact" className="b1">Book a Demo</a>
             <a href="/contract-labour-management" className="b2">See Iddion RegX CLMS →</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Lifecycle strip — rebuilds the "InOps adds vs standard CLMS" comparison
+          that was previously baked into the hero background image */}
+      <div className="ih-strip">
+        <div className="lbl">Most CLMS products start at the spreadsheet. InOps starts at the gate.</div>
+        <div className="cov">
+          <div className="seg add">
+            <i>InOps adds</i>
+            <b>1. Gate: biometric entry</b>
+            <span>Face reader verifies identity and contractor licence before anyone walks in</span>
+          </div>
+          <div className="seg">
+            <i>Standard CLMS</i>
+            <b>2. Attendance tracked</b>
+            <span>Clock-in data flows to payroll and shift records</span>
+          </div>
+          <div className="seg add">
+            <i>InOps adds</i>
+            <b>3. CLRA registers built</b>
+            <span>Form XII and XIII auto-generated and audit-ready at any time</span>
+          </div>
+          <div className="seg add">
+            <i>InOps adds</i>
+            <b>4. Wages on verified data</b>
+            <span>EWA and payroll run on gate-confirmed hours, not estimates</span>
           </div>
         </div>
       </div>
