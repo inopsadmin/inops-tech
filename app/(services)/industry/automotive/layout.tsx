@@ -3,8 +3,7 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE =
-  "Contract Labour Management for Automotive Manufacturing | InOps";
+const PAGE_TITLE = "CLMS for Automotive Manufacturing | InOps";
 const PAGE_DESCRIPTION =
   "Synchronise your contractor workforce with JIT production. InOps delivers shift compliance, vendor governance, and biometric access control for automotive assembly plants.";
 

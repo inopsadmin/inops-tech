@@ -421,12 +421,12 @@ export default function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </motion.button>
-          <Link href="/contact">
+          <Link href="/contact" aria-label="Contact us">
             <motion.span
               className={`flex min-h-11 min-w-11 items-center justify-center rounded-full border shadow-sm transition-colors md:hidden ${
                 scrolled ? "border-gray-200 bg-white text-gray-600 hover:bg-gray-50 hover:border-blue-200 hover:text-blue-600" : "border-white/40 bg-white/10 text-white hover:bg-white/20"
               }`}
-              aria-label="Contact us"
+              aria-hidden
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -3,7 +3,7 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE = "Contract Labour Management for Electronics Manufacturing | InOps";
+const PAGE_TITLE = "CLMS for Electronics Manufacturing | InOps";
 const PAGE_DESCRIPTION =
   "Precision Contract Labour Management for EMS and electronics manufacturing. InOps manages cleanroom access, contractor compliance, and high-volume seasonal hiring at scale.";
 

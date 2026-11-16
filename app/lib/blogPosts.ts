@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "salary-plus-plus-iso-27001-worker-data-security",
     title: "Salary++ and ISO 27001: How We Protect Worker Data",
-    description: "Earned Wage Access uses sensitive attendance, payroll and bank data. How InOps protects that data, and what ISO/IEC 27001 certification means for employers using Salary++.",
+    description: "Earned Wage Access uses sensitive attendance, payroll and bank data. How InOps protects that data, and what ISO/IEC 27001 certification means for employers",
     author: "InOps",
     date: "September 29, 2026",
     dateIso: "2026-09-29",
@@ -217,8 +217,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "attendance-data-credit-access-blue-collar-workers",
-    title: "Credit From Work Data: How Attendance History Opens Credit Access",
-    description: "Millions of blue-collar workers have no credit score but years of verified attendance. How work data can help them access fair credit, and what it takes to do it responsibly.",
+    title: "Credit From Work Data: Attendance History & Credit",
+    h1: "Credit From Work Data: How Attendance History Opens Credit Access",
+    description: "Millions of blue-collar workers have no credit score but years of verified attendance. How work data can help them access fair credit, and what it takes to do",
     author: "InOps",
     date: "September 30, 2026",
     dateIso: "2026-09-30",
@@ -296,7 +297,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "safe-credit-for-workers-employer-guide",
     title: "Safe Credit for Workers: What Employers Should Know",
-    description: "Workers are being offered loans by apps, moneylenders and lenders tied to employers. What employers should know before endorsing any credit or wage access product for their workforce.",
+    description: "Workers are being offered loans by apps, moneylenders and lenders tied to employers. What employers should know before endorsing any credit or wage access",
     author: "InOps",
     date: "October 1, 2026",
     dateIso: "2026-10-01",
@@ -374,7 +375,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "post-diwali-attrition-workers-return",
     title: "Post-Festival Attrition: How EWA Brings Workers Back",
-    description: "Every year, many blue-collar and migrant workers go home for festivals and do not come back. Why post-festival attrition happens, and how Earned Wage Access helps bring workers back.",
+    description: "Every year, many blue-collar and migrant workers go home for festivals and do not come back. Why post-festival attrition happens, and how Earned Wage Access",
     author: "InOps",
     date: "September 16, 2026",
     dateIso: "2026-09-16",
@@ -441,8 +442,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "emergency-salary-advance-workers-school-fees-medical",
-    title: "School Fees, Medical Bills, Monsoon: When Workers Need EWA Most",
-    description: "Some months hit workers harder: school admissions, monsoon illness, family emergencies. A calendar of high-need periods and how employers can prepare with Earned Wage Access.",
+    title: "When Workers Need EWA Most: Fees, Bills, Monsoon",
+    h1: "School Fees, Medical Bills, Monsoon: When Workers Need EWA Most",
+    description: "Some months hit workers harder: school admissions, monsoon illness, family emergencies. A calendar of high-need periods and how employers can prepare with",
     author: "InOps",
     date: "September 17, 2026",
     dateIso: "2026-09-17",
@@ -512,8 +514,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "festival-advance-employees-earned-wage-access",
-    title: "Festival Advances Without Debt: EWA for Diwali and Harvest Festivals",
-    description: "Festival advances are a tradition in Indian workplaces, but they strain cash flow and often lead to debt. How Earned Wage Access helps workers meet festival costs from their own earnings.",
+    title: "Festival Advances Without Debt: EWA for Diwali",
+    h1: "Festival Advances Without Debt: EWA for Diwali and Harvest Festivals",
+    description: "Festival advances are a tradition in Indian workplaces, but they strain cash flow and often lead to debt. How Earned Wage Access helps workers meet festival",
     author: "InOps",
     date: "September 18, 2026",
     dateIso: "2026-09-18",
@@ -587,8 +590,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "earned-wage-access-migrant-workers-remittance",
-    title: "EWA for Migrant Workers: Sending Money Home Without Waiting",
-    description: "Migrant workers send money home regularly and face extra costs in a new city. How Earned Wage Access helps them meet family needs on time, and why it matters to employers.",
+    title: "EWA for Migrant Workers: Sending Money Home",
+    h1: "EWA for Migrant Workers: Sending Money Home Without Waiting",
+    description: "Migrant workers send money home regularly and face extra costs in a new city. How Earned Wage Access helps them meet family needs on time, and why it matters",
     author: "InOps",
     date: "September 19, 2026",
     dateIso: "2026-09-19",
@@ -663,7 +667,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "earned-wage-access-warehouse-3pl-workers",
     title: "EWA for Warehouses, Dark Stores and 3PL Workers",
-    description: "Warehouse, dark store and 3PL workers face peak-season pressure, shift work and high churn. How Earned Wage Access helps logistics operators keep pickers, packers and loaders.",
+    description: "Warehouse, dark store and 3PL workers face peak-season pressure, shift work and high churn. How Earned Wage Access helps logistics operators keep pickers,",
     author: "InOps",
     date: "September 20, 2026",
     dateIso: "2026-09-20",
@@ -735,8 +739,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "earned-wage-access-security-facility-management",
-    title: "EWA for Security, Housekeeping and Facility Management Staff",
-    description: "Security guards and housekeeping staff work across many client sites and are often paid late. How Earned Wage Access helps facility management companies retain staff and win contracts.",
+    title: "EWA for Security and Facility Management Staff",
+    h1: "EWA for Security, Housekeeping and Facility Management Staff",
+    description: "Security guards and housekeeping staff work across many client sites and are often paid late. How Earned Wage Access helps facility management companies retain",
     author: "InOps",
     date: "September 21, 2026",
     dateIso: "2026-09-21",
@@ -807,7 +812,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "earned-wage-access-implementation-checklist",
-    title: "Launching EWA in 7 Days: An Employer Rollout Checklist",
+    title: "Launching EWA in 7 Days: Employer Rollout Checklist",
+    h1: "Launching EWA in 7 Days: An Employer Rollout Checklist",
     description: "A practical day-by-day checklist for launching an Earned Wage Access pilot in a week: data, policy, contractors, worker onboarding and the first payroll.",
     author: "InOps",
     date: "September 22, 2026",
@@ -910,8 +916,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "earned-wage-access-fraud-risk-controls",
-    title: "EWA Fraud and Abuse Controls: What to Ask Any Provider",
-    description: "How do Earned Wage Access programmes prevent fake attendance, over-withdrawal and account misuse? The controls employers should expect, and the questions to ask any EWA provider.",
+    title: "EWA Fraud Controls: What to Ask Any Provider",
+    h1: "EWA Fraud and Abuse Controls: What to Ask Any Provider",
+    description: "How do Earned Wage Access programmes prevent fake attendance, over-withdrawal and account misuse? The controls employers should expect, and the questions to",
     author: "InOps",
     date: "September 23, 2026",
     dateIso: "2026-09-23",
@@ -1065,8 +1072,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "worker-self-service-app-attendance-payslip-ewa",
-    title: "One App for Workers: Attendance, Payslip and Wage Access",
-    description: "Blue-collar and contract workers juggle paper payslips, attendance disputes and advance requests. Why a single worker app for attendance, payslips and wage access works better.",
+    title: "One App: Attendance, Payslip and Wage Access",
+    h1: "One App for Workers: Attendance, Payslip and Wage Access",
+    description: "Blue-collar and contract workers juggle paper payslips, attendance disputes and advance requests. Why a single worker app for attendance, payslips and wage",
     author: "InOps",
     date: "September 25, 2026",
     dateIso: "2026-09-25",
@@ -1142,7 +1150,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "replace-informal-contractor-advances-ewa",
-    title: "Replacing Informal Contractor Advances With Traceable EWA",
+    title: "Replacing Informal Contractor Advances With EWA",
+    h1: "Replacing Informal Contractor Advances With Traceable EWA",
     description: "Informal cash advances from contractors cause disputes, underpayment and audit risk. How principal employers can replace them with traceable Earned Wage Access.",
     author: "InOps",
     date: "September 26, 2026",
@@ -1222,8 +1231,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "ewa-contract-labour-contractor-payroll",
-    title: "EWA for Contract Labour: Routing Advances Through the Contractor",
-    description: "Contract workers are paid by the contractor, not the principal employer. How Earned Wage Access works when the contractor runs payroll, and how to avoid disputes between worker, contractor and site.",
+    title: "EWA for Contract Labour: Routing Advances",
+    h1: "EWA for Contract Labour: Routing Advances Through the Contractor",
+    description: "Contract workers are paid by the contractor, not the principal employer. How Earned Wage Access works when the contractor runs payroll, and how to avoid",
     author: "InOps",
     date: "September 27, 2026",
     dateIso: "2026-09-27",
@@ -1447,7 +1457,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "responsible-credit-gig-workers-framework",
     title: "Responsible Credit for Gig Workers: A Framework",
-    description: "Gig workers need credit, but the wrong kind can trap them in debt. Five principles for platforms, employers and lenders offering credit or wage access to gig and blue-collar workers.",
+    description: "Gig workers need credit, but the wrong kind can trap them in debt. Five principles for platforms, employers and lenders offering credit or wage access to gig",
     author: "InOps",
     date: "October 3, 2026",
     dateIso: "2026-10-03",
@@ -1530,7 +1540,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "trust-transparency-earned-wage-access",
-    title: "Trust and Transparency: How EWA Improves Employer-Worker Relations",
+    title: "How EWA Improves Employer-Worker Relations",
+    h1: "Trust and Transparency: How EWA Improves Employer-Worker Relations",
     description: "Pay disputes and opaque deductions erode trust between workers, contractors and employers. How transparent earnings and Earned Wage Access rebuild it.",
     author: "InOps",
     date: "October 4, 2026",
@@ -1596,8 +1607,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "financial-safety-net-for-workforce",
-    title: "How to Build a Financial Safety Net for Your Workforce",
-    description: "Most blue-collar and gig workers have no savings to fall back on. Four layers employers can put in place to build a financial safety net, from pay access to insurance.",
+    title: "Build a Financial Safety Net for Your Workforce",
+    h1: "How to Build a Financial Safety Net for Your Workforce",
+    description: "Most blue-collar and gig workers have no savings to fall back on. Four layers employers can put in place to build a financial safety net, from pay access to",
     author: "InOps",
     date: "October 5, 2026",
     dateIso: "2026-10-05",
@@ -1684,7 +1696,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "employee-benefits-review-checklist-plant-hr",
-    title: "Time to Review Your Employee Benefits: A Checklist for Plant HR",
+    title: "Employee Benefits Review: A Checklist for Plant HR",
+    h1: "Time to Review Your Employee Benefits: A Checklist for Plant HR",
     description: "A practical checklist for plant HR to review benefits for blue-collar and contract workers: statutory basics, pay access, health, safety and communication.",
     author: "InOps",
     date: "October 6, 2026",
@@ -1785,7 +1798,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "roi-employee-financial-wellness-program",
     title: "The ROI of Employee Financial Wellness Programs",
-    description: "How to build the business case for a financial wellness programme for blue-collar and contract workers: which costs it reduces, how to measure them, and a simple ROI method.",
+    description: "How to build the business case for a financial wellness programme for blue-collar and contract workers: which costs it reduces, how to measure them, and a",
     author: "InOps",
     date: "October 7, 2026",
     dateIso: "2026-10-07",
@@ -1871,8 +1884,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "employee-financial-wellness-hr-retention-metric",
-    title: "Financial Wellness Is Becoming an HR Retention Metric",
-    description: "HR teams track attrition, absenteeism and engagement. Financial stress drives all three. Why financial wellness is becoming an HR metric, and how to measure it for a blue-collar workforce.",
+    title: "Financial Wellness as an HR Retention Metric",
+    h1: "Financial Wellness Is Becoming an HR Retention Metric",
+    description: "HR teams track attrition, absenteeism and engagement. Financial stress drives all three. Why financial wellness is becoming an HR metric, and how to measure it",
     author: "InOps",
     date: "October 8, 2026",
     dateIso: "2026-10-08",
@@ -1948,7 +1962,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "flexible-pay-for-blue-collar-workers",
     title: "Flexible Pay Matters as Much as Flexible Work",
-    description: "Flexible work is mostly a white-collar benefit. For blue-collar workers, who need to be on site, flexible pay may matter more. What flexible pay means and how to offer it.",
+    description: "Flexible work is mostly a white-collar benefit. For blue-collar workers, who need to be on site, flexible pay may matter more. What flexible pay means and how",
     author: "InOps",
     date: "October 9, 2026",
     dateIso: "2026-10-09",
@@ -2021,8 +2035,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "why-blue-collar-workers-switch-jobs-benefits",
-    title: "Why Blue-Collar Workers Switch Jobs for Better Benefits",
-    description: "Blue-collar workers in India often leave for small differences in pay or benefits. What they actually value, and which low-cost benefits keep them on the shop floor.",
+    title: "Why Blue-Collar Workers Switch Jobs for Benefits",
+    h1: "Why Blue-Collar Workers Switch Jobs for Better Benefits",
+    description: "Blue-collar workers in India often leave for small differences in pay or benefits. What they actually value, and which low-cost benefits keep them on the shop",
     author: "InOps",
     date: "October 10, 2026",
     dateIso: "2026-10-10",
@@ -2088,7 +2103,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "gig-worker-daily-expenses-fuel-recharge-rent",
     title: "Fuel, Recharge, Rent: The Costs Gig Workers Can't Wait 15 Days For",
-    description: "Gig workers pay for fuel, mobile data, food and vehicle costs every day, but are paid every week or two. A look at the daily costs of gig work and how early access to earnings helps.",
+    description: "Gig workers pay for fuel, mobile data, food and vehicle costs every day, but are paid every week or two. A look at the daily costs of gig work and how early",
     author: "InOps",
     date: "October 11, 2026",
     dateIso: "2026-10-11",
@@ -2178,7 +2193,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "weekly-vs-fortnightly-vs-monthly-payout-workers",
-    title: "Weekly, 15-Day or Monthly Payouts: Which Fits Your Workforce?",
+    title: "Weekly, 15-Day or Monthly Payouts: Which Fits You?",
+    h1: "Weekly, 15-Day or Monthly Payouts: Which Fits Your Workforce?",
     description: "Should you pay your workforce weekly, every 15 days or monthly? The trade-offs in admin, cost and retention, and how Earned Wage Access changes the decision.",
     author: "InOps",
     date: "October 12, 2026",
@@ -2264,8 +2280,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "15-day-payout-gap-gig-workers",
-    title: "The 15-Day Payout Gap: What Gig Workers Do Between Paydays",
-    description: "Many gig workers in India are paid every 15 days, but their expenses come daily. What happens in that gap, what it costs workers and companies, and how Earned Wage Access closes it.",
+    title: "The 15-Day Payout Gap for Gig Workers",
+    h1: "The 15-Day Payout Gap: What Gig Workers Do Between Paydays",
+    description: "Many gig workers in India are paid every 15 days, but their expenses come daily. What happens in that gap, what it costs workers and companies, and how Earned",
     author: "InOps",
     date: "October 13, 2026",
     dateIso: "2026-10-13",
@@ -2419,7 +2436,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "gig-workers-tier-2-tier-3-cities-pay-access",
-    title: "Gig Work in Tier 2 and Tier 3 Cities: Why Pay Access Matters More",
+    title: "Gig Work in Tier 2 Cities: Why Pay Access Matters",
+    h1: "Gig Work in Tier 2 and Tier 3 Cities: Why Pay Access Matters More",
     description: "Gig work is growing fast in India's Tier 2 and Tier 3 cities. Lower savings, fewer formal credit options and family obligations make access to earnings even more important there.",
     author: "InOps",
     date: "October 15, 2026",
@@ -2490,7 +2508,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "sustainable-gig-jobs-flexibility-security",
-    title: "Sustainable Gig Jobs: Flexibility Without Financial Insecurity",
+    title: "Sustainable Gig Jobs: Flexibility Without Insecurity",
+    h1: "Sustainable Gig Jobs: Flexibility Without Financial Insecurity",
     description: "Gig work offers flexibility, but often at the cost of financial security. What a sustainable gig job looks like, and the role employers and platforms can play.",
     author: "InOps",
     date: "October 16, 2026",
@@ -2720,8 +2739,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "gig-worker-debt-moneylenders-earned-wage-access",
-    title: "Why Gig Workers Borrow From Moneylenders, and How EWA Breaks the Cycle",
-    description: "Many gig workers borrow at high interest just to get through the pay cycle. Why the debt cycle starts, what it costs workers and employers, and how Earned Wage Access helps.",
+    title: "How EWA Breaks the Moneylender Cycle for Gig Workers",
+    h1: "Why Gig Workers Borrow From Moneylenders, and How EWA Breaks the Cycle",
+    description: "Many gig workers borrow at high interest just to get through the pay cycle. Why the debt cycle starts, what it costs workers and employers, and how Earned Wage",
     author: "InOps",
     date: "October 19, 2026",
     dateIso: "2026-10-19",
@@ -2809,7 +2829,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "reduce-rider-churn-earned-wage-access",
     title: "How to Reduce Rider Churn With Earned Wage Access",
-    description: "Rider churn drives up hiring and onboarding costs for delivery platforms. Why riders leave, and how giving them access to earnings before payout keeps them active.",
+    description: "Rider churn drives up hiring and onboarding costs for delivery platforms. Why riders leave, and how giving them access to earnings before payout keeps them",
     author: "InOps",
     date: "October 20, 2026",
     dateIso: "2026-10-20",
@@ -2896,8 +2916,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "earned-wage-access-delivery-partners-india",
-    title: "How Earned Wage Access Helps Delivery Partners in India",
-    description: "Delivery partners spend on fuel, phone data and vehicle EMIs every day but are paid weekly or every 15 days. How Earned Wage Access closes that gap for riders and platforms.",
+    title: "How EWA Helps Delivery Partners in India",
+    h1: "How Earned Wage Access Helps Delivery Partners in India",
+    description: "Delivery partners spend on fuel, phone data and vehicle EMIs every day but are paid weekly or every 15 days. How Earned Wage Access closes that gap for riders",
     author: "InOps",
     date: "October 21, 2026",
     dateIso: "2026-10-21",
@@ -2990,8 +3011,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "benefits-of-early-salary-access-workers",
-    title: "10 Benefits of Early Salary Access for Gig and Blue-Collar Workers",
-    description: "Early salary access helps workers meet bills on time, avoid moneylenders and plan better. Ten benefits for gig and blue-collar workers, and what they mean for employers.",
+    title: "10 Benefits of Early Salary Access for Workers",
+    h1: "10 Benefits of Early Salary Access for Gig and Blue-Collar Workers",
+    description: "Early salary access helps workers meet bills on time, avoid moneylenders and plan better. Ten benefits for gig and blue-collar workers, and what they mean for",
     author: "InOps",
     date: "October 23, 2026",
     dateIso: "2026-10-23",
@@ -3060,8 +3082,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "advance-salary-for-employees-without-cash-flow",
-    title: "How to Give Employees a Salary Advance Without Hurting Cash Flow",
-    description: "Employees keep asking for salary advances, and each one ties up company cash. How Indian employers and contractors can offer early pay without funding it themselves.",
+    title: "Salary Advances Without Hurting Company Cash Flow",
+    h1: "How to Give Employees a Salary Advance Without Hurting Cash Flow",
+    description: "Employees keep asking for salary advances, and each one ties up company cash. How Indian employers and contractors can offer early pay without funding it",
     author: "InOps",
     date: "October 22, 2026",
     dateIso: "2026-10-22",
@@ -3232,8 +3255,9 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "what-is-earned-wage-access-india",
-    title: "What Is Earned Wage Access? A Guide for Indian Employers",
-    description: "Earned Wage Access lets workers draw part of the wages they have already earned before payday. How it works in India, who pays, and what employers need to set it up.",
+    title: "What Is Earned Wage Access? For Indian Employers",
+    h1: "What Is Earned Wage Access? A Guide for Indian Employers",
+    description: "Earned Wage Access lets workers draw part of the wages they have already earned before payday. How it works in India, who pays, and what employers need to set",
     author: "InOps",
     date: "October 25, 2026",
     dateIso: "2026-10-25",
@@ -4529,9 +4553,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "factory-gate-entry-rules-contract-workers",
-    title: "Factory Gate Entry Rules for Contract Workers: The 19 Checks That Should Run Before Anyone Walks In",
+    title: "19 Gate Checks for Contract Workers",
+    h1: "Factory Gate Entry Rules for Contract Workers: The 19 Checks That Should Run Before Anyone Walks In",
     description:
-      "Most factory gates check identity. Compliance requires checking nineteen things — licence validity, headcount caps, induction currency, medical fitness, shift windows and more. Here is the full list, and how to score your own gate.",
+      "Most factory gates check identity. Compliance requires checking nineteen things — licence validity, headcount caps, induction currency, medical fitness, shift",
     author: "Satish Sinha",
     personAuthor: true,
     date: "August 3, 2026",
@@ -4720,9 +4745,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "access-control-trends-manufacturing",
-    title: "Top 8 Access Control Technology Trends for Indian Manufacturing (2026)",
+    title: "8 Access Control Trends for Indian Manufacturing",
+    h1: "Top 8 Access Control Technology Trends for Indian Manufacturing (2026)",
     description:
-      "The eight access control trends reshaping industrial site security in India: biometric gates, mobile credentials, STQC-compliant cameras, zone-based access, contractor lifecycle controls, and CLRA-linked audit trails.",
+      "The eight access control trends reshaping industrial site security in India: biometric gates, mobile credentials, STQC-compliant cameras, zone-based access,",
     author: "InOps Editorial",
     date: "June 3, 2026",
     dateIso: "2026-06-03",
@@ -4827,7 +4853,7 @@ export const blogPosts: BlogPost[] = [
     slug: "biometric-attendance-future-of-work",
     title: "Biometric Attendance and the Future of Work: How It's Shaping Indian Manufacturing",
     description:
-      "How biometric attendance — face recognition and fingerprint — is eliminating proxy punching, closing contractor billing gaps, and building CLRA compliance records automatically across Indian manufacturing sites.",
+      "How biometric attendance — face recognition and fingerprint — is eliminating proxy punching, closing contractor billing gaps, and building CLRA compliance",
     author: "InOps Editorial",
     date: "May 3, 2026",
     dateIso: "2026-05-03",
@@ -4924,9 +4950,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "time-attendance-tracking-trends",
-    title: "6 Time and Attendance Tracking Trends Reshaping Indian Manufacturing",
+    title: "6 Time & Attendance Trends for Indian Factories",
+    h1: "6 Time and Attendance Tracking Trends Reshaping Indian Manufacturing",
     description:
-      "Six software and workflow trends changing how Indian manufacturing plants capture, validate, and use time and attendance data: CCTV validation, mobile punch, automated shift rules, contractor reconciliation, statutory exports, and exception dashboards.",
+      "Six software and workflow trends changing how Indian manufacturing plants capture, validate, and use time and attendance data: CCTV validation, mobile punch,",
     author: "InOps Editorial",
     date: "April 3, 2026",
     dateIso: "2026-04-03",
@@ -5016,9 +5043,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "hr-technology-efficiency-engagement",
-    title: "6 Ways HR Technology Improves Workforce Efficiency and Engagement in Indian Manufacturing",
+    title: "6 Ways HR Tech Improves Manufacturing Workforce",
+    h1: "6 Ways HR Technology Improves Workforce Efficiency and Engagement in Indian Manufacturing",
     description:
-      "How integrated HR technology — self-service, earned wage access, unified attendance-payroll, contractor visibility, and compliance dashboards — improves retention, reduces help-desk load, and drives engagement for manufacturing workforces in India.",
+      "How integrated HR technology — self-service, earned wage access, unified attendance-payroll, contractor visibility, and compliance dashboards — improves",
     author: "InOps Editorial",
     date: "March 3, 2026",
     dateIso: "2026-03-03",
@@ -5109,9 +5137,10 @@ export const blogPosts: BlogPost[] = [
   // ── CCTV / CAMERA ATTENDANCE PILLAR ─────────────────────────────────────────
   {
     slug: "camera-attendance-clra-compliance-manufacturing",
-    title: "Camera-Based Attendance and CLRA Compliance in Manufacturing: What It Can and Can't Do",
+    title: "Camera Attendance & CLRA Compliance in Manufacturing",
+    h1: "Camera-Based Attendance and CLRA Compliance in Manufacturing: What It Can and Can't Do",
     description:
-      "Face recognition terminals and CCTV cameras record who entered your factory. But attendance data is only compliance data when it is linked to CLRA records, OT verification, and contractor billing. Here's how InOps CLMS connects the camera to the compliance stack.",
+      "Face recognition terminals and CCTV cameras record who entered your factory. But attendance data is only compliance data when it is linked to CLRA records, OT's how InOps CLMS connects the camera to the compliance stack.",
     author: "InOps Editorial",
     date: "February 2026",
     dateIso: "2026-02-03",
@@ -5211,9 +5240,10 @@ export const blogPosts: BlogPost[] = [
   // Fill in the [EXPAND] sections with deeper content; structure is AI-extraction optimized.
   {
     slug: "clra-compliance-checklist-india-2026",
-    title: "CLRA Compliance Checklist (2026): 12 Requirements Every Principal Employer Must Meet in India",
+    title: "CLRA Compliance Checklist 2026: 12 Requirements",
+    h1: "CLRA Compliance Checklist (2026): 12 Requirements Every Principal Employer Must Meet in India",
     description:
-      "A complete CLRA compliance checklist for principal employers in India — Form V, Form XIII, headcount limits, wage registers, PF/ESI, and the 9-day attendance rule that triggers permanent employment liability.",
+      "A complete CLRA compliance checklist for principal employers in India — Form V, Form XIII, headcount limits, wage registers, PF/ESI, and the 9-day attendance",
     author: "InOps Editorial",
     date: "January 2026",
     dateIso: "2026-01-03",
@@ -5414,9 +5444,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "overtime-cost-leakage-manufacturing-india",
-    title: "How Overtime Cost Leakage Drains 8–12% of Contractor Spend in Indian Factories",
+    title: "OT Cost Leakage in Indian Factories: 8–12% of Spend",
+    h1: "How Overtime Cost Leakage Drains 8–12% of Contractor Spend in Indian Factories",
     description:
-      "Overtime fraud, unauthorised OT, and reconciliation errors drain 8–12% of contractor spend in Indian manufacturing. This explainer covers the three leakage types, the Factories Act exposure, and how biometric attendance closes each one.",
+      "Overtime fraud, unauthorised OT, and reconciliation errors drain 8–12% of contractor spend in Indian manufacturing. This explainer covers the three leakage",
     author: "InOps Editorial",
     date: "November 2025",
     dateIso: "2025-11-03",
@@ -5488,7 +5519,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "9-day-continuous-attendance-clra-risk-india",
-    title: "The 9-Day Continuous Attendance Rule Under CLRA: What It Is and How to Prevent It",
+    title: "9-Day Continuous Attendance Under CLRA: What It Is",
+    h1: "The 9-Day Continuous Attendance Rule Under CLRA: What It Is and How to Prevent It",
     description:
       "When a contract worker attends continuously without a weekly off, Indian labour law may confer permanent employment rights. Here's what the rule means, when it applies, and how automated attendance tracking prevents liability.",
     author: "InOps Editorial",
@@ -5563,7 +5595,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "contractor-attendance-tracking-software-india",
-    title: "Contractor Attendance Tracking Software for Indian Manufacturing: What to Look For",
+    title: "Contractor Attendance Software for Indian Factories",
+    h1: "Contractor Attendance Tracking Software for Indian Manufacturing: What to Look For",
     description:
       "A buyer's guide to contractor attendance tracking software for Indian manufacturers — key capabilities, integration requirements, biometric options, and the CLRA compliance features that distinguish CLMS from generic HR software.",
     author: "InOps Editorial",
@@ -5658,9 +5691,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "biometric-attendance-defence-contractors-india",
-    title: "Biometric Attendance for Defence and Aerospace Contractors in India",
+    title: "Biometric Attendance for Defence Contractors India",
+    h1: "Biometric Attendance for Defence and Aerospace Contractors in India",
     description:
-      "Face recognition and biometric attendance for contractor workforces at HAL, DRDO, ISRO, and other defence/aerospace facilities — compliance requirements, hardware specifications, and how InOps manages 163+ sites including defence installations.",
+      "Face recognition and biometric attendance for contractor workforces at HAL, DRDO, ISRO, and other defence/aerospace facilities — compliance requirements,",
     author: "InOps Editorial",
     date: "August 2025",
     dateIso: "2025-08-03",
@@ -5751,9 +5785,10 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "zkteco-clms-integration-multi-site-attendance-india",
-    title: "ZKTeco Biometric Integration with CLMS: Multi-Device Attendance Across 100+ Plant Sites",
+    title: "ZKTeco-CLMS Integration Across 100+ Plant Sites",
+    h1: "ZKTeco Biometric Integration with CLMS: Multi-Device Attendance Across 100+ Plant Sites",
     description:
-      "How ZKTeco biometric terminals integrate with a Contract Labour Management System for unified contractor attendance across 100+ manufacturing sites — device management, offline buffering, and compliance reporting.",
+      "How ZKTeco biometric terminals integrate with a Contract Labour Management System for unified contractor attendance across 100+ manufacturing sites — device",
     author: "InOps Editorial",
     date: "July 2025",
     dateIso: "2025-07-03",
@@ -5832,9 +5867,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "contractor-overbilling-prevention-biometric-india",
-    title: "Contractor Overbilling in Indian Manufacturing: How Biometric Attendance Eliminates It",
+    title: "Biometric Attendance vs Contractor Overbilling",
+    h1: "Contractor Overbilling in Indian Manufacturing: How Biometric Attendance Eliminates It",
     description:
-      "Contractor overbilling — inflated headcount, ghost workers, and mismatched OT claims — is the leading source of contractor spend leakage in Indian manufacturing. Here's how biometric attendance and CLMS reconciliation closes it.",
+      "Contractor overbilling — inflated headcount, ghost workers, and mismatched OT claims — is the leading source of contractor spend leakage in Indian's how biometric attendance and CLMS reconciliation closes it.",
     author: "InOps Editorial",
     date: "June 2025",
     dateIso: "2025-06-03",
@@ -5919,9 +5955,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "ewa-contract-workers-biometric-attendance-india",
-    title: "Earned Wage Access for Contract Workers: How EWA Works with Biometric Attendance Data",
+    title: "EWA for Contract Workers With Biometric Attendance",
+    h1: "Earned Wage Access for Contract Workers: How EWA Works with Biometric Attendance Data",
     description:
-      "InOps is the only platform that links Earned Wage Access (EWA) directly to biometric attendance records — making on-demand wage disbursement for contract workers verifiable, compliant, and fraud-free.",
+      "InOps is the only platform that links Earned Wage Access (EWA) directly to biometric attendance records — making on-demand wage disbursement for contract",
     author: "InOps Editorial",
     date: "May 2025",
     dateIso: "2025-05-03",
@@ -6004,9 +6041,10 @@ export const blogPosts: BlogPost[] = [
   // These posts use type: "research" → ScholarlyArticle schema + Dataset block.
   {
     slug: "state-of-contract-labour-compliance-india-2026",
-    title: "State of Contract Labour Compliance in Indian Manufacturing 2026",
+    title: "Contract Labour Compliance India 2026: State Report",
+    h1: "State of Contract Labour Compliance in Indian Manufacturing 2026",
     description:
-      "Anonymized compliance data from 163+ Indian manufacturing sites reveals the most common CLRA violations, PF/ESI gaps, and contractor onboarding failures — and what top-quartile plants do differently.",
+      "Anonymized compliance data from 163+ Indian manufacturing sites reveals the most common CLRA violations, PF/ESI gaps, and contractor onboarding failures — and",
     author: "InOps Research",
     date: "May 2025",
     dateIso: "2025-05-03",
@@ -6092,9 +6130,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "ot-leakage-benchmarks-indian-factories-2026",
-    title: "OT Leakage Benchmarks in Indian Factories (2026): How Much Are You Losing?",
+    title: "OT Leakage Benchmarks in Indian Factories 2026",
+    h1: "OT Leakage Benchmarks in Indian Factories (2026): How Much Are You Losing?",
     description:
-      "InOps platform data from Indian manufacturing sites quantifies overtime leakage — unclaimed OT, unauthorised OT, and reconciliation errors — and shows the corrective patterns that close the gap.",
+      "InOps platform data from Indian manufacturing sites quantifies overtime leakage — unclaimed OT, unauthorised OT, and reconciliation errors — and shows the",
     author: "InOps Research",
     date: "March 2025",
     dateIso: "2025-03-03",
@@ -6620,9 +6659,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "biometric-attendance-accuracy-report-india-2026",
-    title: "Biometric Attendance Accuracy in Indian Manufacturing: 2026 Fleet Report",
+    title: "Biometric Attendance Accuracy in India: 2026 Report",
+    h1: "Biometric Attendance Accuracy in Indian Manufacturing: 2026 Fleet Report",
     description:
-      "Analysis of InOps biometric device fleet data from Indian factories — face recognition accuracy rates, common failure modes, and the attendance-to-payroll leakage they create when left uncorrected.",
+      "Analysis of InOps biometric device fleet data from Indian factories — face recognition accuracy rates, common failure modes, and the attendance-to-payroll",
     author: "InOps Research",
     date: "February 2025",
     dateIso: "2025-02-03",
@@ -6701,9 +6741,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "10-signs-factory-outgrown-spreadsheet-contractor-management",
-    title: "10 Signs Your Factory Has Outgrown Spreadsheet-Based Contractor Management",
+    title: "10 Signs You Need a Contractor Management System",
+    h1: "10 Signs Your Factory Has Outgrown Spreadsheet-Based Contractor Management",
     description:
-      "Is your factory still managing contract workers through Excel? Discover 10 signs your contractor management process needs automation, better compliance and real-time workforce visibility.",
+      "Is your factory still managing contract workers through Excel? Discover 10 signs your contractor management process needs automation, better compliance and",
     author: "InOps Editorial",
     date: "September 2, 2026",
     dateIso: "2026-09-02",
