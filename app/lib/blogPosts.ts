@@ -3843,7 +3843,7 @@ export const blogPosts: BlogPost[] = [
     {
       "heading": "Evaluation checklist",
       "paragraphs": [
-        "See also: <a href=\"/blog/what-is-contract-labour-management-system\" class=\"text-blue-600 underline\">What is a Contract Labour Management System (CLMS)?</a> explains how CLMS extends beyond attendance into CLRA compliance, contractor management and payroll — and <a href=\"/contract-labour-management\" class=\"text-blue-600 underline\">Labour Management System Software: A Complete Guide</a> covers the broader workforce management stack for Indian manufacturers."
+        "See also: <a href=\"/blog/what-is-contract-labour-management-system\" class=\"text-blue-600 underline\">What is a Contract Labour Management System (CLMS)?</a> explains how CLMS extends beyond attendance into CLRA compliance, contractor management and payroll — and <a href=\"/contract-labour-management\" class=\"text-blue-600 underline\">Contract labour management system (CLMS) software</a> covers the broader workforce management stack for Indian manufacturers."
       ],
       "list": [
         "Does it handle rotating and overlapping shifts, not just fixed hours?",
