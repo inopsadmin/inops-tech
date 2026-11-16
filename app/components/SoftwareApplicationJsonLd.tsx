@@ -22,12 +22,6 @@ export default function SoftwareApplicationJsonLd({ name, description, path }: P
     operatingSystem: "Web",
     isPartOf: { "@id": `${url}#webpage` },
     mainEntityOfPage: { "@id": `${url}#webpage` },
-    offers: {
-      "@type": "Offer",
-      url: absoluteUrl("/contact"),
-      availability: "https://schema.org/OnlineOnly",
-      seller: { "@id": `${siteUrl}/#organization` },
-    },
     provider: { "@id": `${siteUrl}/#organization` },
   };
 

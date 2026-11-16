@@ -79,6 +79,20 @@ export default function HeroSection() {
             <a href="/contact" className="b1">Book a Demo</a>
             <a href="/contract-labour-management" className="b2">See Iddion RegX CLMS →</a>
           </div>
+          <div className="stats">
+            <div>
+              <b>3,000+</b>
+              <span>Devices deployed</span>
+            </div>
+            <div>
+              <b>70+ sites</b>
+              <span>Across India</span>
+            </div>
+            <div>
+              <b>Since 2014</b>
+              <span>Industrial CLMS</span>
+            </div>
+          </div>
         </div>
       </div>
 

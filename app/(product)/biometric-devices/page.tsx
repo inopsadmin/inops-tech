@@ -361,7 +361,7 @@ export default function BiometricDevicesPage() {
                 <div className="relative h-full overflow-hidden lg:h-full">
                   <video
                     className="absolute inset-0 h-full w-full object-cover mt-[2%] object-[center_35%] sm:object-center lg:object-[center_40%]"
-                    autoPlay muted loop playsInline preload="metadata"
+                    muted playsInline preload="none" controls
                     poster={heroImage}
                     aria-label="Industrial biometric devices — face terminals, fingerprint readers and turnstiles at factory gates"
                   >
@@ -666,7 +666,7 @@ export default function BiometricDevicesPage() {
                   <div className="relative aspect-[16/11] w-full bg-gradient-to-br from-slate-50 via-white to-sky-50/40">
                     <video
                       className="absolute inset-0 h-full w-full object-contain p-5 sm:p-7"
-                      autoPlay muted loop playsInline preload="metadata"
+                      muted playsInline preload="none" controls
                       poster={deviceImage}
                       aria-label="Touchless biometric face recognition terminal for industrial attendance and access control"
                     >
