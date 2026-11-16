@@ -1355,7 +1355,7 @@ faq: [
     badge: "Iddion RegX CLMS · Challan Reconciliation",
     title: "PF & ESI Challan Reconciliation for Contract Labour",
     description:
-      "Automatically match PF and ESI challans against attendance and payroll records, catching the 25–30% discrepancy rate typical of manual contractor billing — before it reaches the statutory deadline or the finance team.",
+      "Automatically match PF and ESI challans against attendance and payroll records — before they reach the statutory deadline or the finance team.",
     subDescription:
       "Automate contract worker attendance, shift management, and leave tracking — biometric verification, real-time headcount, and CLRA 9-day continuous attendance monitoring across all sites. Part of Iddion RegX, InOps' contract labour management system",
       seoTitle: "PF & ESI Challan Reconciliation Software | Iddion RegX",
@@ -1382,7 +1382,7 @@ faq: [
       },
       {
         h2: "What Finance Gets Back",
-        body: "Finance teams report recovering significant time previously spent on manual invoice review and reconciliation — cycle close moves from a weekend exercise to a routine handoff. Discrepancy rates of 25–30% on contractor invoice line items are typical before automated matching is deployed; the rate contracts sharply within the first billing cycles as contractors learn what the gate data will catch. Verified invoices flow to your existing AP or finance system with the reconciliation evidence attached, so approval happens on checked numbers rather than trust.",
+        body: "Finance teams report recovering significant time previously spent on manual invoice review and reconciliation — cycle close moves from a weekend exercise to a routine handoff. Verified invoices flow to your existing AP or finance system with the reconciliation evidence attached, so approval happens on checked numbers rather than trust.",
       },
     ],
 

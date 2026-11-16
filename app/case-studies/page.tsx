@@ -73,7 +73,7 @@ export default function CaseStudiesPage() {
                       <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-[#DCEBF2] text-[#0E5A78]">On-premises</span>
                     </div>
                     <h3 id="cs-auto" className="font-bold text-[clamp(1.45rem,2.4vw,1.85rem)] leading-[1.2] mb-2.5 font-sans">
-                      How a Leading Automotive OEM Is Modernising Contract Workforce Management Across Multiple Plants
+                      How a Leading Automotive OEM Brought Visibility &amp; Control to Its Contract Workforce
                     </h3>
                     <p className="mb-4 text-[#425263] text-[0.98rem]">
                       One platform for every worker at every plant. The OEM is replacing its legacy contract labour and HR systems with Iddion RegX and Iddion HRIS, run inside its own data centre so workforce data never leaves its IT perimeter. Plants switch over one at a time, while InOps looks after the application and the face readers at the gates.
@@ -114,7 +114,7 @@ export default function CaseStudiesPage() {
                 {/* Coming soon note */}
                 <p className="col-span-full text-sm text-[#425263] border border-dashed border-[#D6DEE5] rounded-xl px-5 py-4">
                   More case studies coming: <span className="font-medium text-[#16222E]">cement, electronics, steel, pharma</span>.{" "}
-                  <Link href="/contact" className="text-[#0E5A78] hover:underline">Get in touch</Link> if you&rsquo;d like to speak to a customer in your industry.
+                  <Link href="/contact" className="text-[#0E5A78] hover:underline">Get in touch</Link>{" "}if you&rsquo;d like to speak to a customer in your industry.
                 </p>
 
               </div>

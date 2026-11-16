@@ -472,7 +472,7 @@ export default function TimeAndAttendancePage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system — powered by AI. No queues, no contact, no excuses.
+                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system — powered by AI. No queues, no contact.
                   </FlyInText>
                   <FlyInText
                     as="div"

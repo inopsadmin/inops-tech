@@ -5280,7 +5280,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         question: "3. What is Form V and when must it be issued?",
-        answer: "Form V is the certificate issued by the principal employer to the contractor, certifying the nature of work and enabling the contractor to apply for a CLRA licence (Form IV). It must be issued before any workers begin on site and cannot be backdated. The principal employer (not the contractor) issues Form V; the contractor cannot self-certify. Labour inspectors treat a Form V issued after workers have already deployed as a compliance breach. For a complete guide, see <a href=\"/blog/form-v-form-xiii-clra-guide-india\" class=\"text-blue-600 underline\">Form V and Form XIII Under CLRA: What They Are, Who Files Them, and When</a>.",
+        answer: "Form V is the certificate issued by the principal employer to the contractor, certifying the nature of work and enabling the contractor to apply for a CLRA licence (Form IV). It must be issued before any workers begin on site and cannot be backdated. The principal employer (not the contractor) issues Form V; the contractor cannot self-certify. Labour inspectors treat a Form V issued after workers have already deployed as a compliance breach. See <a href=\"/blog/form-v-form-xiii-clra-guide-india\" class=\"text-blue-600 underline\">Form V and Form XIII Under CLRA: What They Are, Who Files Them, and When</a> for the full requirements and filing timeline.",
       },
       {
         question: "4. What is Form XIII and who is responsible for maintaining it?",

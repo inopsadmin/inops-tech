@@ -5,7 +5,7 @@ import { jsonLdScriptProps } from "@/app/lib/jsonLd";
 import { absoluteUrl } from "@/app/lib/site";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Automotive OEM: Contract Workforce Visibility Across Multiple Plants | InOps Case Study",
+  title: "Automotive OEM Multi-Plant CLMS Case Study | InOps",
   description:
     "How a leading Indian automotive OEM with 10,000+ contract workers and 150+ contractors eliminated proxy attendance, automated CLRA compliance, and cut contractor billing disputes using Iddion RegX CLMS and InOps face-recognition turnstiles.",
   path: "/case-studies/automotive-oem-multi-plant-clms",
