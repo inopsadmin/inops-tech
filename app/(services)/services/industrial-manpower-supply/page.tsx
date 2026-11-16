@@ -12,10 +12,10 @@ export default function IndustrialManpowerSupplyPage() {
 
           {/* Copy */}
           <div>
-            <div className="inline-flex items-center gap-[10px] text-[10.5px] tracking-[0.18em] uppercase text-white/[0.82] mb-7 font-semibold font-mono">
+            <span className="inline-flex items-center gap-[10px] text-[10.5px] tracking-[0.18em] uppercase text-white/[0.82] mb-7 font-semibold font-mono">
               <span className="w-[7px] h-[7px] rounded-full bg-[#5de3a5] flex-shrink-0" />
               InOps Services
-            </div>
+            </span>
             <h1 className="text-[clamp(32px,3.8vw,50px)] leading-[1.10] font-medium text-white tracking-[-0.02em] m-0">
               Industrial Manpower Supply in India
             </h1>

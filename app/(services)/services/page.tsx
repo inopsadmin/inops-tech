@@ -100,10 +100,10 @@ export default function ServicesPage() {
 
           {/* Top eyebrow */}
           <div className="flex items-center gap-3 mb-10">
-            <div className="inline-flex items-center gap-2 text-[10.5px] tracking-[0.20em] uppercase font-bold font-mono text-white/50 border border-white/[0.12] bg-white/[0.04] rounded-full py-[6px] px-4">
+            <span className="inline-flex items-center gap-2 text-[10.5px] tracking-[0.20em] uppercase font-bold font-mono text-white/50 border border-white/[0.12] bg-white/[0.04] rounded-full py-[6px] px-4">
               <span className="w-[6px] h-[6px] rounded-full bg-[#5de3a5]" />
               InOps Services
-            </div>
+            </span>
           </div>
 
           {/* Main content grid */}
