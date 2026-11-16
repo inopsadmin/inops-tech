@@ -20,13 +20,23 @@ export default function BrochureGateModal({ brochureTitle, pdfSlug, onClose }: P
     return () => document.removeEventListener("keydown", handleKey);
   }, [onClose]);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
 
     const form = e.currentTarget;
     const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+
+    try {
+      await fetch("/api/brochure-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, brochureTitle }),
+      });
+    } catch {
+      // Non-blocking — lead capture failure should not block the user
+    }
 
     const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
     gtag?.("event", "generate_lead", {
@@ -39,6 +49,7 @@ export default function BrochureGateModal({ brochureTitle, pdfSlug, onClose }: P
 
     setStatus("success");
 
+    // Attempt download — succeeds once PDFs are added to public/brochures/files/
     const link = document.createElement("a");
     link.href = `/brochures/files/${pdfSlug}.pdf`;
     link.download = `${pdfSlug}.pdf`;
@@ -76,8 +87,8 @@ export default function BrochureGateModal({ brochureTitle, pdfSlug, onClose }: P
                 <path strokeLinecap="round" strokeLinejoin="round" d="M20 6L9 17l-5-5" />
               </svg>
             </div>
-            <h2 className="mb-1 text-lg font-bold text-slate-900">Download starting…</h2>
-            <p className="mb-5 text-sm text-slate-500">Your brochure should download automatically.</p>
+            <h2 className="mb-1 text-lg font-bold text-slate-900">Thanks — we'll be in touch</h2>
+            <p className="mb-5 text-sm text-slate-500">Your brochure will download automatically if available, or our team will email it to you shortly.</p>
             <button onClick={onClose} className="text-sm font-semibold text-[var(--inops-blue)] hover:underline">
               Close
             </button>
