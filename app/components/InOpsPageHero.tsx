@@ -12,8 +12,10 @@ const css = `
 .iph .sub{font-size:18px;line-height:1.6;color:var(--muted);max-width:500px;margin-bottom:28px}
 .iph .sub b{color:var(--ink);font-weight:600}
 .iph .btns{display:flex;gap:12px;flex-wrap:wrap}
-.iph .b1{background:var(--blue);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer}
-.iph .b2{border:1.5px solid #c9d3e3;color:var(--ink);background:#fff;padding:11px 22px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer}
+.iph .b1{background:var(--blue);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.iph .b1:hover{filter:brightness(1.08)}
+.iph .b2{border:1.5px solid #c9d3e3;color:var(--ink);background:#fff;padding:11px 22px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s}
+.iph .b2:hover{background:#f1f5f9}
 .iph .stats{display:flex;gap:28px;margin-top:28px;padding-top:22px;border-top:1px solid #d9e3f3;max-width:480px}
 .iph .stats b{display:block;font-size:23px;font-weight:800;color:var(--navy);letter-spacing:-.5px}
 .iph .stats span{font-size:12.5px;color:var(--muted)}
@@ -47,6 +49,8 @@ const css = `
 }
 `;
 
+import Link from "next/link";
+
 type Seg = { add?: boolean; tag: string; title: string; text: string };
 
 function Strip({ label, items }: { label: string; items: Seg[] }) {
@@ -73,15 +77,15 @@ function EwaHero() {
         <div className="copy">
           <span className="eyebrow"><i />Salary++ by InOps</span>
           <h1>
-            Earned Wage Access That Runs on <em>Verified Attendance</em>
+            Earned Wage Access for <em>Factory Workers</em>
           </h1>
           <p className="sub">
             <b>Workers draw wages they have already earned, on any day of the month.</b> The limit comes
             from gate-verified attendance, and payroll settles it automatically.
           </p>
           <div className="btns">
-            <span className="b1">Book a Demo</span>
-            <span className="b2">How Salary++ Works</span>
+            <Link href="/contact" className="b1">Book a Demo</Link>
+            <Link href="#ewa-how-it-works-heading" className="b2">How Salary++ Works</Link>
           </div>
           <div className="stats">
             <div><b>₹0</b><span>employer capital</span></div>
