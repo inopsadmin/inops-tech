@@ -12,7 +12,7 @@ export default function NavbarBrandLogo({ className = "" }: NavbarBrandLogoProps
   return (
     <span className={`navbar-brand-logo ${className}`.trim()} aria-hidden>
       <Image
-        src="/logo.png"
+        src="/logo.webp"
         alt=""
         fill
         sizes={`${NAV_LOGO_WIDTH}px`}

@@ -167,7 +167,7 @@ export function defaultOgImageUrl(): string {
 }
 
 /** Full-width brand logo (navbar, marketing). */
-export const BRAND_LOGO_PATH = "/logo.png";
+export const BRAND_LOGO_PATH = "/logo.webp";
 
 /** Square mark for favicon, app icon, JSON-LD logo, and SERP site icon. */
 export const SITE_ICON_PATH = "/favicon.png";

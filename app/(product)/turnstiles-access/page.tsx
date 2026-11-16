@@ -10,8 +10,8 @@ import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };
 
-/** Hero background ,  `public/images/Turnstiles2.jpg` */
-const turnstilesHeroBg = "/images/Turnstiles2.jpg";
+/** Hero background ,  `public/images/Turnstiles2.webp` */
+const turnstilesHeroBg = "/images/Turnstiles2.webp";
 
 const productSpecs = [
   { label: "Power Requirements", value: "AC110V/220V, 50/60Hz" },
@@ -206,7 +206,7 @@ export default function TurnstilesPage() {
               >
                 <div className="relative aspect-[4/3] w-full max-w-[16rem] overflow-hidden sm:max-w-xs lg:max-w-[30rem]">
                   <Image
-                    src="/images/7.png"
+                    src="/images/7.webp"
                     alt="Stainless steel tripod turnstile with barrier arms"
                     fill
                     className=" object-center"
@@ -273,7 +273,7 @@ export default function TurnstilesPage() {
               >
                 <div className="relative aspect-[4/3] w-full max-w-[16rem] overflow-hidden sm:max-w-xs lg:max-w-[30rem]">
                   <Image
-                    src="/images/Turnstiles2.jpg"
+                    src="/images/Turnstiles2.webp"
                     alt="Stainless steel flap barrier turnstile with wide lane for factory access"
                     fill
                     className="object-cover object-center"

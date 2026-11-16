@@ -44,7 +44,7 @@ export default function PlatformShowcaseDevice() {
           <div className="flex min-w-0 flex-1 items-center pl-0.5 sm:pl-1">
             <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10 md:h-11 md:w-11">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="InOps"
                 fill
                 sizes="(max-width: 768px) 36px, 44px"
@@ -177,7 +177,7 @@ export default function PlatformShowcaseDevice() {
         <div className="mt-2 flex items-center justify-center gap-2 border-t border-white/5 px-2 pb-1 pt-2 sm:mt-2.5 sm:gap-2.5 sm:pb-1.5 sm:pt-2.5">
           <div className="relative h-7 w-7 shrink-0 sm:h-8 sm:w-8" aria-hidden>
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt=""
               fill
               sizes="32px"

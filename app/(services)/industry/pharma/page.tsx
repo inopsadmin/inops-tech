@@ -93,7 +93,7 @@ export default function PharmaIndustryPage() {
         {/* ── S1 HERO ── */}
         <section className="relative min-h-[540px] overflow-hidden bg-slate-100 text-white">
           <Image
-            src="/images/pharma-manufacturing-hero.jpg"
+            src="/images/pharma-manufacturing-hero.webp"
             alt="Pharmaceutical manufacturing floor"
             fill
             priority
@@ -169,7 +169,7 @@ export default function PharmaIndustryPage() {
                 <div className="absolute -right-7 -top-7 h-28 w-28 border-r-2 border-t-2 border-teal-300" aria-hidden />
                 <div className="relative border border-slate-200 bg-white p-3 shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
                   <Image
-                    src="/images/pharma-lab-tablet-worker.jpg"
+                    src="/images/pharma-lab-tablet-worker.webp"
                     alt="Pharmaceutical workforce compliance and biometric access"
                     width={800}
                     height={600}
@@ -372,7 +372,7 @@ export default function PharmaIndustryPage() {
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
                 <Image
-                  src="/images/pharma-cleanroom-operator.jpg"
+                  src="/images/pharma-cleanroom-operator.webp"
                   alt="Biometric access control for pharmaceutical cleanroom"
                   fill
                   className="object-cover object-center"
@@ -464,7 +464,7 @@ export default function PharmaIndustryPage() {
             >
               <div className="relative mx-auto max-w-[680px]">
                 <Image
-                  src="/images/workforce-analytics-dashboard.jpg"
+                  src="/images/workforce-analytics-dashboard.webp"
                   alt="Pharma workforce compliance dashboard"
                   width={900}
                   height={600}
@@ -536,7 +536,7 @@ export default function PharmaIndustryPage() {
         {/* ── S7 CTA BANNER ── */}
         <section className="relative overflow-hidden bg-[#0b69b3] py-16 text-white">
           <Image
-            src="/images/pharma-cleanroom-cta.jpg"
+            src="/images/pharma-cleanroom-cta.webp"
             alt=""
             fill
             sizes="100vw"

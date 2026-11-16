@@ -36,7 +36,7 @@ const hrisFaqGroups = (() => {
   }));
 })();
 
-const labourHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.24.11 PM.jpeg";
+const labourHeroRightBackground = "/WhatsApp Image 2026-05-04 at 12.24.11 PM.webp";
 const labourHeroRightVideo = mediaVideos.labourManagementHero;
 
 const painPointCards = [

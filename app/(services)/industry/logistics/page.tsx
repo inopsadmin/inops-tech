@@ -91,7 +91,7 @@ export default function LogisticsIndustryPage() {
         {/* ── S1 HERO ── */}
         <section className="relative min-h-[540px] overflow-hidden bg-slate-100 text-white">
           <Image
-            src="/images/logistics-warehouse-hero.jpg"
+            src="/images/logistics-warehouse-hero.webp"
             alt="Logistics warehouse with stacked shelves"
             fill
             priority
@@ -167,7 +167,7 @@ export default function LogisticsIndustryPage() {
                 <div className="absolute -right-7 -top-7 h-28 w-28 border-r-2 border-t-2 border-teal-300" aria-hidden />
                 <div className="relative border border-slate-200 bg-white p-3 shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
                   <Image
-                    src="/images/logistics-warehouse-worker.jpg"
+                    src="/images/logistics-warehouse-worker.webp"
                     alt="Warehouse workers managing logistics operations"
                     width={800}
                     height={600}
@@ -346,7 +346,7 @@ export default function LogisticsIndustryPage() {
                 transition={{ duration: 0.55, ease: smoothEase, delay: 0.06 }}
               >
                 <Image
-                  src="/images/logistics-warehouse-cta.jpg"
+                  src="/images/logistics-warehouse-cta.webp"
                   alt="Active forklift operations in warehouse"
                   fill
                   className="object-cover object-center"
@@ -494,7 +494,7 @@ export default function LogisticsIndustryPage() {
             >
               <div className="relative mx-auto max-w-[680px]">
                 <Image
-                  src="/images/workforce-analytics-dashboard.jpg"
+                  src="/images/workforce-analytics-dashboard.webp"
                   alt="Workforce analytics and compliance dashboard"
                   width={900}
                   height={600}
@@ -566,7 +566,7 @@ export default function LogisticsIndustryPage() {
         {/* ── S7 CTA BANNER ── */}
         <section className="relative overflow-hidden bg-[#0b69b3] py-16 text-white">
           <Image
-            src="/images/logistics-warehouse-ops.jpg"
+            src="/images/logistics-warehouse-ops.webp"
             alt=""
             fill
             sizes="100vw"

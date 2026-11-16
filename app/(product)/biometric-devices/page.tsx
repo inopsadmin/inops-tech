@@ -322,9 +322,9 @@ const faqItems = [
 
 /* ─── Media ─── */
 const heroVideo = mediaVideos.smartAccessShowcase;
-const heroImage = "/WhatsApp Image 2026-04-29 at 3.18.32 PM.jpeg";
+const heroImage = "/WhatsApp Image 2026-04-29 at 3.18.32 PM.webp";
 const deviceVideo = mediaVideos.touchlessFaceReaderDemo;
-const deviceImage = "/images/Screenshot 2026-05-04 220326.png";
+const deviceImage = "/images/Screenshot 2026-05-04 220326.webp";
 
 export default function BiometricDevicesPage() {
   return (
@@ -816,7 +816,7 @@ export default function BiometricDevicesPage() {
                   tag: "Supply & AMC",
                   tagClass: "bg-emerald-50 text-emerald-700 ring-emerald-600/15",
                   description: "Widely deployed across Indian industry; we supply, integrate and maintain.",
-                  image: "/images/biometric-attendance-system.jpg",
+                  image: "/images/biometric-attendance-system.webp",
                   link: null,
                   linkLabel: null,
                 },
@@ -826,7 +826,7 @@ export default function BiometricDevicesPage() {
                   tag: "Takeover AMC",
                   tagClass: "bg-amber-50 text-amber-700 ring-amber-600/15",
                   description: "Common in existing plant estates; supported under takeover AMC.",
-                  image: "/images/Turnstiles2.jpg",
+                  image: "/images/Turnstiles2.webp",
                   link: null,
                   linkLabel: null,
                 },
@@ -836,7 +836,7 @@ export default function BiometricDevicesPage() {
                   tag: "Any brand",
                   tagClass: "bg-violet-50 text-violet-700 ring-violet-600/15",
                   description: "We maintain and integrate devices regardless of who supplied them.",
-                  image: "/images/Hardware Integration.jpg",
+                  image: "/images/Hardware Integration.webp",
                   link: null,
                   linkLabel: null,
                 },

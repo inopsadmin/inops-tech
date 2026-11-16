@@ -139,7 +139,7 @@ const jsonLd = `{
   "@graph":[
     {"@type":"CollectionPage","@id":"https://inops.tech/research-insights#webpage","url":"https://inops.tech/research-insights","name":"Contract Labour Compliance Research & Insights (India) | InOps","description":"InOps research and insights on contract labour compliance in Indian manufacturing.","inLanguage":"en-IN","dateModified":"2026-10-24","isPartOf":{"@id":"https://inops.tech/#website"},"publisher":{"@id":"https://inops.tech/#organization"}},
     {"@type":"ResearchProject","@id":"https://inops.tech/research-insights#study","name":"Contract Labour Compliance Gaps in 50 Indian Plants","description":"Proposed InOps research study to assess contract labour compliance across 50 manufacturing plants in India under the Labour Codes.","url":"https://inops.tech/research-insights#study","parentOrganization":{"@id":"https://inops.tech/#organization"},"areaServed":{"@type":"Country","name":"India"}},
-    {"@type":"Organization","@id":"https://inops.tech/#organization","name":"InOps Solutions","url":"https://inops.tech/","logo":"https://inops.tech/logo.png","email":"contact@inops.tech","telephone":"+91-80-2774-5220","address":{"@type":"PostalAddress","streetAddress":"60A, Bommasandra Link Road, Bommasandra Industrial Area","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560099","addressCountry":"IN"}}
+    {"@type":"Organization","@id":"https://inops.tech/#organization","name":"InOps Solutions","url":"https://inops.tech/","logo":"https://inops.tech/logo.webp","email":"contact@inops.tech","telephone":"+91-80-2774-5220","address":{"@type":"PostalAddress","streetAddress":"60A, Bommasandra Link Road, Bommasandra Industrial Area","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560099","addressCountry":"IN"}}
   ]
 }`;
 
@@ -435,7 +435,7 @@ export default function ResearchInsightsPage() {
         <div className="ri-wrap">
           <div className="ri-f-top">
             <div className="ri-f-brand">
-              <Link href="/" aria-label="InOps Solutions home"><img src="https://inops.tech/logo.png" alt="InOps Solutions" height={34} /></Link>
+              <Link href="/" aria-label="InOps Solutions home"><img src="https://inops.tech/logo.webp" alt="InOps Solutions" height={34} /></Link>
               <p>Enterprise workforce compliance and hardware, integrated so your teams run operations, not spreadsheets.</p>
               <div className="ri-cta-row">
                 <Link className="ri-btn ri-btn-primary" href="/contact">Schedule a demo</Link>

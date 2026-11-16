@@ -166,11 +166,11 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {
-        source: "/logo.png",
+        source: "/logo.webp",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {
-        source: "/logo1.png",
+        source: "/logo1.webp",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {
@@ -182,7 +182,7 @@ const nextConfig: NextConfig = {
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {
-        source: "/favicon-32x32.png",
+        source: "/favicon-32x32.webp",
         headers: [{ key: "Cache-Control", value: staticAssetCache }],
       },
       {

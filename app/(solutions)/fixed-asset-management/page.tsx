@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
-const fixedAssetHeroImage = "/images/masshin.jpg";
+const fixedAssetHeroImage = "/images/masshin.webp";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };

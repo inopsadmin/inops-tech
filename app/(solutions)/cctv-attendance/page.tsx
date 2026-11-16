@@ -19,22 +19,22 @@ import {
 } from "@/app/lib/splitHeroWideInsets";
 import { mediaVideos } from "@/app/lib/mediaAssets";
 
-const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.jpeg";
+const timeAttendanceProductImage = "/WhatsApp Image 2026-04-27 at 3.53.36 PM.webp";
 
 const timeAttendanceProductVideo = mediaVideos.timeAttendanceProduct;
 const cctvSolutionImage =
-  "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.png";
+  "/Gemini_Generated_Image_mqj0sxmqj0sxmqj0.webp";
 const cctvSolutionVideo = mediaVideos.opticamSolutionDemo;
 
 const authAccessGalleryImages = [
   {
-    src: "/images/biometric-attendance-system.jpg",
+    src: "/images/biometric-attendance-system.webp",
     alt: "Wall-mounted biometric attendance terminal with keypad and display",
     width: 900,
     height: 600,
   },
   {
-    src: "/images/434829.png",
+    src: "/images/434829.webp",
     alt: "Industrial access control and gate hardware",
     width: 900,
     height: 600,

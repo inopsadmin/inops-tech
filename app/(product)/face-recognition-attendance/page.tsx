@@ -20,40 +20,40 @@ const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.08, margin: "0px 0px -12% 0px" } as const;
 
 const smartAccessShowcaseImage =
-  "/WhatsApp Image 2026-04-29 at 3.18.32 PM.jpeg";
+  "/WhatsApp Image 2026-04-29 at 3.18.32 PM.webp";
 const smartAccessShowcaseVideo = mediaVideos.smartAccessShowcase;
 const deviceCategoryCards = [
   {
     title: "Face Recognition",
     description: "Sub-second 3D facial authentication with anti-spoofing technology for touchless entry.",
     image:
-      "/face reconiging.png",
+      "/face reconiging.webp",
     icon: "face",
   },
   {
     title: "Fingerprint Systems",
     description: "High-capacity optical sensors for reliable biometric logging in high-traffic zones.",
     image:
-      "/fingerprintsystem.png",
+      "/fingerprintsystem.webp",
     icon: "finger",
   },
   {
     title: "RFID & Card Access",
     description: "Standard proximity and smart card readers for quick, legacy-compatible entry points.",
     image:
-      "/REID card.png",
+      "/REID card.webp",
     icon: "card",
   },
   {
     title: "Integrated Kiosks",
     description: "Multimodal pedestals combining face, QR, and thermal sensing for lobby management.",
     image:
-      "/KIOSK.png",
+      "/KIOSK.webp",
     icon: "kiosk",
   },
 ] as const;
 
-const touchlessFaceReaderShowcaseImage = "/images/Screenshot 2026-05-04 220326.png";
+const touchlessFaceReaderShowcaseImage = "/images/Screenshot 2026-05-04 220326.webp";
 const touchlessFaceReaderShowcaseVideo = mediaVideos.touchlessFaceReaderDemo;
 
 /** “Platform strengths” — same card language as solution pain/insight tiles */
@@ -1127,7 +1127,7 @@ export default function BiometricAccessControlPage() {
                   title: "Workforce Attendance Tracking",
                   subtitle: "Automated logging for payroll and HR management.",
                   image:
-                    "/Gemini_Generated_Image_qpp7k7qpp7k7qpp7.png",
+                    "/Gemini_Generated_Image_qpp7k7qpp7k7qpp7.webp",
                   route:"cctv-attendance"
                 },
                 {

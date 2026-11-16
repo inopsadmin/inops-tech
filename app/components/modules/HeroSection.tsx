@@ -168,7 +168,7 @@ export default function HeroSection({ data }: Props) {
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           >
             <Image
-              src="/images/modules/Module-Page.jpeg"
+              src="/images/modules/Module-Page.webp"
               alt="Module background"
               fill
               priority

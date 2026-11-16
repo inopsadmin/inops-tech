@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 import SolutionLandingHero from "@/app/components/SolutionLandingHero";
 import SolutionPageClosingCta from "@/app/components/SolutionPageClosingCta";
 
-const visitorHeroImage = "/images/visitor.jpg";
+const visitorHeroImage = "/images/visitor.webp";
 
-/** Scheduled vs walk-up process infographic ,  `public/images/Visitor-Management-Process.png` */
-const visitorProcessImage = "/images/Visitor-Management-Process.png";
+/** Scheduled vs walk-up process infographic ,  `public/images/Visitor-Management-Process.webp` */
+const visitorProcessImage = "/images/Visitor-Management-Process.webp";
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.2 };

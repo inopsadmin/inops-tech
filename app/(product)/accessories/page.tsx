@@ -54,7 +54,7 @@ const accessories = [
       "Our specially designed push button for doors, gates, or anywhere there is an access control system. Wide range of options including push button size and color.",
       "This request to exit (REx) device allows you to open a locked door to exit without needing credentials.",
     ],
-    imageUrl: "/images/Exit-Push-300x300.png",
+    imageUrl: "/images/Exit-Push-300x300.webp",
     imageAlt: "Exit Push Button - request to exit device",
     imageClassName: "object-contain object-center p-6",
   },
@@ -83,7 +83,7 @@ const electroMagneticLocks = [
   {
     model: "SL-600",
     title: "Single Leaf Electro Magnetic Lock",
-    imageUrl: "/images/SL-600.png",
+    imageUrl: "/images/SL-600.webp",
     imageAlt: "SL-600 Single Leaf Electro Magnetic Lock",
     specs: [
       "Operating Voltage : Power DC 12V",
@@ -94,7 +94,7 @@ const electroMagneticLocks = [
   {
     model: "DL-600",
     title: "Double Leaf Electro Magnetic Lock",
-    imageUrl: "/images/DL-600-1.png",
+    imageUrl: "/images/DL-600-1.webp",
     imageAlt: "DL-600 Double Leaf Electro Magnetic Lock",
     specs: [
       "Operating Voltage : Power DC 12V-24V",
@@ -116,7 +116,7 @@ export default function AccessoriesPage() {
           }
           title="Access Control Accessories for Factory Gates"
           subtitle="Exit buttons, fingerprint sensors, RF cards, and electromagnetic locks — everything you need to complete turnstile lanes, doors, and secure zones at industrial and commercial sites."
-          imageSrc="/images/clms-hardware-governance.png"
+          imageSrc="/images/clms-hardware-governance.webp"
           imageAlt="Industrial site operations ,  access hardware and workforce context"
           primaryCta={{ label: "Get a Quote", href: "/contact" }}
           secondaryCta={{ label: "Browse Devices", href: "/biometric-devices" }}

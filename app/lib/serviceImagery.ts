@@ -44,7 +44,7 @@ export const heroSlides: readonly HeroSlide[] = [
   },
   {
     layout: "seo-stack",
-    src: "/WhatsApp Image 2026-05-04 at 11.55.24 AM.jpeg",
+    src: "/WhatsApp Image 2026-05-04 at 11.55.24 AM.webp",
     alt: "Face recognition and biometric access across mobile, CCTV, and on-ground devices in enterprise operations",
     seoHeading: "Biometric CLMS That Eliminates Contractor Payroll Leakage",
     seoHeadingVariant: "line",
@@ -79,11 +79,11 @@ export const heroTrustedManufacturingClients: { name: string; logoSrc: string }[
 
 /** Order matches `whyCards` in `app/page.tsx`: [0] Identity, [1] HRIS, [2] Contract workforce governance, [3] Logistics, [4] EWA, [5] spare */
 export const whySectionCardImages = [
-  "/WhatsApp Image 2026-05-04 at 12.13.21 PM.jpeg",
+  "/WhatsApp Image 2026-05-04 at 12.13.21 PM.webp",
   "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=85",
   "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1400&q=85",
   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85",
-  "/images/payroll-solutions-hero.png",
+  "/images/payroll-solutions-hero.webp",
   "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=85",
 ] as const;
 
@@ -122,7 +122,7 @@ export const moduleCarouselHoverImages = [
 ] as const;
 
 export const featuresSliderImages = {
-  clms: "/WhatsApp Image 2026-04-20 at 3.24.40 PM.jpeg",
+  clms: "/WhatsApp Image 2026-04-20 at 3.24.40 PM.webp",
   visibility: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
 } as const;
 
@@ -147,17 +147,17 @@ export const solutionPageImagery = {
 
 export const productPageImagery = {
   biometricHeroDevice:
-    "/images/bio_new.png",
+    "/images/bio_new.webp",
   biometricSpecScene:
     "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q5",
   turnstileHero:
     "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2000&q=85",
   accessoryExit:
-    "/images/Wireless-Exit-Button-.png",
+    "/images/Wireless-Exit-Button-.webp",
   accessoryIndustrial:
-    "/images/SL-600.png",
+    "/images/SL-600.webp",
   fingerprintSensor:
-    "/images/1.png",
+    "/images/1.webp",
   rfCards:
-    "/images/2.png",
+    "/images/2.webp",
 } as const;

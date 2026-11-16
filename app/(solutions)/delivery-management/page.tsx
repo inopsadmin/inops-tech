@@ -25,7 +25,7 @@ import AnimatedCounter from "@/app/components/AnimatedCounter";
 
 
 const heroData = {
-  bgImage: "/images/solutions/courier-dashboard.jpeg", 
+  bgImage: "/images/solutions/courier-dashboard.webp", 
   bgImageAlt: "Courier delivering a package, tracked live on dashboard and mobile",
   bgPosition: "72% 40%",
   gradientCenter: "18% 22%",

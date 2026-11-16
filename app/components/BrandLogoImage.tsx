@@ -19,7 +19,7 @@ export default function BrandLogoImage({
 }: BrandLogoImageProps) {
   return (
     <Image
-      src="/logo.png"
+      src="/logo.webp"
       alt="InOps Solutions"
       width={width}
       height={height}

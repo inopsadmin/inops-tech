@@ -127,7 +127,7 @@ const jsonLd = `{
   "@graph":[
     {"@type":"WebPage","@id":"https://inops.tech/clms-pricing#webpage","url":"https://inops.tech/clms-pricing","name":"CLMS Software Pricing in India | Iddion RegX by InOps","description":"How Iddion RegX contract labour management software (CLMS) is priced in India.","inLanguage":"en-IN","dateModified":"2026-10-24","isPartOf":{"@id":"https://inops.tech/#website"},"publisher":{"@id":"https://inops.tech/#organization"}},
     {"@type":"SoftwareApplication","@id":"https://inops.tech/clms-pricing#software","name":"Iddion RegX","alternateName":"Iddion RegX CLMS","applicationCategory":"BusinessApplication","description":"Contract labour management system (CLMS) for Indian manufacturing and industrial sites.","url":"https://inops.tech/contract-labour-management","publisher":{"@id":"https://inops.tech/#organization"}},
-    {"@type":"Organization","@id":"https://inops.tech/#organization","name":"InOps Solutions","url":"https://inops.tech/","logo":"https://inops.tech/logo.png","email":"contact@inops.tech","telephone":"+91-80-2774-5220","address":{"@type":"PostalAddress","streetAddress":"60A, Bommasandra Link Road, Bommasandra Industrial Area","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560099","addressCountry":"IN"}}
+    {"@type":"Organization","@id":"https://inops.tech/#organization","name":"InOps Solutions","url":"https://inops.tech/","logo":"https://inops.tech/logo.webp","email":"contact@inops.tech","telephone":"+91-80-2774-5220","address":{"@type":"PostalAddress","streetAddress":"60A, Bommasandra Link Road, Bommasandra Industrial Area","addressLocality":"Bengaluru","addressRegion":"Karnataka","postalCode":"560099","addressCountry":"IN"}}
   ]
 }`;
 
@@ -351,7 +351,7 @@ export default function ClmsPricingPage() {
         <div className="cp-wrap">
           <div className="cp-f-top">
             <div className="cp-f-brand">
-              <Link href="/" aria-label="InOps Solutions home"><img src="https://inops.tech/logo.png" alt="InOps Solutions" height={34} /></Link>
+              <Link href="/" aria-label="InOps Solutions home"><img src="https://inops.tech/logo.webp" alt="InOps Solutions" height={34} /></Link>
               <p>Enterprise workforce compliance and hardware, integrated so your teams run operations, not spreadsheets.</p>
               <div className="cp-cta-row">
                 <Link className="cp-btn cp-btn-primary" href="/contact">Schedule a demo</Link>

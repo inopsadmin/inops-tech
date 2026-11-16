@@ -1,9 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
 import SectionFade from "@/app/components/SectionFade";
-
-const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const checklist = [
   "90% reduction in manual reconciliation",
@@ -38,13 +33,7 @@ export default function BusinessImpactSection() {
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0 xl:gap-x-12">
 
             {/* LEFT SIDE */}
-            <motion.div
-              className="text-left lg:col-span-5 lg:max-w-xl lg:pr-2 xl:pr-4"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55, ease: easeOut }}
-            >
+            <div className="text-left lg:col-span-5 lg:max-w-xl lg:pr-2 xl:pr-4">
               {/* Badge */}
               <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700 shadow-sm">
                 <span
@@ -102,20 +91,10 @@ export default function BusinessImpactSection() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
             {/* RIGHT SIDE */}
-            <motion.div
-              className="flex w-full flex-col gap-5 lg:col-span-7 mt-5"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.55,
-                ease: easeOut,
-                delay: 0.05,
-              }}
-            >
+            <div className="flex w-full flex-col gap-5 lg:col-span-7 mt-5">
 
               {/* TOP CARDS */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4 lg:gap-x-8">
@@ -328,7 +307,7 @@ export default function BusinessImpactSection() {
                   </div>
                 </div>
               </article>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

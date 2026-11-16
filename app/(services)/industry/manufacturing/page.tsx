@@ -107,7 +107,7 @@ export default function ManufacturingIndustryPage() {
         ══════════════════════════════════════════════════════════════ */}
         <section className="relative min-h-[520px] overflow-hidden bg-[#041a33] text-white">
           <Image
-            src="/images/manufacturing-hero-robots.jpg"
+            src="/images/manufacturing-hero-robots.webp"
             alt=""
             fill
             priority
@@ -369,7 +369,7 @@ export default function ManufacturingIndustryPage() {
                   <div className="absolute -bottom-5 -right-5 h-24 w-24 bg-blue-100/45" aria-hidden />
                   <div className="relative border border-slate-200 bg-white p-3 shadow-[0_16px_45px_rgba(15,23,42,0.10)]">
                     <Image
-                      src="/images/manufacturing-orange-robots.jpg"
+                      src="/images/manufacturing-orange-robots.webp"
                       alt="Industrial robotic arms on manufacturing production line"
                       width={960}
                       height={720}
@@ -394,7 +394,7 @@ export default function ManufacturingIndustryPage() {
               <div className="lg:col-span-5">
                 <div className="relative mx-auto max-w-md shadow-[0_20px_45px_rgba(15,23,42,0.18)] ">
                   <Image
-                    src="/images/workforce-analytics-dashboard.jpg"
+                    src="/images/workforce-analytics-dashboard.webp"
                     alt="Real-time site monitoring dashboard"
                     width={900}
                     height={600}
@@ -590,7 +590,7 @@ export default function ManufacturingIndustryPage() {
                   <div className="mx-auto max-w-sm bg-slate-50 px-8 py-8 text-center">
                     <div className="mx-auto flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_14px_30px_rgba(15,23,42,0.12)]">
                       <Image
-                        src="/images/electronics-fingerprint-scan.jpg"
+                        src="/images/electronics-fingerprint-scan.webp"
                         alt="Biometric fingerprint access control"
                         width={220}
                         height={220}
