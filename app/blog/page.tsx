@@ -30,7 +30,7 @@ const allPosts = [...blogPosts].filter((p) => !p.hideFromListing).sort((a, b) =>
 const blogBanner = {
   src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85",
   alt: "Editorial workspace — professional typing on a laptop",
-  tagline: "Practical guides on CLRA compliance, biometric attendance, contract labour management, and early wage access — written for Indian manufacturers and HR leaders.",
+  tagline: "Practical guides on CLRA compliance, biometric attendance, contract labour management, and Earned Wage Access — written for Indian manufacturers and HR leaders.",
 } as const;
 
 function ArrowRightIcon({ className }: { className?: string }) {
@@ -45,8 +45,6 @@ export default function BlogPage() {
   const [activeTab, setActiveTab] = useState<TabId>("all");
   const posts = activeTab === "all" ? allPosts : allPosts.filter((p) => p.tab === activeTab);
   const [featured, ...rest] = posts;
-  console.log("BlogPage: activeTab", activeTab, "posts.length", posts.length, "featured", featured?.title, "rest.length", rest.length);
-
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
       <div

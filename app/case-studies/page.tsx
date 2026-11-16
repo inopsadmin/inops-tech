@@ -48,11 +48,11 @@ export default function CaseStudiesPage() {
 
                 {/* AUTOMOTIVE featured */}
                 <article
-                  className="flex flex-col bg-white border border-[#D6DEE5] rounded-2xl overflow-hidden col-span-full grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] max-[860px]:col-auto max-[860px]:flex max-[860px]:flex-col"
+                  className="bg-white border border-[#D6DEE5] rounded-2xl overflow-hidden col-span-full grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] max-[860px]:col-auto max-[860px]:flex max-[860px]:flex-col"
                   data-industry="automotive"
                   aria-labelledby="cs-auto"
                 >
-                  <div className="relative bg-[#DCEBF2] overflow-hidden min-h-[320px] max-[860px]:aspect-[2/1] max-[860px]:min-h-0">
+                  <div className="relative bg-[#DCEBF2] overflow-hidden min-h-[320px] h-full max-[860px]:aspect-[2/1] max-[860px]:min-h-0 max-[860px]:h-auto">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1400&q=70"

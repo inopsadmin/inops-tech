@@ -63,6 +63,7 @@ export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
   ]);
   const productPaths = new Set(["/face-recognition-attendance", "/turnstiles-access", "/accessories"]);
   const resourcePaths = new Set([
+    "/blog",
     "/brochures",
     "/case-studies",
     "/glossary",
