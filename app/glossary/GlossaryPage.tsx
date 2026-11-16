@@ -28,6 +28,7 @@ img{max-width:100%}
 .gl-crumbs a{color:var(--ink-2)}
 .gl-crumbs span[aria-hidden]{margin:0 .4rem}
 .gl-hero{padding:2.25rem 0 2rem;border-bottom:2px solid var(--ink)}
+.gl-eyebrow{display:inline-block;font-size:.85rem;font-weight:650;color:var(--link);background:var(--slate-wash);padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
 .gl-hero h1{font-stretch:118%;font-weight:780;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04;letter-spacing:-.015em;margin:0 0 1rem;max-width:18ch}
 .gl-hero p.lede{font-size:1.125rem;color:var(--ink-2);max-width:62ch;margin:0}
 .gl-lawnote{margin-top:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:.25rem 1rem;max-width:70ch;border-left:6px solid var(--signal);padding:.25rem 0 .25rem 1rem}
@@ -450,6 +451,7 @@ export default function GlossaryPage() {
         </nav>
 
         <header className="gl-hero">
+          <span className="gl-eyebrow">Workforce Compliance Glossary</span>
           <h1>Contract Labour &amp; Workforce Compliance Glossary</h1>
           <p className="lede">Plain-English definitions of the laws, forms, filings and systems that Indian plant HR, compliance and security teams deal with every day.</p>
           <div className="gl-lawnote">

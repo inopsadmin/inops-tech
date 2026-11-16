@@ -81,9 +81,9 @@ export default function BlogPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/35 to-slate-950/80" aria-hidden />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className={inopsUi.heroKicker}>Blog</p>
+                  <span className={inopsUi.heroKicker}>Blog</span>
                   <h1 className="home-display-heading inops-type-hero mt-4 text-center text-white">
-                    Contract Labour Compliance &amp; Workforce Technology Insights
+                    Contract Labour Compliance &amp; Workforce Insights
                   </h1>
                   <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-xl text-center`}>{blogBanner.tagline}</p>
                 </div>

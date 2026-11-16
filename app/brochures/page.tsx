@@ -153,7 +153,7 @@ export default function BrochuresPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className={inopsUi.heroKicker}>Brochures</p>
+                  <span className={inopsUi.heroKicker}>Brochures</span>
                   <h1 className="home-display-heading inops-type-hero mt-4 text-white text-center">
                     Product Brochures: CLMS, Biometric Attendance &amp; HRIS
                   </h1>

@@ -1,4 +1,4 @@
-﻿import type { NextConfig } from "next";
+import type { NextConfig } from "next";
 
 const staticAssetCache = "public, max-age=31536000, immutable";
 

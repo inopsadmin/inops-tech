@@ -23,12 +23,21 @@ export default function CaseStudiesPage() {
               </ol>
               <div className="grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-12 items-end pb-10 max-[900px]:grid-cols-1 max-[900px]:gap-6">
                 <div>
+                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#0E5A78] mb-3">Case Studies</span>
                   <h1 id="page-h" className="font-bold text-[clamp(2.3rem,5vw,3.8rem)] leading-[1.02] tracking-[-0.024em] mb-4 max-w-[16ch] font-sans">
                     Case studies from Indian plants
                   </h1>
                   <p className="text-[1.18rem] text-[#425263] max-w-[56ch] m-0">
                     How manufacturers run contract workforce management on Iddion RegX and InOps hardware.
                   </p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-[0.95rem] no-underline border-[1.5px] border-[#0E5A78] bg-[#0E5A78] text-white hover:brightness-110"
+                    >
+                      Book a Demo
+                    </Link>
+                  </div>
                 </div>
                 <div className="text-[0.95rem] text-[#425263] border-l-[3px] border-[#0E5A78] pl-4 max-w-[44ch]">
                   <p className="mb-2">Every case study is anonymised, published with the customer&#39;s written consent, and reports only figures the customer has measured and approved.</p>
