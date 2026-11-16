@@ -1112,7 +1112,8 @@ export default function BiometricDevicesPage() {
           heading={<>Right device for every gate — <span className="font-semibold text-sky-100">supplied, installed, maintained</span></>}
           description="Site survey to AMC, across ZKTeco, eSSL and Realtime. One partner for your entire biometric estate."
           primaryLabel="Request a site survey"
-          secondaryLabel="Talk to an Expert"
+          secondaryLabel="+91 80277 45220"
+          secondaryHref="tel:+918027745220"
         />
 
       </div>

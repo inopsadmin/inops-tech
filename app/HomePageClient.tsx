@@ -131,7 +131,7 @@ export default function Home() {
 
       <section
         aria-labelledby="hero-trusted-clients-heading"
-        className="relative overflow-x-hidden border-b border-gray-100 bg-white pt-4 pb-1.5 sm:pt-5 sm:pb-2 lg:pt-6 lg:pb-2.5"
+        className="relative border-b border-gray-100 bg-white pt-4 pb-1.5 sm:pt-5 sm:pb-2 lg:pt-6 lg:pb-2.5"
       >
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-12">
