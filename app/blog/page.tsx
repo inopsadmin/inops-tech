@@ -60,6 +60,8 @@ export default function BlogPage() {
           <nav aria-label="Breadcrumb" className="mb-4 text-sm text-slate-500">
             <Link href="/" className="hover:text-slate-700">Home</Link>
             <span aria-hidden> / </span>
+            <Link href="/blog" className="hover:text-slate-700">Resources</Link>
+            <span aria-hidden> / </span>
             <span aria-current="page">Blog</span>
           </nav>
           <motion.header

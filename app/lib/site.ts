@@ -3,7 +3,7 @@
  * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://inops.tech) so metadata, sitemap, and schema stay correct.
  */
 
-export const SITE_NAME = "InOps Solutions";
+export const SITE_NAME = "InOps";
 
 /** Default `<title>` for the homepage (matches brand + high-intent queries + geo). */
 export const HOME_PAGE_TITLE = `InOps | CLMS, Biometrics & Workforce Compliance | Bengaluru`;

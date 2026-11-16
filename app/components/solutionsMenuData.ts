@@ -38,8 +38,8 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
     },
     {
       type: "tile",
-      title: "Vizion",
-      subtitle: "Canteen and visitor managemnt",
+      title: "VizOne",
+      subtitle: "Canteen and visitor management",
       description: "Canteen operations and visitor flow across your premises.",
       href: "/canteen-and-visitor",
     },

@@ -1382,7 +1382,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "karnataka-gig-workers-act-platforms-guide",
-    title: "Karnataka's Gig Workers Law: What Platforms Should Know",
+    title: "Karnataka's Gig Workers Act: Platform Guide",
+    h1: "Karnataka's Gig Workers Law: What Platforms Should Know",
     description: "Karnataka's Platform-based Gig Workers (Social Security and Welfare) law sets up a welfare board, worker registration and a welfare fee on aggregators. What platforms operating in Karnataka should know.",
     author: "InOps",
     date: "October 2, 2026",
@@ -2102,7 +2103,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "gig-worker-daily-expenses-fuel-recharge-rent",
-    title: "Fuel, Recharge, Rent: The Costs Gig Workers Can't Wait 15 Days For",
+    title: "Gig Workers' Daily Costs: Fuel, Recharge, Rent",
+    h1: "Fuel, Recharge, Rent: The Costs Gig Workers Can't Wait 15 Days For",
     description: "Gig workers pay for fuel, mobile data, food and vehicle costs every day, but are paid every week or two. A look at the daily costs of gig work and how early",
     author: "InOps",
     date: "October 11, 2026",
@@ -2365,7 +2367,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "women-gig-workers-india-earned-wage-access",
-    title: "Women in India's Gig Workforce: Why Access to Earnings Matters",
+    title: "Women in India's Gig Workforce: Earnings Access",
+    h1: "Women in India's Gig Workforce: Why Access to Earnings Matters",
     description: "More women are joining India's gig and blue-collar workforce. Why control over their own earnings matters, and how employers can make work more financially secure for them.",
     author: "InOps",
     date: "October 14, 2026",
@@ -3175,7 +3178,8 @@ export const blogPosts: BlogPost[] = [
 
   {
     slug: "ewa-vs-salary-advance-vs-payday-loan",
-    title: "EWA vs Salary Advance vs Payday Loan: What's the Difference?",
+    title: "EWA vs Salary Advance vs Payday Loan",
+    h1: "EWA vs Salary Advance vs Payday Loan: What's the Difference?",
     description: "Earned Wage Access, salary advances and payday loans all put cash in a worker's hands before payday. They differ on who funds them, what they cost and what happens if things go wrong.",
     author: "InOps",
     date: "October 24, 2026",
@@ -4851,7 +4855,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "biometric-attendance-future-of-work",
-    title: "Biometric Attendance and the Future of Work: How It's Shaping Indian Manufacturing",
+    title: "Biometric Attendance and the Future of Work",
+    h1: "Biometric Attendance and the Future of Work: How It's Shaping Indian Manufacturing",
     description:
       "How biometric attendance — face recognition and fingerprint — is eliminating proxy punching, closing contractor billing gaps, and building CLRA compliance",
     author: "InOps Editorial",
@@ -5376,6 +5381,7 @@ export const blogPosts: BlogPost[] = [
     author: "InOps Editorial",
     date: "December 2025",
     dateIso: "2025-12-03",
+    dateModifiedIso: "2026-11-16",
     category: "CLRA Compliance",
     tab: "clra",
     readMinutes: 7,
