@@ -40,12 +40,6 @@ export default function HomePageJsonLd() {
       url: homeUrl,
       description: DEFAULT_DESCRIPTION,
       provider: { "@id": `${siteUrl}/#organization` },
-      offers: {
-        "@type": "Offer",
-        url: absoluteUrl("/contact"),
-        availability: "https://schema.org/OnlineOnly",
-        seller: { "@id": `${siteUrl}/#organization` },
-      },
     },
     {
       "@type": "ItemList",
