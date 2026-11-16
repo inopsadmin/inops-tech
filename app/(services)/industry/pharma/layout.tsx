@@ -11,7 +11,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/services/industry/pharma",
+  path: "/industry/pharma",
   extraKeywords: [
     "contract labour management pharmaceutical",
     "pharmaceutical workforce compliance software",
@@ -69,7 +69,7 @@ export default function PharmaIndustryLayout({
   return (
     <>
       <SolutionSchemaInjector
-        path="/services/industry/pharma"
+        path="/industry/pharma"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
       />

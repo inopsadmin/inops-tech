@@ -19,18 +19,13 @@ export default function ProductJsonLd({ path }: Props) {
     name: data.name,
     description: data.description,
     url,
+    image: absoluteUrl(data.image),
     category: data.category,
     brand: {
       "@type": "Brand",
       name: SITE_NAME,
     },
     manufacturer: { "@id": `${siteUrl}/#organization` },
-    offers: {
-      "@type": "Offer",
-      url: absoluteUrl("/contact"),
-      availability: "https://schema.org/InStock",
-      seller: { "@id": `${siteUrl}/#organization` },
-    },
   };
 
   return <script {...jsonLdScriptProps(payload)} />;

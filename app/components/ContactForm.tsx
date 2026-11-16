@@ -63,6 +63,8 @@ export default function ContactForm() {
       setStatus("success");
       form.reset();
       captcha.reset();
+      const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+      gtag?.("event", "generate_lead", { lead_type: "contact", form_location: data.source });
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");

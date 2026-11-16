@@ -44,6 +44,12 @@ const routes: { path: string; priority: number; changeFrequency: ChangeFreq }[] 
   { path: "/research-insights", priority: 0.6, changeFrequency: "monthly" },
   { path: "/case-studies", priority: 0.65, changeFrequency: "monthly" },
   { path: "/case-studies/automotive-oem-multi-plant-clms", priority: 0.7, changeFrequency: "monthly" },
+  // Industry solution pages
+  { path: "/industry/automotive", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/industry/electronics", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/industry/logistics", priority: 0.65, changeFrequency: "monthly" },
+  { path: "/industry/manufacturing", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/industry/pharma", priority: 0.65, changeFrequency: "monthly" },
 ];
 
 

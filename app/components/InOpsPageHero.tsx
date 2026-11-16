@@ -1,5 +1,4 @@
 const css = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 .iph{--navy:#0b1f3a;--blue:#1d5fd1;--blue2:#2f7bf5;--ink:#14213a;--muted:#55627a;--line:#e3e8f0;--green:#16a34a;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;overflow:hidden}
 .iph *{box-sizing:border-box;margin:0;padding:0}
 .iph .hero{display:grid;grid-template-columns:48% 52%;background:linear-gradient(120deg,#f7fafe 0%,#eef4fd 55%,#e3edfc 100%)}

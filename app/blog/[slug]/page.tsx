@@ -8,7 +8,7 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import HowToJsonLd from "@/app/components/HowToJsonLd";
 import { blogPosts, getBlogPost, getBlogPostHref } from "@/app/lib/blogPosts";
 import { routeMetadata } from "@/app/lib/seoMetadata";
-import { SITE_NAME } from "@/app/lib/site";
+import { FOUNDER, SITE_NAME } from "@/app/lib/site";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -83,12 +83,14 @@ export default async function BlogArticlePage({ params }: PageProps) {
             ) : null}
             <span aria-hidden> · </span>
             {post.readMinutes} min read
-            {post.author ? (
+            {(post.author || post.personAuthor) ? (
               <>
                 <span aria-hidden> · </span>
-                <span className="font-medium text-slate-700">{post.author}</span>
+                <span className="font-medium text-slate-700">
+                  {post.personAuthor ? (post.author || FOUNDER.name) : post.author}
+                </span>
                 {post.personAuthor ? (
-                  <span className="text-slate-400">, Founder &amp; CEO, InOps IT Solutions</span>
+                  <span className="text-slate-400">, {FOUNDER.jobTitle}</span>
                 ) : null}
               </>
             ) : null}
@@ -197,7 +199,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
               {post.faqs.map((faq, i) => (
                 <div key={i} className="rounded-xl border border-slate-200 bg-white p-5">
                   <dt className="font-semibold text-slate-900">{faq.question}</dt>
-                  <dd className="mt-2 text-sm leading-7 text-slate-600">{faq.answer}</dd>
+                  <dd className="mt-2 text-sm leading-7 text-slate-600" dangerouslySetInnerHTML={{ __html: faq.answer }} />
                 </div>
               ))}
             </dl>

@@ -11,7 +11,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/services/industry/automotive",
+  path: "/industry/automotive",
   extraKeywords: [
     "automotive contractor workforce management",
     "JIT workforce synchronisation software",
@@ -62,7 +62,7 @@ export default function AutomotiveIndustryLayout({
   return (
     <>
       <SolutionSchemaInjector
-        path="/services/industry/automotive"
+        path="/industry/automotive"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
       />

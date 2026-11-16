@@ -10,7 +10,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/services/industry/electronics",
+  path: "/industry/electronics",
   extraKeywords: [
     "contract labour management electronics manufacturing",
     "EMS Contract Labour Management software",
@@ -57,7 +57,7 @@ export default function ElectronicsIndustryLayout({ children }: { children: Reac
   return (
     <>
       <SolutionSchemaInjector
-        path="/services/industry/electronics"
+        path="/industry/electronics"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
       />

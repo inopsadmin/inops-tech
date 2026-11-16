@@ -2,18 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FlyInText } from "@/app/components/FlyInText";
 import { inopsUi } from "@/app/lib/inopsUi";
+import BrochureGateModal from "@/app/components/BrochureGateModal";
 
-function trackBrochureDownload(slug: string, title: string) {
-  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
-  gtag?.("event", "file_download", {
-    file_name: `${slug}.pdf`,
-    link_url: `/brochures/files/${slug}.pdf`,
-    brochure_title: title,
-  });
-}
+type ActiveBrochure = { pdfSlug: string; title: string } | null;
 
 const smoothEase = [0.33, 1, 0.68, 1] as const;
 const viewport = { once: true, amount: 0.15 };
@@ -110,7 +105,17 @@ function ArrowRightIcon({ className }: { className?: string }) {
 }
 
 export default function BrochuresPage() {
+  const [activeBrochure, setActiveBrochure] = useState<ActiveBrochure>(null);
+
   return (
+    <>
+    {activeBrochure && (
+      <BrochureGateModal
+        brochureTitle={activeBrochure.title}
+        pdfSlug={activeBrochure.pdfSlug}
+        onClose={() => setActiveBrochure(null)}
+      />
+    )}
     <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_10%,rgba(57,189,232,0.16),transparent_28%),radial-gradient(circle_at_86%_0%,rgba(29,95,191,0.12),transparent_24%),linear-gradient(180deg,#eef4f8_0%,#f8fbfd_56%,#eef4f8_100%)]"
@@ -221,15 +226,14 @@ export default function BrochuresPage() {
                     {brochure.description}
                   </FlyInText>
                   <FlyInText as="div" direction="up" delay={0.16 + i * 0.04} className="mt-6 flex flex-col gap-2">
-                    <a
-                      href={`/brochures/files/${brochure.pdfSlug}.pdf`}
-                      download
-                      onClick={() => trackBrochureDownload(brochure.pdfSlug, brochure.title)}
+                    <button
+                      type="button"
+                      onClick={() => setActiveBrochure({ pdfSlug: brochure.pdfSlug, title: brochure.title })}
                       className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--inops-navy)] px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-slate-900/15 transition hover:bg-[var(--inops-blue)] hover:shadow-blue-600/25"
                     >
                       <DownloadIcon className="h-4 w-4" />
                       Download PDF
-                    </a>
+                    </button>
                     <Link
                       href={brochure.productHref}
                       className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-sm font-semibold text-[var(--inops-blue)] transition hover:border-[var(--inops-blue)] hover:bg-blue-50"
@@ -296,5 +300,6 @@ export default function BrochuresPage() {
         </motion.div>
       </section>
     </div>
+    </>
   );
 }

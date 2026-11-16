@@ -14,7 +14,7 @@ export default function BlogPostingJsonLd({ post }: Props) {
   const author = post.personAuthor
     ? {
         "@type": "Person",
-        name: post.author,
+        name: post.author || FOUNDER.name,
         jobTitle: FOUNDER.jobTitle,
         url: FOUNDER.url,
         worksFor: { "@id": `${siteUrl}/#organization` },

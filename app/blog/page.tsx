@@ -263,6 +263,18 @@ export default function BlogPage() {
         </div>
       </section>
 
+      {/* ── More resources ── */}
+      <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-12">
+        <p className="text-sm text-slate-500">
+          More resources:{" "}
+          <Link href="/research-insights" className="font-medium text-slate-700 hover:text-[color:var(--inops-blue)] underline-offset-2 hover:underline">Research &amp; Insights</Link>
+          {" · "}
+          <Link href="/glossary" className="font-medium text-slate-700 hover:text-[color:var(--inops-blue)] underline-offset-2 hover:underline">CLRA Glossary</Link>
+          {" · "}
+          <Link href="/clms-pricing" className="font-medium text-slate-700 hover:text-[color:var(--inops-blue)] underline-offset-2 hover:underline">CLMS Pricing</Link>
+        </p>
+      </div>
+
       {/* ── CTA ── */}
       <section className="no-site-reveal relative px-4 pb-20 pt-10 sm:px-6 lg:px-12 lg:pt-14">
         <motion.div

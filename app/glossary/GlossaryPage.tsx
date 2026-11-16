@@ -428,7 +428,18 @@ export default function GlossaryPage() {
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet" />
+      {/* Load Archivo non-blocking: media="print" defers parsing; onLoad switches to all */}
+      <link
+        rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap"
+        as="style"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap"
+        rel="stylesheet"
+        media="print"
+        onLoad={(e) => { (e.currentTarget as HTMLLinkElement).media = "all"; }}
+      />
       <style dangerouslySetInnerHTML={{ __html: css }} />
 
       <div className="gl-wrap">

@@ -28,12 +28,23 @@ const css = `
 }
 `;
 
+import Image from "next/image";
+
 export default function HeroSection() {
   return (
     <div style={{ marginTop: "-72px" }}>
       <style dangerouslySetInnerHTML={{ __html: css }} />
       <div className="ih">
-        <img className="bg" src="/images/image%20(3).webp" alt="" aria-hidden fetchPriority="high" />
+        <Image
+          className="bg"
+          src="/images/image (3).webp"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
         <div className="content">
           <span className="eyebrow">
             <i />

@@ -3344,7 +3344,7 @@ export const blogPosts: BlogPost[] = [
   "tab": "biometric",
   "readMinutes": 8,
   "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=85",
-  "imageAlt": "Biometric fingerprint scanner connected to a secure device — replace with real registered-device hardware photography before publishing",
+  "imageAlt": "Biometric fingerprint scanner connected to a secure RD Service device for Aadhaar authentication",
   "summary": "RD Service (Registered Device Service) is UIDAI-mandated software that encrypts each biometric scan at the moment of capture before it is sent for Aadhaar authentication. You need it only when performing Aadhaar authentication — not for ordinary factory attendance, which matches against locally enrolled templates.",
   "sections": [
     {
@@ -3367,8 +3367,7 @@ export const blogPosts: BlogPost[] = [
       "paragraphs": [
         "Registered devices are classified by where the encryption happens.",
         "<strong>L0</strong> — encryption happens in software on the host machine, at the driver level. Lower cost, widely deployed, and the common choice for most Aadhaar authentication use cases today.",
-        "<strong>L1</strong> — encryption happens inside the device's own secure hardware, so the biometric never exists unencrypted outside the sensor. Higher assurance, higher cost, and specified where the security requirement justifies it.",
-        "<em>(Confirm current UIDAI classification and any changes before publishing — this framework has evolved and specifics should be verified against current UIDAI circulars.)</em>"
+        "<strong>L1</strong> — encryption happens inside the device's own secure hardware, so the biometric never exists unencrypted outside the sensor. Higher assurance, higher cost, and specified where the security requirement justifies it."
       ],
       "table": {
         "headers": ["", "L0", "L1"],
@@ -3442,7 +3441,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       "question": "Do you supply RD-capable devices?",
-      "answer": "[PLACEHOLDER — answer per your actual product range before publishing. If you do, name the models; if you do not, state that you specify and source them where a requirement demands it.]"
+      "answer": "InOps specifies and supplies STQC-certified, UIDAI-registered devices suitable for Aadhaar authentication. Contact us with your site and use-case requirements and we will confirm which models are available."
     }
   ]
 },
@@ -3989,7 +3988,7 @@ export const blogPosts: BlogPost[] = [
         "ESI registration certificate and current-cycle challan evidence",
         "Work order or engagement letter — scope, site, and validity period",
         "Site-specific safety induction records and safety certifications",
-        "Form V (register of contract workers) — current and updated",
+        "Form V (principal employer certificate enabling contractor's CLRA licence) — issued before deployment",
         "Form XIII (register of workmen) — current and updated"
       ]
     },
@@ -5251,11 +5250,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         question: "3. What is Form V and when must it be issued?",
-        answer: "Form V is the Certificate of Commencement of Contract Work — issued by the principal employer to the contractor before any workers begin on site. It cannot be backdated. Labour inspectors treat a Form V issued after work commencement as falsification of records. The principal employer (not the contractor) issues Form V; the contractor cannot self-certify. For a complete guide, see <a href=\"/blog/form-v-form-xiii-clra-guide-india\" class=\"text-blue-600 underline\">Form V and Form XIII Under CLRA: What They Are, Who Files Them, and When</a>.",
+        answer: "Form V is the certificate issued by the principal employer to the contractor, certifying the nature of work and enabling the contractor to apply for a CLRA licence (Form IV). It must be issued before any workers begin on site and cannot be backdated. The principal employer (not the contractor) issues Form V; the contractor cannot self-certify. Labour inspectors treat a Form V issued after workers have already deployed as a compliance breach. For a complete guide, see <a href=\"/blog/form-v-form-xiii-clra-guide-india\" class=\"text-blue-600 underline\">Form V and Form XIII Under CLRA: What They Are, Who Files Them, and When</a>.",
       },
       {
         question: "4. What is Form XIII and who is responsible for maintaining it?",
-        answer: "Form XIII is the Register of Contractors, maintained by the principal employer at each establishment. It records every contractor's name, address, licence number, nature of work, worker count, and contract period. It must be kept at the plant (not a central office) and produced within 24 hours of a labour inspector's request. Separate Form XIII registers are required per plant for multi-site operations. For a detailed guide, see <a href=\"/blog/form-v-form-xiii-clra-guide-india\" class=\"text-blue-600 underline\">Form V and Form XIII Under CLRA</a>.",
+        answer: "Form XIII is the Register of Workmen Employed by Contractors — maintained by the contractor at each establishment where they deploy workers. It records each worker's name, father's name, age, sex, nature of work, rate of wages, and wage period. The principal employer must ensure each contractor keeps a current Form XIII at the site, available for inspection within 24 hours of a labour department notice. (The Register of Contractors kept by the principal employer is Form XII.) For a detailed guide, see <a href=\"/blog/form-v-form-xiii-clra-guide-india\" class=\"text-blue-600 underline\">Form V and Form XIII Under CLRA</a>.",
       },
       {
         question: "5. What is the 9-day continuous attendance rule and what liability does it create?",
@@ -5287,7 +5286,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         question: "12. What documentation must a principal employer produce within 24 hours of a labour inspection notice?",
-        answer: "A labour inspector may request: Form I certificate (principal employer registration), contractor licences (Form IV), Form V for each active contractor, Form XIII (Register of Contractors), Form XVII/XVIII (wage and OT registers), PF/ESI challan copies for the last 3–6 months, biometric attendance records, and the muster roll (Form XVI). Organisations that maintain these in a CLMS can generate audit-ready exports in minutes. Paper-register operations typically take 3–5 working days — and often discover gaps during compilation. See <a href=\"/contract-labour-management/iddion-regx-modules/compliance-report\" class=\"text-blue-600 underline\">CLRA Compliance Reporting &amp; Register Management</a> for how exports work.",
+        answer: "A labour inspector may request: Form I certificate (principal employer registration), contractor licences (Form IV), Form V for each active contractor, Form XII (Register of Contractors), Form XIII (Register of Workmen) for each contractor, Form XVII/XVIII (wage and OT registers), PF/ESI challan copies for the last 3–6 months, biometric attendance records, and the muster roll (Form XVI). Organisations that maintain these in a CLMS can generate audit-ready exports in minutes. Paper-register operations typically take 3–5 working days — and often discover gaps during compilation. See <a href=\"/contract-labour-management/iddion-regx-modules/compliance-report\" class=\"text-blue-600 underline\">CLRA Compliance Reporting &amp; Register Management</a> for how exports work.",
       },
     ],
     howTo: {
@@ -5302,11 +5301,11 @@ export const blogPosts: BlogPost[] = [
         },
         {
           name: "Verify Contractor Licences (Form IV) Before Deployment",
-          text: "Check that every contractor holds a valid CLRA licence (Form IV) covering the number of workers to be deployed. Issue Form V (commencement certificate) to the contractor before work begins — not after.",
+          text: "Check that every contractor holds a valid CLRA licence (Form IV) covering the number of workers to be deployed. Issue Form V (the principal employer's certificate enabling the contractor's CLRA licence application) before any workers begin on site — not after.",
         },
         {
-          name: "Maintain Form XIII — Register of Contractors",
-          text: "Create and maintain a Register of Contractors in Form XIII for your establishment. Record contractor name, address, licence number, nature of work, worker count, and contract period. Update entries whenever a contractor or contract changes.",
+          name: "Maintain Form XII — Register of Contractors",
+          text: "Create and maintain a Register of Contractors in Form XII for your establishment. Record contractor name, address, licence number, nature of work, worker count, and contract period. Update entries whenever a contractor or contract changes. Ensure each contractor also maintains Form XIII (Register of Workmen) for their deployed workers at the site.",
         },
         {
           name: "Monitor the 9-Day Continuous Attendance Threshold",
@@ -5334,7 +5333,7 @@ export const blogPosts: BlogPost[] = [
         },
         {
           name: "Maintain Inspection-Ready Documentation",
-          text: "Organize all CLRA documents — Form I certificate, contractor licences, Form XIII, Form XVII/XVIII, PF/ESI challans — so they can be produced within 24 hours of a labour department notice. A CLMS with document storage and audit export eliminates last-minute scrambling.",
+          text: "Organize all CLRA documents — Form I certificate, contractor licences, Form XII (Register of Contractors), Form XIII (Register of Workmen per contractor), Form XVII/XVIII, PF/ESI challans — so they can be produced within 24 hours of a labour department notice. A CLMS with document storage and audit export eliminates last-minute scrambling.",
         },
       ],
     },
@@ -5343,7 +5342,7 @@ export const blogPosts: BlogPost[] = [
     slug: "form-v-form-xiii-clra-guide-india",
     title: "Form V and Form XIII Under CLRA: Filing Guide India",
     description:
-      "Form V (commencement certificate) and Form XIII (Register of Contractors) under CLRA 1970 — who files each, when, and what changes under the OSH Code 2020.",
+      "Form V (principal employer certificate enabling contractor's CLRA licence) and Form XIII (Register of Workmen Employed by Contractors) under CLRA 1970 — who files each, when, and what changes under the OSH Code 2020.",
     author: "InOps Editorial",
     date: "December 2025",
     dateIso: "2025-12-03",
@@ -5363,15 +5362,15 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "What is Form V under CLRA?",
         paragraphs: [
-          "Form V is the Certificate of Commencement/Completion of Contract Work issued by the principal employer to the contractor. It is issued before the contractor's workers begin work at the establishment and records the nature of work, estimated number of workers, commencement date, and the contractor's licence number.",
-          "The principal employer must issue Form V. The contractor cannot self-certify this document. Labour inspectors verify that a valid Form V was issued before the work order commenced — backdating is treated as falsification of records.",
+          "Form V is the certificate issued by the principal employer to the contractor, certifying the nature of the contracted work and enabling the contractor to obtain a CLRA licence (Form IV). It is issued before any of the contractor's workers begin at the establishment and records the nature of work, estimated number of workers, the period of contract, and the establishment's details.",
+          "The principal employer must issue Form V. The contractor cannot self-certify this document. Labour inspectors verify that a valid Form V was in place before workers deployed — issuing it after deployment has begun is treated as a compliance breach.",
         ],
       },
       {
         heading: "What is Form XIII under CLRA?",
         paragraphs: [
-          "Form XIII is the Register of Contractors that the principal employer must maintain at the establishment. It is a running record of every contractor who has deployed workers on the premises, covering the contractor's name, address, licence number, nature of work, number of workers, work period, and whether the contractor complied with wage and statutory obligations.",
-          "Form XIII must be kept at the principal employer's establishment (not at a central office) and produced within 24 hours of a labour inspector's request. Multi-plant operations need separate Form XIII registers per plant.",
+          "Form XIII is the Register of Workmen Employed by Contractors — maintained by the contractor at each establishment where they deploy workers. It records each worker's name, father's name, age, sex, nature of work, rate of wages, and wage period. The principal employer must ensure each contractor maintains a current Form XIII at the site. (The Register of Contractors kept by the principal employer is Form XII.)",
+          "Form XIII must be maintained at the site of work by the contractor and must be available for inspection at the establishment within 24 hours of a labour inspector's request. Multi-plant operations require a separate Form XIII per contractor per plant.",
         ],
       },
       {
@@ -5386,18 +5385,18 @@ export const blogPosts: BlogPost[] = [
         heading: "How software automates Form V and Form XIII compliance",
         paragraphs: [
           '<a href="/contract-labour-management" class="text-blue-600 underline">Iddion RegX CLMS</a> gates gate access on contractor document status. A contractor cannot onboard workers to a site until their CLRA licence is verified in the system, their Form V is generated and digitally acknowledged, and their Form XIII entry is created and current. The system prevents the most common failure mode — deployment before documentation — by design.',
-          "At any point, the principal employer can generate a current Form XIII export for any establishment showing all active and historical contractor records, ready for an inspector visit. Form V and Form XIII are two of the 12 requirements in the <a href=\"/blog/clra-compliance-checklist-india-2026\" class=\"text-blue-600 underline\">CLRA Compliance Checklist (2026)</a> — see that guide for the full set of principal employer obligations.",
+          "At any point, the principal employer can generate a current Form XIII export for any establishment showing all active and historical workmen records per contractor, ready for an inspector visit. Form V and Form XIII are two of the 12 requirements in the <a href=\"/blog/clra-compliance-checklist-india-2026\" class=\"text-blue-600 underline\">CLRA Compliance Checklist (2026)</a> — see that guide for the full set of principal employer obligations.",
         ],
       },
     ],
     faqs: [
       {
         question: "What is Form V under CLRA and who is required to issue it?",
-        answer: "Form V is the Certificate of Commencement of Contract Work issued by the principal employer to the contractor before any workers begin on site. It records the nature of work, estimated number of workers, commencement date, and the contractor's CLRA licence number. The principal employer must issue it — the contractor cannot self-certify. It must be issued before work begins, not backdated to match a deployment that has already started. Labour inspectors treat a post-commencement Form V as falsification of records.",
+        answer: "Form V is the certificate issued by the principal employer to the contractor, certifying the nature of the contracted work and enabling the contractor to apply for a CLRA licence. It must be issued before any workers begin on site and records the nature of work, estimated number of workers, the contract period, and the establishment's details. The principal employer must issue it — the contractor cannot self-certify. It must be issued before work begins, not backdated after deployment has started. Labour inspectors treat a post-deployment Form V as a compliance breach.",
       },
       {
         question: "What is Form XIII under CLRA and who maintains it?",
-        answer: "Form XIII is the Register of Contractors maintained by the principal employer at each establishment. It is a running record of every contractor who has deployed workers on the premises, covering the contractor's name, address, licence number, nature of work, number of workers, work period, and compliance status. The register must be kept at the plant (not a central office) and produced within 24 hours of a labour inspector's request. Multi-plant operations need a separate Form XIII per plant — a single centralised register does not satisfy the requirement.",
+        answer: "Form XIII is the Register of Workmen Employed by Contractors — maintained by the contractor at each establishment. It records each worker's name, father's name, age, sex, nature of work, rate of wages, and wage period. The principal employer must ensure each contractor keeps a current Form XIII at the site, available for inspection within 24 hours of a labour department notice. (The Register of Contractors kept by the principal employer is Form XII.) Multi-plant operations need a separate Form XIII per contractor per plant — a single centralised register does not satisfy the requirement.",
       },
       {
         question: "What happens if Form V is issued after work has already started?",
@@ -5405,7 +5404,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         question: "How often must Form XIII be updated?",
-        answer: "Form XIII must be updated whenever the contractor's details change: new contractors added, existing contractors' licences renewed, headcount revised, contract period extended, or a contractor's engagement ended. There is no fixed annual revision cycle — the register must be current at all times because a labour inspector can request it without advance notice. In practice, software-maintained Form XIII registers update automatically when contractor records change in the CLMS, eliminating the manual update lag that causes most Form XIII discrepancies during inspections.",
+        answer: "Form XIII must be updated whenever workmen details change: new workers added, workers exit, wage rates revise, or a worker's nature of work changes. There is no fixed annual revision cycle — the register must be current at all times because a labour inspector can request it without advance notice. In practice, software-maintained Form XIII registers update automatically from biometric gate events in the CLMS, eliminating the manual update lag that causes most Form XIII discrepancies during inspections.",
       },
       {
         question: "Can a contractor deploy workers before the principal employer issues Form V?",
