@@ -86,7 +86,7 @@ export default function ContactPage() {
                   aria-hidden
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className={inopsUi.heroKicker}>Contact</p>
+                  <span className={inopsUi.heroKicker}>Contact</span>
                   <h1 className="home-display-heading inops-type-hero mt-4 text-white">Contact InOps: Book a Demo or Get Support</h1>
                   <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-md`}>{contactBanner.tagline}</p>
                   <div className="mt-5 flex flex-wrap items-center justify-center gap-3">

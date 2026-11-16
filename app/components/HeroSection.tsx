@@ -46,6 +46,7 @@ const css = `
 `;
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -65,19 +66,18 @@ export default function HeroSection() {
         <div className="content">
           <span className="eyebrow">
             <i />
-            Hardware + Software + Wages, from one company
+            InOps · Bengaluru · Since 2014
           </span>
           <h1>
-            Contract Labour Compliance That{" "}
-            <em>Starts at the Gate</em>
+            Workforce Compliance &amp; <em>Biometric Attendance</em> for Indian Plants
           </h1>
           <p className="sub">
-            <b>We build the face readers, the CLMS and the wage layer, and support all three on site.</b>{" "}
-            Unverified workers stay out. Wages run on gate-verified attendance.
+            <b>InOps is a Bengaluru company that builds contract labour management (CLMS), biometric attendance and compliance systems for Indian manufacturing, defence and infrastructure plants.</b>{" "}
+            Since 2014 we have managed 3,000+ attendance devices across 70+ sites, connecting the factory gate to payroll and statutory registers on one platform.
           </p>
           <div className="btns">
-            <a href="/contact" className="b1">Book a Demo</a>
-            <a href="/contract-labour-management" className="b2">See Iddion RegX CLMS →</a>
+            <Link href="/contact" className="b1">Book a Demo</Link>
+            <Link href="#solutions" className="b2">Explore Solutions</Link>
           </div>
           <div className="stats">
             <div>

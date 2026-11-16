@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Single source of truth for public site URL, NAP (name, address, phone), and SEO defaults.
  * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://inops.tech) so metadata, sitemap, and schema stay correct.
  */
@@ -6,7 +6,7 @@
 export const SITE_NAME = "InOps";
 
 /** Default `<title>` for the homepage (matches brand + high-intent queries + geo). */
-export const HOME_PAGE_TITLE = `InOps | CLMS, Biometrics & Workforce Compliance | Bengaluru`;
+export const HOME_PAGE_TITLE = `InOps | CLMS, Biometric Attendance & HRIS for Indian Plants`;
 
 export const SITE_TAGLINE =
   "Enterprise contract labour management, biometric attendance, PF/ESI compliance, payroll automation, and earned wage access for Indian manufacturers.";
