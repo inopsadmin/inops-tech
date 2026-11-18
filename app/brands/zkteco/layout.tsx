@@ -3,10 +3,9 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE =
-  "ZKTeco Biometric Devices in India | Face, Fingerprint & Access Control — InOps";
+const PAGE_TITLE = "ZKTeco Biometric Devices | Face & Access Control | InOps";
 const PAGE_DESCRIPTION =
-  "ZKTeco biometric devices supplied, installed, integrated and maintained across India — face recognition terminals, fingerprint readers, turnstiles and access controllers for industrial sites. AMC and spares support included.";
+  "ZKTeco biometric devices supplied, installed and maintained across India — face recognition, fingerprint, turnstiles and access control for industrial sites. AMC and spares included.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,

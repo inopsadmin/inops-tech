@@ -79,7 +79,7 @@ export default function HeroBackgroundSlider({ onPhaseChange, onSlideChange }: H
         </motion.div>
       </AnimatePresence>
       <div className="absolute inset-0 bg-black/50" aria-hidden />
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2 [&_button]:!transform-none">
+      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-1 [&_button]:!transform-none">
         {heroSlides.map((_, i) => (
           <button
             key={i}
@@ -89,12 +89,17 @@ export default function HeroBackgroundSlider({ onPhaseChange, onSlideChange }: H
               phaseStartRef.current = Date.now();
               setIndex(i);
             }}
-            className={`h-2.5 w-2.5 shrink-0 rounded-full p-0 transition-all duration-300 ${
-              i === index ? "scale-110 bg-white" : "border-2 border-white/80 bg-transparent"
-            }`}
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full p-0 transition-all duration-300"
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === index ? "true" : undefined}
-          />
+          >
+            <span
+              className={`block h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                i === index ? "scale-110 bg-white" : "border-2 border-white/80 bg-transparent"
+              }`}
+              aria-hidden
+            />
+          </button>
         ))}
       </div>
     </div>

@@ -52,12 +52,12 @@ export default function CTASection({
                 {buttons.map((btn) =>
                   btn.variant === "white" ? (
                     <Link key={btn.label} href={btn.href}
-                      className="inline-flex items-center rounded-xl bg-blue-500 px-8 py-4 text-base font-bold text-white shadow-lg transition hover:bg-blue-400">
+                      className="inline-flex items-center rounded-full bg-blue-500 px-8 py-4 text-base font-bold text-white shadow-lg transition hover:bg-blue-400">
                       {btn.label}
                     </Link>
                   ) : (
                     <Link key={btn.label} href={btn.href}
-                      className="inline-flex items-center rounded-xl border-2 border-white bg-white px-8 py-4 text-base font-bold text-gray-900 transition hover:bg-gray-50">
+                      className="inline-flex items-center rounded-full border-2 border-white bg-white px-8 py-4 text-base font-bold text-gray-900 transition hover:bg-gray-50">
                       {btn.label}
                     </Link>
                   )

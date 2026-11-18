@@ -1,4 +1,4 @@
-﻿import type { NextConfig } from "next";
+import type { NextConfig } from "next";
 
 const staticAssetCache = "public, max-age=31536000, immutable";
 
@@ -89,6 +89,9 @@ const nextConfig: NextConfig = {
       // ── Broken redirect chain fixes ────────────────────────────────────
       { source: "/turnstiles", destination: "/turnstiles-access", permanent: true },
       { source: "/turnstiles/", destination: "/turnstiles-access", permanent: true },
+      { source: "/services/bgv", destination: "/services/background-verification", permanent: true },
+      { source: "/services/bgv/", destination: "/services/background-verification", permanent: true },
+      { source: "/services/bgv/:path*", destination: "/services/background-verification", permanent: true },
       // ── Legacy WordPress-era URLs ──────────────────────────────────────
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/about-us/", destination: "/about", permanent: true },

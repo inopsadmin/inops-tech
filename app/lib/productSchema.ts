@@ -1,18 +1,20 @@
 /** Product JSON-LD copy for hardware routes. */
 export const productSchemaByPath: Record<
   string,
-  { name: string; description: string; category?: string }
+  { name: string; description: string; category?: string; image: string }
 > = {
   "/face-recognition-attendance": {
     name: "InOps Face Recognition Attendance System",
     description:
       "Industrial face recognition attendance terminals, fingerprint readers, and biometric attendance machines for Indian factory gates.",
     category: "Biometric Attendance Hardware",
+    image: "/images/touchless-face-reader-showcase.webp",
   },
   "/turnstiles-access": {
     name: "InOps Turnstiles & Speed Gates",
     description:
       "High-throughput turnstiles and speed gates integrated with biometric identity and workforce attendance.",
     category: "Physical Access Control",
+    image: "/images/Turnstiles2.webp",
   },
 };

@@ -1051,6 +1051,12 @@ export default function PayrollSolutionsPage() {
                     <Link href="/clms-pricing" className="text-sm font-medium text-slate-400 hover:text-blue-600 underline underline-offset-4 transition-colors">
                       See how RegX is priced →
                     </Link>
+                    <Link href="/research-insights" className="text-sm font-medium text-slate-400 hover:text-blue-600 underline underline-offset-4 transition-colors">
+                      Research & insights →
+                    </Link>
+                    <Link href="/glossary" className="text-sm font-medium text-slate-400 hover:text-blue-600 underline underline-offset-4 transition-colors">
+                      CLRA glossary →
+                    </Link>
                   </FlyInText>
                 </div>
               </div>
@@ -1894,14 +1900,14 @@ export default function PayrollSolutionsPage() {
                       The impact
                     </p>
                     <p className="mt-3 max-w-xl bg-gradient-to-r from-white via-sky-100 to-cyan-100 bg-clip-text text-lg font-semibold leading-snug text-transparent sm:text-xl">
-                      Measured outcomes on comparable deployments
+                      Illustrative
                     </p>
-                    <div className="mt-8 grid gap-4 sm:grid-cols-3 sm:gap-3">
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-3">
                       {(
                         [
                           {
                             k: "Leakage prevented",
-                            v: "₹1.98 Cr / year",
+                            v: "₹1.4 Cr / year",
                             icon: "leakage" as const,
                             topBar: "from-emerald-400 via-teal-400 to-cyan-400",
                             shell:
@@ -1922,18 +1928,6 @@ export default function PayrollSolutionsPage() {
                               "bg-gradient-to-br from-amber-400/45 to-orange-500/30 text-amber-50 ring-2 ring-amber-300/30",
                             labelClass: "text-amber-100/90",
                             valueGradient: "bg-gradient-to-br from-amber-200 via-orange-100 to-rose-200",
-                          },
-                          {
-                            k: "Net annual savings",
-                            v: "₹1.49 Cr",
-                            icon: "savings" as const,
-                            topBar: "from-indigo-400 via-violet-400 to-fuchsia-500",
-                            shell:
-                              "relative overflow-hidden border border-violet-400/35 bg-gradient-to-br from-indigo-600/[0.28] via-white/[0.06] to-fuchsia-600/[0.14] shadow-[0_16px_44px_-28px_rgba(139,92,246,0.3)] ring-1 ring-violet-400/20 hover:border-violet-300/55 hover:shadow-[0_22px_50px_-24px_rgba(167,139,250,0.32)]",
-                            iconWrap:
-                              "bg-gradient-to-br from-indigo-400/45 to-fuchsia-500/30 text-violet-50 ring-2 ring-violet-300/30",
-                            labelClass: "text-violet-100/90",
-                            valueGradient: "bg-gradient-to-br from-indigo-200 via-violet-100 to-fuchsia-200",
                           },
                         ] as const
                       ).map((row, kIdx) => (

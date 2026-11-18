@@ -728,7 +728,8 @@ export default function AboutPage() {
               className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-7"
               variants={visionMissionCards}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
             >
               <motion.article
                 variants={visionMissionCardItem}

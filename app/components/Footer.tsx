@@ -38,6 +38,7 @@ const resources = [
   { label: "Brochures", href: "/brochures" },
   { label: "Glossary", href: "/glossary" },
   { label: "CLMS Pricing", href: "/clms-pricing" },
+  { label: "Research & Insights", href: "/research-insights" },
 ];
 
 const socialLinks = [

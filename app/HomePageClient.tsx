@@ -15,7 +15,7 @@ const CollaborateCtaBand = dynamic(() => import("./components/CollaborateCtaBand
 const VideoLivePopups = dynamic(() => import("./components/VideoLivePopups"));
 import type { VideoLivePopupItem } from "./components/VideoLivePopups";
 import ClientMarqueeLogo from "@/app/components/ClientMarqueeLogo";
-import { CLIENT_LOGO_MARQUEE_TRACK, industryLeaderClientLogos } from "@/app/lib/industryLeaderClientLogos";
+import { industryLeaderClientLogos } from "@/app/lib/industryLeaderClientLogos";
 import { mediaVideos } from "@/app/lib/mediaAssets";
 import { TRUSTED_BY_HEADLINE } from "@/app/lib/trustedClients";
 import { inopsUi } from "@/app/lib/inopsUi";
@@ -131,7 +131,7 @@ export default function Home() {
 
       <section
         aria-labelledby="hero-trusted-clients-heading"
-        className="relative overflow-x-hidden border-b border-gray-100 bg-white pt-4 pb-1.5 sm:pt-5 sm:pb-2 lg:pt-6 lg:pb-2.5"
+        className="relative border-b border-gray-100 bg-white pt-4 pb-1.5 sm:pt-5 sm:pb-2 lg:pt-6 lg:pb-2.5"
       >
         <div className="pointer-events-none absolute inset-0 bg-dot-grid-subtle opacity-40" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-12">
@@ -146,29 +146,15 @@ export default function Home() {
             </FlyInText>
             <div className="mx-auto mt-5 h-1 w-12 rounded-full bg-blue-500/80" aria-hidden />
           </div>
-          <div
-            className="hero-trusted-marquee relative mt-5 -mx-4 overflow-hidden bg-white pt-3 pb-2 sm:-mx-6 sm:pt-4 sm:pb-2 lg:-mx-12"
-          >
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-12 bg-gradient-to-r from-white via-white/90 to-transparent" aria-hidden />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-12 bg-gradient-to-l from-white via-white/90 to-transparent" aria-hidden />
-            <div className={`brand-marquee-group relative pl-4 sm:pl-6 lg:pl-12 ${CLIENT_LOGO_MARQUEE_TRACK} motion-reduce:overflow-x-auto`}>
-              <div
-                className={`brand-marquee-track ${CLIENT_LOGO_MARQUEE_TRACK} animate-marquee motion-reduce:animate-none`}
-                role="list"
-                aria-label="Client logos"
-              >
-                {industryLeaderClientLogos.map((src, i) => (
-                  <ClientMarqueeLogo key={`hero-logo-a-${i}`} src={src} />
-                ))}
-              </div>
-              <div
-                className={`brand-marquee-track ${CLIENT_LOGO_MARQUEE_TRACK} animate-marquee motion-reduce:animate-none`}
-                aria-hidden
-              >
-                {industryLeaderClientLogos.map((src, i) => (
-                  <ClientMarqueeLogo key={`hero-logo-b-${i}`} src={src} alt="" />
-                ))}
-              </div>
+          <div className="mt-5 bg-white pt-3 pb-2 sm:pt-4 sm:pb-2">
+            <div
+              className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:gap-x-4"
+              role="list"
+              aria-label="Client logos"
+            >
+              {industryLeaderClientLogos.map((src, i) => (
+                <ClientMarqueeLogo key={`hero-logo-${i}`} src={src} />
+              ))}
             </div>
           </div>
           <div className="mt-4 pb-3 text-center">

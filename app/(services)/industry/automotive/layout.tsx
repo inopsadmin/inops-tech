@@ -3,15 +3,14 @@ import FAQPageJsonLd from "@/app/components/FAQPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
-const PAGE_TITLE =
-  "Contract Labour Management for Automotive Manufacturing | InOps";
+const PAGE_TITLE = "CLMS for Automotive Manufacturing | InOps";
 const PAGE_DESCRIPTION =
   "Synchronise your contractor workforce with JIT production. InOps delivers shift compliance, vendor governance, and biometric access control for automotive assembly plants.";
 
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/services/industry/automotive",
+  path: "/industry/automotive",
   extraKeywords: [
     "automotive contractor workforce management",
     "JIT workforce synchronisation software",
@@ -62,7 +61,7 @@ export default function AutomotiveIndustryLayout({
   return (
     <>
       <SolutionSchemaInjector
-        path="/services/industry/automotive"
+        path="/industry/automotive"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
       />

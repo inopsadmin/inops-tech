@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedHeading, AnimatedParagraph, AnimatedSection } from "./AnimatedSection";
 import { inopsUi } from "@/app/lib/inopsUi";
@@ -80,31 +79,8 @@ function whyCardNumber(title: string): string {
   return String(idx + 1).padStart(2, "0");
 }
 
-const defaultWhyFeaturedTitle = "Contract Workforce Governance";
-
-function buildWhyOrder(featuredTitle = defaultWhyFeaturedTitle) {
-  const titles = whyCards.map((c) => c.title);
-  const featuredIdx = titles.indexOf(featuredTitle);
-  if (featuredIdx <= 0) return titles;
-  const next = [...titles];
-  [next[0], next[featuredIdx]] = [next[featuredIdx], next[0]];
-  return next;
-}
-
 export default function WhyInOpsSection() {
-  const [whyOrder, setWhyOrder] = useState(() => buildWhyOrder());
-  const selectedWhyCard = whyCards.find((c) => c.title === whyOrder[0]) ?? whyCards[0];
-
-  const swapFeaturedWith = (title: string) => {
-    setWhyOrder((prev) => {
-      const current = prev.length ? prev : whyCards.map((c) => c.title);
-      const idx = current.indexOf(title);
-      if (idx <= 0) return current;
-      const next = [...current];
-      [next[0], next[idx]] = [next[idx], next[0]];
-      return next;
-    });
-  };
+  const selectedWhyCard = whyCards[0];
 
   return (
     <AnimatedSection id="about" className="relative bg-slate-50/60 py-12 lg:py-16">
@@ -160,17 +136,7 @@ export default function WhyInOpsSection() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
-              <motion.div
-                className="h-full"
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <motion.div className="block h-full w-full text-left">
-                  <motion.div
-                    key={selectedWhyCard.title}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                <div
                     className="grid h-full grid-cols-1 lg:grid-cols-[1.12fr_0.88fr] lg:items-stretch"
                   >
                     <div className="relative min-h-[220px] w-full overflow-hidden bg-slate-900 lg:min-h-full lg:h-full">
@@ -217,19 +183,13 @@ export default function WhyInOpsSection() {
                         {whyCardNumber(selectedWhyCard.title)}
                       </span>
                     </div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
+                </div>
             </motion.div>
           </motion.div>
 
           {/* Right: compact grid */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:h-full lg:grid-cols-2 lg:grid-rows-2">
-            {whyOrder.slice(1).map((title, index) => {
-              const card = whyCards.find((c) => c.title === title);
-              if (!card) return null;
-
-              return (
+            {whyCards.slice(1).map((card, index) => (
                 <motion.div
                   key={card.title}
                   initial={{ opacity: 0, y: 18 }}
@@ -242,15 +202,10 @@ export default function WhyInOpsSection() {
                   <div className="pointer-events-none absolute inset-x-5 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-sky-400 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-blue-100/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                  <motion.div
-                    animate={{ y: [0, -3, 0] }}
-                    transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.15 + index * 0.05 }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => swapFeaturedWith(card.title)}
-                      className="h-full w-full p-4 pb-10 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:p-5 sm:pb-11"
-                      aria-label={`Show ${card.title}`}
+                    <Link
+                      href={card.href}
+                      className="block h-full w-full p-4 pb-14 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:p-5 sm:pb-16"
+                      aria-label={`Learn about ${card.title}`}
                     >
                       <div className="flex h-full gap-3 sm:gap-3.5">
                         <div className="relative h-14 w-16 flex-none overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm sm:h-[3.7rem] sm:w-[4.2rem]">
@@ -284,11 +239,10 @@ export default function WhyInOpsSection() {
                           <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-blue-700">
                             {card.badge ?? "Capability"}
                           </div>
-                          <div className={`mt-1.5 line-clamp-2 ${inopsUi.typeCardTitle} leading-snug`}>{card.description || card.title}</div>
+                          <div className={`mt-1.5 line-clamp-2 ${inopsUi.typeCardTitle} leading-snug`}>{card.title}</div>
                         </div>
                       </div>
-                    </button>
-                  </motion.div>
+                    </Link>
                   <span
                     className="pointer-events-none absolute bottom-3 right-3 select-none text-3xl font-semibold tabular-nums leading-none tracking-tight text-slate-200/75 transition-colors duration-300 group-hover:text-slate-300/90 sm:bottom-4 sm:right-4 sm:text-4xl"
                     aria-hidden
@@ -296,8 +250,7 @@ export default function WhyInOpsSection() {
                     {whyCardNumber(card.title)}
                   </span>
                 </motion.div>
-              );
-            })}
+            ))}
           </div>
         </motion.div>
       </div>

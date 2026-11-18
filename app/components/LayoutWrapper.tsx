@@ -10,6 +10,11 @@ const Footer = dynamic(() => import("./Footer"), { ssr: true });
 
 const STANDALONE_ROUTES = ["/clms-pricing", "/glossary", "/research-insights"];
 
+/** Routes whose hero already includes its own top offset — skip the global main padding. */
+function routeHasOwnHeroOffset(path: string) {
+  return path.startsWith("/services/");
+}
+
 interface LayoutWrapperProps {
   children: React.ReactNode;
 }
@@ -35,7 +40,7 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
 
         <Navbar />
 
-        <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans" style={{ paddingTop: "calc(var(--home-nav-offset, 72px) - 16px)" }}>
+        <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans" style={{ paddingTop: routeHasOwnHeroOffset(pathname) ? 0 : "calc(var(--home-nav-offset, 72px) - 16px)" }}>
           {children}
           <ScrollRevealEnhancer />
         </main>

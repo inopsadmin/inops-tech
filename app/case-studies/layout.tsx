@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Case Studies: Contract Workforce Management in India | InOps",
+  title: "Case Studies: Contract Workforce Management India | InOps",
   description:
     "Anonymised case studies of InOps and Iddion RegX at Indian manufacturers across automotive, cement, electronics, metal and steel, and pharma. Every figure is measured and approved by the customer.",
   path: "/case-studies",

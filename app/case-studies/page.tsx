@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function CaseStudiesPage() {
   return (
     <>
-      <div className="bg-[#F8FAFB] text-[#16222E] antialiased" style={{ paddingTop: "var(--home-nav-offset,4.5rem)" }}>
+      <div className="bg-[#F8FAFB] text-[#16222E] antialiased">
 
         {/* Draft banner */}
         {/* <div role="note" className="bg-[#FDF3DC] border-b border-[#E2A01B] text-[#7A5200] text-sm">
@@ -23,12 +23,21 @@ export default function CaseStudiesPage() {
               </ol>
               <div className="grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-12 items-end pb-10 max-[900px]:grid-cols-1 max-[900px]:gap-6">
                 <div>
+                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#0E5A78] mb-3">Case Studies</span>
                   <h1 id="page-h" className="font-bold text-[clamp(2.3rem,5vw,3.8rem)] leading-[1.02] tracking-[-0.024em] mb-4 max-w-[16ch] font-sans">
                     Case studies from Indian plants
                   </h1>
                   <p className="text-[1.18rem] text-[#425263] max-w-[56ch] m-0">
                     How manufacturers run contract workforce management on Iddion RegX and InOps hardware.
                   </p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-[0.95rem] no-underline border-[1.5px] border-[#0E5A78] bg-[#0E5A78] text-white hover:brightness-110"
+                    >
+                      Book a Demo
+                    </Link>
+                  </div>
                 </div>
                 <div className="text-[0.95rem] text-[#425263] border-l-[3px] border-[#0E5A78] pl-4 max-w-[44ch]">
                   <p className="mb-2">Every case study is anonymised, published with the customer&#39;s written consent, and reports only figures the customer has measured and approved.</p>
@@ -48,11 +57,11 @@ export default function CaseStudiesPage() {
 
                 {/* AUTOMOTIVE featured */}
                 <article
-                  className="flex flex-col bg-white border border-[#D6DEE5] rounded-2xl overflow-hidden col-span-full grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] max-[860px]:col-auto max-[860px]:flex max-[860px]:flex-col"
+                  className="bg-white border border-[#D6DEE5] rounded-2xl overflow-hidden col-span-full grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] max-[860px]:col-auto max-[860px]:flex max-[860px]:flex-col"
                   data-industry="automotive"
                   aria-labelledby="cs-auto"
                 >
-                  <div className="relative bg-[#DCEBF2] overflow-hidden min-h-[320px] max-[860px]:aspect-[2/1] max-[860px]:min-h-0">
+                  <div className="relative bg-[#DCEBF2] overflow-hidden min-h-[320px] h-full max-[860px]:aspect-[2/1] max-[860px]:min-h-0 max-[860px]:h-auto">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1400&q=70"
@@ -73,7 +82,7 @@ export default function CaseStudiesPage() {
                       <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-[#DCEBF2] text-[#0E5A78]">On-premises</span>
                     </div>
                     <h3 id="cs-auto" className="font-bold text-[clamp(1.45rem,2.4vw,1.85rem)] leading-[1.2] mb-2.5 font-sans">
-                      How a Leading Automotive OEM Is Modernising Contract Workforce Management Across Multiple Plants
+                      How a Leading Automotive OEM Brought Visibility &amp; Control to Its Contract Workforce
                     </h3>
                     <p className="mb-4 text-[#425263] text-[0.98rem]">
                       One platform for every worker at every plant. The OEM is replacing its legacy contract labour and HR systems with Iddion RegX and Iddion HRIS, run inside its own data centre so workforce data never leaves its IT perimeter. Plants switch over one at a time, while InOps looks after the application and the face readers at the gates.
@@ -114,7 +123,7 @@ export default function CaseStudiesPage() {
                 {/* Coming soon note */}
                 <p className="col-span-full text-sm text-[#425263] border border-dashed border-[#D6DEE5] rounded-xl px-5 py-4">
                   More case studies coming: <span className="font-medium text-[#16222E]">cement, electronics, steel, pharma</span>.{" "}
-                  <Link href="/contact" className="text-[#0E5A78] hover:underline">Get in touch</Link> if you&rsquo;d like to speak to a customer in your industry.
+                  <Link href="/contact" className="text-[#0E5A78] hover:underline">Get in touch</Link>{" "} if you&rsquo;d like to speak to a customer in your industry.
                 </p>
 
               </div>

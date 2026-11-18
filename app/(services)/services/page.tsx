@@ -94,16 +94,16 @@ export default function ServicesPage() {
         {/* Glow orbs */}
         <div className="absolute pointer-events-none" style={{ top: "-10%", right: "5%", width: 700, height: 700, background: "radial-gradient(circle at center, rgba(28,123,184,0.28), transparent 60%)" }} />
         <div className="absolute pointer-events-none" style={{ top: "20%", left: "-5%", width: 500, height: 500, background: "radial-gradient(circle at center, rgba(14,52,96,0.6), transparent 65%)" }} />
-        <div className="absolute pointer-events-none" style={{ bottom: "0%", right: "25%", width: 400, height: 400, background: "radial-gradient(circle at center, rgba(93,227,165,0.06), transparent 65%)" }} />
+        <div className="absolute pointer-events-none" style={{ bottom: "0%", right: "25%", width: 400, height: 400, background: "radial-gradient(circle at center, rgba(28,123,184,0.06), transparent 65%)" }} />
 
         <div className="max-w-[1240px] mx-auto px-[6vw] relative z-[2]">
 
           {/* Top eyebrow */}
           <div className="flex items-center gap-3 mb-10">
-            <div className="inline-flex items-center gap-2 text-[10.5px] tracking-[0.20em] uppercase font-bold font-mono text-white/50 border border-white/[0.12] bg-white/[0.04] rounded-full py-[6px] px-4">
-              <span className="w-[6px] h-[6px] rounded-full bg-[#5de3a5]" />
+            <span className="inline-flex items-center gap-2 text-[10.5px] tracking-[0.04em] font-bold text-white/50 border border-white/[0.12] bg-white/[0.04] rounded-full py-[6px] px-4">
+              <span className="w-[6px] h-[6px] rounded-full bg-[#1c7bb8]" />
               InOps Services
-            </div>
+            </span>
           </div>
 
           {/* Main content grid */}
@@ -126,8 +126,8 @@ export default function ServicesPage() {
               <div className="flex gap-3 mt-10 flex-wrap">
                 <a
                   href="#all-services"
-                  className="inline-flex items-center gap-2 py-[13px] px-6 rounded-lg text-[14px] font-bold no-underline text-[#0a1f3d] transition-all duration-150 hover:-translate-y-px hover:opacity-90"
-                  style={{ background: "linear-gradient(135deg,#5de3a5,#3dcf8e)" }}
+                  className="inline-flex items-center gap-2 py-[13px] px-6 rounded-lg text-[14px] font-bold no-underline text-white transition-all duration-150 hover:-translate-y-px hover:opacity-90"
+                  style={{ background: "linear-gradient(135deg,#1c7bb8,#1362a8)" }}
                 >
                   View All Services
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
@@ -141,7 +141,7 @@ export default function ServicesPage() {
               <div className="flex items-center gap-6 mt-10 flex-wrap">
                 {["CLRA Compliant", "Pan-India Deployment", "Gate-enforced Verification"].map((t) => (
                   <div key={t} className="flex items-center gap-2 text-[12px] text-white/50 font-medium">
-                    <svg className="w-[13px] h-[13px] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#5de3a5" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5" /></svg>
+                    <svg className="w-[13px] h-[13px] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#4fa3d8" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5" /></svg>
                     {t}
                   </div>
                 ))}
@@ -150,7 +150,7 @@ export default function ServicesPage() {
 
             {/* Right — service quick-links panel */}
             <div className="hidden lg:flex flex-col gap-2 bg-white/[0.04] border border-white/[0.10] rounded-2xl p-5">
-              <div className="text-[10px] tracking-[0.16em] uppercase text-white/35 font-bold mb-3 px-1">All Services</div>
+              <div className="text-[10px] tracking-[0.06em] text-white/35 font-bold mb-3 px-1">All Services</div>
               {services.map((svc, i) => (
                 <Link
                   key={svc.href}
@@ -224,7 +224,7 @@ export default function ServicesPage() {
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{services[0].icon}</svg>
                     </div>
                   </div>
-                  <div className="text-[10.5px] tracking-[0.14em] uppercase text-[#5de3a5] font-bold mb-3">{services[0].tag}</div>
+                  <div className="text-[10.5px] tracking-[0.04em] text-[#4fa3d8] font-bold mb-3">{services[0].tag}</div>
                   <div className="text-[24px] font-bold text-white leading-[1.2] mb-4 group-hover:text-[#a8deff] transition-colors duration-150">{services[0].label}</div>
                   <p className="text-[13.5px] leading-[1.7] text-white/70 max-w-[420px] m-0">{services[0].desc}</p>
                   <Link href={services[0].productLink.href} className="inline-block mt-4 text-[12px] font-semibold text-[#5de3a5] hover:text-[#a8deff] transition-colors duration-150 no-underline">
@@ -469,7 +469,7 @@ export default function ServicesPage() {
         <div className="absolute pointer-events-none" style={{ bottom: "-20%", left: "-10%", width: 500, height: 500, background: "radial-gradient(circle, rgba(255,255,255,0.07), transparent 65%)" }} />
         <div className="max-w-[720px] mx-auto relative z-[2]">
           <div className="inline-flex items-center gap-2 text-[11px] tracking-[0.14em] uppercase text-white/75 font-bold mb-5">
-            <span className="w-[7px] h-[7px] rounded-full bg-[#5de3a5] flex-shrink-0" />
+            <span className="w-[7px] h-[7px] rounded-full bg-[#4fa3d8] flex-shrink-0" />
             Get Started
           </div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-bold text-white leading-[1.15] m-0 mb-[18px] tracking-[-0.01em]">

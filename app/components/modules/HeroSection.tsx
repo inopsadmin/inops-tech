@@ -6,9 +6,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ModuleData } from "@/app/lib/module";
 import {
-  AnimatedSection,
-  AnimatedHeading,
-  AnimatedParagraph,
   AnimatedCardGrid,
   AnimatedCardItem,
 } from "../AnimatedSection";
@@ -156,26 +153,15 @@ export default function HeroSection({ data }: Props) {
   return (
     <section className="relative overflow-hidden bg-linear-to-b from-gray-50 to-white">
       <div className="absolute inset-0 z-0">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, ease: [0.33, 1, 0.68, 1] }}
-        >
-          <motion.div
-            className="absolute inset-0"
-            animate={{ scale: [1, 1.06, 1] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Image
-              src="/images/modules/Module-Page.webp"
-              alt="Module background"
-              fill
-              priority
-              className="object-cover object-right"
-            />
-          </motion.div>
-        </motion.div>
+        <div className="absolute inset-0">
+          <Image
+            src="/images/modules/Module-Page.webp"
+            alt="Module background"
+            fill
+            priority
+            className="object-cover object-right"
+          />
+        </div>
 
         <div className="absolute inset-0 bg-linear-to-r from-white from-25% via-white/60 via-55% to-transparent" />
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white" />
@@ -188,32 +174,21 @@ export default function HeroSection({ data }: Props) {
       />
 
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-2 md:py-24 lg:px-8 relative z-10">
-        <AnimatedSection className="flex flex-col justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-5 inline-flex w-max items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700"
-          >
+        <div className="flex flex-col justify-center">
+          <div className="mb-5 inline-flex w-max items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
             {data.badge}
-          </motion.div>
+          </div>
 
-          <AnimatedHeading as="h1" className="text-4xl font-bold leading-[1.08] tracking-tight text-gray-900 md:text-5xl">
+          <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-gray-900 md:text-5xl">
             {data.title}
-          </AnimatedHeading>
+          </h1>
 
-          <AnimatedParagraph className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 md:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-500 md:text-lg">
             {data.description}
-          </AnimatedParagraph>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-8 flex flex-wrap gap-3"
-          >
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/contact" className="group rounded-xl bg-[var(--inops-blue)] px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg hover:to-blue-500">
               Book a Demo
             </Link>
@@ -221,7 +196,7 @@ export default function HeroSection({ data }: Props) {
               All CLMS Modules
               <span className="opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-blue-600">→</span>
             </Link>
-          </motion.div>
+          </div>
 
           <AnimatedCardGrid className="mt-10 grid grid-cols-3 gap-3">
             {data.metrics.map((metric) => {
@@ -240,8 +215,27 @@ export default function HeroSection({ data }: Props) {
               );
             })}
           </AnimatedCardGrid>
-        </AnimatedSection>
+        </div>
         <div className="flex items-center justify-center">
+          {data.heroImage ? (
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              className="w-full max-w-lg"
+            >
+              <div className="relative overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
+                <Image
+                  src={data.heroImage}
+                  alt={`${data.title} screenshot`}
+                  width={640}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+          ) : (
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -291,6 +285,7 @@ export default function HeroSection({ data }: Props) {
               </div>
             </motion.div>
           </motion.div>
+          )}
         </div>
       </div>
     </section>

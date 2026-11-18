@@ -11,10 +11,10 @@ export default function BiometricDatabaseAuditPage() {
 
           {/* Copy */}
           <div>
-            <div className="inline-flex items-center gap-[10px] text-[10.5px] tracking-[0.18em] uppercase text-white/[0.82] mb-7 font-semibold font-mono">
-              <span className="w-[7px] h-[7px] rounded-full bg-[#5de3a5] flex-shrink-0" />
+            <span className="inline-flex items-center gap-[10px] text-[10.5px] tracking-[0.04em] text-white/[0.82] mb-7 font-semibold">
+              <span className="w-[7px] h-[7px] rounded-full bg-[#4fa3d8] flex-shrink-0" />
               InOps Services
-            </div>
+            </span>
             <h1 className="text-[clamp(32px,3.8vw,50px)] leading-[1.10] font-medium text-white tracking-[-0.02em] m-0">
               Biometric Database Audit for Industrial Sites
             </h1>
@@ -46,13 +46,13 @@ export default function BiometricDatabaseAuditPage() {
                     <ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3" /><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" />
                   </svg>
                 </div>
-                <div className="flex items-center gap-[6px] text-[11px] font-semibold text-[#baf3d1] bg-[rgba(127,224,176,0.15)] border border-[rgba(127,224,176,0.3)] py-1 px-[10px] rounded-full">
-                  <span className="w-[5px] h-[5px] rounded-full bg-[#7fe0b0]" />
+                <div className="flex items-center gap-[6px] text-[11px] font-semibold text-[#93c5fd] bg-[rgba(96,165,250,0.15)] border border-[rgba(96,165,250,0.3)] py-1 px-[10px] rounded-full">
+                  <span className="w-[5px] h-[5px] rounded-full bg-[#60a5fa]" />
                   Live Status
                 </div>
               </div>
               <div className="text-[11px] tracking-[0.06em] uppercase text-white/55 mt-4 font-semibold">Biometric Database Audit · Operations Panel</div>
-              <div className="text-[26px] font-bold text-white mt-[6px] mb-[26px]">Fleet &amp; Workforce Overview</div>
+              <div className="text-[26px] font-bold text-white mt-[6px] mb-[26px]">Biometric Database Audit</div>
               <div className="flex items-end gap-3 h-[120px] mb-7 px-[2px]">
                 {[45, 65, 50, 80, 60, 90, 55].map((h, i) => (
                   <div key={i} className="w-[18px] flex-shrink-0 bg-gradient-to-b from-white/85 to-white/35 rounded-t" style={{ height: `${h}%` }} />
@@ -62,7 +62,7 @@ export default function BiometricDatabaseAuditPage() {
                 {["Biometric Database Audit", "Duplicate Biometric Cleanup", "Ghost Employee Detection"].map((label) => (
                   <div key={label} className="flex items-center gap-[10px] text-[13px] text-white font-medium">
                     <span className="w-5 h-5 rounded-full bg-[rgba(127,224,176,0.2)] flex items-center justify-center flex-shrink-0">
-                      <svg className="w-[11px] h-[11px]" viewBox="0 0 24 24" fill="none" stroke="#7fe0b0" strokeWidth="3"><path d="M4 12l5 5L20 6" /></svg>
+                      <svg className="w-[11px] h-[11px]" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="3"><path d="M4 12l5 5L20 6" /></svg>
                     </span>
                     {label}
                   </div>
@@ -177,7 +177,7 @@ export default function BiometricDatabaseAuditPage() {
                   style={{ width: 88, height: 88, borderRadius: "50%" }}
                 >
                   <div
-                    className="absolute bg-[#5de3a5] text-[#05301e] text-[9px] font-extrabold flex items-center justify-center tracking-[0.02em]"
+                    className="absolute bg-[#4fa3d8] text-white text-[9px] font-extrabold flex items-center justify-center tracking-[0.02em]"
                     style={{ top: 0, right: 0, width: 22, height: 22, borderRadius: "50%" }}
                   >{n}</div>
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b1e2d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
@@ -290,7 +290,7 @@ export default function BiometricDatabaseAuditPage() {
             ].map(({ val, label }, i) => (
               <div key={label} className={`px-7 ${i === 0 ? "pl-0" : "border-l border-white/[0.22]"}`}>
                 <div className="flex items-center gap-[6px] text-[clamp(26px,3vw,34px)] font-extrabold text-white mb-2">
-                  <span className="w-[6px] h-[6px] rounded-full bg-[#7fe0b0] flex-shrink-0" />
+                  <span className="w-[6px] h-[6px] rounded-full bg-[#60a5fa] flex-shrink-0" />
                   {val}
                 </div>
                 <div className="text-[12.5px] text-white/75 font-medium">{label}</div>
@@ -372,7 +372,7 @@ export default function BiometricDatabaseAuditPage() {
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{icon}</svg>
             </div>
             <div className="relative z-[2]">
-              <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#5de3a5] transition-colors duration-200">{title}</div>
+              <div className="text-[14px] font-bold text-white mb-[6px] leading-[1.3] group-hover:text-[#4fa3d8] transition-colors duration-200">{title}</div>
               <div className="text-[11.5px] leading-[1.55] text-white/[0.68]">{desc}</div>
             </div>
           </div>
@@ -437,7 +437,7 @@ export default function BiometricDatabaseAuditPage() {
                 ].map((item, i) => (
                   <div key={item} className={`flex items-center gap-[14px] py-[14px] text-[14px] font-medium text-white/90 ${i > 0 ? "border-t border-white/[0.12]" : ""}`}>
                     <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center flex-shrink-0 bg-white/[0.12] border border-white/20">
-                      <svg className="w-[10px] h-[10px]" viewBox="0 0 24 24" fill="none" stroke="#5de3a5" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5" /></svg>
+                      <svg className="w-[10px] h-[10px]" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2.5" strokeLinecap="round"><path d="M20 6L9 17l-5-5" /></svg>
                     </span>
                     {item}
                   </div>
@@ -549,7 +549,7 @@ export default function BiometricDatabaseAuditPage() {
         <div className="absolute pointer-events-none" style={{ bottom: "-20%", left: "-10%", width: 500, height: 500, background: "radial-gradient(circle, rgba(255,255,255,0.07), transparent 65%)" }} />
         <div className="max-w-[720px] mx-auto relative z-[2]">
           <div className="inline-flex items-center gap-2 text-[11px] tracking-[0.14em] uppercase text-white/75 font-bold mb-5">
-            <span className="w-[7px] h-[7px] rounded-full bg-[#5de3a5] flex-shrink-0" />
+            <span className="w-[7px] h-[7px] rounded-full bg-[#4fa3d8] flex-shrink-0" />
             Get Started
           </div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-bold text-white leading-[1.15] m-0 mb-[18px] tracking-[-0.01em]">

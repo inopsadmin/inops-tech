@@ -30,7 +30,7 @@ const allPosts = [...blogPosts].filter((p) => !p.hideFromListing).sort((a, b) =>
 const blogBanner = {
   src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1920&q=85",
   alt: "Editorial workspace — professional typing on a laptop",
-  tagline: "Practical guides on CLRA compliance, biometric attendance, contract labour management, and early wage access — written for Indian manufacturers and HR leaders.",
+  tagline: "Practical guides on CLRA compliance, biometric attendance, contract labour management, and Earned Wage Access — written for Indian manufacturers and HR leaders.",
 } as const;
 
 function ArrowRightIcon({ className }: { className?: string }) {
@@ -45,8 +45,6 @@ export default function BlogPage() {
   const [activeTab, setActiveTab] = useState<TabId>("all");
   const posts = activeTab === "all" ? allPosts : allPosts.filter((p) => p.tab === activeTab);
   const [featured, ...rest] = posts;
-  console.log("BlogPage: activeTab", activeTab, "posts.length", posts.length, "featured", featured?.title, "rest.length", rest.length);
-
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#eef4f8] text-slate-950">
       <div
@@ -55,10 +53,12 @@ export default function BlogPage() {
       />
 
       {/* ── Banner ── */}
-      <section className="no-site-reveal relative z-[1] px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-12 lg:pb-16 lg:pt-28">
+      <section className="no-site-reveal relative z-[1] px-4 pb-12 pt-6 sm:px-6 sm:pt-8 lg:px-12 lg:pb-16 lg:pt-8">
         <div className="mx-auto max-w-7xl">
           <nav aria-label="Breadcrumb" className="mb-4 text-sm text-slate-500">
             <Link href="/" className="hover:text-slate-700">Home</Link>
+            <span aria-hidden> / </span>
+            <Link href="/blog" className="hover:text-slate-700">Resources</Link>
             <span aria-hidden> / </span>
             <span aria-current="page">Blog</span>
           </nav>
@@ -81,9 +81,9 @@ export default function BlogPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/35 to-slate-950/80" aria-hidden />
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 py-5 sm:py-6">
-                  <p className={inopsUi.heroKicker}>Blog</p>
+                  <span className={inopsUi.heroKicker}>Blog</span>
                   <h1 className="home-display-heading inops-type-hero mt-4 text-center text-white">
-                    Contract Labour Compliance &amp; Workforce Technology Insights
+                    Contract Labour Compliance &amp; Workforce Insights
                   </h1>
                   <p className={`${inopsUi.heroBannerDesc} mt-3 max-w-xl text-center`}>{blogBanner.tagline}</p>
                 </div>
@@ -262,6 +262,18 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      {/* ── More resources ── */}
+      <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-12">
+        <p className="text-sm text-slate-500">
+          More resources:{" "}
+          <Link href="/research-insights" className="font-medium text-slate-700 hover:text-[color:var(--inops-blue)] underline-offset-2 hover:underline">Research &amp; Insights</Link>
+          {" · "}
+          <Link href="/glossary" className="font-medium text-slate-700 hover:text-[color:var(--inops-blue)] underline-offset-2 hover:underline">CLRA Glossary</Link>
+          {" · "}
+          <Link href="/clms-pricing" className="font-medium text-slate-700 hover:text-[color:var(--inops-blue)] underline-offset-2 hover:underline">CLMS Pricing</Link>
+        </p>
+      </div>
 
       {/* ── CTA ── */}
       <section className="no-site-reveal relative px-4 pb-20 pt-10 sm:px-6 lg:px-12 lg:pt-14">

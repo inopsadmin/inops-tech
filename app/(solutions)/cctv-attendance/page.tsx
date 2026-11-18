@@ -405,11 +405,10 @@ export default function TimeAndAttendancePage() {
               >
                 <video
                   className="absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center lg:object-[center_40%]"
-                  autoPlay
                   muted
-                  loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
+                  controls
                   poster={timeAttendanceProductImage}
                   aria-label="CCTV-based attendance and computer vision monitoring on site"
                 >
@@ -473,7 +472,7 @@ export default function TimeAndAttendancePage() {
                     duration={0.62}
                     className="mt-5 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base"
                   >
-                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system — powered by AI. No queues, no contact, no excuses.
+                    Turn your existing CCTV infrastructure into a real-time, hardware-free attendance system — powered by AI. No queues, no contact.
                   </FlyInText>
                   <FlyInText
                     as="div"
@@ -652,11 +651,10 @@ export default function TimeAndAttendancePage() {
                   <div className="absolute inset-0 overflow-hidden rounded-3xl">
                     <video
                       className="absolute inset-0 h-full w-full object-contain"
-                      autoPlay
                       muted
-                      loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      controls
                       poster={cctvSolutionImage}
                       aria-label="InOps camera-based attendance dashboard"
                     >

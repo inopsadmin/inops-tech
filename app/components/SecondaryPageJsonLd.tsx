@@ -50,7 +50,7 @@ export default function SecondaryPageJsonLd({
         "@type": "ListItem",
         position: index + 1,
         name: item.name,
-        item: absoluteUrl(item.path),
+        item: { "@id": absoluteUrl(item.path), name: item.name },
       })),
     },
   ];

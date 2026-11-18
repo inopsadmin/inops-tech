@@ -10,7 +10,7 @@ const PAGE_DESCRIPTION =
 export const metadata: Metadata = routeMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  path: "/services/industry/logistics",
+  path: "/industry/logistics",
   extraKeywords: [
     "logistics workforce management software",
     "warehouse attendance management system",
@@ -59,7 +59,7 @@ export default function LogisticsIndustryLayout({ children }: { children: React.
   return (
     <>
       <SolutionSchemaInjector
-        path="/services/industry/logistics"
+        path="/industry/logistics"
         pageTitle={PAGE_TITLE}
         pageDescription={PAGE_DESCRIPTION}
       />

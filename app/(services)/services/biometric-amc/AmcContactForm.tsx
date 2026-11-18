@@ -111,6 +111,8 @@ export default function AmcContactForm() {
       window.open(`https://wa.me/919986221151?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
 
       setSubmitted(true);
+      const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+      gtag?.("event", "generate_lead", { lead_type: "contact", form_location: "biometric-amc" });
     } catch (err) {
       console.error("[AmcContactForm]", err);
       // Still open WhatsApp as fallback so the lead is never lost
