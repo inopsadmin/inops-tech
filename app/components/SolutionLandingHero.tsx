@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import LazyInViewVideo from "./LazyInViewVideo";
 import VideoLivePopups, { type VideoLivePopupItem } from "./VideoLivePopups";
 import SolutionHeroWaveDecor, { SolutionHeroWaveBottomBand } from "./SolutionHeroWaveDecor";
 import { inopsUi } from "@/app/lib/inopsUi";
@@ -13,8 +13,6 @@ import {
   SPLIT_HERO_MOBILE_MEDIA_ORDER,
   SPLIT_HERO_MOBILE_STACK,
 } from "@/app/lib/splitHeroWideInsets";
-
-const smoothEase = [0.33, 1, 0.68, 1] as const;
 
 /** Pull `rounded-*` onto the inner clip layer so the outer shell can stay overflow-visible for popups. */
 const ROUNDED_TOKEN = /\brounded(?:-[#\w\[\]%,.]+)*\b/g;
@@ -140,28 +138,20 @@ export default function SolutionLandingHero({
     /\brelative\b/.test(imageWrapClass) && /\blg:absolute\b/.test(imageWrapClass);
 
   const section = (
-    <motion.section
+    <section
       className={`${sectionShell} ${stackedMobileSplit ? SPLIT_HERO_MOBILE_STACK : ""} ${sectionClassName ?? defaultHeights}`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.45 }}
     >
       <div className={`${mediaShellClass} z-0`}>
         {hadOverflowHidden ? (
           <div className={mediaClipInnerClass(imageWrapClass)}>
             {videoSrc ? (
-              <video
+              <LazyInViewVideo
                 className={`absolute inset-0 h-full w-full ${bgImageClass}`}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
                 poster={imageSrc}
                 aria-label={typeof imageAlt === "string" ? imageAlt : "Solution hero video"}
               >
                 <source src={videoSrc} type="video/mp4" />
-              </video>
+              </LazyInViewVideo>
             ) : (
               <Image
                 src={imageSrc}
@@ -174,18 +164,13 @@ export default function SolutionLandingHero({
             )}
           </div>
         ) : videoSrc ? (
-          <video
+          <LazyInViewVideo
             className={`absolute inset-0 h-full w-full ${bgImageClass}`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
             poster={imageSrc}
             aria-label={typeof imageAlt === "string" ? imageAlt : "Solution hero video"}
           >
             <source src={videoSrc} type="video/mp4" />
-          </video>
+          </LazyInViewVideo>
         ) : (
           <Image
             src={imageSrc}
@@ -220,44 +205,29 @@ export default function SolutionLandingHero({
       <div className={`relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-12 lg:py-16 xl:py-18 2xl:py-20 ${stackedMobileSplit ? SPLIT_HERO_MOBILE_COPY_ORDER + " max-lg:pt-6 max-lg:pb-2" : ""}`}>
         <div className={splitHeroCopyStackClassName ?? "contents"}>
           {badge ? (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: smoothEase, delay: 0.05 }}
-            >
+            <div>
               {badge}
-            </motion.div>
+            </div>
           ) : null}
 
-          <motion.h1
+          <h1
             className={`max-w-2xl text-gray-900 ${inopsUi.typeHero} ${badge ? "mt-4 sm:mt-5" : ""}`}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: smoothEase, delay: 0.08 }}
           >
             {title}
-          </motion.h1>
+          </h1>
 
           {/* `div` avoids `.inops-template p { font-size: … !important }` overriding Tailwind / `inops-ui-lead`. */}
-          <motion.div
+          <div
             className={
               subtitleClassName?.trim()
                 ? `mt-5 max-w-xl ${subtitleClassName.trim()}`
                 : `inops-ui-lead mt-5 max-w-xl`
             }
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: smoothEase, delay: 0.12 }}
           >
             {subtitle}
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: smoothEase, delay: 0.16 }}
-          >
+          <div className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8">
             <Link
               href={primaryCta.href}
               className={primaryCtaClassName ?? inopsUi.btnPrimary}
@@ -272,11 +242,11 @@ export default function SolutionLandingHero({
                 {secondaryCta.label}
               </Link>
             ) : null}
-          </motion.div>
+          </div>
           {children}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 
   if (waveBandBelowHero) {

@@ -20,7 +20,7 @@ export type StatsBarProps = {
 
 export default function StatsBar({ heading, subheading, stats }: StatsBarProps) {
   return (
-    <section className="bg-black/85 py-14 sm:py-16">
+    <section className="bg-[#0a1f3d] py-14 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll variant="fade-up" className="mb-10 text-center">
           <h2 className="text-2xl font-bold text-white sm:text-3xl">{heading}</h2>
@@ -35,12 +35,12 @@ export default function StatsBar({ heading, subheading, stats }: StatsBarProps) 
               key={stat.label}
               variant="fade-up"
               delay={i * 80}
-              className="rounded-lg border bg-gray-100 p-5 backdrop-blur-sm"
+              className="rounded-lg border border-white/[0.12] bg-white/[0.07] p-5 backdrop-blur-sm"
             >
-              <p className="text-xs font-medium text-gray-500 tracking-wide mb-2">
+              <p className="text-xs font-medium text-white/50 tracking-wide mb-2">
                 {stat.label}
               </p>
-              <p className="font-extrabold text-[var(--inops-blue)] leading-none">
+              <p className="font-extrabold text-white leading-none">
                 {stat.prefix}
                 <AnimatedCounter
                   value={stat.value}

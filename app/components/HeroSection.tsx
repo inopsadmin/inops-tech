@@ -3,6 +3,9 @@ const css = `
 .ih *{box-sizing:border-box;margin:0;padding:0}
 .ih .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .ih .content{position:relative;z-index:2;padding:0 64px;max-width:680px}
+.ih .tabs-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;display:flex;align-items:center;gap:14px;padding:20px 56px 32px}
+.ih .tab{flex:1;display:flex;align-items:center;justify-content:center;padding:14px 10px;border:1.5px solid rgba(45,212,191,.5);border-radius:16px;font-size:13.5px;font-weight:600;color:#e2e8f0;text-decoration:none;background:transparent;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
+.ih .tab:hover{background:rgba(45,212,191,.08);border-color:rgba(45,212,191,.8);color:#fff}
 .ih .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#7dd3fc;background:rgba(29,95,209,.18);border:1px solid rgba(56,189,248,.3);padding:7px 16px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px}
 .ih .eyebrow i{width:6px;height:6px;border-radius:50%;background:#38bdf8;flex:none;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
@@ -15,34 +18,15 @@ const css = `
 .ih .b1:hover{background:#1a53bc;box-shadow:0 12px 32px rgba(29,95,209,.55)}
 .ih .b2{border:1.5px solid rgba(255,255,255,.3);color:#e2e8f0;padding:11px 22px;border-radius:999px;font-weight:600;font-size:13px;text-decoration:none;cursor:pointer;background:rgba(255,255,255,.06);backdrop-filter:blur(8px);transition:background .2s}
 .ih .b2:hover{background:rgba(255,255,255,.12)}
-.ih .stats{display:flex;gap:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}
-.ih .stats b{display:block;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px}
-.ih .stats span{font-size:11px;color:#64748b;margin-top:3px;display:block;letter-spacing:.02em}
-
 @media(max-width:768px){
  .ih .content{padding:0 24px;max-width:100%}
  .ih h1{font-size:34px;letter-spacing:-1px}
  .ih .sub{font-size:16px}
- .ih .stats{gap:24px}
- .ih .stats b{font-size:22px}
+ .ih .tabs-bar{bottom:0;padding:14px 16px;gap:8px;flex-wrap:wrap}
+ .ih .tab{flex:1 1 calc(33% - 8px);font-size:12px;padding:10px 6px}
 }
 
-/* Lifecycle strip */
-.ih-strip{background:#fff;border-top:1px solid #e3e8f0;padding:30px 56px 34px;font-family:var(--font-inter),Inter,system-ui,sans-serif}
-.ih-strip *{box-sizing:border-box;margin:0;padding:0}
-.ih-strip .lbl{font-size:15px;font-weight:700;color:#0b1f3a;margin-bottom:16px}
-.ih-strip .cov{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.ih-strip .seg{border:1px solid #e3e8f0;background:#f7f9fc;border-radius:12px;padding:14px 14px 16px}
-.ih-strip .seg i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#94a3b8;display:block;margin-bottom:8px}
-.ih-strip .seg b{display:block;font-size:16px;font-weight:800;color:#475569;letter-spacing:-.2px}
-.ih-strip .seg span{font-size:12.5px;color:#64748b;line-height:1.45;display:block;margin-top:4px}
-.ih-strip .seg.add{background:#eef4fd;border-color:#bcd2fb}
-.ih-strip .seg.add i{color:#1d5fd1}
-.ih-strip .seg.add b{color:#0b1f3a}
-@media(max-width:860px){
- .ih-strip{padding:26px 16px}
- .ih-strip .cov{grid-template-columns:1fr 1fr}
-}
+
 `;
 
 import Image from "next/image";
@@ -55,7 +39,7 @@ export default function HeroSection() {
       <div className="ih">
         <Image
           className="bg"
-          src="/images/image (3).webp"
+          src="/images/imagehome.webp"
           alt=""
           aria-hidden
           fill
@@ -79,50 +63,17 @@ export default function HeroSection() {
             <Link href="/contact" className="b1">Book a Demo</Link>
             <Link href="#solutions" className="b2">Explore Solutions</Link>
           </div>
-          <div className="stats">
-            <div>
-              <b>3,000+</b>
-              <span>Devices deployed</span>
-            </div>
-            <div>
-              <b>70+ sites</b>
-              <span>Across India</span>
-            </div>
-            <div>
-              <b>Since 2014</b>
-              <span>Industrial CLMS</span>
-            </div>
-          </div>
+        </div>
+        <div className="tabs-bar">
+          <Link href="/face-recognition-attendance" className="tab">Verify</Link>
+          <Link href="/biometric-devices"           className="tab">Gate Hardware</Link>
+          <Link href="/cctv-attendance"             className="tab">Attendance</Link>
+          <Link href="/contract-labour-management"  className="tab">Compliance</Link>
+          <Link href="/hris"                        className="tab">Wages</Link>
+          <Link href="/earned-wage-access"          className="tab">Earned Wages</Link>
         </div>
       </div>
 
-      {/* Lifecycle strip — rebuilds the "InOps adds vs standard CLMS" comparison
-          that was previously baked into the hero background image */}
-      <div className="ih-strip">
-        <div className="lbl">Most CLMS products start at the spreadsheet. InOps starts at the gate.</div>
-        <div className="cov">
-          <div className="seg add">
-            <i>InOps adds</i>
-            <b>1. Gate: biometric entry</b>
-            <span>Face reader verifies identity and contractor licence before anyone walks in</span>
-          </div>
-          <div className="seg">
-            <i>Standard CLMS</i>
-            <b>2. Attendance tracked</b>
-            <span>Clock-in data flows to payroll and shift records</span>
-          </div>
-          <div className="seg add">
-            <i>InOps adds</i>
-            <b>3. CLRA registers built</b>
-            <span>Form XII and XIII auto-generated and audit-ready at any time</span>
-          </div>
-          <div className="seg add">
-            <i>InOps adds</i>
-            <b>4. Wages on verified data</b>
-            <span>EWA and payroll run on gate-confirmed hours, not estimates</span>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

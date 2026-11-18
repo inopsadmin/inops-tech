@@ -3,6 +3,8 @@
   badge: string;
   title: string;
   description: string;
+  /** Product screenshot shown in the hero right column. Falls back to the status card when omitted. */
+  heroImage?: string;
   seoTitle?: string;
   seoDescription?: string;
   seoKeywords?: string[];

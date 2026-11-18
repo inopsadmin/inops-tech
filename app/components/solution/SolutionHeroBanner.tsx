@@ -91,7 +91,7 @@ export default function SolutionHeroBanner({
                   <Link
                     key={btn.label}
                     href={btn.href}
-                    className="inline-flex items-center gap-2 rounded-lg bg-[#0052FF] px-7 py-3.5 text-sm font-bold text-white shadow-[0_4px_14px_0_rgba(0,82,255,0.3)] transition hover:bg-blue-700 hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#0052FF] px-7 py-3.5 text-sm font-bold text-white shadow-[0_4px_14px_0_rgba(0,82,255,0.3)] transition hover:bg-blue-700 hover:-translate-y-0.5"
                   >
                     {btn.label}
                   </Link>
@@ -99,7 +99,7 @@ export default function SolutionHeroBanner({
                   <Link
                     key={btn.label}
                     href={btn.href}
-                    className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white/80 backdrop-blur px-7 py-3.5 text-sm font-bold text-[#0052FF] transition hover:bg-blue-50 hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white/80 backdrop-blur px-7 py-3.5 text-sm font-bold text-[#0052FF] transition hover:bg-blue-50 hover:-translate-y-0.5"
                   >
                     {btn.label}
                   </Link>

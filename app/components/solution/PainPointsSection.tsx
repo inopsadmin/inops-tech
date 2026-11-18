@@ -68,12 +68,12 @@ export default function PainPointsSection({
                 delay={i * 100}
                 className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 transition-shadow hover:shadow-md"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#fff0f2]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50">
                   <svg
                     className="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="#d92d20"
+                    stroke="#1c7bb8"
                     strokeWidth={2}
                   >
                     <circle cx="12" cy="12" r="10" />
@@ -121,12 +121,12 @@ export default function PainPointsSection({
                   delay={i * 80}
                   className="flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
                 >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#fff0f2]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50">
                   <svg
                     className="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="#d92d20"
+                    stroke="#1c7bb8"
                     strokeWidth={2}
                   >
                     <circle cx="12" cy="12" r="10" />

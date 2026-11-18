@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function CaseStudiesPage() {
   return (
     <>
-      <div className="bg-[#F8FAFB] text-[#16222E] antialiased" style={{ paddingTop: "var(--home-nav-offset,4.5rem)" }}>
+      <div className="bg-[#F8FAFB] text-[#16222E] antialiased">
 
         {/* Draft banner */}
         {/* <div role="note" className="bg-[#FDF3DC] border-b border-[#E2A01B] text-[#7A5200] text-sm">
@@ -123,7 +123,7 @@ export default function CaseStudiesPage() {
                 {/* Coming soon note */}
                 <p className="col-span-full text-sm text-[#425263] border border-dashed border-[#D6DEE5] rounded-xl px-5 py-4">
                   More case studies coming: <span className="font-medium text-[#16222E]">cement, electronics, steel, pharma</span>.{" "}
-                  <Link href="/contact" className="text-[#0E5A78] hover:underline">Get in touch</Link>{" "}if you&rsquo;d like to speak to a customer in your industry.
+                  <Link href="/contact" className="text-[#0E5A78] hover:underline">Get in touch</Link>{" "} if you&rsquo;d like to speak to a customer in your industry.
                 </p>
 
               </div>

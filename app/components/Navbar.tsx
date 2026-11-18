@@ -83,7 +83,8 @@ function pathUsesSolidNavBar(path: string) {
     path.startsWith("/brands/zkteco") ||
     path.startsWith("/clms-pricing") ||
     path.startsWith("/glossary") ||
-    path.startsWith("/research-insights")
+    path.startsWith("/research-insights") ||
+    path.startsWith("/case-studies")
   );
 }
 

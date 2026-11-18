@@ -53,7 +53,7 @@ export default function BlogPage() {
       />
 
       {/* ── Banner ── */}
-      <section className="no-site-reveal relative z-[1] px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-12 lg:pb-16 lg:pt-28">
+      <section className="no-site-reveal relative z-[1] px-4 pb-12 pt-6 sm:px-6 sm:pt-8 lg:px-12 lg:pb-16 lg:pt-8">
         <div className="mx-auto max-w-7xl">
           <nav aria-label="Breadcrumb" className="mb-4 text-sm text-slate-500">
             <Link href="/" className="hover:text-slate-700">Home</Link>
