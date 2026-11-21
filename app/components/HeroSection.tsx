@@ -6,7 +6,7 @@ const css = `
 .ih .tabs-bar{position:absolute;bottom:0;left:0;right:0;z-index:3;display:flex;align-items:center;gap:14px;padding:20px 56px 32px}
 .ih .tab{flex:1;display:flex;align-items:center;justify-content:center;padding:14px 10px;border:1.5px solid rgba(45,212,191,.5);border-radius:16px;font-size:13.5px;font-weight:600;color:#e2e8f0;text-decoration:none;background:transparent;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
 .ih .tab:hover{background:rgba(45,212,191,.08);border-color:rgba(45,212,191,.8);color:#fff}
-.ih .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#7dd3fc;background:rgba(29,95,209,.18);border:1px solid rgba(56,189,248,.3);padding:7px 16px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px}
+.ih .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#fff;background:rgba(29,95,209,.18);border:1px solid rgba(56,189,248,.3);padding:7px 16px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:28px}
 .ih .eyebrow i{width:6px;height:6px;border-radius:50%;background:#38bdf8;flex:none;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
 .ih h1{font-size:38px;line-height:1.1;font-weight:800;letter-spacing:-1px;color:#fff;margin-bottom:22px}
@@ -50,18 +50,18 @@ export default function HeroSection() {
         <div className="content">
           <span className="eyebrow">
             <i />
-            InOps · Bengaluru · Since 2014
+            Hardware + Software + Wages, From One Company
           </span>
           <h1>
-            Workforce Compliance &amp; <em>Biometric Attendance</em> for Indian Plants
+            Contract Labour Compliance That <em>Starts at the Gate</em>
           </h1>
           <p className="sub">
-            <b>InOps is a Bengaluru company that builds contract labour management (CLMS), biometric attendance and compliance systems for Indian manufacturing, defence and infrastructure plants.</b>{" "}
-            Since 2014 we have managed 3,000+ attendance devices across 70+ sites, connecting the factory gate to payroll and statutory registers on one platform.
+            We build the face readers, the CLMS and the wage layer, and support all three on site.{" "}
+            Unverified workers stay out. Wages run on gate-verified attendance.
           </p>
           <div className="btns">
             <Link href="/contact" className="b1">Book a Demo</Link>
-            <Link href="#solutions" className="b2">Explore Solutions</Link>
+            <Link href="/contract-labour-management" className="b2">See Iddion RegX CLMS →</Link>
           </div>
         </div>
         <div className="tabs-bar">

@@ -23,25 +23,25 @@ export const enlargedMarqueeLogoSrcs = new Set<string>([
 
 /** Same height/width for every slot so logos share one horizontal alignment axis. */
 export const CLIENT_LOGO_MARQUEE_SLOT =
-  "relative flex h-[8rem] w-[13.5rem] flex-shrink-0 items-center justify-center sm:h-[5.5rem] sm:w-[14.5rem]";
+  "relative flex h-[4.5rem] w-[8rem] flex-shrink-0 items-center justify-center sm:h-[3.25rem] sm:w-[9rem]";
 
 /** Applied to marquee flex rows (home + brands slider). */
 export const CLIENT_LOGO_MARQUEE_TRACK = "flex items-center gap-x-6 sm:gap-x-15";
 
 /** Fixed box — image uses `fill` + object-contain so it always fills this area. */
 export const CLIENT_LOGO_MARQUEE_FRAME =
-  "relative h-[4.75rem] w-[10.5rem] sm:h-[5.75rem] sm:w-[12rem]";
+  "relative h-[2.75rem] w-[6.25rem] sm:h-[3.25rem] sm:w-[7.25rem]";
 
 export const CLIENT_LOGO_MARQUEE_FRAME_LARGE =
-  "relative h-[6.75rem] w-[13.5rem] sm:h-[8rem] sm:w-[15.5rem]";
+  "relative h-[4rem] w-[8rem] sm:h-[4.75rem] sm:w-[9.25rem]";
 
 /** Wider slot for extra-large logos (Automotive Axle). */
 export const CLIENT_LOGO_MARQUEE_SLOT_XL =
-  "relative flex h-[8rem] w-[16rem] flex-shrink-0 items-center justify-center sm:h-[8.5rem] sm:w-[19rem]";
+  "relative flex h-[4.75rem] w-[9.5rem] flex-shrink-0 items-center justify-center sm:h-[5.25rem] sm:w-[11.5rem]";
 
 /** Extra-large frame (e.g. wide logos with letterboxing in the PNG). */
 export const CLIENT_LOGO_MARQUEE_FRAME_XL =
-  "relative h-[8rem] w-[15.5rem] sm:h-[8.5rem] sm:w-[18.5rem]";
+  "relative h-[4.75rem] w-[9rem] sm:h-[5.25rem] sm:w-[11rem]";
 
 /** Logos that need the XL frame + zoom to offset empty PNG padding */
 export const extraLargeMarqueeLogoSrcs = new Set<string>(["/automotive-axle.webp"]);

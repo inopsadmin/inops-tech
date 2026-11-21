@@ -50,7 +50,7 @@ export const solutionsMegaRows: SolutionsMegaCell[][] = [
       accent: true,
       title: "Identity & Face Solution",
       description: "Mobile and hardware identity for attendance, access, and verification.",
-      href: "/mobile-app-attendance",
+      href: "/face-attendance",
     },
     {
       type: "tile",
