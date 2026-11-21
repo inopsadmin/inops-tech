@@ -146,7 +146,7 @@ function MenuItem({
           style={{
             display: "inline-block",
             fontWeight: 600,
-            color: "#0a1958",
+            color: "#1f63c6",
             paddingBottom: "5px",
             borderBottom: "1px solid #ececee",
             transition: "color 0.15s ease, border-color 0.15s ease",
@@ -185,42 +185,34 @@ export function ServicesMegaMenuDesktop({
         paddingTop: "12px",
       }}
     >
-      <div
-        style={{
-          width: "100%",
-          background: "#ffffff",
-          borderRadius: "14px",
-          boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
-          overflow: "hidden",
-        }}
-      >
+      <div style={{ width: "100%", background: "#ffffff", borderRadius: "24px", boxShadow: "0 8px 40px rgba(0,0,0,0.13)", overflow: "hidden", fontFamily: "var(--font-inops-sans)" }}>
+
         {/* Services label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", borderBottom: "1px solid #ececee" }}>
-          <Link href="/services" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
-            SERVICES
+        <div style={{ padding: "16px 32px 8px", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: "#a0aab8", textTransform: "uppercase" }}>
+          <Link href="/services" onClick={onNavigate} style={{ color: "#a0aab8", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
+            Services
           </Link>
         </div>
 
-        {/* Services grid — 3 cols matching reference workforce grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px 24px", padding: "26px 32px 30px" }}>
+        {/* Services grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "28px 24px", padding: "16px 32px 28px" }}>
           {serviceItems.map((item) => (
             <MenuItem key={item.href} {...item} onNavigate={onNavigate} />
           ))}
         </div>
 
         {/* Industries label */}
-        <div style={{ padding: "12px 32px 8px", fontSize: "14px", fontWeight: 600, letterSpacing: "0px", borderBottom: "1px solid #ececee" }}>
-          <Link href="/industry/manufacturing" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
-            INDUSTRIES
-          </Link>
+        <div style={{ padding: "14px 32px 8px", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: "#a0aab8", textTransform: "uppercase", borderTop: "1px solid #ececee" }}>
+          <span>Industries</span>
         </div>
 
-        {/* Industries grid — 4 cols matching reference */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "28px 24px", padding: "26px 32px 30px" }}>
+        {/* Industries grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "28px 24px", padding: "16px 32px 28px" }}>
           {industryItems.map((item) => (
             <MenuItem key={item.href} {...item} onNavigate={onNavigate} />
           ))}
         </div>
+
       </div>
     </motion.div>
   );
@@ -256,9 +248,7 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
       {/* Industries label */}
       <div style={{ padding: "10px 16px 8px", fontSize: "10.5px", fontWeight: 700, letterSpacing: "0.4px", background: "#f7f8fa", borderTop: "1px solid #ececee", borderBottom: "1px solid #ececee" }}>
         <span style={{ margin: "0 6px 0 0", color: "#c7cad1" }}>›</span>
-        <Link href="/industry/manufacturing" onClick={onNavigate} style={{ color: "#3a3f4b", textDecoration: "none" }} className="hover:text-[#1652d1] transition-colors duration-150">
-          INDUSTRIES
-        </Link>
+        <span style={{ color: "#3a3f4b" }}>INDUSTRIES</span>
       </div>
       <div style={{ padding: "8px 8px 12px" }}>
         {industryItems.map((item) => (

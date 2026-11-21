@@ -47,14 +47,7 @@ export default function SolutionPageClosingCta({
       viewport={viewport}
       transition={{ duration: 0.55, ease: smoothEase }}
     >
-      <div
-        className="pointer-events-none absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-white/18"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full bg-white/16"
-        aria-hidden
-      />
+      
       <div className="relative z-10 mx-auto max-w-3xl">
         <h2 id={headingId} className={`solution-cta__heading ${inopsUi.typeOnDarkTitle}`}>
           {heading}
