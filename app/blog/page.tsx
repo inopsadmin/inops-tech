@@ -17,6 +17,7 @@ const TABS = [
   { id: "clra",      label: "CLRA Compliance" },
   { id: "biometric", label: "Biometric Attendance" },
   { id: "clms",      label: "Contract Labour Management" },
+  { id: "glossary",  label: "Glossary", href: "/glossary" },
 ] as const;
 
 type TabId = BlogTabId;
@@ -104,17 +105,25 @@ export default function BlogPage() {
             <span className="mr-1 self-center text-xs font-semibold uppercase tracking-widest text-slate-400">Topics:</span>
             {TABS.map((tab) => {
               const isActive = activeTab === tab.id;
+              const cls = `rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
+                isActive
+                  ? "border-[var(--inops-blue)] bg-[var(--inops-blue)] text-white shadow-md shadow-blue-500/20"
+                  : "border-slate-200 bg-white text-slate-700 shadow-sm hover:border-[var(--inops-blue)] hover:text-[var(--inops-blue)]"
+              }`;
+              if ("href" in tab && tab.href) {
+                return (
+                  <Link key={tab.id} href={tab.href} className={cls}>
+                    {tab.label}
+                  </Link>
+                );
+              }
               return (
                 <button
                   key={tab.id}
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
-                    isActive
-                      ? "border-[var(--inops-blue)] bg-[var(--inops-blue)] text-white shadow-md shadow-blue-500/20"
-                      : "border-slate-200 bg-white text-slate-700 shadow-sm hover:border-[var(--inops-blue)] hover:text-[var(--inops-blue)]"
-                  }`}
+                  className={cls}
                 >
                   {tab.label}
                 </button>

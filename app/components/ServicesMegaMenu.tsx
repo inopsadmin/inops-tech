@@ -142,10 +142,9 @@ function MenuItem({
       </span>
       <span style={{ display: "inline-block" }}>
         <span
-          className="group-hover:text-[#1652d1] group-hover:border-[#1652d1] inops-type-small"
+          className="group-hover:text-[#1652d1] group-hover:border-[#1652d1] inops-type-card-title"
           style={{
             display: "inline-block",
-            fontWeight: 600,
             color: "#1f63c6",
             paddingBottom: "5px",
             borderBottom: "1px solid #ececee",
@@ -240,7 +239,7 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
             <svg viewBox="0 0 24 24" fill="none" stroke="#1652d1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px", flexShrink: 0 }}>
               {item.icon}
             </svg>
-            <span className="group-hover:text-[#1652d1] inops-type-small" style={{ fontWeight: 600, color: "#0a1958" }}>{item.label}</span>
+            <span className="group-hover:text-[#1652d1] inops-type-card-title" style={{ color: "#0a1958" }}>{item.label}</span>
           </Link>
         ))}
       </div>
@@ -262,7 +261,7 @@ export function ServicesMegaMenuMobile({ onNavigate }: { onNavigate: () => void 
             <svg viewBox="0 0 24 24" fill="none" stroke="#1652d1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px", flexShrink: 0 }}>
               {item.icon}
             </svg>
-            <span className="group-hover:text-[#1652d1] inops-type-small" style={{ fontWeight: 600, color: "#0a1958" }}>{item.label}</span>
+            <span className="group-hover:text-[#1652d1] inops-type-card-title" style={{ color: "#0a1958" }}>{item.label}</span>
           </Link>
         ))}
       </div>

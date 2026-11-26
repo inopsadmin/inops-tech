@@ -13,7 +13,7 @@ export type BlogPostFaq = {
   answer: string;
 };
 
-export type BlogTabId = "all" | "ewa" | "clra" | "biometric" | "clms";
+export type BlogTabId = "all" | "ewa" | "clra" | "biometric" | "clms" | "glossary";
 
 export type BlogPost = {
   slug: string;

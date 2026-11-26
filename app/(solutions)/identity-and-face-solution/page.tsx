@@ -36,11 +36,15 @@ const css = `
 .fa .step.hi p{color:#64748b}
 .fa .step.mu p{color:#475569}
 
-.fa .trust{position:relative;z-index:2;padding:12px 56px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:0}
-.fa .trust .lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#334155;margin-right:16px}
-.fa .trust .item{font-size:12.5px;font-weight:600;color:#94a3b8;padding:0 12px;border-left:1px solid rgba(255,255,255,.1)}
-.fa .trust .item a{color:#38bdf8;text-decoration:none}
-.fa .trust .item a:hover{text-decoration:underline}
+.fa .trust{position:relative;z-index:2;padding:16px 56px 28px;display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px 40px}
+.fa .trust .tblock{display:flex;flex-direction:column;gap:6px}
+.fa .trust .lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#334155}
+.fa .trust .regx{font-size:14px;font-weight:700;color:#38bdf8;text-decoration:none}
+.fa .trust .regx span{display:block;font-size:11.5px;font-weight:400;color:#64748b;margin-top:1px}
+.fa .trust .family{display:flex;flex-wrap:wrap;gap:6px 0;align-items:center}
+.fa .trust .family a{font-size:12px;font-weight:600;color:#94a3b8;text-decoration:none;padding:0 10px;border-left:1px solid rgba(255,255,255,.1);transition:color .15s}
+.fa .trust .family a:first-child{border-left:none;padding-left:0}
+.fa .trust .family a:hover{color:#e2e8f0}
 
 
 @media(max-width:1024px){
@@ -85,71 +89,73 @@ export default function FaceAttendancePage() {
         <div className="content">
           <span className="eyebrow">
             <i />
-            Salary++ by InOps
+            Identity &amp; Face Solutions for Factories
           </span>
           <h1>
-            Earned Wage Access That Runs on <em>Verified Attendance</em>
+            Face Recognition Attendance on <em>Reader, Mobile and CCTV</em>
           </h1>
           <p className="sub">
-            Workers draw wages they have already earned, on any day of the month. The limit comes from gate-verified attendance, and payroll settles it automatically.
+            Enrol a worker's face once. It then works on our own face reader, on the mobile app and on your existing CCTV cameras, and feeds CLMS, HRIS and payroll.
           </p>
           <div className="btns">
-            <Link href="/contact" className="b1">Book a Demo</Link>
-            <Link href="#how-it-works" className="b2">How Salary++ Works</Link>
+            <Link href="/contact" className="b1">Get a Quote</Link>
+            <Link href="#how-it-works" className="b2">Compare the Three Options</Link>
           </div>
           <div className="stats">
             <div className="stat">
-              <strong>₹0</strong>
-              <span>employer capital</span>
+              <strong>3,000+</strong>
+              <span>devices live</span>
             </div>
             <div className="stat">
-              <strong>Any day</strong>
-              <span>of the month</span>
+              <strong>70+</strong>
+              <span>sites</span>
             </div>
             <div className="stat">
-              <strong>Auto</strong>
-              <span>payroll settlement</span>
+              <strong>3</strong>
+              <span>ways to capture</span>
             </div>
           </div>
         </div>
 
         {/* Step strip */}
         <div className="strip" id="how-it-works">
-          <p className="strip-lead">Most earned wage apps start at the withdrawal. Salary++ starts at the gate.</p>
+          <p className="strip-lead">Three ways to capture a face. One attendance record.</p>
           <div className="sg">
             <Link href="/face-recognition-attendance" className="step hi">
-              <span className="stag">InOps adds</span>
-              <h3>1. Work is verified</h3>
-              <p>Face readers record each shift</p>
+              <span className="stag">Best for plant gates</span>
+              <h3>Gate reader</h3>
+              <p>High-volume shift changes, with turnstiles</p>
+            </Link>
+            <Link href="/mobile-app-attendance" className="step hi">
+              <span className="stag">Best for field sites</span>
+              <h3>Mobile app</h3>
+              <p>Only a phone needed, GPS-checked</p>
+            </Link>
+            <Link href="/cctv-attendance" className="step hi">
+              <span className="stag">Best for open areas</span>
+              <h3>CCTV</h3>
+              <p>Uses the IP cameras you already have</p>
             </Link>
             <Link href="/contract-labour-management" className="step hi">
-              <span className="stag">InOps adds</span>
-              <h3>2. Earnings are calculated</h3>
-              <p>From attendance in CLMS and payroll</p>
-            </Link>
-            <Link href="/earned-wage-access" className="step mu">
-              <span className="stag">Standard EWA</span>
-              <h3>3. The worker withdraws</h3>
-              <p>Within the limit you set</p>
-            </Link>
-            <Link href="/hris" className="step hi">
-              <span className="stag">InOps adds</span>
-              <h3>4. Payroll settles it</h3>
-              <p>Deducted automatically on payday</p>
+              <span className="stag">All three feed</span>
+              <h3>Iddion RegX</h3>
+              <p>One record for CLMS, HRIS and payroll</p>
             </Link>
           </div>
         </div>
 
         {/* Trust row */}
         <div className="trust">
-          <span className="lbl">How it is run</span>
-          <span className="item">Funded by a regulated NBFC partner</span>
-          <span className="item">Fees disclosed upfront</span>
-          <span className="item">ISO/IEC 27001 certified</span>
-          <span className="item">
-            Are you a worker?{" "}
-            <a href="https://sambal.work" target="_blank" rel="noopener noreferrer">Visit sambal.work →</a>
-          </span>
+          <div className="tblock">
+            <span className="lbl">Also in this family</span>
+            <div className="family">
+              <Link href="/biometric-devices" className="">Biometric devices</Link>
+              <Link href="/turnstiles-access" className="">Turnstiles &amp; flap barriers</Link>
+              <Link href="/self-service-kiosk" className="">Self-service kiosk</Link>
+              <Link href="/accessories" className="">Accessories</Link>
+              <Link href="/services/biometric-amc" className="">Biometric AMC</Link>
+            </div>
+          </div>
         </div>
 
       </div>
