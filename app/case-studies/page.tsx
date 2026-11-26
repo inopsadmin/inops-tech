@@ -142,19 +142,18 @@ export default function CaseStudiesPage() {
               </p>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
 
-                {/* Glossary */}
+                {/* Brochures */}
                 <div className="bg-white border border-[#D6DEE5] rounded-2xl p-6 flex flex-col">
                   <div className="mb-4 w-9 h-9 rounded-lg bg-[#DCEBF2] flex items-center justify-center flex-none">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#0E5A78" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width={18} height={18} aria-hidden>
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                      <path d="M9 7h6M9 11h4" />
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <path d="M14 2v6h6M12 13v5M9.5 15.5l2.5 2.5 2.5-2.5" />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-[1.05rem] mb-2 font-sans text-[#16222E]">Glossary</h3>
-                  <p className="text-[#425263] text-sm flex-1 mb-5">Plain-English definitions of labour codes, CLRA terminology, statutory forms and workforce compliance concepts.</p>
-                  <Link href="/glossary" className="text-sm font-semibold text-[#0E5A78] hover:underline no-underline flex items-center gap-1">
-                    Explore glossary <span aria-hidden>→</span>
+                  <h3 className="font-semibold text-[1.05rem] mb-2 font-sans text-[#16222E]">Brochures &amp; Downloads</h3>
+                  <p className="text-[#425263] text-sm flex-1 mb-5">Access product brochures and solution overviews for CLMS, biometric attendance, HRIS and other InOps solutions.</p>
+                  <Link href="/brochures" className="text-sm font-semibold text-[#0E5A78] hover:underline no-underline flex items-center gap-1">
+                    View brochures <span aria-hidden>→</span>
                   </Link>
                 </div>
 

@@ -1048,15 +1048,6 @@ export default function PayrollSolutionsPage() {
                         Calculate ROI
                       </Link>
                     </motion.div>
-                    <Link href="/clms-pricing" className="text-sm font-medium text-slate-400 hover:text-blue-600 underline underline-offset-4 transition-colors">
-                      See how RegX is priced →
-                    </Link>
-                    <Link href="/research-insights" className="text-sm font-medium text-slate-400 hover:text-blue-600 underline underline-offset-4 transition-colors">
-                      Research & insights →
-                    </Link>
-                    <Link href="/glossary" className="text-sm font-medium text-slate-400 hover:text-blue-600 underline underline-offset-4 transition-colors">
-                      CLRA glossary →
-                    </Link>
                   </FlyInText>
                 </div>
               </div>
