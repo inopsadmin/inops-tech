@@ -2,7 +2,7 @@ const css = `
 .fa{font-family:var(--font-inter),Inter,system-ui,sans-serif;position:relative;width:100%;display:flex;flex-direction:column;justify-content:center;min-height:100vh}
 .fa *{box-sizing:border-box;margin:0;padding:0}
 .fa .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.fa .ov{position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,13,30,.92) 0%,rgba(6,13,30,.72) 55%,rgba(6,13,30,.4) 100%)}
+.fa .ov{display:none}
 .fa .content{position:relative;z-index:2;padding:96px 64px 0}
 .fa .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#fff;background:rgba(29,95,209,.18);border:1px solid rgba(56,189,248,.3);padding:6px 14px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px}
 .fa .eyebrow i{width:6px;height:6px;border-radius:50%;background:#38bdf8;flex:none;animation:fa-p 2s ease-in-out infinite}
