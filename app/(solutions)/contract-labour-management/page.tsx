@@ -501,7 +501,7 @@ function OurModuleCard({ slide, palette, slug }: { slide: OurModuleSlide; palett
 
   return (
     <motion.article
-      className="relative flex min-h-[18rem] w-full max-w-[13.5rem] flex-col overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:border-slate-300 hover:shadow-[0_14px_40px_-14px_rgba(15,23,42,0.22)] lg:max-w-none"
+      className="relative flex min-h-[22rem] w-full max-w-[17.5rem] flex-col overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] transition-[border-color,box-shadow] duration-300 hover:border-slate-300 hover:shadow-[0_14px_40px_-14px_rgba(15,23,42,0.22)] lg:max-w-none"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setHovered(true)}
@@ -516,7 +516,7 @@ function OurModuleCard({ slide, palette, slug }: { slide: OurModuleSlide; palett
         aria-hidden
       />
       <div className="relative w-full shrink-0 overflow-hidden bg-slate-100">
-        <div className="relative h-[5.5rem] w-full shrink-0">
+        <div className="relative h-[8.25rem] w-full shrink-0">
         <Image
           src={slide.image}
           alt=""
@@ -613,7 +613,7 @@ function OurModulesCarousel() {
         </motion.div>
 
         <motion.ul
-          className="mt-6 grid list-none grid-cols-2 gap-3 lg:mt-8 lg:grid-cols-6 lg:gap-3"
+          className="mt-6 grid list-none grid-cols-2 gap-4 lg:mt-8 lg:grid-cols-5 lg:gap-4"
           variants={ourModulesGridStagger}
           initial="hidden"
           whileInView="visible"

@@ -130,6 +130,53 @@ export default function CaseStudiesPage() {
             </div>
           </section>
 
+          {/* More resources */}
+          <section className="py-14 border-t border-[#D6DEE5] bg-[#F8FAFB]">
+            <div className="max-w-[1180px] mx-auto px-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#425263] mb-3">Go further</p>
+              <h2 className="font-bold text-[clamp(1.7rem,3.2vw,2.5rem)] leading-[1.1] mb-3 font-sans max-w-[22ch]">
+                Learn the context behind the results
+              </h2>
+              <p className="text-[#425263] text-[1rem] max-w-[68ch] mb-10">
+                From compliance terminology to industry research, explore the resources that back up the outcomes in these case studies.
+              </p>
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
+
+                {/* Glossary */}
+                <div className="bg-white border border-[#D6DEE5] rounded-2xl p-6 flex flex-col">
+                  <div className="mb-4 w-9 h-9 rounded-lg bg-[#DCEBF2] flex items-center justify-center flex-none">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0E5A78" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width={18} height={18} aria-hidden>
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                      <path d="M9 7h6M9 11h4" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-[1.05rem] mb-2 font-sans text-[#16222E]">Glossary</h3>
+                  <p className="text-[#425263] text-sm flex-1 mb-5">Plain-English definitions of labour codes, CLRA terminology, statutory forms and workforce compliance concepts.</p>
+                  <Link href="/glossary" className="text-sm font-semibold text-[#0E5A78] hover:underline no-underline flex items-center gap-1">
+                    Explore glossary <span aria-hidden>→</span>
+                  </Link>
+                </div>
+
+                {/* Research & Insights */}
+                <div className="bg-white border border-[#D6DEE5] rounded-2xl p-6 flex flex-col">
+                  <div className="mb-4 w-9 h-9 rounded-lg bg-[#DCEBF2] flex items-center justify-center flex-none">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0E5A78" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" width={18} height={18} aria-hidden>
+                      <path d="M2 20h20M5 20V10l7-7 7 7v10" />
+                      <path d="M9 20v-5h6v5" />
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-[1.05rem] mb-2 font-sans text-[#16222E]">Research &amp; Insights</h3>
+                  <p className="text-[#425263] text-sm flex-1 mb-5">Read research, compliance studies and practical insights on contract workforce management and Indian manufacturing.</p>
+                  <Link href="/research-insights" className="text-sm font-semibold text-[#0E5A78] hover:underline no-underline flex items-center gap-1">
+                    Explore insights <span aria-hidden>→</span>
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
           {/* How we publish */}
           <div className="py-12 border-t border-[#D6DEE5] bg-white" id="standards">
             <div className="max-w-[1180px] mx-auto px-6">

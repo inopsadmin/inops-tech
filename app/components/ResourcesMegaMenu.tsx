@@ -9,11 +9,6 @@ const EVALUATE = [
     href: "/case-studies",
     description: "Results from Indian plants",
   },
-  {
-    label: "CLMS Pricing",
-    href: "/clms-pricing",
-    description: "What drives the cost",
-  },
 ];
 
 const LEARN = [
@@ -21,21 +16,6 @@ const LEARN = [
     label: "Blog",
     href: "/blog",
     description: "Guides for plant HR and compliance",
-  },
-  {
-    label: "Brochures",
-    href: "/brochures",
-    description: "Product PDFs for evaluation teams",
-  },
-  {
-    label: "Glossary",
-    href: "/glossary",
-    description: "Labour Code and CLRA terms explained",
-  },
-  {
-    label: "Research & Insights",
-    href: "/research-insights",
-    description: "Compliance studies",
   },
 ];
 
@@ -60,19 +40,19 @@ function ResourceItem({
       style={{ textDecoration: "none", marginBottom: "18px" }}
     >
       <span
-        className="group-hover:text-[#1652d1] group-hover:border-[#1652d1]"
+        className="group-hover:text-[color:var(--inops-blue)] inops-type-card-title"
         style={{
           display: "inline-block",
-          fontSize: "14px",
-          fontWeight: 600,
-          color: "#1f63c6",
+          color: "#1652d1",
           paddingBottom: "4px",
+          textDecoration: "underline",
+          textUnderlineOffset: "3px",
           transition: "color 0.15s ease",
         }}
       >
         {label}
       </span>
-      <span style={{ display: "block", fontSize: "12px", color: "#315fff", marginTop: "2px", lineHeight: 1.5 }}>
+      <span className="inops-type-small group-hover:text-blue-700/90" style={{ display: "block", marginTop: "4px", color: "#4f75c2" }}>
         {description}
       </span>
     </Link>
@@ -147,8 +127,8 @@ export function ResourcesMegaMenuMobile({
             className="group block rounded-lg px-2 py-2 hover:bg-[#eaf0ff]"
             style={{ textDecoration: "none", marginBottom: "4px" }}
           >
-            <span className="group-hover:text-[#1652d1]" style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#1652d1" }}>{item.label}</span>
-            <span style={{ display: "block", fontSize: "11.5px", color: "#6b7a9a", marginTop: "1px" }}>{item.description}</span>
+            <span className="group-hover:text-[color:var(--inops-blue)] inops-type-card-title" style={{ display: "block", color: "#1652d1", textDecoration: "underline", textUnderlineOffset: "3px" }}>{item.label}</span>
+            <span className="inops-type-small" style={{ display: "block", marginTop: "2px", color: "#4f75c2" }}>{item.description}</span>
           </Link>
         ))}
       </div>
@@ -166,8 +146,8 @@ export function ResourcesMegaMenuMobile({
             className="group block rounded-lg px-2 py-2 hover:bg-[#eaf0ff]"
             style={{ textDecoration: "none", marginBottom: "4px" }}
           >
-            <span className="group-hover:text-[#1652d1]" style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#1652d1" }}>{item.label}</span>
-            <span style={{ display: "block", fontSize: "11.5px", color: "#6b7a9a", marginTop: "1px" }}>{item.description}</span>
+            <span className="group-hover:text-[color:var(--inops-blue)] inops-type-card-title" style={{ display: "block", color: "#1652d1", textDecoration: "underline", textUnderlineOffset: "3px" }}>{item.label}</span>
+            <span className="inops-type-small" style={{ display: "block", marginTop: "2px", color: "#4f75c2" }}>{item.description}</span>
           </Link>
         ))}
       </div>
